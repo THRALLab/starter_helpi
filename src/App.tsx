@@ -36,6 +36,9 @@ function App() {
         <p>
           Michael Forte
         </p>
+        <p>
+          Colin Parsons
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
