@@ -33,6 +33,9 @@ function App() {
           Michael Lutz
           Jacob Wilber
         </p>
+        <p>
+          Michael Forte
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
