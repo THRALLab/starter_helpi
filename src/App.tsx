@@ -32,12 +32,10 @@ function App() {
           Edit <code>src/App.tsx</code> and save to reload.
           Michael Lutz
           Jacob Wilber
+          Colin Parsons
         </p>
         <p>
           Michael Forte
-        </p>
-        <p>
-          Colin Parsons
         </p>
         <a
           className="App-link"
