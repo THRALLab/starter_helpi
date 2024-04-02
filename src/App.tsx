@@ -31,6 +31,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -39,6 +40,9 @@ function App() {
         >
           Learn React
         </a>
+        <p>
+          Benjamin Kellner
+        </p>
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
