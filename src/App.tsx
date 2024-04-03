@@ -30,7 +30,6 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
-          Brett Bockstein
         </p>
         <a
           className="App-link"
@@ -42,6 +41,7 @@ function App() {
         </a>
       </header>
       <h1>Philip</h1>
+      <h1>Brett Bockstein</h1>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
