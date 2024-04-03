@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import logo from './lolsgo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 
@@ -28,6 +28,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <h1>Joey Dare</h1>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
