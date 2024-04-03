@@ -26,17 +26,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          The Goats
+        </h1>
+        <br></br>
+        <br></br>
+        <h3>
+          Group Members: Isaac Weber, Dylan Minchhoff, Barry Peirson
+        </h3>
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
