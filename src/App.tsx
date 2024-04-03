@@ -26,9 +26,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>
+        <h2>
           The Goats
-        </h1>
+        </h2>
         <br></br>
         <br></br>
         <h3>
