@@ -46,6 +46,9 @@ function App() {
       <div>
         Mateo Torres
       </div>
+      <div>
+        Coleman Walsh
+      </div>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
