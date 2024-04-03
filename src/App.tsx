@@ -34,6 +34,9 @@ function App() {
         <p>
           Jasnoor Saini
         </p>
+        <p>
+          Benjamin Le
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
