@@ -31,6 +31,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
           thern a diallo
+          Edit <code>src/App.tsx</code> and save to reload. Aditya Gill, Harman Bagga
         </p>
         <a
           className="App-link"
@@ -39,6 +40,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+          Rubina Shaik
         </a>
       </header>
       <Form>
