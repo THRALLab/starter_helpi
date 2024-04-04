@@ -39,7 +39,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React!Nate adding his branch
+          Learn React! Names: Nathanael,
         </a>
       </header>
       <Form>
