@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+section {
+  display: block
+}
+
+.quiz-overview-container {
+  display: flex;
+}
+
+.quiz-graph-container {
+  margin-left: 400px;
+}

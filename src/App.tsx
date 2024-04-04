@@ -49,6 +49,21 @@ function App() {
           Learn React
         </a>
       </header>
+      <section id="quizzes-offered">
+        <div className="quiz-overview-container">
+          <div className="quiz-descs-container">
+          <h3>Simple Quiz</h3>
+          <p>
+            This is the simple quiz. It is more simple than the detailed quiz.
+          </p>
+          <h3>Detailed Quiz</h3>
+          <p>
+            This is the detailed quiz. It is more detailed than the simple quiz. 
+          </p>
+          </div>
+        <div className="quiz-graph-container">Insert graph here</div>
+        </div>
+      </section>
       <div>
         Mateo Torres
       </div>
