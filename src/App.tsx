@@ -30,10 +30,6 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
-          <div>Zhicheng Liu</div>
-          <div>Qingjian Xu</div>
-          <div>Max De Jesus</div>
-          <div>Marc Madlangbayan</div>
         </p>
         <a
           className="App-link"
