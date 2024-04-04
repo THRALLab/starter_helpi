@@ -30,6 +30,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           <div>Zhicheng Liu</div>
+          <div>Qingjian Xu</div>
           <div>Max De Jesus</div>
           <div>Marc Madlangbayan</div>
         </p>
