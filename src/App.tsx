@@ -31,6 +31,7 @@ function App() {
         </h1>
         <br></br>
         <br></br>
+        <br></br>
         <h3>
           Group Members: Isaac Weber, Dylan Minchhoff, Barry Peirson
         </h3>
