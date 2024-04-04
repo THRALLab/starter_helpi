@@ -33,7 +33,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to reload. Names: 
           Carter McCabe, 
           Nathanael Pierre-Louis, 
-          Greg Turbe
+          Gregory Turbe
         </p>
         <a
           className="App-link"
