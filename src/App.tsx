@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -24,23 +24,37 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+  
+  //Changes page to the basic questions page
+  function moveToBasic(): void {
+      //Change to basic page here
+  }
+
+  //Changes page to the detailed questions page
+  function moveToDetailed(): void {
+    //Change to detailed page here
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Rory Jordan, Alexander Hoy, Ryan Jones, Connor Jackson</p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Container>
+      <Row>
+        <Col>
+          <Button onClick={moveToBasic}>Basic Quiz</Button>
+          This is a basic quiz with X questions.
+          It will take around Y to Z minutes to complete.
+          The questions are simple and multiple choice.
+        </Col>
+        <Col>
+          <Button onClick={moveToDetailed}>Detailed Quiz</Button>
+          This is a detailed quiz with X questions.
+          It will take around Y to Z minutes to complete.
+          The questions are answered on a scale.
+          </Col>
+      </Row>
+      </Container>
+
+      <div>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
@@ -48,7 +62,28 @@ function App() {
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
     </div>
+    </div>
   );
 }
 
 export default App;
+
+/*
+<div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>Rory Jordan, Alexander Hoy, Ryan Jones, Connor Jackson</p>
+          <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+*/
