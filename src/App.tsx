@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from './Pages/HomePage/HomePage';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -31,7 +31,7 @@ function App() {
                 <h1> Helpi </h1>
               </header>
               <div className = "App-content">
-                <BrowserRouter>
+                <HashRouter>
                   <Routes>
                     <Route path = "home" element = {<HomePage/>}> </Route>
                     <Route path = "/" element = {
@@ -46,7 +46,7 @@ function App() {
                           </div>
                     }></Route>
                   </Routes>
-                </BrowserRouter>
+                </HashRouter>
               </div>
               <footer className = "App-footer"> 
                 <Form>
