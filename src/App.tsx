@@ -3,8 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 
-// this is a test
-//initialized branch, cloned repo, doing pull request to get live web page
+// this is a test to check if the website deploys correctly
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
