@@ -13,6 +13,28 @@
   }
 }
 
+.App-navbar {
+  display: flex;
+  align-items: left;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  z-index: 1000;
+  background-color: #5c5959a8;
+}
+.App-navbar-header {
+  display: flex;
+}
+
+.App-navbar-items {
+  display: flex;
+  margin: 0px;
+  padding: 10px;
+  align-items: center
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
