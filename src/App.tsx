@@ -4,11 +4,19 @@ import { Button, Form } from 'react-bootstrap';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
-const saveKeyData = "MYKEY";
+const envKeyData = process.env.REACT_APP_CHATGBT_API_KEY;
+let saveKeyData = "MYKEY";
+
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
+// prev key is null, but is defined in .env
+if (envKeyData != null) {
+  saveKeyData = `MYKEY: ${envKeyData}`
+  localStorage.setItem(saveKeyData, JSON.stringify(saveKeyData));
+}
+
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
