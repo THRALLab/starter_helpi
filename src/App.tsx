@@ -31,6 +31,7 @@ function App() {
         <p>
           <div>Zhicheng Liu</div>
           <div>Max De Jesus</div>
+          <div>Marc Madlangbayan</div>
         </p>
         <a
           className="App-link"
