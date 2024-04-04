@@ -42,7 +42,7 @@ function App() {
       </header>
       <div>
         <h3> Group Members </h3>
-        <ul>
+        <ul style={{display:"inline"}}>
           <li> Jamie</li>
           <li> Claudia</li>
           <li> Edwin </li>
