@@ -48,6 +48,10 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
+      <hr></hr>
+            <p>
+                Created by: Melanie Heider, Patrick Sweet, Jessica Cunningham, Sydney Holland
+            </p>
     </div>
   );
 }
