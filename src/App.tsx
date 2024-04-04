@@ -44,7 +44,7 @@ function App() {
         <h3> Group Members </h3>
         <ul>
           <li> Jamie Pacheco</li>
-          <li> Claudia</li>
+          <li> Claudia Chance</li>
           <li> Edwin </li>
           <li> Nathan </li>
         </ul>
