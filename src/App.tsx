@@ -30,8 +30,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload. Names: 
-        Carter McCabe
+          Edit <code>src/App.tsx</code> and save to reload. Names:
+          Carter McCabe
         </p>
         <a
           className="App-link"
@@ -39,7 +39,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React! Names: Nathanael, Carter
+          Learn React! Names: Nathanael, Carter, Greg 
         </a>
       </header>
       <Form>
