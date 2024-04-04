@@ -6,11 +6,11 @@ const Navbar = () => {
         <>
             <Nav>
                 <NavMenu>
-                    <NavLink to="/detailedPage">
-                        Detailed Page
-                    </NavLink>
                     <NavLink to="/homePage">
                         Home
+                    </NavLink>
+                    <NavLink to="/detailedPage">
+                        Detailed Page
                     </NavLink>
                 </NavMenu>
             </Nav>
