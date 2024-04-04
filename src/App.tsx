@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
@@ -37,23 +37,29 @@ function App() {
 
   return (
     <div>
+      <header className="App-header">The Career Lab</header>
+      <body>
       <Container>
       <Row>
         <Col>
           <Button onClick={moveToBasic}>Basic Quiz</Button>
+          <p>
           This is a basic quiz with X questions.
           It will take around Y to Z minutes to complete.
           The questions are simple and multiple choice.
+          </p>
         </Col>
         <Col>
           <Button onClick={moveToDetailed}>Detailed Quiz</Button>
+          <p>
           This is a detailed quiz with X questions.
           It will take around Y to Z minutes to complete.
           The questions are answered on a scale.
+          </p>
           </Col>
       </Row>
       </Container>
-
+      </body>
       <div>
       <Form>
         <Form.Label>API Key:</Form.Label>
@@ -61,7 +67,8 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
-    </div>
+      </div>
+
     </div>
   );
 }
