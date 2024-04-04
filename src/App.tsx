@@ -43,7 +43,7 @@ function App() {
       <div>
         <h3> Group Members </h3>
         <ul>
-          <li> Jamie</li>
+          <li> Jamie Pacheco</li>
           <li> Claudia</li>
           <li> Edwin </li>
           <li> Nathan </li>
