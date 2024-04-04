@@ -29,6 +29,7 @@ function App() {
 			<header className="App-header">
 				<h3>Hairum Qureshi</h3>
         <h3> Mithra Sankar </h3>
+		<h3> Olive Odida </h3>
 			</header>
 			<Form>
 				<Form.Label>API Key:</Form.Label>
