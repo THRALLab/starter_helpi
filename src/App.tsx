@@ -24,29 +24,47 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+  
+  //Changes page to the basic questions page
+  function moveToBasic(): void {
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Rory Jordan, Alexander Hoy, Ryan Jones, Connor Jackson</p>
-        <p>
+    <div>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>Rory Jordan, Alexander Hoy, Ryan Jones, Connor Jackson</p>
+          <p>
           Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+
+      <div>
+      <Button onClick={moveToBasic}>Basic Quiz</Button>
+      This is a basic quiz with X questions.
+      It will take around Y to Z minutes to complete.
+      The questions are simple and multiple choice.
+      </div>
+
+      <div>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
+    </div>
     </div>
   );
 }
