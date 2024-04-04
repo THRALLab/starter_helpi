@@ -31,6 +31,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
           <div>Zhicheng Liu</div>
+          <div>Qingjian Xu</div>
         </p>
         <a
           className="App-link"
