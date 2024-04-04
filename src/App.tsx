@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import { DetailedQuestion } from './components/DetailedQuestion';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -31,18 +32,12 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
   return (
     <div className="App">
       <header className="App-header">
-        <h2>
-          The Goats
-        </h2>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h3>
-          Group Members: Isaac Weber, Dylan Minchhoff, Barry Peirson
-        </h3>
+        home-button-barrypreal
+        <Button onClick={ () => console.log("home :)") }>Home</Button>
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
