@@ -39,6 +39,7 @@ function App() {
         >
           Learn React
           Rubina Shaik
+          Thern Diallo
         </a>
       </header>
       <Form>
