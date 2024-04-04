@@ -43,8 +43,8 @@ function App() {
       <div>
         <h3> Group Members </h3>
         <ul style={{display:"inline"}}>
-          <li> Jamie</li>
-          <li> Claudia</li>
+          <li> Jamie Pacheco</li>
+          <li> Claudia Chance</li>
           <li> Edwin </li>
           <li> Nathan </li>
         </ul>
