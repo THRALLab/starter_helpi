@@ -46,7 +46,7 @@ function App() {
           <li> Jamie</li>
           <li> Claudia</li>
           <li> Edwin </li>
-          <li> Nathan Wood</li>
+          <li> Nathan Wood </li>
         </ul>
 
       </div>
