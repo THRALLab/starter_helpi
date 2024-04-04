@@ -29,7 +29,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload Larissa Chelius.
+          Edit <code>src/App.tsx</code> and save to reload. Sophia Romero. Larissa Chelius. Rue Lin.
         </p>
         <a
           className="App-link"
