@@ -46,7 +46,7 @@ function App() {
           <li> Jamie Pacheco</li>
           <li> Claudia Chance</li>
           <li> Edwin </li>
-          <li> Nathan </li>
+          <li> Nathan Wood </li>
         </ul>
 
       </div>
