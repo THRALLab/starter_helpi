@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HomePage } from './Pages/HomePage/HomePage';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -26,37 +27,36 @@ function App() {
   }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div>
-        <h3> Group Members </h3>
-        <ul style={{display:"inline"}}>
-          <li> Jamie Pacheco</li>
-          <li> Claudia Chance</li>
-          <li> Edwin </li>
-          <li> Nathan Wood </li>
-        </ul>
-
-      </div>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
-    </div>
+              <header className="App-header">
+                <h1> Helpi </h1>
+              </header>
+              <div className = "App-content">
+                <BrowserRouter>
+                  <Routes>
+                    <Route path = "home" element = {<HomePage/>}> </Route>
+                    <Route path = "/" element = {
+                          <div>
+                            <h3> Group Members </h3>
+                            <ul style={{display:"inline"}}>
+                              <li> Jamie Pacheco</li>
+                              <li> Claudia Chance</li>
+                              <li> Edwin </li>
+                              <li> Nathan </li>
+                            </ul>
+                          </div>
+                    }></Route>
+                  </Routes>
+                </BrowserRouter>
+              </div>
+              <footer className = "App-footer"> 
+                <Form>
+                  <Form.Label>API Key:</Form.Label>
+                  <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                  <br></br>
+                  <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                </Form>
+              </footer>
+            </div>
   );
 }
 
