@@ -1,3 +1,4 @@
+// by Carter, Nathan, and Greg
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -29,7 +30,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Edit <code>src/App.tsx</code> and save to reload. Names:
+          Carter McCabe
         </p>
         <a
           className="App-link"
@@ -37,7 +39,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React! Names: Nathanael, Carter, Greg 
         </a>
       </header>
       <Form>
