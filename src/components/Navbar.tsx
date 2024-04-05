@@ -1,5 +1,7 @@
 import React from "react";
 import { Nav, NavLink, NavMenu } from "./NavbarElements";
+import { Button } from "react-bootstrap";
+
  
 const Navbar = () => {
     return (
@@ -7,13 +9,13 @@ const Navbar = () => {
             <Nav>
                 <NavMenu>
                     <NavLink to="/">
-                        Home
+                        <Button>Home</Button>
                     </NavLink>
                     <NavLink to="/detailedPage">
-                        Detailed Page
+                        <Button>Detailed Page</Button>
                     </NavLink>
                     <NavLink to="/basicPage">
-                        Basic Page
+                        <Button>Basic Page</Button>
                     </NavLink>
                 </NavMenu>
             </Nav>
