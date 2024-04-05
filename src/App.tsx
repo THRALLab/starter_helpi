@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import Navbar2 from './Components/Navbar'
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
