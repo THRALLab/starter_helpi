@@ -15,7 +15,7 @@ export function MC_SINGLE_RESPONSE({
     return (
         <div>
             <h3>{question}</h3>
-            <ul>
+            <ul style={{ listStyleType: "none" }}>
                 {choices.map((choice) => (
                     <li>
                         <Form.Check
