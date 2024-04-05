@@ -8,7 +8,7 @@ import {
     Route,
 } from "react-router-dom";
 import DetailedPage from './pages/detailedPage';
-import Home from './pages/homePage';
+import HomePage from './pages/homePage';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     <><Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/detailedPage" element={<DetailedPage />} />
       </Routes>
     </Router><div className="App">
