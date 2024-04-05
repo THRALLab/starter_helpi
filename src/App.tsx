@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import { BasicQuiz } from './Components/BasicQuiz';
 import { DetailedQuestion } from './components/DetailedQuestion';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -39,6 +40,7 @@ function App() {
         home-button-barrypreal
         <Button onClick={ () => console.log("home :)") }>Home</Button>
       </header>
+      <BasicQuiz></BasicQuiz>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
