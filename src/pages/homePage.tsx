@@ -32,15 +32,6 @@ import logo from './logo.svg';
             <p>
                 Edit <code>src/App.tsx</code> and save to reload.
             </p>
-            <p>
-                Jasnoor Saini
-            </p>
-            <p>
-                Benjamin Le
-            </p>
-            <p>
-                Coleman Walsh
-            </p>
             <a
                 className="App-link"
                 href="https://reactjs.org"
