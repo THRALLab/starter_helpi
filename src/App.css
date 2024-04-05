@@ -43,8 +43,7 @@ section {
 
 .quiz-overview-container {
   display: flex;
+  justify-content: space-between;
 }
 
-.quiz-graph-container {
-  margin-left: 400px;
-}
+
