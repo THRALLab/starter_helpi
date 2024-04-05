@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuiz } from './Components/BasicQuiz';
-import { DetailedQuestion } from './components/DetailedQuestion';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
