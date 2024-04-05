@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+section {
+  display: block
+}
+
+.quiz-overview-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
