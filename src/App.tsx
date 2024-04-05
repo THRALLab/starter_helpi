@@ -2,14 +2,23 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuiz } from './Components/BasicQuiz';
+import { DetailedQuestion } from './components/DetailedQuestion';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
-const saveKeyData = "MYKEY";
+const envKeyData = process.env.REACT_APP_CHATGBT_API_KEY;
+let saveKeyData = "MYKEY";
+
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
+// prev key is null, but is defined in .env
+if (envKeyData != null) {
+  saveKeyData = `MYKEY: ${envKeyData}`
+  localStorage.setItem(saveKeyData, JSON.stringify(saveKeyData));
+}
+
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
@@ -24,18 +33,12 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>
-          The Goats
-        </h1>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h3>
-          Group Members: Isaac Weber, Dylan Minchhoff, Barry Peirson
-        </h3>
+        home-button-barrypreal
+        <Button onClick={ () => console.log("home :)") }>Home</Button>
       </header>
       <BasicQuiz></BasicQuiz>
       <Form>
