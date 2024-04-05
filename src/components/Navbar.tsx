@@ -12,6 +12,9 @@ const Navbar = () => {
                     <NavLink to="/detailedPage">
                         Detailed Page
                     </NavLink>
+                    <NavLink to="/basicPage">
+                        Basic Page
+                    </NavLink>
                 </NavMenu>
             </Nav>
         </>
