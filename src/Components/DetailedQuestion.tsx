@@ -4,7 +4,6 @@ import { Form, Button } from "react-bootstrap";
 
 
 export function DetailedQuestion(): JSX.Element {
-    const [question, setQuestion] = useState<string>("test :)")
     const [answer, changeAnswer] = useState<string>(" ");
 
     function setAnswer(event: React.ChangeEvent<HTMLInputElement>) {
@@ -13,7 +12,6 @@ export function DetailedQuestion(): JSX.Element {
 
     return (
         <div>
-            <h3>{question}</h3>
             <Form.Group controlId="userAnswer">
                         <Form.Label>Enter your answer:</Form.Label>
                         <Form.Control value={answer} onChange={setAnswer} />
