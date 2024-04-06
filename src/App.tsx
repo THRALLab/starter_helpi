@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import {
+  Route,
+  Routes,
+} from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
-import { BasicQuiz } from './Components/BasicQuiz';
+import { BasicQuiz } from './pages/BasicQuiz';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -18,7 +23,6 @@ if (envKeyData != null) {
   localStorage.setItem(saveKeyData, JSON.stringify(saveKeyData));
 }
 
-
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   
@@ -34,19 +38,28 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        home-button-barrypreal
-        <Button onClick={ () => console.log("home :)") }>Home</Button>
-      </header>
-      <BasicQuiz></BasicQuiz>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          {/* You can put content here that should be present on all pages */}
+          <Button onClick={() => console.log("home")}>Home</Button>
+        </header>
+        {/* Use Routes and Route for setting up routing */}
+        <Routes>
+          <Route path="/" element={
+            <React.Fragment>
+              <BasicQuiz />
+              <Form>
+                <Form.Label>API Key:</Form.Label>
+                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey} />
+                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+              </Form>
+            </React.Fragment>
+          } />
+          {/* More Route components for other paths */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
