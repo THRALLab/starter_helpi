@@ -15,8 +15,6 @@ export function BasicQuiz(): JSX.Element {
     // These options should be dependant on what age the user entered and level of education
     const options2 = ["1","2","3","4","5"];
 
-    const
-
     return (
         <Container fluid>
             <Row>
@@ -31,9 +29,9 @@ export function BasicQuiz(): JSX.Element {
                 <Col>
                     <MC_MULTI_RESPONSE
                         question = {question2}
-                        choices,
-                        answers,
-                        setAnswers
+                        choices = {options2}
+                        answers = {secondAnswer}
+                        setAnswers = {setSecondAnswer}
                     ></MC_MULTI_RESPONSE>
                 </Col>
                 </Row>
