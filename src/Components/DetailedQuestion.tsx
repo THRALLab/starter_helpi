@@ -13,8 +13,8 @@ export function DetailedQuestion(): JSX.Element {
     return (
         <div>
             <Form.Group controlId="userAnswer">
-                        <Form.Label>Enter your answer:</Form.Label>
-                        <Form.Control value={answer} onChange={setAnswer} />
+                <Form.Label>Enter your answer:</Form.Label>
+                <Form.Control value={answer} onChange={setAnswer} />
             </Form.Group>
             <Button onClick={() => console.log("submit :)")}></Button>
         </div>
