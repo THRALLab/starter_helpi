@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  createBrowserRouter,
   Route,
   Routes,
 } from "react-router-dom";
@@ -23,18 +22,6 @@ if (envKeyData != null) {
   saveKeyData = `MYKEY: ${envKeyData}`
   localStorage.setItem(saveKeyData, JSON.stringify(saveKeyData));
 }
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-  {
-    path: "/basic-quiz",
-    element: <BasicQuiz />,
-  },
-  // Add more routes here
-]);
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
