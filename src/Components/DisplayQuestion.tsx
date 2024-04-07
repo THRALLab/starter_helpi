@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MC_SINGLE_RESPONSE } from "../Components/MC_SINGLE_RESPONSE";
+import { MC_SINGLE_RESPONSE } from "./MC_SINGLE_RESPONSE";
 import { MC_MULTI_RESPONSE } from "./MC_MULTI_RESPONSE";
 
 export function DisplayQuestion ({
@@ -19,14 +19,6 @@ export function DisplayQuestion ({
 }): JSX.Element {
     const [localAnswer, setLocal] = useState<string[]>([]);
     const [submitted, setSubmitted] = useState<boolean>(false);
-    <h1>
-        {
-            submitted
-                ? "submitted"
-                : "not submitted"
-
-        }
-    </h1>
     if (!submitting && !submitted) {
         if (type === "MC_SINGLE_RESPONSE") {
             return(
@@ -52,8 +44,6 @@ export function DisplayQuestion ({
     } else if (submitting && !submitted) {
         setAnswers([...answers, localAnswer]);
         setSubmitted(true);
-    } else if (submitted){
-        return(<h3>Answer: {localAnswer}</h3>)
     }
-    return(<>something very wrong</>)
+    return(submitted ? <h1>submitted</h1> : <h1>not submitted</h1>)
 }

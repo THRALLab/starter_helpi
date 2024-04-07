@@ -1,5 +1,5 @@
-export function ViewQuiz(): JSX.Element {
-    const addOption = (newOption: string) => {
+export function ViewQuizzes(): JSX.Element {
+    const addQuiz = (newOption: string) => {
         return(<></>)
     }
     return(<></>)
