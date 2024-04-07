@@ -6,8 +6,8 @@ export function MC_SINGLE_RESPONSE({
     answer,
     setAnswer
 } : {
-    question: string;
-    choices: string[];
+    question: string; //
+    choices: string[]; //
     answer: string;
     setAnswer: (answer: string) => void;
 }): JSX.Element {

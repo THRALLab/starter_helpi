@@ -18,6 +18,7 @@ export function MC_MULTI_RESPONSE({
             setAnswers(answers.filter((target: string): boolean => target!==answer))
         }
     }
+
     return (
         <div>
             <h3>{question}</h3>
