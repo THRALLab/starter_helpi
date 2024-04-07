@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { MC_SINGLE_RESPONSE } from "../Components/MC_SINGLE_RESPONSE";
-import { MC_MULTI_RESPONSE } from "../Components/MC_MULTI_RESPONSE";
+import { Button} from "react-bootstrap";
 import { QuestionProps } from "../Interfaces/QuestionProps";
 import { QuizProps } from "../Interfaces/QuizProps";
-import { DisplayQuestion}
+import { DisplayQuestion } from "../Components/DisplayQuestion";
 
 const quiz1: QuizProps = {
     id: "first-quiz",
@@ -24,44 +22,33 @@ const quiz1: QuizProps = {
 }
 
 export function BasicQuiz(): JSX.Element {
-    const [firstAnswer, setFirstAnswer] = useState<string[]>([]);
-    const [secondAnswer, setSecondAnswer] = useState<string[]>([]);
+    const [answers, setAnswers] = useState<string[][]>([[]]);
+    const [submitting, setSubmitting] = useState<boolean>(false);
 
     function submitQuiz() {
+        setSubmitting(true)
     }
 
     return (
-        <><div
+        <div
             style={{ justifyContent: "left" }}
         >
             <h1>{quiz1.name}</h1>
             {
                 quiz1.questions.map((question: QuestionProps) => (
-                    <{question.type}
-                    ></{question.type}>
+                    <DisplayQuestion
+                        type={question.type}
+                        question={question.question}
+                        options={question.options}
+                        answers={answers}
+                        setAnswers={setAnswers}
+                        submitting={submitting}
+                    ></DisplayQuestion>
                 ))
             }
+            <Button
+                onClick={() => submitQuiz}
+            >Submit Quiz</Button>
         </div>
-        
-        <Container fluid>
-                <Row>
-                    <Col style={{ justifyContent: 'left' }}>
-                        <MC_SINGLE_RESPONSE
-                            question={question1}
-                            choices={options1}
-                            answer={firstAnswer}
-                            setAnswer={setFirstAnswer}
-                        ></MC_SINGLE_RESPONSE>
-                    </Col>
-                    <Col>
-                        <MC_MULTI_RESPONSE
-                            question={question2}
-                            choices={options2}
-                            answers={secondAnswer}
-                            setAnswers={setSecondAnswer}
-                        ></MC_MULTI_RESPONSE>
-                    </Col>
-                </Row>
-            </Container></>
     )
 }

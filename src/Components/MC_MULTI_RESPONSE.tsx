@@ -1,21 +1,20 @@
 import { Form, } from 'react-bootstrap';
 export function MC_MULTI_RESPONSE({
     question,
-    choices,
+    options,
     answers,
     setAnswers
 } : {
     question: string;
-    choices: string[];
+    options: string[];
     answers: string[];
     setAnswers: (answer: string[]) => void;
 }): JSX.Element {
     function addAnswer(answer: string) {
-        const found = answers.filter((target: string): boolean => target===answer)
-        if (!found) {
-            setAnswers([...answers, answer])
-        } else {
+        if (answers.includes(answer)) {
             setAnswers(answers.filter((target: string): boolean => target!==answer))
+        } else {
+            setAnswers([...answers, answer])
         }
     }
 
@@ -23,13 +22,15 @@ export function MC_MULTI_RESPONSE({
         <div>
             <h3>{question}</h3>
             <ul style={{ listStyleType: "none" }}>
-                {choices.map((choice) => (
+                {options.map((choice) => (
                     <li>
                         <Form.Check
-                            type="radio"
+                            type="checkbox"
                             id={choice}
                             label={choice}
+                            value={choice}
                             onChange={() => addAnswer(choice)}
+                            checked={answers.includes(choice)}
                         />
                     </li>
                 )
