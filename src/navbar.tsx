@@ -1,7 +1,8 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import "./App.css";
+import "./navbar.css";
 function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
