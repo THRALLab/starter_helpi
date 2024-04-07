@@ -13,10 +13,10 @@ function Navigation() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/basic">
-            Button 1
+            Basic Quiz
           </Nav.Link>
           <Nav.Link as={Link} to="/detailed">
-            Button 2
+            Detailed Quiz
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
