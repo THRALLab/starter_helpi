@@ -47,18 +47,13 @@ export function DisplayQuestion ({
                 ></MC_MULTI_RESPONSE>
             )
         }else if (!submitting){
-            <h3>Question Not Found</h3>
+            return(<h3>Question Not Found</h3>)
         }
+    } else if (submitting && !submitted) {
+        setAnswers([...answers, localAnswer]);
+        setSubmitted(true);
+    } else if (submitted){
+        return(<h3>Answer: {localAnswer}</h3>)
     }
-
-    if (submitting && !submitted) {
-        setAnswers([...answers, localAnswer])
-        setSubmitted(true)
-    }
-
-    if (submitted){
-        <h3>Answer: {localAnswer}</h3>
-    }
-
-    return(<></>)
+    return(<>something very wrong</>)
 }

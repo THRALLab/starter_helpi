@@ -49,6 +49,15 @@ export function BasicQuiz(): JSX.Element {
             <Button
                 onClick={() => submitQuiz}
             >Submit Quiz</Button>
+
+            <h2>Check:</h2>
+            {
+                answers.map((answer: string[]) => (
+                    answer.map((singleAnswer) => (
+                        <p>{singleAnswer}</p>
+                    ))
+                ))
+            }
         </div>
     )
 }
