@@ -24,6 +24,19 @@
   color: white;
 }
 
+.App-header a,
+.App-header a:visited { /* This targets both unvisited and visited links */
+  color: white; /* Set your desired color here */
+  text-decoration: none; /* Removes the underline from links */
+}
+
+.App-header a:hover,
+.App-header a:focus {
+  text-decoration: underline; /* Adds an underline when hovering or focusing on the link */
+  color: #61dafb; /* Optional: Changes color on hover or focus for better user experience */
+}
+
+
 .Button {
   padding: 10000px
 }
