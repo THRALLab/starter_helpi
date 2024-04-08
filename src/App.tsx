@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
               <header className="App-header">
-                <h1> Helpi </h1>
+                <h1 className = "App-header--heading"> Helpi </h1>
               </header>
               <div className = "App-content">
                 <HashRouter>

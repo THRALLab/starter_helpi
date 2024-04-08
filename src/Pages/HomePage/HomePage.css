@@ -1,5 +1,15 @@
-.homepage-content {
+.homepage {
     min-height: inherit;
     width: 100%;
+    min-height: 100%;
     background-color: azure;
 }
+
+.homepage--content {
+    margin: 10vh 10vh 30vh 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
