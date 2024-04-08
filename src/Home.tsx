@@ -4,6 +4,9 @@ import './General.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import LinkButton from './LinkButton';
+import RoutePaths from './RoutePaths';
+import { Route, Routes } from 'react-router-dom';
+import DetailedQuestions from './DetailedQuestions';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -27,49 +30,48 @@ function Home() {
   }
 
   return (
-    <div className='Home Page'>
-      
-      <header className="App-header"> The Career Lab </header>   
-      <div className="PageBody">
-        <Container>
-          <Row>
-          <Col>
-            <LinkButton to="basicquestion" label="Basic Quiz"></LinkButton>
-              <p>
-                This is a basic quiz with X questions.
-              </p>
-              <p>
-                It will take around Y to Z minutes to complete.
-              </p>
-              <p>
-                The questions are simple and multiple choice.
-              </p>
-            </Col>
-            <Col>
-            <LinkButton to="detailedquestions" label="Detailed Quiz"></LinkButton>
-              <p>
-              This is a detailed quiz with X questions.
-              </p>
-              <p>
-              It will take around Y to Z minutes to complete.
-              </p>
-              <p>
-              The questions are answered on a scale.
-              </p>
-            </Col>
-          </Row>
-        </Container>
+  <div>
+        <header className="App-header"> The Career Lab </header>
+        <div className="PageBody">
+          <Container>
+            <Row>
+              <Col>
+                <LinkButton to="basicquestion" label="Basic Quiz"></LinkButton>
+                <p>
+                  This is a basic quiz with X questions.
+                </p>
+                <p>
+                  It will take around Y to Z minutes to complete.
+                </p>
+                <p>
+                  The questions are simple and multiple choice.
+                </p>
+              </Col>
+              <Col>
+                <LinkButton to="detailedquestions" label="Detailed Quiz"></LinkButton>
+                <p>
+                  This is a detailed quiz with X questions.
+                </p>
+                <p>
+                  It will take around Y to Z minutes to complete.
+                </p>
+                <p>
+                  The questions are answered on a scale.
+                </p>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+
+        <div className="Footer">
+          <Form>
+            <Form.Label>API Key:</Form.Label>
+            <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+            <br></br>
+            <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+          </Form>
+        </div>
       </div>
-      
-      <div className="Footer">
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
-      </div>
-    </div>
   );
 }
 
