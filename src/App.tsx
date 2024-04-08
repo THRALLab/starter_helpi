@@ -44,10 +44,10 @@ function App() {
   return (
     
       <Routes>
-        <Route path="/" element={<Home/>}>
-          <Route path="detailedquestions" element={<DetailedQuestions />}/>
-        </Route>
+        <Route path="/" element={<Home/>}/>
+        <Route path="detailedquestions" element={<DetailedQuestions />}/>
       </Routes>
+
     /*<div className='Home Page'>
       <header className="App-header"> The Career Lab </header>   
       <div className="PageBody">
