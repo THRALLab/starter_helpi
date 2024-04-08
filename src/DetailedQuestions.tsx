@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './General.css';
 import { Button, Form } from 'react-bootstrap';
+import './General.css';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
