@@ -4,9 +4,9 @@ import './General.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import LinkButton from './LinkButton';
-import RoutePaths from './RoutePaths';
-import { Route, Routes } from 'react-router-dom';
-import DetailedQuestions from './DetailedQuestions';
+//import RoutePaths from './RoutePaths';
+//import { Route, Routes } from 'react-router-dom';
+//import DetailedQuestions from './DetailedQuestions';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
