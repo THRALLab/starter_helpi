@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { MC_SINGLE_RESPONSE } from "../Components/MC_SINGLE_RESPONSE";
-import { MC_MULTI_RESPONSE } from "../Components/MC_MULTI_RESPONSE";
+import { MC_SINGLE_RESPONSE } from "../components/MC_SINGLE_RESPONSE";
+import { MC_MULTI_RESPONSE } from "../components/MC_MULTI_RESPONSE";
 
 export function BasicQuiz(): JSX.Element {
     const [firstAnswer, setFirstAnswer] = useState<string>("");
