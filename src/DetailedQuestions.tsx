@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 
@@ -25,17 +25,16 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="DetailedQuestions">
+      <header className="DetailedQuestions-header">
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Edit <code>src/DetailedQuestions.tsx</code> and save to reload.
         </p>
         <p>
           Alex Hoy Branch
         </p>
         <a
-          className="App-link"
+          className="DetailedQuestions-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
