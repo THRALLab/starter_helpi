@@ -15,19 +15,16 @@
   min-width: 100%;
 
   display: flex;
-  position: sticky;
+  position: fixed;
   top: 0;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
   font-size: calc(5x + 2vmin);
   color: rgb#282c34;
   text-align: start;
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
-}
+  transition: 10s;
 
-.App-header:hover {
-  min-height: 15%;
-  transition: 0.5s;
 }
 
 .App-header--heading {
@@ -35,11 +32,13 @@
 }
 
 .App-content {
-  margin-top: auto;
-  min-height: 100vh;
-  min-width: 100%;
+  min-height: 90vh;
+  min-width: 100vw;
   display: flex;
-  flex-direction: row;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-footer {
@@ -53,7 +52,7 @@
   justify-content: center;
 
   margin-top: 1vh;
-  min-height: 10vh;
+  min-height: 15vh;
   min-width: 100%;
 }
 

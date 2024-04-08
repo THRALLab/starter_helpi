@@ -3,6 +3,7 @@ import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from './Pages/HomePage/HomePage';
+import { MembersPage } from './Pages/MembersPage/MembersPage';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -34,17 +35,7 @@ function App() {
                 <HashRouter>
                   <Routes>
                     <Route path = "home" element = {<HomePage/>}> </Route>
-                    <Route path = "/" element = {
-                          <div>
-                            <h3> Group Members </h3>
-                            <ul style={{display:"inline"}}>
-                              <li> Jamie Pacheco</li>
-                              <li> Claudia Chance</li>
-                              <li> Edwin </li>
-                              <li> Nathan </li>
-                            </ul>
-                          </div>
-                    }></Route>
+                    <Route path = "/" element = {<MembersPage/>}></Route>
                   </Routes>
                 </HashRouter>
               </div>
