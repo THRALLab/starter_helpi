@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Route, Routes } from 'react-router-dom';
-import DetailedQuestions from './DetailedQuestions';
+//import { Route, Routes } from 'react-router-dom';
+//import DetailedQuestions from './DetailedQuestions';
 import LinkButton from './LinkButton';
 //import logo from './logo.svg';
 
