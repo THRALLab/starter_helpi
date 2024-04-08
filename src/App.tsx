@@ -34,7 +34,7 @@ function App() {
   //Changes page to the detailed questions page
   function moveToDetailed(): void {
     //Change to detailed page here
-}
+  }
 
   return (
     <div className='Home Page'>
@@ -69,6 +69,8 @@ function App() {
           </Row>
         </Container>
       </div>
+
+      <hr />
       
       <div className="Footer">
       <Form>
@@ -77,6 +79,56 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
+      </div>
+
+      <hr />
+
+      <div className="Simple Question Page">
+        <Form.Label>Simple Question Page:</Form.Label>
+        <SimpleQuestionPage></SimpleQuestionPage>
+      </div>
+    </div>
+  );
+}
+
+//Function that generates a Simple Question Page
+function SimpleQuestionPage(): JSX.Element {
+  const [numberOfQuestions, setNumberOfQuestions] = useState("10")
+  const [questionNumber, setQuestionNumber] = useState("1")
+  const [questionBody, setQuestionBody] = useState("Question...")
+  const [color, setColor] = useState("")
+
+  const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"]
+
+  const generateSimpleQuestionPage = () => {
+    const randomColor = colors[Math.floor(Math.random() * colors.length)]
+    setColor(randomColor);
+  }
+
+  return (
+    <div>
+      <div>
+      <label htmlFor="question">Number of Questions:</label><br />
+        <input type="text" id="numberOfQuestions" value={numberOfQuestions} onChange={(q) => setNumberOfQuestions(q.target.value)} /><br />
+        <label htmlFor="question">Question Number:</label><br />
+        <input type="text" id="questionNumber" value={questionNumber} onChange={(q) => setQuestionNumber(q.target.value)} /><br />
+        <label htmlFor="question">Question:</label><br />
+        <input type="text" id="question" value={questionBody} onChange={(q) => setQuestionBody(q.target.value)} /><br />
+        <Button onClick={generateSimpleQuestionPage}>Generate Simple Question</Button> <br />
+      </div>
+      <div style={{ padding: "10px" }}>
+        <div style={{ backgroundColor: color, color: "white", padding: "10px", position: "relative", display: "flex" }}>
+          <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * (parseInt(questionNumber) / parseInt(numberOfQuestions))}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
+          Question {questionNumber}/{numberOfQuestions}
+          <div style={{ marginLeft: 'auto', alignSelf: 'right' }}>
+            {100 * (parseInt(questionNumber) / parseInt(numberOfQuestions))}% completed
+          </div>
+        </div>
+      </div>
+      <div style={{ padding: "10px" }}>
+        <div style={{ padding: "10px", backgroundColor: color, color: "white", fontSize: "18px" }}>
+          {questionBody}
+        </div>
       </div>
     </div>
   );
