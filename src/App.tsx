@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
+import './General.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-//import logo from './logo.svg';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -39,11 +39,11 @@ function App() {
   return (
     <div className='Home Page'>
       <header className="App-header"> The Career Lab </header>   
-      <div className="PageBody">
-        <Container>
+      <div className="page-body">
+        <Container className="white-background">
           <Row>
           <Col>
-              <Button onClick={moveToBasic}>Basic Quiz</Button>
+              <Button className='basic-button' style={{height: '7vh', width : '50vh', fontSize : "3vh"}} onClick={moveToBasic}>Basic Quiz</Button>
               <p>
                 This is a basic quiz with X questions.
               </p>
@@ -55,7 +55,7 @@ function App() {
               </p>
             </Col>
             <Col>
-              <Button onClick={moveToDetailed}>Detailed Quiz</Button>
+              <Button className='detailed-button' style={{height: '7vh', width : '50vh', fontSize : "3vh"}} onClick={moveToDetailed}>Detailed Quiz</Button>
               <p>
               This is a detailed quiz with X questions.
               </p>
@@ -70,7 +70,7 @@ function App() {
         </Container>
       </div>
       
-      <div className="Footer">
+      <div className="footer">
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
