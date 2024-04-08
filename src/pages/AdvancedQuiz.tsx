@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { DetailedQuestion } from "../Components/DetailedQuestion";
+import { DetailedQuestion } from "../components/DetailedQuestion";
 
 export function AdvancedQuiz(): JSX.Element {
     const [firstAnswer, setFirstAnswer] = useState<string>("");
