@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import './App.css';
+import './Home.css';
+import './General.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-//import { Route, Routes } from 'react-router-dom';
-//import DetailedQuestions from './DetailedQuestions';
 import LinkButton from './LinkButton';
-//import logo from './logo.svg';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -14,7 +12,6 @@ const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: 
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
-
 
 function Home() {
   const [key, setKey] = useState<string>(keyData); //for api key input
