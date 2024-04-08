@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DetailedQuestions from './DetailedQuestions';
+import Home from './Home';
+import LinkButton from './LinkButton';
 //import logo from './logo.svg';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -39,13 +42,19 @@ function App() {
 }
 
   return (
-    <div className='Home Page'>
+    
+      <Routes>
+        <Route path="/" element={<Home/>}>
+          <Route path="detailedquestions" element={<DetailedQuestions />}/>
+        </Route>
+      </Routes>
+    /*<div className='Home Page'>
       <header className="App-header"> The Career Lab </header>   
       <div className="PageBody">
         <Container>
           <Row>
+          <LinkButton to="basicquestion" label="Basic Quiz"></LinkButton>
           <Col>
-              <Button onClick={moveToBasic}>Basic Quiz</Button>
               <p>
                 This is a basic quiz with X questions.
               </p>
@@ -80,7 +89,7 @@ function App() {
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
       </div>
-    </div>
+    </div>*/
   );
 }
 
