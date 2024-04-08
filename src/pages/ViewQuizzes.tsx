@@ -1,6 +1,9 @@
 export function ViewQuizzes(): JSX.Element {
-    const addQuiz = (newOption: string) => {
+    /**
+     * to impliments:
+     * const addQuiz = (newOption: string) => {
         return(<></>)
     }
+     */
     return(<></>)
 }

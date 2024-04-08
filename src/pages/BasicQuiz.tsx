@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button} from "react-bootstrap";
 import { QuestionProps } from "../interfaces/QuestionProps";
-import { QuizProps } from "../interfaces/QuizProps";
 import { DisplayQuestion } from "../components/DisplayQuestion";
 import quiz1 from "../assets/test_data/quiz1.json"
 
