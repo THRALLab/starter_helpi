@@ -3,23 +3,7 @@ import { Button} from "react-bootstrap";
 import { QuestionProps } from "../interfaces/QuestionProps";
 import { QuizProps } from "../interfaces/QuizProps";
 import { DisplayQuestion } from "../components/DisplayQuestion";
-
-const quiz1: QuizProps = {
-    id: "first-quiz",
-    name: "Test Quiz",
-    questions: [
-        {
-            type: "MC_SINGLE_RESPONSE",
-            question: "I am _____ years old.",
-            options: ["1","2","3","4","5"]
-        },
-        {
-            type: "MC_MULTI_RESPONSE",
-            question: "I enjoy learning about _____.",
-            options: ["Math","History","Science","Writing","Arts"]
-        }
-    ]
-}
+import quiz1 from "../assets/test_data/quiz1.json"
 
 export function BasicQuiz(): JSX.Element {
     const [answers, setAnswers] = useState<string[][]>([[]]);
