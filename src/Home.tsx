@@ -5,9 +5,6 @@ import './General.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import LinkButton from './LinkButton';
-//import RoutePaths from './RoutePaths';
-//import { Route, Routes } from 'react-router-dom';
-//import DetailedQuestions from './DetailedQuestions';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -32,7 +29,7 @@ function Home() {
 
   return (
   <div>
-        <header className="App-header"> The Career Lab </header>
+        <header className="App-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
         <div className="PageBody">
           <Container>
             <Row>
