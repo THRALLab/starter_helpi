@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DetailedQuestions from './DetailedQuestions';
+import Home from './Home';
+import LinkButton from './LinkButton';
 //import logo from './logo.svg';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -11,6 +15,7 @@ const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: 
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
+
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
@@ -37,13 +42,19 @@ function App() {
 }
 
   return (
-    <div className='Home Page'>
+    
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="detailedquestions" element={<DetailedQuestions />}/>
+      </Routes>
+
+    /*<div className='Home Page'>
       <header className="App-header"> The Career Lab </header>   
       <div className="PageBody">
         <Container>
           <Row>
+          <LinkButton to="basicquestion" label="Basic Quiz"></LinkButton>
           <Col>
-              <Button onClick={moveToBasic}>Basic Quiz</Button>
               <p>
                 This is a basic quiz with X questions.
               </p>
@@ -78,7 +89,7 @@ function App() {
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
       </div>
-    </div>
+    </div>*/
   );
 }
 
