@@ -8,7 +8,7 @@ export function HomePageSignUpWidget() : JSX.Element {
                 <h1> Before We Get Started...</h1>
                 <div className = "sign-up-widget--text-content">
                     <p> Consider creating an account! </p>
-                    <p> It helps us get to know you better
+                    <p> It helps us get to know you better,
                         allowing us to make a more personalized experience for you.</p>
                     <p> Plus it is completely free!</p>
                 </div>
