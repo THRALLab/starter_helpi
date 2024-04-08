@@ -7,7 +7,7 @@ export function AdvancedQuiz(): JSX.Element {
     
     const question1 = "How old are you?";
     
-    const question2 = "Which subjects interest you the most?";
+    //const question2 = "Which subjects interest you the most?";
 
     return(
         <Container fluid>
