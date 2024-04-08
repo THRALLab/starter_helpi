@@ -1,5 +1,19 @@
 .App {
   text-align: center;
+  visibility: hidden;
+}
+.Home {
+  visibility: visible;
+  text-align: center;
+}
+.Basic {
+  visibility: hidden;
+}
+.Advanced {
+  visibility: hidden;
+}
+.Results{
+  visibility: hidden;
 }
 
 .App-logo {
