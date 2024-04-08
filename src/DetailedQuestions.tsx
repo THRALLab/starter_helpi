@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './General.css';
+import LinkButton from './LinkButton';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -25,6 +26,7 @@ function DetailedQuestions() {
   }
   return (
     <div className="DetailedQuestions">
+      <header className="App-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
       <header className="DetailedQuestions-header">
         <p>
           Edit <code>src/DetailedQuestions.tsx</code> and save to reload.
