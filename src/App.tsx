@@ -19,7 +19,7 @@ function App() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
   }*/
-
+  
   return (
       <Routes>
         <Route path="/" element={<Home/>}/>
