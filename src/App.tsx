@@ -50,7 +50,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="Page-buttons">
-          buttons to change pages go here
+        <Button className="Detailed-Button" onClick={showDetailed}>Detailed Questions</Button>
         </div>
 
         {homePageVisible && 
