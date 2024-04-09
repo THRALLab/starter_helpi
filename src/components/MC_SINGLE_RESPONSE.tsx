@@ -9,10 +9,12 @@ export function MC_SINGLE_RESPONSE({
 }: {
     question: string;
     options: string[];
-    answer: string[];
-    setAnswer: (answer: string[]) => void;
+    answer: string;
+    setAnswer: (answer: string) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
+    const [localAnswer, setLocalAnswer] = useState<string[]>("");
+    
     return (
         <div>
             <h3>{question}</h3>
@@ -25,8 +27,8 @@ export function MC_SINGLE_RESPONSE({
                                 id={choice}
                                 label={choice}
                                 value={choice}
-                                checked={answer[0] === choice}
-                                onChange={() => setAnswer([choice])}
+                                checked={localAnswer === choice}
+                                onChange={() => setLocalAnswer([choice])}
                             />
                         </li>
                     ))}
@@ -36,3 +38,7 @@ export function MC_SINGLE_RESPONSE({
         </div>
     );
 }
+function useState<T>(arg0: string): [any, any] {
+    throw new Error('Function not implemented.');
+}
+

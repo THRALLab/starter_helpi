@@ -9,15 +9,16 @@ export function MC_MULTI_RESPONSE({
 }: {
     question: string;
     options: string[];
-    answer: string[];
+    answer: string;
     setAnswer: (answers: string[]) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
+    const [localAnswer, setLocalAnswer] = useState<string[]>("");
     function addAnswer(currAnswer: string) {
-        if (answer.includes(currAnswer)) {
-            setAnswer(answer.filter((target: string) => target !== currAnswer));
+        if (localAnswer.includes(currAnswer)) {
+            setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
         } else {
-            setAnswer([...answer, currAnswer]);
+            setLocalAnswer([...localAnswer, currAnswer]);
         }
     }
 
@@ -43,3 +44,8 @@ export function MC_MULTI_RESPONSE({
         </div>
     );
 }
+
+function useState<T>(arg0: string): [any, any] {
+    throw new Error('Function not implemented.');
+}
+
