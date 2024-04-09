@@ -1,0 +1,15 @@
+.Left-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+
+}
+
+.Home-box {
+    width: 18rem;
+}
+
+.Right-container {
+    margin-left: 20px;
+}
