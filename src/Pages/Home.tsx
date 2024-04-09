@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import {Button} from 'react-bootstrap';
 
 interface HomeProp {
@@ -6,22 +6,21 @@ interface HomeProp {
 }
 
 const Home: React.FC<HomeProp> = ({ handlePage }) => {
-    const style = {
+    const style: { column: CSSProperties } = {
         column: {
             border: '1px solid #ccc',
             margin: '10',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',
+            flexDirection: 'column'
         }
     };
     return (
     <>
     <div style={style.column}>
     <h1>Basic Questions</h1>
-        <div> 
         <Button className="Basic-Button" onClick={() => handlePage('Basic')}>Basic Questions</Button>
-        </div>
     </div>
     </>
     );
