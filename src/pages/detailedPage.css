@@ -1,12 +1,17 @@
 .multiple-answers{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
-    margin-top: 20px;
-    background-color: red;
+    padding: 18px 24px;
 }
 
 .question-box{
+    padding-left: 20px;
     border: 1px solid black;
+}
+
+.info-portion{
+    margin-bottom: 20px;
+    padding-left: 18px;
 }

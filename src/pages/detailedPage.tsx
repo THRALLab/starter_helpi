@@ -2,10 +2,9 @@ import React from "react";
 import "./detailedPage.css";
 
 const detailedPage = () => {
-	<link rel="stylesheet" href="detailedPage.css"></link>
 	return (
 		<>
-			<div>
+			<div className="info-portion">
 				<h1>
 					Detailed Page Stuff
 				</h1>
