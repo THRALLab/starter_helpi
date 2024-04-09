@@ -39,7 +39,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React! Names: Nathanael, Carter M
+          Learn React! Names: Nathanael, Carter, Greg
         </a>
       </header>
       <Form>
