@@ -16,7 +16,7 @@ const Navigation: React.FC = () => {
     <nav>
       <ul>
         <li>
-          <Button variant="link" onClick={() => navigate('/')}>Home</Button>
+          <Button variant="link" onClick={() => navigate('/starter_helpi')}>Home</Button>
         </li>
         <li>
           <Button variant="link" onClick={() => navigate('/basic-questions')}>Basic Questions</Button>
