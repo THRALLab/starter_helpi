@@ -1,6 +1,8 @@
 import React from "react";
+import "./detailedPage.css";
 
 const detailedPage = () => {
+	<link rel="stylesheet" href="detailedPage.css"></link>
 	return (
 		<>
 			<div>

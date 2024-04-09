@@ -1,0 +1,12 @@
+.multiple-answers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: red;
+}
+
+.question-box{
+    border: 1px solid black;
+}
