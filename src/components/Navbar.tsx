@@ -14,7 +14,7 @@ const Navbar = () => {
                     <NavLink to="/detailedPage">
                         <Button>Detailed Page</Button>
                     </NavLink>
-                    <NavLink to="/basicPage">
+                    <NavLink to="/BasicPage">
                         <Button>Basic Page</Button>
                     </NavLink>
                 </NavMenu>

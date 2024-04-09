@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import DetailedPage from './pages/detailedPage';
 import HomePage from './pages/homePage';
-import BasicPage from './pages/basicPage';
+import BasicPage from './pages/BasicPage';
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/detailedPage" element={<DetailedPage />} />
-        <Route path="/basicPage" element={<BasicPage/>}/>
+        <Route path="/BasicPage" element={<BasicPage/>}/>
       </Routes>
     </Router><div className="App">
         
