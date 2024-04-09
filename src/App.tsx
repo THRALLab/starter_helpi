@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import BaseQsDes from './BaseAsk';
+import DetailQsDes from './DetailAsk';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -24,22 +26,41 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+      <div>
+        <p>Liam Roth</p>
+        <p>Ben Bank</p>
+        <p>Xander Clawson</p>
+      </div>
+      <div>
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="https://liamr-cs.github.io/career_helpi/"
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            border: '2px solid gray', 
+            padding: '8px', 
+            textDecoration: 'none', 
+            color: 'black',
+            fontSize: '18px'
+          }}
         >
-          Learn React
+          Homepage
         </a>
-      </header>
+      </div>
+      <div>
+        <h2>Basic Quiz Instructions:</h2>
+      <BaseQsDes></BaseQsDes>
+      </div>
+      <button>Basic Quiz</button>
+      <div>
+        <h2>Detailed Quiz Instructions:</h2>
+      <DetailQsDes></DetailQsDes>
+      </div>
+      <button>Detailed Quiz</button>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>

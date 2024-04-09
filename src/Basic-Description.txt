@@ -1,0 +1,3 @@
+-The basic career assessment consists of a mix of yes-and-no and multiple choice questions that you will answer.\n
+-Answer these questions as accurately as possible while ensuring not to skip any.\n
+-The answers provided will be used to calculate a suitable work environment for the tester and provide a list of jobs that do well in that environment.\n
