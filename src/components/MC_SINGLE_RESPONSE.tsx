@@ -1,19 +1,23 @@
+import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 export function MC_SINGLE_RESPONSE({
     question,
     options,
-    answer,
     setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    answer: string;
     setAnswer: (answer: string) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
-    const [localAnswer, setLocalAnswer] = useState<string[]>("");
+    const [localAnswer, setLocalAnswer] = useState<string>("");
+
+    function updateAnswer(currAnswer: string) {
+        setLocalAnswer(currAnswer)
+        setAnswer(currAnswer)
+    }
     
     return (
         <div>
@@ -28,7 +32,7 @@ export function MC_SINGLE_RESPONSE({
                                 label={choice}
                                 value={choice}
                                 checked={localAnswer === choice}
-                                onChange={() => setLocalAnswer([choice])}
+                                onChange={() => updateAnswer(choice)}
                             />
                         </li>
                     ))}
@@ -38,7 +42,3 @@ export function MC_SINGLE_RESPONSE({
         </div>
     );
 }
-function useState<T>(arg0: string): [any, any] {
-    throw new Error('Function not implemented.');
-}
-

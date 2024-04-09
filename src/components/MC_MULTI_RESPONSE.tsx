@@ -1,25 +1,25 @@
+import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 export function MC_MULTI_RESPONSE({
     question,
     options,
-    answer,
     setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    answer: string;
-    setAnswer: (answers: string[]) => void;
+    setAnswer: (answers: string) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
-    const [localAnswer, setLocalAnswer] = useState<string[]>("");
+    const [localAnswer, setLocalAnswer] = useState<string[]>([]);
     function addAnswer(currAnswer: string) {
         if (localAnswer.includes(currAnswer)) {
             setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
         } else {
             setLocalAnswer([...localAnswer, currAnswer]);
         }
+        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined + selected, ""))
     }
 
     return (
@@ -34,7 +34,7 @@ export function MC_MULTI_RESPONSE({
                                 id={choice}
                                 label={choice}
                                 onChange={() => addAnswer(choice)}
-                                checked={answer.includes(choice)}
+                                checked={localAnswer.includes(choice)}
                             />
                         </li>
                     ))}
@@ -44,8 +44,3 @@ export function MC_MULTI_RESPONSE({
         </div>
     );
 }
-
-function useState<T>(arg0: string): [any, any] {
-    throw new Error('Function not implemented.');
-}
-

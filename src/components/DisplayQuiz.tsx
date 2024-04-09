@@ -1,8 +1,8 @@
 // Import necessary hooks and components
-import React, { useState, useEffect } from "react";
-import { DisplayQuestion } from "../components/DisplayQuestion";
+import React, { useState } from "react";
 import { Question } from "../interfaces/QuestionTypes";
 import { MC_SINGLE_RESPONSE } from "./MC_SINGLE_RESPONSE";
+import { MC_MULTI_RESPONSE } from "./MC_MULTI_RESPONSE";
 
 interface DisplayQuizProps {
     quiz: Record<string, Question>;
@@ -11,7 +11,6 @@ interface DisplayQuizProps {
 export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("root"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false);
-    const [next, updateNextStatus] = useState<boolean>(false);
     const [currentAnswer, setCurrentAnswer] = useState<string>("");
 
     const handleAnswerSubmit = () => {
@@ -32,9 +31,8 @@ export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
     const questionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
-        answer: currentAnswer,
         setAnswer: setCurrentAnswer,
-        onNext: updateNextStatus
+        onNext: handleAnswerSubmit
     };
 
 
