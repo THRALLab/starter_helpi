@@ -3,8 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 
-// this is a test to check if the website deploys correctly again again
-
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -15,6 +13,9 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [homePageVisible, setHomePageVisible] = useState<boolean>(true); //to show the home page
+  const [basicVisible, setBasicVisible] = useState<boolean>(false); //to show the basic questions
+  const [detailedVisible, setDetailedVisible] = useState<boolean>(false); //to show the detailed questions
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -26,21 +27,46 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  function showHomePage() {
+    setHomePageVisible(true);
+    setBasicVisible(false);
+    setDetailedVisible(false);
+  }
+
+  function showBasic() {
+    setHomePageVisible(false);
+    setBasicVisible(true);
+    setDetailedVisible(false);
+  }
+
+  function showDetailed() {
+    setHomePageVisible(false);
+    setBasicVisible(false);
+    setDetailedVisible(true);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="Page-buttons">
+          buttons to change pages go here
+        </div>
+
+        {homePageVisible && 
+        <div className="Home-page">
+          home page
+        </div>}
+
+        {basicVisible && 
+        <div className="Basic-questions">
+          basic questions
+        </div>}
+
+        {detailedVisible &&
+        <div className="Detailed-questions">
+          detailed questions
+        </div>}
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
