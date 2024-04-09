@@ -42,8 +42,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Joanna Crisomia</h1>
-      <h1>Joey Dare</h1>
 
       {updatePageState()};
 
@@ -53,6 +51,7 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
+      <h1>Kai Winterle, Joey Dare, Joanna Crisomia, Ricky Kiamilev</h1>
     </div>
   );
 }
