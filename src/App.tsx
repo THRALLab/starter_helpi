@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import Home from './Pages/Home';
+import Basic from './Pages/Basic';
+import Detailed from './Pages/Detailed';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -13,6 +15,7 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [currPg, setCurrPg] = useState<string>('Home');
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -24,24 +27,26 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  const updatePageState = () => {
+    switch (currPg) {
+      case 'Basic':
+        return <Basic handlePage={setCurrPg} />;
+      case 'Detailed':
+        return <Detailed handlePage={setCurrPg} />;
+      case 'Home':
+      default:
+        return <Home handlePage={setCurrPg} />;
+    }
+  };
+
   return (
     <div className="App">
       <h1>Joanna Crisomia</h1>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Joey Dare</h1>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Joey Dare</h1>
+
+      {updatePageState()};
+
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
