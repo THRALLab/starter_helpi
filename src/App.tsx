@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import { BasicQuestion, DetailedQuestions, HomePage } from './components/pages';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -53,20 +54,11 @@ function App() {
           buttons to change pages go here
         </div>
 
-        {homePageVisible && 
-        <div className="Pages">
-          home page
-        </div>}
+        {homePageVisible && <HomePage key={key} />}
 
-        {basicVisible && 
-        <div className="Pages">
-          basic questions
-        </div>}
+        {basicVisible && <BasicQuestion key={key} />}
 
-        {detailedVisible &&
-        <div className="Pages">
-          detailed questions
-        </div>}
+        {detailedVisible && <DetailedQuestions key={key} />}
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
