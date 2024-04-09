@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: white;
+  margin-bottom: 25rem;
 }
 
 .App-logo {
@@ -15,7 +17,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +29,25 @@
 .App-link {
   color: #61dafb;
 }
+/* background-color: rgb(47, 70, 11); */
+/* background-color: darkorchid; */
+
+.App-buttons2 {
+  color: rgb(243, 73, 73);
+  text-align: center;
+  /* text-indent: 5%; */
+  position: relative;
+  border-top: 3px solid rgb(0, 170, 255);
+  padding-top: 16px;
+}
+.App-buttons4 {
+  color: rgb(0, 170, 255);
+  text-align: center;
+  /* text-indent: 5%; */
+  position: relative;
+  border-top: 3px solid rgb(243, 73, 73);
+  padding-top: 16px;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +56,168 @@
   to {
     transform: rotate(360deg);
   }
+}
+.ImageContainer {
+  /* position: relative;
+  width: 60%;
+  height: auto;
+  max-width: 300px;
+  margin: auto;
+  align-items: center;
+  right: 300px; */
+}
+
+.ImageContainer img {
+  height: 500px; /* Fixed height */
+  width: 500px; /* Width adjusts to maintain the aspect ratio */
+}
+
+/* .Image img {
+  max-width: 100%;
+  max-height: 100%;
+
+  position: absolute;
+} */
+/* .Images-Pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
+.NavigationButtonRight {
+  position: relative;
+  top: 20px;
+  right: 200%;
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.NavigationButtonLeft {
+  position: relative;
+  top: 20px;
+  left: 200%;
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.NavigationButtonLeft:hover {
+  opacity: 0.4;
+}
+.NavigationButtonRight:hover {
+  opacity: 0.4;
+}
+
+.App-buttons {
+  color: black;
+  text-align: left;
+  text-indent: 5%;
+  position: relative;
+  text-align: center;
+}
+.Text1Wrapper {
+  position: relative;
+  overflow: hidden;
+  top: 190px;
+  right: 70px;
+}
+.Career-Quiz {
+  --background-color: #e3e3e3; /* Light grey background as the starting color */
+  --accent-color: #0af; /* Blue color for hover/focus effect */
+  --border-radius: 20px; /* Rounded corners */
+  background-color: var(--background-color); /* Initial background color */
+  margin: 1rem auto;
+  padding: 16px;
+  font-size: 25px;
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  font-family: "Courier New", Courier, monospace;
+  align-items: center;
+}
+
+.Career-Quiz:hover,
+/* .Career-Quiz:focus, */
+.Basic-Quiz:hover,
+.Basic-Quiz:focus {
+  background-color: var(--accent-color);
+  color: white;
+  z-index: 1;
+}
+
+.Career-Quiz::before .Basic-Quiz::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: var(
+    --border-radius
+  ); /* Ensure rounded corners match the button */
+}
+
+.Career-Quiz2 {
+  --background-color: #e3e3e3; /* Light grey background as the starting color */
+  --accent-color: rgb(243, 73, 73); /* Blue color for hover/focus effect */
+  --border-radius: 20px; /* Rounded corners */
+  background-color: var(--background-color); /* Initial background color */
+  margin: 1rem auto;
+  padding: 16px;
+  font-size: 25px;
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  font-family: "Courier New", Courier, monospace;
+  align-items: center;
+}
+
+.Career-Quiz2:hover,
+.Basic-Quiz:hover,
+.Basic-Quiz:focus {
+  background-color: var(
+    --accent-color
+  ); /* Change background to blue on hover/focus */
+  color: white; /* Change text color to white on hover/focus */
+  z-index: 1;
+}
+
+.Career-Quiz2::before .Basic-Quiz::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: var(
+    --border-radius
+  ); /* Ensure rounded corners match the button */
+}
+
+.App-header3 {
+  color: black;
+  text-align: left;
+  top: 200px;
+}
+
+.HomePage-text {
+  border: 2px solid rgb(0, 170, 255);
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.Career-Quiz-text {
+  border: 2px solid rgb(243, 73, 73);
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
