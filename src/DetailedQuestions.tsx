@@ -26,7 +26,7 @@ function DetailedQuestions() {
   }
   return (
     <div className="DetailedQuestions">
-      <header className="App-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
+      <header className="General-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
       <header className="DetailedQuestions-header">
         <p>
           Edit <code>src/DetailedQuestions.tsx</code> and save to reload.

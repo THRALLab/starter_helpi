@@ -20,7 +20,7 @@ export function SimpleQuestions(): JSX.Element {
   
     return (
       <div>
-        <header className="App-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
+        <header className="General-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
         <div>
           <label>Number of Questions:</label><br />
           <input type="text" value={numberOfQuestions} onChange={(q) => setNumberOfQuestions(q.target.value)} /><br />

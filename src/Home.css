@@ -1,11 +1,7 @@
-.App {
+.Home-Columns {
+    outline: black;
+}
+
+.button {
     text-align: center;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-.white-background {
-    background-color: #ffffff;
 }
