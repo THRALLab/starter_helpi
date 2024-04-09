@@ -27,7 +27,7 @@
   flex-direction: row;
   justify-content: center;
   height: 15%; 
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #61dafb;
 }
 
 .Pages {
@@ -40,6 +40,10 @@
 
 .App-link {
   color: #61dafb;
+}
+.Button-color {
+  background-color: #8a2be2;
+  border-bottom: 2px;
 }
 
 @keyframes App-logo-spin {

@@ -50,7 +50,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="Page-buttons">
-        <Button className="Detailed-Button" onClick={showDetailed}>Detailed Questions</Button>
+        <Button className="Button-color" onClick={showDetailed}>Detailed Questions</Button>
         </div>
 
         {homePageVisible && 
@@ -67,6 +67,7 @@ function App() {
         <div className="Pages">
           detailed questions
         </div>}
+        
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
