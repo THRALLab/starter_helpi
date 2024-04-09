@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
-import { BasicQuiz } from './pages/BasicQuiz';
+import { BasicQuiz } from './pages/DisplayQuiz';
 import { AdvancedQuiz } from './pages/AdvancedQuiz'
 // Import any other components or pages you have
 import './App.css';

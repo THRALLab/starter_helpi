@@ -1,49 +1,42 @@
 import React, { useState } from "react";
 import { MC_SINGLE_RESPONSE } from "./MC_SINGLE_RESPONSE";
 import { MC_MULTI_RESPONSE } from "./MC_MULTI_RESPONSE";
+import { getFirstQuestion, getNextQuestion } from "../interfaces/QuizFlow";
+import { Question } from "../interfaces/QuestionTypes";
 
-export function DisplayQuestion ({
-    type,
-    question,
-    options,
-    answers,
-    setAnswers,
-    submitting
-}: {
-    type: string;
-    question: string;
-    options: string[];
-    answers: string[][];
-    setAnswers: (answers: string[][]) => void;
-    submitting: boolean;
-}): JSX.Element {
-    const [localAnswer, setLocal] = useState<string[]>([]);
-    const [submitted, setSubmitted] = useState<boolean>(false);
-    if (!submitting && !submitted) {
-        if (type === "MC_SINGLE_RESPONSE") {
-            return(
-                <MC_SINGLE_RESPONSE
-                    question={question}
-                    options={options}
-                    answer={localAnswer}
-                    setAnswer={setLocal}
-                ></MC_SINGLE_RESPONSE>
-            )
-        } else if (type === "MC_MULTI_RESPONSE") {
-            return (
-                <MC_MULTI_RESPONSE
-                    question={question}
-                    options={options}
-                    answers={localAnswer}
-                    setAnswers={setLocal}
-                ></MC_MULTI_RESPONSE>
-            )
-        }else if (!submitting){
-            return(<h3>Question Not Found</h3>)
+export function DisplayQuestion (): JSX.Element {
+    const [currentQuestion, setCurrentQuestion] = useState<Question>(getFirstQuestion());
+    const [localAnswer, setLocalAnswer] = useState<string[]>([]);
+    const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false);
+
+
+    const handleNextQuestion = () => {
+        const userAnswer = localAnswer.join(", ");
+        const nextQuestion = getNextQuestion(currentQuestion.id, userAnswer);
+
+        if (nextQuestion) {
+            setCurrentQuestion(nextQuestion);
+            setLocalAnswer([]); // Reset local answer for the next question
+        } else {
+            setIsQuizComplete(true);
         }
-    } else if (submitting && !submitted) {
-        setAnswers([...answers, localAnswer]);
-        setSubmitted(true);
+    };
+
+    
+    const questionComponentProps = {
+        question: currentQuestion.prompt,
+        options: currentQuestion.options ?? [],
+        answer: localAnswer,
+        setAnswer: setLocalAnswer,
+    };
+
+    switch (currentQuestion.type) {
+        case "MC_SINGLE_RESPONSE":
+            return <MC_SINGLE_RESPONSE {...questionComponentProps} onNext={handleNextQuestion} />;
+        case "MC_MULTI_RESPONSE":
+            return <MC_MULTI_RESPONSE {...questionComponentProps} onNext={handleNextQuestion} />;
+        default:
+            return <h1>Unknown question type</h1>;
     }
-    return(submitted ? <h1>submitted</h1> : <h1>not submitted</h1>)
+
 }
