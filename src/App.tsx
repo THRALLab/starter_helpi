@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
-import { HomeScreen } from './HomeScreen/HomeScreen';
+import { HomeScreen } from './Components/HomeScreen/HomeScreen';
+import AppFooter from './Components/AppFooter/AppFooter';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -13,7 +13,7 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  
+
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -27,14 +27,7 @@ function App() {
   return (
     <div className="App">
       <HomeScreen></HomeScreen>
-      <footer className="App-footer">
-        <Form>
-          <Form.Label>API Key:</Form.Label>
-          <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-          <br></br>
-          <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-        </Form>
-      </footer>
+      <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
     </div>
   );
 }
