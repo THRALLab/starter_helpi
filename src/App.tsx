@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Navbar2 from './Components/Navbar/Navbar'
-import { HomeScreen } from './Components/Components/HomeScreen/HomeScreen';
+import { HomeScreen } from './Components/HomeScreen/HomeScreen';
 import AppFooter from './Components/AppFooter/AppFooter';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
