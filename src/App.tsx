@@ -125,7 +125,7 @@ function SimpleQuestionPage(): JSX.Element {
       <div style={{ padding: "10px" }}>
         <div style={{ backgroundColor: color, color: "white", padding: "10px", position: "relative", display: "flex" }}>
           <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * (parseInt(questionNumber) / parseInt(numberOfQuestions))}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
-          Question {questionNumber}/{numberOfQuestions}
+            Question {questionNumber}/{numberOfQuestions}
           <div style={{ marginLeft: "auto", alignSelf: "right" }}>
             {100 * (parseInt(questionNumber) / parseInt(numberOfQuestions))}% completed
           </div>
