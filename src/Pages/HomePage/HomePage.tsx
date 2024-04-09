@@ -4,9 +4,9 @@ import { HomePageHeader } from "./Components/HomePageHeader/HomePageHeader"
 import "./HomePage.css"
 import { HomePageSignUpWidget } from "./Components/HomePageSignUpWidget/HomePageSignUpWidget"
 import { HomePageQuizSelectionWidget } from "./Components/HomePageQuizSelectionWidget/HomePageQuizSelectionWidget"
+import { useNavigate } from "react-router-dom"
 
 export function HomePage() : React.JSX.Element {
-
     const [signedIn, setSignedIn] = useState<boolean>(false)
 
     return (
