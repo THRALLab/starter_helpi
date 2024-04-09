@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
@@ -37,7 +37,6 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const navigate = useNavigate(); // Hook to navigate programmatically
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
