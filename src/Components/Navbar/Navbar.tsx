@@ -1,8 +1,8 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../Components/SmallerWW-removebg-preview.png'
-import '../Components/Navbar2.css'
+import logo from '../src/Components/Navbar/SmallerWW-removebg-preview.png'
+import '../src/Components/Navbar/Navbar2.css'
 
 function Navbar2() {
   return (
