@@ -1,94 +1,30 @@
-import React, { useState } from 'react';
-import './App.css';
+//import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { SimpleQuestionPage } from "./SimpleQuestions";
-//import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
+import DetailedQuestions from './DetailedQuestions';
+import Home from './Home';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
+//let keyData = "";
 const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
+  //keyData = JSON.parse(prevKey);
 }
 
 function App() {
-  const [key, setKey] = useState<string>(keyData); //for api key input
-  
+  //const [key, setKey] = useState<string>(keyData); //for api key input
   //sets the local storage item to the api key the user inputed
-  function handleSubmit() {
+  /*function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
-  }
-
-  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
-  function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-    setKey(event.target.value);
-  }
+  }*/
   
-  //Changes page to the basic questions page
-  function moveToBasic(): void {
-      //Change to basic page here
-  }
-
-  //Changes page to the detailed questions page
-  function moveToDetailed(): void {
-    //Change to detailed page here
-  }
-
   return (
-    <div className='Home Page'>
-      <header className="App-header"> The Career Lab </header>   
-      <div className="PageBody">
-        <Container>
-          <Row>
-          <Col>
-              <Button onClick={moveToBasic}>Basic Quiz</Button>
-              <p>
-                This is a basic quiz with X questions.
-              </p>
-              <p>
-                It will take around Y to Z minutes to complete.
-              </p>
-              <p>
-                The questions are simple and multiple choice.
-              </p>
-            </Col>
-            <Col>
-              <Button onClick={moveToDetailed}>Detailed Quiz</Button>
-              <p>
-              This is a detailed quiz with X questions.
-              </p>
-              <p>
-              It will take around Y to Z minutes to complete.
-              </p>
-              <p>
-              The questions are answered on a scale.
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
-      <hr />
-      
-      <div className="Footer">
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
-      </div>
-
-      <hr />
-
-      <div className="Simple Question Page">
-        <Form.Label>Simple Question Page:</Form.Label>
-        <SimpleQuestionPage></SimpleQuestionPage>
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="detailedquestions" element={<DetailedQuestions />}/>
+      </Routes>
   );
 }
 
