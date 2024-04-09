@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { HomeScreen } from './Components/HomeScreen/HomeScreen';
-import AppFooter from './Components/AppFooter';
+import AppFooter from './Components/AppFooter/AppFooter';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -27,7 +27,6 @@ function App() {
   return (
     <div className="App">
       <HomeScreen></HomeScreen>
-      <div>{key}</div>
       <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
     </div>
   );
