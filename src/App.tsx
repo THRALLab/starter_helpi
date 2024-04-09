@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { AdvancedQuiz } from './pages/AdvancedQuiz'
-import { basicQuiz } from "./assets/Quizzes/BasicQuiz";
+import { basicQuiz } from "./assets/quizzes/BasicQuiz";
 import { DisplayQuiz } from "./components/DisplayQuiz";
 // Import any other components or pages you have
 import './App.css';
