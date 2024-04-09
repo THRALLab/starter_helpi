@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './App';
 import './Home.css';
 import './General.css';
+import LinkButton from './LinkButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import LinkButton from './LinkButton';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -29,14 +29,17 @@ function Home() {
 
   return (
     <div>
-        <header className="App-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
+        <header className="General-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
+        
         <div className="PageBody">
           <Container>
             <Row>
               <Col>
+                <p className='button'>
                 <LinkButton to="simplequestions" label="Basic Quiz"></LinkButton>
+                </p>
                 <p>
-                  This is a basic quiz with X questions.
+                  This is a basic quiz with 15 questions.
                 </p>
                 <p>
                   It will take around Y to Z minutes to complete.
@@ -46,9 +49,11 @@ function Home() {
                 </p>
               </Col>
               <Col>
-                <LinkButton to="detailedquestions" label="Detailed Quiz"></LinkButton>
+                <p className='button'>
+                  <LinkButton to="detailedquestions" label="Detailed Quiz"></LinkButton>
+                </p>
                 <p>
-                  This is a detailed quiz with X questions.
+                  This is a detailed quiz with 30 questions.
                 </p>
                 <p>
                   It will take around Y to Z minutes to complete.
@@ -61,7 +66,7 @@ function Home() {
           </Container>
         </div>
 
-        <div className="Footer">
+        <div className="API-Footer">
           <Form>
             <Form.Label>API Key:</Form.Label>
             <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
