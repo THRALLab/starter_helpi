@@ -30,14 +30,6 @@
   border-bottom: 2px solid #61dafb;
 }
 
-.Pages {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 85%;
-}
-
 .App-link {
   color: #61dafb;
 }
