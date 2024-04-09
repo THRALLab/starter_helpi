@@ -9,6 +9,7 @@ const Home: React.FC<HomeProp> = ({ handlePage }) => {
     const style: { container: CSSProperties, column: CSSProperties } = {
         container: {
             display: 'flex',
+            justifyContent: 'space-between', 
         },
         column: {
             border: '1px solid #ccc',
