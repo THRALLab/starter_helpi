@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
 
+// This is state 0
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -12,6 +12,7 @@ if (prevKey !== null) {
 }
 
 function App() {
+    const [currentState, setCurrentState] = useState(0);
     const [key, setKey] = useState<string>(keyData); //for api key input
 
     //sets the local storage item to the api key the user inputed
@@ -26,22 +27,32 @@ function App() {
     }
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload Larissa
-                    Chelius. Rue Lin. Sophia Romero.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-            <Form>
+
+             {/* Buttons to switch states */}
+             <div>
+                <Button onClick={() => setCurrentState(0)}>State 0</Button>
+                <Button onClick={() => setCurrentState(1)}>State 1</Button>
+                {/* Add more buttons as needed for additional states */}
+            </div>
+            <div>
+                <h1> Home Page</h1>
+                <p>This is the home page.</p>
+                <p>add your main features</p>
+                <ul>
+                    <li>Feature 1</li>
+                    <li>Feature 2</li>
+                    <li>Feature 3</li>
+                </ul>
+                <p>customize this</p>
+            </div>
+
+        {currentState === 1 && (
+            <div>
+                <h2> Basic Page</h2>
+                <p>This is the basic page.</p>
+            </div>
+        )}
+                 <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control
                     type="password"
@@ -53,7 +64,7 @@ function App() {
                     Submit
                 </Button>
             </Form>
-        </div>
+    </div>
     );
 }
 
