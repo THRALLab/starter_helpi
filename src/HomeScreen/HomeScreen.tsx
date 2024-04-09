@@ -1,29 +1,28 @@
-import logo from './logo.svg';
-
+import './HomeScreen.css'
+import { Card } from 'react-bootstrap';
 
 export function HomeScreen () {
 
 
     return (
-        <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-          Michael Lutz
-          Jacob Wilber
-          Colin Parsons
-        </p>
-        <p>
-          Michael Forte
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Container">
+        <div className="Title">
+          <h1>Select A Quiz:</h1>
+        </div>
+        <div className="Both-boxes">
+            <Card className="Home-box">
+              <Card.Body>
+                <Card.Title>Basic Quiz</Card.Title>
+                <Card.Text>A description</Card.Text>
+              </Card.Body>
+            </Card>
+            <Card className="Home-box Right-Box">
+              <Card.Title>Detailed Quiz</Card.Title>
+              <Card.Text>
+                The description
+              </Card.Text>
+            </Card>
+        </div>
+      </div>
     )
 }
