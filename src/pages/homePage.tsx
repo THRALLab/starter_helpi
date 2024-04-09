@@ -32,6 +32,18 @@ import logo from './logo.svg';
             <p>
                 Edit <code>src/App.tsx</code> and save to reload.
             </p>
+            <p>
+                Jasnoor Saini
+            </p>
+            <p>
+                Benjamin Le
+            </p>
+            <p>
+                Coleman Walsh
+            </p>
+            <p>
+                Mateo Torres
+            </p>
             <a
                 className="App-link"
                 href="https://reactjs.org"
@@ -40,9 +52,8 @@ import logo from './logo.svg';
             >
                 Learn React
             </a>
-        </header><div>
-                Mateo Torres
-            </div><Form>
+        </header>
+        <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
                 <br></br>
