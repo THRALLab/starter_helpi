@@ -13,6 +13,10 @@ const basicPage = () => {
 				.checkbox-distance{
 					margin-left: 10px;
 				}
+				hr{
+					width:1142;
+					margin-top: 100px;
+				}
                 `}</style>
 		<div>
 			<h1>
@@ -36,7 +40,7 @@ const basicPage = () => {
 					id="holder1"
 					label="holder">
 				</Form.Check>
-				<Form.Check 
+				<Form.Check  /* Fix the radio buttons and include state*/
 					type="radio"
 					id="holder1"
 					label="holder">
@@ -69,6 +73,61 @@ const basicPage = () => {
 				</Form.Check>
 			</span>
 			<span className="QuestionNum">#4</span>
+			<span className="checkbox-distance" >
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+			</span>
+		</div>
+		<hr></hr>
+		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "100px"}}>
+		<span className="QuestionNum">#5</span>
+			<span className="checkbox-distance" >
+				<Form.Check 
+					type="radio"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+				<Form.Check  /* Fix the radio buttons and include state*/
+					type="radio"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+			</span>
+			<span className="QuestionNum">#6</span>
+			<span className="checkbox-distance">
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+			</span>
+			<span className="QuestionNum">#7</span>
+			<span className="checkbox-distance" >
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+			</span>
+			<span className="QuestionNum">#8</span>
 			<span className="checkbox-distance" >
 				<Form.Check 
 					type="checkbox"
