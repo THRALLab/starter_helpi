@@ -1,41 +1,46 @@
-import { Form, } from 'react-bootstrap';
+import { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+
 export function MC_MULTI_RESPONSE({
     question,
     options,
-    answers,
-    setAnswers
-} : {
+    setAnswer,
+    onNext
+}: {
     question: string;
     options: string[];
-    answers: string[];
-    setAnswers: (answer: string[]) => void;
+    setAnswer: (answers: string) => void;
+    onNext: (next: boolean) => void;
 }): JSX.Element {
-    function addAnswer(answer: string) {
-        if (answers.includes(answer)) {
-            setAnswers(answers.filter((target: string): boolean => target!==answer))
+    const [localAnswer, setLocalAnswer] = useState<string[]>([]);
+    function addAnswer(currAnswer: string) {
+        if (localAnswer.includes(currAnswer)) {
+            setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
         } else {
-            setAnswers([...answers, answer])
+            setLocalAnswer([...localAnswer, currAnswer]);
         }
+        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined + selected, ""))
     }
 
     return (
         <div>
             <h3>{question}</h3>
-            <ul style={{ listStyleType: "none" }}>
-                {options.map((choice) => (
-                    <li>
-                        <Form.Check
-                            type="checkbox"
-                            id={choice}
-                            label={choice}
-                            value={choice}
-                            onChange={() => addAnswer(choice)}
-                            checked={answers.includes(choice)}
-                        />
-                    </li>
-                )
-                )}
-            </ul>
+            <Form>
+                <ul style={{ listStyleType: "none" }}>
+                    {options.map((choice) => (
+                        <li key={choice}>
+                            <Form.Check
+                                type="checkbox"
+                                id={choice}
+                                label={choice}
+                                onChange={() => addAnswer(choice)}
+                                checked={localAnswer.includes(choice)}
+                            />
+                        </li>
+                    ))}
+                </ul>
+                <Button onClick={() => onNext(true)}>Next</Button>
+            </Form>
         </div>
-    )
+    );
 }

@@ -1,34 +1,44 @@
-import { Form, } from 'react-bootstrap';
+import { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
 
 export function MC_SINGLE_RESPONSE({
     question,
     options,
-    answer,
-    setAnswer
-} : {
-    question: string; //
-    options: string[]; //
-    answer: string[];
-    setAnswer: (answer: string[]) => void;
+    setAnswer,
+    onNext
+}: {
+    question: string;
+    options: string[];
+    setAnswer: (answer: string) => void;
+    onNext: (next: boolean) => void;
 }): JSX.Element {
+    const [localAnswer, setLocalAnswer] = useState<string>("");
+
+    function updateAnswer(currAnswer: string) {
+        setLocalAnswer(currAnswer)
+        setAnswer(currAnswer)
+    }
+    
     return (
         <div>
             <h3>{question}</h3>
-            <ul style={{ listStyleType: "none" }}>
-                {options.map((choice) => (
-                    <li>
-                        <Form.Check
-                            type="radio"
-                            id={choice}
-                            label={choice}
-                            value={choice}
-                            checked={answer[0] === choice}
-                            onChange={() => setAnswer([choice])}
-                        />
-                    </li>
-                )
-                )}
-            </ul>
+            <Form>
+                <ul style={{ listStyleType: "none" }}>
+                    {options.map((choice) => (
+                        <li key={choice}>
+                            <Form.Check
+                                type="radio"
+                                id={choice}
+                                label={choice}
+                                value={choice}
+                                checked={localAnswer === choice}
+                                onChange={() => updateAnswer(choice)}
+                            />
+                        </li>
+                    ))}
+                </ul>
+                <Button onClick={() => onNext(true)}>Next</Button>
+            </Form>
         </div>
-    )
+    );
 }
