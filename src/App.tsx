@@ -54,17 +54,17 @@ function App() {
         </div>
 
         {homePageVisible && 
-        <div className="Home-page">
+        <div className="Pages">
           home page
         </div>}
 
         {basicVisible && 
-        <div className="Basic-questions">
+        <div className="Pages">
           basic questions
         </div>}
 
         {detailedVisible &&
-        <div className="Detailed-questions">
+        <div className="Pages">
           detailed questions
         </div>}
       </header>
