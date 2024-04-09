@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import './General.css';
+import LinkButton from './LinkButton';
 
-export function SimpleQuestionPage(): JSX.Element {
+export function SimpleQuestions(): JSX.Element {
     const [numberOfQuestions, setNumberOfQuestions] = useState("10")
     const [questionNumber, setQuestionNumber] = useState("1")
     const [questionBody, setQuestionBody] = useState("Question...")
@@ -18,6 +20,7 @@ export function SimpleQuestionPage(): JSX.Element {
   
     return (
       <div>
+        <header className="App-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
         <div>
           <label>Number of Questions:</label><br />
           <input type="text" value={numberOfQuestions} onChange={(q) => setNumberOfQuestions(q.target.value)} /><br />

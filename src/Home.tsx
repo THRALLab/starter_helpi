@@ -28,13 +28,13 @@ function Home() {
   }
 
   return (
-  <div>
+    <div>
         <header className="App-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
         <div className="PageBody">
           <Container>
             <Row>
               <Col>
-                <LinkButton to="basicquestion" label="Basic Quiz"></LinkButton>
+                <LinkButton to="simplequestions" label="Basic Quiz"></LinkButton>
                 <p>
                   This is a basic quiz with X questions.
                 </p>
@@ -69,7 +69,7 @@ function Home() {
             <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
           </Form>
         </div>
-      </div>
+    </div>
   );
 }
 
