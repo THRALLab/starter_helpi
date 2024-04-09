@@ -4,13 +4,14 @@
     align-items: center;
     width: 100%;
     flex-grow: 1;
+    border: 2px solid #000000;
 }
 
 .Home-box {
     width: 40vh;
     height: 50vh;
     border: 2px solid #000000;
-    background-color: #ffffff;
+    background-color: #888888;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0 20px;
 }
@@ -20,13 +21,12 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    background-color: #4d4d4d;
+    background-color: #ffffff;
     padding-top: 20px
 }
 
 .Title {
     width: 80%;
-    margin-bottom: 20px;
     padding-left: 20px;
     text-align: left;
 }
