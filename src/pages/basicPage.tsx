@@ -1,15 +1,89 @@
 import React from "react";
-
+import { Form } from "react-bootstrap";
+import Button from "react-bootstrap/esm/Button";
 const basicPage = () => {
-	return (
+	return (<>
+	<style>{`
+                .QuestionNum {
+                	font-size: 50px;
+					margin-left: 200px
+					
+					
+                    }
+				.checkbox-distance{
+					margin-left: 10px;
+				}
+                `}</style>
 		<div>
 			<h1>
-				Basic Page Stuff
+				Basic Quiz
 			</h1>
-			<>
-			Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
-			</>
+			<p style={{ textAlign: "center" }}>
+				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
+			</p>
+			
 		</div>
+		<div style={{textAlign:"center"}}>
+			<Button disabled >Answer</Button>
+		</div>
+		<div style={{textAlign: "center", marginTop: "100px"}}>
+		</div>
+		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
+		<span className="QuestionNum">#1</span>
+			<span className="checkbox-distance" >
+				<Form.Check 
+					type="radio"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+				<Form.Check 
+					type="radio"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+			</span>
+			<span className="QuestionNum">#2</span>
+			<span className="checkbox-distance">
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+			</span>
+			<span className="QuestionNum">#3</span>
+			<span className="checkbox-distance" >
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+			</span>
+			<span className="QuestionNum">#4</span>
+			<span className="checkbox-distance" >
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+				<Form.Check 
+					type="checkbox"
+					id="holder1"
+					label="holder">
+				</Form.Check>
+			</span>
+		</div>
+		</>
+		
 	);
 };
 
