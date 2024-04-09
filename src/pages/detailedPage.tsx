@@ -38,24 +38,24 @@ const detailedPage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="question-box">
-				<h3 style={{display: "inline-block"}} className="question-prompt">
+			<div style={{display: "flex"}} className="question-box">
+				<h3 className="question-prompt">
 					Maybe put options in the same line as question?
 				</h3>
-				<div style={{display: "inline-block"}} className="multiple-answers">
-					<div style={{display: "inline-block", padding: "18px"}} className="answer-option">
+				<div style={{flex: "4"}} className="multiple-answers">
+					<div className="answer-option">
 						<input type="radio" id="movie1" name="movie" value="Tangled" />
 						<label htmlFor="age1">Tangled</label>
 					</div>
-					<div style={{display: "inline-block", padding: "18px"}} className="answer-option">
+					<div className="answer-option">
 						<input type="radio" id="movie2" name="movie" value="Frozen" />
 						<label htmlFor="age1">Frozen</label>
 					</div>
-					<div style={{display: "inline-block", padding: "18px"}} className="answer-option">
+					<div className="answer-option">
 						<input type="radio" id="movie3" name="movie" value="Cinderella" />
 						<label htmlFor="age1">Cinderella</label>
 					</div>
-					<div style={{display: "inline-block", padding: "18px"}} className="answer-option">
+					<div className="answer-option">
 						<input type="radio" id="movie4" name="movie" value="Moana" />
 						<label htmlFor="age1">Moana</label>
 					</div>
@@ -65,7 +65,7 @@ const detailedPage = () => {
 				<h3 className="question-prompt">
 					Stack options on one another rather than side by side?
 				</h3>
-				<div style={{display: "block"}} className="multiple-answers">
+				<div style={{display: "block", padding: "0px 24px"}} className="multiple-answers">
 					<div className="answer-option">
 						<input type="radio" id="movie1" name="movie" value="Tangled" />
 						<label htmlFor="age1">Tangled</label>
