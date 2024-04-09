@@ -27,6 +27,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Navbar2></Navbar2>
       <HomeScreen></HomeScreen>
       <Form>
         <Form.Label>API Key:</Form.Label>
