@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
@@ -10,17 +10,19 @@ import DetailedQuestions from './DetailedQuestions';
 
 // Layout component for navigation
 const Navigation: React.FC = () => {
+  const navigate = useNavigate(); // Hook to navigate programmatically
+
   return (
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Button variant="link" onClick={() => navigate('/')}>Home</Button>
         </li>
         <li>
-          <Link to="/basic-questions">Basic Questions</Link>
+          <Button variant="link" onClick={() => navigate('/basic-questions')}>Basic Questions</Button>
         </li>
         <li>
-          <Link to="/detailed-questions">Detailed Questions</Link>
+          <Button variant="link" onClick={() => navigate('/detailed-questions')}>Detailed Questions</Button>
         </li>
       </ul>
     </nav>
