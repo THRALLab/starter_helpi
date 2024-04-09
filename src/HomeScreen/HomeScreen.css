@@ -1,4 +1,4 @@
-.Left-container {
+.Container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,12 +7,13 @@
 }
 
 .Home-box {
-    width: 30vh;
+    width: 40vh;
+    height: 50vh;
     border: 2px solid #000000;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .Right-container {
-    margin-left: 30vh;
+    margin-left: 10vw;
 }

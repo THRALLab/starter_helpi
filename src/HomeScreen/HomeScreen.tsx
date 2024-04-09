@@ -5,7 +5,7 @@ export function HomeScreen () {
 
 
     return (
-      <div className="Left-container"> 
+      <div className="Container"> 
         <div>
           <Card className="Home-box">
             <Card.Body>
