@@ -17,36 +17,21 @@ const detailedPage = () => {
 					Question 1: Favorite Disney Princess Movie?
 				</h3>
 				<div className="multiple-answers">
-					<div className="multiple-option">
-						1. Tangled
+					<div className="answer-option">
+						<input type="radio" id="movie1" name="movie" value="Tangled" />
+						<label htmlFor="age1">Tangled</label>
 					</div>
-					<div className="multiple-option">
-						2. Frozen
+					<div className="answer-option">
+						<input type="radio" id="movie2" name="movie" value="Frozen" />
+						<label htmlFor="age1">Frozen</label>
 					</div>
-					<div className="multiple-option">
-						3. Cinderella
+					<div className="answer-option">
+						<input type="radio" id="movie3" name="movie" value="Cinderella" />
+						<label htmlFor="age1">Cinderella</label>
 					</div>
-					<div className="multiple-option">
-						4. Moana
-					</div>
-				</div>
-			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="multiple-option">
-						1. Tangled
-					</div>
-					<div className="multiple-option">
-						2. Frozen
-					</div>
-					<div className="multiple-option">
-						3. Cinderella
-					</div>
-					<div className="multiple-option">
-						4. Moana
+					<div className="answer-option">
+						<input type="radio" id="movie4" name="movie" value="Moana" />
+						<label htmlFor="age1">Moana</label>
 					</div>
 				</div>
 			</div>
@@ -55,36 +40,21 @@ const detailedPage = () => {
 					Question 1: Favorite Disney Princess Movie?
 				</h3>
 				<div className="multiple-answers">
-					<div className="multiple-option">
-						1. Tangled
+					<div className="answer-option">
+						<input type="radio" id="movie1" name="movie" value="Tangled" />
+						<label htmlFor="age1">Tangled</label>
 					</div>
-					<div className="multiple-option">
-						2. Frozen
+					<div className="answer-option">
+						<input type="radio" id="movie2" name="movie" value="Frozen" />
+						<label htmlFor="age1">Frozen</label>
 					</div>
-					<div className="multiple-option">
-						3. Cinderella
+					<div className="answer-option">
+						<input type="radio" id="movie3" name="movie" value="Cinderella" />
+						<label htmlFor="age1">Cinderella</label>
 					</div>
-					<div className="multiple-option">
-						4. Moana
-					</div>
-				</div>
-			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="multiple-option">
-						1. Tangled
-					</div>
-					<div className="multiple-option">
-						2. Frozen
-					</div>
-					<div className="multiple-option">
-						3. Cinderella
-					</div>
-					<div className="multiple-option">
-						4. Moana
+					<div className="answer-option">
+						<input type="radio" id="movie4" name="movie" value="Moana" />
+						<label htmlFor="age1">Moana</label>
 					</div>
 				</div>
 			</div>
@@ -93,36 +63,21 @@ const detailedPage = () => {
 					Question 1: Favorite Disney Princess Movie?
 				</h3>
 				<div className="multiple-answers">
-					<div className="multiple-option">
-						1. Tangled
+					<div className="answer-option">
+						<input type="radio" id="movie1" name="movie" value="Tangled" />
+						<label htmlFor="age1">Tangled</label>
 					</div>
-					<div className="multiple-option">
-						2. Frozen
+					<div className="answer-option">
+						<input type="radio" id="movie2" name="movie" value="Frozen" />
+						<label htmlFor="age1">Frozen</label>
 					</div>
-					<div className="multiple-option">
-						3. Cinderella
+					<div className="answer-option">
+						<input type="radio" id="movie3" name="movie" value="Cinderella" />
+						<label htmlFor="age1">Cinderella</label>
 					</div>
-					<div className="multiple-option">
-						4. Moana
-					</div>
-				</div>
-			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="multiple-option">
-						1. Tangled
-					</div>
-					<div className="multiple-option">
-						2. Frozen
-					</div>
-					<div className="multiple-option">
-						3. Cinderella
-					</div>
-					<div className="multiple-option">
-						4. Moana
+					<div className="answer-option">
+						<input type="radio" id="movie4" name="movie" value="Moana" />
+						<label htmlFor="age1">Moana</label>
 					</div>
 				</div>
 			</div>
@@ -131,17 +86,90 @@ const detailedPage = () => {
 					Question 1: Favorite Disney Princess Movie?
 				</h3>
 				<div className="multiple-answers">
-					<div className="multiple-option">
-						1. Tangled
+					<div className="answer-option">
+						<input type="radio" id="movie1" name="movie" value="Tangled" />
+						<label htmlFor="age1">Tangled</label>
 					</div>
-					<div className="multiple-option">
-						2. Frozen
+					<div className="answer-option">
+						<input type="radio" id="movie2" name="movie" value="Frozen" />
+						<label htmlFor="age1">Frozen</label>
 					</div>
-					<div className="multiple-option">
-						3. Cinderella
+					<div className="answer-option">
+						<input type="radio" id="movie3" name="movie" value="Cinderella" />
+						<label htmlFor="age1">Cinderella</label>
 					</div>
-					<div className="multiple-option">
-						4. Moana
+					<div className="answer-option">
+						<input type="radio" id="movie4" name="movie" value="Moana" />
+						<label htmlFor="age1">Moana</label>
+					</div>
+				</div>
+			</div>
+			<div className="question-box">
+				<h3 className="question-prompt">
+					Question 1: Favorite Disney Princess Movie?
+				</h3>
+				<div className="multiple-answers">
+					<div className="answer-option">
+						<input type="radio" id="movie1" name="movie" value="Tangled" />
+						<label htmlFor="age1">Tangled</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie2" name="movie" value="Frozen" />
+						<label htmlFor="age1">Frozen</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie3" name="movie" value="Cinderella" />
+						<label htmlFor="age1">Cinderella</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie4" name="movie" value="Moana" />
+						<label htmlFor="age1">Moana</label>
+					</div>
+				</div>
+			</div>
+			<div className="question-box">
+				<h3 className="question-prompt">
+					Question 1: Favorite Disney Princess Movie?
+				</h3>
+				<div className="multiple-answers">
+					<div className="answer-option">
+						<input type="radio" id="movie1" name="movie" value="Tangled" />
+						<label htmlFor="age1">Tangled</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie2" name="movie" value="Frozen" />
+						<label htmlFor="age1">Frozen</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie3" name="movie" value="Cinderella" />
+						<label htmlFor="age1">Cinderella</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie4" name="movie" value="Moana" />
+						<label htmlFor="age1">Moana</label>
+					</div>
+				</div>
+			</div>
+			<div className="question-box">
+				<h3 className="question-prompt">
+					Question 1: Favorite Disney Princess Movie?
+				</h3>
+				<div className="multiple-answers">
+					<div className="answer-option">
+						<input type="radio" id="movie1" name="movie" value="Tangled" />
+						<label htmlFor="age1">Tangled</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie2" name="movie" value="Frozen" />
+						<label htmlFor="age1">Frozen</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie3" name="movie" value="Cinderella" />
+						<label htmlFor="age1">Cinderella</label>
+					</div>
+					<div className="answer-option">
+						<input type="radio" id="movie4" name="movie" value="Moana" />
+						<label htmlFor="age1">Moana</label>
 					</div>
 				</div>
 			</div>
