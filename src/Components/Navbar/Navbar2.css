@@ -12,6 +12,10 @@
     background: linear-gradient(to left, rgba(107, 17, 203, 0.655), rgba(78, 85, 97, 0.495));
 }
 
+.navbar-selected {
+    text-decoration: underline;
+}
+
 .navbar-back {
     color: white;
     margin-left: 1px;
