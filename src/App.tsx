@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { basicQuiz } from "./assets/Quizzes/BasicQuiz";
 import { DisplayQuiz } from "./components/DisplayQuiz";
-// Import any other components or pages you have
 import './App.css';
 
 function App(): JSX.Element {
