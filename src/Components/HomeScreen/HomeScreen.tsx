@@ -9,11 +9,11 @@ export function HomeScreen({ page, setPage }: Readonly<{ page: string; setPage: 
   return (
     <div className="Container">
       <div className="Title">
-        <h1>Select A Quiz:</h1>
+        <h1>Select A <span style={{color: '#6923ff'}}>Quiz</span>:</h1>
       </div>
       <div className="Both-boxes">
         <CardGroup>
-          <Card style={{ width: '30vh' }}>
+          <Card style={{ color: 'white', backgroundColor:'#21273b', width: '30vh' }}>
             <Card.Header style={{ fontSize: 18, fontWeight: 'bold' }}>Basic Quiz</Card.Header>
             <Card.Body>
               <Card.Text>
@@ -25,7 +25,7 @@ export function HomeScreen({ page, setPage }: Readonly<{ page: string; setPage: 
             </Card.Body>
             <BasicButton page={page} setPage={setPage}></BasicButton>
           </Card>
-          <Card style={{ width: '30vh' }}>
+          <Card style={{ color: 'white', backgroundColor:'#21273b', width: '30vh' }}>
             <Card.Header style={{ fontSize: 18, fontWeight: 'bold' }}>Detailed Quiz</Card.Header>
             <Card.Body>
               <Card.Text>

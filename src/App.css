@@ -4,6 +4,7 @@
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
+  backGround-color: #0e1014
 }
 
 .App-logo {
@@ -47,7 +48,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #0e1014;
 }
 
 .App-link {

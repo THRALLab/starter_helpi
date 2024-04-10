@@ -4,22 +4,17 @@
 }
 
 .gradient-custom {
-    background: #6a11cb;
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to left, rgba(107, 17, 203, .9), rgba(78, 85, 97, 0.495));
-  
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to left, rgba(107, 17, 203, 0.655), rgba(78, 85, 97, 0.495));
+    background: #0e1014;
 }
 
 .navbar-back {
-    color: white;
+    color: #0e1014;
     margin-left: 1px;
     padding-left: 2%;
     padding-right: 7%;
     height: 23px;
     border: 10px;
-    background: gray;
+    background: #0e1014;
     border-radius: 10px;
 }
 
