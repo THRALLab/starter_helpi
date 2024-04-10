@@ -19,7 +19,7 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
   }
 
   return (
-    <Navbar sticky="top" bg="dark bg-dark gradient-custom rounded" style={{ height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem' }} data-bs-theme="dark" expand="lg">
+    <Navbar sticky="top" style={{ backgroundColor: '#0e1014', height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem' }} data-bs-theme="dark" expand="lg">
       <Container>
         <Navbar.Brand href="#home" className='brand-logo'>
           <img src={logo} alt='logo' className="logo-img" />
