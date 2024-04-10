@@ -14,7 +14,7 @@ export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: st
         </div>
         <div className="Both-boxes">
           <CardGroup>
-            <Card style={{height: '20rem', width: '30vh'}}>
+            <Card style={{ width: '30vh'}}>
             <Card.Header style={{fontSize: 18, fontWeight: 'bold'}}>Basic Quiz</Card.Header>
               <Card.Body>
                 <Card.Text>
@@ -26,7 +26,7 @@ export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: st
               </Card.Body>
               <BasicButton page={page} setPage={setPage}></BasicButton>
             </Card>
-            <Card style={{height: '20rem', width: '30vh'}}>
+            <Card style={{ width: '30vh'}}>
               <Card.Header style={{fontSize: 18, fontWeight: 'bold'}}>Detailed Quiz</Card.Header>
               <Card.Body>
               <Card.Text>

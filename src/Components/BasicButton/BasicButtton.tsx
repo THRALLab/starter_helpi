@@ -7,7 +7,7 @@ export default function BasicButton({page, setPage}: {page:string; setPage: (new
 ): JSX.Element {
     return (
         <div>
-            <Button onClick={() => setPage("Basic")}>Take Quiz!</Button>
+            <Button style={{margin: '1rem'}} onClick={() => setPage("Basic")}>Take Quiz!</Button>
         </div>
     )
 }
