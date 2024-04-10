@@ -5,6 +5,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from './Pages/HomePage/HomePage';
 import { MembersPage } from './Pages/MembersPage/MembersPage';
 import { SignUpPage } from './Pages/SignUpPage/SignUpPage';
+import { BasicQuestionsPage } from './Pages/BasicQuestionsPage/BasicQuestionsPage';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -39,6 +40,7 @@ function App() {
                     <Route path = "/login" element = {<MembersPage/>}></Route>
                     <Route path = "/sign-up" element = {<SignUpPage/>}></Route>
                     <Route path = "/" element = {<MembersPage/>}></Route>
+                    <Route path = "BasicQuestionsPage" element = {<BasicQuestionsPage/>}> </Route>
                   </Routes>
                 </HashRouter>
               </div>
