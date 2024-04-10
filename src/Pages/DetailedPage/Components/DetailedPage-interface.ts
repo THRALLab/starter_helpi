@@ -8,10 +8,6 @@ export interface Question {
     body: string;
 }
 
-export interface Navigation {
-    max: number;
-    current: number;
-}
 
 export function generatePlaceholders(type: QuestionType): Question { 
     return {name:"Lorem ipsum dolor sit amet", questionNumber:1, type: type, options:["one", "two", "three"], answer: -1, body:"consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."};
