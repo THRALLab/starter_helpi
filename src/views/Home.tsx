@@ -27,20 +27,34 @@ function Home() {
             </div>
             <div style = {{position: 'relative', top: '150px'}}>
                 <Row className='text-center'>
-                    <Col>
+                    <Col style = {{border: '2px solid black'}}>
                         <h3>
                             Basic Questions
                         </h3>
-                        <h6>
-                            Insert Description
+                        <h5 style = {{padding: '10px'}}>
+                        Discover Your Career Fit with Ease
+                        </h5>
+                        <h6 style = {{padding: '20px'}}>
+                        Our basic questions career assessment is a quick and straightforward way to explore potential career
+                        paths based on your interests, skills, and personality. Answer a few simple questions, and
+                        get personalized career suggestions that align with your strengths and aspirations. Perfect
+                        for those seeking a quick overview of their career options.
                         </h6>
                     </Col>
-                    <Col>
+                    <Col style = {{border: '2px solid black'}}>
                         <h3>
                             Detailed Questions
                         </h3>
-                        <h6>
-                            Insert Description
+                        <h5 style = {{padding: '10px'}}>
+                        Dive Deep Into Your Career Potential
+                        </h5>
+                        <h6 style = {{padding: '20px'}}>
+                        Our detailed questions career assessment provides an in-depth analysis of your 
+                        interests, skills, personality traits, and values to uncover a comprehensive 
+                        range of career possibilities. Receive personalized career recommendations, 
+                        along with insights into educational paths, certifications, and resources 
+                        to support your career journey. Ideal for those seeking a thorough exploration 
+                        of their career options.
                         </h6>
                     </Col>
                 </Row>
