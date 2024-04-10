@@ -1,7 +1,17 @@
-.Home-Columns {
-    outline: black;
-}
-
 .button {
     text-align: center;
+}
+
+.Text-basic {
+    text-align: left;
+    margin-left: 10%;
+}
+
+.Text-detailed {
+    text-align: left;
+    margin-left: 10%;
+}
+
+.Page-text {
+    margin-bottom: 3vh;
 }

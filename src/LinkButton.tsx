@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 
 interface LinkButtonProps{
     to: string;
-    label: string
+    label: string;
 }
 
 //Special button made for navigating our webpages
