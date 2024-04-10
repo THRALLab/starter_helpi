@@ -1,4 +1,4 @@
-import { basicQuiz } from '../assets/Temp/BasicQuiz';
+import { basicQuiz } from '../assets/quizzes/BasicQuiz';
 import { Question } from './QuestionTypes';
 
 export const getFirstQuestion = (): Question => {
