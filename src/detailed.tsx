@@ -1,6 +1,6 @@
 import "../src/detailed.css";
 
-interface Question {
+interface QuestionBody {
 	question: string;
 	choices: string[];
 }
@@ -88,7 +88,7 @@ function Detailed() {
 	return (
 		<>
 			<h1>This is the Detailed Quiz.</h1>
-			{questions.map((q: Question, index: number) => {
+			{questions.map((q: QuestionBody, index: number) => {
 				return (
 					<div className="quizContainer" key={index}>
 						<div className="questionContainer">{q.question}</div>
