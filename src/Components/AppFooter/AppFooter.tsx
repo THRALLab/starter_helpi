@@ -30,11 +30,12 @@ const AppFooter = ({ changeKey, handleSubmit }: {
           <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }} className="Submit-Button" onClick={handleSubmit}>Submit</Button>
         </InputGroup>
       </Form>
-      <div className='names-container'>Made by: 
-        <a href="https://github.com/Mforte5115" target="_blank" rel="noreferrer">Michael Forte</a>,
-        <a href="https://github.com/MichaelLutz1" target="_blank" rel="noreferrer"> Michael Lutz</a>,
-        <a href="https://github.com/jacobwilbe" target="_blank" rel="noreferrer"> Jacob Wilber</a> ,
-        <a href="https://github.com/ColinP5" target="_blank" rel="noreferrer">Colin Parsons</a>
+      <div className='names-container'>
+        <span>Made by: </span>
+        <a href="https://github.com/Mforte5115" target="_blank" rel="noreferrer" className='gh-profile'>Michael Forte</a>,
+        <a href="https://github.com/MichaelLutz1" target="_blank" rel="noreferrer" className='gh-profile'> Michael Lutz</a>,
+        <a href="https://github.com/jacobwilbe" target="_blank" rel="noreferrer" className='gh-profile'> Jacob Wilber</a>,
+        <a href="https://github.com/ColinP5" target="_blank" rel="noreferrer" className='gh-profile'> Colin Parsons</a>
       </div>
     </div>
   );
