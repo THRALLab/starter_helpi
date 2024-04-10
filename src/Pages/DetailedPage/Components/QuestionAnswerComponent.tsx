@@ -8,7 +8,7 @@ export function QuestionAnswer(): React.JSX.Element {
   return (
     <div className="question-component">
       <div className="question-component--content">
-        <h2 id="question-number"> {`Question ${q}.`}</h2>
+        <h1 id="question-number"> {`Question ${q}.`}</h1>
         <h3>{ placeholders[q].name}</h3> 
         {placeholders[q].type === "radio"
           ? placeholders[q].options.map((question: string) => (
@@ -19,10 +19,12 @@ export function QuestionAnswer(): React.JSX.Element {
                 label={question}
               />
             ))
-          : "radio"}
-        <div>
-          <Button onClick={() => setQuestion(q - 1)}> back </Button>
-          <Button onClick={() => setQuestion(q + 1)}> forward </Button>
+          : <Form.Group>
+            <Form.Control/>
+            </Form.Group>}
+        <div className="buttons-navigation">
+          <Button id="back-button" onClick={() => setQuestion(q - 1)}> back </Button>
+          <Button id="forward-button"onClick={() => setQuestion(q + 1)}> forward </Button>
         </div>
       </div>
     </div>
