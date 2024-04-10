@@ -8,7 +8,7 @@ export function QuestionAnswer(): React.JSX.Element {
   return (
     <div className="question-component">
       <div className="question-component--content">
-        <h1 id="question-number"> {`Question ${q}`}</h1>
+        <h1 id="question-number"> {`Question ${q+1}`}</h1>
         <h3>{placeholders[q].name}</h3>
         {placeholders[q].type === "radio" ? (
           placeholders[q].options.map((question: string) => (
@@ -25,12 +25,12 @@ export function QuestionAnswer(): React.JSX.Element {
           </Form.Group>
         )}
         <div className="buttons-navigation">
-          <Button id="back-button" onClick={() => setQuestion(q - 1)}>
+          <Button id="back-button" disabled={q === 0 ? true:false} onClick={() => setQuestion(q - 1)}>
             Previous
           </Button>
           <Button
             id="forward-button"
-            style={{}}
+            disabled={q === 6 ? true:false}
             onClick={() => setQuestion(q + 1)}
           >
             Next
