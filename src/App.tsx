@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
-import NavigationBar from "./components/navigation-bar/navigationBar";
+import NavigationBar from "./components/homePageComp/navigation-bar/navigationBar"
+import branchTop from "./images/homePageImages/branchTop.png";
+import DescriptionTable from "./components/homePageComp/decriptionTable";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -27,24 +29,19 @@ function App() {
         setKey(event.target.value);
     }
     return (
-        <div className="App">
+        <div className="App" style={{ backgroundColor: '#6b2737', minHeight: '100vh', color: '#fff' }}>
              {/* Buttons to switch states */}
-             <div>
-                <Button onClick={() => setCurrentState(0)}>State 0</Button>
+             <div style={{ textAlign: 'center'}}>
+                <Button onClick={() => setCurrentState(0)}>Home</Button>
                 <Button onClick={() => setCurrentState(1)}>State 1</Button>
                 {/* Add more buttons as needed for additional states */}
             </div>
             <div>
-                <h1> Home Page</h1>
+                <h1 style={{ textAlign: 'center'}}> Home Page</h1>
+                <img src={branchTop} alt="Branch" style={{ position: 'absolute', top: 0, left: 0, width: '100px', height: '100px', zIndex: 1, transform: 'rotate(90deg)'}} />
+                <img src={branchTop} alt="Branch" style={{ position: 'absolute', top: 0, right: 0, width: '100px', height: '100px', zIndex: 1, transform: 'rotate(-90deg)' }} />
                 <NavigationBar />
-                <p>This is the home page.</p>
-                <p>add your main features</p>
-                <ul>
-                    <li>Feature 1</li>
-                    <li>Feature 2</li>
-                    <li>Feature 3</li>
-                </ul>
-                <p>customize this</p>
+                <DescriptionTable />
             </div>
 
         {currentState === 1 && (
@@ -53,6 +50,7 @@ function App() {
                 <p>This is the basic page.</p>
             </div>
         )}
+        <div style={{ textAlign: 'center'}}>
                  <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control
@@ -65,6 +63,7 @@ function App() {
                     Submit
                 </Button>
             </Form>
+        </div>
     </div>
     );
 }

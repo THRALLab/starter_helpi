@@ -1,7 +1,10 @@
 .App {
-  text-align: center;
   background-color: #cca994;
 }
+
+
+
+/*all navigation css */
 
 .navbar-container {
   display: flex;
@@ -41,3 +44,4 @@
 .active button {
   font-weight: bold;
 }
+
