@@ -17,8 +17,6 @@ export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: st
             <Card style={{height: '20rem', width: '30vh'}}>
             <Card.Header style={{fontSize: 18, fontWeight: 'bold'}}>Basic Quiz</Card.Header>
               <Card.Body>
-                <Card.Title>Basic Quiz</Card.Title>
-                <Card.Text>A description</Card.Text>
                 <Card.Text>
                   If you're looking for a quick quiz use this choice! A few brief
                   questions with simple answers is all that will be asked to give you an accurate 
