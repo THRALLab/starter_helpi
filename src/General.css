@@ -1,5 +1,14 @@
+.body {
+    --color-background: #ffffff;
+    --color-foreground: #000000;
+}
+
+.body-dark {
+    --color-background: #000000;
+    --color-foreground: #ffffff;
+}
+
 .General-header {
-    margin-bottom: 3vh;
     min-height: 10vh;
     display: flex;
     flex-direction: column;
@@ -11,7 +20,6 @@
     flex-flow: row nowrap;
     color: white;
     background-color: black;
-    
 }
 
 .Header-button {
@@ -31,15 +39,16 @@
 }
 
 .Page-body {
-    background-color: white;
-    min-height: 87vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     font-size: calc(5px + 2vmin);
-    color: black;
     position: relative;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    padding-top: 3vh;
 }
 
 .basic-button {
@@ -51,6 +60,6 @@
 
 .API-Footer {
     background-color: black;
-    color: black;
+    color: white;
     margin-top: 0px;
 }

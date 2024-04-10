@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import './App';
 import './Home.css';
 import './General.css';
+import { DarkModeToggle } from './DarkModeToggle';
 import LinkButton from './LinkButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { bodyClassName } from './DarkModeToggle';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -28,13 +30,10 @@ function Home() {
   }
 
   return (
-    <div>
-        <header className="General-header"><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
-        
+    <div className={bodyClassName} id='bigBody'>
+        <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
         <div className="Page-body">
-
           <p className='Page-text'>Welcome to the Career Lab! We have two quizzes you can take to help find your ideal career. Your answers will be reviewed by ChatGPT to generate a custom report of what caeer paths suit you the best. This project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory Jordan</p>
-
           <Container>
             <Row>
               <Col>
