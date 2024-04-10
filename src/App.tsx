@@ -1,11 +1,16 @@
+import {Button, Form} from "react-bootstrap"
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
-
+import BaseQsDes from './BaseAsk';
+import DetailQsDes from './DetailAsk';
+import Questions from './BasicQuestions'
+import DetQuestions from './DetailedQuestions'
+import timer from './Timer';
+const Basictimer = new timer();
+const DetailTimer = new timer();
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
+export let keyData = "";
+export const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
@@ -24,22 +29,53 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  const [showBasicQuestions, setShowBasicQuestions] = useState(false);
+
+  const toggleBasicQuestions = () => {
+    setShowBasicQuestions(!showBasicQuestions);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+      <div>
+        <p>Liam Roth</p>
+        <p>Ben Bank</p>
+        <p>Xander Clawson</p>
+      </div>
+      <div>
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="https://liamr-cs.github.io/career_helpi/"
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            border: '2px solid gray', 
+            padding: '8px', 
+            textDecoration: 'none', 
+            color: 'black',
+            fontSize: '18px'
+          }}
         >
-          Learn React
+          Homepage
         </a>
-      </header>
+      </div>
+      <div>
+        <h2>Basic Quiz Instructions:</h2>
+      <BaseQsDes></BaseQsDes>
+      </div>
+      <h1>TAKE THE BASIC QUIZ HERE:</h1>
+      <button onClick={toggleBasicQuestions}><h3>Basic Quiz</h3></button>
+      <button onClick={()=>Basictimer.toggle}>Start/Stop Basic Quiz Timer</button>
+      {showBasicQuestions && <Questions show={showBasicQuestions} />}
+      <div>
+        <h2>Detailed Quiz Instructions:</h2>
+      <DetailQsDes></DetailQsDes>
+      </div>
+      <h1>TAKE THE DETAILED QUIZ HERE:</h1>
+      <button><h3>Detailed Quiz</h3></button>
+      <DetQuestions></DetQuestions>
+      <button onClick={()=>DetailTimer.toggle}>Start/Stop Detailed Quiz Timer</button>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
