@@ -1,7 +1,10 @@
+import BasicButton  from '../BasicButton/BasicButtton';
+import DetailedButton from '../DetailedButton/DetailedButton';
 import './HomeScreen.css'
 import { Card, CardGroup } from 'react-bootstrap';
 
-export function HomeScreen () {
+
+export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: string) => void}) {
 
 
     return (
@@ -14,12 +17,15 @@ export function HomeScreen () {
             <Card style={{height: '20rem', width: '30vh'}}>
             <Card.Header style={{fontSize: 18, fontWeight: 'bold'}}>Basic Quiz</Card.Header>
               <Card.Body>
+                <Card.Title>Basic Quiz</Card.Title>
+                <Card.Text>A description</Card.Text>
                 <Card.Text>
                   If you're looking for a quick quiz use this choice! A few brief
                   questions with simple answers is all that will be asked to give you an accurate 
                   option of the ideal career for you! With the power of AI, your answers will be used
                   to suggest a job that would make you feel fulfilled.
                 </Card.Text>
+                <BasicButton page={page} setPage={setPage}></BasicButton>
               </Card.Body>
             </Card>
             <Card style={{height: '20rem', width: '30vh'}}>
@@ -31,6 +37,7 @@ export function HomeScreen () {
                 This quiz will also use AI to refine your answer even further and give a more specific 
                 answer.
               </Card.Text>
+              <DetailedButton page={page} setPage={setPage}></DetailedButton>
               </Card.Body>
             </Card>
             </CardGroup>
