@@ -12,4 +12,27 @@
     margin-block: 5vh;
 
     align-self: center;
+    position: relative
+}
+
+.radio-buttons{
+    display:inline;
+    text-align: left;
+    gap: 10px;
+    
+}
+
+.buttons-navigation{
+    vertical-align:bottom;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+}
+
+#back-button{
+    float:left;
+
+}
+#forward-button{
+    float:right;
 }

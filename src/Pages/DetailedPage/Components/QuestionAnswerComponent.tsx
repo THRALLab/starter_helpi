@@ -13,18 +13,18 @@ export function QuestionAnswer(): React.JSX.Element {
         {placeholders[q].type === "radio"
           ? placeholders[q].options.map((question: string) => (
               <Form.Check
-                inline
                 type="radio"
                 name="response"
                 label={question}
+                className="radio-buttons"
               />
             ))
           : <Form.Group>
             <Form.Control/>
             </Form.Group>}
         <div className="buttons-navigation">
-          <Button id="back-button" onClick={() => setQuestion(q - 1)}> back </Button>
-          <Button id="forward-button"onClick={() => setQuestion(q + 1)}> forward </Button>
+          <Button id="back-button" onClick={() => setQuestion(q - 1)}> Previous </Button>
+          <Button id="forward-button"onClick={() => setQuestion(q + 1)}> Next </Button>
         </div>
       </div>
     </div>
