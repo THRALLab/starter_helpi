@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useState } from "react";
 import { QuestionAnswer } from "./Components/QuestionAnswerComponent";
 import "./DetailedPage.css";
