@@ -19,7 +19,7 @@ const AppFooter = ({ changeKey, handleSubmit }: {
         overlay={renderTooltip}
       >
         <a href="https://github.com/MichaelLutz1/starter_helpi" target="_blank" rel="noreferrer">
-          <Button variant="secondary">
+          <Button style={{backgroundColor: '#6923ff', borderColor: '#6923ff'}}>
             <BsGithub />
           </Button>
         </a>
