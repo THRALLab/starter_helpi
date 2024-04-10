@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
-const BasicPage = () => {
 
+const BasicPage = () => {
+	const [response, setResponse] = useState<(boolean | null)[]>
+	([null, null, null, null, null, null, null, null])
+	function updateChoice(event: React.ChangeEvent<HTMLInputElement>, index:number){
+		const updatedResponse = [...response];
+		updatedResponse[index] = event.target.checked ? true : null;
+		setResponse(updatedResponse)
+		console.log(response[1]);
+	}
 	return (<>
 	<style>{`
                 .QuestionNum {
@@ -38,52 +46,79 @@ const BasicPage = () => {
 			<span className="checkbox-distance" >
 				<Form.Check 
 					type="radio"
-					id="holder1"
+					id="q1-Option1"
 					label="holder"
+					name="question1"
+					onChange={(e) => updateChoice(e, 0)}
+					checked = {response[0] === true}
 					/>
-				<Form.Check  /* Fix the radio buttons and include state*/
+				<Form.Check
 					type="radio"
-					id="holder1"
+					id="q-1Option2"
 					label="holder"
+					name="question1"
+					onChange={(e) => updateChoice(e, 0)}
+					checked = {response[0] === false}
 					/>
 			</span>
 			<span className="QuestionNum">#2</span>
 			<span className="checkbox-distance">
 				<Form.Check 
-					type="checkbox"
-					id="holder1"
+					type="radio"
+					id="q2-Option1"
 					label="holder"
+					name="question2"
+					onChange={(e) => updateChoice(e, 1)}
+
 					/>
 				<Form.Check 
-					type="checkbox"
-					id="holder1"
+					type="radio"
+					id="q2-Option2"
 					label="holder"
+					name="question2"
+					onChange={(e) => updateChoice(e, 1)}
+
 					/>
 			</span>
 			<span className="QuestionNum">#3</span>
 			<span className="checkbox-distance" >
 				<Form.Check 
-					type="checkbox"
-					id="holder1"
+					type="radio"
+					id="q3-Option1"
 					label="holder"
+					name="question3"
+					onChange={(e) => updateChoice(e, 2)}
+
 					/>
 				<Form.Check 
-					type="checkbox"
-					id="holder1"
+					type="radio"
+					id="q3-Option2"
 					label="holder"
+					name="question3"
+					onChange={(e) => updateChoice(e, 2)}
+
+
 					/>
 			</span>
 			<span className="QuestionNum">#4</span>
 			<span className="checkbox-distance" >
 				<Form.Check 
-					type="checkbox"
-					id="holder1"
+					type="radio"
+					id="q4-Option1"
 					label="holder"
+					name="question4"
+					onChange={(e) => updateChoice(e, 3)}
+
+
 					/>
 				<Form.Check 
-					type="checkbox"
-					id="holder1"
+					type="radio"
+					id="q4-Option2"
 					label="holder"
+					name="question4"
+					onChange={(e) => updateChoice(e, 3)}
+
+
 					/>
 			</span>
 		</div>
@@ -94,13 +129,22 @@ const BasicPage = () => {
 				<div>
 				<Form.Check 
 					type="radio"
-					id="holder1"
-					label="holder">
+					id="q5-Option1"
+					label="holder"
+					name="question5"
+					onChange={(e) => updateChoice(e, 4)}
+
+
+					>
 				</Form.Check>
 				<Form.Check  /* Fix the radio buttons and include state*/
 					type="radio"
-					id="holder2"
-					label="holder">
+					id="q5-Option2"
+					label="holder"
+					name="question5"
+					onChange={(e) => updateChoice(e, 4)}
+
+					>
 				</Form.Check>
 				</div>
 			</span>
@@ -108,14 +152,22 @@ const BasicPage = () => {
 			<span className="checkbox-distance">
 				<div>
 					<Form.Check 
-					type="checkbox"
-					id="holder3"
-					label="holder">
+					type="radio"
+					id="q6-Option1"
+					label="holder"
+					name="question5"
+					onChange={(e) => updateChoice(e, 5)}
+
+					>
 				</Form.Check>
 				<Form.Check 
-					type="checkbox"
-					id="holder4"
-					label="holder">
+					type="radio"
+					id="q6-Option2"
+					label="holder"
+					name="question6"
+					onChange={(e) => updateChoice(e, 5)}
+
+					>
 				</Form.Check>
 				</div>
 			</span>
@@ -123,14 +175,23 @@ const BasicPage = () => {
 			<span className="checkbox-distance" >
 				<div>
 				<Form.Check 
-					type="checkbox"
-					id="holder5"
-					label="holder">
+					type="radio"
+					id="q7-Option1"
+					label="holder"
+					name="question7"
+					onChange={(e) => updateChoice(e, 6)}
+	
+					>
 				</Form.Check>
 				<Form.Check 
-					type="checkbox"
-					id="holder6"
-					label="holder">
+					type="radio"
+					id="q7-Option2"
+					label="holder"
+					name="question7"
+					onChange={(e) => updateChoice(e, 6)}
+
+
+					>
 				</Form.Check>
 				</div>
 			</span>
@@ -138,14 +199,23 @@ const BasicPage = () => {
 			<span className="checkbox-distance" >
 				<div>
 				<Form.Check 
-					type="checkbox"
-					id="holder7"
-					label="holder">
+					type="radio"
+					id="q8-Option1"
+					label="holder"
+					name="question8"
+					onChange={(e) => updateChoice(e, 7)}
+
+
+					>
 				</Form.Check>
 				<Form.Check 
-					type="checkbox"
-					id="holder8"
-					label="holder">
+					type="radio"
+					id="q8-Option2"
+					label="holder"
+					name="question8"
+					onChange={(e) => updateChoice(e, 7)}
+					
+					>
 				</Form.Check>
 				</div>
 			</span>
@@ -154,5 +224,4 @@ const BasicPage = () => {
 		
 	);
 };
-
 export default BasicPage;
