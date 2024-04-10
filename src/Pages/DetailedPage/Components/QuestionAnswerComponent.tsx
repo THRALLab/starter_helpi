@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Question, placeholders } from "./DetailedPage-interface";
+import { placeholders } from "./DetailedPage-interface";
 import "./QuestionAnswerComponent.css";
 
 export function QuestionAnswer(): React.JSX.Element {
