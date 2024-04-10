@@ -1,5 +1,6 @@
 import {Button} from 'react-bootstrap';
 import './BasicButton.css';
+import React from 'react';
 
 
 export default function BasicButton({page, setPage}: {page:string; setPage: (newPage: string) => void}

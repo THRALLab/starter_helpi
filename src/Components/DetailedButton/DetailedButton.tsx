@@ -1,5 +1,6 @@
 import {Button} from 'react-bootstrap';
 import './DetailedButton.css';
+import React from 'react';
 
 
 export default function DetailedButton({page, setPage}: {page:string; setPage: (newPage: string) => void}): JSX.Element {
