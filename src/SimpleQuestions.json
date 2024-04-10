@@ -1,0 +1,94 @@
+{
+    "SIMPLE_QUESTIONS": [
+        {
+            "num": 1,
+            "question": "I am a hard worker",
+            "option1": "True",
+            "option2": "False"
+        },
+        {
+            "num": 2,
+            "question": "I like to sit at a desk and get done work",
+            "option1": "True",
+            "option2": "False"
+        },
+        {
+            "num": 3,
+            "question": "When you are at a party, do you...",
+            "option1": "Meet new people",
+            "option2": "Stay with a group of friends"
+        },
+        {
+            "num": 4,
+            "question": "Do you like learning new things or exploring new things physically?",
+            "option1": "Yes",
+            "option2": "No"
+        },
+        {
+            "num": 5,
+            "question": "How do you make decisions?",
+            "option1": "Logically",
+            "option2": "How you feel about things"
+        },
+        {
+            "num": 6,
+            "question": "Do you prefer…",
+            "option1": "Trying new activities",
+            "option2": "relaxing"
+        },
+        {
+            "num": 7,
+            "question": "How do you approach assignment due dates?",
+            "option1": "Planning ahead",
+            "option2": "Procrastinating"
+        },
+        {
+            "num": 8,
+            "question": "Do you like working...",
+            "option1": "Alone",
+            "option2": "With a group"
+        },
+        {
+            "num": 9,
+            "question": "Do you like working...",
+            "option1": "With straightforward instructions",
+            "option2": "With a flexible enviornment"
+        },
+        {
+            "num": 10,
+            "question": "How do you feel about meeting someone new?",
+            "option1": "Comfortable",
+            "option2": "Nervous/shy"
+        },
+        {
+            "num": 11,
+            "question": "How do you communicate with others?",
+            "option1": "Being direct",
+            "option2": "Considering other's feelings"
+        },
+        {
+            "num": 12,
+            "question": "How do you handle unexpected situations?",
+            "option1": "Adapt/backup plan",
+            "option2": "Get frustrated"
+        },
+        {
+            "num": 13,
+            "question": "When meeting with someone, do you prefer...",
+            "option1": "Punctuality",
+            "option2": "Flexibility with being a couple of minutes late"
+        },
+        {
+            "num": 14,
+            "question": "Weekend plans:",
+            "option1": "Going out with friends",
+            "option2": "Relaxing at home"
+        },
+        {
+            "num": 15,
+            "question": "Which statement describes you better?",
+            "option1": "I'm Organized",
+            "option2": "I'm Disorganized"
+        }
+    ]
+}
