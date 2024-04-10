@@ -1,7 +1,10 @@
+import BasicButton  from '../BasicButton/BasicButtton';
+import DetailedButton from '../DetailedButton/DetailedButton';
 import './HomeScreen.css'
 import { Card } from 'react-bootstrap';
 
-export function HomeScreen () {
+
+export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: string) => void}) {
 
 
     return (
@@ -14,6 +17,7 @@ export function HomeScreen () {
               <Card.Body>
                 <Card.Title>Basic Quiz</Card.Title>
                 <Card.Text>A description</Card.Text>
+                <BasicButton page={page} setPage={setPage}></BasicButton>
               </Card.Body>
             </Card>
             <Card className="Home-box Right-Box">
@@ -21,6 +25,7 @@ export function HomeScreen () {
               <Card.Text>
                 The description
               </Card.Text>
+              <DetailedButton page={page} setPage={setPage}></DetailedButton>
             </Card>
         </div>
       </div>

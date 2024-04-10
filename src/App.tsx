@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 import { HomeScreen } from './Components/HomeScreen/HomeScreen';
 import AppFooter from './Components/AppFooter/AppFooter';
+import { BasicPage } from './Components/BasicPage/BasicPage';
+import { DetailedPage } from './Components/DetailedPage/DetailedPage';
+
+
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -13,6 +17,7 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [page, setPage] = useState<string>("Home");
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -26,7 +31,9 @@ function App() {
   }
   return (
     <div className="App">
-      <HomeScreen></HomeScreen>
+      {page === "Home" && <HomeScreen page={page} setPage={setPage}/>}
+      {page === "Basic" && <BasicPage/>}
+      {page === "Detailed" && <DetailedPage/>}
       <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
     </div>
   );
