@@ -1,3 +1,4 @@
+import React from 'react';
 import BasicButton from '../BasicButton/BasicButtton';
 import DetailedButton from '../DetailedButton/DetailedButton';
 import './HomeScreen.css'
