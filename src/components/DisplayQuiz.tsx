@@ -4,6 +4,7 @@ import { Question } from "../interfaces/QuestionTypes";
 import { MC_SINGLE_RESPONSE } from "./MC_SINGLE_RESPONSE";
 import { MC_MULTI_RESPONSE } from "./MC_MULTI_RESPONSE";
 import { USER_RANKING } from "./USER_RANKING";
+import { TEXT_RESPONSE } from "./TEXT_RESPONSE";
 
 interface DisplayQuizProps {
     quiz: Record<string, Question>;
@@ -53,6 +54,8 @@ export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
             return <MC_MULTI_RESPONSE {...questionComponentProps} />;
         case "USER_RANKING":
             return <USER_RANKING {...questionComponentProps} />;
+        case "TEXT_RESPONSE":
+            return <TEXT_RESPONSE {...questionComponentProps} />
         default:
             return <h1>Unknown question type</h1>;
     }

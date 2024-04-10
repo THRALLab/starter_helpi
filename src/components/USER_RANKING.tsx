@@ -15,7 +15,7 @@ export function USER_RANKING({
     const [categories, setCategories] = useState<string[]>(options);
 
     const submitting = () => {
-        setAnswer(categories.reduce((combined: string, selected: string) => combined + selected, ""))
+        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
         onNext(true)
     }
     /**
