@@ -30,6 +30,7 @@ function App() {
     setKey(event.target.value);
   }
   return (
+    //renders the components corresponding to the state of the page
     <div className="App">
       {page === "Home" && <HomeScreen page={page} setPage={setPage}/>}
       {page === "Basic" && <BasicPage/>}
