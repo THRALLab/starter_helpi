@@ -1,3 +1,4 @@
+import "./pages.css"
 import { Col, Container, Row } from "react-bootstrap";
 import { AIKey } from "../interfaces/AIKeyInterface";
 
@@ -6,16 +7,18 @@ export function HomePage(key: AIKey): JSX.Element {
         homePage
         <Container>
             <Row>
-                <Col>
+                <Col style={{textAlign: "left"}}>
                     <div className="Question-description">
                         The basic questions will ask you more simple, easier<br></br>
                         questions that will give you a quick idea about your<br></br> 
                         potential ideal career.
                     </div>
                 </Col>
-                <Col>
+                <Col style={{textAlign: "right"}}>
                     <div className="Question-description">
-                        Detailed questions here
+                        Detailed questions here <br></br>
+                        just putting test text in here while firguring <br></br>
+                        out columns
                     </div>
                 </Col>
             </Row>
