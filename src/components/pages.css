@@ -4,4 +4,15 @@
     align-items: center;
     justify-content: center;
     height: 85%;
+    text-align: center;
   }
+
+.Question-description {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(5px + 2vmin);
+  width: 10%;
+}
