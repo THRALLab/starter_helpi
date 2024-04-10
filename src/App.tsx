@@ -70,7 +70,3 @@ function App() {
 }
 
 export default App;
-
-function setActiveTab(tabName: string) {
-    throw new Error("Function not implemented.");
-}
