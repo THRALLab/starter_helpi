@@ -14,7 +14,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: -40px;
+	margin-top: -20px;
 }
 
 .quizContainer .mainContainer .child img {
@@ -37,7 +37,7 @@
 	border: none;
 	background-color: #7b04aa;
 	color: white;
-	padding: 14px 28px;
+	padding: 10px 28px;
 	font-size: 16px;
 	cursor: pointer;
 	text-align: center;
