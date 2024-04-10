@@ -4,6 +4,8 @@ import { Button, Form } from 'react-bootstrap';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from './Pages/HomePage/HomePage';
 import { MembersPage } from './Pages/MembersPage/MembersPage';
+import { DetailedPage } from './Pages/DetailedPage/DetailedPage';
+
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -34,6 +36,7 @@ function App() {
               <div className = "App-content">
                 <HashRouter>
                   <Routes>
+                  <Route path = "home/detailed-quiz" element = {<DetailedPage/>}> </Route>
                     <Route path = "home" element = {<HomePage/>}> </Route>
                     <Route path = "/" element = {<MembersPage/>}></Route>
                   </Routes>

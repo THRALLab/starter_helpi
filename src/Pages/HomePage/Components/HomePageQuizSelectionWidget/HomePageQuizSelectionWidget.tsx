@@ -1,8 +1,11 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
+
 
 import "./HomePageQuizSelectionWidget.css"
 
 export function HomePageQuizSelectionWidget() : JSX.Element {
+    const nav = useNavigate();
     return (
         <div className = "home-page-quiz-selection-widget">  
             <h1> Let's Get Started!</h1>
@@ -14,7 +17,7 @@ export function HomePageQuizSelectionWidget() : JSX.Element {
                 </div> 
                 <div className = "quiz-selection-widget--choice-card">
                     <h2 className = "choice-card--header"> For the full Helpi, career guidence experience.</h2>
-                    <button className = "choice-card--button"> Start Long Quiz </button>
+                    <button className = "choice-card--button" onClick={() => nav('/home/detailed-quiz')}> Start Long Quiz </button>
                 </div> 
             </div>
         </div>
