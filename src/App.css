@@ -45,3 +45,21 @@
   font-weight: bold;
 }
 
+/* all for the table on home page*/
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  margin: 0 20px;
+  text-align: center;
+}
+
+.header {
+  font-size: 1.5em;
+}
+
+.paragraph {
+  margin-top: 0;
+}
