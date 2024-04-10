@@ -1,17 +1,18 @@
-import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function DescriptionTable() {
-    return (
-        <Container>
-          <Row>
-            <Col>{/* Empty column to push content to the right */}</Col>
-            <Col className="text-center">1 of 2</Col>
-            <Col className="text-center">2 of 2</Col>
-          </Row>
-        </Container>
-      );
-    }
+const DescriptionTable: React.FC = () => {
+    return <div>
+    <Container>
+        <Row>
+            <Col>First column.</Col>
+            <Col>
+                Second column.
+                lol
+            </Col>
+        </Row>
+    </Container>
+</div>;
+}
 export default DescriptionTable;
