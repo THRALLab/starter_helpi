@@ -1,28 +1,11 @@
-.Both-boxes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex-grow: 1;
-    border: 2px solid #000000;
-}
-
-.Home-box {
-    width: 40vh;
-    height: 50vh;
-    border: 2px solid #000000;
-    background-color: #888888;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 0 20px;
-}
-
 .Container {
+    margin-top: 12rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 58vh;
     background-color: #ffffff;
-    padding-top: 20px
+    padding-top: 50px
 }
 
 .Title {
