@@ -7,13 +7,11 @@ import { ProgressBarWidget } from './Components/ProgressBarWidget/ProgressBarWid
 
 export function BasicQuestionsPage() : React.JSX.Element {
     return (
-        <div className='container'>
         <div className='BasicQuestionsPage'> 
             <BasicQuestionsPageHeader></BasicQuestionsPageHeader>
             <GeneralQuestions></GeneralQuestions>
             <QuizInteraction></QuizInteraction>
             <ProgressBarWidget></ProgressBarWidget>
-        </div>
         </div>
     );
 }
