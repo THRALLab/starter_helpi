@@ -11,9 +11,11 @@ interface DisplayQuizProps {
 export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("root"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false);
+    const [answers, setAnswers] = useState<string[]>([]);
     const [currentAnswer, setCurrentAnswer] = useState<string>("");
 
     const handleAnswerSubmit = () => {
+        setAnswers([...answers, currentAnswer])
         const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
         if (nextQuestionId === "") {
             setIsQuizComplete(true); // End of the quiz
@@ -23,7 +25,14 @@ export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
     };
 
     if (isQuizComplete) {
-        return <div>Quiz Complete</div>;
+        return <div style={{justifyContent: "left"}}>
+        <h2>Quiz Complete</h2>
+        <br></br>
+        <h3>Answers:</h3>
+        <ol>
+        {answers.map((target: string) => (<li>{target}</li>))}
+        </ol>
+        </div>;
     }
 
     const currentQuestion = quiz[currentQuestionId];
