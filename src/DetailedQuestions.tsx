@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './General.css';
 import LinkButton from './LinkButton';
+import SliderQuestion from './SliderQuestion'
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -27,26 +28,17 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
 
-  function updateSliderValue1 (event: React.ChangeEvent<HTMLInputElement>){
-    setSliderValue1(parseInt(event.target.value));
-  }
-
-  function updateSliderValue2 (event: React.ChangeEvent<HTMLInputElement>){
-    setSliderValue2(parseInt(event.target.value));
-  }
+  
 
   return (
     <div className="DetailedQuestions">
-      <header className="General-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
+      <header className="General-header"><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
       <header className="DetailedQuestions-header">
-        <label>Question 1:</label><br />
-        <Form.Range style={{ transform: 'rotate(270deg)', width: '90px', marginLeft: '100px' }} value={sliderValue1} onChange={updateSliderValue1}/>
-        <p>Selected Value: {sliderValue1}</p>
+        <div className='Page-body'>
+          <SliderQuestion value={sliderValue1} onChange={setSliderValue1} label="Question 1:"></SliderQuestion>
 
-        <label>Question 2:</label><br />
-        <Form.Range style={{ transform: 'rotate(270deg)', width: '90px', marginLeft: '100px' }} value={sliderValue2} onChange={updateSliderValue2} />
-        <p>Selected Value: {sliderValue2}</p>
-
+          <SliderQuestion value={sliderValue2} onChange={setSliderValue2} label="Question 2:"></SliderQuestion>
+        </div>
       </header>
       <div className='API-Footer'>
         <Form>
