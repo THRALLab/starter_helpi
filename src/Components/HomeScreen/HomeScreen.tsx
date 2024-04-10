@@ -9,11 +9,11 @@ export function HomeScreen ({page, setPage}: Readonly<{page:string; setPage: (ne
     return (
       <div className="Container">
         <div className="Title">
-          <h1>Select A Quiz:</h1>
+          <h1 style={{color: 'white', fontWeight: 'bold'}}>Select A Quiz:</h1>
         </div>
         <div className="Both-boxes">
           <CardGroup>
-            <Card style={{height: '20rem', width: '30vh'}}>
+            <Card style={{color: 'white', backgroundColor: '#21273b', height: '21rem', width: '33vh' }}>
             <Card.Header style={{fontSize: 18, fontWeight: 'bold'}}>Basic Quiz</Card.Header>
               <Card.Body>
                 <Card.Text>
@@ -25,10 +25,10 @@ export function HomeScreen ({page, setPage}: Readonly<{page:string; setPage: (ne
               </Card.Body>
               <BasicButton page={page} setPage={setPage}></BasicButton>
             </Card>
-            <Card style={{height: '20rem', width: '30vh'}}>
+            <Card style={{color: 'white', backgroundColor: '#21273b', height: '21rem', width: '33vh'}}>
               <Card.Header style={{fontSize: 18, fontWeight: 'bold'}}>Detailed Quiz</Card.Header>
               <Card.Body>
-              <Card.Text>
+              <Card.Text style={{}}>
                 If you have time and want a more refined answer choose this quiz! You will be asked 
                 more in depth questions and provoke more thoughts about your interests and personality.
                 This quiz will also use AI to refine your answer even further and give a more specific 

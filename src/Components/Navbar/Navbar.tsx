@@ -25,11 +25,11 @@ export function Navbar2({page, setPage}: {page:string; setPage: (newPage: string
             <img src={logo} alt='logo' className="logo-img"/>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={() => handleNavClick("Home")}>Home</Nav.Link>
-            <Nav.Link onClick={() => handleNavClick("Basic")}>Basic Quiz</Nav.Link>
-            <Nav.Link onClick={() => handleNavClick("Detailed")}>Detailed Quiz</Nav.Link>
+            <Nav.Link style={{color: 'rgb(155, 158, 163)'}} onClick={() => handleNavClick("Home")}>Home</Nav.Link>
+            <Nav.Link style={{color: 'white'}} onClick={() => handleNavClick("Basic")}>Basic Quiz</Nav.Link>
+            <Nav.Link style={{color: 'white'}} onClick={() => handleNavClick("Detailed")}>Detailed Quiz</Nav.Link>
           </Nav>
-          <span className="navbar-text" style={{marginRight: '25px'}}>
+          <span className="navbar-text" style={{marginRight: '25px', color: 'white'}}>
               Current Page: {page}
           </span>
           <div className='d-flex align-items-center'>

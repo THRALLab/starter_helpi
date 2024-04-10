@@ -7,7 +7,7 @@ export default function BasicButton({page, setPage}: {page:string; setPage: (new
 ): JSX.Element {
     return (
         <div>
-            <Button onClick={() => setPage("Basic")}>Take Quiz!</Button>
+            <Button style= {{backgroundColor: 'rgb(104 35 255'}} onClick={() => setPage("Basic")}>Take Quiz!</Button>
         </div>
     )
 }
