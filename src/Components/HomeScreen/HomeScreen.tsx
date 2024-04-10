@@ -3,7 +3,7 @@ import DetailedButton from '../DetailedButton/DetailedButton';
 import './HomeScreen.css'
 import { Card, CardGroup } from 'react-bootstrap';
 
-
+//passed the state fields from app.tsx as props to the homescreen so they could then be passed down to the button components
 export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: string) => void}) {
 
 
