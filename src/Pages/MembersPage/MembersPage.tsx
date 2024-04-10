@@ -16,7 +16,7 @@ export function MembersPage() : JSX.Element {
                         <li> Jamie Pacheco</li>
                         <li> Claudia Chance</li>
                         <li> Edwin </li>
-                        <li> Nathan </li>
+                        <li> Nathan Wood </li>
                     </ul>
                 </div>
                 <div className = "members-page--page-links">
