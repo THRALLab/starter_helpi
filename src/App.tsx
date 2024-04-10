@@ -2,6 +2,10 @@ import React, { useState } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Basic from "./basic";
+import Detailed from "./detailed";
+import Navigation from "./navbar";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -25,27 +29,27 @@ function App() {
 		setKey(event.target.value);
 	}
 	return (
-		<div className="App">
-			<header className="App-header">
-				<h3>Hairum Qureshi</h3>
-				<h3>Olive Odida</h3>
-				<h3>Mithra Sankar</h3>
-				<h3>Olivia Folliard</h3>
-			</header>
-			<Form>
-				<Form.Label>API Key:</Form.Label>
-				<Form.Control
-					type="password"
-					placeholder="Insert API Key Here"
-					onChange={changeKey}
-				></Form.Control>
-				<br></br>
-				<Button className="Submit-Button" onClick={handleSubmit}>
-					Submit
-				</Button>
-			</Form>
-		</div>
+		<Router>
+			<div className="App">
+				<Navigation />
+				<Routes>
+					<Route path="/basic" Component={Basic} />
+					<Route path="/detailed" Component={Detailed} />
+				</Routes>
+				<Form>
+					<Form.Label>API Key:</Form.Label>
+					<Form.Control
+						type="password"
+						placeholder="Insert API Key Here"
+						onChange={changeKey}
+					></Form.Control>
+					<br></br>
+					<Button className="Submit-Button" onClick={handleSubmit}>
+						Submit
+					</Button>
+				</Form>
+			</div>
+		</Router>
 	);
 }
-
 export default App;
