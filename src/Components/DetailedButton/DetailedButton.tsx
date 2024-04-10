@@ -6,7 +6,7 @@ export default function DetailedButton({page, setPage}: {page:string; setPage: (
     //passed state as props to button component so that detailed page could be rendered on click
     return (
         <div>
-            <Button style= {{backgroundColor: 'rgb(104 35 255', borderColor: 'rgb(104 35 255'}} onClick={() => setPage("Detailed")}>Take Quiz!</Button>
+            <Button style={{margin: '1rem'}} onClick={() => setPage("Detailed")}>Take Quiz!</Button>
         </div>
     )
 }
