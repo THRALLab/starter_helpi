@@ -51,7 +51,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="Page-buttons">
-        <Button className="Detailed-Button" onClick={showDetailed}>Detailed Questions</Button>
+        <Button className="Button-color" onClick={showDetailed}>Detailed Questions</Button>
         </div>
 
         {homePageVisible && <HomePage key={key} />}
@@ -59,6 +59,7 @@ function App() {
         {basicVisible && <BasicQuestion key={key} />}
 
         {detailedVisible && <DetailedQuestions key={key} />}
+        <p> The detailed questions quiz is targeted towards narrowing down your optimal field of study. If you would like recommendations for specific careers within your field of interest, take this quiz! </p>
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
