@@ -1,18 +1,16 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const DescriptionTable: React.FC = () => {
-    return <div>
-    <Container>
-        <Row>
-            <Col>First column.</Col>
-            <Col>
-                Second column.
-                lol
-            </Col>
-        </Row>
-    </Container>
-</div>;
+    return <div className="container">
+        <div className="section">
+            <h2 className="header">Basic</h2>
+            <p className="paragraph">The basic assessment......................................</p>
+        </div>
+        <div className="section">
+            <h2 className="header">Detailed</h2>
+            <p className="paragraph">The Detailed assessment will consist of more
+                                     questions and will give you a more 
+                                     accurate and detailed assesment of what carreer you should choose.</p>
+        </div>
+    </div>;
 }
 export default DescriptionTable;
