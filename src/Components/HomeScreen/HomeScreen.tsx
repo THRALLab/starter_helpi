@@ -35,7 +35,7 @@ export function HomeScreen({ page, setPage }: Readonly<{ page: string; setPage: 
                 to suggest a job that would make you feel fulfilled.
               </Card.Text>
             </Card.Body>
-            <BasicButton page={page} setPage={setPage}></BasicButton>
+            <DetailedButton page={page} setPage={setPage}></DetailedButton>
           </Card>
         </CardGroup>
       </div>
