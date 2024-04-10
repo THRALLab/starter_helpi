@@ -3,14 +3,18 @@ import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 
 const BasicPage = () => {
-	const [response, setResponse] = useState<(boolean | null)[]>
-	([null, null, null, null, null, null, null, null])
-	function updateChoice(event: React.ChangeEvent<HTMLInputElement>, index:number){
-		const updatedResponse = [...response];
-		updatedResponse[index] = event.target.checked ? true : null;
-		setResponse(updatedResponse)
-		console.log(response[1]);
+	const [response, setResponse] = useState<(boolean)[]>
+	([false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false])
+	function updateChoice(index:number){
+		setResponse(prevResponse => {
+			const updatedResponse = [...prevResponse];
+			updatedResponse[index] = true;
+			return updatedResponse;
+		  });
 	}
+	console.log(response[0]);
+	console.log(response[1]);
+	console.log(response[2]);
 	return (<>
 	<style>{`
                 .QuestionNum {
@@ -49,16 +53,18 @@ const BasicPage = () => {
 					id="q1-Option1"
 					label="holder"
 					name="question1"
-					onChange={(e) => updateChoice(e, 0)}
-					checked = {response[0] === true}
+					onChange={() => updateChoice(0)}
+					checked={response[0] ===true }
+		
 					/>
 				<Form.Check
 					type="radio"
 					id="q-1Option2"
-					label="holder"
+					label="thing"
 					name="question1"
-					onChange={(e) => updateChoice(e, 0)}
-					checked = {response[0] === false}
+					onChange={() => updateChoice(1)}
+					checked={response[1] === true}
+				
 					/>
 			</span>
 			<span className="QuestionNum">#2</span>
@@ -68,7 +74,8 @@ const BasicPage = () => {
 					id="q2-Option1"
 					label="holder"
 					name="question2"
-					onChange={(e) => updateChoice(e, 1)}
+					onChange={() => updateChoice(2)}
+					checked={response[2] === true}
 
 					/>
 				<Form.Check 
@@ -76,7 +83,8 @@ const BasicPage = () => {
 					id="q2-Option2"
 					label="holder"
 					name="question2"
-					onChange={(e) => updateChoice(e, 1)}
+					onChange={() => updateChoice(3)}
+					checked={response[3] === true}
 
 					/>
 			</span>
@@ -87,7 +95,8 @@ const BasicPage = () => {
 					id="q3-Option1"
 					label="holder"
 					name="question3"
-					onChange={(e) => updateChoice(e, 2)}
+					onChange={() => updateChoice(4)}
+					checked={response[4] === true}
 
 					/>
 				<Form.Check 
@@ -95,7 +104,8 @@ const BasicPage = () => {
 					id="q3-Option2"
 					label="holder"
 					name="question3"
-					onChange={(e) => updateChoice(e, 2)}
+					onChange={() => updateChoice(5)}
+					checked={response[5] === true}
 
 
 					/>
@@ -107,7 +117,8 @@ const BasicPage = () => {
 					id="q4-Option1"
 					label="holder"
 					name="question4"
-					onChange={(e) => updateChoice(e, 3)}
+					onChange={() => updateChoice(6)}
+					checked={response[6] === true}
 
 
 					/>
@@ -116,7 +127,8 @@ const BasicPage = () => {
 					id="q4-Option2"
 					label="holder"
 					name="question4"
-					onChange={(e) => updateChoice(e, 3)}
+					onChange={() => updateChoice(7)}
+					checked={response[7] === true}
 
 
 					/>
@@ -132,7 +144,8 @@ const BasicPage = () => {
 					id="q5-Option1"
 					label="holder"
 					name="question5"
-					onChange={(e) => updateChoice(e, 4)}
+					onChange={() => updateChoice(8)}
+					checked={response[8] === true}
 
 
 					>
@@ -142,7 +155,8 @@ const BasicPage = () => {
 					id="q5-Option2"
 					label="holder"
 					name="question5"
-					onChange={(e) => updateChoice(e, 4)}
+					onChange={() => updateChoice(9)}
+					checked={response[9] === true}
 
 					>
 				</Form.Check>
@@ -156,7 +170,8 @@ const BasicPage = () => {
 					id="q6-Option1"
 					label="holder"
 					name="question5"
-					onChange={(e) => updateChoice(e, 5)}
+					onChange={() => updateChoice(10)}
+					checked={response[10] === true}
 
 					>
 				</Form.Check>
@@ -165,7 +180,8 @@ const BasicPage = () => {
 					id="q6-Option2"
 					label="holder"
 					name="question6"
-					onChange={(e) => updateChoice(e, 5)}
+					onChange={() => updateChoice(11)}
+					checked={response[11] === true}
 
 					>
 				</Form.Check>
@@ -179,7 +195,8 @@ const BasicPage = () => {
 					id="q7-Option1"
 					label="holder"
 					name="question7"
-					onChange={(e) => updateChoice(e, 6)}
+					onChange={() => updateChoice(12)}
+					checked={response[12] === true}
 	
 					>
 				</Form.Check>
@@ -188,7 +205,8 @@ const BasicPage = () => {
 					id="q7-Option2"
 					label="holder"
 					name="question7"
-					onChange={(e) => updateChoice(e, 6)}
+					onChange={() => updateChoice(13)}
+					checked={response[13] === true}
 
 
 					>
@@ -203,7 +221,8 @@ const BasicPage = () => {
 					id="q8-Option1"
 					label="holder"
 					name="question8"
-					onChange={(e) => updateChoice(e, 7)}
+					onChange={() => updateChoice(14)}
+					checked={response[14] === true}
 
 
 					>
@@ -213,7 +232,8 @@ const BasicPage = () => {
 					id="q8-Option2"
 					label="holder"
 					name="question8"
-					onChange={(e) => updateChoice(e, 7)}
+					onChange={() => updateChoice(15)}
+					checked={response[15] === true}
 					
 					>
 				</Form.Check>
