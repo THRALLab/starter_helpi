@@ -6,7 +6,8 @@
 	border-top: 1px solid black;
 }
 .names-container{
-	border: 1px solid black;
+	border: 1px solid #6923ff;
 	padding: 0.5rem 1rem;
 	border-radius: 5px;
+	color: white;
 }

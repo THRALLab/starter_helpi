@@ -9,7 +9,7 @@ export function HomeScreen({ page, setPage }: Readonly<{ page: string; setPage: 
   return (
     <div className="Container">
       <div className="Title">
-        <h1>Select A Quiz:</h1>
+        <h1>Select A <span style={{color: '#6923ff'}}>Quiz</span>:</h1>
       </div>
       <div className="Both-boxes">
         <CardGroup>
