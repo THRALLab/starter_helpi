@@ -15,7 +15,7 @@ export function HomeScreen({ page, setPage }: Readonly<{ page: string; setPage: 
       <div className="Both-boxes">
         <CardGroup>
           <Card style={{ color: 'white', backgroundColor:'#21273b', width: '50vh' }}>
-            <Card.Header style={{ fontSize: 18, fontWeight: 'bold' }}>Basic Quiz</Card.Header>
+            <Card.Header style={{ fontSize: 18, fontWeight: 'bold', padding: "1rem 0rem" }}>Basic Quiz</Card.Header>
             <Card.Body>
               <Card.Text>
                 If you're looking for a quick quiz use this choice! A few brief
@@ -27,7 +27,7 @@ export function HomeScreen({ page, setPage }: Readonly<{ page: string; setPage: 
             <BasicButton page={page} setPage={setPage}></BasicButton>
           </Card>
           <Card style={{ color: 'white', backgroundColor:'#21273b', width: '30vh' }}>
-            <Card.Header style={{ fontSize: 18, fontWeight: 'bold' }}>Detailed Quiz</Card.Header>
+            <Card.Header style={{ fontSize: 18, fontWeight: 'bold', padding: "1rem 0rem" }}>Detailed Quiz</Card.Header>
             <Card.Body>
               <Card.Text>
                 If you're looking for a quick quiz use this choice! A few brief
