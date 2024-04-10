@@ -7,10 +7,15 @@
     text-align: center;
   }
 
-.Question-description {
+.basic-description {
   display: flex;
   flex-direction: column;
   width: 60%;
   height: 40%;
   text-align: center;
+}
+
+.detailed-description {
+  width: 50%;
+  height: 60%;
 }
