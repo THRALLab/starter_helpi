@@ -34,12 +34,18 @@
 .App-link {
   color: #61dafb;
 }
+
 .Page-button {
   background-color: #8a2be2;
   border-radius: 10%;
   width: 100px;
   height: 50px;
   text-align: center;
+}
+
+.Button-color {
+  background-color: #9370db;
+  border-bottom: 2px;
 }
 
 @keyframes App-logo-spin {
