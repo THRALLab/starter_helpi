@@ -12,6 +12,16 @@
     background: linear-gradient(to left, rgba(107, 17, 203, 0.655), rgba(78, 85, 97, 0.495));
 }
 
+.navbar-back {
+    color: white;
+    margin-left: 2px;
+    padding-left: 2%;
+    padding-right: 2%;
+    border: 10px;
+    background: gray;
+    border-radius: 10px;
+}
+
 .logo-img {
     width: 140px;
     height: auto;

@@ -28,12 +28,16 @@ export function Navbar2({page, setPage}: {page:string; setPage: (newPage: string
             <Nav.Link onClick={() => handleNavClick("Basic")}>Basic Quiz</Nav.Link>
             <Nav.Link onClick={() => handleNavClick("Detailed")}>Detailed Quiz</Nav.Link>
           </Nav>
-          {page !== "Home" && (
-            <Nav.Link onClick={handleBackButtonClick}>Back</Nav.Link>
-          )}
-          <span className="navbar-text">
-            Current Page: {page}
-          </span>
+          <div className='align-items-center'>
+            <span className="navbar-text">
+              Current Page: {page}
+            </span>
+            {page !== "Home" && (
+              <div className='navbar-back'>
+                <Nav.Link className='navbar-back' onClick={handleBackButtonClick}>Back</Nav.Link>
+              </div>
+            )}  
+          </div>
         </Container>
       </Navbar>
   );
