@@ -33,7 +33,7 @@ function App() {
   return (
     //renders the components corresponding to the state of the page
     <div className="App">
-      <Navbar2></Navbar2>
+      <Navbar2 page={page} setPage={setPage}></Navbar2>
       {page === "Home" && <HomeScreen page={page} setPage={setPage}/>}
       {page === "Basic" && <BasicPage/>}
       {page === "Detailed" && <DetailedPage/>}

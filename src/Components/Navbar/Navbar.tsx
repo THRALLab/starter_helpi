@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from './SmallerWW-removebg-preview.png'
 import '../Navbar/Navbar2.css'
 
-function Navbar2() {
+export function Navbar2({page, setPage}: {page:string; setPage: (newPage: string) => void}) {
   return (
     <Navbar fixed="top" bg="dark bg-dark gradient-custom rounded" style={{height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem'}} data-bs-theme="dark" expand="lg">
         <Container>
@@ -12,9 +12,9 @@ function Navbar2() {
             <img src={logo} className="logo-img"/>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="https://michaellutz1.github.io/starter_helpi/">Home</Nav.Link>
-            <Nav.Link href="#Basic">Basic Quiz</Nav.Link>
-            <Nav.Link href="#Detailed">Detailed Quiz</Nav.Link>
+            <Nav.Link onClick={() => setPage("Home")}>Home</Nav.Link>
+            <Nav.Link onClick={() => setPage("Basic")}>Basic Quiz</Nav.Link>
+            <Nav.Link onClick={() => setPage("Detailed")}>Detailed Quiz</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
