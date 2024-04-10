@@ -1,6 +1,6 @@
 import { Question } from "../../interfaces/QuestionTypes";
 
-const determineNextQuestionId = (currentQuestionId: string, userAnswer: string): string => {\
+const determineNextQuestionId = (currentQuestionId: string, userAnswer: string): string => {
   if (currentQuestionId === "root") return "question2";
   else if (currentQuestionId === "question2") return "question3"
   else return "";
