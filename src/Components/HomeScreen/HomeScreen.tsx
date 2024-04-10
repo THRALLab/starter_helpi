@@ -4,8 +4,7 @@ import './HomeScreen.css'
 import { Card, CardGroup } from 'react-bootstrap';
 
 //passed the state fields from app.tsx as props to the homescreen so they could then be passed down to the button components
-export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: string) => void}) {
-
+export function HomeScreen ({page, setPage}: Readonly<{page:string; setPage: (newPage: string) => void}>) {
 
     return (
       <div className="Container">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Navbar2 from './Components/Navbar/Navbar'
 import { HomeScreen } from './Components/HomeScreen/HomeScreen';
 import AppFooter from './Components/AppFooter/AppFooter';
 import { BasicPage } from './Components/BasicPage/BasicPage';
@@ -32,6 +33,7 @@ function App() {
   return (
     //renders the components corresponding to the state of the page
     <div className="App">
+      <Navbar2 page={page} setPage={setPage}></Navbar2>
       {page === "Home" && <HomeScreen page={page} setPage={setPage}/>}
       {page === "Basic" && <BasicPage/>}
       {page === "Detailed" && <DetailedPage/>}
