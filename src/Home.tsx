@@ -33,7 +33,7 @@ function Home() {
         
         <div className="Page-body">
 
-          <p className='Page-text'>Welcome to the Career Lab! Select an option to start the quiz!</p>
+          <p className='Page-text'>Welcome to the Career Lab! We have two quizzes you can take to help find your ideal career. Your answers will be reviewed by ChatGPT to generate a custom report of what caeer paths suit you the best. This project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory Jordan</p>
 
           <Container>
             <Row>

@@ -9,6 +9,9 @@
     position: relative;
     display: flex;
     flex-flow: row nowrap;
+    color: white;
+    background-color: black;
+    
 }
 
 .Header-button {
