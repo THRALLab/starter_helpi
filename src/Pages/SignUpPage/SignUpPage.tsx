@@ -1,8 +1,7 @@
-import { Form } from "react-bootstrap"
+import { Col, Container, FloatingLabel, Form, Row } from "react-bootstrap"
 import "./SignUpPage.css"
 
 export function SignUpPage() : React.JSX.Element {
-
     return (
         <div className = "sign-up-page">
             <div className = "sign-up-page--content">
@@ -11,9 +10,19 @@ export function SignUpPage() : React.JSX.Element {
                     <div className = "form-container--content">
                         <Form>
                             <Form.Group className="mb-3 col">
-                                <Form.Label> Name </Form.Label>
-                                <Form.Control/>
+                                <Container fluid>
+                                    <Row>
+                                        <FloatingLabel label="First Name"> 
+                                            <Form.Control type = "text"/>
+                                        </FloatingLabel>
+
+                                        <FloatingLabel label = "Last Name"> 
+                                            <Form.Control type = "text" />    
+                                        </FloatingLabel>
+                                    </Row>
+                                </Container>
                             </Form.Group>
+
                         </Form>
                     </div>
                 </div>

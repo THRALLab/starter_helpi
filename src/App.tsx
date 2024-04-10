@@ -39,8 +39,8 @@ function App() {
                     <Route path = "/home" element = {<HomePage/>}> </Route>
                     <Route path = "/login" element = {<MembersPage/>}></Route>
                     <Route path = "/sign-up" element = {<SignUpPage/>}></Route>
+                    <Route path = "/short-quiz" element = {<BasicQuestionsPage/>}> </Route>
                     <Route path = "/" element = {<MembersPage/>}></Route>
-                    <Route path = "BasicQuestionsPage" element = {<BasicQuestionsPage/>}> </Route>
                   </Routes>
                 </HashRouter>
               </div>

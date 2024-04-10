@@ -12,7 +12,7 @@
 }
 
 .sign-up-page--form-container {
-    
+   margin: 5vh; 
 }
 
 .form-container--content {
@@ -20,9 +20,12 @@
     background-color: white;
     border-radius: 10px;
 
-    width: auto;
+    min-width: 500px;
 
     padding: 50px;
     margin-block: 20vh 10vh 10vh 10vh;
     
+    
+    font-weight:600;
+    font-size: larger;
 }
