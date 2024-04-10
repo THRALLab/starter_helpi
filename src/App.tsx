@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
-import { AdvancedQuiz } from './pages/AdvancedQuiz'
 import { basicQuiz } from "./assets/Quizzes/BasicQuiz";
 import { DisplayQuiz } from "./components/DisplayQuiz";
 // Import any other components or pages you have
@@ -19,7 +18,6 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/basic-quiz" element={<DisplayQuiz quiz={basicQuiz} />} />
-          <Route path="/advanced-quiz" element={<AdvancedQuiz />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </div>

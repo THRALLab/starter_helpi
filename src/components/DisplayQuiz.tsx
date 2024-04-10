@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Question } from "../interfaces/QuestionTypes";
 import { MC_SINGLE_RESPONSE } from "./MC_SINGLE_RESPONSE";
 import { MC_MULTI_RESPONSE } from "./MC_MULTI_RESPONSE";
+import { USER_RANKING } from "./USER_RANKING";
 
 interface DisplayQuizProps {
     quiz: Record<string, Question>;
@@ -10,9 +11,9 @@ interface DisplayQuizProps {
 
 export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("root"); // Starting question ID
-    const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false);
-    const [answers, setAnswers] = useState<string[]>([]);
-    const [currentAnswer, setCurrentAnswer] = useState<string>("");
+    const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
+    const [answers, setAnswers] = useState<string[]>([]); // Array of all question answers
+    const [currentAnswer, setCurrentAnswer] = useState<string>(""); // Use to store answer for question currently being displayed 
 
     const handleAnswerSubmit = () => {
         setAnswers([...answers, currentAnswer])
@@ -27,7 +28,7 @@ export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
     if (isQuizComplete) {
         return <div style={{justifyContent: "left"}}>
         <h2>Quiz Complete</h2>
-        <br></br>
+        <br></br> 
         <h3>Answers:</h3>
         <ol>
         {answers.map((target: string) => (<li>{target}</li>))}
@@ -50,6 +51,8 @@ export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
             return <MC_SINGLE_RESPONSE {...questionComponentProps} />;
         case "MC_MULTI_RESPONSE":
             return <MC_MULTI_RESPONSE {...questionComponentProps} />;
+        case "USER_RANKING":
+            return <USER_RANKING {...questionComponentProps} />;
         default:
             return <h1>Unknown question type</h1>;
     }
