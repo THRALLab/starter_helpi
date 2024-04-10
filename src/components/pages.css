@@ -8,11 +8,7 @@
   }
 
 .Question-description {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-size: calc(5px + 2vmin);
-  width: 10%;
+  background-color: aqua;
+  width: 20%;
+  height: 100%;
 }

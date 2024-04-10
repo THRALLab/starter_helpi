@@ -7,7 +7,7 @@ export function HomePage(key: AIKey): JSX.Element {
         <Container>
             <Row>
                 <Col>
-                    <div className="question-description">
+                    <div className="Question-description">
                         The basic questions will ask you more simple, easier<br></br>
                         questions that will give you a quick idea about your<br></br> 
                         potential ideal career.
