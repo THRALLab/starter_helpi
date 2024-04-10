@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
+import NavigationBar from "./components/navigation-bar/navigationBar";
 
-// This is state 0
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -10,6 +10,7 @@ const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: 
 if (prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
+
 
 function App() {
     const [currentState, setCurrentState] = useState(0);
@@ -27,7 +28,6 @@ function App() {
     }
     return (
         <div className="App">
-
              {/* Buttons to switch states */}
              <div>
                 <Button onClick={() => setCurrentState(0)}>State 0</Button>
@@ -36,6 +36,7 @@ function App() {
             </div>
             <div>
                 <h1> Home Page</h1>
+                <NavigationBar />
                 <p>This is the home page.</p>
                 <p>add your main features</p>
                 <ul>
@@ -69,3 +70,7 @@ function App() {
 }
 
 export default App;
+
+function setActiveTab(tabName: string) {
+    throw new Error("Function not implemented.");
+}
