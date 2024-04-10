@@ -14,9 +14,10 @@
 
 .navbar-back {
     color: white;
-    margin-left: 2px;
+    margin-left: 1px;
     padding-left: 2%;
-    padding-right: 2%;
+    padding-right: 7%;
+    height: 23px;
     border: 10px;
     background: gray;
     border-radius: 10px;

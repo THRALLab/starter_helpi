@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from './SmallerWW-removebg-preview.png'
 import '../Navbar/Navbar2.css'
+import { GoArrowLeft } from "react-icons/go";
 
 export function Navbar2({page, setPage}: {page:string; setPage: (newPage: string) => void}) {
   const [previousPage, setPreviousPage] = useState<string>("Home");
@@ -21,20 +22,21 @@ export function Navbar2({page, setPage}: {page:string; setPage: (newPage: string
     <Navbar fixed="top" bg="dark bg-dark gradient-custom rounded" style={{height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem'}} data-bs-theme="dark" expand="lg">
         <Container>
           <Navbar.Brand href="#home" className='brand-logo'>
-            <img src={logo} className="logo-img"/>
+            <img src={logo} alt='logo' className="logo-img"/>
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => handleNavClick("Home")}>Home</Nav.Link>
             <Nav.Link onClick={() => handleNavClick("Basic")}>Basic Quiz</Nav.Link>
             <Nav.Link onClick={() => handleNavClick("Detailed")}>Detailed Quiz</Nav.Link>
           </Nav>
-          <div className='align-items-center'>
-            <span className="navbar-text">
+          <span className="navbar-text" style={{marginRight: '25px'}}>
               Current Page: {page}
-            </span>
+          </span>
+          <div className='d-flex align-items-center'>
             {page !== "Home" && (
-              <div className='navbar-back'>
-                <Nav.Link className='navbar-back' onClick={handleBackButtonClick}>Back</Nav.Link>
+              <div className='d-flex align-items-center navbar-back'>
+                <GoArrowLeft style={{ marginRight: '2px'}}/>
+                <Nav.Link onClick={handleBackButtonClick}>Back</Nav.Link>
               </div>
             )}  
           </div>
