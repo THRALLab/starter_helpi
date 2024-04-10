@@ -6,7 +6,7 @@ import logo from './SmallerWW-removebg-preview.png'
 import '../Navbar/Navbar2.css'
 import { GoArrowLeft } from "react-icons/go";
 
-export function Navbar2({page, setPage}: {page:string; setPage: (newPage: string) => void}) {
+export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: string) => void }) {
   const [previousPage, setPreviousPage] = useState<string>("Home");
 
   const handleNavClick = (newPage: string) => {
@@ -19,6 +19,7 @@ export function Navbar2({page, setPage}: {page:string; setPage: (newPage: string
   }
 
   return (
+<<<<<<< HEAD
     <Navbar fixed="top" bg="dark bg-dark gradient-custom rounded" style={{height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem'}} data-bs-theme="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand onClick={() => handleNavClick("Home")} href="#home" className='brand-logo'>
@@ -51,6 +52,31 @@ export function Navbar2({page, setPage}: {page:string; setPage: (newPage: string
         </Navbar.Collapse>
         </Container>
       </Navbar>
+=======
+    <Navbar sticky="top" bg="dark bg-dark gradient-custom rounded" style={{ height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem' }} data-bs-theme="dark" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home" className='brand-logo'>
+          <img src={logo} alt='logo' className="logo-img" />
+        </Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link onClick={() => handleNavClick("Home")}>Home</Nav.Link>
+          <Nav.Link onClick={() => handleNavClick("Basic")}>Basic Quiz</Nav.Link>
+          <Nav.Link onClick={() => handleNavClick("Detailed")}>Detailed Quiz</Nav.Link>
+        </Nav>
+        <span className="navbar-text" style={{ marginRight: '25px' }}>
+          Current Page: {page}
+        </span>
+        <div className='d-flex align-items-center'>
+          {page !== "Home" && (
+            <div className='d-flex align-items-center navbar-back'>
+              <GoArrowLeft style={{ marginRight: '2px' }} />
+              <Nav.Link onClick={handleBackButtonClick}>Back</Nav.Link>
+            </div>
+          )}
+        </div>
+      </Container>
+    </Navbar>
+>>>>>>> 9a177290c36fb011e3ec5e72319cba1ff2abfc84
   );
 }
 

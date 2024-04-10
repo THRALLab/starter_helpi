@@ -2,7 +2,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 3rem;
+	padding: 2rem;
+	border-top: 1px solid black;
 }
 .names-container{
 	border: 1px solid black;
