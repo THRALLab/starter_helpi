@@ -3,6 +3,10 @@ import './App.css';
 import Navbar2 from './Components/Navbar/Navbar'
 import { HomeScreen } from './Components/HomeScreen/HomeScreen';
 import AppFooter from './Components/AppFooter/AppFooter';
+import { BasicPage } from './Components/BasicPage/BasicPage';
+import { DetailedPage } from './Components/DetailedPage/DetailedPage';
+
+
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -14,6 +18,7 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [page, setPage] = useState<string>("Home");
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -26,9 +31,12 @@ function App() {
     setKey(event.target.value);
   }
   return (
+    //renders the components corresponding to the state of the page
     <div className="App">
       <Navbar2></Navbar2>
-      <HomeScreen></HomeScreen>
+      {page === "Home" && <HomeScreen page={page} setPage={setPage}/>}
+      {page === "Basic" && <BasicPage/>}
+      {page === "Detailed" && <DetailedPage/>}
       <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
     </div>
   );

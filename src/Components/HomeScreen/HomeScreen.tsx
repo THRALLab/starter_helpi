@@ -1,7 +1,10 @@
+import BasicButton  from '../BasicButton/BasicButtton';
+import DetailedButton from '../DetailedButton/DetailedButton';
 import './HomeScreen.css'
 import { Card, CardGroup } from 'react-bootstrap';
 
-export function HomeScreen () {
+//passed the state fields from app.tsx as props to the homescreen so they could then be passed down to the button components
+export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: string) => void}) {
 
 
     return (
@@ -21,6 +24,7 @@ export function HomeScreen () {
                   to suggest a job that would make you feel fulfilled.
                 </Card.Text>
               </Card.Body>
+              <BasicButton page={page} setPage={setPage}></BasicButton>
             </Card>
             <Card style={{height: '20rem', width: '30vh'}}>
               <Card.Header style={{fontSize: 18, fontWeight: 'bold'}}>Detailed Quiz</Card.Header>
@@ -32,6 +36,7 @@ export function HomeScreen () {
                 answer.
               </Card.Text>
               </Card.Body>
+              <DetailedButton page={page} setPage={setPage}></DetailedButton>
             </Card>
             </CardGroup>
         </div>
