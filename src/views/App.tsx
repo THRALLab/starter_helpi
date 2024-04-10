@@ -1,6 +1,6 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { Footer } from "./components/Footer";
+import logo from "../logo.svg";
+import "../App.css";
+import { Footer } from "../components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
