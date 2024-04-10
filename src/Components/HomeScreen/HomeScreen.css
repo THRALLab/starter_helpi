@@ -1,0 +1,16 @@
+.Container {
+    /* margin-top: 12rem; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 58vh; */
+    background-color: #0e1014;
+    padding-top: 50px;
+}
+
+.Title {
+    width: 80%;
+    padding-left: 20px;
+    text-align: left;
+    color: white
+}
