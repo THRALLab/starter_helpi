@@ -49,7 +49,7 @@ export function USER_RANKING({
     return (
         <div>
             <h3>{question}</h3>
-            <ol>
+            <ol style={{textAlign: "left"}}>
                 {categories.map((category) => (
                     <li key={category}>
                         <Button
