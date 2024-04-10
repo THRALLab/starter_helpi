@@ -23,8 +23,8 @@ export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: st
                   option of the ideal career for you! With the power of AI, your answers will be used
                   to suggest a job that would make you feel fulfilled.
                 </Card.Text>
-                <BasicButton page={page} setPage={setPage}></BasicButton>
               </Card.Body>
+              <BasicButton page={page} setPage={setPage}></BasicButton>
             </Card>
             <Card style={{height: '20rem', width: '30vh'}}>
               <Card.Header style={{fontSize: 18, fontWeight: 'bold'}}>Detailed Quiz</Card.Header>
@@ -35,8 +35,8 @@ export function HomeScreen ({page, setPage}: {page:string; setPage: (newPage: st
                 This quiz will also use AI to refine your answer even further and give a more specific 
                 answer.
               </Card.Text>
-              <DetailedButton page={page} setPage={setPage}></DetailedButton>
               </Card.Body>
+              <DetailedButton page={page} setPage={setPage}></DetailedButton>
             </Card>
             </CardGroup>
         </div>
