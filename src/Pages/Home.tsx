@@ -10,16 +10,13 @@ const Home: React.FC<HomeProp> = ({ handlePage }) => {
     return (
     <div className="home-container">
             <div className="home-column">
-                <h1>Home Page</h1>
-                <Button className="Home-Button" onClick={() => handlePage('Home')}>Home Page</Button>
+                <Button className="home-button" onClick={() => handlePage('Home')}>Home Page</Button>
             </div>
             <div className="home-column">
-                <h1>Basic Questions</h1>
-                <Button className="Basic-Button" onClick={() => handlePage('Basic')}>Basic Questions</Button>
+                <Button className="basic-button" onClick={() => handlePage('Basic')}>Basic Questions</Button>
             </div>
             <div className="home-column">
-                <h1>Detailed Questions</h1>
-                <Button className="Detailed-Button" onClick={() => handlePage('Detailed')}>Detailed Questions</Button>
+                <Button className="detailed-button" onClick={() => handlePage('Detailed')}>Detailed Questions</Button>
             </div>
         </div>
     );
