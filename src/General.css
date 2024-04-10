@@ -1,26 +1,42 @@
 .General-header {
-    background-color: #000000;
+    margin-bottom: 3vh;
     min-height: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    margin-bottom: 25px;
+    font-size: calc(10px + 3vmin);
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
 }
 
-.page-body {
-    min-height: 100vh;
+.Header-button {
+    position: absolute;
+    align-items: right;
+    font-size: calc(10px + 2vmin);
+    margin-right: 5%;
+    right: 0;
+}
+
+.Header-toggle {
+    position: absolute;
+    align-items: left;
+    font-size: calc(10px + 1vmin);
+    margin-left: 5%;
+    left: 0;
+}
+
+.Page-body {
+    background-color: white;
+    min-height: 87vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    display: inline-block;
+    font-size: calc(5px + 2vmin);
+    color: black;
+    position: relative;
 }
 
 .basic-button {
@@ -31,5 +47,7 @@
 }
 
 .API-Footer {
-    margin-top: 50px;
+    background-color: black;
+    color: black;
+    margin-top: 0px;
 }

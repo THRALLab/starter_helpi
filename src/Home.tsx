@@ -29,22 +29,25 @@ function Home() {
 
   return (
     <div>
-        <header className="General-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
+        <header className="General-header"><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
         
-        <div className="PageBody">
+        <div className="Page-body">
+
+          <p className='Page-text'>Welcome to the Career Lab! Select an option to start the quiz!</p>
+
           <Container>
             <Row>
               <Col>
                 <p className='button'>
                 <LinkButton to="simplequestions" label="Basic Quiz"></LinkButton>
                 </p>
-                <p>
+                <p className='Text-basic'>
                   This is a basic quiz with 15 questions.
                 </p>
-                <p>
+                <p className='Text-basic'>
                   It will take around Y to Z minutes to complete.
                 </p>
-                <p>
+                <p className='Text-basic'>
                   The questions are simple and multiple choice.
                 </p>
               </Col>
@@ -52,13 +55,13 @@ function Home() {
                 <p className='button'>
                   <LinkButton to="detailedquestions" label="Detailed Quiz"></LinkButton>
                 </p>
-                <p>
+                <p className='Text-detailed'>
                   This is a detailed quiz with 30 questions.
                 </p>
-                <p>
+                <p className='Text-detailed'>
                   It will take around Y to Z minutes to complete.
                 </p>
-                <p>
+                <p className='Text-detailed'>
                   The questions are answered on a scale.
                 </p>
               </Col>
