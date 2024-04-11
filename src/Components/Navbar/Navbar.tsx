@@ -19,64 +19,38 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
   }
 
   return (
-<<<<<<< HEAD
-    <Navbar fixed="top" bg="dark bg-dark gradient-custom rounded" style={{height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem'}} data-bs-theme="dark" expand="lg">
-        <Container fluid>
-          <Navbar.Brand onClick={() => handleNavClick("Home")} href="#home" className='brand-logo'>
-            <img src={logo} alt='logo' className="logo-img"/>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls='basic-navbar-nav'/>
-          <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link onClick={() => handleNavClick("Home")}>
-              {(page === "Home" && (<text className='navbar-selected'>Home</text>)) || (page !== "Home" && (<text>Home</text>))}
-            </Nav.Link>
-            <Nav.Link onClick={() => handleNavClick("Basic")}>
-              {(page === "Basic" && (<text className='navbar-selected'>Basic</text>)) || (page !== "Basic" && (<text>Basic</text>))}
-            </Nav.Link>
-            <Nav.Link onClick={() => handleNavClick("Detailed")}>
-              {(page === "Detailed" && (<text className='navbar-selected'>Detailed</text>)) || (page !== "Detailed" && (<text>Detailed</text>))}
-            </Nav.Link>
-          </Nav>
-          <span className="navbar-text" style={{marginRight: '25px'}}>
-              Current Page: {page}
-          </span>
-          <div className='d-flex align-items-center'>
-            {page !== "Home" && ( 
-              <div className='d-flex align-items-center navbar-back'>
-                <GoArrowLeft style={{ marginRight: '2px'}}/>
-                <Nav.Link onClick={handleBackButtonClick}>Back</Nav.Link>
-              </div>
-            )}  
-          </div>
-        </Navbar.Collapse>
-        </Container>
-      </Navbar>
-=======
     <Navbar sticky="top" bg="dark bg-dark gradient-custom rounded" style={{ height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem' }} data-bs-theme="dark" expand="lg">
-      <Container>
-        <Navbar.Brand href="#home" className='brand-logo'>
+      <Container fluid>
+        <Navbar.Brand onClick={() => handleNavClick("Home")} href="#home" className='brand-logo'>
           <img src={logo} alt='logo' className="logo-img" />
         </Navbar.Brand>
+          <Navbar.Toggle aria-controls='basic-navbar-nav'/>
+          <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link onClick={() => handleNavClick("Home")}>Home</Nav.Link>
-          <Nav.Link onClick={() => handleNavClick("Basic")}>Basic Quiz</Nav.Link>
-          <Nav.Link onClick={() => handleNavClick("Detailed")}>Detailed Quiz</Nav.Link>
+          <Nav.Link onClick={() => handleNavClick("Home")}>
+              {(page === "Home" && (<text className='navbar-selected'>Home</text>)) || (page !== "Home" && (<text>Home</text>))}
+            </Nav.Link>
+          <Nav.Link onClick={() => handleNavClick("Basic")}>
+              {(page === "Basic" && (<text className='navbar-selected'>Basic</text>)) || (page !== "Basic" && (<text>Basic</text>))}
+            </Nav.Link>
+          <Nav.Link onClick={() => handleNavClick("Detailed")}>
+              {(page === "Detailed" && (<text className='navbar-selected'>Detailed</text>)) || (page !== "Detailed" && (<text>Detailed</text>))}
+            </Nav.Link>
         </Nav>
         <span className="navbar-text" style={{ marginRight: '25px' }}>
           Current Page: {page}
         </span>
         <div className='d-flex align-items-center'>
-          {page !== "Home" && (
+          {page !== "Home" && ( 
             <div className='d-flex align-items-center navbar-back'>
               <GoArrowLeft style={{ marginRight: '2px' }} />
               <Nav.Link onClick={handleBackButtonClick}>Back</Nav.Link>
             </div>
           )}
         </div>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
->>>>>>> 9a177290c36fb011e3ec5e72319cba1ff2abfc84
   );
 }
 
