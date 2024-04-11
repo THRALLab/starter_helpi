@@ -4,7 +4,7 @@ import { AIKey } from "../interfaces/AIKeyInterface";
 
 export function HomePage(key: AIKey): JSX.Element {
     return <div className="Pages">
-        <h3 className="Page-title">Home Page</h3>
+        <h3 className="Page-title">Welcome to The Career Helpi!</h3>
             <Container className="Default-box">
                 <center>
                     <h4 className="Description-header">Basic Questions</h4>
