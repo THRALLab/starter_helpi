@@ -16,12 +16,12 @@ if (prevKey !== null) {
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [currPg, setCurrPg] = useState<string>('Home');
-  const [workingPref, setWorkingPref] = useState<string>('');
-  const [creativity, setCreativity] = useState<string>('');
-  const [adaptability, setAdaptability] = useState<string>('');
-  const [impact, setImpact] = useState<string>('');
-  const [routine, setRoutine] = useState<string>('');
-  const [learn, setLearn] = useState<string>('');
+  const [workingPref, setWorkingPref] = useState<string>(''); // preference for working
+  const [creativity, setCreativity] = useState<string>(''); // if creativity and passion are factors
+  const [adaptability, setAdaptability] = useState<string>(''); // if user can easily adapt in workplace
+  const [impact, setImpact] = useState<string>(''); // importance of impact
+  const [routine, setRoutine] = useState<string>(''); // importance of routine
+  const [lead, setLead] = useState<string>(''); // leadership or projects
   const [environment, setEnvironment] = useState<string>('');
   
   //sets the local storage item to the api key the user inputed
@@ -99,9 +99,9 @@ function App() {
 
         <div className="question">
           <p>Do you see yourself as a natural leader and enjoy taking charge of projects?</p>
-          <Button variant={learn === 'Not at all' ? 'primary' : 'secondary'} onClick={() => setLearn('Not at all')}>Not at all</Button>
-          <Button variant={learn === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setLearn('Neutral')}>Neutral</Button>
-          <Button variant={learn === 'Very much' ? 'primary' : 'secondary'} onClick={() => setLearn('Very much')}>Very much</Button>
+          <Button variant={lead === 'Not at all' ? 'primary' : 'secondary'} onClick={() => setLead('Not at all')}>Not at all</Button>
+          <Button variant={lead === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setLead('Neutral')}>Neutral</Button>
+          <Button variant={lead === 'Very much' ? 'primary' : 'secondary'} onClick={() => setLead('Very much')}>Very much</Button>
         </div>
 
         <div className="question">
