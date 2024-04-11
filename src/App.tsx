@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { Home } from './components/Home';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { BasicQuestionsPage } from './components/BasicQuestionsPage';
 import { DetailedQuestionsPage } from './components/DetailedQuestionsPage';
 
@@ -31,13 +31,13 @@ function App() {
   }
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/BasicQuestionsPage" element={<BasicQuestionsPage />}/>
           <Route path="/DetailedQuestionsPage" element={<DetailedQuestionsPage />}/>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
