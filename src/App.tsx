@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuestion, DetailedQuestions, HomePage } from './components/pages';
-import logo from '..logoandimages/thestarterhelpilogo.png'; 
+import logo from "./logoandimages/thestarterhelpilogo.png"
 
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -52,26 +52,19 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
-        <div className="Page-buttons">
-        <Button className="Detailed-Button" onClick={showDetailed}>Detailed Questions</Button>
-        </div>
-  
         {homePageVisible && 
         <div className="Pages">
-          home page
         </div>}
   
         {basicVisible && 
         <div className="Pages">
-          basic questions
         </div>}
   
         {detailedVisible &&
         <div className="Pages">
-          detailed questions
         </div>}
         <div className="Page-buttons-div">
+        <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
           <Button className="Page-button" onClick={showBasic}>Basic Questions</Button>
           <Button className="Page-button" onClick={showDetailed}>Detailed Questions</Button>
         </div>
@@ -95,5 +88,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
