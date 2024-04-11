@@ -70,24 +70,18 @@ function App() {
       </Container>
     </Navbar>
     <div className="App">
-        <h1>Joanna Crisomia</h1>
-        <h1>Joey Dare</h1>
 
-        {updatePageState()};
-
+        {updatePageState()}
+        
+      <footer className="footer">
+      <h1>Kai Winterle, Joey Dare, Joanna Crisomia, Ricky Kiamilev</h1>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
-      <h1>Kai Winterle, Joey Dare, Joanna Crisomia, Ricky Kiamilev</h1>
-        <Form>
-          <Form.Label>API Key:</Form.Label>
-          <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-          <br></br>
-          <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-        </Form>
+        </footer>
     </div>
     </>
   );
