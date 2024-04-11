@@ -1,16 +1,16 @@
-import { basicQuiz } from '../assets/Quizzes/BasicQuiz';
+import { BasicQuiz } from '../assets/Quizzes/BasicQuiz';
 import { Question } from './QuestionTypes';
 
 export const getFirstQuestion = (): Question => {
-  return basicQuiz[Object.keys(basicQuiz)[0]];
+  return BasicQuiz[Object.keys(BasicQuiz)[0]];
 };
 
 export const getNextQuestion = (currentQuestionId: string, userAnswer: string): Question | null => {
-  const currentQuestion = basicQuiz[currentQuestionId];
+  const currentQuestion = BasicQuiz[currentQuestionId];
   if ('getNextQuestionId' in currentQuestion) {
     const nextQuestionId = currentQuestion.getNextQuestionId(userAnswer);
     if (nextQuestionId) {
-        return basicQuiz[nextQuestionId] || null;
+        return BasicQuiz[nextQuestionId] || null;
     }
   }
   return null;

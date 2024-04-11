@@ -1,8 +1,8 @@
 // Import necessary hooks and components
 import React, { useState } from "react";
 import { Question } from "../interfaces/QuestionTypes";
-import { MC_SINGLE_RESPONSE } from "./MC_SINGLE_RESPONSE";
-import { MC_MULTI_RESPONSE } from "./MC_MULTI_RESPONSE";
+import { McSingleResponse } from "./MC_SINGLE_RESPONSE";
+import { McMultiResponse } from "./MC_MULTI_RESPONSE";
 
 interface DisplayQuizProps {
     quiz: Record<string, Question>;
@@ -38,9 +38,9 @@ export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
 
     switch (currentQuestion.type) {
         case "MC_SINGLE_RESPONSE":
-            return <MC_SINGLE_RESPONSE {...questionComponentProps} />;
+            return <McSingleResponse {...questionComponentProps} />;
         case "MC_MULTI_RESPONSE":
-            return <MC_MULTI_RESPONSE {...questionComponentProps} />;
+            return <McMultiResponse {...questionComponentProps} />;
         default:
             return <h1>Unknown question type</h1>;
     }

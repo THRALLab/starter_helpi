@@ -6,7 +6,7 @@ const determineNextQuestionId = (currentQuestionId: string, userAnswer: string):
   return "";
 };
 
-export const basicQuiz: Record<string, Question> = {
+export const BasicQuiz: Record<string, Question> = {
   root: {
     id: "question1",
     type: "MC_SINGLE_RESPONSE",
