@@ -1,9 +1,5 @@
 import "./pages.css"
-<<<<<<< HEAD:src/components/pages.tsx
-import {Container} from "react-bootstrap";
-=======
 import {Container } from "react-bootstrap";
->>>>>>> ad5165785071286ce6934adc7808661a6fb3614f:src/components/homePage.tsx
 import { AIKey } from "../interfaces/AIKeyInterface";
 
 export function HomePage(key: AIKey): JSX.Element {
