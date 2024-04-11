@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Question } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
+import { TextResponse } from "./TextResponse"
+import { UserRanking } from "./UserRanking"
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -60,6 +62,10 @@ export function DisplayQuiz(
             return <McSingleResponse {...questionComponentProps} />;
         case "MC_MULTI_RESPONSE":
             return <McMultiResponse {...questionComponentProps} />;
+        case "USER_RANKING":
+            return <UserRanking {...questionComponentProps} />;
+        case "TEXT_RESPONSE":
+            return <TextResponse {...questionComponentProps} />;
         default:
             return <h1>Unknown question type</h1>;
     }
