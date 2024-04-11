@@ -4,6 +4,8 @@ import { Home } from './pages/Home';
 import { SelectQuiz } from "./pages/SelectQuiz";
 // Import any other components or pages you have
 import './App.css';
+import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
+import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
 
 function App(): JSX.Element {
   return (
@@ -16,7 +18,15 @@ function App(): JSX.Element {
         </header>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/select-quiz/*" element={<SelectQuiz />}/>
+          <Route path="/select-quiz" element={<SelectQuiz />}/>
+          <Route 
+          path="/basic-quiz"
+          element={<BasicQuiz/>}
+        />
+        <Route 
+          path="/advanced-quiz"
+          element={<AdvancedQuiz/>}
+        />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </div>
