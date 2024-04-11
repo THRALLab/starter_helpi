@@ -38,11 +38,11 @@ function App() {
               <div className = "App-content">
                 <HashRouter>
                   <Routes>
-                  <Route path = "detailed-quiz" element = {<DetailedPage/>}> </Route>
                     <Route path = "/home" element = {<HomePage/>}> </Route>
                     <Route path = "/login" element = {<MembersPage/>}></Route>
                     <Route path = "/sign-up" element = {<SignUpPage/>}></Route>
                     <Route path = "/short-quiz" element = {<BasicQuestionsPage/>}> </Route>
+                    <Route path = "/detailed-quiz" element = {<DetailedPage/>}> </Route>
                     <Route path = "/" element = {<MembersPage/>}></Route>
                   </Routes>
                 </HashRouter>
