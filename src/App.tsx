@@ -59,7 +59,6 @@ function App() {
         {basicVisible && <BasicQuestion key={key} />}
 
         {detailedVisible && <DetailedQuestions key={key} />}
-        <p> The detailed questions quiz is targeted towards narrowing down your optimal field of study. If you would like recommendations for specific careers within your field of interest, take this quiz! </p>
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>

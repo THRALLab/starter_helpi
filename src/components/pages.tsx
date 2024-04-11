@@ -9,17 +9,15 @@ export function HomePage(key: AIKey): JSX.Element {
             <Row>
                 <Col>
                     <div className="basic-description">
-                        The basic questions will ask you more simple, easier<br></br>
-                        questions that will give you a quick idea about your<br></br> 
-                        potential ideal career.
+                        The basic questions will ask you more simple, easier
+                        questions that will give you a quick idea about your
                     </div>
                 </Col>
                 <Col>
                     <div className="detailed-description">
-                        Detailed questions here <br></br>
-                        just putting test text in here while firguring <br></br>
-                        out columns
+                    The detailed questions quiz is targeted towards narrowing down your optimal field of study. If you would like recommendations for specific careers within your field of interest, take this quiz!  
                     </div>
+                    
                 </Col>
             </Row>
         </Container>
