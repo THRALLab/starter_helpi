@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import './App';
 import './Home.css';
 import './General.css';
-import { DarkModeToggle } from './DarkModeToggle';
+import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
 import LinkButton from './LinkButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { bodyClassName } from './DarkModeToggle';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
