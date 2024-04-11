@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuestion, DetailedQuestions, HomePage } from './components/pages';
-import logo from '..logoandimages/thestarterhelpilogo.png'; 
-
+import logo from './logoandimages/thestarterhelpilogo.png';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -52,25 +51,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
+      <img src={logo} alt="Logo" style={{ maxWidth: '200px', height: 'auto' }} />
         <div className="Page-buttons">
-        <Button className="Detailed-Button" onClick={showDetailed}>Detailed Questions</Button>
+          <Button className="Button-color" onClick={showHomePage}>Home</Button>
+          <Button className="Button-color" onClick={showDetailed}>Detailed Questions</Button>
         </div>
   
-        {homePageVisible && 
-        <div className="Pages">
-          home page
-        </div>}
-  
-        {basicVisible && 
-        <div className="Pages">
-          basic questions
-        </div>}
-  
-        {detailedVisible &&
-        <div className="Pages">
-          detailed questions
-        </div>}
+        {homePageVisible && <HomePage key={key} />}
+        {basicVisible && <BasicQuestion key={key} />}
+        {detailedVisible && <DetailedQuestions key={key} />}
+        <p> The detailed questions quiz is targeted towards narrowing down your optimal field of study. If you would like recommendations for specific careers within your field of interest, take this quiz! </p>
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
@@ -84,6 +74,6 @@ function App() {
       </p>
     </div>
   );
+  
 }
-
 export default App;
