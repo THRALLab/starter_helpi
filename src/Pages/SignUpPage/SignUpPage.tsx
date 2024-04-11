@@ -1,4 +1,4 @@
-import { Col, Container, FloatingLabel, Form, Row } from "react-bootstrap"
+import { Form} from "react-bootstrap"
 import "./SignUpPage.css"
 
 export function SignUpPage() : React.JSX.Element {
@@ -9,7 +9,7 @@ export function SignUpPage() : React.JSX.Element {
                     <h1>Let's Make An Account! </h1>
                     <div className = "form-container--content">
                         <Form>
-                            <Form.Group className="mb-3 col">
+                            {/* <Form.Group className="mb-3 col">
                                     
                             </Form.Group>
                             <Form.Group>
@@ -19,7 +19,7 @@ export function SignUpPage() : React.JSX.Element {
                                     <option value = "Female"> Female </option>
                                     <option value = "N/A"> Prefer Not To Say</option>
                                 </Form.Select>
-                            </Form.Group>
+                            </Form.Group> */}
                         </Form>
                     </div>
                 </div>
