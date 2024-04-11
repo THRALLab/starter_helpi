@@ -1,7 +1,9 @@
+/* eslint-disable no-octal-escape */
 import React, { useState } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+//import { JsxElement } from 'typescript';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -11,9 +13,13 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-function App() {
+function App(): JSX.Element{
   const [key, setKey] = useState<string>(keyData); //for api key input
-  
+
+  //const [home, setHome] = useState<boolean>(true);
+  const [basic, setBasic] = useState<boolean>(false);
+  const [detail, setDetail] = useState<boolean>(false);
+
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -24,30 +30,72 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  //function updateHome():void{
+    //setHome(!home);
+  //}
+
+  function updateBasic():void{
+    setBasic(!basic);
+  }
+
+  function updateDetail():void{
+    setDetail(!detail);
+  }
+
+
+
   return (
+    <body>
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
-    </div>
+        <div className="header-box">
+          <h1>The Pathfinder <link href="https://fonts.cdnfonts.com/css/bell-bottom-laser" rel="stylesheet"></link>
+          </h1>
+        </div>
+        <div>
+        <Container>
+            <Row className="row">
+                <Col className="col">
+                  <h3> Basic Questions </h3>
+                  The basic quiz will allow you to explore basic interests and aren't comprehensive if you aren't ready to confirm your career pathway.
+                 <div className='button-container'>
+                  <Button className="button-33" role="button" style={{marginTop: '80px'}}
+                  onClick={updateBasic}>Take our Basic Career Quiz</Button>
+                  </div>
+                </Col>
+                <Col className="col">
+                    <h3> Detailed Questions </h3>
+                    The detailed quiz is perfect if you are ready to explore heavier interests and be place in your forever job. It is more comprehensive so that your interests and skills are well gauged. 
+                    <div className='button-container'>
+                    <Button className="button-33" role="button" style={{marginTop: '80px'}}
+                      onClick={updateDetail}> Take our Detailed Career Quiz</Button>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+        </div>
+            <Row>
+              <Col>
+              <img src="https://i.imgur.com/U4hAdwL.jpeg" alt="Divider" className='divider'/>
+              </Col>
+            </Row>
+            <div className='quiz-content'>
+              <h2>Take one of our comprehensive Career Quizzes powered by AI:</h2>
+            </div>
+           
+        <div className="footer">
+        <Form>
+          <Form.Label>API Key:</Form.Label>
+          <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+          <br></br>
+          <Button className="Submit" onClick={handleSubmit}>Submit</Button>
+        </Form>
+      </div>
+      </div>
+    </body>
   );
+ 
 }
 
 export default App;
