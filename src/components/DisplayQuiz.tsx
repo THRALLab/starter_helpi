@@ -4,17 +4,27 @@ import { Question } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./MC_SINGLE_RESPONSE";
 import { McMultiResponse } from "./MC_MULTI_RESPONSE";
 
-interface DisplayQuizProps {
-    quiz: Record<string, Question>;
-}
+type DisplayQuizProps = Record<string, Question>;
 
-export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
+export function DisplayQuiz(
+    { 
+        quiz,
+        questionsAnswerd,
+        setQuestionsAnswerd } 
+    : 
+    {
+        quiz : DisplayQuizProps,
+        questionsAnswerd : number,
+        setQuestionsAnswerd : (questionsAnswerd: number) => void 
+    }
+    ): JSX.Element {
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("root"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false);
     const [currentAnswer, setCurrentAnswer] = useState<string>("");
 
     const handleAnswerSubmit = () => {
         const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
+        setQuestionsAnswerd(questionsAnswerd+1)
         if (nextQuestionId === "") {
             setIsQuizComplete(true); // End of the quiz
         } else {

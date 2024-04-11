@@ -19,7 +19,11 @@ export const BasicQuiz = () => {
                 />
             </Row>
             <Row>
-                <DisplayQuiz quiz={basicQuiz}/>
+                <DisplayQuiz 
+                    quiz={basicQuiz}
+                    questionsAnswerd={questionsAnswered} 
+                    setQuestionsAnswerd={setQuestionsAnswered} 
+                />
             </Row>
         </Container>
     </div>)
