@@ -4,6 +4,16 @@ import './css/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
+const envKeyData = process.env.REACT_APP_CHATGBT_API_KEY;
+let saveKeyData = "MYKEY";
+
+// prev key is null, but is defined in .env
+if (envKeyData != null) {
+  saveKeyData = `MYKEY: ${envKeyData}`
+  localStorage.setItem(saveKeyData, JSON.stringify(saveKeyData));
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

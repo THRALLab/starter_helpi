@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
-export function Home(): JSX.Element {
+
+export function ApiKeyInput(): JSX.Element {
   const [apiKey, setApiKey] = useState<string>("");
 
   const changeKey = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,4 +37,12 @@ export function Home(): JSX.Element {
       </Row>
     </Container>
   );
+}
+
+export const Home = () => {
+  return(
+  <>
+    <ApiKeyInput/>
+  </>
+  )
 }
