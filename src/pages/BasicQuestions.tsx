@@ -5,7 +5,9 @@ const BasicQuestions: React.FC = () => {
     const [occupation, setOccupation] = useState("");
     const [experience, setExperience] = useState("");
     const [teamwork, setTeamwork] = useState("");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [communication, setCommunication] = useState("");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [problemSolving, setProblemSolving] = useState("");
     const [remote, setRemote] = useState("");
     const [careerSuggestion, setCareerSuggestion] = useState("");
