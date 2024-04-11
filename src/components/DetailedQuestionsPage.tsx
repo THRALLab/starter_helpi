@@ -17,7 +17,7 @@ export function DetailedQuestionsPage(): JSX.Element {
     return (
         <div>
             <p>Detailed Questions Page</p>
-            <p className="text-muted">The detailed career assessment goes in depth to plan out your professional preferences, skills, and motivators. Completing this assessment will provide you with a complex overview of career paths that align with your detailed profile. Coming soon. </p>
+            <p className="text-muted">The detailed career assessment goes in depth to plan out your professional preferences, skills, and motivators. Completing this assessment will provide you with a complex overview of career paths that align with your detailed profile. </p>
             <Form.Control
                 type="text"
                 value={inputText}
