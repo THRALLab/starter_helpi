@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuestion, DetailedQuestions, HomePage } from './components/pages';
-import logo from "./logoandimages/thestarterhelpilogo.png"
+import logo from "./logoandimages/thecareerhelpilogo.png"
 
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
