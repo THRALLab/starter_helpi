@@ -30,23 +30,23 @@ function App() {
   }
   return (
     <Router>
-		  <div className="App">
-			  <Navigation />
+		<div className="App">
+			<Navigation />
 			  <Routes>
-				  <Route path="/basic" Component={Basic} />
-				  <Route path="/detailed" Component={Detailed} />
+				<Route path="/basic" Component={Basic} />
+				<Route path="/detailed" Component={Detailed} />
 			  </Routes>
 			  <Form>
-				  <Form.Label>API Key:</Form.Label>
-				  <Form.Control
-					  type="password"
-					  placeholder="Insert API Key Here"
-					  onChange={changeKey}
-				  ></Form.Control>
-				  <br></br>
-				  <Button className="Submit-Button" onClick={handleSubmit}>
-					  Submit
-				  </Button>
+				<Form.Label>API Key:</Form.Label>
+				<Form.Control
+					type="password"
+					placeholder="Insert API Key Here"
+					onChange={changeKey}
+				></Form.Control>
+				<br></br>
+				<Button className="Submit-Button" onClick={handleSubmit}>
+					Submit
+				</Button>
 			  </Form>
 		  </div>
 	  <div>
@@ -62,8 +62,8 @@ function App() {
 			This is a 30 - 35 minute quiz aimed to understand your 
 			goals and passions in order to provide potential careers. 
 			</p>
-		  </div>
-		  </Router>
+		</div>
+	</Router>
   );
 }
 export default App;
