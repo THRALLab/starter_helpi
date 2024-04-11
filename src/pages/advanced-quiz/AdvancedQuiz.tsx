@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { DetailedQuestion } from "../../components/DetailedQuestion";
+// import { McMultiResponse } from "../../components/McMultiResponse";
 
 export function AdvancedQuiz(): JSX.Element {
-    const [firstAnswer, setFirstAnswer] = useState<string>("");
+    // const [firstAnswer, setFirstAnswer] = useState<string>("");
     
-    const question1 = "How old are you?";
+    // const question1 = "How old are you?";
     
     //const question2 = "Which subjects interest you the most?";
 
@@ -13,11 +13,11 @@ export function AdvancedQuiz(): JSX.Element {
         <Container fluid>
             <Row>
                 <Col style={{ justifyContent:'left'}}>
-                    <DetailedQuestion
+                    {/* <McMultiResponse
                         question={question1}
                         answer={firstAnswer}
                         setAnswer={setFirstAnswer}
-                    ></DetailedQuestion>
+                    ></McMultiResponse> */}
                 </Col>
             </Row>
         </Container>
