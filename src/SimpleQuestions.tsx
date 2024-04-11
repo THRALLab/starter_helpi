@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-import { BrowserRouter as Router } from 'react-router-dom';
-import './General.css';
+import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
 import LinkButton from './LinkButton';
 import { SimpleQuestion } from './SimpleQuestion';
 import jsonData from './SimpleQuestions.json';
@@ -47,8 +46,8 @@ export function SimpleQuestions(): JSX.Element {
     }
 
     return (
-        <div>
-            <header className="General-header"> <p>The Career Lab <LinkButton to="/" label="Home"></LinkButton></p> </header>
+        <div className = {bodyClassName} id="bigBody">
+            <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
             <div style={{ padding: "10px" }}>
                 <div style={{ backgroundColor: color, color: "white", padding: "10px", position: "relative", display: "flex" }}>
                     <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * (questionNumber / numberOfQuestions)}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
