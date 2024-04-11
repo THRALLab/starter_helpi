@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const OPTIONS = [
   "Disagree",
@@ -47,7 +47,8 @@ const BasicQuestions: React.FC = () => {
             </div>
           ))}
         </div>
-      
+      <p>Thank you for taking the time to answer the above questions! Press the below button to see results</p>
+
       </div>
   );
 }
