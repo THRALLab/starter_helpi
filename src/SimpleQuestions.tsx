@@ -19,7 +19,8 @@ export function SimpleQuestions(): JSX.Element {
 
     useEffect(() => {
         loadQuestions()
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const loadQuestions = () => {
         const parsedData = JSON.parse(JSON.stringify(jsonData));
