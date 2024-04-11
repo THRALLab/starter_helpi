@@ -12,8 +12,8 @@ export function Q1():JSX.Element {
         <div>
             <Form.Group controlId="colors">
                 <Form.Label>What is your favorite color?</Form.Label>
-                <br></br>
-                <Form.Select value={color} onChange={updateColor}>
+                
+                <Form.Select size="sm" value={color} onChange={updateColor}>
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>
                     <option value="green">Green</option>

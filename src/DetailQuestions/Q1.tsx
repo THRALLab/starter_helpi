@@ -28,6 +28,8 @@ export function Q1():JSX.Element {
                     onChange={() => setSelectReason(reason)}
                 />
             ))}
+            <br></br>
+            if "Others", please indicate here:
             <Form.Control
                         type="textbox"
                         value={userInfo}
