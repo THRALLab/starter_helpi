@@ -50,8 +50,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="Page-buttons">
-        <Button className="Button-color" onClick={showDetailed}>Detailed Questions</Button>
+        <div className="Page-buttons-div">
+          <Button className="Page-button" onClick={showBasic}>Basic Questions</Button>
+          <Button className="Page-button" onClick={showDetailed}>Detailed Questions</Button>
         </div>
 
         {homePageVisible && <HomePage key={key} />}
