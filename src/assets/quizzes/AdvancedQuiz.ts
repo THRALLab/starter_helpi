@@ -1,9 +1,9 @@
 import { Question } from "../../interfaces/QuestionTypes";
 
 const determineNextQuestionId = (currentQuestionId: string, userAnswer: string): string => {
-  // Logic to determine the next question. Return an empty string if there's no next question.
   if (currentQuestionId === "root") return "question2";
-  return "";
+  else if (currentQuestionId === "question2") return "question3"
+  else return "";
 };
 
 export const basicQuiz: Record<string, Question> = {
@@ -19,7 +19,20 @@ export const basicQuiz: Record<string, Question> = {
     type: "MC_SINGLE_RESPONSE",
     prompt: "Which area interests you the most?",
     options: ["Science", "Arts", "Business", "Technology"],
-    getNextQuestionId: () => "", // Currently last question, so it returns an empty string
+    getNextQuestionId: (userAnswer: string) => determineNextQuestionId("question2", userAnswer),
   },
-  // Additional questions can be defined similarly
+  question3: {
+    id: "question3",
+    type: "USER_RANKING",
+    prompt: "Rank these workplace environments in the order in which they appeal to you:",
+    options: [
+      "Collaborative",
+      "Enterprise/Competitive",
+      "Hybrid/Virtual",
+      "Investigative",
+      "Traditional Largescale Business Model/Hierarchy",
+      "Production"
+    ],
+    getNextQuestionId: (userAnswer: string) => determineNextQuestionId("question3", userAnswer),
+  }
 };

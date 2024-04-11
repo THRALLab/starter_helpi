@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
-
 export function Home(): JSX.Element {
   const [apiKey, setApiKey] = useState<string>("");
 

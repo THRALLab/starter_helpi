@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from 'react-bootstrap';
 
-export function UserRanking({
+export function USER_RANKING({
     question,
     options,
     setAnswer,

@@ -19,10 +19,12 @@ export function DisplayQuiz(
     }
     ): JSX.Element {
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("root"); // Starting question ID
-    const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false);
-    const [currentAnswer, setCurrentAnswer] = useState<string>("");
+    const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
+    const [answers, setAnswers] = useState<string[]>([]); // Array of all question answers
+    const [currentAnswer, setCurrentAnswer] = useState<string>(""); // Use to store answer for question currently being displayed 
 
     const handleAnswerSubmit = () => {
+        setAnswers([...answers, currentAnswer])
         const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
         setQuestionsAnswerd(questionsAnswerd+1)
         if (nextQuestionId === "") {
@@ -33,7 +35,14 @@ export function DisplayQuiz(
     };
 
     if (isQuizComplete) {
-        return <div>Quiz Complete</div>;
+        return <div style={{justifyContent: "left"}}>
+        <h2>Quiz Complete</h2>
+        <br></br> 
+        <h3>Answers:</h3>
+        <ol>
+        {answers.map((target: string) => (<li>{target}</li>))}
+        </ol>
+        </div>;
     }
 
     const currentQuestion = quiz[currentQuestionId];
