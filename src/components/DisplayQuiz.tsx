@@ -35,6 +35,7 @@ export function DisplayQuiz(
             setIsQuizComplete(true); // End of the quiz
         } else {
             setCurrentQuestionId(nextQuestionId); // Move to the next question
+            setCurrentAnswer("");
         }
     };
 
