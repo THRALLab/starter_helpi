@@ -1,8 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Button, Form } from "react-bootstrap";
 import { Footer } from "../components/Footer";
+import "../App.css";
+import React, { useState } from 'react';
 
 function Home() {
+  const [currentPage, setCurrentPage] = useState<string>('HomePage');
+
+
+  function HomePageContent() {
     return (
         <div style = {{position: 'relative', top: '100px'}} className="text-center">
             <h1 className="text-center">
@@ -14,17 +20,7 @@ function Home() {
             <h4 className="text-center">
                 UNIVERSITY OF DELAWARE STUDENTS
             </h4>
-            <div style = {{position: 'relative', top: '50px'}} className='text-center'>
-                <span style={ {border: '2px solid black', padding: '4px'} }>
-                    Home
-                </span>
-                <span style={ {border: '2px solid black', padding: '4px'} }>
-                    Basic Questions
-                </span>
-                <span style={ {border: '2px solid black', padding: '4px'} }>
-                    Detailed Questions
-                </span>
-            </div>
+        
             <div style = {{position: 'relative', top: '150px'}}>
                 <Row className='text-center'>
                     <Col style = {{border: '2px solid black'}}>
@@ -62,6 +58,52 @@ function Home() {
             </div>
         </div>
     )
+  }
+
+  function BasicPageContent() {
+    return (
+      <div>
+        <h2>Basic Page Content</h2>
+        {/* Content for Basic Page */}
+      </div>
+    );
+  }
+
+  function DetailedPageContent() {
+    return (
+      <div>
+        <h2>Detailed Page Content</h2>
+        {/* Content for Page 2 */}
+      </div>
+    );
+  }
+
+  return (
+    <div className="App">
+      <div className="page-container">
+        <div className="page-navigation">
+        <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('HomePage')}>
+            <span>HomePage</span>
+          </button>
+          <button className="button btn1" style={{ verticalAlign: 'middle' }}onClick={() => setCurrentPage('BasicPage')}>
+            <span>Basic Page</span>
+            </button>
+          <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('DetailPage')}>
+            <span>Detailed Page</span>
+            </button>
+        </div>
+        <div className="page-content">
+          {currentPage === 'HomePage' && <HomePageContent />}
+          {currentPage === 'BasicPage' && <BasicPageContent />}
+          {currentPage === 'DetailPage' && <DetailedPageContent />}
+        </div>
+      </div>
+    </div>
+  );
 }
+
+
+
+
 
 export default Home;
