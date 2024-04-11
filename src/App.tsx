@@ -24,32 +24,46 @@ function App() {
 		window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
 	}
 
-	//whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
-	function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-		setKey(event.target.value);
-	}
-	return (
-		<Router>
-			<div className="App">
-				<Navigation />
-				<Routes>
-					<Route path="/basic" Component={Basic} />
-					<Route path="/detailed" Component={Detailed} />
-				</Routes>
-				<Form>
-					<Form.Label>API Key:</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Insert API Key Here"
-						onChange={changeKey}
-					></Form.Control>
-					<br></br>
-					<Button className="Submit-Button" onClick={handleSubmit}>
-						Submit
-					</Button>
-				</Form>
-			</div>
-		</Router>
-	);
+  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
+  function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
+    setKey(event.target.value);
+  }
+  return (
+    <Router>
+		<div className="App">
+			<Navigation />
+			<Routes>
+				<Route path="/basic" Component={Basic} />
+				<Route path="/detailed" Component={Detailed} />
+			</Routes>
+			<Form>
+				<Form.Label>API Key:</Form.Label>
+				<Form.Control
+					type="password"
+					placeholder="Insert API Key Here"
+					onChange={changeKey}
+				></Form.Control>
+				<br></br>
+				<Button className="Submit-Button" onClick={handleSubmit}>
+					Submit
+				</Button>
+			</Form>
+		</div>
+	  	<div>
+			<div><Button>Basic Quiz</Button></div>
+				<p>
+				This is a 10 - 15 minute quiz aimed to gauge 
+				interests and skills in order to provide suggestions 
+				and information on potential careers.
+
+				</p>
+			<div ><Button>Detailed Quiz</Button></div>
+				<p>
+				This is a 30 - 35 minute quiz aimed to understand your 
+				goals and passions in order to provide potential careers. 
+				</p>
+		</div>
+	</Router>
+);
 }
 export default App;
