@@ -71,6 +71,17 @@ function App() {
         <div className="Pages">
           detailed questions
         </div>}
+        <div className="Page-buttons-div">
+          <Button className="Page-button" onClick={showBasic}>Basic Questions</Button>
+          <Button className="Page-button" onClick={showDetailed}>Detailed Questions</Button>
+        </div>
+
+        {homePageVisible && <HomePage key={key} />}
+
+        {basicVisible && <BasicQuestion key={key} />}
+
+        {detailedVisible && <DetailedQuestions key={key} />}
+        <p> The detailed questions quiz is targeted towards narrowing down your optimal field of study. If you would like recommendations for specific careers within your field of interest, take this quiz! </p>
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
