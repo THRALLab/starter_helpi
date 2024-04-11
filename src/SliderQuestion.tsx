@@ -15,10 +15,10 @@ function SliderQuestion(props: DetailedQuestionProps) {
       }
 
     return (
-        <div>
-        <label>{props.label}</label><br />
-        <Form.Range style={{ transform: 'rotate(270deg)', width: '90px', marginLeft: '100px' }} value={props.value} onChange={updateSliderValue}/>
-        <p>Selected Value: {props.value}</p>
+        <div style={{marginTop: '30px'}}>
+            <label>{props.label}</label><br />
+            <Form.Range style={{ transform: 'rotate(270deg)', width: '90px', marginLeft: '200px' }} value={props.value} onChange={updateSliderValue}/>
+            <p>Selected Value: {props.value}</p>
         </div>
     )
 }

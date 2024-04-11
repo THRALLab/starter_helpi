@@ -16,6 +16,17 @@ function DetailedQuestions() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [sliderValue1, setSliderValue1] = useState<number>(50);
   const [sliderValue2, setSliderValue2] = useState<number>(50);
+
+    const [numberOfQuestions, setNumberOfQuestions] = useState("10")
+    const [questionNumber, setQuestionNumber] = useState("1")
+    const [color, setColor] = useState("")
+
+    const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"]
+  
+    const generateSimpleQuestionPage = () => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)]
+      setColor(randomColor);
+    }
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -35,11 +46,30 @@ function DetailedQuestions() {
       <header className="General-header"><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
       <header className="DetailedQuestions-header">
         <div className='Page-body'>
+        <div>
+          <label>Number of Questions:</label><br />
+          <input type="text" value={numberOfQuestions} onChange={(q) => setNumberOfQuestions(q.target.value)} /><br />
+          <label>Question Number:</label><br />
+          <input type="text" value={questionNumber} onChange={(q) => setQuestionNumber(q.target.value)} /><br />
+          <label>Question:</label><br />
+          
+          <Button onClick={generateSimpleQuestionPage}>Generate Simple Question Page</Button> <br />
+        </div>
           <SliderQuestion value={sliderValue1} onChange={setSliderValue1} label="Question 1:"></SliderQuestion>
 
           <SliderQuestion value={sliderValue2} onChange={setSliderValue2} label="Question 2:"></SliderQuestion>
         </div>
       </header>
+      <div style={{ padding: "10px" }}>
+          <div style={{ backgroundColor: color, color: "white", padding: "10px", position: "relative", display: "flex" }}>
+            <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * (parseInt(questionNumber) / parseInt(numberOfQuestions))}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
+              Question {questionNumber}/{numberOfQuestions}
+            <div style={{ marginLeft: "auto", alignSelf: "right" }}>
+              {100 * (parseInt(questionNumber) / parseInt(numberOfQuestions))}% completed
+            </div>
+          </div>
+        </div>
+      
       <div className='API-Footer'>
         <Form>
           <Form.Label>API Key:</Form.Label>
