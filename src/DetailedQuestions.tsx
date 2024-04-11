@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import './General.css';
 import LinkButton from './LinkButton';
 import SliderQuestion from './SliderQuestion'
+import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -42,8 +43,8 @@ function DetailedQuestions() {
   
 
   return (
-    <div className="DetailedQuestions">
-      <header className="General-header"><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
+    <div className={bodyClassName} id='bigBody'>
+      <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
       <header className="DetailedQuestions-header">
         <div className='Page-body'>
         <div>
