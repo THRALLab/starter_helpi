@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
 const BasicQuestions: React.FC = () => {
     const [occupation, setOccupation] = useState("");
@@ -7,6 +8,7 @@ const BasicQuestions: React.FC = () => {
     const [communication, setCommunication] = useState("");
     const [problemSolving, setProblemSolving] = useState("");
     const [remote, setRemote] = useState("");
+    const [careerSuggestion, setCareerSuggestion] = useState("");
 
     const handleOccupationChange = (
         event: React.ChangeEvent<HTMLInputElement>
@@ -42,6 +44,18 @@ const BasicQuestions: React.FC = () => {
         setRemote(event.target.value);
     };
 
+    const suggestCareer = () => {
+        if (teamwork === "Strongly Agree" && remote === "Disagree") {
+            setCareerSuggestion(
+                "Based on your responses, a career in Project Management could be a good fit for you."
+            );
+        } else {
+            setCareerSuggestion(
+                "Based on your responses, we suggest exploring different career options."
+            );
+        }
+    };
+
     return (
         <div
             style={{
@@ -49,7 +63,7 @@ const BasicQuestions: React.FC = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "42vh"
+                height: "52vh"
             }}
         >
             <h1 style={{ textAlign: "center" }}>
@@ -259,6 +273,17 @@ const BasicQuestions: React.FC = () => {
                 />
                 <label htmlFor="remote-strongly-agree">Strongly Agree</label>
             </div>
+            <div>
+                <Button onClick={suggestCareer}>Get Career Suggestion</Button>
+            </div>
+            {careerSuggestion && (
+                <>
+                    <h2>Career Suggestion:</h2>
+                    <div style={{ marginBottom: "20px" }}>
+                        <p>{careerSuggestion}</p>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
