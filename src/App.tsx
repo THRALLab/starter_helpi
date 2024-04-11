@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import { Home } from './components/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BasicQuestionsPage } from './components/BasicQuestionsPage';
+import { DetailedQuestionsPage } from './components/DetailedQuestionsPage';
+
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -26,10 +31,20 @@ function App() {
   }
   return (
     <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/BasicQuestionsPage" element={<BasicQuestionsPage />}/>
+          <Route path="/DetailedQuestionsPage" element={<DetailedQuestionsPage />}/>
+        </Routes>
+      </BrowserRouter>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Edit <code>src/App.tsx</code> and save to reload. Aditya Gill, Harman Bagga, Thern A Diallo
+          Edit <code>src/App.tsx</code> and save to reload. 
+
+          Thern Diallo
         </p>
         <a
           className="App-link"
@@ -38,7 +53,9 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+          Rubina Shaik
         </a>
+      
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
