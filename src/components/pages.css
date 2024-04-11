@@ -8,23 +8,23 @@
     font-size: calc(10px + 2vmin);
   }
 
-.basic-description {
+.Description {
   display: flex;
   flex-direction: column;
   width: 40%;
   height: 30%;
-}
-
-.detailed-description {
-  width: 40%;
-  height: 30%;
+  background-color: #AFBEA2;
+  outline: 1px solid black;
+  border-radius: 10px;
 }
 
 .Description-header {
-  background-color: #8a2be2;
-  width: 250px;
+  background-color: #AFBEA2;
+  width: 350px;
   height: 35px;
   text-align: center;
+  outline: 1px solid black;
+  border-radius: 10px;
 }
 
 .Question-instructions {

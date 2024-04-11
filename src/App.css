@@ -19,7 +19,11 @@
 }
 
 .App-header {
+<<<<<<< HEAD
   background-color: #282c34;
+=======
+  background-color: #51624F;
+>>>>>>> ad5165785071286ce6934adc7808661a6fb3614f
   min-height: 10vh;
   min-width: 99vw;
   display: grid;
@@ -35,13 +39,22 @@
 }
 
 .Pages-div {
+<<<<<<< HEAD
   background-color: cadetblue;
+=======
+  background-color: #9CB4AC;
+>>>>>>> ad5165785071286ce6934adc7808661a6fb3614f
   height: 90vh;
 }
 
 .Page-button {
+<<<<<<< HEAD
   background-color: #8a2be2;
   border-radius: 10%;
+=======
+  background-color: #AFBEA2;
+  border-radius: 15px;
+>>>>>>> ad5165785071286ce6934adc7808661a6fb3614f
   width: 150px;
   height: inherit - 6vh;
   text-align: center;
