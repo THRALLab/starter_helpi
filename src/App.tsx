@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="App">
 
-      {updatePageState()};
+      {updatePageState()}
 
       <Form>
         <Form.Label>API Key:</Form.Label>
