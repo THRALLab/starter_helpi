@@ -1,5 +1,5 @@
 import "./pages.css"
-import {Container} from "react-bootstrap";
+import {Container } from "react-bootstrap";
 import { AIKey } from "../interfaces/AIKeyInterface";
 
 export function HomePage(key: AIKey): JSX.Element {
@@ -20,20 +20,5 @@ export function HomePage(key: AIKey): JSX.Element {
                         </div>
                 </center>
             </Container>
-    </div>;
-}
-
-export function BasicQuestion(key: AIKey): JSX.Element {
-    return <div className="Pages">
-       <h3 className="Page-title">Basic Questions</h3>
-    </div>;
-}
-
-export function DetailedQuestions(key: AIKey): JSX.Element {
-    return <div className="Pages">
-        <h3 className="Page-title">Detailed Questions</h3>
-        <div className="Question-instructions">
-            The description for how to answer the questions will go here.
-        </div>
     </div>;
 }
