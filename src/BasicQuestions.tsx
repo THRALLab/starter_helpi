@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-
+import { Form } from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route, useNavigate, Link } from 'react-router-dom';
+import './App.css';
+import App from './HomePage';
 
 const OPTIONS = [
   "Disagree",
@@ -13,7 +14,7 @@ const OPTIONS = [
 const QUESTIONS = [1,2,3,4,5,6,7,8]
 const BasicQuestions: React.FC = () => {
   const [chosenOption, setChosenOption] = useState<string[]>(Array(QUESTIONS.length).fill(OPTIONS[2]));
-  const navigate = useNavigate();
+  const page = App();
   function updateOption(event: React.ChangeEvent<HTMLInputElement>, index: number) {
     const newOptions = [...chosenOption];
     newOptions[index] = event.target.value;
@@ -23,14 +24,11 @@ const BasicQuestions: React.FC = () => {
       <div>
         <h2>
           Basic Career Aptitude Test
-          <nav>
-            <ul>
-              <li>
-                <Button variant="link" onClick={() => navigate('/starter_helpi')}>Return to Home Page</Button>
-              </li>
-            </ul>
-          </nav>
-          
+          <div>
+            <Link to='/'>
+              <button>Return to Home Page</button>
+            </Link>
+          </div>
         </h2>
         <p>
           Answer the following questions to the best of your ability. Then we will 
