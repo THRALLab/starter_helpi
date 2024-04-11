@@ -42,6 +42,7 @@ export function SimpleQuestions(): JSX.Element {
             setOption2(questions[questionNumber].option2)
         } else {
             // End of quiz...
+            window.alert("You've completed the Simple Quiz!")
         }   
     }
 
@@ -53,7 +54,7 @@ export function SimpleQuestions(): JSX.Element {
                     <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * (questionNumber / numberOfQuestions)}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
                         Question {questionNumber}/{numberOfQuestions}
                     <div style={{ marginLeft: "auto", alignSelf: "right" }}>
-                        {100 * (questionNumber / numberOfQuestions)}% completed
+                        {Math.round(100 * (questionNumber / numberOfQuestions))}% completed
                     </div>
                 </div>
             </div>
