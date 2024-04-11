@@ -1,0 +1,23 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem;
+	border-top: 1px solid #6923ff;
+}
+
+.names-container {
+	border: 1px solid #6923ff;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	color: white;
+}
+
+.gh-profile {
+	/* color: #6923ff; */
+	color: white;
+	text-decoration: none;
+}
+.gh-profile:hover {
+	color: #6923ff;
+}
