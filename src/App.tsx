@@ -51,10 +51,9 @@ function App() {
 
   return (
     <div className="App">
+      <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
       <header className="App-header">
-
         <div className="Page-buttons-div">
-          <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
           <Button className="Page-button" onClick={showHomePage} disabled={homePageVisible}>Home Page</Button>
           <Button className="Page-button" onClick={showBasic} disabled={basicVisible}>Basic Questions</Button>
           <Button className="Page-button" onClick={showDetailed} disabled={detailedVisible}>Detailed Questions</Button>
