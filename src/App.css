@@ -19,7 +19,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #51624F;
   min-height: 10vh;
   min-width: 99vw;
   display: grid;
@@ -35,13 +35,13 @@
 }
 
 .Pages-div {
-  background-color: cadetblue;
+  background-color: #9CB4AC;
   height: 90vh;
 }
 
 .Page-button {
-  background-color: #8a2be2;
-  border-radius: 10%;
+  background-color: #AFBEA2;
+  border-radius: 15px;
   width: 150px;
   height: inherit - 6vh;
   text-align: center;
