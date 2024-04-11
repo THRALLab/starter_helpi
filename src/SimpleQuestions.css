@@ -1,0 +1,21 @@
+.body {
+    --color-background: #8ad7f8;
+    --color-foreground: #000000;
+    --color-header-background: rgb(49, 141, 183);
+    --color-header-foreground: white;
+}
+
+.body-dark {
+    --color-background: #000000;
+    --color-foreground: rgb(201, 201, 201);
+    --color-header-background: rgb(28, 69, 88);
+    --color-header-foreground: rgb(201, 201, 201);
+}
+
+.Simple-body {
+    min-height: 90vh;
+    font-size: calc(5px + 2vmin);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    padding-top: 3vh;
+}
