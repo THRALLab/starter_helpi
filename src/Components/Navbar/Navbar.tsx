@@ -27,7 +27,7 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
         </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav'/>
           <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+        <Nav className="mx-auto">
           <Nav.Link onClick={() => handleNavClick("Home")}>
               {(page === "Home" && (<text className='navbar-selected'>Home</text>)) || (page !== "Home" && (<text>Home</text>))}
             </Nav.Link>
