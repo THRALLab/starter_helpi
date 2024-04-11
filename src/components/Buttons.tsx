@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 export function Buttons(): JSX.Element {
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
+    const [goToHomePage, setGoToHomePage] = React.useState(false);
 
     if (goToBasicQuestionsPage) {
         return <Navigate to="/BasicQuestionsPage"/>
@@ -18,6 +19,7 @@ export function Buttons(): JSX.Element {
         <div>
             <Button onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
             <Button onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
+            <Button onClick={() => {setGoToHomePage(true)}}>Home</Button>
         </div>
     )
 }
