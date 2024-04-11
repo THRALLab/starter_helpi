@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
-import { BasicQuestion, DetailedQuestions, HomePage } from './components/pages';
+import { HomePage } from './components/homePage';
+import { BasicQuestion } from './components/BasicPage';
+import { DetailedQuestions } from './components/detailedPage';
 import logo from "./logoandimages/thecareerhelpilogo.png"
 
 
