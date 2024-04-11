@@ -29,4 +29,7 @@
     border-color: #6923ff;
     border: 20px;
 }
-  
+
+.mx-auto .nav-link:hover {
+    color: white;
+  }
