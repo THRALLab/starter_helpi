@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
 // MOVED THE IMPORT STATEMENTS TO HOME PAGE FILE
-import BasicQuestions from './pages/BasicQuestions';
-import DetailedQuestions from './pages/DetailedQuestions';
-import Home from './pages/Home';
+import NavigationBar from "./components/homePageComp/navigationBar"
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -16,7 +14,6 @@ if (prevKey !== null) {
 
 
 function App() {
-    const [page, setPage] = useState(0);
     const [key, setKey] = useState<string>(keyData); //for api key input
 
     //sets the local storage item to the api key the user inputed
@@ -31,14 +28,9 @@ function App() {
     }
     return (
         <div className="App" style={{ backgroundColor: '#6b2737', minHeight: '100vh', color: '#fff' }}>
-             {/* Buttons to switch states*/}
-             <div style={{ textAlign: 'center'}}>
-                <Button onClick={() => setPage(0)}>Home</Button>
-                <Button onClick={() => setPage(1)}>Basic Quiz</Button>
-                <Button onClick={() => setPage(2)}>Detailed Quiz</Button>
-                {page === 0 ? <Home /> : page === 1 ? <BasicQuestions /> : <DetailedQuestions />}
-            </div>
-            
+             {/* Buttons to switch states*/}   
+             <NavigationBar />
+         
             {/* UNEDIT THIS IF NECESSARY vv
             <div>
                 <h1 style={{ textAlign: 'center'}}> Home Page</h1>
