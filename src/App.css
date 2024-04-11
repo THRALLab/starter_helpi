@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +35,78 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+/* 
+.detailedbutton {
+  background-color: #04AA6D;
+  border: rgb(93, 164, 61);
+  text-align: center;
+  font-size: 16px;
+  padding: 15px 32px;
+  margin-left: 50x;
+} */
+
+
+/* .homebutton {
+  background-color: #04AA6D;
+  border: rgb(93, 164, 61);
+  text-align: center;
+  font-size: 16px;
+  padding: 25px 62px;
+  margin-left: 50x;
+} */
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 100px;
+}
+
+
+/* .basicButton {
+  background-color: #04AA6D;
+  border: rgb(93, 164, 61);
+  text-align: center;
+  font-size: 16px;
+  padding: 25px 62px;
+}
+*/
+.App-footer {
+  background-color: gray;
+  text-align: center;
+  margin-top: auto;
+  padding: 8px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+.detailedbutton,
+.homebutton,
+.basicButton {
+  background-color: #5d6d67;
+  border: 2px solid rgb(17, 21, 16); /* Add border to the buttons */
+  color: white; /* Text color */
+  text-align: center;
+  font-size: 16px;
+  padding: 15px 32px; /* Padding around text */
+  margin: 10px; /* Add margin between buttons */
+  border-radius: 8px; /* Rounded corners for buttons */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Button hover styles */
+.detailedbutton:hover,
+.homebutton:hover,
+.basicButton:hover {
+  background-color: #c1d1c9; /* Darker background color on hover */
+  color: black;
 }

@@ -1,0 +1,29 @@
+/* .questions{
+    
+}
+.submitAns{
+    
+} */
+
+.resetbutton,
+.submitbutton,
+.submitAns {
+    background-color: #127a54d4;
+    border: 2px solid rgb(17, 21, 16); /* Add border to the buttons */
+    color: white; /* Text color */
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 15px; /* Padding around text */
+    margin: 10px; /* Add margin between buttons */
+    border-radius: 8px; /* Rounded corners for buttons */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+  }
+
+  .responsebox {
+    font-size: 14px;
+    height: 14vh;
+    width: 80vh;
+    text-align:start;
+    font-family:Arial, Helvetica, sans-serif;
+  }
