@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from './SmallerWW-removebg-preview.png'
 import '../Navbar/Navbar2.css'
 import { GoArrowLeft } from "react-icons/go";
+import Button from 'react-bootstrap/Button';
 
 export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: string) => void }) {
   const [previousPage, setPreviousPage] = useState<string>("Home");
@@ -19,7 +20,7 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
   }
 
   return (
-    <Navbar sticky="top" style={{color: 'white', backgroundColor: '#21273b', height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem' }} data-bs-theme="dark" expand="lg">
+    <Navbar sticky="top" style={{ color: 'white', backgroundColor: '#21273b', height: '4rem', marginTop: '.25rem', marginRight: '.25rem', marginLeft: '.25rem' }} data-bs-theme="dark" expand="lg">
       <Container>
         <Navbar.Brand href="#home" className='brand-logo'>
           <img src={logo} alt='logo' className="logo-img" />
@@ -33,11 +34,11 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
           Current Page: {page}
         </span>
         <div className='d-flex align-items-center'>
-          {page !== "Home" && (
-            <div className='d-flex align-items-center navbar-back'>
+          {page !== "Home" && page !== previousPage && (
+            <Button onClick={handleBackButtonClick} className='d-flex align-items-center navbar-back' style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
               <GoArrowLeft style={{ marginRight: '2px' }} />
-              <Nav.Link onClick={handleBackButtonClick}>Back</Nav.Link>
-            </div>
+              <Nav.Link >Back</Nav.Link>
+            </Button>
           )}
         </div>
       </Container>

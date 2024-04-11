@@ -10,11 +10,11 @@ export function BasicPage() {
     let eventKey = 0;
     return (
         <div className='accordion-container'>
-            <Accordion defaultActiveKey="0" style={{width: '50%',backgroundColor: '#21273b'}} >
+            <Accordion defaultActiveKey="0" style={{ width: '50%', backgroundColor: '#21273b' }} >
                 {questions.map((question: string) => (
-                    <Accordion.Item key={eventKey} eventKey={(eventKey++).toString()} style={{backgroundColor: '#21273b', color:'white'}}>
-                        <Accordion.Header >{question}</Accordion.Header>
-                        <Accordion.Body>
+                    <Accordion.Item key={eventKey} eventKey={(eventKey++).toString()} style={{ backgroundColor: '#21273b', color: 'white' }}>
+                        <Accordion.Header style={{ backgroundColor: '#21273b', color: 'white' }} >{question}</Accordion.Header>
+                        <Accordion.Body style={{ backgroundColor: '#21273b', color: 'white' }}>
                             Choices
                         </Accordion.Body>
                     </Accordion.Item>
