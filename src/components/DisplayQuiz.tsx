@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Question } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
+import { TextResponse } from "./TextResponse"
+import { UserRanking } from "./UserRanking"
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -40,8 +42,8 @@ export function DisplayQuiz(
         return <div style={{justifyContent: "left"}}>
         <h2>End of question bank for {title}</h2>
         <br></br>
+        <h3>The questions asked up until now would be used to populate the prompt given to ChatGPT</h3>
         <h3>This is the point at which GPT would take over asking questions.</h3>
-        <h3>The questions asked to the user at this would be used to populate the prompt given to ChatGPT</h3>
         <br></br> 
         <br></br>
         <br></br>
@@ -67,6 +69,10 @@ export function DisplayQuiz(
             return <McSingleResponse {...questionComponentProps} />;
         case "MC_MULTI_RESPONSE":
             return <McMultiResponse {...questionComponentProps} />;
+        case "USER_RANKING":
+            return <UserRanking {...questionComponentProps} />;
+        case "TEXT_RESPONSE":
+            return <TextResponse {...questionComponentProps} />;
         default:
             return <h1>Unknown question type</h1>;
     }
