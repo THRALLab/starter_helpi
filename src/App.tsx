@@ -146,8 +146,9 @@ function App() {
           <Button variant={adapt === 'Difficult' ? 'primary' : 'secondary'} onClick={() => setAdapt('Difficult')}>Difficult</Button>
           <Button variant="primary"></Button>
           <Button variant={adapt === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setAdapt('Neutral')}>Neutral</Button>
-          <Button variant={adapt === 'Easy' ? 'primary' : 'secondary'} onClick={() => setAdapt('Easy')}>Easy</Button>
           <Button variant="primary"></Button>
+          <Button variant={adapt === 'Easy' ? 'primary' : 'secondary'} onClick={() => setAdapt('Easy')}>Easy</Button>
+          
         </div>
 
         <div className="question">
