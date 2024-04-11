@@ -19,7 +19,7 @@ export function SimpleQuestions(): JSX.Element {
 
     useEffect(() => {
         loadQuestions()
-    }, []);
+    });
 
     const loadQuestions = () => {
         const parsedData = JSON.parse(JSON.stringify(jsonData));
