@@ -1,6 +1,4 @@
-import { Route, Link, Routes} from "react-router-dom";
-import { BasicQuiz } from "./basic-quiz/BasicQuiz";
-import { AdvancedQuiz } from "./advanced-quiz/AdvancedQuiz";
+import { Link } from "react-router-dom";
 
 export function SelectQuiz(): JSX.Element {
   // allow for navigation to new quiz
