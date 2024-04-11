@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Row, Container } from "react-bootstrap"
-import { basicQuiz } from "src/assets/Quizzes/BasicQuiz"
+import { basicQuiz } from "src/assets/quizzes/BasicQuiz"
 import { DisplayQuiz } from "src/components/DisplayQuiz"
 import { ProgressBar } from "src/components/ProgressBar"
 
