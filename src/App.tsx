@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
-import NavigationBar from "./components/homePageComp/navigation-bar/navigationBar"
-import branchTop from "./images/homePageImages/branchTop.png";
-import DescriptionTable from "./components/homePageComp/decriptionTable";
+// MOVED THE IMPORT STATEMENTS TO HOME PAGE FILE
+import NavigationBar from "./components/homePageComp/navigationBar"
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -15,7 +14,6 @@ if (prevKey !== null) {
 
 
 function App() {
-    const [currentState, setCurrentState] = useState(0);
     const [key, setKey] = useState<string>(keyData); //for api key input
 
     //sets the local storage item to the api key the user inputed
@@ -30,12 +28,10 @@ function App() {
     }
     return (
         <div className="App" style={{ backgroundColor: '#6b2737', minHeight: '100vh', color: '#fff' }}>
-             {/* Buttons to switch states */}
-             <div style={{ textAlign: 'center'}}>
-                <Button onClick={() => setCurrentState(0)}>Home</Button>
-                <Button onClick={() => setCurrentState(1)}>State 1</Button>
-                {/* Add more buttons as needed for additional states */}
-            </div>
+             {/* Buttons to switch states*/}   
+             <NavigationBar />
+         
+            {/* UNEDIT THIS IF NECESSARY vv
             <div>
                 <h1 style={{ textAlign: 'center'}}> Home Page</h1>
                 <img src={branchTop} alt="Branch" style={{ position: 'absolute', top: 0, left: 0, width: '100px', height: '100px', zIndex: 1, transform: 'rotate(90deg)'}} />
@@ -43,13 +39,15 @@ function App() {
                 <NavigationBar />
                 <DescriptionTable />
             </div>
-
+        {/*
         {currentState === 1 && (
             <div>
                 <h2> Basic Page</h2>
                 <p>This is the basic page.</p>
             </div>
         )}
+        */}
+
         <div style={{ textAlign: 'center'}}>
                  <Form>
                 <Form.Label>API Key:</Form.Label>
