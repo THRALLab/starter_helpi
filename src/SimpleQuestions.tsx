@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
+import './General.css';
 import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
 import LinkButton from './LinkButton';
 import { SimpleQuestion } from './SimpleQuestion';
