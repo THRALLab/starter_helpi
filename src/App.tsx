@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
 // MOVED THE IMPORT STATEMENTS TO HOME PAGE FILE
-import NavigationBar from "./components/homePageComp/navigationBar"
+import NavigationBar from "./components/homePageComp/navigationBar";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -11,7 +11,6 @@ const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: 
 if (prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
-
 
 function App() {
     const [key, setKey] = useState<string>(keyData); //for api key input
@@ -27,10 +26,17 @@ function App() {
         setKey(event.target.value);
     }
     return (
-        <div className="App" style={{ backgroundColor: '#6b2737', minHeight: '100vh', color: '#fff' }}>
-             {/* Buttons to switch states*/}   
-             <NavigationBar />
-         
+        <div
+            className="App"
+            style={{
+                backgroundColor: "#6b2737",
+                minHeight: "100vh",
+                color: "#fff"
+            }}
+        >
+            {/* Buttons to switch states*/}
+            <NavigationBar />
+
             {/* UNEDIT THIS IF NECESSARY vv
             <div>
                 <h1 style={{ textAlign: 'center'}}> Home Page</h1>
@@ -48,21 +54,21 @@ function App() {
         )}
         */}
 
-        <div style={{ textAlign: 'center'}}>
-                 <Form>
-                <Form.Label>API Key:</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Insert API Key Here"
-                    onChange={changeKey}
-                ></Form.Control>
-                <br></br>
-                <Button className="Submit-Button" onClick={handleSubmit}>
-                    Submit
-                </Button>
-            </Form>
+            <div style={{ textAlign: "center" }}>
+                <Form>
+                    <Form.Label>API Key:</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Insert API Key Here"
+                        onChange={changeKey}
+                    ></Form.Control>
+                    <br></br>
+                    <Button className="Submit-Button" onClick={handleSubmit}>
+                        Submit
+                    </Button>
+                </Form>
+            </div>
         </div>
-    </div>
     );
 }
 

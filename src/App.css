@@ -1,65 +1,63 @@
 .App {
-  background-color: #cca994;
+    background-color: #cca994;
 }
-
-
 
 /*all navigation css */
 
 .navbar-container {
-  display: flex;
-  justify-content: center; /* Center the container horizontally */
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
 }
 
 .navigation-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .navigation-list li {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .navigation-list li:last-child {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 .navigation-list li button {
-  background-color: #09342F;
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 8px 12px;
-  text-decoration: none;
-  font-size: 16px;
+    background-color: #09342f;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 .navigation-list li button:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 .active button {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 /* all for the table on home page*/
 .container {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .section {
-  margin: 0 20px;
-  text-align: center;
+    margin: 0 20px;
+    text-align: center;
 }
 
 .header {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .paragraph {
-  margin-top: 0;
+    margin-top: 0;
 }
