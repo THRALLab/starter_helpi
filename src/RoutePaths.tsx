@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import DetailedQuestions from './DetailedQuestions';
 import { SimpleQuestions } from './SimpleQuestions';
+import SimpleReport from './SimpleReport';
+import DetailedReport from './DetailedReport';
 import Home from './Home';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -26,6 +28,8 @@ function RoutePaths() {
           <Route path="/" element={<Home/>}/>
           <Route path="detailedquestions" element={<DetailedQuestions />}/>
           <Route path="simplequestions" element={<SimpleQuestions />}/>
+          <Route path="simplereport" element={<SimpleReport />}/>
+          <Route path="detailedreport" element={<DetailedReport />}/>
         </Routes>
       </>
   );

@@ -71,6 +71,8 @@ function DetailedQuestions() {
             </div>
           </div>
         </div>
+
+      <p className='Detailed-report-button'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
       
       <div className='API-Footer'>
         <Form>

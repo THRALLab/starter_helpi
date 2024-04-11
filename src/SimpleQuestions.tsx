@@ -91,6 +91,7 @@ export function SimpleQuestions(): JSX.Element {
                 <div style={{ width: "20px" }}></div>
                 <Button onClick={nextQuestion}>{option2}</Button>
                 </div>
+                <p className='Simple-report-button'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
             </div>
             <div className='API-Footer'>
                 <Form>
