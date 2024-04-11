@@ -1,0 +1,21 @@
+.quiz-select-container {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.quiz-link-select-container {
+    display: grid;
+    grid-template-columns: 10% auto 5% auto 10%;
+    justify-items: center;
+    align-items: center;
+}
+
+.select-quiz-link {
+    width: 75%;
+    text-align: center;
+    text-decoration: inherit;
+    color: rgb(241, 235, 235);
+    background-color: var(--buttonColor1);
+    border: solid 20px var(--buttonColor1);
+    border-radius: 25px;
+}
