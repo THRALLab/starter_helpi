@@ -1,5 +1,5 @@
 import "./pages.css"
-import {Container, Row } from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import { AIKey } from "../interfaces/AIKeyInterface";
 
 export function HomePage(key: AIKey): JSX.Element {
