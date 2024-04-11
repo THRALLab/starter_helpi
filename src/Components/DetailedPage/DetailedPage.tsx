@@ -1,11 +1,9 @@
+import React from 'react'
 import './DetailedPage.css'
 
 export function DetailedPage() {
     return (
-        <div>
-            <body>
-            Detailed Question Page
-            </body>
-        </div>
+        <div>Detailed Page</div>
     )
+
 }

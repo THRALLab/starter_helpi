@@ -19,7 +19,7 @@ const AppFooter = ({ changeKey, handleSubmit }: {
         overlay={renderTooltip}
       >
         <a href="https://github.com/MichaelLutz1/starter_helpi" target="_blank" rel="noreferrer">
-          <Button variant="secondary">
+          <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
             <BsGithub />
           </Button>
         </a>
@@ -27,10 +27,16 @@ const AppFooter = ({ changeKey, handleSubmit }: {
       <Form>
         <InputGroup>
           <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-          <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+          <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }} className="Submit-Button" onClick={handleSubmit}>Submit</Button>
         </InputGroup>
       </Form>
-        <div className='names-container'>Made by: Michael Forte, Michael Lutz, Jacob Wilber, Colin Parsons</div>
+      <div className='names-container'>
+        <span>Made by: </span>
+        <a href="https://github.com/Mforte5115" target="_blank" rel="noreferrer" className='gh-profile'>Michael Forte</a>,
+        <a href="https://github.com/MichaelLutz1" target="_blank" rel="noreferrer" className='gh-profile'> Michael Lutz</a>,
+        <a href="https://github.com/jacobwilbe" target="_blank" rel="noreferrer" className='gh-profile'> Jacob Wilber</a>,
+        <a href="https://github.com/ColinP5" target="_blank" rel="noreferrer" className='gh-profile'> Colin Parsons</a>
+      </div>
     </div>
   );
 };
