@@ -1,0 +1,23 @@
+.accordion-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.item, .header, .body {
+	--bs-accordion-btn-bg: #21273b;
+	--bs-accordion-bg: #21273b;
+	--bs-accordion-border-color: #343a40;
+	--bs-accordion-btn-color: white;
+	--bs-accordion-active-bg: #21273b;
+	--bs-accordion-active-color: #6923ff;
+	--bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(105, 35, 255, 0.25);
+	--bs-accordion-color: white;
+	--bs-accordion-icon-color: white;
+}
+.title{
+	margin-bottom: 4rem;
+	color: white;
+}
+.body{
+	text-align: left;
+}

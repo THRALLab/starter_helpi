@@ -1,0 +1,23 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0e1014;
+    gap: 3rem;
+}
+
+.Title {
+    width: 80%;
+    /* padding-left: 20px; */
+    text-align: center;
+    color: white
+}
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 70%;
+}
+.card-desc{
+    padding: 1rem;
+}
