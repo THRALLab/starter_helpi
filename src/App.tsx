@@ -52,30 +52,23 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {homePageVisible && 
-        <div className="Pages">
-        </div>}
-  
-        {basicVisible && 
-        <div className="Pages">
-        </div>}
-  
-        {detailedVisible &&
-        <div className="Pages">
-        </div>}
+
         <div className="Page-buttons-div">
-        <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
+          <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
+          <Button className="Page-button" onClick={showHomePage} disabled={homePageVisible}>Home Page</Button>
           <Button className="Page-button" onClick={showBasic} disabled={basicVisible}>Basic Questions</Button>
           <Button className="Page-button" onClick={showDetailed} disabled={detailedVisible}>Detailed Questions</Button>
-          <Button className="Page-button" onClick={showHomePage} disabled={homePageVisible}>Home Page</Button>
         </div>
+      </header>
 
+      <div className="Pages-div">
         {homePageVisible && <HomePage key={key} />}
 
         {basicVisible && <BasicQuestion key={key} />}
 
         {detailedVisible && <DetailedQuestions key={key} />}
-      </header>
+      </div>
+
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
