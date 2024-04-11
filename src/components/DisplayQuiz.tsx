@@ -47,6 +47,7 @@ export function DisplayQuiz(
         <br></br> 
         <br></br>
         <br></br>
+        <br></br>
         <h3>Current Answers:</h3>
         <ol>
         {answers.map((target: string) => (<li>{target}</li>))}
