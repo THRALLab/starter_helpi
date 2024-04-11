@@ -16,7 +16,7 @@ function App(): JSX.Element {
         </header>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/select-quiz" element={<SelectQuiz />}/>
+          <Route path="/select-quiz/*" element={<SelectQuiz />}/>
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </div>

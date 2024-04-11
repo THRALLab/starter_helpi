@@ -1,16 +1,14 @@
-import { Button } from "react-bootstrap";
 import { Route, Link, Routes} from "react-router-dom";
-import { DisplayQuiz } from "../components/DisplayQuiz";
-import { basicQuiz } from "../assets/Quizzes/BasicQuiz";
-import { BasicQuiz } from "./BasicQuiz";
+import { BasicQuiz } from "./basic-quiz/BasicQuiz";
+import { AdvancedQuiz } from "./advanced-quiz/AdvancedQuiz";
 
 export function SelectQuiz(): JSX.Element {
   // allow for navigation to new quiz
   return (
   <div className="quiz-select-container">
     <h2>Select Your Quiz</h2>
-      <Link className="" to="/basic-quiz">Basic Quiz</Link>
-      <Link className="" to="/advanced-quiz">Advanced Quiz</Link>
+      <Link className="" to="basic-quiz">Basic Quiz</Link>
+      <Link className="" to="advanced-quiz">Advanced Quiz</Link>
       <Routes>
         <Route 
           path="basic-quiz"
@@ -18,6 +16,7 @@ export function SelectQuiz(): JSX.Element {
         />
         <Route 
           path="advanced-quiz"
+          element={<AdvancedQuiz/>}
         />
       </Routes>
   </div>);
