@@ -82,14 +82,13 @@ function App() {
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
       <h1>Kai Winterle, Joey Dare, Joanna Crisomia, Ricky Kiamilev</h1>
-    </div>
         <Form>
           <Form.Label>API Key:</Form.Label>
           <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
           <br></br>
           <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
         </Form>
-      </div>
+    </div>
     </>
   );
 }
