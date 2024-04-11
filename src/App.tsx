@@ -23,6 +23,13 @@ function App() {
   const [routine, setRoutine] = useState<string>('');             // importance of routine
   const [lead, setLead] = useState<string>('');                   // leadership or projects
   const [environment, setEnvironment] = useState<string>('');     // preference of work environment
+  const [prefWork, setPrefWork] = useState<string>('');
+  const [opCreate, setOpCreate] = useState<string>('');
+  const [adapt, setAdapt] = useState<string>('');
+  const [workImpact, setWorkImpact] = useState<string>('');
+  const [learn, setLearn] = useState<string>('');
+  const [consistentRoutine, setConsistentRoutine] = useState<string>('');
+  const [env, setEnv] = useState<string>('');
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -59,8 +66,9 @@ function App() {
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
       <h1>Kai Winterle, Joey Dare, Joanna Crisomia, Ricky Kiamilev</h1>
+
+      
       <div className="question-section">
-        {/* Each question has its own div for clarity and potential styling */}
         
         <div className="question">
           <p>How much do you prefer working independently over working collaboratively?</p>
@@ -111,6 +119,66 @@ function App() {
           <Button variant={environment === 'Changing Environment' ? 'primary' : 'secondary'} onClick={() => setEnvironment('Changing Environment')}>Changing Environment</Button>
         </div>
 
+        
+
+
+
+        <div className="question">
+          <p>How much do you prefer working independently over working collaboratively?</p>
+          <Button variant={prefWork === 'Not at all' ? 'primary' : 'secondary'} onClick={() => setPrefWork('Not at all')}>Not at all</Button>
+          <Button variant="primary"></Button>
+          <Button variant={prefWork === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setPrefWork('Neutral')}>Neutral</Button>
+          <Button variant="primary"></Button>
+          <Button variant={prefWork === 'Very much' ? 'primary' : 'secondary'} onClick={() => setPrefWork('Very much')}>Very much</Button>
+        </div>
+
+        <div className="question">
+          <p>How significant is the opportunity to be creative and have passion within your work?</p>
+          <Button variant={opCreate === 'Not significant' ? 'primary' : 'secondary'} onClick={() => setOpCreate('Not significant')}>Office</Button>
+          <Button variant="primary"></Button>
+          <Button variant={opCreate === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setOpCreate('Neutral')}>Neutral</Button>
+          <Button variant="primary"></Button>
+          <Button variant={opCreate === 'Very significant' ? 'primary' : 'secondary'} onClick={() => setOpCreate('Very significant')}>Changing Environment</Button>
+        </div>
+
+        <div className="question">
+          <p>How easily do you adapt to changes in your work environment and job responsibilities?</p>
+          <Button variant={adapt === 'Difficult' ? 'primary' : 'secondary'} onClick={() => setAdapt('Difficult')}>Office</Button>
+          <Button variant="primary"></Button>
+          <Button variant={adapt === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setAdapt('Neutral')}>Neutral</Button>
+          <Button variant={adapt === 'Easy' ? 'primary' : 'secondary'} onClick={() => setAdapt('Easy')}>Changing Environment</Button>
+          <Button variant="primary"></Button>
+        </div>
+
+        <div className="question">
+          <p>How important is it for you to make a measurable and meaningful impact through your work?</p>
+          <Button variant={workImpact === 'Office' ? 'primary' : 'secondary'} onClick={() => setWorkImpact('Office')}>Office</Button>
+          <Button variant={workImpact === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setWorkImpact('Neutral')}>Neutral</Button>
+          <Button variant={workImpact === 'Changing Environment' ? 'primary' : 'secondary'} onClick={() => setWorkImpact('Changing Environment')}>Changing Environment</Button>
+        </div>
+
+        <div className="question">
+          <p>How important is collaborative learning in your professional development?</p>
+          <Button variant={learn === 'Office' ? 'primary' : 'secondary'} onClick={() => setLearn('Office')}>Office</Button>
+          <Button variant={learn === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setLearn('Neutral')}>Neutral</Button>
+          <Button variant={learn === 'Changing Environment' ? 'primary' : 'secondary'} onClick={() => setLearn('Changing Environment')}>Changing Environment</Button>
+        </div>
+
+        <div className="question">
+          <p>How significant is a structured and consistent routine within your workplace to your overall job satisfaction and productivity?</p>
+          <Button variant={consistentRoutine === 'Office' ? 'primary' : 'secondary'} onClick={() => setConsistentRoutine('Office')}>Office</Button>
+          <Button variant={consistentRoutine === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setConsistentRoutine('Neutral')}>Neutral</Button>
+          <Button variant={consistentRoutine === 'Changing Environment' ? 'primary' : 'secondary'} onClick={() => setConsistentRoutine('Changing Environment')}>Changing Environment</Button>
+        </div>
+
+        <div className="question">
+          <p>Do you prefer an office environment or an environment that is frequently changing?</p>
+          <Button variant={env === 'Office' ? 'primary' : 'secondary'} onClick={() => setEnv('Office')}>Office</Button>
+          <Button variant={env === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setEnv('Neutral')}>Neutral</Button>
+          <Button variant={env === 'Changing Environment' ? 'primary' : 'secondary'} onClick={() => setEnv('Changing Environment')}>Changing Environment</Button>
+        </div>
+
+  
       </div>
     </div>
   );
