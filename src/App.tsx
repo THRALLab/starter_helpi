@@ -55,7 +55,9 @@ function App() {
 
   return (
     <div className="App">
+      <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
       <header className="App-header">
+<<<<<<< HEAD
 <<<<<<< HEAD
       <img src={logo} alt="Logo" style={{ maxWidth: '200px', height: 'auto' }} />
         <div className="Page-buttons">
@@ -79,20 +81,28 @@ function App() {
         {detailedVisible &&
         <div className="Pages">
         </div>}
+=======
+>>>>>>> e7980823142643a1a63b9bf1b867afaedc2eb025
         <div className="Page-buttons-div">
-        <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
+          <Button className="Page-button" onClick={showHomePage} disabled={homePageVisible}>Home Page</Button>
           <Button className="Page-button" onClick={showBasic} disabled={basicVisible}>Basic Questions</Button>
           <Button className="Page-button" onClick={showDetailed} disabled={detailedVisible}>Detailed Questions</Button>
-          <Button className="Page-button" onClick={showHomePage} disabled={homePageVisible}>Home Page</Button>
         </div>
+      </header>
 
+      <div className="Pages-div">
         {homePageVisible && <HomePage key={key} />}
 
         {basicVisible && <BasicQuestion key={key} />}
 
         {detailedVisible && <DetailedQuestions key={key} />}
+<<<<<<< HEAD
 >>>>>>> bcf7f020d5edae5e0ad38c471294acbfcce5b7a3
       </header>
+=======
+      </div>
+
+>>>>>>> e7980823142643a1a63b9bf1b867afaedc2eb025
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
