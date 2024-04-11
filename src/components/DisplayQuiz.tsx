@@ -1,6 +1,6 @@
 // Import necessary hooks and components
 import React, { useState } from "react";
-import { Question } from "../interfaces/QuestionTypes";
+import { Question, questionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
 import { TextResponse } from "./TextResponse"
@@ -57,7 +57,7 @@ export function DisplayQuiz(
 
     const currentQuestion = quiz[currentQuestionId];
 
-    const questionComponentProps = {
+    const questionComponentProps: questionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
         setAnswer: setCurrentAnswer,
