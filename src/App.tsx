@@ -16,13 +16,13 @@ if (prevKey !== null) {
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [currPg, setCurrPg] = useState<string>('Home');
-  const [workingPref, setWorkingPref] = useState<string>(''); // preference for working
-  const [creativity, setCreativity] = useState<string>(''); // if creativity and passion are factors
-  const [adaptability, setAdaptability] = useState<string>(''); // if user can easily adapt in workplace
-  const [impact, setImpact] = useState<string>(''); // importance of impact
-  const [routine, setRoutine] = useState<string>(''); // importance of routine
-  const [lead, setLead] = useState<string>(''); // leadership or projects
-  const [environment, setEnvironment] = useState<string>('');
+  const [workingPref, setWorkingPref] = useState<string>('');     // preference for working
+  const [creativity, setCreativity] = useState<string>('');       // if creativity and passion are factors
+  const [adaptability, setAdaptability] = useState<string>('');   // if user can easily adapt in workplace
+  const [impact, setImpact] = useState<string>('');               // importance of impact
+  const [routine, setRoutine] = useState<string>('');             // importance of routine
+  const [lead, setLead] = useState<string>('');                   // leadership or projects
+  const [environment, setEnvironment] = useState<string>('');     // preference of work environment
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
