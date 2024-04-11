@@ -1,25 +1,30 @@
-// import { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-// import { McMultiResponse } from "../../components/McMultiResponse";
+import { useState } from "react"
+import { Row, Container } from "react-bootstrap"
+import { advancedQuiz } from "src/assets/quizzes/AdvancedQuiz"
+import { DisplayQuiz } from "src/components/DisplayQuiz"
+import { ProgressBar } from "src/components/ProgressBar"
 
-export function AdvancedQuiz(): JSX.Element {
-    // const [firstAnswer, setFirstAnswer] = useState<string>("");
-    
-    // const question1 = "How old are you?";
-    
-    //const question2 = "Which subjects interest you the most?";
 
+
+export const AdvancedQuiz = () => {
+    const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
+    const totalQuestions = Object.keys(advancedQuiz).length;
     return(
-        <Container fluid>
+    <div className="basicQuiz-container">
+        <Container>
             <Row>
-                <Col style={{ justifyContent:'left'}}>
-                    {/* <McMultiResponse
-                        question={question1}
-                        answer={firstAnswer}
-                        setAnswer={setFirstAnswer}
-                    ></McMultiResponse> */}
-                </Col>
+                <ProgressBar
+                    value={questionsAnswered}
+                    max={totalQuestions}
+                />
+            </Row>
+            <Row>
+                <DisplayQuiz 
+                    quiz={advancedQuiz}
+                    questionsAnswerd={questionsAnswered} 
+                    setQuestionsAnswerd={setQuestionsAnswered} 
+                />
             </Row>
         </Container>
-    )
+    </div>)
 }
