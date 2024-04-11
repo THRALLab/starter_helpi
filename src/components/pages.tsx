@@ -4,21 +4,20 @@ import { AIKey } from "../interfaces/AIKeyInterface";
 
 export function HomePage(key: AIKey): JSX.Element {
     return <div className="Pages">
-        homePage
+        Home Page
         <Container>
             <Row>
-                <Col>
-                    <div className="basic-description">
-                        The basic questions will ask you more simple, easier
-                        questions that will give you a quick idea about your
-                    </div>
-                </Col>
-                <Col>
+                <header className="Basic-question-header">Basic Questions</header>
+                <div className="basic-description">
+                    The basic questions will ask you more simple, easier
+                    questions that will give you a quick idea about your
+                    potential ideal career path. For a brief recommendation for 
+                    careers, take this quiz!
+                </div>
+                <header className="Detailed-question-header">Detailed Questions</header>
                     <div className="detailed-description">
                     The detailed questions quiz is targeted towards narrowing down your optimal field of study. If you would like recommendations for specific careers within your field of interest, take this quiz!  
                     </div>
-                    
-                </Col>
             </Row>
         </Container>
     </div>;
