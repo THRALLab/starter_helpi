@@ -65,9 +65,9 @@ function App() {
         </div>}
         <div className="Page-buttons-div">
         <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
-          <Button className="Page-button" onClick={showBasic}>Basic Questions</Button>
-          <Button className="Page-button" onClick={showDetailed}>Detailed Questions</Button>
-          <Button className="Page-button" onClick={showHomePage}>Home Page</Button>
+          <Button className="Page-button" onClick={showBasic} disabled={basicVisible}>Basic Questions</Button>
+          <Button className="Page-button" onClick={showDetailed} disabled={detailedVisible}>Detailed Questions</Button>
+          <Button className="Page-button" onClick={showHomePage} disabled={homePageVisible}>Home Page</Button>
         </div>
 
         {homePageVisible && <HomePage key={key} />}
