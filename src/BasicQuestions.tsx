@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
-//import { useNavigate } from 'react-router-dom';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-} from 'react-router-dom';
-import './router';
-//import Link from 'next/link';
-//import Basic from './BasicQuestions';
-//import Detailed from './DetailedQuestions';
-
+import { Link } from 'react-router-dom';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -23,54 +11,7 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-function BasicQuestions() {
-  // const navigate = useNavigate();
-
-  // function handleClick() {
-  //   this.router.navigate(['/BasicQuestions']);
-  // }
-
-  return (
-    <button type="button" 
-    //onClick={handleClick}
-    >
-    Basic Assessment
-    </button>
-  );
-}
-
-function DetailedQuestions() {
-  // const navigate = useNavigate();
-
-  // function handleClick() {
-  //   navigate('/DetailedQuestions');
-  // }
-
-  return (
-    <button
-    type="button"
-    //onClick={handleClick}
-    style={{ marginLeft: '20px' }}>
-    Detailed Assessment
-    </button>
-  );
-}
-
-
-
-function App() {
-    
- 
-    // const goToDetailed = () => {
- 
-    //     // This will navigate to second component
-    //     Nav('/DetailedQuestions');
-    // };
-    // const gotToBasic = () => {
- 
-    //     // This will navigate to first component
-    //     Nav('/BasicQuestions');
-    // };
+function Basic() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   
   //sets the local storage item to the api key the user inputed
@@ -79,35 +20,23 @@ function App() {
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
   }
 
-
   //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
-    
   }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
         <h1>Our Names</h1>
         <br></br>
-        <span>Olivia Karney</span>
-        <span>Jacob Whitman</span>
-        <span>Zahra Temori</span>
-        <span>Khadija Mohammadi</span>
+        <span>Basic Questions!</span>
+        
         <br></br>
         {/*Insert Next Name Below!!!*/}
         
         <p>
-          <div style={{ margin: '30px 0' }}>
-          
-            <BasicQuestions/>
-            <Link to="/BasicQuestions">Go to Basic Page</Link>
-          
-            <DetailedQuestions/>
-            <Link to="/DetailedQuestions">Go to Detailed Page</Link>
-
-          </div>
+        <Link to="/">go back</Link>
         </p>
         <a
           className="App-link"
@@ -128,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default Basic;
