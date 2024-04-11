@@ -55,6 +55,7 @@ function DetailedQuestions() {
           <label>Question:</label><br />
           
           <Button onClick={generateSimpleQuestionPage}>Generate Simple Question Page</Button> <br />
+          <Button onClick={()=>setQuestionNumber((parseInt(questionNumber)+1).toString())}>Next</Button> <br />
         </div>
           <SliderQuestion value={sliderValue1} onChange={setSliderValue1} label="Question 1:"></SliderQuestion>
 
