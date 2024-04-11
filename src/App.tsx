@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
-import { basicQuiz } from "./assets/quizzes/BasicQuiz";
-import { DisplayQuiz } from "./components/DisplayQuiz";
-import './App.css';
+import { SelectQuiz } from "./pages/SelectQuiz";
+// Import any other components or pages you have
+import './css/App.css';
+import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
+import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
 
 function App(): JSX.Element {
   return (
@@ -11,12 +13,20 @@ function App(): JSX.Element {
       <div className="App">
         <header className="App-header">
           <nav>
-            <Link to="/">Home</Link> | <Link to="/basic-quiz">Basic Quiz</Link> | <Link to="/advanced-quiz">Advanced Quiz</Link>
+            <Link to="/">Home</Link> | <Link to="/select-quiz">Quiz</Link>
           </nav>
         </header>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/basic-quiz" element={<DisplayQuiz quiz={basicQuiz} />} />
+          <Route path="/select-quiz" element={<SelectQuiz />}/>
+          <Route 
+          path="/basic-quiz"
+          element={<BasicQuiz/>}
+        />
+        <Route 
+          path="/advanced-quiz"
+          element={<AdvancedQuiz/>}
+        />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </div>

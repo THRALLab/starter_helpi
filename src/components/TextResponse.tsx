@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Form } from 'react-bootstrap';
 
-export function TEXT_RESPONSE({
+export function TextResponse({
     question,
     options,
     setAnswer,

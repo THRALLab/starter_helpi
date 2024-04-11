@@ -1,16 +1,23 @@
 // Import necessary hooks and components
 import React, { useState } from "react";
 import { Question } from "../interfaces/QuestionTypes";
-import { MC_SINGLE_RESPONSE } from "./MC_SINGLE_RESPONSE";
-import { MC_MULTI_RESPONSE } from "./MC_MULTI_RESPONSE";
-import { USER_RANKING } from "./USER_RANKING";
-import { TEXT_RESPONSE } from "./TEXT_RESPONSE";
+import { McSingleResponse } from "./McSingleResponse";
+import { McMultiResponse } from "./McMultiResponse";
 
-interface DisplayQuizProps {
-    quiz: Record<string, Question>;
-}
+type DisplayQuizProps = Record<string, Question>;
 
-export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
+export function DisplayQuiz(
+    { 
+        quiz,
+        questionsAnswerd,
+        setQuestionsAnswerd } 
+    : 
+    {
+        quiz : DisplayQuizProps,
+        questionsAnswerd : number,
+        setQuestionsAnswerd : (questionsAnswerd: number) => void 
+    }
+    ): JSX.Element {
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("root"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
     const [answers, setAnswers] = useState<string[]>([]); // Array of all question answers
@@ -19,6 +26,7 @@ export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
     const handleAnswerSubmit = () => {
         setAnswers([...answers, currentAnswer])
         const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
+        setQuestionsAnswerd(questionsAnswerd+1)
         if (nextQuestionId === "") {
             setIsQuizComplete(true); // End of the quiz
         } else {
@@ -49,13 +57,9 @@ export function DisplayQuiz({ quiz }: DisplayQuizProps ): JSX.Element {
 
     switch (currentQuestion.type) {
         case "MC_SINGLE_RESPONSE":
-            return <MC_SINGLE_RESPONSE {...questionComponentProps} />;
+            return <McSingleResponse {...questionComponentProps} />;
         case "MC_MULTI_RESPONSE":
-            return <MC_MULTI_RESPONSE {...questionComponentProps} />;
-        case "USER_RANKING":
-            return <USER_RANKING {...questionComponentProps} />;
-        case "TEXT_RESPONSE":
-            return <TEXT_RESPONSE {...questionComponentProps} />
+            return <McMultiResponse {...questionComponentProps} />;
         default:
             return <h1>Unknown question type</h1>;
     }

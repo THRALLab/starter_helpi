@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-export function MC_MULTI_RESPONSE({
+export function McMultiResponse({
     question,
     options,
     setAnswer,
