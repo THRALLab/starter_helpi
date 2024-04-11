@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom"
 import "./HomePageSignUpWidget.css"
 
 export function HomePageSignUpWidget() : JSX.Element {
+
+    const nav = useNavigate();
 
     return (
         <div className = "home-page-sign-up-widget">
@@ -12,7 +15,7 @@ export function HomePageSignUpWidget() : JSX.Element {
                         allowing us to make a more personalized experience for you.</p>
                     <p> Plus it is completely free!</p>
                 </div>
-                <button className = "sign-up-button"> Make An Account </button>
+                <button className = "sign-up-button" onClick = {() => nav("/sign-up")}> Make An Account </button>
             </div>
         </div>
     )

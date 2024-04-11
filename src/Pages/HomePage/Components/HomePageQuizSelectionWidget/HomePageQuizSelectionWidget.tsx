@@ -13,7 +13,7 @@ export function HomePageQuizSelectionWidget() : JSX.Element {
             <div className = "quiz-selection-widget--text-content">
                 <div className = "quiz-selection-widget--choice-card">
                     <h2 className = "choice-card--header"> If you're in a rush, but still need some career help. </h2>
-                    <button className = "choice-card--button" onClick={() => nav('/BasicQuestionsPage')}>Start Short Quiz</button>
+                    <button className = "choice-card--button" onClick={() => nav('/short-quiz')}>Start Short Quiz</button>
                 </div> 
                 <div className = "quiz-selection-widget--choice-card">
                     <h2 className = "choice-card--header"> For the full Helpi, career guidence experience.</h2>
