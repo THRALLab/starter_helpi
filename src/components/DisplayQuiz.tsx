@@ -9,10 +9,12 @@ type DisplayQuizProps = Record<string, Question>;
 export function DisplayQuiz(
     { 
         quiz,
+        title,
         questionsAnswerd,
         setQuestionsAnswerd } 
     : 
     {
+        title: string,
         quiz : DisplayQuizProps,
         questionsAnswerd : number,
         setQuestionsAnswerd : (questionsAnswerd: number) => void 
@@ -26,7 +28,7 @@ export function DisplayQuiz(
     const handleAnswerSubmit = () => {
         setAnswers([...answers, currentAnswer])
         const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
-        setQuestionsAnswerd(questionsAnswerd+1)
+        setQuestionsAnswerd(questionsAnswerd + 1)
         if (nextQuestionId === "") {
             setIsQuizComplete(true); // End of the quiz
         } else {
@@ -36,9 +38,14 @@ export function DisplayQuiz(
 
     if (isQuizComplete) {
         return <div style={{justifyContent: "left"}}>
-        <h2>Quiz Complete</h2>
+        <h2>End of question bank for {title}</h2>
+        <br></br>
+        <h3>This is the point at which GPT would take over asking questions.</h3>
+        <h3>The questions asked to the user at this would be used to populate the prompt given to ChatGPT</h3>
         <br></br> 
-        <h3>Answers:</h3>
+        <br></br>
+        <br></br>
+        <h3>Current Answers:</h3>
         <ol>
         {answers.map((target: string) => (<li>{target}</li>))}
         </ol>

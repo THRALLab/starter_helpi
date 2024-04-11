@@ -13,11 +13,11 @@ function App(): JSX.Element {
       <div className="App">
         <header className="App-header">
           <nav>
-            <Link to="/">Home</Link> | <Link to="/select-quiz">Quiz</Link>
+            <Link to="/">Home</Link> | <Link to="/select-quiz">Select Quiz</Link>
           </nav>
         </header>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" Component={Home} />
           <Route path="/select-quiz" element={<SelectQuiz />}/>
           <Route 
           path="/basic-quiz"
