@@ -55,11 +55,11 @@ function App() {
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">Next</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
-                Another action
+                Prev
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">List Careers</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 Separated link
@@ -69,7 +69,7 @@ function App() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    <div className="App">
+    <div className="App bg-black">
         <h1>Joanna Crisomia</h1>
         <h1>Joey Dare</h1>
 
