@@ -9,7 +9,7 @@ function Detailed() {
 	const questions = [
 		{
 			question:
-				"Are there any particular careers that have peaked your interest?",
+				"Which of the following particular careers have peaked your interest?",
 			choices: [
 				"Healthcare: Medicine, Nursing, Therapy",
 				"Technology: Software Development, Data Analysis, Cybersecurity",
@@ -20,18 +20,18 @@ function Detailed() {
 		},
 		{
 			question:
-				"Are there any sacrifices or challenges that you’re willing to embrace or absolutely want to avoid in your career?",
+				"What kind of sacrifices or challenges are you willing to embrace or absolutely want to avoid in your career?",
 			choices: [
-				"Willing to embrace: Long hours, frequent travel, financial uncertainty",
-				"Want to avoid: Toxic work environment, lack of work-life balance, stagnant growth opportunities",
-				"Willing to embrace: Career change, continuous learning, relocation",
-				"Want to avoid: High stress levels, unethical practices, limited autonomy",
-				"Willing to embrace: Limited initial salary, physical demands, intense competition"
+				"I am willing to embrace: Long hours, frequent travel, financial uncertainty",
+				"I want to avoid: Toxic work environment, lack of work-life balance, stagnant growth opportunities",
+				"I am willing to embrace: Career change, continuous learning, relocation",
+				"I want to avoid: High stress levels, unethical practices, limited autonomy",
+				"I am willing to embrace: Limited initial salary, physical demands, intense competition"
 			]
 		},
 		{
 			question:
-				"Are there any causes or missions that resonate with you that you would like to support or participate in your career?",
+				"Which of the following are causes or missions that resonate with you that you would like to support or participate in your career?",
 			choices: [
 				"Environmental conservation and sustainability",
 				"Social justice and equality",
@@ -74,13 +74,13 @@ function Detailed() {
 		},
 		{
 			question:
-				"Do you feel like your current job isn't utilizing key skills that you feel may be holding you back from gaining valuable experience?",
+				"What key skills do you feel your current job isn't utilizing and that you feel may be holding you back from gaining valuable experience?",
 			choices: [
 				"Leadership and decision-making abilities",
 				"Technical or specialized expertise",
 				"Communication and interpersonal skills",
 				"Problem-solving and analytical capabilities",
-				"Adaptability and resilience to change"
+				"I am currently not employed"
 			]
 		}
 	];
