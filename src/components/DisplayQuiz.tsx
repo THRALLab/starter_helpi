@@ -1,8 +1,8 @@
 // Import necessary hooks and components
 import React, { useState } from "react";
 import { Question } from "../interfaces/QuestionTypes";
-import { McSingleResponse } from "./MC_SINGLE_RESPONSE";
-import { McMultiResponse } from "./MC_MULTI_RESPONSE";
+import { McSingleResponse } from "./McSingleResponse";
+import { McMultiResponse } from "./McMultiResponse";
 
 type DisplayQuizProps = Record<string, Question>;
 
