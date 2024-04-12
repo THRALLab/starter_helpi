@@ -86,7 +86,11 @@ function Detailed() {
 		}
 	];
 
-	const [currentIndex, setCurrentIndex] = useState(0);
+	const last_saved: number =
+		Number(localStorage.getItem("current_question")) || 0;
+	const [currentIndex, setCurrentIndex] = useState(last_saved);
+	localStorage.setItem("current_question", currentIndex.toString());
+
 	return (
 		<>
 			<h1>This is the Detailed Quiz.</h1>
