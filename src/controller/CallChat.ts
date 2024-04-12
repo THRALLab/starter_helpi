@@ -1,5 +1,3 @@
-import OpenAI from "openai";
-
 import { openai } from "./openaiToken";
 
 export async function callGBT(
