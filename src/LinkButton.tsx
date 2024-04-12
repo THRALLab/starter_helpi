@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-//import React from 'react';
 import { Button } from 'react-bootstrap';
 
 interface LinkButtonProps{
@@ -8,7 +7,6 @@ interface LinkButtonProps{
 }
 
 //Special button made for navigating our webpages
-
 function LinkButton(props: LinkButtonProps) {
     const navigate = useNavigate();
     const handleButtonClick = (whereTo: string)=>{

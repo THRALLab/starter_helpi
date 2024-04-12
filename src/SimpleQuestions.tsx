@@ -70,7 +70,8 @@ export function SimpleQuestions(): JSX.Element {
 
     return (
         <div className={bodyClassName} id='bigBody'>
-            <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
+            <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
+            
             <div className='Simple-body'>
                 <div style={{ padding: "10px" }}>
                 <div style={{ backgroundColor: color, color: "white", padding: "10px", position: "relative", display: "flex" }}>
@@ -93,6 +94,7 @@ export function SimpleQuestions(): JSX.Element {
                 </div>
                 <p className='Simple-report-button'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
             </div>
+
             <div className='API-Footer'>
                 <Form>
                 <Form.Label>API Key:</Form.Label>
