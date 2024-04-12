@@ -1,29 +1,7 @@
-import OpenAI from 'openai';
 
-const getApiKey = (): string => {
-    const envKey = process.env.REACT_APP_CHATGBT_API_KEY;
-    const localKey = localStorage.getItem("MYKEY")
-    if(envKey != null) return envKey;
-    if(localKey != null) return localKey;
-    return"";
-}
+import { openai } from "./openaiToken";
 
-const openai = new OpenAI({
-  apiKey: getApiKey(),
-  dangerouslyAllowBrowser: true // allows for running in the browser
-});
-
-export async function createGBTStream({} : {}): Promise<OpenAI.ChatCompletion> {
-  const chatCompletion = await openai.chat.completions.create({
-    messages: [{ 
-        role: 'system', content: 'tell me a short story about adventure time the show' }],
-    model: 'gpt-3.5-turbo',
-
-  });
-  return chatCompletion;
-}
-
-export async function callGBT({startingPrompt} : {startingPrompt: string}) {
+export async function openGBTStream({startingPrompt} : {startingPrompt: string}) {
     const stream = await openai.beta.chat.completions.stream({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
