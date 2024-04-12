@@ -9,6 +9,13 @@ const BasicPage = () => {
 	function updateChoice(index:number){
 		setResponse(prevResponse => {
 			const updatedResponse = [...prevResponse];
+			if(index % 2 === 0){
+				updatedResponse[index + 1] = false;
+			}
+			else{
+				updatedResponse[index - 1] = false;
+			}
+
 			updatedResponse[index] = true;
 			return updatedResponse;
 		  });
@@ -137,109 +144,105 @@ const BasicPage = () => {
 		</div>
 		<hr></hr>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "100px"}}>
-		<span className="QuestionNum">#5</span>
-			<span className="checkbox-distance" >
-				<div>
-				<Form.Check 
-					type="radio"
-					id="q5-Option1"
-					label="holder"
-					name="question5"
-					onChange={() => updateChoice(8)}
-					checked={response[8] === true}
-
-
-					>
-				</Form.Check>
-				<Form.Check  /* Fix the radio buttons and include state*/
-					type="radio"
-					id="q5-Option2"
-					label="holder"
-					name="question5"
-					onChange={() => updateChoice(9)}
-					checked={response[9] === true}
-
-					>
-				</Form.Check>
-				</div>
-			</span>
-			<span className="QuestionNum">#6</span>
-			<span className="checkbox-distance">
-				<div>
-					<Form.Check 
-					type="radio"
-					id="q6-Option1"
-					label="holder"
-					name="question5"
-					onChange={() => updateChoice(10)}
-					checked={response[10] === true}
-
-					>
-				</Form.Check>
-				<Form.Check 
-					type="radio"
-					id="q6-Option2"
-					label="holder"
-					name="question6"
-					onChange={() => updateChoice(11)}
-					checked={response[11] === true}
-
-					>
-				</Form.Check>
-				</div>
-			</span>
-			<span className="QuestionNum">#7</span>
-			<span className="checkbox-distance" >
-				<div>
-				<Form.Check 
-					type="radio"
-					id="q7-Option1"
-					label="holder"
-					name="question7"
-					onChange={() => updateChoice(12)}
-					checked={response[12] === true}
-	
-					>
-				</Form.Check>
-				<Form.Check 
-					type="radio"
-					id="q7-Option2"
-					label="holder"
-					name="question7"
-					onChange={() => updateChoice(13)}
-					checked={response[13] === true}
-
-
-					>
-				</Form.Check>
-				</div>
-			</span>
-			<span className="QuestionNum">#8</span>
-			<span className="checkbox-distance" >
-				<div>
-				<Form.Check 
-					type="radio"
-					id="q8-Option1"
-					label="holder"
-					name="question8"
-					onChange={() => updateChoice(14)}
-					checked={response[14] === true}
-
-
-					>
-				</Form.Check>
-				<Form.Check 
-					type="radio"
-					id="q8-Option2"
-					label="holder"
-					name="question8"
-					onChange={() => updateChoice(15)}
-					checked={response[15] === true}
+			<span className="QuestionNum">#5</span>
+				<span className="checkbox-distance" >
 					
-					>
-				</Form.Check>
-				</div>
-			</span>
+					<Form.Check 
+						type="radio"
+						id="q5-Option1"
+						label="holder"
+						name="question5"
+						onChange={() => updateChoice(8)}
+						checked={response[8] === true}
+						/>
+					<Form.Check  /* Fix the radio buttons and include state*/
+						type="radio"
+						id="q5-Option2"
+						label="holder"
+						name="question5"
+						onChange={() => updateChoice(9)}
+						checked={response[9] === true}
+
+					/>
+				</span>
+				
+
+			<span className="QuestionNum">#6</span>
+				<span className="checkbox-distance">
+					<div>
+						<Form.Check 
+						type="radio"
+						id="q6-Option1"
+						label="holder"
+						name="question6"
+						onChange={() => updateChoice(10)}
+						checked={response[10] === true}
+
+						/>
+					<Form.Check 
+						type="radio"
+						id="q6-Option2"
+						label="holder"
+						name="question6"
+						onChange={() => updateChoice(11)}
+						checked={response[11] === true}
+
+						/>
+
+					</div>
+				</span>
+			<span className="QuestionNum">#7</span>
+				<span className="checkbox-distance" >
+					<div>
+					<Form.Check 
+						type="radio"
+						id="q7-Option1"
+						label="holder"
+						name="question7"
+						onChange={() => updateChoice(12)}
+						checked={response[12] === true}
+		
+						>
+					</Form.Check>
+					<Form.Check 
+						type="radio"
+						id="q7-Option2"
+						label="holder"
+						name="question7"
+						onChange={() => updateChoice(13)}
+						checked={response[13] === true}
+
+
+						>
+					</Form.Check>
+					</div>
+				</span>
+			<span className="QuestionNum">#8</span>
+				<span className="checkbox-distance" >
+					<div>
+					<Form.Check 
+						type="radio"
+						id="q8-Option1"
+						label="holder"
+						name="question8"
+						onChange={() => updateChoice(14)}
+						checked={response[14] === true}
+
+
+						>
+					</Form.Check>
+					<Form.Check 
+						type="radio"
+						id="q8-Option2"
+						label="holder"
+						name="question8"
+						onChange={() => updateChoice(15)}
+						checked={response[15] === true}
+						
+						>
+					</Form.Check>
+					</div>
+				</span>
 		</div>
 		</>
 		
