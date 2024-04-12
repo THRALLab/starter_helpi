@@ -1,0 +1,184 @@
+{
+    "DETAILED_QUESTIONS": [
+        {
+            "num": 1,
+            "question": "I am a hard worker.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 2,
+            "question": "I am easily distracted.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 3,
+            "question": "I procrastinate often.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 4,
+            "question": "I like to build things (ex: Legos).",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 5,
+            "question": "I like to be social.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 6,
+            "question": "I prefer instructions over flexibility.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 7,
+            "question": "I am a good team player.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 8,
+            "question": "I like punctuality, not lateness.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 9,
+            "question": "I like to take other people’s opinions into group projects.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 10,
+            "question": "I’m a very thoughtful person who respects others disagreements.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 11,
+            "question": "I’m good at digital design.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 12,
+            "question": "I tend to solve problems unconventionally.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 13,
+            "question": "I get easily stressed out when an unexpected situation occurs.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 14,
+            "question": "I like to do activities to help out people in need.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 15,
+            "question": "I like to be in charge of sometime (ex a class).",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 16,
+            "question": "I like taking risks.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 17,
+            "question": "I like to be the center of attention.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 18,
+            "question": "I would say I’m a reliable person.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 19,
+            "question": "I like math/numbers.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 20,
+            "question": "I like to be outside.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 21,
+            "question": "I’m very artistic (could be either digitally or physically like painting).",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 22,
+            "question": "I like to work quickly.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 23,
+            "question": "I like to cook.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 24,
+            "question": "I like to write.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 25,
+            "question": "I’m very imaginative.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 26,
+            "question": "If I need help, I always ask someone rather than solve it on my own.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 27,
+            "question": "I like to drive around places, even if it’s unfamiliar territory.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 28,
+            "question": "I’m good at using machines and tools.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 29,
+            "question": "I’m good at negotiations.",
+            "option1": "High",
+            "option2": "Low"
+        },
+        {
+            "num": 30,
+            "question": "I’m an organized person.",
+            "option1": "High",
+            "option2": "Low"
+        }
+    ]
+}
