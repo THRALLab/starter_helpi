@@ -1,39 +1,66 @@
 .DetailedQuestions {
-    text-align: center;
-  }
-  
-  .DetailedQuestions-logo {
-    height: 41vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .DetailedQuestions-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
-  .DetailedQuestions-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .DetailedQuestions-link {
-    color: #61dafb;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
+  text-align: center;
+}
+
+.Slider-questions {
+  justify-content: left;
+  margin-left: 0px; 
+}
+
+.Slider-text {
+  justify-content: left;
+  margin-left: 70px; 
+  font-size: 18px;
+}
+
+.Slider-value {
+  justify-content: left;
+  margin-left: 41px; 
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+.Slider-slider {
+  transform: rotate(270deg);
+  width: 100px;
+}
+
+.DetailedQuestions-questions{
+  align-items: left;
+  text-align: left;
+  align-self: left;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.DetailedQuestions-progress-bar{
+  position: absolute;
+  display: flex;
+  margin-top:5vh;
+  margin-left:20vh;
+  width: 200px;
+  height: 500px;
+  transform: rotate(180deg);
+}
+
+.DetailedQuestions-question-number {
+  position: absolute;
+  align-self: center;
+  margin-left: 30px;
+  margin-bottom: 450px;
+  transform: rotate(180deg);
+}
+
+.DetailedQuestions-progress-bar-percentage{
+  position: absolute;
+  align-self: center;
+  width: 200px;
+  margin-top: 450px;
+  transform: rotate(180deg);
+}
+
+.DetailedQuestions-progress-bar-foreground{
+  position: relative;
+  width: 200px;
+  height: 500px;
+}

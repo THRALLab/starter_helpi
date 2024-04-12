@@ -1,9 +1,11 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import './General.css';
+import './DetailedQuestions.css';
 
 interface DetailedQuestionProps {
     label: string;
+    question:string;
     value: number;
     onChange: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -14,10 +16,13 @@ function SliderQuestion(props: DetailedQuestionProps) {
     }
 
     return (
-        <div style={{marginTop: '30px'}}>
-            <label>{props.label}</label><br />
-            <Form.Range style={{ transform: 'rotate(270deg)', width: '90px', marginLeft: '200px' }} value={props.value} onChange={updateSliderValue}/>
-            <p>Selected Value: {props.value}</p>
+        <div className='DetailedQuestions-slider'>
+            <label>{props.label}</label>
+            <p className='Slider-questions'>{props.question}</p>
+            <p className="Slider-text">Strongly Agree</p>
+            <Form.Range className = 'Slider-slider' value={props.value} onChange={updateSliderValue}/>
+            <p className="Slider-text">Strongly Disagree</p>
+            <p className='Slider-value'>{props.value}</p>
         </div>
     )
 }
