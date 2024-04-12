@@ -31,7 +31,7 @@ function DetailedReport() {
 
   return (
     <div className={bodyClassName} id='bigBody'>
-      <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
+      <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
         
       <div className="Page-body">
         <div className='Page-text'>
