@@ -1,11 +1,6 @@
 import { useState } from "react";
 import "../src/detailed.css";
 
-interface QuestionBody {
-	question: string;
-	choices: string[];
-}
-
 function Detailed() {
 	const questions = [
 		{
@@ -86,8 +81,10 @@ function Detailed() {
 		}
 	];
 
-	const last_saved: number =
+	const saved_index: number =
 		Number(localStorage.getItem("current_question")) || 0;
+	const last_saved: number = saved_index < 0 ? 0 : saved_index;
+
 	const [currentIndex, setCurrentIndex] = useState(last_saved);
 	localStorage.setItem("current_question", currentIndex.toString());
 
@@ -120,7 +117,7 @@ function Detailed() {
 									setCurrentIndex(index => (index -= 1 % questions.length))
 								}
 							>
-								Prev.
+								{currentIndex === 0 ? "END" : "Prev."}
 							</button>
 							<button
 								disabled={currentIndex === questions.length - 1}
@@ -128,7 +125,7 @@ function Detailed() {
 									setCurrentIndex(index => (index += 1 % questions.length))
 								}
 							>
-								Next
+								{currentIndex === questions.length - 1 ? "END" : "Next"}
 							</button>
 						</div>
 					</div>
