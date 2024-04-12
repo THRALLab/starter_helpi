@@ -29,22 +29,22 @@ function DetailedQuestions() {
       setColor(randomColor);
     }
   
-  //sets the local storage item to the api key the user inputed
-  function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
-  }
+    //sets the local storage item to the api key the user inputed
+    function handleSubmit() {
+      localStorage.setItem(saveKeyData, JSON.stringify(key));
+      window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+    }
 
-  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
-  function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-    setKey(event.target.value);
-  }
+    //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
+    function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
+      setKey(event.target.value);
+    }
 
   
 
   return (
     <div className={bodyClassName} id='bigBody'>
-      <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
+      <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
       <header className="DetailedQuestions-header">
         <div className='Page-body'>
         <div>
@@ -71,6 +71,8 @@ function DetailedQuestions() {
             </div>
           </div>
         </div>
+
+      <p className='Detailed-report-button'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
       
       <div className='API-Footer'>
         <Form>
