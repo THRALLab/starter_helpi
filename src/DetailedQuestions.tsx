@@ -19,7 +19,8 @@ function DetailedQuestions() {
   const [sliderValue1, setSliderValue1] = useState<number>(50);
   const [sliderValue2, setSliderValue2] = useState<number>(50);
 
-  const [numberOfQuestions, setNumberOfQuestions] = useState("10")
+  //const [numberOfQuestions, setNumberOfQuestions] = useState("10")
+  const [numberOfQuestions] = useState("10")
   const [questionNumber, setQuestionNumber] = useState("1")
   const [color, setColor] = useState("")
 
