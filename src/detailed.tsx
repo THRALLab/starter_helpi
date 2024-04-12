@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../src/detailed.css";
 
 interface QuestionBody {
@@ -85,35 +86,50 @@ function Detailed() {
 		}
 	];
 
+	const [currentIndex, setCurrentIndex] = useState(0);
 	return (
 		<>
 			<h1>This is the Detailed Quiz.</h1>
-			{questions.map((q: QuestionBody, index: number) => {
-				return (
-					<div className="quizContainer" key={index}>
-						<div className="questionContainer">{q.question}</div>
-						<div className="mainContainer">
-							<div className="child">
-								<img
-									src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
-									alt="Question"
-								/>
-							</div>
-							<div className="child">
-								<div className="btn-group">
-									{q.choices.map((choice: string, index: number) => (
-										<button key={index}>{choice}</button>
-									))}
-								</div>
-								<div className="prevNextBtn">
-									<button>Prev.</button>
-									<button>Next</button>
-								</div>
-							</div>
+			<div className="quizContainer">
+				<div className="questionContainer">
+					{questions[currentIndex].question}
+				</div>
+				<div className="mainContainer">
+					<div className="child">
+						<img
+							src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
+							alt="Question"
+						/>
+					</div>
+					<div className="child">
+						<div className="btn-group">
+							{questions[currentIndex].choices.map(
+								(choice: string, index: number) => (
+									<button key={index}>{choice}</button>
+								)
+							)}
+						</div>
+						<div className="prevNextBtn">
+							<button
+								disabled={currentIndex === 0}
+								onClick={() =>
+									setCurrentIndex(index => (index -= 1 % questions.length))
+								}
+							>
+								Prev.
+							</button>
+							<button
+								disabled={currentIndex === questions.length - 1}
+								onClick={() =>
+									setCurrentIndex(index => (index += 1 % questions.length))
+								}
+							>
+								Next
+							</button>
 						</div>
 					</div>
-				);
-			})}
+				</div>
+			</div>
 		</>
 	);
 }
