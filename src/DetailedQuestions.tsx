@@ -57,9 +57,9 @@ function DetailedQuestions() {
           <Button onClick={generateSimpleQuestionPage}>Generate Detailed Question Page</Button> <br />
           <Button onClick={()=>setQuestionNumber((parseInt(questionNumber)+1).toString())}>Next</Button> <br />
         </div>
-          <SliderQuestion value={sliderValue1} onChange={setSliderValue1} label="Question 1:"></SliderQuestion>
+          <SliderQuestion value={sliderValue1} onChange={setSliderValue1} label="Question 1:" question="I am a hard worker"></SliderQuestion>
 
-          <SliderQuestion value={sliderValue2} onChange={setSliderValue2} label="Question 2:"></SliderQuestion>
+          <SliderQuestion value={sliderValue2} onChange={setSliderValue2} label="Question 2:" question=""></SliderQuestion>
         </div>
       </header>
       <div style={{ padding: "10px" }}>
