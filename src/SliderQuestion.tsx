@@ -9,10 +9,9 @@ interface DetailedQuestionProps {
 }
 
 function SliderQuestion(props: DetailedQuestionProps) {
-
     function updateSliderValue (event: React.ChangeEvent<HTMLInputElement>){
         props.onChange(parseInt(event.target.value));
-      }
+    }
 
     return (
         <div style={{marginTop: '30px'}}>

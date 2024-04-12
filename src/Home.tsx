@@ -30,51 +30,51 @@ function Home() {
 
   return (
     <div className={bodyClassName} id='bigBody'>
-        <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
-        <div className="Page-body">
-          <p className='Page-text'>Welcome to the Career Lab! We have two quizzes you can take to help find your ideal career. Your answers will be reviewed by ChatGPT to generate a custom report of what caeer paths suit you the best. This project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory Jordan</p>
-          <Container>
-            <Row>
-              <Col>
-                <p className='button'>
-                <LinkButton to="simplequestions" label="Basic Quiz"></LinkButton>
-                </p>
-                <p className='Text-basic'>
-                  This is a basic quiz with 15 questions.
-                </p>
-                <p className='Text-basic'>
-                  It will take around Y to Z minutes to complete.
-                </p>
-                <p className='Text-basic'>
-                  The questions are simple and multiple choice.
-                </p>
-              </Col>
-              <Col>
-                <p className='button'>
-                  <LinkButton to="detailedquestions" label="Detailed Quiz"></LinkButton>
-                </p>
-                <p className='Text-detailed'>
-                  This is a detailed quiz with 30 questions.
-                </p>
-                <p className='Text-detailed'>
-                  It will take around Y to Z minutes to complete.
-                </p>
-                <p className='Text-detailed'>
-                  The questions are answered on a scale.
-                </p>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+      <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
+      <div className="Page-body">
+        <p className='Page-text'>Welcome to the Career Lab! We have two quizzes you can take to help find your ideal career. Your answers will be reviewed by ChatGPT to generate a custom report of what caeer paths suit you the best. This project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory Jordan</p>
+        <Container>
+          <Row>
+            <Col>
+              <p className='button'>
+              <LinkButton to="simplequestions" label="Basic Quiz"></LinkButton>
+              </p>
+              <p className='Text-basic'>
+                This is a basic quiz with 15 questions.
+              </p>
+              <p className='Text-basic'>
+                It will take around Y to Z minutes to complete.
+              </p>
+              <p className='Text-basic'>
+                The questions are simple and multiple choice.
+              </p>
+            </Col>
+            <Col>
+              <p className='button'>
+                <LinkButton to="detailedquestions" label="Detailed Quiz"></LinkButton>
+              </p>
+              <p className='Text-detailed'>
+                This is a detailed quiz with 30 questions.
+              </p>
+              <p className='Text-detailed'>
+                It will take around Y to Z minutes to complete.
+              </p>
+              <p className='Text-detailed'>
+                The questions are answered on a scale.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
-        <div className="API-Footer">
-          <Form>
-            <Form.Label>API Key:</Form.Label>
-            <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-            <br></br>
-            <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-          </Form>
-        </div>
+      <div className="API-Footer">
+        <Form>
+          <Form.Label>API Key:</Form.Label>
+          <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+          <br></br>
+          <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+        </Form>
+      </div>
     </div>
   );
 }

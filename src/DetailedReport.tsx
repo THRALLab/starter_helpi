@@ -31,23 +31,23 @@ function DetailedReport() {
 
   return (
     <div className={bodyClassName} id='bigBody'>
-        <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
+      <header className="General-header"><p className='Header-toggle'><DarkModeToggle></DarkModeToggle></p><p>The Career Lab </p><p className='Header-button'><LinkButton to="/" label="Home"></LinkButton></p> </header>
         
-        <div className="Page-body">
-          <div className='Page-text'>
-            <p className='Report-header'>View your Detailed Quiz Results!</p>
-            <p className='Report-body'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
+      <div className="Page-body">
+        <div className='Page-text'>
+          <p className='Report-header'>View your Detailed Quiz Results!</p>
+          <p className='Report-body'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
+      </div>
 
-        <div className="API-Footer">
-          <Form>
-            <Form.Label>API Key:</Form.Label>
+      <div className="API-Footer">
+        <Form>
+          <Form.Label>API Key:</Form.Label>
             <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
             <br></br>
             <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-          </Form>
-        </div>
+        </Form>
+      </div>
     </div>
   );
 }
