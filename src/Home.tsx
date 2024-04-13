@@ -7,7 +7,6 @@ import LinkButton from './LinkButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
-
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -32,9 +31,7 @@ function Home() {
   return (
     <div className={bodyClassName} id='bigBody'>
       <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'></span> 
-        
           <LinkButton to="/" label="Home"></LinkButton>
-
       </header>
       
       <div className="Page-body">
@@ -51,7 +48,7 @@ function Home() {
                 This is a basic quiz with 15 questions.
               </p>
               <p className='Text-basic'>
-                It will take around Y to Z minutes to complete.
+                It will take around X to Y minutes to complete.
               </p>
               <p className='Text-basic'>
                 The questions are simple and multiple choice.
