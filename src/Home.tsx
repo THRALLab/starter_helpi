@@ -7,6 +7,7 @@ import LinkButton from './LinkButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
+
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -30,7 +31,11 @@ function Home() {
 
   return (
     <div className={bodyClassName} id='bigBody'>
-      <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
+      <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'></span> 
+        
+          <LinkButton to="/" label="Home"></LinkButton>
+
+      </header>
       
       <div className="Page-body">
         <p className='Page-text'>Welcome to the Career Lab! We have two quizzes you can take to help find your ideal career. Your answers will be reviewed by ChatGPT to generate a custom report of what caeer paths suit you the best. This project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory Jordan</p>
@@ -38,7 +43,9 @@ function Home() {
           <Row>
             <Col>
               <p className='button'>
-              <LinkButton to="simplequestions" label="Basic Quiz"></LinkButton>
+              
+                <LinkButton to="simplequestions" label="Basic Quiz"></LinkButton>
+              
               </p>
               <p className='Text-basic'>
                 This is a basic quiz with 15 questions.
