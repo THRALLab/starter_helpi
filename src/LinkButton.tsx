@@ -1,4 +1,4 @@
-import { HashRouter, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 interface LinkButtonProps{
