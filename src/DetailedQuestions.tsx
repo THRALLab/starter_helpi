@@ -38,36 +38,30 @@ function DetailedQuestions() {
   useEffect(() => {
     loadQuestions()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+  }, []);
 
-const loadQuestions = () => {
-  const parsedData = JSON.parse(JSON.stringify(jsonData));
-  const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
-  setQuestions(detailedQuestions)
-  setNumberOfQuestions(detailedQuestions.length)
-  setQuestionNumber(questionNumber + 1)
-  setColor(colors[Math.floor(Math.random() * colors.length)])
-  setQuestionBody(detailedQuestions[questionNumber].question)
-  
-}
+  const loadQuestions = () => {
+    const parsedData = JSON.parse(JSON.stringify(jsonData));
+    const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
+    setQuestions(detailedQuestions)
+    setNumberOfQuestions(detailedQuestions.length)
+    setQuestionNumber(questionNumber + 1)
+    setColor(colors[Math.floor(Math.random() * colors.length)])
+    setQuestionBody(detailedQuestions[questionNumber].question)
+  }
 
-const nextQuestion = () => {
-  let tempSliderValues = [...sliderValues];
-  tempSliderValues[questionNumber] = currSliderValue;
-  setSliderValues(()=> [...tempSliderValues])
-  if (questionNumber < numberOfQuestions) {
+  const nextQuestion = () => {
+    let tempSliderValues = [...sliderValues];
+    tempSliderValues[questionNumber] = currSliderValue;
+    setSliderValues(()=> [...tempSliderValues])
+    if (questionNumber < numberOfQuestions) {
       setQuestionNumber(questionNumber + 1)
       setColor(colors[Math.floor(Math.random() * colors.length)])
       setQuestionBody(questions[questionNumber].question)
-  } else {
+    }  else {
       // End of quiz...
-      window.alert("You've completed the Simple Quiz!")
-  }   
-}
-  
-  const generateSimpleQuestionPage = () => {
-    const randomColor = colors[Math.floor(Math.random() * colors.length)]
-    setColor(randomColor);
+      window.alert("You've completed the Detailed Quiz!")
+    }   
   }
   
   //sets the local storage item to the api key the user inputed
@@ -86,7 +80,6 @@ const nextQuestion = () => {
       <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
       
       <div className='Page-body'>
-        <Button onClick={generateSimpleQuestionPage}>Generate Detailed Question Page</Button>
         <Button onClick={()=>nextQuestion()}>Next</Button>
         <p className='Detailed-report-button'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
         <Container>
@@ -98,7 +91,7 @@ const nextQuestion = () => {
               <div className = "DetailedQuestions-progress-bar" style={{backgroundColor: color}}>
                 <span className = "DetailedQuestions-question-number">Question {questionNumber}/{numberOfQuestions}</span>
                 <span className = "DetailedQuestions-progress-bar-percentage">
-                  {100 * (questionNumber / numberOfQuestions)}% completed
+                  {Math.trunc(100 * (questionNumber / numberOfQuestions))}% completed
                 </span>
                 <span className = "DetailedQuestions-progress-bar-foreground" style={{height: `${(100 * (questionNumber / numberOfQuestions))}%`, backgroundColor: "rgba(0, 0, 0, 0.3)"}}></span>
               </div>
