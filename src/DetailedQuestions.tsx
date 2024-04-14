@@ -60,7 +60,17 @@ function DetailedQuestions() {
       setQuestionBody(questions[questionNumber].question)
     }  else {
       // End of quiz...
-      window.alert("You've completed the Detailed Quiz!")
+      window.alert("You've completed the Detailed Quiz! Press the Report button to view your results!")
+      let nextButton = document.getElementById("nextButton");
+      if(nextButton != null) {
+        nextButton.classList.remove("Button-visible-true");
+        nextButton.classList.add("Button-visible-false");
+      }
+      let reportButton = document.getElementById("reportButton");
+      if(reportButton != null) {
+        reportButton.classList.remove("Button-visible-false");
+        reportButton.classList.add("Button-visible-true");
+      }
     }   
   }
   
@@ -78,14 +88,17 @@ function DetailedQuestions() {
   return (
     <div className={bodyClassName} id='bigBody'>
       <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
-      
       <div className='Page-body'>
-        <Button onClick={()=>nextQuestion()}>Next</Button>
-        <p className='Detailed-report-button'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
         <Container>
           <Row>
             <Col className="DetailedQuestions-questions">
               <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label="Question: " question={questionBody}></SliderQuestion>
+              <span className='Button-visible-true' id="nextButton">
+                <Button className="Button-next" onClick={()=>nextQuestion()}>Next</Button>
+              </span>
+              <span className='Button-visible-false' id="reportButton">
+                <p className='Button-report'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
+              </span>
             </Col>
             <Col>
               <div className = "DetailedQuestions-progress-bar" style={{backgroundColor: color}}>
