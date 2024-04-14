@@ -59,7 +59,7 @@ function App() {
   };
 
   return (
-    <><Navbar expand="lg" className="bg-info justify-content-center">
+    <><Navbar>
       <Container>
         <Navbar.Brand href="#home">Career Helpi</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -81,7 +81,7 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar><div className="App bg-black">
+    </Navbar><div className="App">
         <h1>Joanna Crisomia</h1>
         <h1>Joey Dare</h1>
         <div className="App">
@@ -217,9 +217,9 @@ function App() {
             </Form>
           </footer>
         </div>
-        );
-      
-}
-      </div></>
 
-        export default App;
+      </div></>
+      
+    );
+  }
+export default App;
