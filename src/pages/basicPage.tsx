@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Form, ProgressBar } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 
 
@@ -20,9 +20,21 @@ const BasicPage = () => {
 			return updatedResponse;
 		  });
 	}
-	console.log(response[0]);
-	console.log(response[1]);
-	console.log(response[2]);
+	function updateProgress(responseList: boolean[]): number {
+        return responseList.filter(Boolean).length;
+    }
+
+    const answered = updateProgress(response);
+    const [allow, setAllow] = useState<boolean>(false);
+
+    // Update the allow state whenever the response changes
+    useEffect(() => {
+        if (answered === 8) {
+            setAllow(true);
+        } else {
+            setAllow(false);
+        }
+    }, [answered]);
 	return (<>
 	<style>{`
                 .QuestionNum {
@@ -49,7 +61,8 @@ const BasicPage = () => {
 			
 		</div>
 		<div style={{textAlign:"center"}}>
-			<Button disabled >Answer</Button>
+			<Button disabled={!allow} >Answer</Button>
+			<ProgressBar variant="success" now={answered} max={8}/>
 		</div>
 		<div style={{textAlign: "center", marginTop: "100px"}}>
 		</div>
