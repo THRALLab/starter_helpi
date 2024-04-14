@@ -29,9 +29,9 @@ function Detail_Questions(): JSX.Element {
   };
 
   return (
-    <div className="App">
+    <div style = {{position: 'relative', top: '100px'}}className="App">
 
-      <h1 className="Detail_Question">Home/Detail Questions</h1>
+      <h1 className="Detail_Question">Detail Questions</h1>
       <br></br>
       
       {questions[currentQuestion]}

@@ -65,7 +65,6 @@ function Home() {
   function BasicPageContent() {
     return (
       <div>
-        <h2>Basic Page Content</h2>
         <Basic/>
       </div>
     );
@@ -74,7 +73,6 @@ function Home() {
   function DetailedPageContent() {
     return (
       <div>
-        <h2>Detailed Page Content</h2>
         <Detail/>
       </div>
     );
