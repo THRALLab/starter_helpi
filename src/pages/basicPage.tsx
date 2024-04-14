@@ -20,14 +20,19 @@ const BasicPage = () => {
 			return updatedResponse;
 		  });
 	}
-	function updateProgress(responseList: boolean[]): number {
-        return responseList.filter(Boolean).length;
-    }
+	function updateProgress(responseList:boolean[]): number {
+		let completed: number = 0;
+		for (const response of responseList){
+			if(response === true){
+				completed +=1;
+			}
+		}
+		return completed;
+	}
 
     const answered = updateProgress(response);
     const [allow, setAllow] = useState<boolean>(false);
 
-    // Update the allow state whenever the response changes
     useEffect(() => {
         if (answered === 8) {
             setAllow(true);
