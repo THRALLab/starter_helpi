@@ -92,13 +92,13 @@ const nextQuestion = () => {
         <Container>
           <Row>
             <Col className="DetailedQuestions-questions">
-              <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label="Question: " question={questionBody}></SliderQuestion>
+              <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label={"Question "+questionNumber+":"} question={questionBody}></SliderQuestion>
             </Col>
             <Col>
               <div className = "DetailedQuestions-progress-bar" style={{backgroundColor: color}}>
                 <span className = "DetailedQuestions-question-number">Question {questionNumber}/{numberOfQuestions}</span>
                 <span className = "DetailedQuestions-progress-bar-percentage">
-                  {100 * (questionNumber / numberOfQuestions)}% completed
+                  {Math.floor(100 * (questionNumber / numberOfQuestions))}% completed
                 </span>
                 <span className = "DetailedQuestions-progress-bar-foreground" style={{height: `${(100 * (questionNumber / numberOfQuestions))}%`, backgroundColor: "rgba(0, 0, 0, 0.3)"}}></span>
               </div>
