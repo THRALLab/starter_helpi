@@ -13,8 +13,6 @@ function LinkButton(props: LinkButtonProps) {
         navigate(whereTo)
     }
     return (
-        
-            <Button onClick={() => handleButtonClick(props.to)}>{props.label}</Button>
-        
+        <Button onClick={() => handleButtonClick(props.to)}>{props.label}</Button>
     )
 } export default LinkButton;
