@@ -65,6 +65,28 @@
     color: "#424242";
 }
 
+.Button-visible-true {
+    --visibility-button: visible;
+}
+
+.Button-visible-false {
+    --visibility-button: hidden;
+}
+
+.Button-next {
+    visibility: var(--visibility-button);
+}
+
+.Button-next {
+    visibility: var(--visibility-button);
+    position: absolute;
+}
+
+.Button-report {
+    visibility: var(--visibility-button);
+    position: absolute;
+}
+
 .API-Footer {
     background-color: black;
     color: white;
