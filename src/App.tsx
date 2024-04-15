@@ -177,16 +177,14 @@ function App() {
       </div>
     
   <footer className="footer">
-    <h3 className="footer-container">Contact Us</h3>
-    <h3 className="footer-container">Help</h3>
-    <div className="form-container">
-    <Form>
-      <Form.Label>API Key:</Form.Label>
-      <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey} />
-      <br />
-      <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-    </Form>
-  </div>
+    <h2 className="footer-container">Contact Us</h2>
+    <h2 className="footer-container">Help</h2>
+    <Form className="api-form">
+  <Form.Group controlId="apiKey">
+    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey} />
+  </Form.Group>
+  <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+</Form>
 </footer>
     </>
   );
