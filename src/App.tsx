@@ -4,10 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import Home from './Pages/Home';
 import Basic from './Pages/Basic';
 import Detailed from './Pages/Detailed';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavHome from './navbar';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -59,30 +56,9 @@ function App() {
   };
 
   return (
-    <><Navbar>
-      <Container>
-        <Navbar.Brand href="#home">Career Helpi</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">
-              <Button>Home</Button>
-            </Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Next</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Prev
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">List Careers</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar><div className="App">
+    <>
+    <NavHome></NavHome>
+    <div className="App">
 
         <div className="App">
           {updatePageState()}
