@@ -54,6 +54,9 @@ export function SimpleQuestions(): JSX.Element {
         setQuestionBody(simpleQuestions[questionNumber].question)
         setOption1(simpleQuestions[questionNumber].option1)
         setOption2(simpleQuestions[questionNumber].option2)
+        if(questionNumber === 14){
+            setQuestionBody("Quiz Complete!");
+        }
     }
 
     const nextQuestion = (selectedOption: string) => {
@@ -96,14 +99,16 @@ export function SimpleQuestions(): JSX.Element {
                     reportButton.classList.add("Button-visible-false");
                 }
             }
-            const previousQuestion = questionNumber - 1
-            setQuestionNumber(previousQuestion)
-            setColor(colors[Math.floor(Math.random() * colors.length)])
-            setQuestionBody(questions[previousQuestion].question)
-            setOption1(questions[previousQuestion].option1)
-            setOption2(questions[previousQuestion].option2)
-            if (questionNumber === 1) {
-                setBackButtonDisabled(true)
+            else {
+                const previousQuestion = questionNumber - 1
+                setQuestionNumber(previousQuestion)
+                setColor(colors[Math.floor(Math.random() * colors.length)])
+                setQuestionBody(questions[previousQuestion].question)
+                setOption1(questions[previousQuestion].option1)
+                setOption2(questions[previousQuestion].option2)
+                if (questionNumber === 1) {
+                    setBackButtonDisabled(true)
+                }
             }
         }
     }
@@ -113,6 +118,9 @@ export function SimpleQuestions(): JSX.Element {
             <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
             
             <div className='Simple-body'>
+                <span className='Simple-back-top'>
+                    <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
+                </span>
                 <div className='Simple-progress'>
                     <div style={{ backgroundColor: color, padding: "10px", position: "relative", display: "flex" }}>
                         <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * ((questionNumber + 1) / numberOfQuestions)}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
@@ -138,9 +146,6 @@ export function SimpleQuestions(): JSX.Element {
                         </span>
                         <span className='Button-visible-false' id="reportButton">
                             <p className='Button-report'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
-                        </span>
-                        <span className='Simple-back'>
-                            <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
                         </span>
                 </div>
             </div>
