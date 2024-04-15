@@ -69,11 +69,33 @@ export function SimpleQuestions(): JSX.Element {
         } else {
             // End of quiz...
             window.alert("You've completed the Simple Quiz!")
+            let nextButton = document.getElementById("nextButton");
+            if(nextButton != null) {
+                nextButton.classList.remove("Button-visible-true");
+                nextButton.classList.add("Button-visible-false");
+            }
+            let reportButton = document.getElementById("reportButton");
+            if(reportButton != null) {
+                reportButton.classList.remove("Button-visible-false");
+                reportButton.classList.add("Button-visible-true");
+            }
         }   
     }
 
     const previousQuestion = () => {
         if (questionNumber >= 1) {
+            if(questionNumber === 14){
+                let nextButton = document.getElementById("nextButton");
+                if(nextButton != null) {
+                    nextButton.classList.remove("Button-visible-false");
+                    nextButton.classList.add("Button-visible-true");
+                }
+                let reportButton = document.getElementById("reportButton");
+                if(reportButton != null) {
+                    reportButton.classList.remove("Button-visible-true");
+                    reportButton.classList.add("Button-visible-false");
+                }
+            }
             const previousQuestion = questionNumber - 1
             setQuestionNumber(previousQuestion)
             setColor(colors[Math.floor(Math.random() * colors.length)])
@@ -89,38 +111,46 @@ export function SimpleQuestions(): JSX.Element {
     return (
         <div className={bodyClassName} id='bigBody'>
             <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
+            
             <div className='Simple-body'>
-                <div style={{ padding: "10px", position: "relative", display: "flex" }}>
-                    <Button onClick={previousQuestion} disabled={backButtonDisabled} style={{ left: 0 }}>Back</Button>
-                </div>
-                <div style={{ padding: "10px" }}>
-                    <div style={{ backgroundColor: color, color: "white", padding: "10px", position: "relative", display: "flex" }}>
+                <div className='Simple-progress'>
+                    <div style={{ backgroundColor: color, padding: "10px", position: "relative", display: "flex" }}>
                         <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * ((questionNumber + 1) / numberOfQuestions)}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
-                            Question {questionNumber + 1}/{numberOfQuestions}
+                        Question {questionNumber + 1}/{numberOfQuestions}
                         <div style={{ marginLeft: "auto", alignSelf: "right" }}>
                             {Math.round(100 * ((questionNumber + 1) / numberOfQuestions))}% completed
                         </div>
                     </div>
                 </div>
-                <div style={{ padding: "10px" }}>
-                    <div style={{ padding: "10px", backgroundColor: color, color: "white" }}>
+                <div className='Simple-question'>
+                    <div style={{ padding: "10px", backgroundColor: color}}>
                         {questionBody}
                     </div>
                 </div>
-                    <div style={{ padding: "10px", display: "flex", justifyContent: "center" }}>
-                    <Button onClick={() => nextQuestion(option1)}>{option1}</Button>
-                    <div style={{ width: "20px" }}></div>
-                    <Button onClick={() => nextQuestion(option2)}>{option2}</Button>
+                <div className='Simple-buttons'>
+                        <span className='Button-visible-true' id="nextButton">
+                            <span className='Simple-option-1'>
+                                <Button className="Button-next" onClick={() => nextQuestion(option1)}>{option1}</Button>
+                            </span>
+                            <span className='Simple-option-2'>
+                                <Button className="Button-next" onClick={() => nextQuestion(option2)}>{option2}</Button>
+                            </span>
+                        </span>
+                        <span className='Button-visible-false' id="reportButton">
+                            <p className='Button-report'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
+                        </span>
+                        <span className='Simple-back'>
+                            <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
+                        </span>
                 </div>
-                <p className='Simple-report-button'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
             </div>
-
+            
             <div className='API-Footer'>
                 <Form>
-                <Form.Label>API Key:</Form.Label>
-                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                <br></br>
-                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                    <Form.Label>API Key:</Form.Label>
+                    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                    <br></br>
+                    <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
                 </Form>
             </div>
         </div>

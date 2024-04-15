@@ -89,14 +89,8 @@
     visibility: var(--visibility-button);
 }
 
-.Button-next {
-    visibility: var(--visibility-button);
-    position: absolute;
-}
-
 .Button-report {
     visibility: var(--visibility-button);
-    position: absolute;
 }
 
 .API-Footer {
