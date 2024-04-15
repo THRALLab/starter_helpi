@@ -8,11 +8,13 @@ interface BasicProp {
 
 const Basic: React.FC<BasicProp> = ({ handlePage }) => {
     return (
+        <header className="header">
     <div className="home-container">
     <div className="home-column">
         <Button className="home-button" onClick={() => handlePage('Home')}>Home Page</Button>
     </div>
     </div>
+    </header>
     )
 }
 
