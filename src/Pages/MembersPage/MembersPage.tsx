@@ -16,7 +16,7 @@ export function MembersPage() : JSX.Element {
                         <li> Jamie Pacheco</li>
                         <li> Claudia Chance</li>
                         <li> Edwin </li>
-                        <li> Nathan </li>
+                        <li> Nathan Wood </li>
                     </ul>
                 </div>
                 <div className = "members-page--page-links">
@@ -24,6 +24,9 @@ export function MembersPage() : JSX.Element {
                     <div className = "page-buttons">
                         <button onClick = {() => nav("/home")}> Home </button> 
                         <button onClick = {() => nav("/reports")}> Reports </button>  
+                        <button onClick = {() => nav("/home")}> Home </button> 
+                        <button onClick = {() => nav("/sign-up")}> Sign Up </button>  
+                        <button onClick = {() => nav("/short-quiz")}> Short Quiz</button> 
                     </div>
                 </div>
             </div>

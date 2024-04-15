@@ -4,6 +4,10 @@ import { Button, Form } from 'react-bootstrap';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from './Pages/HomePage/HomePage';
 import { MembersPage } from './Pages/MembersPage/MembersPage';
+import { SignUpPage } from './Pages/SignUpPage/SignUpPage';
+import { DetailedPage } from './Pages/DetailedPage/DetailedPage';
+import { BasicQuestionsPage } from './Pages/BasicQuestionsPage/BasicQuestionsPage';
+
 import { ReportsPage } from './Pages/ReportsPage/ReportsPage';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -16,7 +20,6 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -35,7 +38,11 @@ function App() {
               <div className = "App-content">
                 <HashRouter>
                   <Routes>
-                    <Route path = "home" element = {<HomePage/>}> </Route>
+                    <Route path = "/home" element = {<HomePage/>}> </Route>
+                    <Route path = "/login" element = {<MembersPage/>}></Route>
+                    <Route path = "/sign-up" element = {<SignUpPage/>}></Route>
+                    <Route path = "/short-quiz" element = {<BasicQuestionsPage/>}> </Route>
+                    <Route path = "/detailed-quiz" element = {<DetailedPage/>}> </Route>
                     <Route path = "/" element = {<MembersPage/>}></Route>
                     <Route path = "reports" element = {<ReportsPage/>}> </Route>
                   </Routes>
