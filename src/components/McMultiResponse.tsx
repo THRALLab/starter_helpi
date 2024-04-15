@@ -26,7 +26,7 @@ export function McMultiResponse({
         <div>
             <h3>{question}</h3>
             <Form>
-                <ul style={{ listStyleType: "none" }}>
+                <ul>
                     {options.map((choice) => (
                         <li key={choice}>
                             <Form.Check
