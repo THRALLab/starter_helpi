@@ -56,8 +56,9 @@ export function SimpleQuestions(): JSX.Element {
         setOption2(simpleQuestions[questionNumber].option2)
     }
 
-    const nextQuestion = () => {
+    const nextQuestion = (selectedOption: string) => {
         if (questionNumber < numberOfQuestions) {
+            questions[questionNumber].answer = selectedOption
             setBackButtonDisabled(false)
             setQuestionNumber(questionNumber + 1)
             setColor(colors[Math.floor(Math.random() * colors.length)])
@@ -105,9 +106,9 @@ export function SimpleQuestions(): JSX.Element {
                     </div>
                 </div>
                     <div style={{ padding: "10px", display: "flex", justifyContent: "center" }}>
-                    <Button onClick={nextQuestion}>{option1}</Button>
+                    <Button onClick={() => nextQuestion(option1)}>{option1}</Button>
                     <div style={{ width: "20px" }}></div>
-                    <Button onClick={nextQuestion}>{option2}</Button>
+                    <Button onClick={() => nextQuestion(option2)}>{option2}</Button>
                 </div>
                 <p className='Simple-report-button'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
             </div>
