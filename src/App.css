@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 .App {
   text-align: center;
   
@@ -14,6 +22,12 @@
   }
 }
 
+.nav {
+  background-color: #61dafb;
+  color: white;
+  display: flex;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -27,10 +41,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-.bg-black {
-  background-color: black;
 }
 
 @keyframes App-logo-spin {
