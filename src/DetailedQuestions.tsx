@@ -29,8 +29,6 @@ function DetailedQuestions() {
   const [numberOfQuestions, setNumberOfQuestions] = useState(15)
   const [questionNumber, setQuestionNumber] = useState(0)
   const [questionBody, setQuestionBody] = useState("Question...")
-  //const [numberOfQuestions] = useState("10")
-  //const [questionNumber, setQuestionNumber] = useState("1")
   const [color, setColor] = useState("")
 
   const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"]
