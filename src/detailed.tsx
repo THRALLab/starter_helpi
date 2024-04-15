@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import "../src/detailed.css";
 import questions from "./detailedQuestions.json";
 
+// TODO - need to prevent user from going to the next question if they didn't choose an option
+// TODO - need to add a variation for user input
+// TODO - => need to add a guard to prevent users from entering nothing
+
 function Detailed() {
 	interface Answer {
 		question: number;
@@ -32,17 +36,18 @@ function Detailed() {
 				answer => answer.question === question
 			);
 			if (q_number !== undefined) {
-				// found
+				// Check if q_number is defined
 				const q_choice: Answer | undefined = answeredQuestions.find(
 					answer => answer.choice === choice
 				);
 				if (q_choice !== undefined) {
+					// If choice already exists
 					console.log("exists");
-					setAnsweredQuestions([
-						...answeredQuestions,
-						{ question: q_number.question, choice: q_choice.choice }
-					]);
-					// need to check if a choice already exists. If it does, override it
+					const index: number = answeredQuestions.findIndex(x => {
+						return x.choice === q_choice.choice;
+					});
+					// Find the index of existing choice and replace it
+					answeredQuestions[index].choice = choice;
 				}
 			} else {
 				// not found
@@ -60,34 +65,6 @@ function Detailed() {
 			JSON.stringify(answeredQuestions)
 		);
 	}, [answeredQuestions]);
-
-	// function saveAnswers(choice: string, questionNumber: number) {
-	// 	if (answeredQuestions.length !== 0) {
-	// 		// checks if a duplicate question number is found
-	// 		const checkDuplicate: Answer | undefined = answeredQuestions.find(
-	// 			q => q.choice === choice
-	// 		);
-
-	// 		console.log("x", checkDuplicate);
-	// 		if (checkDuplicate === undefined) {
-	// 			// if there is no duplicate, add it to the object
-	// 			setAnsweredQuestions([
-	// 				...answeredQuestions,
-	// 				{ question: questionNumber, choice }
-	// 			]);
-	// 		} else {
-	// 			// if there is a duplicate, replace the old choice with the new choice
-	// 			console.log("duplicate");
-	// 			checkDuplicate.choice = choice;
-	// 			setAnsweredQuestions([{ question: questionNumber, choice }]);
-	// 		}
-	// 	} else {
-	// 		// there's no answered questions, add it to the object
-	// 		setAnsweredQuestions([{ question: questionNumber, choice }]);
-	// 	}
-
-	// 	console.log(answeredQuestions);
-	// }
 
 	return (
 		<>
@@ -131,10 +108,11 @@ function Detailed() {
 								{currentIndex === 0 ? "END" : "Prev."}
 							</button>
 							<button
-								disabled={currentIndex === questions.length - 1}
-								onClick={() =>
-									setCurrentIndex(index => (index += 1 % questions.length))
-								}
+								disabled={currentIndex === questions.length - 1 || !choice}
+								onClick={() => {
+									setCurrentIndex(index => (index += 1 % questions.length));
+									setChoice("");
+								}}
 							>
 								{currentIndex === questions.length - 1 ? "END" : "Next"}
 							</button>
