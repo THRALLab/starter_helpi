@@ -5,8 +5,16 @@ import { HomeScreen } from './Components/HomeScreen/HomeScreen';
 import AppFooter from './Components/AppFooter/AppFooter';
 import { BasicPage } from './Components/BasicPage/BasicPage';
 import { DetailedPage } from './Components/DetailedPage/DetailedPage';
+import { clear } from 'console';
 
 
+let pageData = "Home";
+const savePageKey = "MYPAGE";
+const currPage = localStorage.getItem(savePageKey);
+console.log(currPage);
+if (currPage !== null) {
+  pageData = currPage;
+}
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -18,7 +26,7 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const [page, setPage] = useState<string>("Home");
+  const [page, setPage] = useState<string>(pageData); //for page navigation
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -30,11 +38,16 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  function changePage(newPage: string) {
+    localStorage.setItem(savePageKey, newPage);
+    setPage(newPage);
+  }
   return (
     //renders the components corresponding to the state of the page
     <div className="App">
-      <Navbar2 page={page} setPage={setPage}></Navbar2>
-      {page === "Home" && <HomeScreen page={page} setPage={setPage}/>}
+      <Navbar2 page={page} setPage={changePage}></Navbar2>
+      {page === "Home" && <HomeScreen page={page} setPage={changePage}/>}
       {page === "Basic" && <BasicPage/>}
       {page === "Detailed" && <DetailedPage/>}
       <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
