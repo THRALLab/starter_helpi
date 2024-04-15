@@ -4,10 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import Home from './Pages/Home';
 import Basic from './Pages/Basic';
 import Detailed from './Pages/Detailed';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavHome from './navbar';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -83,16 +80,10 @@ function App() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-        {updatePageState()}
-      
-      <div className="question-section">
-        
-        <div className="question">
-          <p>How much do you prefer working independently over working collaboratively?</p>
-          <Button variant={workingPref === 'Not at all' ? 'primary' : 'secondary'} onClick={() => setWorkingPref('Not at all')}>Not at all</Button>
-          <Button variant={workingPref === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setWorkingPref('Neutral')}>Neutral</Button>
-          <Button variant={workingPref === 'Very much' ? 'primary' : 'secondary'} onClick={() => setWorkingPref('Very much')}>Very much</Button>
-        </div>
+    <NavHome></NavHome>
+          {updatePageState()}
+
+          <div className="question-section">
 
         <div className="question">
           <p>How important is expressing creativity and passion in your work?</p>
