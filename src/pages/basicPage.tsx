@@ -167,7 +167,9 @@ const BasicPage = () => {
 			</span>
 		</div>
 		<hr></hr>
+
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "25px"}}>
+
 			<span className="QuestionNum">#5</span>
 				<span className="checkbox-distance" >
 					
