@@ -55,7 +55,6 @@
 .header {
   top: 0;
   width: 100%;
-  border: 3px solid #635f5f;
-  color: rgb(106, 96, 96);
+  border: 1px solid #c6c6c6;
   text-align: center;
 }
