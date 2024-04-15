@@ -2,13 +2,20 @@ import { useEffect, useState } from "react";
 import "../src/detailed.css";
 import questions from "./detailedQuestions.json";
 
-// TODO - need to prevent user from going to the next question if they didn't choose an option
-// TODO - need to add a variation for user input
-// TODO - => need to add a guard to prevent users from entering nothing
+// TODO - [x] need to prevent user from going to the next question if they didn't choose an option
+// TODO - => [] need to add a message to let the user know they need to select a choice
+
+// TODO - [] need to add styling to show which choice the user selected and have it dynamically change based on selected
+// TODO - => [] for free response questions, simply populate the textarea with their response
+
+// TODO - [] need to add a version for user input
+// TODO - => [] need to add a guard to prevent users from entering nothing
+
+// TODO = [] - need to add implement logic to update the user answer's object property when they change it
 
 function Detailed() {
 	interface Answer {
-		question: number;
+		questionNo: number;
 		choice: string;
 	}
 
@@ -23,39 +30,50 @@ function Detailed() {
 
 	const [answeredQuestions, setAnsweredQuestions] = useState<Answer[]>([]);
 
-	function saveAnswers(choice: string, question: number) {
+	function saveAnswers(choice: string, question_num: number) {
 		if (answeredQuestions.length !== 0) {
-			// if it's not empty
+			// 1. check if the question number exists
+			//    -> if it does, check if the choice being passed in matches with the choice found for that question
+			//		 -> if it does, return
+			// 		 -> if it does not, update it
+			// 2. if the question number does not exist, add it
 
-			// check if the question number is already added
-			// -> if it is, check if the choice already exists
-			//    -> if it does, replace it with the newest choice
-			//  -> if it isn't, add it
-
-			const q_number: Answer | undefined = answeredQuestions.find(
-				answer => answer.question === question
+			const questionNumber: Answer | undefined = answeredQuestions.find(
+				(userAnswer: Answer) => {
+					return userAnswer.questionNo === question_num;
+				}
 			);
-			if (q_number !== undefined) {
-				// Check if q_number is defined
-				const q_choice: Answer | undefined = answeredQuestions.find(
-					answer => answer.choice === choice
+
+			if (questionNumber !== undefined) {
+				// the object contains this question, now check if the choice being passed in matches the one saved in the object for this particular question number
+
+				const questionIndex = answeredQuestions.findIndex(
+					(userAnswer: Answer) => {
+						return userAnswer.questionNo === questionNumber.questionNo;
+					}
 				);
-				if (q_choice !== undefined) {
-					// If choice already exists
-					console.log("exists");
-					const index: number = answeredQuestions.findIndex(x => {
-						return x.choice === q_choice.choice;
-					});
-					// Find the index of existing choice and replace it
-					answeredQuestions[index].choice = choice;
+
+				if (questionNumber.choice !== choice) {
+					// the user selected a different choice for the question; update the choice for that question number
+					// we can disregard the case where the user selects the same choice since nothing will change
+
+					const updatedQuestions: Answer[] = [...answeredQuestions];
+					updatedQuestions[questionIndex] = {
+						...updatedQuestions[questionIndex], // copies the object at that index
+						choice // updates the choice property of that object
+					};
+					setAnsweredQuestions(updatedQuestions);
 				}
 			} else {
-				// not found
-				setAnsweredQuestions([...answeredQuestions, { question, choice }]);
+				// the object does not contain the question; add it to the object
+				setAnsweredQuestions([
+					...answeredQuestions,
+					{ questionNo: question_num, choice }
+				]);
 			}
 		} else {
 			// if it is empty
-			setAnsweredQuestions([{ question, choice }]);
+			setAnsweredQuestions([{ questionNo: question_num, choice }]);
 		}
 	}
 
