@@ -4,6 +4,7 @@ const determineNextQuestionId = (currentQuestionId: string, userAnswer: string):
   if (currentQuestionId === "root") return "question2";
   else if (currentQuestionId === "question2") return "question3";
   else if (currentQuestionId === "question3") return "question4";
+  else if (currentQuestionId === "question4") return "question5";
   else return "";
 };
 
@@ -42,5 +43,12 @@ export const basicQuiz: Record<string, Question> = {
     prompt: "What is your favorite class you have taken?",
     options: [],
     getNextQuestionId: (userAnswer: string) => determineNextQuestionId("question4", userAnswer)
+  },
+  question5: {
+    id: "question5",
+    type: "SLIDER_RESPONSE",
+    prompt: "What is your favorite number 1 to 100",
+    options: [],
+    getNextQuestionId: (userAnswer: string) => determineNextQuestionId("question5", userAnswer)
   },
 };

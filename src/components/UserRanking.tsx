@@ -23,6 +23,10 @@ export function UserRanking({
             )
     }
      */
+    const getNextQuestion = () => {
+        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""));
+        onNext(true);
+    }
     const pushUp = (priority: string) => {
         const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
         if (currIndex > 0) {
@@ -66,7 +70,7 @@ export function UserRanking({
                     </li>
                 ))}
             </ol>
-            <Button onClick={() => onNext(true)}></Button>  
+            <Button onClick={() => getNextQuestion()}></Button>  
         </div>
     )
 }

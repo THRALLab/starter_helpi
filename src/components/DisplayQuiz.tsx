@@ -5,6 +5,7 @@ import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
 import { TextResponse } from "./TextResponse"
 import { UserRanking } from "./UserRanking"
+import { SliderResponse } from "./SliderResponse";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -29,6 +30,7 @@ export function DisplayQuiz(
 
     const handleAnswerSubmit = () => {
         setAnswers([...answers, currentAnswer])
+        console.log(currentAnswer);
         const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
         setQuestionsAnswerd(questionsAnswerd + 1)
         if (nextQuestionId === "") {
@@ -83,6 +85,8 @@ export function DisplayQuiz(
             return <UserRanking {...questionComponentProps} />;
         case "TEXT_RESPONSE":
             return <TextResponse {...questionComponentProps} />;
+        case "SLIDER_RESPONSE":
+            return <SliderResponse {...questionComponentProps} />;
         default:
             return <h1>Unknown question type</h1>;
     }

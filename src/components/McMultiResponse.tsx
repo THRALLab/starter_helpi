@@ -14,12 +14,22 @@ export function McMultiResponse({
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string[]>([]);
     function addAnswer(currAnswer: string) {
+        console.log(`currans: ${currAnswer}`);
         if (localAnswer.includes(currAnswer)) {
             setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
         } else {
             setLocalAnswer([...localAnswer, currAnswer]);
         }
-        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""))
+        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""));
+        console.log(localAnswer);
+    }
+
+    function onQuestionSubmit() {
+        const j = localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, "");
+        setAnswer(j);
+        console.log('submited', j);
+        console.log('local ans', localAnswer);
+        onNext(true);
     }
 
     return (
@@ -39,7 +49,7 @@ export function McMultiResponse({
                         </li>
                     ))}
                 </ul>
-                <Button onClick={() => onNext(true)}>Next</Button>
+                <Button onClick={() => onQuestionSubmit()}>Next</Button>
             </Form>
         </div>
     );
