@@ -71,7 +71,7 @@ const BasicPage = () => {
 		<div style={{textAlign:"center"}}>
 			<Button size="lg" disabled={!allow} >Answer</Button>
 			<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}/>
-			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
+			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"350px", marginRight:"350px"}}>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
 		</div>
@@ -167,7 +167,7 @@ const BasicPage = () => {
 			</span>
 		</div>
 		<hr></hr>
-		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "100px"}}>
+		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "25px"}}>
 			<span className="QuestionNum">#5</span>
 				<span className="checkbox-distance" >
 					
