@@ -62,6 +62,13 @@ function App() {
 
           <div className="question-section">
 
+            <div className="question">
+              <p>How much do you prefer working independently over working collaboratively?</p>
+              <Button variant={workingPref === 'Not at all' ? 'primary' : 'secondary'} onClick={() => setWorkingPref('Not at all')}>Not at all</Button>
+              <Button variant={workingPref === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setWorkingPref('Neutral')}>Neutral</Button>
+              <Button variant={workingPref === 'Very much' ? 'primary' : 'secondary'} onClick={() => setWorkingPref('Very much')}>Very much</Button>
+            </div>
+
         <div className="question">
           <p>How important is expressing creativity and passion in your work?</p>
           <Button variant={creativity === 'Not important' ? 'primary' : 'secondary'} onClick={() => setCreativity('Not important')}>Not important</Button>
@@ -103,10 +110,6 @@ function App() {
           <Button variant={environment === 'Neutral' ? 'primary' : 'secondary'} onClick={() => setEnvironment('Neutral')}>Neutral</Button>
           <Button variant={environment === 'Changing Environment' ? 'primary' : 'secondary'} onClick={() => setEnvironment('Changing Environment')}>Changing Environment</Button>
         </div>
-
-        
-
-
 
         <div className="question">
           <p>How much do you prefer working independently over working collaboratively?</p>
@@ -173,15 +176,18 @@ function App() {
         </div>
       </div>
     
-      <footer className="footer">
-      <h3>Kai Winterle, Joey Dare, Joanna Crisomia, Ricky Kiamilev</h3>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
-        </footer>
+  <footer className="footer">
+    <h3 className="footer-container">Contact Us</h3>
+    <h3 className="footer-container">Help</h3>
+    <div className="form-container">
+    <Form>
+      <Form.Label>API Key:</Form.Label>
+      <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey} />
+      <br />
+      <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+    </Form>
+  </div>
+</footer>
     </>
   );
 }
