@@ -1,6 +1,6 @@
 // Import necessary hooks and components
 import React, { useState } from "react";
-import { Question } from "../interfaces/QuestionTypes";
+import { Question, questionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
 import { TextResponse } from "./TextResponse"
@@ -35,15 +35,23 @@ export function DisplayQuiz(
             setIsQuizComplete(true); // End of the quiz
         } else {
             setCurrentQuestionId(nextQuestionId); // Move to the next question
+            setCurrentAnswer("");
         }
     };
 
     if (isQuizComplete) {
-        return <div style={{justifyContent: "left"}}>
-        <h2>End of question bank for {title}</h2>
+        return (<>
+        <h2>End of question bank for {title}. This is the point at which GPT would take over asking questions.</h2>
         <br></br>
-        <h3>The questions asked up until now would be used to populate the prompt given to ChatGPT</h3>
-        <h3>This is the point at which GPT would take over asking questions.</h3>
+        <div style={{textAlign: "left"}}>
+        <h3>Our vision for this feature is that GPT will be given a prompt (populated by 
+            previous user answers up until now)</h3>
+        <span>GPT will be given the option of three actions to make:</span>
+        <ul>
+            <li><strong>Ask Question:</strong> (GPT returns parameters to feed into question component)</li>
+            <li><strong>End quiz:</strong> (Only ends on user’s side. Triggers AI to start to formulating final output)</li>
+            <li><strong>Final Output:</strong> (Quiz complete)</li>
+        </ul>
         <br></br> 
         <br></br>
         <br></br>
@@ -52,12 +60,13 @@ export function DisplayQuiz(
         <ol>
         {answers.map((target: string) => (<li>{target}</li>))}
         </ol>
-        </div>;
+        </div>
+        </>)
     }
 
     const currentQuestion = quiz[currentQuestionId];
 
-    const questionComponentProps = {
+    const questionComponentProps: questionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
         setAnswer: setCurrentAnswer,

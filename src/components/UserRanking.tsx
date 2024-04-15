@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from 'react-bootstrap';
 
 export function UserRanking({
@@ -13,11 +13,7 @@ export function UserRanking({
     onNext: (next: boolean) => void;
 }): JSX.Element {
     const [categories, setCategories] = useState<string[]>(options);
-
-    const submitting = () => {
-        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
-        onNext(true)
-    }
+    
     /**
     const updatePriorities = (priority: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
         event.target.checked
@@ -35,6 +31,7 @@ export function UserRanking({
             [newPriorities[currIndex - 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex - 1]];
             setCategories(newPriorities);
         }
+        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
     }
     const pushDown = (priority: string) => {
         const currCount = categories.reduce((count: number, chosenMember: string) => count += 1, 0);
@@ -45,6 +42,7 @@ export function UserRanking({
             [newPriorities[currIndex + 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex + 1]];
             setCategories(newPriorities);
         }
+        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
     }
     return (
         <div>
@@ -68,7 +66,7 @@ export function UserRanking({
                     </li>
                 ))}
             </ol>
-            <Button onClick={submitting}></Button>  
+            <Button onClick={() => onNext(true)}></Button>  
         </div>
     )
 }

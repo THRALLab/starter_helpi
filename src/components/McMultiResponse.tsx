@@ -19,14 +19,14 @@ export function McMultiResponse({
         } else {
             setLocalAnswer([...localAnswer, currAnswer]);
         }
-        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined + selected, ""))
+        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""))
     }
 
     return (
         <div>
             <h3>{question}</h3>
             <Form>
-                <ul style={{ listStyleType: "none" }}>
+                <ul>
                     {options.map((choice) => (
                         <li key={choice}>
                             <Form.Check
