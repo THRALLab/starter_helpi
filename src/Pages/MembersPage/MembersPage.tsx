@@ -22,7 +22,8 @@ export function MembersPage() : JSX.Element {
                 <div className = "members-page--page-links">
                     <h2> Pages </h2>
                     <div className = "page-buttons">
-                        <button onClick = {() => nav("/home")}> Home </button>    
+                        <button onClick = {() => nav("/home")}> Home </button> 
+                        <button onClick = {() => nav("/reports")}> Reports </button>  
                     </div>
                 </div>
             </div>
