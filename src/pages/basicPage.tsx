@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar } from "react-bootstrap";
+import { Form, ProgressBar, Alert } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 
 
@@ -32,12 +32,15 @@ const BasicPage = () => {
 
     let answered = updateProgress(response);
     const [allow, setAllow] = useState<boolean>(false);
-
+	const [alert, setAlert] = useState<boolean>(false);
+	
     useEffect(() => {
         if (answered === 8) {
             setAllow(true);
+			setAlert(true);
         } else {
             setAllow(false);
+			setAlert(false);
         }
     }, [answered]);
 	return (<>
@@ -53,7 +56,7 @@ const BasicPage = () => {
 				}
 				hr{
 					width:1142;
-					margin-top: 100px;
+					margin-top: 50px;
 				}
                 `}</style>
 		<div>
@@ -66,10 +69,13 @@ const BasicPage = () => {
 			
 		</div>
 		<div style={{textAlign:"center"}}>
-			<Button disabled={!allow} >Answer</Button>
+			<Button size="lg" disabled={!allow} >Answer</Button>
 			<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}/>
+			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
+				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
+			</Alert>
 		</div>
-		<div style={{textAlign: "center", marginTop: "100px"}}>
+		<div style={{textAlign: "center", marginTop:"10px"}}>
 		</div>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
 		<span className="QuestionNum">#1</span>
