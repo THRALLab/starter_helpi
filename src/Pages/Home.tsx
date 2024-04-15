@@ -8,6 +8,7 @@ interface HomeProp {
 
 const Home: React.FC<HomeProp> = ({ handlePage }) => {
     return (
+        <header className="header">
     <div className="home-container">
             <div className="home-column">
                 <Button className="home-button" onClick={() => handlePage('Home')}>Home Page</Button>
@@ -19,6 +20,7 @@ const Home: React.FC<HomeProp> = ({ handlePage }) => {
                 <Button className="detailed-button" onClick={() => handlePage('Detailed')}>Detailed Questions</Button>
             </div>
         </div>
+        </header>
     );
 }
 
