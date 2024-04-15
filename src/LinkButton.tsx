@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import './General.css';
 
 interface LinkButtonProps{
     to: string;
@@ -13,6 +14,6 @@ function LinkButton(props: LinkButtonProps) {
         navigate(whereTo)
     }
     return (
-        <Button onClick={() => handleButtonClick(props.to)}>{props.label}</Button>
+        <Button className='Button-link' onClick={() => handleButtonClick(props.to)}>{props.label}</Button>
     )
 } export default LinkButton;

@@ -11,12 +11,12 @@ describe("Detailed Page Tests", () => {
     });
     test('Has User Input', () => {
         render(<HashRouter><DetailedQuestions /></HashRouter>);
-        const linkElement = screen.getByText("I am a hard worker");
+        const linkElement = screen.getByText("I am a hard worker.");
         expect(linkElement).toBeInTheDocument();
     });
     test('Has Progress Bar', () => {
         render(<HashRouter><DetailedQuestions /></HashRouter>);
-        const linkElement = screen.getByText("10% completed");
+        const linkElement = screen.getByText("3% completed");
         expect(linkElement).toBeInTheDocument();
     });
     test('Has Footer', () => {

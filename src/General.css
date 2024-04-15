@@ -3,6 +3,7 @@
     --color-body-text: #000000;
     --color-body-Headerbackground: #67CBF5;
     --color-body-Headertext: #000000;
+    --color-body-Button: #a294ef;
 }
 
 .body-dark {
@@ -10,6 +11,7 @@
     --color-body-text: #C9C9C9;
     --color-body-Headerbackground: #173848;
     --color-body-Headertext: #C9C9C9;
+    --color-body-Button: #a294ef75;
 }
 
 .General-header {
@@ -65,6 +67,14 @@
     font-size: "3vh";
     color: var(--color-body-text);
     background-color: var(--color-body-background);
+}
+
+.Button-link {
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button);
+    
 }
 
 .Button-visible-true {
