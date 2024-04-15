@@ -119,7 +119,7 @@ export function SimpleQuestions(): JSX.Element {
             
             <div className='Simple-body'>
                 <span className='Simple-back-top'>
-                    <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
+                    <Button className="Button-back" onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
                 </span>
                 <div className='Simple-progress'>
                     <div style={{ backgroundColor: color, padding: "10px", position: "relative", display: "flex" }}>
