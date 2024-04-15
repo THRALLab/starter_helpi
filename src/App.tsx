@@ -83,7 +83,6 @@ function App() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    <div className="App">
         {updatePageState()}
       
       <div className="question-section">
@@ -205,7 +204,7 @@ function App() {
           <Button variant={env === 'Changing Environment' ? 'primary' : 'secondary'} onClick={() => setEnv('Changing Environment')}>Changing Environment</Button>
         </div>
       </div>
-        
+    
       <footer className="footer">
       <h3>Kai Winterle, Joey Dare, Joanna Crisomia, Ricky Kiamilev</h3>
       <Form>
@@ -215,7 +214,6 @@ function App() {
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
         </footer>
-    </div>
     </>
   );
 }

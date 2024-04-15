@@ -12,11 +12,12 @@ const Home: React.FC<HomeProp> = ({ handlePage }) => {
         <div className="icon-container">
         <img src={BrainIcon} alt="Brain Icon" className="icon" />
         </div>
+        <h2 className="title">Brain Spark</h2>
+        <div className="home-container">
                 <Button className="home-button" onClick={() => handlePage('Home')}>Home Page</Button>
-                <Button className="basic-button" onClick={() => handlePage('Basic')}>Basic Questions
-                </Button>
-                <Button className="detailed-button" onClick={() => handlePage('Detailed')}>Detailed Questions
-                </Button>
+                <Button className="basic-button" onClick={() => handlePage('Basic')}>Basic Questions</Button>
+                <Button className="detailed-button" onClick={() => handlePage('Detailed')}>Detailed Questions</Button>
+        </div>
         </header>
     );
 }

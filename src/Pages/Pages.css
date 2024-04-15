@@ -1,28 +1,30 @@
 .home-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-direction: row;
+    margin-left: 155px;
 }
 
 .home-column {
-    margin: 10px;
+    margin-right: 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
 .home-button,
 .basic-button,
 .detailed-button {
-    margin: 5px;
-    background-color: #6fb4fe;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: #86c0ff;
     color: white;
-    padding: 10px 100px;
-    border: 2px solid #666666;
+    padding: 10px 50px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
+    font-family: "MADE Tommy Soft", sans-serif;
     align-items: center;
     transition: background-color 0.3s;
 }
@@ -41,10 +43,16 @@
 }
 
 .icon-container {
+    margin-left: 5px;
     width: 48px;
     height: 48px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.title {
+    font-family: 'Simple', sans-serif;
+    font-size: 32px;
+    margin-left: 5x;
 }
