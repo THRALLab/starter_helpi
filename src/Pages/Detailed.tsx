@@ -9,11 +9,7 @@ interface DetailedProp {
 const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
     return (
         <header className="header">
-    <div className="home-container">
-    <div className="home-column">
         <Button className="home-button" onClick={() => handlePage('Home')}>Home Page</Button>
-    </div>
-    </div>
     </header>
     )
 }
