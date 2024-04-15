@@ -11,25 +11,24 @@
     align-items: center;
 }
 
-.home-button {
-    background-color: #6fb4fe;
-    color: white;
-    padding: 8px 100px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-}
-
+.home-button,
 .basic-button,
 .detailed-button {
+    margin: 5px;
     background-color: #6fb4fe;
     color: white;
-    padding: 8px 100px;
-    border: none;
+    padding: 10px 100px;
+    border: 2px solid #666666;
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
+    align-items: center;
+    transition: background-color 0.3s; /* Smooth transition for the hover effect */
+}
+
+.home-button:hover,
+.basic-button:hover,
+.detailed-button:hover {
+    background-color: #4a90e2; /* Change the background color on hover */
 }
