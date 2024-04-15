@@ -49,7 +49,7 @@ export function SimpleQuestions(): JSX.Element {
         const simpleQuestions: SimpleQuestion[] = parsedData.SIMPLE_QUESTIONS;
         setQuestions(simpleQuestions)
         setNumberOfQuestions(simpleQuestions.length)
-        setQuestionNumber(questionNumber + 1)
+        setQuestionNumber(questionNumber)
         setColor(colors[Math.floor(Math.random() * colors.length)])
         setQuestionBody(simpleQuestions[questionNumber].question)
         setOption1(simpleQuestions[questionNumber].option1)
@@ -57,14 +57,15 @@ export function SimpleQuestions(): JSX.Element {
     }
 
     const nextQuestion = (selectedOption: string) => {
-        if (questionNumber < numberOfQuestions) {
+        if (questionNumber < numberOfQuestions - 1) {
             questions[questionNumber].answer = selectedOption
             setBackButtonDisabled(false)
-            setQuestionNumber(questionNumber + 1)
+            const nextQuestion = questionNumber + 1
+            setQuestionNumber(nextQuestion)
             setColor(colors[Math.floor(Math.random() * colors.length)])
-            setQuestionBody(questions[questionNumber].question)
-            setOption1(questions[questionNumber].option1)
-            setOption2(questions[questionNumber].option2)
+            setQuestionBody(questions[nextQuestion].question)
+            setOption1(questions[nextQuestion].option1)
+            setOption2(questions[nextQuestion].option2)
         } else {
             // End of quiz...
             window.alert("You've completed the Simple Quiz!")
@@ -72,16 +73,17 @@ export function SimpleQuestions(): JSX.Element {
     }
 
     const previousQuestion = () => {
-        if (questionNumber > 1) {
-            setQuestionNumber(questionNumber - 1)
+        if (questionNumber >= 1) {
+            const previousQuestion = questionNumber - 1
+            setQuestionNumber(previousQuestion)
             setColor(colors[Math.floor(Math.random() * colors.length)])
-            setQuestionBody(questions[questionNumber].question)
-            setOption1(questions[questionNumber].option1)
-            setOption2(questions[questionNumber].option2)
-            if (questionNumber === 2) {
+            setQuestionBody(questions[previousQuestion].question)
+            setOption1(questions[previousQuestion].option1)
+            setOption2(questions[previousQuestion].option2)
+            if (questionNumber === 1) {
                 setBackButtonDisabled(true)
             }
-        } 
+        }
     }
 
     return (
@@ -93,10 +95,10 @@ export function SimpleQuestions(): JSX.Element {
                 </div>
                 <div style={{ padding: "10px" }}>
                     <div style={{ backgroundColor: color, color: "white", padding: "10px", position: "relative", display: "flex" }}>
-                        <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * (questionNumber / numberOfQuestions)}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
-                            Question {questionNumber}/{numberOfQuestions}
+                        <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * ((questionNumber + 1) / numberOfQuestions)}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
+                            Question {questionNumber + 1}/{numberOfQuestions}
                         <div style={{ marginLeft: "auto", alignSelf: "right" }}>
-                            {Math.round(100 * (questionNumber / numberOfQuestions))}% completed
+                            {Math.round(100 * ((questionNumber + 1) / numberOfQuestions))}% completed
                         </div>
                     </div>
                 </div>
