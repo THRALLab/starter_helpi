@@ -41,7 +41,12 @@
     font-size: 48px;
     margin: 5px; 
     vertical-align: middle;
+    cursor: pointer;
 }
+
+.icon:hover {
+    opacity: 0.7;
+  }
 
 .icon-container {
     margin-left: 5px;
@@ -56,4 +61,5 @@
     font-family: 'Simple', sans-serif;
     font-size: 40px;
     margin-left: 5x;
+    cursor: pointer;
 }

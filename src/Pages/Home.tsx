@@ -9,10 +9,12 @@ interface HomeProp {
 const Home: React.FC<HomeProp> = ({ handlePage }) => {
     return (
     <header className="header">
+        <div className="hover-container">
         <div className="icon-container">
-        <img src={BrainIcon} alt="Brain Icon" className="icon" />
+        <img src={BrainIcon} alt="Brain Icon" className="icon" onClick ={() => handlePage('Home')}/>
         </div>
-        <h2 className="title">Brain Spark</h2>
+        </div>
+        <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
         <div className="home-container">
                 <Button className="home-button" onClick={() => handlePage('Home')}>Home Page</Button>
                 <Button className="basic-button" onClick={() => handlePage('Basic')}>Basic Questions</Button>
