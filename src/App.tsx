@@ -13,6 +13,7 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [pageId, setPageId] = useState<number>(3); // 0 = Home, 1 = Basic Questions, 2 = Detailed Questions, 3 = React Home
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -24,6 +25,10 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  // Using buttons to change the value of 'pageId' to switch pages -Dylan Blevins
+  // React Home Page
+  if (pageId === 3) {
   return (
     <div className="App">
       <header className="App-header">
@@ -31,6 +36,12 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <p>
+          Shamus Ellis : Dylan Blevins : Luke Bonniwell
+        </p>
+
+        <button className="Home-Page-Button" onClick={() => setPageId(0)}>Home Page</button>
+
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -44,10 +55,55 @@ function App() {
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
         <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+        <Button variant="primary" className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
     </div>
+    
   );
+  }
+
+  // Home Page
+  if (pageId === 0) {
+    return (
+      <div className='Homepage'>
+        <header>
+          <h1 className="Homepage-title">Welcome to the Home Page</h1>
+          <button className="Page-to-Page" onClick={() => setPageId(3)}>React Page</button>
+          <button className="Page-to-Page" onClick={() => setPageId(1)}>Basic Career Assessment Page</button>
+          <button className="Page-to-Page" onClick={() => setPageId(2)}>Detailed Career Asssessment Page</button>
+        </header>
+      </div>
+    )
+  }
+
+  // Basic Questions Page
+  if (pageId === 1) {
+    return (
+    <div>
+      <header>
+        <h1>Welcome to the Basic Questions Page</h1>
+        <button className="Page-to-Page" onClick={() => setPageId(0)}>Back</button>
+      </header>
+    </div>
+    )
+  }
+
+  // Detailed Questions Page
+  if (pageId === 2) {
+    return (
+    <div>
+      <header>
+        <h1>Welcome to the Detailed Questions Page</h1>
+        <button className="Page-to-Page" onClick={() => setPageId(0)}>Back</button>
+      </header>
+    </div>
+    )
+  }
+
+  // This should never appear
+  return (
+    <div><h1>You aren't supposed to be here</h1></div>
+  )
 }
 
 export default App;
