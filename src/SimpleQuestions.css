@@ -55,10 +55,18 @@
     padding-right: 20vw;
 }
 
-.Simple-back {
+.Simple-back-bottom {
     position: absolute;
     align-items: right;
     margin-right: 5%;
-    margin-top: 2px;
+    margin-top: 0px;
     right: 0;
+}
+
+.Simple-back-top {
+    position: relative;
+    align-items: left;
+    left: 0;
+    right: 1;
+    margin-right: 90vw;
 }
