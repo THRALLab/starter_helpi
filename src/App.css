@@ -1,3 +1,14 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #6fb4fe; 
+  color: white;
+  display: flex; 
+  align-items: center; 
+  padding: 5px;
+}
+
 .header {
   top: 0;
   width: 100%;
@@ -8,18 +19,28 @@
 }
 
 .footer-container {
-  margin-left: 30px;
   display: flex;
   cursor: pointer;
+  margin-right: 30px;
+  margin-left: 10px;
+  font-family: "MADE Tommy Soft", sans-serif;
 }
 
 .footer-container:hover {
   opacity: 0.7;
 }
 
-.form-container {
-  flex-grow: 1;
-  text-align: center;
-  margin-right: 185px;
+.api-form {
+  display: flex;
+  align-items: center;
+  margin-left: 350px;
+}
+
+.api-form .form-control {
+  width: 200px;
+}
+
+.api-form .Submit-Button {
+  width: 100px;
 }
 
