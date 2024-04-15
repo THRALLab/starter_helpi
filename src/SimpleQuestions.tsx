@@ -54,9 +54,7 @@ export function SimpleQuestions(): JSX.Element {
         setQuestionBody(simpleQuestions[questionNumber].question)
         setOption1(simpleQuestions[questionNumber].option1)
         setOption2(simpleQuestions[questionNumber].option2)
-        if(questionNumber === 14){
-            setQuestionBody("Quiz Complete!");
-        }
+        
     }
 
     const nextQuestion = (selectedOption: string) => {
@@ -98,6 +96,8 @@ export function SimpleQuestions(): JSX.Element {
                     reportButton.classList.remove("Button-visible-true");
                     reportButton.classList.add("Button-visible-false");
                 }
+                const previousQuestion = questionNumber - 1
+                setQuestionNumber(previousQuestion)
             }
             else {
                 const previousQuestion = questionNumber - 1
