@@ -7,7 +7,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import DetailedPage from './pages/detailedPage';
+import DetailedPage from './pages/DetailedPage';
 import HomePage from './pages/homePage';
 import BasicPage from './pages/BasicPage';
 
