@@ -7,7 +7,6 @@ export function ApiKeyInput(): JSX.Element {
   const changeKey = (event: React.ChangeEvent<HTMLInputElement>) => {
     setApiKey(event.target.value);
   };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
     // Logic to handle the API key, such as saving to local storage or state management

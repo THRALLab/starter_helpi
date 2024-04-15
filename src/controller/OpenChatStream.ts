@@ -1,5 +1,4 @@
-
-import { openai } from "./openaiToken";
+import { openai } from "./OpenaiToken";
 
 export async function openGBTStream({startingPrompt} : {startingPrompt: string}) {
     const stream = await openai.beta.chat.completions.stream({
@@ -12,10 +11,10 @@ export async function openGBTStream({startingPrompt} : {startingPrompt: string})
     process.stdout.write(delta);
     });
 
-    // or, equivalently:
-    for await (const chunk of stream) {
-    process.stdout.write(chunk.choices[0]?.delta?.content || '');
-    }
+    // // or, equivalently:
+    // for await (const chunk of stream) {
+    // process.stdout.write(chunk.choices[0]?.delta?.content || '');
+    // }
 
     const chatCompletion = await stream.finalChatCompletion();
     console.log(chatCompletion); // {id: "…", choices: […], …}
