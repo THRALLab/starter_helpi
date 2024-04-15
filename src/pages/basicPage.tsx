@@ -30,7 +30,7 @@ const BasicPage = () => {
 		return completed;
 	}
 
-    const answered = updateProgress(response);
+    let answered = updateProgress(response);
     const [allow, setAllow] = useState<boolean>(false);
 
     useEffect(() => {
@@ -67,7 +67,7 @@ const BasicPage = () => {
 		</div>
 		<div style={{textAlign:"center"}}>
 			<Button disabled={!allow} >Answer</Button>
-			<ProgressBar variant="success" now={answered} max={8}/>
+			<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}/>
 		</div>
 		<div style={{textAlign: "center", marginTop: "100px"}}>
 		</div>
