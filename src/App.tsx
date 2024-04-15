@@ -134,10 +134,6 @@ function App() {
           <Button variant={environment === 'Changing Environment' ? 'primary' : 'secondary'} onClick={() => setEnvironment('Changing Environment')}>Changing Environment</Button>
         </div>
 
-        
-
-
-
         <div className="question">
           <p>How much do you prefer working independently over working collaboratively?</p>
           <Button variant={prefWork === 'Not at all' ? 'primary' : 'secondary'} onClick={() => setPrefWork('Not at all')}>Not at all</Button>
