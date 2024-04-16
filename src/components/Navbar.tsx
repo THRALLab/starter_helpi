@@ -11,19 +11,10 @@ const Navbar = () => {
                 <div className="site-title">
                     <h1>Website Title</h1>
                 </div>
-                <div className="site-logo">
-                    <img src={logo} className="App-logo" alt="logo" />
-                </div>
                 <NavMenu>
-                    <NavLink to="/">
-                        <Button>Home</Button>
-                    </NavLink>
-                    <NavLink to="/BasicPage">
-                        <Button>Basic Page</Button>
-                    </NavLink>
-                    <NavLink to="/detailedPage">
-                        <Button>Detailed Page</Button>
-                    </NavLink>
+                    <NavLink to="/">Home Page</NavLink>
+                    <NavLink to="/BasicPage">Basic Page</NavLink>
+                    <NavLink to="/detailedPage">Detailed Page</NavLink>
                 </NavMenu>
             </Nav>
         </>

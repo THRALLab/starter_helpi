@@ -1,4 +1,9 @@
 .site-title {
     padding-left: 20px;
-    color: white;
+    color: black;
+}
+
+.nav-button {
+    background: white;
+    color: black;
 }
