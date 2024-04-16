@@ -4,6 +4,8 @@
     --color-body-Headerbackground: #67CBF5;
     --color-body-Headertext: #000000;
     --color-body-Button: #a294ef;
+    --color-body-ButtonDisabled: #a294ef;
+    --color-body-ButtonHover: #b3a9ee;
 }
 
 .body-dark {
@@ -12,6 +14,8 @@
     --color-body-Headerbackground: #173848;
     --color-body-Headertext: #C9C9C9;
     --color-body-Button: #a294ef75;
+    --color-body-ButtonDisabled: #a294ef75;
+    --color-body-ButtonHover: #a294efa6;
 }
 
 .General-header {
@@ -73,8 +77,12 @@
     font-weight: bold;
     color: var(--color-body-text);
     border: #000000;
-    background-color: var(--color-body-Button);
-    
+    background-color: var(--color-body-Button); 
+}
+
+.Button-link:hover {
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonHover); 
 }
 
 .Button-visible-true {
@@ -93,6 +101,12 @@
     background-color: var(--color-body-Button);
 }
 
+.Button-next:hover {
+    visibility: var(--visibility-button);
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonHover);
+}
+
 .Button-next-2 {
     visibility: var(--visibility-button);
     font-weight: bold;
@@ -101,11 +115,27 @@
     background-color: var(--color-body-Button);
 }
 
+.Button-next-2:hover {
+    visibility: var(--visibility-button);
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonHover);
+}
+
 .Button-back {
     font-weight: bold;
     color: var(--color-body-text);
     border: #000000;
     background-color: var(--color-body-Button);
+}
+
+.Button-back:hover {
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonHover);
+}
+
+.Button-back:disabled {
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonDisabled);
 }
 
 .Button-report {
