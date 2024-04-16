@@ -1,0 +1,27 @@
+/* HomePage.css */
+.HomePage {
+    text-align: center;
+    background-color: lightblue;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .HomePage h1 {
+    font-weight: bold;
+  }
+  
+  .HomePage .question-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .HomePage .question {
+    margin: 0 20px;
+    max-width: 300px;
+  }
+  
+  .HomePage .question h3 {
+    margin-top: 0;
+  }
+  

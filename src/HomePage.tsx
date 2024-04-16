@@ -19,27 +19,56 @@ import DetailedQuestions from './DetailedQuestions';
 //   keyData = JSON.parse(prevKey);
 // }
 
+// const HomePage: React.FC = () => {
+//   return (
+//     <div>
+//       <h1>Career Quiz Home Page</h1>
+//       <div>
+//         <h3>Basic Questions</h3>
+//         <p>Click the button below if you want to take a more concise version of the career quiz</p>
+//         <Link to="/basic-questions">
+//           <button>Start Basic Quiz</button>
+//         </Link>
+//       </div>
+//       <div>
+//         <h3>Detailed Questions</h3>
+//         <p>Click the button below if you want to take a more detailed version of the career quiz</p>
+//         <Link to="/detailed-questions">
+//           <button>Start Detailed Quiz</button>
+//         </Link>
+//       </div>
+//     </div>
+//   );
+// }
+
+// Inside HomePage component in App.tsx or App.jsx
+
 const HomePage: React.FC = () => {
   return (
-    <div>
-      <h1>Career Quiz Home Page</h1>
-      <div>
-        <h3>Basic Questions</h3>
-        <p>Click the button below if you want to take a more concise version of the career quiz</p>
-        <Link to="/basic-questions">
-          <button>Start Basic Quiz</button>
-        </Link>
-      </div>
-      <div>
-        <h3>Detailed Questions</h3>
-        <p>Click the button below if you want to take a more detailed version of the career quiz</p>
-        <Link to="/detailed-questions">
-          <button>Start Detailed Quiz</button>
-        </Link>
-      </div>
+    // Inside App.tsx or App.jsx
+<div className="App">
+  <h1>Career Quiz Home Page</h1>
+  <div className="question-container">
+    <div className="question">
+      <h3>Basic Questions</h3>
+      <p>Click the button below if you want to take a more concise version of the career quiz</p>
+      <Link to="/basic-questions">
+        <button>Start Basic Quiz</button>
+      </Link>
     </div>
+    <div className="question">
+      <h3>Detailed Questions</h3>
+      <p>Click the button below if you want to take a more detailed version of the career quiz</p>
+      <Link to="/detailed-questions">
+        <button className="detailed-quiz">Start Detailed Quiz</button>
+      </Link>
+    </div>
+  </div>
+</div>
+
   );
 }
+
 
 function App() {
   return (
