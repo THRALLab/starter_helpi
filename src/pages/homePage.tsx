@@ -25,33 +25,6 @@ import logo from './logo.svg';
 
     return (
         <><header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <button>
-
-            </button>
-            <p>
-                Edit <code>src/App.tsx</code> and save to reload.
-            </p>
-            <p>
-                Jasnoor Saini
-            </p>
-            <p>
-                Benjamin Le
-            </p>
-            <p>
-                Coleman Walsh
-            </p>
-            <p>
-                Mateo Torres
-            </p>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Learn React
-            </a>
         </header>
         <Form>
                 <Form.Label>API Key:</Form.Label>
