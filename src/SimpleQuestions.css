@@ -23,3 +23,50 @@
     color: var(--color-foreground);
     padding-top: 3vh;
 }
+
+.Simple-progress {
+    color: var(--color-body-text);
+    padding: 10px;
+}
+
+.Simple-question {
+    color: var(--color-body-text);
+    padding: 10px;
+}
+
+.Simple-buttons {
+    position: relative;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.Simple-option-1 {
+    position: absolute;
+    left: 0;
+    right: 1;
+    padding-left: 20vw;
+}
+
+.Simple-option-2 {
+    position: absolute;
+    left: 1;
+    right: 0;
+    padding-right: 20vw;
+}
+
+.Simple-back-bottom {
+    position: absolute;
+    align-items: right;
+    margin-right: 5%;
+    margin-top: 0px;
+    right: 0;
+}
+
+.Simple-back-top {
+    position: relative;
+    align-items: left;
+    left: 0;
+    right: 1;
+    margin-right: 90vw;
+}

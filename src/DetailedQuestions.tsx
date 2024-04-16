@@ -29,9 +29,8 @@ function DetailedQuestions() {
   const [numberOfQuestions, setNumberOfQuestions] = useState(15)
   const [questionNumber, setQuestionNumber] = useState(0)
   const [questionBody, setQuestionBody] = useState("Question...")
-  //const [numberOfQuestions] = useState("10")
-  //const [questionNumber, setQuestionNumber] = useState("1")
   const [color, setColor] = useState("")
+  const [backButtonDisabled, setBackButtonDisabled] = useState(true)
 
   const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"]
 
@@ -54,15 +53,59 @@ function DetailedQuestions() {
     let tempSliderValues = [...sliderValues];
     tempSliderValues[questionNumber] = currSliderValue;
     setSliderValues(()=> [...tempSliderValues])
-    if (questionNumber < numberOfQuestions) {
+    if (questionNumber < numberOfQuestions - 1) {
       setQuestionNumber(questionNumber + 1)
+      setBackButtonDisabled(false)
       setColor(colors[Math.floor(Math.random() * colors.length)])
       setQuestionBody(questions[questionNumber].question)
     }  else {
       // End of quiz...
-      window.alert("You've completed the Detailed Quiz!")
+      setQuestionNumber(questionNumber + 1)
+      window.alert("You've completed the Detailed Quiz! Press the Report button to view your results!")
+      let nextButton = document.getElementById("nextButton");
+      if(nextButton != null) {
+        nextButton.classList.remove("Button-visible-true");
+        nextButton.classList.add("Button-visible-false");
+      }
+      let reportButton = document.getElementById("reportButton");
+      if(reportButton != null) {
+        reportButton.classList.remove("Button-visible-false");
+        reportButton.classList.add("Button-visible-true");
+      }
     }   
   }
+
+  const previousQuestion = () => {
+    let tempSliderValues = [...sliderValues];
+    tempSliderValues[questionNumber] = currSliderValue;
+    setSliderValues(()=> [...tempSliderValues])
+    if (questionNumber >= 1) {
+        if(questionNumber === 30){
+            let nextButton = document.getElementById("nextButton");
+            if(nextButton != null) {
+                nextButton.classList.remove("Button-visible-false");
+                nextButton.classList.add("Button-visible-true");
+            }
+            let reportButton = document.getElementById("reportButton");
+            if(reportButton != null) {
+                reportButton.classList.remove("Button-visible-true");
+                reportButton.classList.add("Button-visible-false");
+            }
+            const previousQuestion = questionNumber - 1
+            setQuestionNumber(previousQuestion)
+        }
+        else {
+            const previousQuestion = questionNumber - 1
+            setQuestionNumber(previousQuestion)
+            setColor(colors[Math.floor(Math.random() * colors.length)])
+            setQuestionBody(questions[previousQuestion].question)
+            
+            if (questionNumber === 1) {
+                setBackButtonDisabled(true)
+            }
+        }
+    }
+}
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -78,14 +121,20 @@ function DetailedQuestions() {
   return (
     <div className={bodyClassName} id='bigBody'>
       <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
-      
       <div className='Page-body'>
-        <Button onClick={()=>nextQuestion()}>Next</Button>
-        <p className='Detailed-report-button'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
         <Container>
           <Row>
             <Col className="DetailedQuestions-questions">
-              <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label={"Question "+questionNumber+":"} question={questionBody}></SliderQuestion>
+              <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label="Question: " question={questionBody}></SliderQuestion>
+              <span className='Button-visible-true' id="backButton">
+                <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
+              </span>
+              <span className='Button-visible-true' id="nextButton">
+                <Button className="Button-next" onClick={()=>nextQuestion()}>Next</Button>
+              </span>
+              <span className='Button-visible-false' id="reportButton">
+                <p className='Button-report'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
+              </span>
             </Col>
             <Col>
               <div className = "DetailedQuestions-progress-bar" style={{backgroundColor: color}}>

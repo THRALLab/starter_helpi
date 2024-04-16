@@ -1,15 +1,17 @@
 .body {
-    --color-background: #8ad7f8;
-    --color-foreground: #000000;
-    --color-header-background: rgb(49, 141, 183);
-    --color-header-foreground: white;
+    --color-body-background: #8AD7F8;
+    --color-body-text: #000000;
+    --color-body-Headerbackground: #67CBF5;
+    --color-body-Headertext: #000000;
+    --color-body-Button: #a294ef;
 }
 
 .body-dark {
-    --color-background: #000000;
-    --color-foreground: rgb(201, 201, 201);
-    --color-header-background: rgb(28, 69, 88);
-    --color-header-foreground: rgb(201, 201, 201);
+    --color-body-background: #000000;
+    --color-body-text: #C9C9C9;
+    --color-body-Headerbackground: #173848;
+    --color-body-Headertext: #C9C9C9;
+    --color-body-Button: #a294ef75;
 }
 
 .General-header {
@@ -18,12 +20,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 3vmin);
+    font-size: calc(15px + 3vmin);
     position: relative;
     display: flex;
     flex-flow: row nowrap;
-    color: var(--color-header-foreground);
-    background-color: var(--color-header-background);
+    color: var(--color-body-Headertext);
+    background-color: var(--color-body-Headerbackground);
+}
+
+.Header-toggle {
+    position: absolute;
+    align-items: left;
+    font-size: calc(13px + 1vmin);
+    margin-left: 5%;
+    margin-top: 2px;
+    left: 0;
+    color: var(--color-body-Headertext);
 }
 
 .Header-button {
@@ -31,18 +43,9 @@
     align-items: right;
     font-size: calc(10px + 2vmin);
     margin-right: 5%;
+    margin-top: 2px;
     right: 0;
-    color: var(--color-header-foreground);
-}
-
-.Header-toggle {
-    position: absolute;
-    align-items: left;
-    font-size: calc(10px + 1vmin);
-    margin-left: 5%;
-    margin-top: 0px;
-    left: 0;
-    color: var(--color-header-foreground);
+    color: var(--color-body-Headertext);
 }
 
 .Page-body {
@@ -51,18 +54,43 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    font-size: calc(5px + 2vmin);
+    font-size: calc(6px + 2vmin);
     position: relative;
-    background-color: var(--color-background);
-    color: var(--color-foreground);
     padding-top: 3vh;
+    color: var(--color-body-text);
+    background-color: var(--color-body-background);
 }
 
-.basic-button {
+.Button-format {
     height: '7vh';
     width : '50vh'; 
     font-size: "3vh";
-    color: "#424242";
+    color: var(--color-body-text);
+    background-color: var(--color-body-background);
+}
+
+.Button-link {
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button);
+    
+}
+
+.Button-visible-true {
+    --visibility-button: visible;
+}
+
+.Button-visible-false {
+    --visibility-button: hidden;
+}
+
+.Button-next {
+    visibility: var(--visibility-button);
+}
+
+.Button-report {
+    visibility: var(--visibility-button);
 }
 
 .API-Footer {

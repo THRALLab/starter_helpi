@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App';
 import './Home.css';
 import './General.css';
 import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
@@ -30,17 +29,15 @@ function Home() {
 
   return (
     <div className={bodyClassName} id='bigBody'>
-      <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
+      <div className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span className='Header-text'>The Career Lab</span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span></div>
       
       <div className="Page-body">
         <p className='Page-text'>Welcome to the Career Lab! We have two quizzes you can take to help find your ideal career. Your answers will be reviewed by ChatGPT to generate a custom report of what caeer paths suit you the best. This project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory Jordan</p>
         <Container>
           <Row>
             <Col>
-              <p className='button'>
-              
+              <p className='Button-format'>
                 <LinkButton to="simplequestions" label="Basic Quiz"></LinkButton>
-              
               </p>
               <p className='Text-basic'>
                 This is a basic quiz with 15 questions.
@@ -53,7 +50,7 @@ function Home() {
               </p>
             </Col>
             <Col>
-              <p className='button'>
+              <p className='Button-format'>
                 <LinkButton to="detailedquestions" label="Detailed Quiz"></LinkButton>
               </p>
               <p className='Text-detailed'>
