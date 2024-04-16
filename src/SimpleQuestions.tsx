@@ -146,7 +146,9 @@ export function SimpleQuestions(): JSX.Element {
                             </span>
                         </span>
                         <span className='Button-visible-false' id="reportButton">
-                            <p className='Button-report'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
+                            <p style={{paddingTop: "50px"}}>
+                                <p className='Button-report'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
+                            </p>
                         </span>
                 </div>
             </div>
