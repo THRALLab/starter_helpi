@@ -22,8 +22,9 @@ if (prevKey !== null) {
 
 function DetailedQuestions() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  let slidenums = new Array<number>(30);
-  const [sliderValues, setSliderValues] = useState<number[]>(slidenums.map((x)=>x=50));
+  let slidenums = new Array<number>(30).fill(50);
+  //slidenums = slidenums.map( (x) => 50)
+  const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
   const [numberOfQuestions, setNumberOfQuestions] = useState(30)
@@ -54,11 +55,13 @@ function DetailedQuestions() {
       let tempSliderValues = [...sliderValues];
       tempSliderValues[questionNumber] = currSliderValue;
       setSliderValues(()=> [...tempSliderValues])
-
       
+
+      setCurrSliderValue(sliderValues[questionNumber + 1])
       setQuestionBody(questions[questionNumber + 1].question)
       setQuestionNumber(questionNumber + 1)
       setBackButtonDisabled(false)
+      
       setColor(colors[Math.floor(Math.random() * colors.length)])
       
     }  else {
@@ -79,10 +82,15 @@ function DetailedQuestions() {
 
   const previousQuestion = () => {
     if (questionNumber > 0) {
+        let tempSliderValues = [...sliderValues];
+        tempSliderValues[questionNumber] = currSliderValue;
+        setSliderValues(()=> [...tempSliderValues])
+        setCurrSliderValue(sliderValues[questionNumber - 1])
         const previousQuestionIndex = questionNumber - 1;
         setQuestionBody(questions[previousQuestionIndex].question);
         setColor(colors[Math.floor(Math.random() * colors.length)]);
         setQuestionNumber(previousQuestionIndex);
+        
         if (previousQuestionIndex === 0) {
             setBackButtonDisabled(true);
         }
@@ -137,6 +145,12 @@ function DetailedQuestions() {
                   {Math.trunc(100 * (questionNumber / numberOfQuestions))}% completed
                 </span>
                 <span className = "DetailedQuestions-progress-bar-foreground" style={{height: `${(100 * (questionNumber / numberOfQuestions))}%`, backgroundColor: "rgba(0, 0, 0, 0.3)"}}></span>
+              </div>
+
+              <div className='DetailedQuestions-answers-display'>
+                
+                  {sliderValues.map((x, i) => <p>Q{i+1}: {x}</p>)}
+                
               </div>
             </Col>
           </Row>
