@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import "./pages.css";
-import {Form} from "react-bootstrap";
 import { AIKey } from "../interfaces/AIKeyInterface";
-import {Button} from 'react-bootstrap';
+import { Progress } from "../interfaces/Progress";
+import {Button, Form} from 'react-bootstrap';
+import { QuestionProgressBar } from './progressBar';
 
 
 export function BasicQuestion(key: AIKey): JSX.Element {
@@ -27,25 +28,19 @@ export function BasicQuestion(key: AIKey): JSX.Element {
         "I am willing to work long hours to advance my career.",
         "Job stability is more important to me than job flexibility.",
         "Traveling frequently for work is appealing to me."
-
-
-
-
     ];
     const options = ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"];
+    const questionsLength = questions.length;
    
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     // Initialize answers state as an array filled with null values (indicating no answer selected)
     const [answers, setAnswers] = useState(Array(questions.length).fill(null));
-
 
     const handleOptionChange = (questionIndex: number, optionIndex: number): void => {
         const updatedAnswers = [...answers];
         updatedAnswers[questionIndex] = optionIndex;
         setAnswers(updatedAnswers);
     };
-   
-
 
     const handleNext = () => {
         if(currentQuestionIndex < questions.length - 1) {
@@ -53,17 +48,16 @@ export function BasicQuestion(key: AIKey): JSX.Element {
         }
     };
 
-
     const handlePrevious = () => {
         if(currentQuestionIndex > 0) {
             setCurrentQuestionIndex(currentQuestionIndex - 1);
         }
     };
 
-
     return (
         <div className="Pages">
             <h1>Basic Career Questions</h1>
+            <QuestionProgressBar totalQuestions={questionsLength} completedQuestions={currentQuestionIndex}/>
             <div>
                 <h2>Question {currentQuestionIndex + 1}</h2>
                 <p>{questions[currentQuestionIndex]}</p>
