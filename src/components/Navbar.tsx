@@ -1,8 +1,7 @@
 //import React from "react";
 import { Nav, NavLink, NavMenu } from "./NavbarElements";
 import './Navbar.css';
-import { Button } from "react-bootstrap";
-import logo from './logo.svg';
+
  
 const Navbar = () => {
     return (
