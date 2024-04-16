@@ -25,6 +25,24 @@
     padding: 10px;
 }
 
+.Simple-progress-outer {
+    padding: 10px;
+    position: relative;
+    display: flex;
+}
+
+.Simple-progress-inner {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.Simple-progress-percentage {
+    margin-left: auto;
+    align-self: right;
+}
+
 .Simple-question {
     color: var(--color-body-text);
     padding: 10px;
@@ -39,16 +57,16 @@
 
 .Simple-option-1 {
     position: absolute;
-    left: 0;
-    right: 1;
-    padding-left: 20vw;
+    left: 1;
+    right: 0;
+    padding-right: 55vw;
 }
 
 .Simple-option-2 {
     position: absolute;
-    left: 1;
-    right: 0;
-    padding-right: 20vw;
+    left: 0;
+    right: 1;
+    padding-left: 55vw;
 }
 
 .Simple-back-bottom {
