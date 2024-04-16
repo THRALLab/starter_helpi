@@ -16,7 +16,7 @@ describe("Detailed Page Tests", () => {
     });
     test('Has Progress Bar', () => {
         render(<HashRouter><DetailedQuestions /></HashRouter>);
-        const linkElement = screen.getByText("3% completed");
+        const linkElement = screen.getByText("0% completed");
         expect(linkElement).toBeInTheDocument();
     });
     test('Has Footer', () => {
