@@ -51,22 +51,29 @@ function DetailedQuestions() {
   }
 
   const nextQuestion = () => {
+    let tempSliderValues = [...sliderValues];
+    tempSliderValues[questionNumber] = currSliderValue;
+    setSliderValues(()=> [...tempSliderValues]);
     if (questionNumber < numberOfQuestions - 1) {
-      let tempSliderValues = [...sliderValues];
-      tempSliderValues[questionNumber] = currSliderValue;
-      setSliderValues(()=> [...tempSliderValues])
-      setCurrSliderValue(sliderValues[questionNumber + 1])
-      setQuestionBody(questions[questionNumber + 1].question)
-      setQuestionNumber(questionNumber + 1)
-      setBackButtonDisabled(false)
-      setColor(colors[Math.floor(Math.random() * colors.length)])
+      setCurrSliderValue(sliderValues[questionNumber + 1]);
+      setQuestionBody(questions[questionNumber + 1].question);
+      setQuestionNumber(questionNumber + 1);
+      setBackButtonDisabled(false);
+      setColor(colors[Math.floor(Math.random() * colors.length)]);
     }  else {
       // End of quiz...
-      window.alert("You've completed the Detailed Quiz! Press the Report button to view your results!")
+      window.alert("You've completed the Detailed Quiz! Press the Report button to view your results!");
+      setQuestionBody("You have completed the quiz!");
+      setQuestionNumber(30);
       let nextButton = document.getElementById("nextButton");
       if(nextButton != null) {
         nextButton.classList.remove("Button-visible-true");
         nextButton.classList.add("Button-visible-false");
+      }
+      let slider = document.getElementById("sliderQuestion");
+      if(slider != null) {
+        slider.classList.remove("Slider-visible-true");
+        slider.classList.add("Slider-visible-false");
       }
       let reportButton = document.getElementById("reportButton");
       if(reportButton != null) {
@@ -77,10 +84,10 @@ function DetailedQuestions() {
   }
 
   const previousQuestion = () => {
+    let tempSliderValues = [...sliderValues];
+    tempSliderValues[questionNumber] = currSliderValue;
+    setSliderValues(()=> [...tempSliderValues])
     if (questionNumber > 0) {
-        let tempSliderValues = [...sliderValues];
-        tempSliderValues[questionNumber] = currSliderValue;
-        setSliderValues(()=> [...tempSliderValues])
         setCurrSliderValue(sliderValues[questionNumber - 1])
         const previousQuestionIndex = questionNumber - 1;
         setQuestionBody(questions[previousQuestionIndex].question);
@@ -92,11 +99,16 @@ function DetailedQuestions() {
         }
 
         
-        if (questionNumber === numberOfQuestions - 1) {
+        if (questionNumber === numberOfQuestions) {
             let nextButton = document.getElementById("nextButton");
             if (nextButton != null) {
                 nextButton.classList.remove("Button-visible-false");
                 nextButton.classList.add("Button-visible-true");
+            }
+            let slider = document.getElementById("sliderQuestion");
+            if(slider != null) {
+            slider.classList.remove("Slider-visible-false");
+            slider.classList.add("Slider-visible-true");
             }
             let reportButton = document.getElementById("reportButton");
             if (reportButton != null) {
@@ -126,7 +138,9 @@ function DetailedQuestions() {
         <Container>
           <Row>
             <Col className="DetailedQuestions-questions">
-              <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label="Question: " question={questionBody}></SliderQuestion>
+              <div id="sliderQuestion">
+                <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label="Question: " question={questionBody}></SliderQuestion>
+              </div>
               <span className='DetailedQuestions-buttons'>
                 <Button className="Button-back" onClick={previousQuestion} disabled={backButtonDisabled} style={{marginRight:"20px"}}>Back</Button>
                 <span className='Button-visible-true' id="nextButton">
