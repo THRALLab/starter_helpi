@@ -8,13 +8,13 @@ import questions from "./detailedQuestions.json";
 // TODO - => [x] for free response questions, simply populate the textarea with their response
 
 // TODO - [x] need to add a version for user input
-// TODO - => [x] need to add a guard to prevent users from entering nothing
+// TODO - => [] need to add a guard to prevent users from entering nothing
+// TODO -		=> [x] fix bug where the text areas aren't letting you use spaces
 
 // TODO - [x] need to add implement logic to update the user answer's object property when they change it
 // TODO - [x] add styling to the question divs
 // TODO - [x] fix issue involving when you refresh the page, the selected button gets unselected
 
-// TODO - [] fix bug where the text areas aren't letting you use spaces
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 
 function Detailed() {
@@ -151,11 +151,10 @@ function Detailed() {
 										answeredQuestions[currentIndex].choice
 									}
 									onChange={e => {
-										if (e.target.value.trim() !== "" || choice)
-											setChoice(e.target.value);
+										setChoice(e.target.value);
 										setUserInput(e.target.value);
 										saveAnswers(
-											e.target.value.trim(),
+											e.target.value,
 											questions[currentIndex].question_number
 										);
 									}}
