@@ -31,7 +31,7 @@ export const DarkModeToggle = () => {
       <span>
         <Form.Check
         type="switch"
-        id="is-dark-mode-check"
+        id="dark-mode-switch"
         label="Dark Mode"
         checked={isDarkMode}
         onChange={updateDarkMode}
