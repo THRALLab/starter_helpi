@@ -12,8 +12,9 @@ const OPTIONS = [
   "Agree"
 ]
 const QUESTIONS = [1,2,3,4,5,6,7,8]
+
 const BasicQuestions: React.FC = () => {
-  const [chosenOption, setChosenOption] = useState<string[]>(Array(QUESTIONS.length).fill(OPTIONS[2]));
+  const [chosenOption, setChosenOption] = useState<Array<string | null[]>>(Array(QUESTIONS.length).fill(null));
   const page = App();
   function updateOption(event: React.ChangeEvent<HTMLInputElement>, index: number) {
     const newOptions = [...chosenOption];
@@ -39,7 +40,7 @@ const BasicQuestions: React.FC = () => {
             <div key={question} style={{ marginBottom: "20px" }}>
               <div>Question {question}</div>
               <div style={{ display: "flex", justifyContent: "center" }}>
-              {OPTIONS.join(', ').split(', ').map((option) => (
+              {OPTIONS.map((option) => (
                 <Form.Check
                     key={ option }
                     style={{ marginRight: "10px" }}
