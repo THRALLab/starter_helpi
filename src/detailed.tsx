@@ -107,7 +107,11 @@ function Detailed() {
 			<div className="quizContainer">
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
-					<h3>{questions[currentIndex].question}</h3>
+					<h3>
+						({questions[currentIndex].question_number}/{questions.length})
+						&nbsp;
+						{questions[currentIndex].question}
+					</h3>
 				</div>
 				<div className="optionsContainer">
 					{questions[currentIndex].type === "multiple_choice"
