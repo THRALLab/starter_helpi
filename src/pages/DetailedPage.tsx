@@ -1,9 +1,27 @@
 //import React from "react";
 import "./detailedPage.css";
+import React, { useEffect, useState } from "react";
+import { Form, ProgressBar, Alert } from "react-bootstrap";
+import Button from "react-bootstrap/esm/Button";
+const DetailedPage = () => {
+	const [response, setResponse] = useState<(boolean| string)[]>
+	([false, false, false, false, "", false, false, false, false, "", false, false, false, false, "", false, false, false, false, "",false, 
+	false, false, false, "", false, false, false, false, "",false, false, false, false, "",])
+	const [allow, setAllow] = useState<boolean>(false);
+	const [show, setShow] = useState<boolean>(false);
 
-const detailedPage = () => {
 	return (
 		<>
+<style>{`
+                .question-box {
+					display:flex;
+					gap:200px
+				
+                    }
+				h3 {
+					margin-left: 25px
+				}
+                `}</style>
 			<div className="info-portion">
 				<h1>
 					Detailed Page Stuff
@@ -15,169 +33,52 @@ const detailedPage = () => {
 					 allow you to see the results of you future career.
 				</>
 			</div>
+			<div style={{textAlign:"center"}}>
+			<Button disabled={!allow}>Answer</Button>
+			<ProgressBar></ProgressBar>
+			</div>
+			<h3>Question 1</h3>
 			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: The question can be really long or short. It will all fit in here
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
-				</div>
+				<Form.Check
+					inline
+					type="radio"
+					id="q1-Option1"
+					label="holder"
+					name="question1"
+				/>
+				<Form.Check
+					inline
+					type="radio"
+					id="q1-Option2"
+					label="holder"
+					name="question1"
+				/>
+				<Form.Check
+					inline
+					type="radio"
+					id="q1-Option3"
+					label="holder"
+					name="question1"
+				/>
+				<Form.Check
+					inline
+					type="radio"
+					id="q1-Option4"
+					label="holder"
+					name="question1"
+				/>
+				<Form.Check
+					inline
+					type="radio"
+					id="q1-Option5"
+					label="holder"
+					name="question1"
+				/>	
 			</div>
-			<div style={{display: "flex"}} className="question-box">
-				<h3 className="question-prompt">
-					Maybe put options in the same line as question?
-				</h3>
-				<div style={{flex: "4"}} className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
-				</div>
-			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Stack options on one another rather than side by side?
-				</h3>
-				<div style={{display: "block", padding: "0px 24px"}} className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
-				</div>
-			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
-				</div>
-			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
-				</div>
-			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
-				</div>
-			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
-				</div>
-			</div>
+			
+			
 		</>
 	);
 };
 
-export default detailedPage;
+export default DetailedPage;
