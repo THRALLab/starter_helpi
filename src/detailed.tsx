@@ -14,7 +14,7 @@ import questions from "./detailedQuestions.json";
 // TODO - [x] add styling to the question divs
 
 // TODO - [] fix issue involving when you refresh the page, the selected button gets unselected
-
+// TODO - [] fix bug where the text areas aren't letting you use spaces
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 
 function Detailed() {
@@ -32,7 +32,12 @@ function Detailed() {
 	const [currentIndex, setCurrentIndex] = useState(last_saved);
 	localStorage.setItem("current_question", currentIndex.toString());
 
-	const [answeredQuestions, setAnsweredQuestions] = useState<Answer[]>([]);
+	const savedAnswersString = localStorage.getItem("answered_questions");
+	const savedAnswers: Answer[] = savedAnswersString
+		? JSON.parse(savedAnswersString)
+		: [];
+	const [answeredQuestions, setAnsweredQuestions] =
+		useState<Answer[]>(savedAnswers);
 
 	const [userInput, setUserInput] = useState<string>(
 		answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
@@ -89,13 +94,12 @@ function Detailed() {
 	console.log(userInput);
 
 	useEffect(() => {
-		localStorage.setItem(
-			"answered_questions",
-			JSON.stringify(answeredQuestions)
-		);
-		console.log(
-			answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
-		);
+		if (answeredQuestions.length !== 0) {
+			localStorage.setItem(
+				"answered_questions",
+				JSON.stringify(answeredQuestions)
+			);
+		}
 	}, [answeredQuestions]);
 
 	return (
@@ -143,14 +147,13 @@ function Detailed() {
 								<textarea
 									placeholder="Enter your response..."
 									value={
-										(answeredQuestions[currentIndex] &&
-											answeredQuestions[currentIndex].choice) ||
-										""
+										answeredQuestions[currentIndex] &&
+										answeredQuestions[currentIndex].choice
 									}
 									onChange={e => {
 										if (e.target.value.trim() !== "" || choice)
-											setChoice(e.target.value.trim());
-										setUserInput(e.target.value.trim());
+											setChoice(e.target.value);
+										setUserInput(e.target.value);
 										saveAnswers(
 											e.target.value.trim(),
 											questions[currentIndex].question_number
