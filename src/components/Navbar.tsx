@@ -14,11 +14,11 @@ const Navbar = () => {
                     <NavLink to="/">
                         <Button>Home</Button>
                     </NavLink>
-                    <NavLink to="/detailedPage">
-                        <Button>Detailed Page</Button>
-                    </NavLink>
                     <NavLink to="/BasicPage">
                         <Button>Basic Page</Button>
+                    </NavLink>
+                    <NavLink to="/detailedPage">
+                        <Button>Detailed Page</Button>
                     </NavLink>
                 </NavMenu>
             </Nav>
