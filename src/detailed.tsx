@@ -3,7 +3,6 @@ import "../src/detailed.css";
 import questions from "./detailedQuestions.json";
 
 // TODO - [x] need to prevent user from going to the next question if they didn't choose an option
-// TODO - => [] need to add a message to let the user know they need to select a choice
 
 // TODO - [x] need to add styling to show which choice the user selected and have it dynamically change based on selected
 // TODO - => [] for free response questions, simply populate the textarea with their response
@@ -11,9 +10,10 @@ import questions from "./detailedQuestions.json";
 // TODO - [] need to add a version for user input
 // TODO - => [] need to add a guard to prevent users from entering nothing
 
-// TODO - [x] - need to add implement logic to update the user answer's object property when they change it
+// TODO - [x] need to add implement logic to update the user answer's object property when they change it
+// TODO - [x] add styling to the question divs
 
-// TODO - [] add styling to the question divs
+// TODO - [] - fix issue involving when you refresh the page, the selected button gets unselected
 
 function Detailed() {
 	interface Answer {
@@ -32,7 +32,10 @@ function Detailed() {
 
 	const [answeredQuestions, setAnsweredQuestions] = useState<Answer[]>([]);
 
+	const [userInput, setUserInput] = useState<string>();
+
 	function saveAnswers(choice: string, question_num: number) {
+		console.log("x", choice);
 		if (answeredQuestions.length !== 0) {
 			// 1. check if the question number exists
 			//    -> if it does, check if the choice being passed in matches with the choice found for that question
@@ -95,35 +98,52 @@ function Detailed() {
 					<p>{questions[currentIndex].question}</p>
 				</div>
 				<div className="optionsContainer">
-					{questions[currentIndex].choices.map(
-						(choice: string, index: number) => (
-							<button
-								key={index}
-								onClick={() => {
-									setChoice(choice);
-									saveAnswers(choice, questions[currentIndex].question_number);
-								}}
-								style={{
-									backgroundColor: `${
-										answeredQuestions.some(
-											selectedAnswer => selectedAnswer.choice === choice
-										)
-											? "#006BA6"
-											: "#003459"
-									}`,
-									border: `${
-										answeredQuestions.some(
-											selectedAnswer => selectedAnswer.choice === choice
-										)
-											? "2px solid cyan"
-											: "none"
-									}`
-								}}
-							>
-								{choice}
-							</button>
-						)
-					)}
+					{questions[currentIndex].type === "multiple_choice"
+						? questions[currentIndex].choices.map(
+								(choice: string, index: number) => (
+									<button
+										key={index}
+										onClick={() => {
+											setChoice(choice);
+											saveAnswers(
+												choice,
+												questions[currentIndex].question_number
+											);
+										}}
+										style={{
+											backgroundColor: `${
+												answeredQuestions.some(
+													selectedAnswer => selectedAnswer.choice === choice
+												)
+													? "#006BA6"
+													: "#003459"
+											}`,
+											border: `${
+												answeredQuestions.some(
+													selectedAnswer => selectedAnswer.choice === choice
+												)
+													? "2px solid cyan"
+													: "none"
+											}`
+										}}
+									>
+										{choice}
+									</button>
+								)
+						  )
+						: questions[currentIndex].type === "free_response" && (
+								<textarea
+									placeholder="Enter your response..."
+									value={userInput}
+									onChange={e => {
+										setChoice(e.target.value);
+										saveAnswers(
+											e.target.value,
+											questions[currentIndex].question_number
+										);
+									}}
+								></textarea>
+						  )}
 				</div>
 				<div className="containerFooter">
 					<button

@@ -79,6 +79,13 @@
 	},
 	{
 		"question_number": 7,
+		"question": "What gets your blood boiling? What's a problem in the world that you'd love to fix?",
+		"choices": [],
+		"image": "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=",
+		"type": "free_response"
+	},
+	{
+		"question_number": 8,
 		"question": "What key skills do you feel your current job isn't utilizing and that you feel may be holding you back from gaining valuable experience?",
 		"choices": [
 			"Leadership and decision-making abilities",
