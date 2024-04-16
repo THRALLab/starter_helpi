@@ -179,12 +179,12 @@ function Detailed() {
 						disabled={currentIndex === questions.length - 1 || !choice}
 						onClick={() => {
 							setCurrentIndex(index => (index += 1 % questions.length));
-							setChoice(""); // do not remove - resets choice to null after every button press which forces user to select an option before moving to the next question
+							// setChoice(""); // do not remove - resets choice to null after every button press which forces user to select an option before moving to the next question
 
-							// setChoice(
-							// 	answeredQuestions[currentIndex] &&
-							// 		answeredQuestions[currentIndex].choice
-							// );
+							setChoice(
+								answeredQuestions[currentIndex + 1] &&
+									answeredQuestions[currentIndex + 1].choice
+							);
 						}}
 					>
 						{currentIndex === questions.length - 1 ? "END" : "NEXT"}
