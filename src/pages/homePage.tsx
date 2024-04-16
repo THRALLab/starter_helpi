@@ -25,7 +25,7 @@ import { Button, Form } from "react-bootstrap";
 
     return (
         <>
-        <img src="career-plan-1.jpg" className="home-splash"></img>
+        <img src="./career-plan-1.jpg" className="home-splash"></img>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
