@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { Home } from './components/Home';
@@ -38,25 +38,10 @@ function App() {
           <Route path="/DetailedQuestionsPage" element={<DetailedQuestionsPage />}/>
         </Routes>
       </HashRouter>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload. Aditya Gill, Harman Bagga, Thern A Diallo
-          Edit <code>src/App.tsx</code> and save to reload. 
-
-          Thern Diallo
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-          Rubina Shaik
-        </a>
+      {/*<header className="App-header">
+        
       
-      </header>
+  </header>*/}
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
