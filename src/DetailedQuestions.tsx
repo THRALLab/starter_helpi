@@ -55,15 +55,11 @@ function DetailedQuestions() {
       let tempSliderValues = [...sliderValues];
       tempSliderValues[questionNumber] = currSliderValue;
       setSliderValues(()=> [...tempSliderValues])
-      
-
       setCurrSliderValue(sliderValues[questionNumber + 1])
       setQuestionBody(questions[questionNumber + 1].question)
       setQuestionNumber(questionNumber + 1)
       setBackButtonDisabled(false)
-      
       setColor(colors[Math.floor(Math.random() * colors.length)])
-      
     }  else {
       // End of quiz...
       window.alert("You've completed the Detailed Quiz! Press the Report button to view your results!")
@@ -125,17 +121,20 @@ function DetailedQuestions() {
   return (
     <div className={bodyClassName} id='bigBody'>
       <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
+      
       <div className='Page-body'>
         <Container>
           <Row>
             <Col className="DetailedQuestions-questions">
               <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label="Question: " question={questionBody}></SliderQuestion>
-              <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
-              <span className='Button-visible-true' id="nextButton">
-                <Button className="Button-next" onClick={()=>nextQuestion()}>Next</Button>
-              </span>
-              <span className='Button-visible-false' id="reportButton">
-                <p className='Button-report'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
+              <span className='DetailedQuestions-buttons'>
+                <Button className="Button-back" onClick={previousQuestion} disabled={backButtonDisabled} style={{marginRight:"20px"}}>Back</Button>
+                <span className='Button-visible-true' id="nextButton">
+                  <Button className="Button-next" onClick={()=>nextQuestion()}>Next</Button>
+                </span>
+                <span className='Button-visible-false' id="reportButton">
+                  <p className='Button-report'><LinkButton to="/detailedreport" label="Report"></LinkButton></p>
+                </span>
               </span>
             </Col>
             <Col>
@@ -146,12 +145,9 @@ function DetailedQuestions() {
                 </span>
                 <span className = "DetailedQuestions-progress-bar-foreground" style={{height: `${(100 * (questionNumber / numberOfQuestions))}%`, backgroundColor: "rgba(0, 0, 0, 0.3)"}}></span>
               </div>
-
-              <div className='DetailedQuestions-answers-display'>
-                
-                  {sliderValues.map((x, i) => <p>Q{i+1}: {x}</p>)}
-                
-              </div>
+              <span className='DetailedQuestions-answers-display'>
+                {sliderValues.map((x, i) => <p>Q{i+1}: {x}</p>)}
+              </span>
             </Col>
           </Row>
         </Container>
