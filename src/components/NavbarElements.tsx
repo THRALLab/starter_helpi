@@ -19,12 +19,15 @@ export const NavLink = styled(Link)`
     color: black;
     display: flex;
     align-items: center;
+    height: 85px;
     text-decoration: none;
     padding: 0 1rem;
-    height: 100%;
     cursor: pointer;
     &.active {
         color: black;
+    }
+    &:hover {
+        background-color: #e8ebed;
     }
 `;
 
