@@ -2,6 +2,7 @@
 import { Nav, NavLink, NavMenu } from "./NavbarElements";
 import './Navbar.css';
 import { Button } from "react-bootstrap";
+import logo from './logo.svg';
  
 const Navbar = () => {
     return (
@@ -9,6 +10,9 @@ const Navbar = () => {
             <Nav>
                 <div className="site-title">
                     <h1>Website Title</h1>
+                </div>
+                <div className="site-logo">
+                    <img src={logo} className="App-logo" alt="logo" />
                 </div>
                 <NavMenu>
                     <NavLink to="/">
