@@ -1,3 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 .App {
   text-align: center;
 }
@@ -24,7 +28,7 @@
   color: white;
 }
 
-.Home-body{
+.Home-body {
   background-color: #b0a8fd;
   min-height: 100vh;
   display: flex;
@@ -46,4 +50,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* make sure the page takes up the full height of the viewport */
+}
+
+.container {
+  display: flex;
+  justify-content: center; /* centers the container horizontally */
+}
+
+.box {
+  width: 300px; /* increased width */
+  height: 300px; /* increased height */
+  border: 1px solid black;
+  margin-right: 20px; /* adjust margin between boxes */
+}
+
+button {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  margin: 20px; /* add margin around the button */
 }
