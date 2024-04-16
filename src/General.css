@@ -87,6 +87,25 @@
 
 .Button-next {
     visibility: var(--visibility-button);
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button);
+}
+
+.Button-next-2 {
+    visibility: var(--visibility-button);
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button);
+}
+
+.Button-back {
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button);
 }
 
 .Button-report {

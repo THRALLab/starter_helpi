@@ -54,7 +54,6 @@ export function SimpleQuestions(): JSX.Element {
         setQuestionBody(simpleQuestions[questionNumber].question)
         setOption1(simpleQuestions[questionNumber].option1)
         setOption2(simpleQuestions[questionNumber].option2)
-        
     }
 
     const nextQuestion = (selectedOption: string) => {
@@ -70,6 +69,7 @@ export function SimpleQuestions(): JSX.Element {
         } else {
             // End of quiz...
             window.alert("You've completed the Simple Quiz!")
+            setQuestionBody("You have completed the quiz!");
             let nextButton = document.getElementById("nextButton");
             if(nextButton != null) {
                 nextButton.classList.remove("Button-visible-true");
@@ -85,7 +85,7 @@ export function SimpleQuestions(): JSX.Element {
 
     const previousQuestion = () => {
         if (questionNumber >= 1) {
-            if(questionNumber === 14){
+            if(questionNumber === 14 && questionBody === "You have completed the quiz!" ){
                 let nextButton = document.getElementById("nextButton");
                 if(nextButton != null) {
                     nextButton.classList.remove("Button-visible-false");
@@ -96,8 +96,9 @@ export function SimpleQuestions(): JSX.Element {
                     reportButton.classList.remove("Button-visible-true");
                     reportButton.classList.add("Button-visible-false");
                 }
-                const previousQuestion = questionNumber - 1
-                setQuestionNumber(previousQuestion)
+                setQuestionBody(questions[questionNumber].question)
+                setOption1(questions[questionNumber].option1)
+                setOption2(questions[questionNumber].option2)
             }
             else {
                 const previousQuestion = questionNumber - 1
@@ -119,13 +120,13 @@ export function SimpleQuestions(): JSX.Element {
             
             <div className='Simple-body'>
                 <span className='Simple-back-top'>
-                    <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
+                    <Button className="Button-back" onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
                 </span>
                 <div className='Simple-progress'>
-                    <div style={{ backgroundColor: color, padding: "10px", position: "relative", display: "flex" }}>
-                        <div style={{ position: "absolute", top: 0, left: 0, width: `${100 * ((questionNumber + 1) / numberOfQuestions)}%`, height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
+                    <div className='Simple-progress-outer' style={{ backgroundColor: color}}>
+                        <div className='Simple-progress-inner' style={{ width: `${100 * ((questionNumber + 1) / numberOfQuestions)}%`, backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
                         Question {questionNumber + 1}/{numberOfQuestions}
-                        <div style={{ marginLeft: "auto", alignSelf: "right" }}>
+                        <div className='Simple-progress-percentage'>
                             {Math.round(100 * ((questionNumber + 1) / numberOfQuestions))}% completed
                         </div>
                     </div>
@@ -141,11 +142,13 @@ export function SimpleQuestions(): JSX.Element {
                                 <Button className="Button-next" onClick={() => nextQuestion(option1)}>{option1}</Button>
                             </span>
                             <span className='Simple-option-2'>
-                                <Button className="Button-next" onClick={() => nextQuestion(option2)}>{option2}</Button>
+                                <Button className="Button-next-2" onClick={() => nextQuestion(option2)}>{option2}</Button>
                             </span>
                         </span>
                         <span className='Button-visible-false' id="reportButton">
-                            <p className='Button-report'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
+                            <p style={{paddingTop: "50px"}}>
+                                <p className='Button-report'><LinkButton to="/simplereport" label="Report"></LinkButton></p>
+                            </p>
                         </span>
                 </div>
             </div>
