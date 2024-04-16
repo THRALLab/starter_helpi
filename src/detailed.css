@@ -28,7 +28,7 @@ body {
 	box-sizing: border-box;
 }
 
-.quizContainer .questionContainer p {
+.quizContainer .questionContainer h3 {
 	margin: 10px;
 	text-align: left;
 }
@@ -127,4 +127,13 @@ body {
 .quizContainer .containerFooter button:disabled {
 	background-color: #1f024e;
 	cursor: not-allowed;
+}
+
+.quizContainer .containerFooter button:disabled:hover {
+	background-color: #420d45;
+	transition: 0.25s ease-out;
+}
+
+.quizContainer .containerFooter button:disabled:active {
+	background-color: #651169;
 }
