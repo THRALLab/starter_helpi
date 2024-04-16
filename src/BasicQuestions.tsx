@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-
+import { Form } from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route, useNavigate, Link } from 'react-router-dom';
+import './App.css';
+import App from './HomePage';
 
 const OPTIONS = [
   "Disagree",
@@ -10,10 +11,22 @@ const OPTIONS = [
   "Slightly Agree",
   "Agree"
 ]
-const QUESTIONS = [1,2,3,4,5,6,7,8]
+const QUESTIONS = [
+  "I am more creative subjects more then STEM subjects",
+  "I am comfortable leading a team of people or giving orders to others",
+  "I would prefer not to be behind a desk for the majority of my job",
+  "I would prefer it if my work tasks varied on a day to day basis",
+  "I want a hard seperation between work and home life",
+  "I hope to climb the corporate ladder in one company as opposed to jumping between jobs",
+  "I like needing to learn new skills to be efficient at my job",
+  "I prefer working in a group setting compared to independently",
+  "Making money is more valuable to me then finding enjoyment in my job",
+  "I would like it if travel was a large part of my job"
+]
+
 const BasicQuestions: React.FC = () => {
-  const [chosenOption, setChosenOption] = useState<string[]>(Array(QUESTIONS.length).fill(OPTIONS[2]));
-  const navigate = useNavigate();
+  const [chosenOption, setChosenOption] = useState<Array<string | null[]>>(Array(QUESTIONS.length).fill(null));
+  const page = App();
   function updateOption(event: React.ChangeEvent<HTMLInputElement>, index: number) {
     const newOptions = [...chosenOption];
     newOptions[index] = event.target.value;
@@ -23,14 +36,11 @@ const BasicQuestions: React.FC = () => {
       <div>
         <h2>
           Basic Career Aptitude Test
-          <nav>
-            <ul>
-              <li>
-                <Button variant="link" onClick={() => navigate('/starter_helpi')}>Return to Home Page</Button>
-              </li>
-            </ul>
-          </nav>
-          
+          <div>
+            <Link to='/'>
+              <button>Return to Home Page</button>
+            </Link>
+          </div>
         </h2>
         <p>
           Answer the following questions to the best of your ability. Then we will 
@@ -39,9 +49,9 @@ const BasicQuestions: React.FC = () => {
         <div>
           {QUESTIONS.map((question, index) => (
             <div key={question} style={{ marginBottom: "20px" }}>
-              <div>Question {question}</div>
+              <div>{question}</div>
               <div style={{ display: "flex", justifyContent: "center" }}>
-              {OPTIONS.join(', ').split(', ').map((option) => (
+              {OPTIONS.map((option) => (
                 <Form.Check
                     key={ option }
                     style={{ marginRight: "10px" }}
