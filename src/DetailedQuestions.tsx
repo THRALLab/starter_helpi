@@ -121,6 +121,7 @@ function DetailedQuestions() {
   return (
     <div className={bodyClassName} id='bigBody'>
       <header className="General-header"><span className='Header-toggle'><DarkModeToggle></DarkModeToggle></span><span>The Career Lab </span><span className='Header-button'><LinkButton to="/" label="Home"></LinkButton></span> </header>
+      
       <div className='Page-body'>
         <Container>
           <Row>
