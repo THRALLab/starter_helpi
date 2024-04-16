@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-
+import splash from "../images/job_search.jpg"
+import './homePage.css';
 
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -25,7 +26,7 @@ import { Button, Form } from "react-bootstrap";
 
     return (
         <>
-        <img src="./career-plan-1.jpg" className="home-splash" alt="infograph"></img>
+        <img src={splash} alt="infograph" className="splashPage"></img>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
