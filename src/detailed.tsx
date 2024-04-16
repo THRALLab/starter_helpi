@@ -5,7 +5,7 @@ import questions from "./detailedQuestions.json";
 // TODO - [x] need to prevent user from going to the next question if they didn't choose an option
 // TODO - => [] need to add a message to let the user know they need to select a choice
 
-// TODO - [] need to add styling to show which choice the user selected and have it dynamically change based on selected
+// TODO - [x] need to add styling to show which choice the user selected and have it dynamically change based on selected
 // TODO - => [] for free response questions, simply populate the textarea with their response
 
 // TODO - [] need to add a version for user input
@@ -19,7 +19,6 @@ function Detailed() {
 	interface Answer {
 		questionNo: number;
 		choice: string;
-		// color: string;
 	}
 
 	const [choice, setChoice] = useState<string>();
@@ -92,65 +91,65 @@ function Detailed() {
 		<>
 			<div className="quizContainer">
 				<div className="questionContainer">
-					{questions[currentIndex].question}
+					<img src={questions[currentIndex].image} alt="Visual question aid" />
+					<p>{questions[currentIndex].question}</p>
 				</div>
-				<div className="mainContainer">
-					<div className="child">
-						<img
-							src={questions[currentIndex].image}
-							alt="A visual for the question"
-						/>
-					</div>
-					<div className="child">
-						<div className="btn-group">
-							{questions[currentIndex].choices.map(
-								(choice: string, index: number) => (
-									<button
-										key={index}
-										onClick={() => {
-											setChoice(choice);
-											saveAnswers(
-												choice,
-												questions[currentIndex].question_number
-											);
-										}}
-										style={{
-											backgroundColor: `${
-												answeredQuestions.some(
-													selectedAnswer => selectedAnswer.choice === choice
-												)
-													? "purple"
-													: "green"
-											}`
-										}}
-									>
-										{choice}
-									</button>
-								)
-							)}
-						</div>
-						<div className="prevNextBtn">
+				<div className="optionsContainer">
+					{questions[currentIndex].choices.map(
+						(choice: string, index: number) => (
 							<button
-								disabled={currentIndex === 0}
-								onClick={() =>
-									setCurrentIndex(index => (index -= 1 % questions.length))
-								}
-							>
-								{currentIndex === 0 ? "END" : "Prev."}
-							</button>
-							<button
-								disabled={currentIndex === questions.length - 1 || !choice}
+								key={index}
 								onClick={() => {
-									setCurrentIndex(index => (index += 1 % questions.length));
-									setChoice("");
+									setChoice(choice);
+									saveAnswers(choice, questions[currentIndex].question_number);
+								}}
+								style={{
+									backgroundColor: `${
+										answeredQuestions.some(
+											selectedAnswer => selectedAnswer.choice === choice
+										)
+											? "#006BA6"
+											: "#003459"
+									}`,
+									border: `${
+										answeredQuestions.some(
+											selectedAnswer => selectedAnswer.choice === choice
+										)
+											? "2px solid cyan"
+											: "none"
+									}`
 								}}
 							>
-								{currentIndex === questions.length - 1 ? "END" : "Next"}
+								{choice}
 							</button>
-						</div>
-					</div>
+						)
+					)}
+				</div>
+				<div className="containerFooter">
+					<button
+						disabled={currentIndex === 0}
+						onClick={() => {
+							setCurrentIndex(index => (index -= 1 % questions.length));
+							setChoice(
+								answeredQuestions[currentIndex] &&
+									answeredQuestions[currentIndex].choice
+							);
+						}}
+					>
+						{currentIndex === 0 ? "END" : "PREV."}
+					</button>
+					<button
+						disabled={currentIndex === questions.length - 1 || !choice}
+						onClick={() => {
+							setCurrentIndex(index => (index += 1 % questions.length));
+							setChoice(""); // do not remove - resets choice to null after every button press which forces user to select an option before moving to the next question
+						}}
+					>
+						{currentIndex === questions.length - 1 ? "END" : "NEXT"}
+					</button>
 				</div>
 			</div>
+			;
 		</>
 	);
 }
