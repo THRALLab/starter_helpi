@@ -3,6 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import { Footer } from "../components/Footer";
 import "../App.css";
 import React, { useState } from 'react';
+import Basic from "../views/Basic_Questions"
+import Detail from "../views/Detail_Questions"
 
 function Home() {
   const [currentPage, setCurrentPage] = useState<string>('HomePage');
@@ -63,8 +65,7 @@ function Home() {
   function BasicPageContent() {
     return (
       <div>
-        <h2>Basic Page Content</h2>
-        {/* Content for Basic Page */}
+        <Basic/>
       </div>
     );
   }
@@ -72,8 +73,7 @@ function Home() {
   function DetailedPageContent() {
     return (
       <div>
-        <h2>Detailed Page Content</h2>
-        {/* Content for Page 2 */}
+        <Detail/>
       </div>
     );
   }
