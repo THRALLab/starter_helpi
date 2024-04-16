@@ -2,18 +2,9 @@ import { useEffect, useState } from "react";
 import "../src/detailed.css";
 import questions from "./detailedQuestions.json";
 
-// TODO - [x] need to prevent user from going to the next question if they didn't choose an option
-
-// TODO - [x] need to add styling to show which choice the user selected and have it dynamically change based on selected
-// TODO - => [x] for free response questions, simply populate the textarea with their response
-
 // TODO - [x] need to add a version for user input
 // TODO - => [] need to add a guard to prevent users from entering nothing
 // TODO -		=> [x] fix bug where the text areas aren't letting you use spaces
-
-// TODO - [x] need to add implement logic to update the user answer's object property when they change it
-// TODO - [x] add styling to the question divs
-// TODO - [x] fix issue involving when you refresh the page, the selected button gets unselected
 
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 
@@ -43,7 +34,15 @@ function Detailed() {
 		answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
 	);
 
-	function saveAnswers(choice: string, question_num: number) {
+	function saveAnswers(
+		choice: string,
+		question_num: number,
+		question_type: string
+	) {
+		if (question_type === "free_response" && !choice.trim()) {
+			setChoice("");
+		}
+
 		if (answeredQuestions.length !== 0) {
 			// 1. check if the question number exists
 			//    -> if it does, check if the choice being passed in matches with the choice found for that question
@@ -123,7 +122,8 @@ function Detailed() {
 											setChoice(choice);
 											saveAnswers(
 												choice,
-												questions[currentIndex].question_number
+												questions[currentIndex].question_number,
+												questions[currentIndex].type
 											);
 										}}
 										style={{
@@ -159,7 +159,8 @@ function Detailed() {
 										setUserInput(e.target.value);
 										saveAnswers(
 											e.target.value,
-											questions[currentIndex].question_number
+											questions[currentIndex].question_number,
+											questions[currentIndex].type
 										);
 									}}
 								></textarea>
