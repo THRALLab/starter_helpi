@@ -13,7 +13,9 @@ import questions from "./detailedQuestions.json";
 // TODO - [x] need to add implement logic to update the user answer's object property when they change it
 // TODO - [x] add styling to the question divs
 
-// TODO - [] - fix issue involving when you refresh the page, the selected button gets unselected
+// TODO - [] fix issue involving when you refresh the page, the selected button gets unselected
+
+// TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 
 function Detailed() {
 	interface Answer {
@@ -141,8 +143,9 @@ function Detailed() {
 								<textarea
 									placeholder="Enter your response..."
 									value={
-										answeredQuestions[currentIndex] &&
-										answeredQuestions[currentIndex].choice
+										(answeredQuestions[currentIndex] &&
+											answeredQuestions[currentIndex].choice) ||
+										""
 									}
 									onChange={e => {
 										if (e.target.value.trim() !== "" || choice)
