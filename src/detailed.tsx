@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 import "../src/detailed.css";
 import questions from "./detailedQuestions.json";
 
-// TODO - [x] need to add a version for user input
-// TODO - => [] need to add a guard to prevent users from entering nothing
-// TODO -		=> [x] fix bug where the text areas aren't letting you use spaces
-
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 
 function Detailed() {
@@ -173,7 +169,7 @@ function Detailed() {
 							setCurrentIndex(index => (index -= 1 % questions.length));
 							setChoice(
 								answeredQuestions[currentIndex] &&
-									answeredQuestions[currentIndex].choice
+									answeredQuestions[currentIndex - 1].choice
 							);
 						}}
 					>
@@ -183,7 +179,10 @@ function Detailed() {
 						disabled={currentIndex === questions.length - 1 || !choice}
 						onClick={() => {
 							setCurrentIndex(index => (index += 1 % questions.length));
-							setChoice(""); // do not remove - resets choice to null after every button press which forces user to select an option before moving to the next question
+							setChoice(
+								answeredQuestions[currentIndex] &&
+									answeredQuestions[currentIndex].choice
+							);
 						}}
 					>
 						{currentIndex === questions.length - 1 ? "END" : "NEXT"}
