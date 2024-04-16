@@ -23,9 +23,7 @@ export const NavLink = styled(Link)`
     text-decoration: none;
     padding: 0 1rem;
     cursor: pointer;
-    &.active {
-        color: black;
-    }
+    transition: background-color 0.75s ease;
     &:hover {
         background-color: #e8ebed;
     }
