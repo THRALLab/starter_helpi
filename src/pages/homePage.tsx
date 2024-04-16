@@ -24,8 +24,8 @@ import { Button, Form } from "react-bootstrap";
     }
 
     return (
-        <><header className="App-header">
-        </header>
+        <>
+        <img src="career-plan.png" className="home-splash"></img>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
