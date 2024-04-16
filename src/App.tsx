@@ -5,7 +5,6 @@ import { HomeScreen } from './Components/HomeScreen/HomeScreen';
 import AppFooter from './Components/AppFooter/AppFooter';
 import { BasicPage } from './Components/BasicPage/BasicPage';
 import { DetailedPage } from './Components/DetailedPage/DetailedPage';
-import { clear } from 'console';
 
 
 let pageData = "Home";
