@@ -5,10 +5,10 @@ import questions from "./detailedQuestions.json";
 // TODO - [x] need to prevent user from going to the next question if they didn't choose an option
 
 // TODO - [x] need to add styling to show which choice the user selected and have it dynamically change based on selected
-// TODO - => [] for free response questions, simply populate the textarea with their response
+// TODO - => [x] for free response questions, simply populate the textarea with their response
 
-// TODO - [] need to add a version for user input
-// TODO - => [] need to add a guard to prevent users from entering nothing
+// TODO - [x] need to add a version for user input
+// TODO - => [x] need to add a guard to prevent users from entering nothing
 
 // TODO - [x] need to add implement logic to update the user answer's object property when they change it
 // TODO - [x] add styling to the question divs
@@ -32,10 +32,11 @@ function Detailed() {
 
 	const [answeredQuestions, setAnsweredQuestions] = useState<Answer[]>([]);
 
-	const [userInput, setUserInput] = useState<string>();
+	const [userInput, setUserInput] = useState<string>(
+		answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
+	);
 
 	function saveAnswers(choice: string, question_num: number) {
-		console.log("x", choice);
 		if (answeredQuestions.length !== 0) {
 			// 1. check if the question number exists
 			//    -> if it does, check if the choice being passed in matches with the choice found for that question
@@ -83,10 +84,15 @@ function Detailed() {
 		}
 	}
 
+	console.log(userInput);
+
 	useEffect(() => {
 		localStorage.setItem(
 			"answered_questions",
 			JSON.stringify(answeredQuestions)
+		);
+		console.log(
+			answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
 		);
 	}, [answeredQuestions]);
 
@@ -134,11 +140,16 @@ function Detailed() {
 						: questions[currentIndex].type === "free_response" && (
 								<textarea
 									placeholder="Enter your response..."
-									value={userInput}
+									value={
+										answeredQuestions[currentIndex] &&
+										answeredQuestions[currentIndex].choice
+									}
 									onChange={e => {
-										setChoice(e.target.value);
+										if (e.target.value.trim() !== "" || choice)
+											setChoice(e.target.value.trim());
+										setUserInput(e.target.value.trim());
 										saveAnswers(
-											e.target.value,
+											e.target.value.trim(),
 											questions[currentIndex].question_number
 										);
 									}}

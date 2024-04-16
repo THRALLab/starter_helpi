@@ -96,5 +96,12 @@
 		],
 		"image": "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=",
 		"type": "multiple_choice"
+	},
+	{
+		"question_number": 9,
+		"question": "What’s something that, when immersed in it, you lose track of time?",
+		"choices": [],
+		"image": "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=",
+		"type": "free_response"
 	}
 ]
