@@ -26,7 +26,7 @@ function DetailedQuestions() {
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums.map((x)=>x=50));
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
-  const [numberOfQuestions, setNumberOfQuestions] = useState(15)
+  const [numberOfQuestions, setNumberOfQuestions] = useState(30)
   const [questionNumber, setQuestionNumber] = useState(0)
   const [questionBody, setQuestionBody] = useState("Question...")
   const [color, setColor] = useState("")
@@ -44,23 +44,25 @@ function DetailedQuestions() {
     const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
     setQuestions(detailedQuestions)
     setNumberOfQuestions(detailedQuestions.length)
-    setQuestionNumber(questionNumber + 1)
+    setQuestionNumber(questionNumber)
     setColor(colors[Math.floor(Math.random() * colors.length)])
     setQuestionBody(detailedQuestions[questionNumber].question)
   }
 
   const nextQuestion = () => {
-    let tempSliderValues = [...sliderValues];
-    tempSliderValues[questionNumber] = currSliderValue;
-    setSliderValues(()=> [...tempSliderValues])
     if (questionNumber < numberOfQuestions - 1) {
+      let tempSliderValues = [...sliderValues];
+      tempSliderValues[questionNumber] = currSliderValue;
+      setSliderValues(()=> [...tempSliderValues])
+
+      
+      setQuestionBody(questions[questionNumber + 1].question)
       setQuestionNumber(questionNumber + 1)
       setBackButtonDisabled(false)
       setColor(colors[Math.floor(Math.random() * colors.length)])
-      setQuestionBody(questions[questionNumber].question)
+      
     }  else {
       // End of quiz...
-      setQuestionNumber(questionNumber + 1)
       window.alert("You've completed the Detailed Quiz! Press the Report button to view your results!")
       let nextButton = document.getElementById("nextButton");
       if(nextButton != null) {
@@ -76,36 +78,30 @@ function DetailedQuestions() {
   }
 
   const previousQuestion = () => {
-    let tempSliderValues = [...sliderValues];
-    tempSliderValues[questionNumber] = currSliderValue;
-    setSliderValues(()=> [...tempSliderValues])
-    if (questionNumber >= 1) {
-        if(questionNumber === 30){
+    if (questionNumber > 0) {
+        const previousQuestionIndex = questionNumber - 1;
+        setQuestionBody(questions[previousQuestionIndex].question);
+        setColor(colors[Math.floor(Math.random() * colors.length)]);
+        setQuestionNumber(previousQuestionIndex);
+        if (previousQuestionIndex === 0) {
+            setBackButtonDisabled(true);
+        }
+
+        
+        if (questionNumber === numberOfQuestions - 1) {
             let nextButton = document.getElementById("nextButton");
-            if(nextButton != null) {
+            if (nextButton != null) {
                 nextButton.classList.remove("Button-visible-false");
                 nextButton.classList.add("Button-visible-true");
             }
             let reportButton = document.getElementById("reportButton");
-            if(reportButton != null) {
+            if (reportButton != null) {
                 reportButton.classList.remove("Button-visible-true");
                 reportButton.classList.add("Button-visible-false");
             }
-            const previousQuestion = questionNumber - 1
-            setQuestionNumber(previousQuestion)
-        }
-        else {
-            const previousQuestion = questionNumber - 1
-            setQuestionNumber(previousQuestion)
-            setColor(colors[Math.floor(Math.random() * colors.length)])
-            setQuestionBody(questions[previousQuestion].question)
-            
-            if (questionNumber === 1) {
-                setBackButtonDisabled(true)
-            }
         }
     }
-}
+};
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -126,9 +122,7 @@ function DetailedQuestions() {
           <Row>
             <Col className="DetailedQuestions-questions">
               <SliderQuestion value={currSliderValue} onChange={setCurrSliderValue} label="Question: " question={questionBody}></SliderQuestion>
-              <span className='Button-visible-true' id="backButton">
-                <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
-              </span>
+              <Button onClick={previousQuestion} disabled={backButtonDisabled}>Back</Button>
               <span className='Button-visible-true' id="nextButton">
                 <Button className="Button-next" onClick={()=>nextQuestion()}>Next</Button>
               </span>
