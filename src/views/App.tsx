@@ -9,9 +9,7 @@ import Detail from "../views/Detail_Questions"
 function App() {
   return (
     <div className="App">
-
       <Home/>
-      
     </div>
   );
 }
