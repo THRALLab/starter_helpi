@@ -1,8 +1,9 @@
+
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route, useNavigate, Link } from 'react-router-dom';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import './App.css';
-import App from './HomePage';
 
 const OPTIONS = [
   "Disagree",
@@ -20,13 +21,12 @@ const QUESTIONS = [
   "I hope to climb the corporate ladder in one company as opposed to jumping between jobs",
   "I like needing to learn new skills to be efficient at my job",
   "I prefer working in a group setting compared to independently",
-  "Making money is more valuable to me then finding enjoyment in my job",
+  "I value making money more then fulfillment in my job",
   "I would like it if travel was a large part of my job"
 ]
 
 const BasicQuestions: React.FC = () => {
   const [chosenOption, setChosenOption] = useState<Array<string | null[]>>(Array(QUESTIONS.length).fill(null));
-  const page = App();
   function updateOption(event: React.ChangeEvent<HTMLInputElement>, index: number) {
     const newOptions = [...chosenOption];
     newOptions[index] = event.target.value;
@@ -37,9 +37,9 @@ const BasicQuestions: React.FC = () => {
         <h2>
           Basic Career Aptitude Test
           <div>
-            <Link to='/'>
-              <button>Return to Home Page</button>
-            </Link>
+             <Link to = '/'>
+               <button>Return to Home Page</button>
+             </Link>
           </div>
         </h2>
         <p>
