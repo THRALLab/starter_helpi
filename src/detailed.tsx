@@ -11,12 +11,15 @@ import questions from "./detailedQuestions.json";
 // TODO - [] need to add a version for user input
 // TODO - => [] need to add a guard to prevent users from entering nothing
 
-// TODO = [] - need to add implement logic to update the user answer's object property when they change it
+// TODO - [x] - need to add implement logic to update the user answer's object property when they change it
+
+// TODO - [] add styling to the question divs
 
 function Detailed() {
 	interface Answer {
 		questionNo: number;
 		choice: string;
+		// color: string;
 	}
 
 	const [choice, setChoice] = useState<string>();
@@ -47,6 +50,7 @@ function Detailed() {
 			if (questionNumber !== undefined) {
 				// the object contains this question, now check if the choice being passed in matches the one saved in the object for this particular question number
 
+				// find the index of the current question number
 				const questionIndex = answeredQuestions.findIndex(
 					(userAnswer: Answer) => {
 						return userAnswer.questionNo === questionNumber.questionNo;
@@ -72,7 +76,7 @@ function Detailed() {
 				]);
 			}
 		} else {
-			// if it is empty
+			// if it is empty, add the question number and choice to the array object
 			setAnsweredQuestions([{ questionNo: question_num, choice }]);
 		}
 	}
@@ -109,6 +113,15 @@ function Detailed() {
 												choice,
 												questions[currentIndex].question_number
 											);
+										}}
+										style={{
+											backgroundColor: `${
+												answeredQuestions.some(
+													selectedAnswer => selectedAnswer.choice === choice
+												)
+													? "purple"
+													: "green"
+											}`
 										}}
 									>
 										{choice}
