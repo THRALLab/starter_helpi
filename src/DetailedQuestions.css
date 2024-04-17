@@ -1,0 +1,38 @@
+.detailed-questions-container {
+    padding: 20px;
+  }
+  
+  .page-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .progress-bar {
+    margin-bottom: 20px;
+  }
+  
+  .questions-form {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .question-container {
+    margin-bottom: 20px;
+  }
+  
+  .question {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .option {
+    margin-left: 20px;
+  }
+  
+  .get-results-btn {
+    margin-top: 20px;
+  }
+  
