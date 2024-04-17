@@ -8,5 +8,5 @@ export interface Question {
 export interface QuestionComponentProps {
   question: string;
   options: string[];
-  onNext: (answer: string) => void;
+  onNext: (answer: string) => void; // submits the current answer and switches the question
 };

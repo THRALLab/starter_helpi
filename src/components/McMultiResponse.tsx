@@ -12,6 +12,7 @@ export function McMultiResponse({
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string[]>([]);
 
+    // compresses the current answer into a string format
     function compressAnswer(): string {
         return localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, "")
     }
