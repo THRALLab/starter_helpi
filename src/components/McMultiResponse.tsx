@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 export function McMultiResponse({
@@ -12,39 +12,20 @@ export function McMultiResponse({
     options: string[];
     aboluteAnswer: string;
     setAnswer: (answers: string) => void;
-    onNext: (next: boolean) => void;
+    onNext: () => void;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string[]>([]);
-    function setterLocal(currAnswer: string): boolean {
-        if (localAnswer.includes(currAnswer)) {
-            setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
-            return false;
-        } else {
-            setLocalAnswer([...localAnswer, currAnswer]);
-            return true;
-        }
-    }
-    function addAnswer(currAnswer: string) {
-        /*
+
+    useEffect(() => {
+        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""));
+    });
+
+    function addAnswer(currAnswer: string): void {
         if (localAnswer.includes(currAnswer)) {
             setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
         } else {
             setLocalAnswer([...localAnswer, currAnswer]);
         }
-        */
-        const status = setterLocal(currAnswer);
-        console.log("Right before reduce")
-        console.log("The setter version is ", [...localAnswer, currAnswer])
-        console.log(localAnswer)
-        if (status) {
-            console.log("The reduced version", ([...localAnswer, currAnswer]).reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""))
-            setAnswer(([...localAnswer, currAnswer]).reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""))
-        }
-        else {
-            console.log("The reduced version", (localAnswer.filter((target: string) => target !== currAnswer)).reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""))
-            setAnswer((localAnswer.filter((target: string) => target !== currAnswer)).reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""));
-        }
-        //setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""))
     }
 
     return (
@@ -65,7 +46,7 @@ export function McMultiResponse({
                         </li>
                     ))}
                 </ul>
-                <Button onClick={() => onNext(true)}>Next</Button>
+                <Button onClick={onNext}>Next</Button>
             </Form>
         </div>
     );

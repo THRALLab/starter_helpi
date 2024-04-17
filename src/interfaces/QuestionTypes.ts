@@ -11,5 +11,5 @@ export interface questionComponentProps {
   options: string[];
   aboluteAnswer: string;
   setAnswer: (userAnswer: string) => void;
-  onNext: (status: boolean) => void;
+  onNext: () => void;
 };

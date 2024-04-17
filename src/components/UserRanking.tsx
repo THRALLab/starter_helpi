@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from 'react-bootstrap';
 
 export function UserRanking({
@@ -12,19 +12,14 @@ export function UserRanking({
     options: string[];
     aboluteAnswer: string;
     setAnswer: (answer: string) => void;
-    onNext: (next: boolean) => void;
+    onNext: () => void;
 }): JSX.Element {
     const [categories, setCategories] = useState<string[]>(options);
-    
-    /**
-    const updatePriorities = (priority: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.target.checked
-            ? setCategories([...categories, priority])
-            : setCategories(
-                [...categories].filter((chosenMember: string): boolean => chosenMember !== priority)
-            )
-    }
-     */
+
+    useEffect(() => {
+        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
+    });
+
     const pushUp = (priority: string) => {
         const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
         if (currIndex > 0) {
@@ -33,8 +28,8 @@ export function UserRanking({
             [newPriorities[currIndex - 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex - 1]];
             setCategories(newPriorities);
         }
-        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
     }
+
     const pushDown = (priority: string) => {
         const currCount = categories.reduce((count: number, chosenMember: string) => count += 1, 0);
         const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
@@ -44,8 +39,8 @@ export function UserRanking({
             [newPriorities[currIndex + 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex + 1]];
             setCategories(newPriorities);
         }
-        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
     }
+
     return (
         <div>
             <h3>{question}</h3>
@@ -70,7 +65,7 @@ export function UserRanking({
                     </li>
                 ))}
             </ol>
-            <Button onClick={() => onNext(true)}></Button>
+            <Button onClick={onNext}>Next</Button>
         </div>
     )
 }
