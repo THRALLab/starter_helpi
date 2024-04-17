@@ -25,10 +25,6 @@ export default function Footer() {
 
 	return (
 		<footer>
-			&copy; Hairum Qureshi, Mithra Sankar, Olive Odida, and Olivia Folliard
-			&nbsp;
-			{new Date().getFullYear()}
-			&nbsp;
 			<label>API Key Here: </label>
 			<input
 				type="password"
@@ -38,6 +34,9 @@ export default function Footer() {
 			<button className="Submit-Button" onClick={handleSubmit}>
 				Submit
 			</button>
+			<br />
+			&copy; {new Date().getFullYear()} Hairum Qureshi, Mithra Sankar, Olive
+			Odida, and Olivia Folliard
 		</footer>
 	);
 }
