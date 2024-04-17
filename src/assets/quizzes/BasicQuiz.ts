@@ -1,12 +1,17 @@
 import { Question } from "../../interfaces/QuestionTypes";
 
 const determineNextQuestionId = (currentQuestionId: string, userAnswer: string): string => {
-  if (currentQuestionId === "root") return "question2";
-  else if (currentQuestionId.includes("question")) {
+  if (currentQuestionId === "root") {
+    return "question2";
+  } else if (currentQuestionId.includes("question")) {
     const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`;
-    if (newId in basicQuiz) return (newId);
-    else return "";
-  } else return "";
+    if (newId in basicQuiz) {
+      return (newId);
+    } else  {
+      return "";
+    }
+  }
+  return "";
 };
 
 export const basicQuiz: Record<string, Question> = {
