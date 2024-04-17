@@ -18,6 +18,7 @@ div .quiz-desc-container {
     border: solid 1px grey;
     text-align: center;
     transition: background-color 0.75s ease, margin-top 0.75s ease;
+    border-radius: 5px;
     &:hover {
         background-color: #e8ebed;
         margin-top: -9px;
