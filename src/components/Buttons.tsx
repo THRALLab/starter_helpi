@@ -32,7 +32,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export function Buttons() {
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
-    const [goToHomePage, setGoToHomePage] = React.useState(false);
+    //const [goToHomePage, setGoToHomePage] = React.useState(false);
 
     if (goToBasicQuestionsPage) {
         return <Navigate to="/BasicQuestionsPage"/>
@@ -42,9 +42,9 @@ export function Buttons() {
         return <Navigate to="/DetailedQuestionsPage"/>
     }
 
-    if (goToHomePage) {
+    /*if (goToHomePage) {
         return <Navigate to="/"/>
-    }
+    }*/
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
