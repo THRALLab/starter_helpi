@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Home.css';
 import './General.css';
 import './Report.css';
+import OpenAIRequest from './OpenAITest';
 import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
 import LinkButton from './LinkButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,6 +36,11 @@ function DetailedReport() {
         <div className='Page-text'>
           <p className='Report-header'>View your Detailed Quiz Results!</p>
           <p className='Report-body'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <div className='ChatGPT-main'>
+          <h1>OpenAI Integration in React</h1>
+          <OpenAIRequest />
         </div>
       </div>
 
