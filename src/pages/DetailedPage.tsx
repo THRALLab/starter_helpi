@@ -8,8 +8,7 @@ const DetailedPage = () => {
 	([false, false, false, false, "", false, false, false, false, "", false, false, false, false, "", false, false, false, false, "",false, 
 	false, false, false, "", false, false, false, false, "",false, false, false, false, "",])
 	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false,false, false]);
-	const [otherText, setOtherText] = useState<string>(""); //take out the quotations in the response and make a new state for them like you did for otherSelected and 
-	//
+
 	console.log(response[0]);
 	console.log(response[1]);
 	console.log(response[4])
@@ -23,8 +22,7 @@ const DetailedPage = () => {
 			for(let i=0; i < 4; ++i){
 				newResponse[i] = false;
 			}
-			newResponse[index] = "";
-			setResponse(newResponse);
+
 		}
 		else{
 			const newOtherStatus=[...otherSelected]
@@ -42,7 +40,6 @@ const DetailedPage = () => {
 		const newResponse = [...response];
 		newResponse[index] = event.target.value;
 		setResponse(newResponse);
-		setOtherText(event.target.value);
 	}
 
 	function updateProgress(responseList:boolean[]): number {
@@ -127,9 +124,9 @@ const DetailedPage = () => {
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
-					value={otherText}
+					value={String(response[4])}
 					onChange={(event) => handleOtherSelect(event, 4)}
-					disabled={!otherSelected}		
+					disabled={!otherSelected[0]}		
 						/>
 				</div>
 			</div>
@@ -178,9 +175,9 @@ const DetailedPage = () => {
 				<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
-					value={otherText}
+					value={String(response[9])}
 					onChange={(event) => handleOtherSelect(event, 9)}
-					disabled={!otherSelected}		
+					disabled={!otherSelected[1]}		
 						/>
 				</div>
 			</div>
@@ -229,9 +226,9 @@ const DetailedPage = () => {
 				<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
-					value={otherText}
+					value={String(response[14])}
 					onChange={(event) => handleOtherSelect(event, 14)}
-					disabled={!otherSelected}		
+					disabled={!otherSelected[2]}		
 						/>
 				</div>
 			</div>
@@ -280,9 +277,9 @@ const DetailedPage = () => {
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
-					value={otherText}
+					value={String(response[19])}
 					onChange={(event) => handleOtherSelect(event, 19)}
-					disabled={!otherSelected}		
+					disabled={!otherSelected[3]}		
 						/>
 				</div>
 			</div>
@@ -331,9 +328,9 @@ const DetailedPage = () => {
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
-					value={otherText}
+					value={String(response[24])}
 					onChange={(event) => handleOtherSelect(event, 24)}
-					disabled={!otherSelected}		
+					disabled={!otherSelected[4]}		
 						/>
 				</div>
 			</div>
@@ -382,9 +379,9 @@ const DetailedPage = () => {
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
-					value={otherText}
+					value={String(response[29])}
 					onChange={(event) => handleOtherSelect(event, 29)}
-					disabled={!otherSelected}		
+					disabled={!otherSelected[5]}		
 						/>
 				</div>
 			</div>
@@ -433,9 +430,9 @@ const DetailedPage = () => {
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
-					value={otherText}
+					value={String(response[34])}
 					onChange={(event) => handleOtherSelect(event, 34)}
-					disabled={!otherSelected}		
+					disabled={!otherSelected[6]}		
 						/>
 				</div>
 			</div>
