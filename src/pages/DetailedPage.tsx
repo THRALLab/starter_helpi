@@ -7,14 +7,18 @@ const DetailedPage = () => {
 	const [response, setResponse] = useState<(boolean | string)[]>
 	([false, false, false, false, "", false, false, false, false, "", false, false, false, false, "", false, false, false, false, "",false, 
 	false, false, false, "", false, false, false, false, "",false, false, false, false, "",])
-	const [otherSelected, setOtherSelected] = useState<boolean>(false);
-	const [otherText, setOtherText] = useState<string>("");
+	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false,false, false]);
+	const [otherText, setOtherText] = useState<string>(""); //take out the quotations in the response and make a new state for them like you did for otherSelected and 
+	//
 	console.log(response[0]);
 	console.log(response[1]);
 	console.log(response[4])
-	function handleRadio(option:string, index:number) {
+	console.log(otherSelected)
+	function handleRadio(option:string, index:number, otherIndex:number) {
 		if(option === "Other:"){
-			setOtherSelected(true);
+			const newOtherStatus=[...otherSelected]
+			newOtherStatus[otherIndex] = true;
+			setOtherSelected(newOtherStatus);
 			const newResponse = [...response];
 			for(let i=0; i < 4; ++i){
 				newResponse[i] = false;
@@ -23,7 +27,9 @@ const DetailedPage = () => {
 			setResponse(newResponse);
 		}
 		else{
-			setOtherSelected(false);
+			const newOtherStatus=[...otherSelected]
+			newOtherStatus[otherIndex] = false;
+			setOtherSelected(newOtherStatus);
 			const newResponse = [...response];
 			for(let i=0; i < 4; ++i){
 				newResponse[i] = false;
@@ -38,7 +44,7 @@ const DetailedPage = () => {
 		setResponse(newResponse);
 		setOtherText(event.target.value);
 	}
-	
+
 	function updateProgress(responseList:boolean[]): number {
 		let completed: number = 0;
 		for (const response of responseList){
@@ -84,7 +90,7 @@ const DetailedPage = () => {
 				id="q1-Option1"
 				label="holder"
 				name="question1"
-				onChange={() => handleRadio("holder", 0)}
+				onChange={() => handleRadio("holder", 0, 0)}
 			/>
 			<Form.Check
 				inline
@@ -92,7 +98,7 @@ const DetailedPage = () => {
 				id="q1-Option2"
 				label="holder"
 				name="question1"
-				onChange={() => handleRadio("holder", 1)}
+				onChange={() => handleRadio("holder", 1, 0)}
 			/>
 			<Form.Check
 				inline
@@ -100,7 +106,7 @@ const DetailedPage = () => {
 				id="q1-Option3"
 				label="holder"
 				name="question1"
-				onChange={() => handleRadio("holder", 2)}
+				onChange={() => handleRadio("holder", 2, 0)}
 			/>
 			<Form.Check
 				inline
@@ -108,7 +114,7 @@ const DetailedPage = () => {
 				id="q1-Option4"
 				label="holder"
 				name="question1"
-				onChange={() => handleRadio("holder", 3)}
+				onChange={() => handleRadio("holder", 3, 0)}
 			/>
 			<Form.Check
 					inline
@@ -116,13 +122,13 @@ const DetailedPage = () => {
 					id="q1-Option5"
 					label="Other:"
 					name="question1"
-					onChange={() => handleRadio("Other:", 4)}
+					onChange={() => handleRadio("Other:", 4, 0)} 
 			/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={otherText}
-					onChange={(event) => handleOtherSelect(event, 9)}
+					onChange={(event) => handleOtherSelect(event, 4)}
 					disabled={!otherSelected}		
 						/>
 				</div>
@@ -135,7 +141,7 @@ const DetailedPage = () => {
 				id="q2-Option1"
 				label="holder"
 				name="question2"
-				onChange={() => handleRadio("holder", 5)}
+				onChange={() => handleRadio("holder", 5, 1)}
 			/>
 			<Form.Check
 				inline
@@ -143,7 +149,7 @@ const DetailedPage = () => {
 				id="q2-Option2"
 				label="holder"
 				name="question2"
-				onChange={() => handleRadio("holder", 6)}
+				onChange={() => handleRadio("holder", 6, 1)}
 			/>
 			<Form.Check
 				inline
@@ -151,7 +157,7 @@ const DetailedPage = () => {
 				id="q2-Option3"
 				label="holder"
 				name="question2"
-				onChange={() => handleRadio("holder", 7)}
+				onChange={() => handleRadio("holder", 7, 1)}
 			/>
 			<Form.Check
 				inline
@@ -159,7 +165,7 @@ const DetailedPage = () => {
 				id="q2-Option4"
 				label="holder"
 				name="question2"
-				onChange={() => handleRadio("holder", 8)}
+				onChange={() => handleRadio("holder", 8, 1)}
 			/>
 			<Form.Check
 					inline
@@ -167,7 +173,7 @@ const DetailedPage = () => {
 					id="q2-Option5"
 					label="Other:"
 					name="question2"
-					onChange={() => handleRadio("Other:", 9)}
+					onChange={() => handleRadio("Other:", 9, 1)}
 			/>	
 				<div className="answer-box"><Form.Control
 					type="text"
@@ -186,7 +192,7 @@ const DetailedPage = () => {
 				id="q3-Option1"
 				label="holder"
 				name="question3"
-				onChange={() => handleRadio("holder", 10)}
+				onChange={() => handleRadio("holder", 10, 2)}
 			/>
 			<Form.Check
 				inline
@@ -194,7 +200,7 @@ const DetailedPage = () => {
 				id="q3-Option2"
 				label="holder"
 				name="question3"
-				onChange={() => handleRadio("holder", 11)}
+				onChange={() => handleRadio("holder", 11, 2)}
 			/>
 			<Form.Check
 				inline
@@ -202,7 +208,7 @@ const DetailedPage = () => {
 				id="q3-Option3"
 				label="holder"
 				name="question3"
-				onChange={() => handleRadio("holder", 12)}
+				onChange={() => handleRadio("holder", 12, 2)}
 			/>
 			<Form.Check
 				inline
@@ -210,7 +216,7 @@ const DetailedPage = () => {
 				id="q3-Option4"
 				label="holder"
 				name="question3"
-				onChange={() => handleRadio("holder", 13)}
+				onChange={() => handleRadio("holder", 13, 2)}
 			/>
 			<Form.Check
 					inline
@@ -218,13 +224,13 @@ const DetailedPage = () => {
 					id="q3-Option5"
 					label="Other:"
 					name="question3"
-					onChange={() => handleRadio("Other:",14)}
+					onChange={() => handleRadio("Other:",14, 2)}
 			/>		
 				<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={otherText}
-					onChange={(event) => handleOtherSelect(event, 9)}
+					onChange={(event) => handleOtherSelect(event, 14)}
 					disabled={!otherSelected}		
 						/>
 				</div>
@@ -237,7 +243,7 @@ const DetailedPage = () => {
 				id="q4-Option1"
 				label="holder"
 				name="question4"
-				onChange={() => handleRadio("holder", 15)}
+				onChange={() => handleRadio("holder", 15, 3)}
 			/>
 			<Form.Check
 				inline
@@ -245,7 +251,7 @@ const DetailedPage = () => {
 				id="q4-Option2"
 				label="holder"
 				name="question4"
-				onChange={() => handleRadio("holder", 16)}
+				onChange={() => handleRadio("holder", 16, 3)}
 			/>
 			<Form.Check
 				inline
@@ -253,7 +259,7 @@ const DetailedPage = () => {
 				id="q4-Option3"
 				label="holder"
 				name="question4"
-				onChange={() => handleRadio("holder", 17)}
+				onChange={() => handleRadio("holder", 17, 3)}
 			/>
 			<Form.Check
 				inline
@@ -261,7 +267,7 @@ const DetailedPage = () => {
 				id="q4-Option4"
 				label="holder"
 				name="question4"
-				onChange={() => handleRadio("holder", 18)}
+				onChange={() => handleRadio("holder", 18, 3)}
 			/>
 			<Form.Check
 					inline
@@ -269,13 +275,13 @@ const DetailedPage = () => {
 					id="q4-Option5"
 					label="Other:"
 					name="question4"
-					onChange={() => handleRadio("Other:", 19)}
+					onChange={() => handleRadio("Other:", 19, 3)}
 			/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={otherText}
-					onChange={(event) => handleOtherSelect(event, 9)}
+					onChange={(event) => handleOtherSelect(event, 19)}
 					disabled={!otherSelected}		
 						/>
 				</div>
@@ -288,7 +294,7 @@ const DetailedPage = () => {
 				id="q5-Option1"
 				label="holder"
 				name="question5"
-				onChange={() => handleRadio("holder", 20)}
+				onChange={() => handleRadio("holder", 20, 4)}
 			/>
 			<Form.Check
 				inline
@@ -296,7 +302,7 @@ const DetailedPage = () => {
 				id="q5-Option2"
 				label="holder"
 				name="question5"
-				onChange={() => handleRadio("holder", 21)}
+				onChange={() => handleRadio("holder", 21, 4)}
 			/>
 			<Form.Check
 				inline
@@ -304,7 +310,7 @@ const DetailedPage = () => {
 				id="q5-Option3"
 				label="holder"
 				name="question5"
-				onChange={() => handleRadio("holder", 22)}
+				onChange={() => handleRadio("holder", 22, 4)}
 			/>
 			<Form.Check
 				inline
@@ -312,7 +318,7 @@ const DetailedPage = () => {
 				id="q5-Option4"
 				label="holder"
 				name="question5"
-				onChange={() => handleRadio("holder", 23)}
+				onChange={() => handleRadio("holder", 23, 4)}
 			/>
 			<Form.Check
 					inline
@@ -320,13 +326,13 @@ const DetailedPage = () => {
 					id="q5-Option5"
 					label="Other:"
 					name="question5"
-					onChange={() => handleRadio("Other:", 24)}
+					onChange={() => handleRadio("Other:", 24, 4)}
 			/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={otherText}
-					onChange={(event) => handleOtherSelect(event, 9)}
+					onChange={(event) => handleOtherSelect(event, 24)}
 					disabled={!otherSelected}		
 						/>
 				</div>
@@ -339,7 +345,7 @@ const DetailedPage = () => {
 				id="q6-Option1"
 				label="holder"
 				name="question6"
-				onChange={() => handleRadio("holder", 25)}
+				onChange={() => handleRadio("holder", 25, 5)}
 			/>
 			<Form.Check
 				inline
@@ -347,7 +353,7 @@ const DetailedPage = () => {
 				id="q6-Option2"
 				label="holder"
 				name="question6"
-				onChange={() => handleRadio("holder", 26)}
+				onChange={() => handleRadio("holder", 26, 5)}
 			/>
 			<Form.Check
 				inline
@@ -355,7 +361,7 @@ const DetailedPage = () => {
 				id="q6-Option3"
 				label="holder"
 				name="question6"
-				onChange={() => handleRadio("holder", 27)}
+				onChange={() => handleRadio("holder", 27, 5)}
 			/>
 			<Form.Check
 				inline
@@ -363,7 +369,7 @@ const DetailedPage = () => {
 				id="q6-Option4"
 				label="holder"
 				name="question6"
-				onChange={() => handleRadio("holder", 28)}
+				onChange={() => handleRadio("holder", 28, 5)}
 			/>
 			<Form.Check
 					inline
@@ -371,13 +377,13 @@ const DetailedPage = () => {
 					id="q6-Option5"
 					label="Other:"
 					name="question6"
-					onChange={() => handleRadio("Other:", 29)}
+					onChange={() => handleRadio("Other:", 29, 5)}
 			/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={otherText}
-					onChange={(event) => handleOtherSelect(event, 9)}
+					onChange={(event) => handleOtherSelect(event, 29)}
 					disabled={!otherSelected}		
 						/>
 				</div>
@@ -390,7 +396,7 @@ const DetailedPage = () => {
 				id="q7-Option1"
 				label="holder"
 				name="question7"
-				onChange={() => handleRadio("holder", 30)}
+				onChange={() => handleRadio("holder", 30, 6)}
 			/>
 			<Form.Check
 				inline
@@ -398,7 +404,7 @@ const DetailedPage = () => {
 				id="q7-Option2"
 				label="holder"
 				name="question7"
-				onChange={() => handleRadio("holder", 31)}
+				onChange={() => handleRadio("holder", 31, 6)}
 			/>
 			<Form.Check
 				inline
@@ -406,7 +412,7 @@ const DetailedPage = () => {
 				id="q7-Option3"
 				label="holder"
 				name="question7"
-				onChange={() => handleRadio("holder", 32)}
+				onChange={() => handleRadio("holder", 32, 6)}
 			/>
 			<Form.Check
 				inline
@@ -414,7 +420,7 @@ const DetailedPage = () => {
 				id="q7-Option4"
 				label="holder"
 				name="question7"
-				onChange={() => handleRadio("holder", 33)}
+				onChange={() => handleRadio("holder", 33, 6)}
 			/>
 			<Form.Check
 					inline
@@ -422,13 +428,13 @@ const DetailedPage = () => {
 					id="q7-Option5"
 					label="Other:"
 					name="question7"
-					onChange={() => handleRadio("Other:", 34)}
+					onChange={() => handleRadio("Other:", 34, 6)}
 			/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={otherText}
-					onChange={(event) => handleOtherSelect(event, 9)}
+					onChange={(event) => handleOtherSelect(event, 34)}
 					disabled={!otherSelected}		
 						/>
 				</div>
