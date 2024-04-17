@@ -24,7 +24,11 @@ function App() {
       </Routes>
     </Router><div className="App">
         
-      </div></>
+      </div>
+      <div className='app-footer'>
+        <p>Footer text</p>
+      </div>
+    </>
   );
 }
 
