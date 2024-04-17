@@ -19,7 +19,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/detailedPage" element={<DetailedPage />} />
+        <Route path="/DetailedPage" element={<DetailedPage />} />
         <Route path="/BasicPage" element={<BasicPage/>}/>
       </Routes>
     </Router><div className="App">
