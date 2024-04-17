@@ -1,7 +1,7 @@
 import React from 'react';
 import { Buttons } from './Buttons';
-import Grid from '@mui/material/Grid'; // Grid version 1
-import Item from '@mui/material/ListItem';
+//import Grid from '@mui/material/Grid'; // Grid version 1
+//import Item from '@mui/material/ListItem';
 //import 'App.css';
 
 export function Home(): JSX.Element {
