@@ -32,4 +32,10 @@
 
 .mx-auto .nav-link:hover {
     color: white;
-  }
+}
+
+.disabled-navbar .nav-link,
+.disabled-navbar .navbar-back {
+  pointer-events: none;
+  opacity: 0.5;
+}
