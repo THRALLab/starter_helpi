@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Changa:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&display=swap");
 
 nav {
-	/* background-color: rgb(255, 212, 249); */
 	background-color: rgb(251, 187, 244);
 	border: 2px solid hotpink;
-	text-align: left; /* Center align the content */
+	text-align: left;
 }
 
 nav .group {
 	display: inline-flex;
-	align-items: center; /* Vertically align items */
+	align-items: center;
 }
 
 nav img {
@@ -30,45 +30,31 @@ nav h1 span {
 	color: rgb(195, 26, 26);
 }
 
-/* .navbar {
-  background-color: #e0cce5;
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #c64d23; 
+nav ul {
+	display: inline-flex;
+	list-style-type: none;
+	float: right;
 }
 
-.navbar a {
-	padding: 10px 15px;
+nav ul li {
+	margin: 15px;
+	font-size: 20px;
 	border-radius: 5px;
-	color: #c64d23;
-	transition: all 0.2s ease-in-out;
+	padding: 5px;
+	font-family: "Anybody", sans-serif;
 	font-weight: 700;
-	font-size: 17px;
-	border: none;
+}
+
+nav ul a {
+	color: rgb(131, 16, 40);
 	text-decoration: none;
 }
 
-h1 {
-	font-size: 30px;
+nav ul a:hover {
+	color: rgb(181, 10, 47);
+	transition: 0.5s ease;
 }
 
-.nav-link {
-	color: #fd6b01;
-	cursor: pointer;
+nav ul a:active {
+	color: rgb(255, 0, 55);
 }
-
-.nav-link:hover {
-	color: #c64d23;
-}
-
-.navbar a:hover {
-	box-shadow: 0 0 30px #4b3f9f;
-}
-
-.navbar-brand img {
-	width: 60px;
-	height: 60px;
-} */
