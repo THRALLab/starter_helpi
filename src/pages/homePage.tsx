@@ -29,12 +29,16 @@ import './homePage.css';
         <img src={splash} alt="infograph" className="splashPage"></img>
         <div className="quiz-desc-container">
             <div className="quiz-desc">
-                <h3>Basic Quiz</h3>
-                <p>Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
+                <a href="/BasicPage">
+                    <h3>Basic Quiz</h3>
+                    <p>Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
+                </a>
             </div>
             <div className="quiz-desc">
-                <h3>Detailed Quiz</h3>
-                <p></p>
+                <a href="/DetailedPage">
+                    <h3>Detailed Quiz</h3>
+                    <p></p>
+                </a>
             </div>
         </div>
         <Form>
