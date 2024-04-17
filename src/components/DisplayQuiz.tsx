@@ -30,7 +30,6 @@ export function DisplayQuiz(
 
     const handleAnswerSubmit = () => {
         setAnswers([...answers, currentAnswer])
-        console.log(currentAnswer);
         const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
         setQuestionsAnswerd(questionsAnswerd + 1)
         if (nextQuestionId === "") {

@@ -21,15 +21,10 @@ export function SliderResponse({
     setAnswer: (answer: string) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
-    const [localAnswer, setLocalAnswer] = useState<string>("");
+    const [localAnswer, setLocalAnswer] = useState<string>("50");
     function updateAnswer(currAnswer: string) {
         setLocalAnswer(currAnswer)
         setAnswer(currAnswer)
-    }
-
-    const onQuestionSubmit = () => {
-        setAnswer(localAnswer);
-        onNext(true);
     }
     
     return(
@@ -41,7 +36,7 @@ export function SliderResponse({
                     value={localAnswer}
                     onChange={(e) => updateAnswer(e.target.value)}
                 />
-                <Button onClick={() => onQuestionSubmit()}>Next</Button>
+                <Button onClick={() => onNext(true)}>Next</Button>
             </Form.Group>
         </div>
     )
