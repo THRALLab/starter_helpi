@@ -1,9 +1,9 @@
 import { FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
- 
+
 export const Nav = styled.nav`
-    background: #057af0;
+    background: white;
     height: 85px;
     width: 100%;
     display: flex;
@@ -12,23 +12,20 @@ export const Nav = styled.nav`
     align-items: center;
     position: sticky;
     top: 0px;
+    border-bottom: solid 2px grey;
 `;
  
 export const NavLink = styled(Link)`
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
+    height: 85px;
     text-decoration: none;
     padding: 0 1rem;
-    height: 100%;
     cursor: pointer;
-    &.active {
-        color: white;
-        background-color: #656d75;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        border-radius: 5px;
-
+    transition: background-color 0.75s ease;
+    &:hover {
+        background-color: #e8ebed;
     }
 `;
 
