@@ -29,14 +29,14 @@ export function DisplayQuiz(
     const [currentAnswer, setCurrentAnswer] = useState<string>(""); // Use to store answer for question currently being displayed 
 
     const handleAnswerSubmit = () => {
-        setAnswers([...answers, currentAnswer])
+        setAnswers([...answers, currentAnswer]);
         const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
-        setQuestionsAnswerd(questionsAnswerd + 1)
+        setQuestionsAnswerd(questionsAnswerd);
         if (nextQuestionId === "") {
             setIsQuizComplete(true); // End of the quiz
         } else {
-            setCurrentQuestionId(nextQuestionId); // Move to the next question
             setCurrentAnswer("");
+            setCurrentQuestionId(nextQuestionId); // Move to the next question
         }
     };
 
@@ -59,7 +59,13 @@ export function DisplayQuiz(
         <br></br>
         <h3>Current Answers:</h3>
         <ol>
-        {answers.map((target: string) => (<li>{target}</li>))}
+        {answers.map((target: string) => (
+            <li
+                key={`${target}Answer`}
+            >
+                {target}
+            </li>
+        ))}
         </ol>
         </div>
         </>)
@@ -70,6 +76,7 @@ export function DisplayQuiz(
     const questionComponentProps: questionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
+        aboluteAnswer: currentAnswer,
         setAnswer: setCurrentAnswer,
         onNext: handleAnswerSubmit
     };

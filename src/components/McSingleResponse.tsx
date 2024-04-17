@@ -1,23 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 export function McSingleResponse({
     question,
     options,
+    aboluteAnswer,
     setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
+    aboluteAnswer: string;
     setAnswer: (answer: string) => void;
-    onNext: (next: boolean) => void;
+    onNext: () => void;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string>("");
 
-    function updateAnswer(currAnswer: string) {
-        setLocalAnswer(currAnswer)
-        setAnswer(currAnswer)
-    }
+    useEffect(() => {
+        setAnswer(localAnswer);
+    });
     
     return (
         <div>
@@ -27,17 +28,18 @@ export function McSingleResponse({
                     {options.map((choice) => (
                         <li key={choice}>
                             <Form.Check
+                                key={`${choice}Select`}
                                 type="radio"
                                 id={choice}
                                 label={choice}
                                 value={choice}
                                 checked={localAnswer === choice}
-                                onChange={() => updateAnswer(choice)}
+                                onChange={() => setLocalAnswer(choice)}
                             />
                         </li>
                     ))}
                 </ul>
-                <Button onClick={() => onNext(true)}>Next</Button>
+                <Button onClick={onNext}>Next</Button>
             </Form>
         </div>
     );

@@ -1,25 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 export function McMultiResponse({
     question,
     options,
+    aboluteAnswer,
     setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
+    aboluteAnswer: string;
     setAnswer: (answers: string) => void;
-    onNext: (next: boolean) => void;
+    onNext: () => void;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string[]>([]);
-    function addAnswer(currAnswer: string) {
+
+    useEffect(() => {
+        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""));
+    });
+
+    function addAnswer(currAnswer: string): void {
         if (localAnswer.includes(currAnswer)) {
             setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
         } else {
             setLocalAnswer([...localAnswer, currAnswer]);
         }
-        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""));
     }
 
     return (
@@ -30,6 +36,7 @@ export function McMultiResponse({
                     {options.map((choice) => (
                         <li key={choice}>
                             <Form.Check
+                                key={`${choice}Select`}
                                 type="checkbox"
                                 id={choice}
                                 label={choice}
@@ -39,7 +46,7 @@ export function McMultiResponse({
                         </li>
                     ))}
                 </ul>
-                <Button onClick={() => onNext(true)}>Next</Button>
+                <Button onClick={onNext}>Next</Button>
             </Form>
         </div>
     );

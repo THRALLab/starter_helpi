@@ -5,12 +5,14 @@ import { Form } from 'react-bootstrap';
 export function TextResponse({
     question,
     options,
+    aboluteAnswer,
     setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    setAnswer: (answer: string) => void;
+    aboluteAnswer: string;
+    setAnswer: (answers: string) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string>("");
