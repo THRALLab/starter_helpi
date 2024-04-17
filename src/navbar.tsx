@@ -1,14 +1,25 @@
-import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import "./navbar.css";
 import animal from "./caribou.png";
 
 function Navigation() {
 	return (
 		<>
-			<Navbar bg="light" expand="lg">
+			<nav>
+				<Link to="/">
+					<div className="group">
+						<img src={animal} alt="Careeribou logo" />
+						<h1>
+							<span>
+								<u>CAREER</u>
+							</span>
+							IBOU
+						</h1>
+					</div>
+				</Link>
+			</nav>
+			{/* <Navbar bg="light" expand="lg">
 				<Navbar.Brand className="logo" as={Link} to="/">
 					<img src={animal} alt="Caribou" />
 				</Navbar.Brand>
@@ -23,7 +34,7 @@ function Navigation() {
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
-			</Navbar>
+			</Navbar> */}
 		</>
 	);
 }

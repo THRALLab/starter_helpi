@@ -1,41 +1,74 @@
-.navbar {
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Changa:wght@200..800&display=swap");
+
+nav {
+	/* background-color: rgb(255, 212, 249); */
+	background-color: rgb(251, 187, 244);
+	border: 2px solid hotpink;
+	text-align: left; /* Center align the content */
+}
+
+nav .group {
+	display: inline-flex;
+	align-items: center; /* Vertically align items */
+}
+
+nav img {
+	width: 60px;
+	height: 60px;
+	margin: 10px;
+}
+
+nav h1 {
+	font-family: "Changa", sans-serif;
+	font-weight: 700;
+	font-size: 50px;
+	margin: 0;
+	color: rgb(131, 16, 40);
+}
+
+nav h1 span {
+	color: rgb(195, 26, 26);
+}
+
+/* .navbar {
   background-color: #e0cce5;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #c64d23;
+  color: #c64d23; 
 }
 
 .navbar a {
-  padding: 10px 15px;
-  border-radius: 5px;
-  color: #c64d23;
-  transition: all 0.2s ease-in-out;
-  font-weight: 700;
-  font-size: 17px;
-  border: none;
-  text-decoration: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	color: #c64d23;
+	transition: all 0.2s ease-in-out;
+	font-weight: 700;
+	font-size: 17px;
+	border: none;
+	text-decoration: none;
 }
+
 h1 {
-  font-size: 30px;
+	font-size: 30px;
 }
 
 .nav-link {
-  color: #fd6b01;
-  cursor: pointer;
+	color: #fd6b01;
+	cursor: pointer;
 }
 
 .nav-link:hover {
-  color: #c64d23;
+	color: #c64d23;
 }
 
 .navbar a:hover {
-  box-shadow: 0 0 30px #4b3f9f;
+	box-shadow: 0 0 30px #4b3f9f;
 }
 
 .navbar-brand img {
-  width: 60px;
-  height: 60px;
-}
+	width: 60px;
+	height: 60px;
+} */
