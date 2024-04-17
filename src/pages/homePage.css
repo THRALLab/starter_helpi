@@ -2,3 +2,28 @@
     height: auto;
     width: 100%;
 }
+
+div .quiz-desc-container {
+    height: 450px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top: solid 2px grey;
+}
+
+.quiz-desc {
+    height: 360px;
+    width: 35%;
+    border: solid 1px grey;
+    text-align: center;
+}
+
+.quiz-desc h3 {
+    margin-top: 20px;
+}
+
+.quiz-desc p {
+   margin-left: 35px;
+   margin-right: 35px;
+}

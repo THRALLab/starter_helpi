@@ -27,6 +27,16 @@ import './homePage.css';
     return (
         <>
         <img src={splash} alt="infograph" className="splashPage"></img>
+        <div className="quiz-desc-container">
+            <div className="quiz-desc">
+                <h3>Basic Quiz</h3>
+                <p>Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
+            </div>
+            <div className="quiz-desc">
+                <h3>Detailed Quiz</h3>
+                <p></p>
+            </div>
+        </div>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
