@@ -11,8 +11,13 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
   const [previousPage, setPreviousPage] = useState<string>("Home");
 
   const handleNavClick = (newPage: string) => {
-    setPreviousPage(page);
-    setPage(newPage);
+    if (newPage === page) {
+      setPage(newPage);
+    }
+    else {
+      setPreviousPage(page);
+      setPage(newPage);
+    }
   }
 
   const handleBackButtonClick = () => {
