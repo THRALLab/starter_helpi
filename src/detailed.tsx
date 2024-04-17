@@ -13,6 +13,8 @@ function Detailed() {
 
 	const [choice, setChoice] = useState<string>();
 
+	useChatGPT();
+
 	const saved_index: number =
 		Number(localStorage.getItem("current_question")) || 0;
 	const last_saved: number = saved_index < 0 ? 0 : saved_index;

@@ -11,7 +11,7 @@
 .navbar a {
 	padding: 10px 15px;
 	border-radius: 5px;
-	color: #c64d23;
+	/* color: #c64d23; */
 	transition: all 0.2s ease-in-out;
 	font-weight: 700;
 	font-size: 17px;
@@ -23,7 +23,7 @@ h1 {
 }
 
 .nav-link {
-	color: #fd6b01;
+	/* color: #fd6b01; */
 	cursor: pointer;
 }
 
