@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
           <h2>Detailed Questions</h2>
           <p>Looking for a comprehensive assessment of your career interests and strengths?
             Our detailed career quiz dives deep into your personality. preferences, and skills
-            to provide recommendations for your professional journey. Explore a variety of career options
+            to provide recommendations for your professional journey. Click below to explore a variety of career options
             and gain valuable advice to make decisions about your future.
           </p>
           <Link to="/detailed-questions">
