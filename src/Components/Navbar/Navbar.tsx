@@ -25,30 +25,33 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
         <Navbar.Brand onClick={() => handleNavClick("Home")} href="#home" className='brand-logo'>
           <img src={logo} alt='logo' className="logo-img" />
         </Navbar.Brand>
-          <Navbar.Toggle aria-controls='basic-navbar-nav'/>
-          <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mx-auto">
-          <Nav.Link onClick={() => handleNavClick("Home")}>
-              {(page === "Home" && (<text className='navbar-selected'>Home</text>)) || (page !== "Home" && (<text>Home</text>))}
+        <Navbar.Toggle aria-controls='basic-navbar-nav'/>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="d-flex flex-grow-1 align-items-center justify-content-center">
+            <Nav.Link onClick={() => handleNavClick("Home")}>
+              {(page === "Home" && (<div className='navbar-selected'>Home</div>)) || (page !== "Home" && (<text>Home</text>))}
             </Nav.Link>
-          <Nav.Link onClick={() => handleNavClick("Basic")}>
-              {(page === "Basic" && (<text className='navbar-selected'>Basic</text>)) || (page !== "Basic" && (<text>Basic</text>))}
+            <Nav.Link onClick={() => handleNavClick("Basic")}>
+              {(page === "Basic" && (<div className='navbar-selected'>Basic</div>)) || (page !== "Basic" && (<text>Basic</text>))}
             </Nav.Link>
-          <Nav.Link onClick={() => handleNavClick("Detailed")}>
-              {(page === "Detailed" && (<text className='navbar-selected'>Detailed</text>)) || (page !== "Detailed" && (<text>Detailed</text>))}
+            <Nav.Link onClick={() => handleNavClick("Detailed")}>
+              {(page === "Detailed" && (<div className='navbar-selected'>Detailed</div>)) || (page !== "Detailed" && (<text>Detailed</text>))}
             </Nav.Link>
-        </Nav>
-        <span className="navbar-text" style={{ marginRight: '25px' }}>
-          Current Page: {page}
-        </span>
-        <div className='d-flex align-items-center'>
-          {page !== "Home" && page !== previousPage && (
-            <Button onClick={handleBackButtonClick} className='d-flex align-items-center navbar-back' style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
-              <GoArrowLeft style={{ marginRight: '2px' }} />
-              <Nav.Link >Back</Nav.Link>
-            </Button>
-          )}
-        </div>
+          </Nav>
+          <div className='ms-auto'>
+            {page !== "home" && page !== previousPage && (
+              <Button onClick={handleBackButtonClick} className='d-flex align-items-center navbar-back' style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
+                <GoArrowLeft style={{ marginRight: '2px' }} />
+                <Nav.Link >Back</Nav.Link>
+              </Button>
+            )}
+            {(page === "Home" || page === previousPage) && (
+              <Button onClick={handleBackButtonClick} className='disabled d-flex align-items-center navbar-back' style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
+                <GoArrowLeft style={{ marginRight: '2px' }} />
+                <Nav.Link >Back</Nav.Link>
+              </Button>
+            )}
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
