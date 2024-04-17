@@ -13,26 +13,31 @@ export function BasicPage() {
         <div className='basic-page-container'>
             <h1 className='title'>Basic Quiz</h1>
             <div className='accordion-container'>
-                <Accordion defaultActiveKey="0" style={{ width: '50%', backgroundColor: '#21273b' }} >
+                <Accordion defaultActiveKey={questions.map((_, i) => i.toString())} style={{ width: '50%', backgroundColor: '#21273b' }} alwaysOpen>
                     {questions.map((question: string) => (
                         <Accordion.Item key={eventKey} eventKey={(eventKey++).toString()} className="item">
                             <Accordion.Header className='header'>{question}</Accordion.Header>
                             <Accordion.Body className='body'>
-                                <Form.Check
-                                    label="Option 1"
-                                    name="group1"
-                                    type='radio'
-                                />
-                                <Form.Check
-                                    label="Option 2"
-                                    name="group1"
-                                    type='radio'
-                                />
-                                <Form.Check
-                                    label="Option 3"
-                                    name="group1"
-                                    type='radio'
-                                />
+                                <Form>
+                                    <Form.Check
+                                        label="Option 1"
+                                        name={`group${eventKey}`}
+                                        id={`check${eventKey}1`}
+                                        type='radio'
+                                    />
+                                    <Form.Check
+                                        label="Option 2"
+                                        name={`group${eventKey}`}
+                                        id={`group${eventKey}2`}
+                                        type='radio'
+                                    />
+                                    <Form.Check
+                                        label="Option 3"
+                                        name={`group${eventKey}`}
+                                        id={`group${eventKey}3`}
+                                        type='radio'
+                                    />
+                                </Form>
                             </Accordion.Body>
                         </Accordion.Item>
                     )
