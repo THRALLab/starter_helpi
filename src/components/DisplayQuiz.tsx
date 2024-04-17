@@ -1,6 +1,6 @@
 // Import necessary hooks and components
 import React, { useState } from "react";
-import { Question, questionComponentProps } from "../interfaces/QuestionTypes";
+import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
 import { TextResponse } from "./TextResponse"
@@ -26,6 +26,7 @@ export function DisplayQuiz(
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
     const [answers, setAnswers] = useState<string[]>([]); // Array of all question answers
 
+    // used to determine next question
     const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps): string => {
         // questions are id'd as `quiestion${questionNumber}`
         if (currentQuestionId.includes("question")) {
@@ -36,6 +37,13 @@ export function DisplayQuiz(
         else return "";
       };
 
+    /**
+     * 
+     * @param answer - the answer for the current question
+     * when an answer is submitted the answer is passed and added to the answers
+     * the next question is then displayed
+     * if there is no next question then the quiz is over
+     */
     const handleAnswerSubmit = (answer: string) => {
         setAnswers([...answers, answer])
         const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz);
@@ -74,7 +82,7 @@ export function DisplayQuiz(
 
     const currentQuestion = quiz[currentQuestionId];
 
-    const questionComponentProps: questionComponentProps = {
+    const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
         onNext: handleAnswerSubmit

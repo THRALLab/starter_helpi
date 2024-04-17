@@ -5,7 +5,7 @@ export interface Question {
   options: string[];
 }
 
-export interface questionComponentProps {
+export interface QuestionComponentProps {
   question: string;
   options: string[];
   onNext: (answer: string) => void;
