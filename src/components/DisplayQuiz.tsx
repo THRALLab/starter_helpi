@@ -8,6 +8,11 @@ import { UserRanking } from "./UserRanking"
 
 type DisplayQuizProps = Record<string, Question>;
 
+type QuestionAns = {
+    questionId: string,
+    answer: string
+}
+
 export function DisplayQuiz(
     { 
         quiz,
@@ -24,7 +29,7 @@ export function DisplayQuiz(
     ): JSX.Element {
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("question1"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
-    const [answers, setAnswers] = useState<string[]>([]); // Array of all question answers
+    const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
 
     // used to determine next question
     const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps): string => {
@@ -45,7 +50,7 @@ export function DisplayQuiz(
      * if there is no next question then the quiz is over
      */
     const handleAnswerSubmit = (answer: string) => {
-        setAnswers([...answers, answer])
+        setAnswers([...answers, {questionId: currentQuestionId, answer: answer}])
         const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz);
         setQuestionsAnswerd(questionsAnswerd + 1)
         if (nextQuestionId === "") {
@@ -74,7 +79,7 @@ export function DisplayQuiz(
         <br></br>
         <h3>Current Answers:</h3>
         <ol>
-        {answers.map((target: string) => (<li>{target}</li>))}
+        {answers.map((target: QuestionAns) => (<li key={target.questionId}>{target.answer}</li>))}
         </ol>
         </div>
         </>)
@@ -89,6 +94,7 @@ export function DisplayQuiz(
     };
 
 
+    //displays the curent question type
     switch (currentQuestion.type) {
         case "MC_SINGLE_RESPONSE":
             return <McSingleResponse {...questionComponentProps} />;
