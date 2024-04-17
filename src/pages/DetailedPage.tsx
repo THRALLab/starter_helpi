@@ -1,183 +1,441 @@
 //import React from "react";
 import "./detailedPage.css";
+import React, { useEffect, useState } from "react";
+import { Form, ProgressBar, Alert } from "react-bootstrap";
+import Button from "react-bootstrap/esm/Button";
+const DetailedPage = () => {
+	const [response, setResponse] = useState<(boolean | string)[]>
+	([false, false, false, false, "", false, false, false, false, "", false, false, false, false, "", false, false, false, false, "",false, 
+	false, false, false, "", false, false, false, false, "",false, false, false, false, "",])
+	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false,false, false]); //correlates to the the "other" text inputs
 
-const detailedPage = () => {
-	return (
-		<>
-			<div className="info-portion">
-				<h1>
-					Detailed Page Stuff
-				</h1>
-				<>
-					Welcome! For this quiz, you will answer the statements by 
-					choosing one of the corresponding multiple choice options
-					 below! You will be able to click the "Answer" which will 
-					 allow you to see the results of you future career.
-				</>
+	console.log(response)
+	function handleRadio(option:string, index:number, otherIndex:number) { 
+		if(option === "Other:"){
+			const newOtherStatus=[...otherSelected]
+			newOtherStatus[otherIndex] = true;
+			setOtherSelected(newOtherStatus);
+			const newResponse = [...response];
+			for(let i=0; i < 4; ++i){ //makes sure all the other radio buttons are false if the other radio button is selected
+				newResponse[i] = false;
+			}
+
+		}
+		else{
+			const newOtherStatus=[...otherSelected]
+			newOtherStatus[otherIndex] = false;
+			setOtherSelected(newOtherStatus);
+			const newResponse = [...response];
+			for(let i=0; i < 4; ++i){ //makes all the options false
+				newResponse[i] = false;
+			}
+			newResponse[index] = true; //makes the selected radio button true; selecting it
+			setResponse(newResponse);
+		}
+	}
+	function handleOtherSelect(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index:number){ //updates the text input box
+		const newResponse = [...response];
+		newResponse[index] = event.target.value;
+		setResponse(newResponse);
+	}
+
+	function updateProgress(responseList:boolean[]): number {
+		let completed: number = 0;
+		for (const response of responseList){
+			if(response === true){
+				completed +=1;
+			}
+		}
+		return completed;
+	}
+	return (<>
+		<style>{`
+        .question-box {
+		display:flex;
+		gap:100px	
+        }
+		h3 {
+		margin-left: 25px
+		}
+		.answer-box{
+			margin-left: -100px	
+			}
+        `}</style>
+		<div className="info-portion">
+			<h1>
+				Detailed Page Stuff
+			</h1>
+			<>
+				Welcome! For this quiz, you will answer the statements by 
+				choosing one of the corresponding multiple choice options
+				 below! You will be able to click the "Answer" which will 
+				allow you to see the results of you future career.
+			</>
+		</div>
+		<div style={{textAlign:"center"}}>
+		<Button>Answer</Button>
+		<ProgressBar></ProgressBar>
+		</div>
+		<h3>Question 1</h3>
+		<div className="question-box">
+			<Form.Check
+				inline
+				type="radio"
+				id="q1-Option1"
+				label="holder"
+				name="question1"
+				onChange={() => handleRadio("holder", 0, 0)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q1-Option2"
+				label="holder"
+				name="question1"
+				onChange={() => handleRadio("holder", 1, 0)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q1-Option3"
+				label="holder"
+				name="question1"
+				onChange={() => handleRadio("holder", 2, 0)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q1-Option4"
+				label="holder"
+				name="question1"
+				onChange={() => handleRadio("holder", 3, 0)}
+			/>
+			<Form.Check
+					inline
+					type="radio"
+					id="q1-Option5"
+					label="Other:"
+					name="question1"
+					onChange={() => handleRadio("Other:", 4, 0)} 
+			/>
+			<div className="answer-box"><Form.Control
+					type="text"
+					placeholder="Enter your answer"
+					value={String(response[4])}
+					onChange={(event) => handleOtherSelect(event, 4)}
+					disabled={!otherSelected[0]}		
+						/>
+				</div>
 			</div>
+			<h3>Question 2</h3>
 			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: The question can be really long or short. It will all fit in here
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
+			<Form.Check
+				inline
+				type="radio"
+				id="q2-Option1"
+				label="holder"
+				name="question2"
+				onChange={() => handleRadio("holder", 5, 1)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q2-Option2"
+				label="holder"
+				name="question2"
+				onChange={() => handleRadio("holder", 6, 1)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q2-Option3"
+				label="holder"
+				name="question2"
+				onChange={() => handleRadio("holder", 7, 1)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q2-Option4"
+				label="holder"
+				name="question2"
+				onChange={() => handleRadio("holder", 8, 1)}
+			/>
+			<Form.Check
+					inline
+					type="radio"
+					id="q2-Option5"
+					label="Other:"
+					name="question2"
+					onChange={() => handleRadio("Other:", 9, 1)}
+			/>	
+				<div className="answer-box"><Form.Control
+					type="text"
+					placeholder="Enter your answer"
+					value={String(response[9])}
+					onChange={(event) => handleOtherSelect(event, 9)}
+					disabled={!otherSelected[1]}		
+						/>
 				</div>
 			</div>
-			<div style={{display: "flex"}} className="question-box">
-				<h3 className="question-prompt">
-					Maybe put options in the same line as question?
-				</h3>
-				<div style={{flex: "4"}} className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
+		<h3>Question 3</h3>
+		<div className="question-box">
+			<Form.Check
+				inline
+				type="radio"
+				id="q3-Option1"
+				label="holder"
+				name="question3"
+				onChange={() => handleRadio("holder", 10, 2)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q3-Option2"
+				label="holder"
+				name="question3"
+				onChange={() => handleRadio("holder", 11, 2)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q3-Option3"
+				label="holder"
+				name="question3"
+				onChange={() => handleRadio("holder", 12, 2)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q3-Option4"
+				label="holder"
+				name="question3"
+				onChange={() => handleRadio("holder", 13, 2)}
+			/>
+			<Form.Check
+					inline
+					type="radio"
+					id="q3-Option5"
+					label="Other:"
+					name="question3"
+					onChange={() => handleRadio("Other:",14, 2)}
+			/>		
+				<div className="answer-box"><Form.Control
+					type="text"
+					placeholder="Enter your answer"
+					value={String(response[14])}
+					onChange={(event) => handleOtherSelect(event, 14)}
+					disabled={!otherSelected[2]}		
+						/>
 				</div>
 			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Stack options on one another rather than side by side?
-				</h3>
-				<div style={{display: "block", padding: "0px 24px"}} className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
+		<h3>Question 4</h3>
+		<div className="question-box">
+			<Form.Check
+				inline
+				type="radio"
+				id="q4-Option1"
+				label="holder"
+				name="question4"
+				onChange={() => handleRadio("holder", 15, 3)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q4-Option2"
+				label="holder"
+				name="question4"
+				onChange={() => handleRadio("holder", 16, 3)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q4-Option3"
+				label="holder"
+				name="question4"
+				onChange={() => handleRadio("holder", 17, 3)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q4-Option4"
+				label="holder"
+				name="question4"
+				onChange={() => handleRadio("holder", 18, 3)}
+			/>
+			<Form.Check
+					inline
+					type="radio"
+					id="q4-Option5"
+					label="Other:"
+					name="question4"
+					onChange={() => handleRadio("Other:", 19, 3)}
+			/>
+			<div className="answer-box"><Form.Control
+					type="text"
+					placeholder="Enter your answer"
+					value={String(response[19])}
+					onChange={(event) => handleOtherSelect(event, 19)}
+					disabled={!otherSelected[3]}		
+						/>
 				</div>
 			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
+		<h3>Question 5</h3>
+		<div className="question-box">
+			<Form.Check
+				inline
+				type="radio"
+				id="q5-Option1"
+				label="holder"
+				name="question5"
+				onChange={() => handleRadio("holder", 20, 4)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q5-Option2"
+				label="holder"
+				name="question5"
+				onChange={() => handleRadio("holder", 21, 4)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q5-Option3"
+				label="holder"
+				name="question5"
+				onChange={() => handleRadio("holder", 22, 4)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q5-Option4"
+				label="holder"
+				name="question5"
+				onChange={() => handleRadio("holder", 23, 4)}
+			/>
+			<Form.Check
+					inline
+					type="radio"
+					id="q5-Option5"
+					label="Other:"
+					name="question5"
+					onChange={() => handleRadio("Other:", 24, 4)}
+			/>
+			<div className="answer-box"><Form.Control
+					type="text"
+					placeholder="Enter your answer"
+					value={String(response[24])}
+					onChange={(event) => handleOtherSelect(event, 24)}
+					disabled={!otherSelected[4]}		
+						/>
 				</div>
 			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
+		<h3>Question 6</h3>
+		<div className="question-box">
+			<Form.Check
+				inline
+				type="radio"
+				id="q6-Option1"
+				label="holder"
+				name="question6"
+				onChange={() => handleRadio("holder", 25, 5)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q6-Option2"
+				label="holder"
+				name="question6"
+				onChange={() => handleRadio("holder", 26, 5)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q6-Option3"
+				label="holder"
+				name="question6"
+				onChange={() => handleRadio("holder", 27, 5)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q6-Option4"
+				label="holder"
+				name="question6"
+				onChange={() => handleRadio("holder", 28, 5)}
+			/>
+			<Form.Check
+					inline
+					type="radio"
+					id="q6-Option5"
+					label="Other:"
+					name="question6"
+					onChange={() => handleRadio("Other:", 29, 5)}
+			/>
+			<div className="answer-box"><Form.Control
+					type="text"
+					placeholder="Enter your answer"
+					value={String(response[29])}
+					onChange={(event) => handleOtherSelect(event, 29)}
+					disabled={!otherSelected[5]}		
+						/>
 				</div>
 			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
+		<h3>Question 7</h3>
+		<div className="question-box">
+			<Form.Check
+				inline
+				type="radio"
+				id="q7-Option1"
+				label="holder"
+				name="question7"
+				onChange={() => handleRadio("holder", 30, 6)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q7-Option2"
+				label="holder"
+				name="question7"
+				onChange={() => handleRadio("holder", 31, 6)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q7-Option3"
+				label="holder"
+				name="question7"
+				onChange={() => handleRadio("holder", 32, 6)}
+			/>
+			<Form.Check
+				inline
+				type="radio"
+				id="q7-Option4"
+				label="holder"
+				name="question7"
+				onChange={() => handleRadio("holder", 33, 6)}
+			/>
+			<Form.Check
+					inline
+					type="radio"
+					id="q7-Option5"
+					label="Other:"
+					name="question7"
+					onChange={() => handleRadio("Other:", 34, 6)}
+			/>
+			<div className="answer-box"><Form.Control
+					type="text"
+					placeholder="Enter your answer"
+					value={String(response[34])}
+					onChange={(event) => handleOtherSelect(event, 34)}
+					disabled={!otherSelected[6]}		
+						/>
 				</div>
 			</div>
-			<div className="question-box">
-				<h3 className="question-prompt">
-					Question 1: Favorite Disney Princess Movie?
-				</h3>
-				<div className="multiple-answers">
-					<div className="answer-option">
-						<input type="radio" id="movie1" name="movie" value="Tangled" />
-						<label htmlFor="age1">Tangled</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie2" name="movie" value="Frozen" />
-						<label htmlFor="age1">Frozen</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie3" name="movie" value="Cinderella" />
-						<label htmlFor="age1">Cinderella</label>
-					</div>
-					<div className="answer-option">
-						<input type="radio" id="movie4" name="movie" value="Moana" />
-						<label htmlFor="age1">Moana</label>
-					</div>
-				</div>
-			</div>
-		</>
+	</>
 	);
 };
 
-export default detailedPage;
+export default DetailedPage;
+

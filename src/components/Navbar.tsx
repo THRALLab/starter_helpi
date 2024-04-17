@@ -13,7 +13,7 @@ const Navbar = () => {
                 <NavMenu>
                     <NavLink to="/">Home Page</NavLink>
                     <NavLink to="/BasicPage">Basic Page</NavLink>
-                    <NavLink to="/detailedPage">Detailed Page</NavLink>
+                    <NavLink to="/DetailedPage">Detailed Page</NavLink>
                 </NavMenu>
             </Nav>
         </>
