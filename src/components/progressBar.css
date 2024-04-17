@@ -1,0 +1,10 @@
+.Bar {
+    width: 100vh;
+    height: 2vh;
+  }
+
+.bg-Progress-Bar-Color {
+    color: black;
+    text-align: center;
+    font-size: medium;
+}
