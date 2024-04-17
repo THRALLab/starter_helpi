@@ -2,6 +2,7 @@
 import React, { CSSProperties } from 'react';
 import {Button} from 'react-bootstrap';
 import BrainIcon from './modifiedBrainIcon.svg';
+import homeIcon from './house.svg';
 import './Pages.css';
 
 interface BasicProp {
@@ -84,7 +85,7 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
             </div>
             <h2 className="title" onClick={() => handlePage('Home')}>Brain Spark</h2>
             <div className="home-container">
-                <Button className="home-button" onClick={() => handlePage('Home')}>Home Page</Button>
+            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="button-icon" /></Button>
             </div>
         </header>
         <div style={style.column}>
