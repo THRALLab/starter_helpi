@@ -1,7 +1,7 @@
 //import React from "react";
 import { Nav, NavLink, NavMenu } from "./NavbarElements";
 import './Navbar.css';
-import { Button } from "react-bootstrap";
+
  
 const Navbar = () => {
     return (
@@ -11,15 +11,9 @@ const Navbar = () => {
                     <h1>Website Title</h1>
                 </div>
                 <NavMenu>
-                    <NavLink to="/">
-                        <Button>Home</Button>
-                    </NavLink>
-                    <NavLink to="/detailedPage">
-                        <Button>Detailed Page</Button>
-                    </NavLink>
-                    <NavLink to="/BasicPage">
-                        <Button>Basic Page</Button>
-                    </NavLink>
+                    <NavLink to="/">Home Page</NavLink>
+                    <NavLink to="/BasicPage">Basic Page</NavLink>
+                    <NavLink to="/detailedPage">Detailed Page</NavLink>
                 </NavMenu>
             </Nav>
         </>

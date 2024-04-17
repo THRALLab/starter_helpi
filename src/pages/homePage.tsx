@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import logo from './logo.svg';
+import splash from "../images/job_search.jpg"
+import './homePage.css';
 
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -24,35 +25,22 @@ import logo from './logo.svg';
     }
 
     return (
-        <><header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <button>
-
-            </button>
-            <p>
-                Edit <code>src/App.tsx</code> and save to reload.
-            </p>
-            <p>
-                Jasnoor Saini
-            </p>
-            <p>
-                Benjamin Le
-            </p>
-            <p>
-                Coleman Walsh
-            </p>
-            <p>
-                Mateo Torres
-            </p>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Learn React
-            </a>
-        </header>
+        <>
+        <img src={splash} alt="infograph" className="splashPage"></img>
+        <div className="quiz-desc-container">
+            <div className="quiz-desc">
+                <a href="/BasicPage">
+                    <h3>Basic Quiz</h3>
+                    <p>Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
+                </a>
+            </div>
+            <div className="quiz-desc">
+                <a href="/DetailedPage">
+                    <h3>Detailed Quiz</h3>
+                    <p></p>
+                </a>
+            </div>
+        </div>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
