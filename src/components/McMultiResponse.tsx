@@ -19,7 +19,7 @@ export function McMultiResponse({
         } else {
             setLocalAnswer([...localAnswer, currAnswer]);
         }
-        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""))
+        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""));
     }
 
     return (

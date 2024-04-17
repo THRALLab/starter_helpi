@@ -10,7 +10,7 @@ import { Form } from 'react-bootstrap';
  * @param onNext - function for getting the next question
  * @returns 
  */
-export function TextResponse({
+export function SliderResponse({
     question,
     options,
     setAnswer,
@@ -21,7 +21,7 @@ export function TextResponse({
     setAnswer: (answer: string) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
-    const [localAnswer, setLocalAnswer] = useState<string>("");
+    const [localAnswer, setLocalAnswer] = useState<string>("50");
     function updateAnswer(currAnswer: string) {
         setLocalAnswer(currAnswer)
         setAnswer(currAnswer)
@@ -32,9 +32,9 @@ export function TextResponse({
             <h3>{question}</h3>
             <Form.Group>
                 <Form.Label>{question}</Form.Label>
-                <Form.Control
+                <Form.Range
                     value={localAnswer}
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => updateAnswer(event.target.value)}
+                    onChange={(e) => updateAnswer(e.target.value)}
                 />
                 <Button onClick={() => onNext(true)}>Next</Button>
             </Form.Group>

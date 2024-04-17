@@ -1,7 +1,6 @@
 import { Question } from "../../interfaces/QuestionTypes";
 
 const determineNextQuestionId = (currentQuestionId: string, userAnswer: string): string => {
-  if (currentQuestionId === "root") return "question2";
   else if (currentQuestionId.includes("question")) {
     const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`;
     if (newId in basicQuiz) return (newId);
@@ -44,5 +43,12 @@ export const basicQuiz: Record<string, Question> = {
     prompt: "What is your favorite class you have taken?",
     options: [],
     getNextQuestionId: (userAnswer: string) => determineNextQuestionId("question4", userAnswer)
+  },
+  question5: {
+    id: "question5",
+    type: "SLIDER_RESPONSE",
+    prompt: "What is your favorite number 1 to 100",
+    options: [],
+    getNextQuestionId: (userAnswer: string) => determineNextQuestionId("question5", userAnswer)
   },
 };
