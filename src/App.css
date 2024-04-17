@@ -4,16 +4,10 @@
 }
 
 body {
-  background-color: #2F2FA2;
+  background-color: #242582;
+  /* background-image: url(https://wallpapers.com/images/hd/dark-blue-aesthetic-sky-at-night-loaluwkdu9aaky5b.jpg); */
+  /* background-size: cover; */
 }
-
-.container {
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
 
 
 button {
@@ -23,6 +17,8 @@ button {
   border: 2px solid;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1em;
+  transition: background-color .3;
 }
 
 button:hover{

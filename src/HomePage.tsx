@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
+import './HomePage.css';
 // import { Button, Form } from 'react-bootstrap';
 
 // Components for new pages 
@@ -46,26 +47,33 @@ import DetailedQuestions from './DetailedQuestions';
 const HomePage: React.FC = () => {
   return (
     // Inside App.tsx or App.jsx
-<div className="App">
-  <h1>Career Quiz Home Page</h1>
-  <div className="question-container">
-    <div className="question">
-      <h3>Basic Questions</h3>
-      <p>Click the button below if you want to take a more concise version of the career quiz</p>
-      <Link to="/basic-questions">
-        <button>Start Basic Quiz</button>
-      </Link>
+    <div className="HomePage">
+      <h1>Career Quiz Home Page</h1>
+      <div className="content">
+        <div className="question">
+          <h2>Basic Questions</h2>
+          <p>Are you unsure about your career path?? Click below to take our 
+            quick career quiz to gain insight into your professional goals 
+            and strength. Discover potential career paths that align with your
+            interest, skills, and values. 
+          </p>
+          <Link to="/basic-questions">
+            <button>Start Basic Quiz</button>
+          </Link>
+        </div>
+        <div className="question">
+          <h2>Detailed Questions</h2>
+          <p>Looking for a comprehensive assessment of your career interests and strengths?
+            Our detailed career quiz dives deep into your personality. preferences, and skills
+            to provide recommendations for your professional journey. Explore a variety of career options
+            and gain valuable advice to make decisions about your future.
+          </p>
+          <Link to="/detailed-questions">
+            <button className="detailed-quiz">Start Detailed Quiz</button>
+          </Link>
+        </div>
+      </div>
     </div>
-    <div className="question">
-      <h3>Detailed Questions</h3>
-      <p>Click the button below if you want to take a more detailed version of the career quiz</p>
-      <Link to="/detailed-questions">
-        <button className="detailed-quiz">Start Detailed Quiz</button>
-      </Link>
-    </div>
-  </div>
-</div>
-
   );
 }
 
