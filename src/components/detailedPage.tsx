@@ -112,7 +112,7 @@ export function DetailedQuestions(key: AIKey): JSX.Element {
     const [otherText, setOtherText] = useState<string>('');
 
     useEffect(() => {
-        // Initialize otherText based on the current answer when switching questions
+        // Initialize otherText for the current question if needed
         const currentAnswer = answers[currentQuestionIndex];
         if (currentAnswer.startsWith("Other (please specify): ")) {
             setOtherText(currentAnswer.substring("Other (please specify): ".length));
@@ -124,36 +124,40 @@ export function DetailedQuestions(key: AIKey): JSX.Element {
     const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         const updatedAnswers = [...answers];
-        if (value === "Other (please specify)") {
-            // If switching to "Other", keep the current text in the answers
-            updatedAnswers[currentQuestionIndex] = `Other (please specify): ${otherText}`;
-        } else {
-            // If switching away from "Other", just use the selected value
-            updatedAnswers[currentQuestionIndex] = value;
-            setOtherText('');
-        }
+        updatedAnswers[currentQuestionIndex] = value === "Other (please specify)" ? `Other (please specify): ${otherText}` : value;
         setAnswers(updatedAnswers);
     };
 
     const handleOtherTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newOtherText = event.target.value;
         setOtherText(newOtherText);
-        // Update the answers immediately when otherText changes
-        const updatedAnswers = [...answers];
-        updatedAnswers[currentQuestionIndex] = `Other (please specify): ${newOtherText}`;
-        setAnswers(updatedAnswers);
+        if (answers[currentQuestionIndex].startsWith("Other (please specify):")) {
+            const updatedAnswers = [...answers];
+            updatedAnswers[currentQuestionIndex] = `Other (please specify): ${newOtherText}`;
+            setAnswers(updatedAnswers);
+        }
     };
 
-    const handleNavigation = (newIndex: number) => {
-        setCurrentQuestionIndex(newIndex);
+    const handleSubmit = async () => {
+        // Replace with your API endpoint or backend handler
+        const response = await fetch('/suggest-career', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ answers }),
+        });
+
+        const data = await response.json();
+        console.log(data.careerSuggestion);  // Display or process the career suggestion
     };
 
-    const isOtherSelected = answers[currentQuestionIndex].startsWith("Other (please specify):");
+    const canSubmit = answers.every(answer => answer.trim() !== '');
 
     return (
         <div className="Pages">
             <h1>Detailed Career Questions</h1>
-            <QuestionProgressBar totalQuestions={questions.length} completedQuestions={currentQuestionIndex} />
+            <QuestionProgressBar totalQuestions={questions.length} completedQuestions={currentQuestionIndex + 1} />
             <div>
                 <h2>Question {currentQuestionIndex + 1}</h2>
                 <p>{questions[currentQuestionIndex].question}</p>
@@ -165,11 +169,11 @@ export function DetailedQuestions(key: AIKey): JSX.Element {
                         label={option}
                         value={option}
                         id={`option${index}`}
-                        checked={answers[currentQuestionIndex] === option || (isOtherSelected && option === "Other (please specify)")}
+                        checked={answers[currentQuestionIndex] === option}
                         onChange={handleOptionChange}
                     />
                 ))}
-                {isOtherSelected && (
+                {answers[currentQuestionIndex].startsWith("Other (please specify):") && (
                     <Form.Control
                         type="text"
                         value={otherText}
@@ -179,12 +183,17 @@ export function DetailedQuestions(key: AIKey): JSX.Element {
                 )}
             </div>
             <div className="navigation-buttons">
-                <Button variant="secondary" onClick={() => handleNavigation(currentQuestionIndex - 1)} disabled={currentQuestionIndex === 0}>
+                <Button variant="secondary" onClick={() => setCurrentQuestionIndex(Math.max(currentQuestionIndex - 1, 0))} disabled={currentQuestionIndex === 0}>
                     Previous
                 </Button>
-                <Button variant="primary" onClick={() => handleNavigation(currentQuestionIndex + 1)} disabled={currentQuestionIndex === questions.length - 1}>
+                <Button variant="primary" onClick={() => setCurrentQuestionIndex(Math.min(currentQuestionIndex + 1, questions.length - 1))} disabled={currentQuestionIndex === questions.length - 1}>
                     Next
                 </Button>
+                {currentQuestionIndex === questions.length - 1 && (
+                    <Button variant="success" onClick={handleSubmit} disabled={!canSubmit}>
+                        Submit
+                    </Button>
+                )}
             </div>
         </div>
     );
