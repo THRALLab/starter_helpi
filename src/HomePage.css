@@ -42,4 +42,14 @@ HomePage.css
     line-height: 1.6;
   }
 
+  .api-key-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .api-key-input input[type="password"] {
+    width: 200px; /* Adjust the width as needed */
+    margin-right: 10px; /* Add some spacing between the input and the button */
+  }
   
