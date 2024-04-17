@@ -22,22 +22,30 @@ export function DisplayQuiz(
         setQuestionsAnswerd : (questionsAnswerd: number) => void 
     }
     ): JSX.Element {
-    const [currentQuestionId, setCurrentQuestionId] = useState<string>("root"); // Starting question ID
+    const [currentQuestionId, setCurrentQuestionId] = useState<string>("question1"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
     const [answers, setAnswers] = useState<string[]>([]); // Array of all question answers
-    const [currentAnswer, setCurrentAnswer] = useState<string>(""); // Use to store answer for question currently being displayed 
 
-    const handleAnswerSubmit = () => {
-        setAnswers([...answers, currentAnswer])
-        const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
+    const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps): string => {
+        // questions are id'd as `quiestion${questionNumber}`
+        if (currentQuestionId.includes("question")) {
+          const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`;
+          if (newId in quiz) return (newId);
+          else return "";
+        } 
+        else return "";
+      };
+
+    const handleAnswerSubmit = (answer: string) => {
+        setAnswers([...answers, answer])
+        const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz);
         setQuestionsAnswerd(questionsAnswerd + 1)
         if (nextQuestionId === "") {
             setIsQuizComplete(true); // End of the quiz
         } else {
             setCurrentQuestionId(nextQuestionId); // Move to the next question
-            setCurrentAnswer("");
         }
-    };
+    }
 
     if (isQuizComplete) {
         return (<>
@@ -69,7 +77,6 @@ export function DisplayQuiz(
     const questionComponentProps: questionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
-        setAnswer: setCurrentAnswer,
         onNext: handleAnswerSubmit
     };
 

@@ -4,20 +4,13 @@ import { Form, Button } from 'react-bootstrap';
 export function McSingleResponse({
     question,
     options,
-    setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    setAnswer: (answer: string) => void;
-    onNext: (next: boolean) => void;
+    onNext: (answer: string) => void;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string>("");
-
-    function updateAnswer(currAnswer: string) {
-        setLocalAnswer(currAnswer)
-        setAnswer(currAnswer)
-    }
     
     return (
         <div>
@@ -32,12 +25,14 @@ export function McSingleResponse({
                                 label={choice}
                                 value={choice}
                                 checked={localAnswer === choice}
-                                onChange={() => updateAnswer(choice)}
+                                onChange={() => setLocalAnswer(choice)}
                             />
                         </li>
                     ))}
                 </ul>
-                <Button onClick={() => onNext(true)}>Next</Button>
+                <Button
+                    disabled={localAnswer === ""}
+                    onClick={() => onNext(localAnswer)}>Next</Button>
             </Form>
         </div>
     );

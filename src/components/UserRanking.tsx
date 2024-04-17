@@ -4,13 +4,11 @@ import { Button } from 'react-bootstrap';
 export function UserRanking({
     question,
     options,
-    setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    setAnswer: (answer: string) => void;
-    onNext: (next: boolean) => void;
+    onNext: (answer: string) => void;
 }): JSX.Element {
     const [categories, setCategories] = useState<string[]>(options);
     
@@ -23,6 +21,10 @@ export function UserRanking({
             )
     }
      */
+
+    function compressAnswer(): string {
+        return categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, "");
+    }
     const pushUp = (priority: string) => {
         const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
         if (currIndex > 0) {
@@ -31,7 +33,6 @@ export function UserRanking({
             [newPriorities[currIndex - 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex - 1]];
             setCategories(newPriorities);
         }
-        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
     }
     const pushDown = (priority: string) => {
         const currCount = categories.reduce((count: number, chosenMember: string) => count += 1, 0);
@@ -42,7 +43,6 @@ export function UserRanking({
             [newPriorities[currIndex + 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex + 1]];
             setCategories(newPriorities);
         }
-        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
     }
     return (
         <div>
@@ -66,7 +66,7 @@ export function UserRanking({
                     </li>
                 ))}
             </ol>
-            <Button onClick={() => onNext(true)}></Button>  
+            <Button onClick={() => onNext(compressAnswer())}></Button>  
         </div>
     )
 }
