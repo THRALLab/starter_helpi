@@ -79,14 +79,12 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
     };
     return (
         <div>
-        <header className="header">
-            <div className="icon-container">
-                <img src={BrainIcon} alt="Brain Icon" className="icon" onClick={() => handlePage('Home')} />
-            </div>
-            <h2 className="title" onClick={() => handlePage('Home')}>Brain Spark</h2>
-            <div className="home-container">
-            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="button-icon" /></Button>
-            </div>
+       <header className="header">
+        <div className="title-container">
+        <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')}/>
+        <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
+            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
+        </div>
         </header>
         <div style={style.column}>
             {questions.map((q, idx) => (

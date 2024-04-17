@@ -12,14 +12,10 @@ const Home: React.FC<HomeProp> = ({ handlePage }) => {
     return (
         <div>
     <header className="header">
-        <div className="hover-container">
-        <div className="icon-container">
-        <img src={BrainIcon} alt="Brain Icon" className="icon" onClick ={() => handlePage('Home')}/>
-        </div>
-        </div>
+        <div className="title-container">
+        <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')}/>
         <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
-        <div className="home-container">
-                <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="button-icon" /></Button>
+            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
         </div>
         </header>
         <div className="home-center">
