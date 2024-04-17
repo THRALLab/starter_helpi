@@ -44,13 +44,13 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
             </Nav.Link>
           </Nav>
           <div className='ms-auto'>
-            {page !== "home" && page !== previousPage && (
+            {(page !== previousPage) && (
               <Button onClick={handleBackButtonClick} className='d-flex align-items-center navbar-back' style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
                 <GoArrowLeft style={{ marginRight: '2px' }} />
                 <Nav.Link >Back</Nav.Link>
               </Button>
             )}
-            {(page === "Home" || page === previousPage) && (
+            {(page === previousPage) && (
               <Button onClick={handleBackButtonClick} className='disabled d-flex align-items-center navbar-back' style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
                 <GoArrowLeft style={{ marginRight: '2px' }} />
                 <Nav.Link >Back</Nav.Link>
