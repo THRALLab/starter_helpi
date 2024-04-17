@@ -1,9 +1,8 @@
 import React from 'react';
 import { Buttons } from './Buttons';
-import '/Users/rubinashaik/starter_helpi/src/App.css';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Item from '@mui/material/ListItem';
-import 'src/App.css'
+//import 'App.css';
 
 export function Home(): JSX.Element {
     return (
