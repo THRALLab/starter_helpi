@@ -4,11 +4,13 @@ import { Button } from 'react-bootstrap';
 export function UserRanking({
     question,
     options,
+    aboluteAnswer,
     setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
+    aboluteAnswer: string;
     setAnswer: (answer: string) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
@@ -51,12 +53,14 @@ export function UserRanking({
                 {categories.map((category) => (
                     <li key={category}>
                         <Button
+                            key={`${category}⬆️`}
                             variant="outline-secondary"
                             size="sm"
                             onClick={() => pushUp(category)}
                         >⬆️</Button>
                         {' '}
                         <Button
+                            key={`${category}⬇️`}
                             variant="outline-secondary"
                             size="sm"
                             onClick={() => pushDown(category)}
@@ -66,7 +70,7 @@ export function UserRanking({
                     </li>
                 ))}
             </ol>
-            <Button onClick={() => onNext(true)}></Button>  
+            <Button onClick={() => onNext(true)}></Button>
         </div>
     )
 }

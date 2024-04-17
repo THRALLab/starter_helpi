@@ -4,11 +4,13 @@ import { Form, Button } from 'react-bootstrap';
 export function McSingleResponse({
     question,
     options,
+    aboluteAnswer,
     setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
+    aboluteAnswer: string;
     setAnswer: (answer: string) => void;
     onNext: (next: boolean) => void;
 }): JSX.Element {
@@ -27,6 +29,7 @@ export function McSingleResponse({
                     {options.map((choice) => (
                         <li key={choice}>
                             <Form.Check
+                                key={`${choice}Select`}
                                 type="radio"
                                 id={choice}
                                 label={choice}

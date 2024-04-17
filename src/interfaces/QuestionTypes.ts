@@ -9,6 +9,7 @@ export interface Question {
 export interface questionComponentProps {
   question: string;
   options: string[];
+  aboluteAnswer: string;
   setAnswer: (userAnswer: string) => void;
   onNext: (status: boolean) => void;
 };
