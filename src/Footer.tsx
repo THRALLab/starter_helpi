@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./footer.css";
 
 export default function Footer() {
 	//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -23,7 +24,11 @@ export default function Footer() {
 	}
 
 	return (
-		<div>
+		<footer>
+			&copy; Hairum Qureshi, Mithra Sankar, Olive Odida, and Olivia Folliard
+			&nbsp;
+			{new Date().getFullYear()}
+			&nbsp;
 			<label>API Key Here: </label>
 			<input
 				type="password"
@@ -33,6 +38,6 @@ export default function Footer() {
 			<button className="Submit-Button" onClick={handleSubmit}>
 				Submit
 			</button>
-		</div>
+		</footer>
 	);
 }
