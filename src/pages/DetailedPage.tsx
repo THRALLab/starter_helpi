@@ -7,19 +7,16 @@ const DetailedPage = () => {
 	const [response, setResponse] = useState<(boolean | string)[]>
 	([false, false, false, false, "", false, false, false, false, "", false, false, false, false, "", false, false, false, false, "",false, 
 	false, false, false, "", false, false, false, false, "",false, false, false, false, "",])
-	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false,false, false]);
+	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false,false, false]); //correlates to the the "other" text inputs
 
-	console.log(response[0]);
-	console.log(response[1]);
-	console.log(response[4])
-	console.log(otherSelected)
-	function handleRadio(option:string, index:number, otherIndex:number) {
+	console.log(response)
+	function handleRadio(option:string, index:number, otherIndex:number) { 
 		if(option === "Other:"){
 			const newOtherStatus=[...otherSelected]
 			newOtherStatus[otherIndex] = true;
 			setOtherSelected(newOtherStatus);
 			const newResponse = [...response];
-			for(let i=0; i < 4; ++i){
+			for(let i=0; i < 4; ++i){ //makes sure all the other radio buttons are false if the other radio button is selected
 				newResponse[i] = false;
 			}
 
@@ -29,14 +26,14 @@ const DetailedPage = () => {
 			newOtherStatus[otherIndex] = false;
 			setOtherSelected(newOtherStatus);
 			const newResponse = [...response];
-			for(let i=0; i < 4; ++i){
+			for(let i=0; i < 4; ++i){ //makes all the options false
 				newResponse[i] = false;
 			}
-			newResponse[index] = true;
+			newResponse[index] = true; //makes the selected radio button true; selecting it
 			setResponse(newResponse);
 		}
 	}
-	function handleOtherSelect(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index:number){
+	function handleOtherSelect(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index:number){ //updates the text input box
 		const newResponse = [...response];
 		newResponse[index] = event.target.value;
 		setResponse(newResponse);
