@@ -3,6 +3,9 @@ import "./App.css";
 import { Button, Form } from "react-bootstrap";
 // MOVED THE IMPORT STATEMENTS TO HOME PAGE FILE
 import NavigationBar from "./components/homePageComp/navigationBar";
+import DetailedQuestions from './pages/DetailedQuestions';
+import BasicQuestions from './pages/BasicQuestions';
+import Home from './pages/Home';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -14,6 +17,9 @@ if (prevKey !== null) {
 
 function App() {
     const [key, setKey] = useState<string>(keyData); //for api key input
+    const [currPg, setCurrPg] = useState<string>("Home"); // switches pages
+    const [activeTab, setActiveTab] = useState<string>('Home'); // bolds current page
+
 
     //sets the local storage item to the api key the user inputed
     function handleSubmit() {
@@ -25,6 +31,19 @@ function App() {
     function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
         setKey(event.target.value);
     }
+
+    const updatePageState = () => {
+        switch (currPg) {
+            case 'Basic':
+                return <BasicQuestions handlePage={setCurrPg} />; // switches to Basic 
+            case 'Detailed':
+                return <DetailedQuestions handlePage={setCurrPg} />; // switches to Detailed 
+            case 'Home':
+            default:
+                return <Home handlePage={setCurrPg} />; // switches to Home 
+        }
+    }
+
     return (
         <div
             className="App"
@@ -35,7 +54,8 @@ function App() {
             }}
         >
             {/* Buttons to switch states*/}
-            <NavigationBar />
+            <NavigationBar handlePage={setCurrPg}/>
+            {updatePageState()}
 
             {/* UNEDIT THIS IF NECESSARY vv
             <div>

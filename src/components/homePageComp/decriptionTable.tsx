@@ -1,4 +1,23 @@
+import React, { useState } from 'react';
+import BasicQuestions from '../../pages/BasicQuestions';
+import DetailedQuestions from '../../pages/DetailedQuestions';
+
 const DescriptionTable: React.FC = () => {
+    //const [page, setPage] = useState(0);
+    //const [activeTab, setActiveTab] = useState<string>('Home');
+    const [page, setPage] = useState(0);
+  
+
+
+    const handleTabClick = (tabName: string) => {
+        if(tabName === 'Basic') {
+          setPage(1)
+        }
+        else if(tabName === 'Detailed') {
+          setPage(2)
+        }
+      };
+
     return (
         <div className="container">
             <div className="section">
@@ -9,6 +28,7 @@ const DescriptionTable: React.FC = () => {
                     questions. With immediate feedback, you will know which
                     career is right for you in a matter of a few minutes!{" "}
                 </p>
+                <button onClick={() => handleTabClick('Basic')}> Start Basic Quiz</button>
             </div>
             <div className="section">
                 <h2 className="header">Detailed</h2>
@@ -17,8 +37,10 @@ const DescriptionTable: React.FC = () => {
                     will give you a more accurate and detailed assesment of what
                     carreer you should choose.
                 </p>
+                <button onClick={() => handleTabClick('Detailed')}> Start Detailed Quiz</button>
             </div>
         </div>
+        
     );
 };
 export default DescriptionTable;

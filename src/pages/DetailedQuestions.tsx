@@ -1,6 +1,8 @@
 import React from "react";
-
-const detailedQuestions: React.FC = () => {
+interface DetailedProp {
+    handlePage: (page: string) => void;
+}
+const detailedQuestions: React.FC<DetailedProp> = () => {
 
     return (
     <div>
