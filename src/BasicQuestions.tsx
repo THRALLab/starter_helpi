@@ -27,13 +27,14 @@ const QUESTIONS = [
 ]
 
 const BasicQuestions: React.FC = () => {
+  let newOptions:Array<string | null[]> = []
   const [chosenOption, setChosenOption] = useState<Array<string | null[]>>(Array(QUESTIONS.length).fill(null));
   function updateOption(event: React.ChangeEvent<HTMLInputElement>, index: number) {
-    const newOptions = [...chosenOption];
+    newOptions = [...chosenOption];
     newOptions[index] = event.target.value;
     setChosenOption(newOptions);
   }
-  const progress = (Object.keys(chosenOption).length / QUESTIONS.length) * 100;
+  const progress = (Object.keys(newOptions).length / QUESTIONS.length) * 100;
   return (
       <div>
       <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
