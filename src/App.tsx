@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { Home } from './components/Home';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Buttons } from './components/Buttons';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { BasicQuestionsPage } from './components/BasicQuestionsPage';
 import { DetailedQuestionsPage } from './components/DetailedQuestionsPage';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 // test comment
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -29,9 +31,11 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
   return (
     <div className="App">
       <HashRouter>
+      
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/BasicQuestionsPage" element={<BasicQuestionsPage />}/>
@@ -42,6 +46,7 @@ function App() {
         
       
   </header>*/}
+       
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>

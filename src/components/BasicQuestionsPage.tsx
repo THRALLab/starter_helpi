@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 
+
 export function BasicQuestionsPage(): JSX.Element {
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
