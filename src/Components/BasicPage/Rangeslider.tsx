@@ -25,6 +25,7 @@ const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleChange}) => {
   ) => {
     setRange(event.target.value); 
     handleChange(event as ChangeEvent<HTMLInputElement>);
+    console.log(event.target.value);
   };
 
   return (
@@ -35,7 +36,7 @@ const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleChange}) => {
         {range === "5" ? <span style = {{color: '#6923ff', fontWeight: 'bold'}}>Agree</span> : <span style = {{color: 'white', fontWeight: 'bold'}}>Agree</span>}
       </div>
       <Form.Control
-        style ={{background: 'black'}}
+        style ={{background: 'black', border: 'black'}}
         value={range} // Current value of range slider
         type="range" // Form type
         min={1} // Lowest possible value

@@ -2,3 +2,17 @@
     display: flex;
     justify-content: space-between;
 }
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 20px; 
+    height: 20px; 
+    background: #6923ff; 
+    cursor: pointer; 
+    border-radius: 50%; 
+}
+
+input[type='range']:focus::-webkit-slider-thumb {
+    background: #5e20e1; 
+}
