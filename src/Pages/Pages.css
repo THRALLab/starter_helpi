@@ -1,11 +1,19 @@
 @font-face {
-    font-family: 'Playfair Display Black';
+    font-family: 'Poppins';
     src: url('./PlayfairDisplay-Black.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./Poppins-Bold.tff') format('truetype');
+    font-family: 'Playfair Display Black';
+    src: url('./Poppins-Bold.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Playfair Display Black', serif;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
 }
 
 .home-center {

@@ -1,33 +1,26 @@
-import './App.css';
-import Button from 'react-bootstrap/Button';
-import { Container } from 'react-bootstrap';
-import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
 
-export default function NavHome() {
-    return (
+const NavHome = () => {
+  return (
+    <>
+      <Navbar bg="0000" variant="primary">
         <Container>
-        <Navbar.Brand href="#home">Career Helpi</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">
-              <Button style={{color: 'black'}}>Home</Button>
-            </Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Next</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Prev
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">List Careers</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    )
+          <Navbar.Brand href="#home">Career Search</Navbar.Brand>
+          <Form className="d-flex">
+            <FormControl
+              type="search"
+              placeholder="Search by career title"
+              className="mr-2"
+              aria-label="Search"
+            />
+          </Form>
+        </Container>
+      </Navbar>
+    </>
+  )
 }
+
+export default NavHome;

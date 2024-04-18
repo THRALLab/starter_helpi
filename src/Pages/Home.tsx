@@ -4,6 +4,7 @@ import BrainIcon from './modifiedBrainIcon.svg';
 import homeIcon from './house.svg';
 import arrowIcon from './arrow.svg';
 import './Pages.css';
+import NavHome from '../navbar';
 
 interface HomeProp {
     handlePage: (page: string) => void;
