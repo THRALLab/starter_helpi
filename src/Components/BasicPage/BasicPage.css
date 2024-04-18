@@ -19,5 +19,9 @@
 	color: white;
 }
 .body{
-	text-align: left;
+	text-align: center;
+}
+.accordion-button {
+    font-size: 18px; 
+    font-weight: bold; 
 }

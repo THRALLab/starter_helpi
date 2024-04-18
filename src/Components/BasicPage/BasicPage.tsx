@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import './BasicPage.css'
+import RangeSlider from "./Rangeslider";
+
 
 
 
 
 export function BasicPage() {
-    const questions: string[] = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5"]
+
+    const [, setRangeSliderValue] = useState("3")
+  
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRangeSliderValue(event.target.value)
+    }
+
+    const questions: string[] = 
+    [
+    "1. I enjoy solving complex problems:",
+    "2. I prefer working in a team rather than alone: ", 
+    "3. I am comfortable with public speaking and presenting ideas to others:", 
+    "4. I find it fulfilling to help others and make a positive impact on their lives:",
+    "5. I am interested in technology and staying updated with the latest trends:",
+    "6. I prefer a job that allows for a flexible schedule and the possibility of remote work:",
+    "7. I am more creative than analytical:"
+    ]
     let eventKey = 0;
     return (
         <div className='basic-page-container'>
@@ -18,21 +36,7 @@ export function BasicPage() {
                         <Accordion.Item key={eventKey} eventKey={(eventKey++).toString()} className="item">
                             <Accordion.Header className='header'>{question}</Accordion.Header>
                             <Accordion.Body className='body'>
-                                <Form.Check
-                                    label="Option 1"
-                                    name="group1"
-                                    type='radio'
-                                />
-                                <Form.Check
-                                    label="Option 2"
-                                    name="group1"
-                                    type='radio'
-                                />
-                                <Form.Check
-                                    label="Option 3"
-                                    name="group1"
-                                    type='radio'
-                                />
+                                <RangeSlider handleChange={handleChange}/>
                             </Accordion.Body>
                         </Accordion.Item>
                     )
