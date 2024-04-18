@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
+import { Buttons } from './Buttons';
+
 
 export function DetailedQuestionsPage(): JSX.Element {
     const [goToHomePage, setGoToHomePage] = useState(false);

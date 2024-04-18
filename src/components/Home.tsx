@@ -4,11 +4,25 @@ import { Buttons } from './Buttons';
 //import Item from '@mui/material/ListItem';
 //import 'App.css';
 import { Button } from 'react-bootstrap';
+import { Navigate } from 'react-router-dom';
 
 export function Home(): JSX.Element {
+    const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
+    const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
+    //const [goToHomePage, setGoToHomePage] = React.useState(false);
+
+    if (goToBasicQuestionsPage) {
+        return <Navigate to="/BasicQuestionsPage"/>
+    }
+
+    if (goToDetailedQuestionsPage) {
+        return <Navigate to="/DetailedQuestionsPage"/>
+    }
+    
     return (
+        
         <div>
-        <Buttons></Buttons>
+            <Buttons></Buttons>
         <p></p>
         <h1>Home Page</h1>
         <p></p>
@@ -23,7 +37,7 @@ export function Home(): JSX.Element {
             </p>
             <p></p>
            
-            <Button>Basic Questions Page</Button>
+            <Button onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
         </div>
         <div className="box">
             <p></p>
@@ -34,7 +48,7 @@ export function Home(): JSX.Element {
                 thorough explanations. 
             </p>
             <p></p>
-            <Button>Detailed Questions Page</Button>
+            <Button onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
         </div>
 
         </main>
