@@ -6,11 +6,9 @@ export default function AboutButton({page, setPage}: {page:string; setPage: (new
     //passed state as props to button component so that detailed page could be rendered on click
     return (
         <div>
-            <a target="_blank" rel="noreferrer">
-                <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
-                    <BsInfo />
-                </Button>
-            </a>
+            <Button onClick={() => setPage("About")} style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
+                <BsInfo />
+            </Button>
         </div>
     )
 }
