@@ -159,7 +159,7 @@ function DetailedQuestions() {
                 <span className = "DetailedQuestions-progress-bar-foreground" style={{height: `${(100 * (questionNumber / numberOfQuestions))}%`, backgroundColor: "rgba(0, 0, 0, 0.3)"}}></span>
               </div>
               <span className='DetailedQuestions-answers-display'>
-                {sliderValues.map((x, i) => <p>Q{i+1}: {x}</p>)}
+                {sliderValues.map((x, i) => <p key={i}>Q{i+1}: {x}</p>)}
               </span>
             </Col>
           </Row>
