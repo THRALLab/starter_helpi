@@ -11,8 +11,8 @@
 .Description {
   display: flex;
   flex-direction: column;
-  width: 40%;
-  height: 30%;
+  width: 70%;
+  height: 90%;
   background-color: #AFBEA2;
   outline: 1px solid black;
   border-radius: 10px;
@@ -24,7 +24,7 @@
   height: 35px;
   text-align: center;
   outline: 1px solid black;
-  border-radius: 10px;
+  border-radius: 60px;
 }
 
 .Question-instructions {
@@ -33,6 +33,6 @@
   text-align: center;
 }
 .Page-title {
-  height: 25px;
+  height: 85px;
   font-size: calc(30px + 2vmin);
 }
