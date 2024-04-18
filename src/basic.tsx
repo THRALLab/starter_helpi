@@ -77,7 +77,6 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 					{option}
 				</label>
 			))}
-			<p>You selected: {selected}</p>
 		</div>
 	);
 };
