@@ -98,9 +98,11 @@ function Detailed() {
 		}
 	}, [answeredQuestions]);
 
+	const { checkConnection } = useChatGPT();
+
 	return (
 		<>
-			<button onClick={useChatGPT}>CLICK ME</button>;
+			<button onClick={checkConnection}>CLICK ME</button>;
 			<div className="quizContainer">
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
