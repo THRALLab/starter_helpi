@@ -132,6 +132,7 @@ function Detailed() {
 													? "#006BA6"
 													: "#003459"
 											}`,
+											transition: "0.25s ease",
 											border: `${
 												answeredQuestions.some(
 													selectedAnswer => selectedAnswer.choice === choice
