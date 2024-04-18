@@ -1,0 +1,27 @@
+.column {
+    border: 1px solid #ccc;
+    margin: 10px;  
+    padding: 20px;
+    display: flex;
+    align-items: center; 
+    flex-direction: column;  
+}
+
+.questionContainer {
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;  
+}
+
+.button {
+    margin: 0 5px;
+    background-color: #007bff;  
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
