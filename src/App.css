@@ -6,6 +6,15 @@
   height: 40vmin;
   pointer-events: none;
 }
+.App-header2{
+  background-color: #282c34;
+  display: flex;
+  padding: 10px 20px;
+  align-items: left;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -35,4 +44,5 @@
   to {
     transform: rotate(360deg);
   }
+
 }
