@@ -17,8 +17,8 @@ import OpenAI from "openai";
     //sets the local storage item to the api key the user inputed
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
-        window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
         main();
+        //window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
     }
 
     //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
@@ -33,6 +33,7 @@ import OpenAI from "openai";
       });
       
     async function main() {
+        console.log("API Key: " + key);
         const response = await openai.chat.completions.create({
           model: "gpt-4-turbo",
           messages: [
@@ -51,7 +52,6 @@ import OpenAI from "openai";
         });
       
         console.log(response.choices[0].message.content);
-        console.log(key);
     }
 
     return (
