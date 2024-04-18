@@ -23,11 +23,10 @@ if (prevKey !== null) {
 function DetailedQuestions() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   let slidenums = new Array<number>(30).fill(50);
-  //slidenums = slidenums.map( (x) => 50)
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
-  const [numberOfQuestions, setNumberOfQuestions] = useState(30)
+  const [numberOfQuestions] = useState(30)
   const [questionNumber, setQuestionNumber] = useState(0)
   const [questionBody, setQuestionBody] = useState("Question...")
   const [color, setColor] = useState("")
@@ -44,8 +43,8 @@ function DetailedQuestions() {
     const parsedData = JSON.parse(JSON.stringify(jsonData));
     const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
     setQuestions(detailedQuestions)
-    setNumberOfQuestions(detailedQuestions.length)
-    setQuestionNumber(questionNumber)
+    //setNumberOfQuestions(detailedQuestions.length)
+    //setQuestionNumber(questionNumber)
     setColor(colors[Math.floor(Math.random() * colors.length)])
     setQuestionBody(detailedQuestions[questionNumber].question)
   }
