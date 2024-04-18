@@ -39,7 +39,6 @@ const DescriptionTable: React.FC = () => {
                 </p>
                 <button onClick={() => handleTabClick('Detailed')}> Start Detailed Quiz</button>
             </div>
-            {page === 1 ? <BasicQuestions /> : <DetailedQuestions />}
         </div>
         
     );

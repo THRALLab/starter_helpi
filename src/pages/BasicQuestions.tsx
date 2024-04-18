@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-const BasicQuestions: React.FC = () => {
+interface BasicProp {
+    handlePage: (page: string) => void;
+}
+const BasicQuestions: React.FC<BasicProp> = () => {
     const [occupation, setOccupation] = useState("");
     const [experience, setExperience] = useState("");
     const [teamwork, setTeamwork] = useState("");

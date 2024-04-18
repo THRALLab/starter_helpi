@@ -3,44 +3,34 @@ import BasicQuestions from '../../pages/BasicQuestions';
 import DetailedQuestions from '../../pages/DetailedQuestions';
 import Home from '../../pages/Home';
 
-const NavigationBar: React.FC = () => {
+interface NavProp {
+  handlePage: (page: string, tabname: string) => void;
+}
+
+const NavigationBar: React.FC<NavProp> = ({handlePage}) => {
   const [activeTab, setActiveTab] = useState<string>('Home');
-  const [page, setPage] = useState(0);
-
-
-  const handleTabClick = (tabName: string) => {
-    setActiveTab(tabName);
-    if(tabName === 'Home') {
-      setPage(0)
-    }
-    else if(tabName === 'Basic') {
-      setPage(1)
-    }
-    else if(tabName === 'Detailed') {
-      setPage(2)
-    }
-  };
 
   return (
     <div>
     <nav style={{ backgroundColor: '#426B69', padding: '5px' }}>
       <ul style={{ listStyleType: 'none', margin: 0, padding: 0, display: 'flex', justifyContent: 'center' }}>
         <li className={activeTab === 'Home' ? 'active' : ''}>
-          <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handleTabClick('Home')}>Home</button>
+          <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handlePage('Home', 'Home')}>Home</button>
         </li>
         <li className={activeTab === 'Basic' ? 'active' : ''}>
-          <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handleTabClick('Basic')}>Basic</button>
+          <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handlePage('Basic', 'Basic')}>Basic</button>
         </li>
         <li className={activeTab === 'Detailed' ? 'active' : ''}>
-          <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handleTabClick('Detailed')}>Detailed</button>
+          <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handlePage('Detailed', 'Detailed')}>Detailed</button>
         </li>
         <li className={activeTab === 'Contact' ? 'active' : ''}>
-          <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handleTabClick('Contact')}>Contact</button>
+          <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handlePage('Contact', 'Contact')}>Contact</button>
         </li>
       </ul>
     </nav>
-    {page === 0 ? <Home /> : page === 1 ? <BasicQuestions /> : <DetailedQuestions />}
     </div>
+    
+
   );
 }
 
