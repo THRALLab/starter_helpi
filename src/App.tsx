@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { Home } from './components/Home';
 
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BasicQuestionsPage } from './components/BasicQuestionsPage';
+import { DetailedQuestionsPage } from './components/DetailedQuestionsPage';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import Button from '@mui/joy/Button';
+
+// test comment
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -24,22 +32,22 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HashRouter>
+      
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/BasicQuestionsPage" element={<BasicQuestionsPage />}/>
+          <Route path="/DetailedQuestionsPage" element={<DetailedQuestionsPage />}/>
+        </Routes>
+      </HashRouter>
+      {/*<header className="App-header">
+        
+      
+  </header>*/}
+       
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
