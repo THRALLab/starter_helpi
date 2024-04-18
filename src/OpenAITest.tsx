@@ -1,7 +1,12 @@
+/*
 import React, { useState } from 'react';
 import { keyData } from './APIFooter';
+import Configuration from 'openai';
+import OpenAIApi from 'openai';
 import OpenAI, {ClientOptions} from "openai";
+*/
 
+/*
 const APIURL = "https://api.openai.com/v1/chat/completions";
 //const APIURL = 'https://api.openai.com/v1/engines/davinci-codex/completions';
 let APIKey = keyData;
@@ -23,6 +28,7 @@ async function OpenAIRequest() {
 }
 
 export default OpenAIRequest;
+*/
 
 /*
 export default function App() {
