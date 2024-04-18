@@ -31,7 +31,7 @@ export function BasicPage() {
         <div className='basic-page-container'>
             <h1 className='title'>Basic Quiz</h1>
             <div className='accordion-container'>
-                <Accordion defaultActiveKey="0" style={{ width: '50%', backgroundColor: '#21273b' }} >
+                <Accordion defaultActiveKey={questions.map((_, i) => i.toString())} style={{ width: '50%', backgroundColor: '#21273b' }} alwaysOpen>
                     {questions.map((question: string) => (
                         <Accordion.Item key={eventKey} eventKey={(eventKey++).toString()} className="item">
                             <Accordion.Header className='header'>{question}</Accordion.Header>
