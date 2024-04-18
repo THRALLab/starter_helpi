@@ -17,7 +17,8 @@ import OpenAI from "openai";
     //sets the local storage item to the api key the user inputed
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
-        main();
+        main(); //Calls the main function once an API key has been submitted
+
         //window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
     }
 
@@ -27,31 +28,35 @@ import OpenAI from "openai";
     }
 
     const openai = new OpenAI({
-        ///organization:,
-        apiKey: key,
-        dangerouslyAllowBrowser: true,
+        apiKey: key, //this is the api key that the user inputted
+        dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
       });
       
-    async function main() {
-        console.log("API Key: " + key);
-        const response = await openai.chat.completions.create({
-          model: "gpt-4-turbo",
-          messages: [
-            {
-              "role": "system",
-              "content": "You will tell me what career I should pursue based on my interests."
-            },
-            {
-              "role": "user",
-              "content": "I like math, computers, and logic."
-            }
-          ],
-          temperature: 0.8,
-          max_tokens: 64,
-          top_p: 1,
-        });
-      
-        console.log(response.choices[0].message.content);
+    async function main() { //This function is to test a fake conversation witht the GPT-4 model
+        console.log("API Key: " + key); //purely for testing purposes
+        try{
+            const response = await openai.chat.completions.create({
+            model: "gpt-4-turbo",
+            messages: [
+                {
+                "role": "system",
+                "content": "You will tell me what career I should pursue based on my interests."
+                },
+                {
+                "role": "user",
+                "content": "I like math, computers, and logic."
+                }
+            ],
+            temperature: 0.8,
+            max_tokens: 64,
+            top_p: 1,
+            });
+
+            console.log(response.choices[0].message.content); //GPT Response to the user's input
+        }
+        catch(e){ //catches any errors that may occur with an invalid API key
+            console.log(e);
+        }  
     }
 
     return (
