@@ -64,7 +64,7 @@ export function SimpleQuestions(): JSX.Element {
             setBackButtonDisabled(false)
             const nextQuestion = questionNumber + 1
             setQuestionNumber(nextQuestion)
-            setColor(colors[Math.floor(Math.random() * colors.length)])
+            //setColor(colors[Math.floor(Math.random() * colors.length)]) People didn't like it
             setQuestionBody(questions[nextQuestion].question)
             setOption1(questions[nextQuestion ].option1)
             setOption2(questions[nextQuestion ].option2)
@@ -105,7 +105,7 @@ export function SimpleQuestions(): JSX.Element {
             } else {
                 const previousQuestion = questionNumber - 1
                 setQuestionNumber(previousQuestion)
-                setColor(colors[Math.floor(Math.random() * colors.length)])
+                //setColor(colors[Math.floor(Math.random() * colors.length)]) People didn't like it
                 setQuestionBody(questions[previousQuestion].question)
                 setOption1(questions[previousQuestion].option1)
                 setOption2(questions[previousQuestion].option2)
