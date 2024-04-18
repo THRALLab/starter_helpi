@@ -64,6 +64,7 @@
   background-color: rgb(251, 223, 251);
   position: static;
   align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
@@ -73,4 +74,12 @@
 
 .padding2 {
   padding-bottom: 150px;
+}
+
+.padding3 {
+  padding-top: 10px;
+}
+
+.box-shadow {
+    box-shadow: 10px 10px;
 }

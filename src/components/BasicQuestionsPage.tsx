@@ -55,7 +55,7 @@ export function BasicQuestionsPage(): JSX.Element {
       </Container>
     </Navbar>
             <p></p>
-            <h1>Basic Questions Page</h1>
+            <h1 className='padding3'>Basic Questions Page</h1>
             <p className="text-muted">This basic career assessment is hand crafted to help comprehend preferences and strengths that you have and which specific careers they are best suited for. You'll gain insights into the types of careers and opportunities that may suit you best. Coming soon. </p>
             <input
                 type="text"

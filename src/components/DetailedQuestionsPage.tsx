@@ -51,7 +51,7 @@ export function DetailedQuestionsPage(): JSX.Element {
       </Container>
     </Navbar>
             <p></p>
-            <h1>Detailed Questions Page</h1>
+            <h1 className='padding3'>Detailed Questions Page</h1>
             <p className="text-muted">The detailed career assessment goes in depth to plan out your professional preferences, skills, and motivators. Completing this assessment will provide you with a complex overview of career paths that align with your detailed profile. Coming soon. </p>
             <Form.Control
                 type="text"
