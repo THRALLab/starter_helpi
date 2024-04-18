@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 
-import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
+import Button from '@mui/joy/Button';
+
 
 
 
@@ -48,15 +50,15 @@ export function DetailedQuestionsPage(): JSX.Element {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-            <p>Detailed Questions Page</p>
+            <p></p>
+            <h1 className='padding3'>Detailed Questions Page</h1>
             <p className="text-muted">The detailed career assessment goes in depth to plan out your professional preferences, skills, and motivators. Completing this assessment will provide you with a complex overview of career paths that align with your detailed profile. Coming soon. </p>
             <Form.Control
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
             />
-            <Button onClick={() => setGoToHomePage(true)}>Home</Button>
-            <Button onClick={handleClearText}>Reset</Button>
+            <Button variant="solid" onClick={handleClearText}>Reset</Button>
         </div>
     );
 }

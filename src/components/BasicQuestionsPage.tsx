@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
+import Button from '@mui/joy/Button';
 
 
 export function BasicQuestionsPage(): JSX.Element {
@@ -36,7 +37,7 @@ export function BasicQuestionsPage(): JSX.Element {
              <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
-              <Nav.Link onClick={() => {setGoToHomePage(true)}}>Home</Nav.Link>
+              <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
               <Nav.Link onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Nav.Link>
                   <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -53,14 +54,14 @@ export function BasicQuestionsPage(): JSX.Element {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-            <p>Basic Questions Page</p>
+            <p></p>
+            <h1 className='padding3'>Basic Questions Page</h1>
             <p className="text-muted">This basic career assessment is hand crafted to help comprehend preferences and strengths that you have and which specific careers they are best suited for. You'll gain insights into the types of careers and opportunities that may suit you best. Coming soon. </p>
             <input
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
             />
-            <Button onClick={handleGoToHomePage}>Home</Button>
             <Button onClick={handleClearText}>Reset</Button>
         </div>
     );

@@ -3,8 +3,8 @@ import { Buttons } from './Buttons';
 //import Grid from '@mui/material/Grid'; // Grid version 1
 //import Item from '@mui/material/ListItem';
 //import 'App.css';
-import { Button } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
+import Button from '@mui/joy/Button';
 
 export function Home(): JSX.Element {
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
@@ -24,9 +24,9 @@ export function Home(): JSX.Element {
         <div>
             <Buttons></Buttons>
         <p></p>
-        <h1>Home Page</h1>
+        <h1 className='padding3'>Home Page</h1>
         <p></p>
-        <main>
+        <main className='padding2'>
         <div className="box">
             <p></p>
             <h3>Basic Questions Page</h3>
@@ -37,7 +37,7 @@ export function Home(): JSX.Element {
             </p>
             <p></p>
            
-            <Button onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
+            <Button color="primary" variant='solid' onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
         </div>
         <div className="box">
             <p></p>
@@ -48,7 +48,7 @@ export function Home(): JSX.Element {
                 thorough explanations. 
             </p>
             <p></p>
-            <Button onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
+            <Button color="primary" variant="solid" onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
         </div>
 
         </main>
