@@ -2,8 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+
 .App {
   text-align: center;
+  background-color: #b8dcfb; /* Color in HEX */ 
 }
 
 .App-logo {
@@ -18,7 +20,7 @@
 }
 
 .App-header {
-  background-color: #b0a8fd;
+  ackground-color: #b8dcfb;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -29,7 +31,7 @@
 }
 
 .Home-body {
-  background-color: #b0a8fd;
+  background-color: #b8dcfb;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -59,7 +61,7 @@
   padding: 40px;
   margin: 20px;
   display: inline-block;
-  background-color: rgb(247, 247, 164);
+  background-color: rgb(251, 223, 251);
   position: static;
   align-items: center;
 
@@ -67,4 +69,8 @@
 
 .padding {
   padding-bottom: 10px;
+}
+
+.padding2 {
+  padding-bottom: 150px;
 }
