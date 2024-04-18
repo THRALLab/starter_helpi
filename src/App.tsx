@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Basic from "./basic";
 import Detailed from "./detailed";
 import Navigation from "./navbar";
+import BasicDetailedButtons from "./basicDetailedButton";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -32,6 +33,7 @@ function App() {
     <Router>
 		<div className="App">
 			<Navigation />
+			<BasicDetailedButtons />
 			<Routes>
 				<Route path="/basic" Component={Basic} />
 				<Route path="/detailed" Component={Detailed} />
@@ -48,20 +50,6 @@ function App() {
 					Submit
 				</Button>
 			</Form>
-		</div>
-	  	<div>
-			<div><Button>Basic Quiz</Button></div>
-				<p>
-				This is a 10 - 15 minute quiz aimed to gauge 
-				interests and skills in order to provide suggestions 
-				and information on potential careers.
-
-				</p>
-			<div ><Button>Detailed Quiz</Button></div>
-				<p>
-				This is a 30 - 35 minute quiz aimed to understand your 
-				goals and passions in order to provide potential careers. 
-				</p>
 		</div>
 	</Router>
 );
