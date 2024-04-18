@@ -4,23 +4,20 @@ import { Form, Button } from 'react-bootstrap';
 export function McMultiResponse({
     question,
     options,
-    aboluteAnswer,
-    setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    aboluteAnswer: string;
-    setAnswer: (answers: string) => void;
-    onNext: () => void;
+    onNext: (answer: string) => void;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string[]>([]);
 
-    useEffect(() => {
-        setAnswer(localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, ""));
-    });
+    // compresses the current answer into a string format
+    function compressAnswer(): string {
+        return localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, "")
+    }
 
-    function addAnswer(currAnswer: string): void {
+    function addAnswer(currAnswer: string) {
         if (localAnswer.includes(currAnswer)) {
             setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
         } else {
@@ -46,7 +43,7 @@ export function McMultiResponse({
                         </li>
                     ))}
                 </ul>
-                <Button onClick={onNext}>Next</Button>
+                <Button onClick={() => onNext(compressAnswer())}>Next</Button>
             </Form>
         </div>
     );

@@ -1,6 +1,6 @@
 // Import necessary hooks and components
-import React, { useState } from "react";
-import { Question, questionComponentProps } from "../interfaces/QuestionTypes";
+import { useState } from "react";
+import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
 import { TextResponse } from "./TextResponse"
@@ -9,12 +9,18 @@ import { SliderResponse } from "./SliderResponse";
 
 type DisplayQuizProps = Record<string, Question>;
 
+type QuestionAns = {
+    questionId: string,
+    answer: string
+}
+
 export function DisplayQuiz(
     { 
         quiz,
         title,
         questionsAnswerd,
-        setQuestionsAnswerd } 
+        setQuestionsAnswerd 
+    } 
     : 
     {
         title: string,
@@ -23,22 +29,38 @@ export function DisplayQuiz(
         setQuestionsAnswerd : (questionsAnswerd: number) => void 
     }
     ): JSX.Element {
-    const [currentQuestionId, setCurrentQuestionId] = useState<string>("root"); // Starting question ID
+    const [currentQuestionId, setCurrentQuestionId] = useState<string>("question1"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
-    const [answers, setAnswers] = useState<string[]>([]); // Array of all question answers
-    const [currentAnswer, setCurrentAnswer] = useState<string>(""); // Use to store answer for question currently being displayed 
+    const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
 
-    const handleAnswerSubmit = () => {
-        setAnswers([...answers, currentAnswer]);
-        const nextQuestionId = quiz[currentQuestionId].getNextQuestionId(currentAnswer);
-        setQuestionsAnswerd(questionsAnswerd);
+    // used to determine next question
+    const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps): string => {
+        // questions are id'd as `quiestion${questionNumber}`
+        if (currentQuestionId.includes("question")) {
+          const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`;
+          if (newId in quiz) return (newId);
+          else return "";
+        } 
+        else return "";
+      };
+
+    /**
+     * 
+     * @param answer - the answer for the current question
+     * when an answer is submitted the answer is passed and added to the answers
+     * the next question is then displayed
+     * if there is no next question then the quiz is over
+     */
+    const handleAnswerSubmit = (answer: string) => {
+        setAnswers([...answers, {questionId: currentQuestionId, answer: answer}])
+        const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz);
+        setQuestionsAnswerd(questionsAnswerd + 1)
         if (nextQuestionId === "") {
             setIsQuizComplete(true); // End of the quiz
         } else {
-            setCurrentAnswer("");
             setCurrentQuestionId(nextQuestionId); // Move to the next question
         }
-    };
+    }
 
     if (isQuizComplete) {
         return (<>
@@ -59,13 +81,7 @@ export function DisplayQuiz(
         <br></br>
         <h3>Current Answers:</h3>
         <ol>
-        {answers.map((target: string) => (
-            <li
-                key={`${target}Answer`}
-            >
-                {target}
-            </li>
-        ))}
+        {answers.map((target: QuestionAns) => (<li key={target.questionId}>{target.answer}</li>))}
         </ol>
         </div>
         </>)
@@ -73,15 +89,14 @@ export function DisplayQuiz(
 
     const currentQuestion = quiz[currentQuestionId];
 
-    const questionComponentProps: questionComponentProps = {
+    const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
-        aboluteAnswer: currentAnswer,
-        setAnswer: setCurrentAnswer,
         onNext: handleAnswerSubmit
     };
 
 
+    //displays the curent question type
     switch (currentQuestion.type) {
         case "MC_SINGLE_RESPONSE":
             return <McSingleResponse {...questionComponentProps} />;

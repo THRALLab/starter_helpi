@@ -13,19 +13,13 @@ import { Form } from 'react-bootstrap';
 export function SliderResponse({
     question,
     options,
-    setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    setAnswer: (answer: string) => void;
-    onNext: (next: boolean) => void;
+    onNext: (answer: string) => void;
 }): JSX.Element {
-    const [localAnswer, setLocalAnswer] = useState<string>("50");
-    function updateAnswer(currAnswer: string) {
-        setLocalAnswer(currAnswer)
-        setAnswer(currAnswer)
-    }
+    const [localAnswer, setLocalAnswer] = useState<string>("");
     
     return(
         <div>
@@ -34,9 +28,9 @@ export function SliderResponse({
                 <Form.Label>{question}</Form.Label>
                 <Form.Range
                     value={localAnswer}
-                    onChange={(e) => updateAnswer(e.target.value)}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
                 />
-                <Button onClick={() => onNext(true)}>Next</Button>
+                <Button onClick={() => onNext(localAnswer)}>Next</Button>
             </Form.Group>
         </div>
     )

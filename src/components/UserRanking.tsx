@@ -4,22 +4,27 @@ import { Button } from 'react-bootstrap';
 export function UserRanking({
     question,
     options,
-    aboluteAnswer,
-    setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    aboluteAnswer: string;
-    setAnswer: (answer: string) => void;
-    onNext: () => void;
+    onNext: (answer: string) => void;
 }): JSX.Element {
     const [categories, setCategories] = useState<string[]>(options);
+    
+    /**
+    const updatePriorities = (priority: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.target.checked
+            ? setCategories([...categories, priority])
+            : setCategories(
+                [...categories].filter((chosenMember: string): boolean => chosenMember !== priority)
+            )
+    }
+     */
 
-    useEffect(() => {
-        setAnswer(categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, ""))
-    });
-
+    function compressAnswer(): string {
+        return categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, "");
+    }
     const pushUp = (priority: string) => {
         const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
         if (currIndex > 0) {
@@ -65,7 +70,7 @@ export function UserRanking({
                     </li>
                 ))}
             </ol>
-            <Button onClick={onNext}>Next</Button>
+            <Button onClick={() => onNext(compressAnswer())}></Button>  
         </div>
     )
 }
