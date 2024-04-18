@@ -1,5 +1,5 @@
 // Import necessary hooks and components
-import React, { useState } from "react";
+import { useState } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
@@ -18,7 +18,8 @@ export function DisplayQuiz(
         quiz,
         title,
         questionsAnswerd,
-        setQuestionsAnswerd } 
+        setQuestionsAnswerd 
+    } 
     : 
     {
         title: string,
