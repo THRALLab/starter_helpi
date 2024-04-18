@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import { Button, Container, Form, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { Home } from './components/Home';
-import { Buttons } from './components/Buttons';
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { BasicQuestionsPage } from './components/BasicQuestionsPage';
 import { DetailedQuestionsPage } from './components/DetailedQuestionsPage';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
