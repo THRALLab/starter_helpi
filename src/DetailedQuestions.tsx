@@ -59,7 +59,7 @@ function DetailedQuestions() {
       setQuestionBody(questions[questionNumber + 1].question);
       setQuestionNumber(questionNumber + 1);
       setBackButtonDisabled(false);
-      setColor(colors[Math.floor(Math.random() * colors.length)]);
+      //setColor(colors[Math.floor(Math.random() * colors.length)]); People didn't like it
     }  else {
       // End of quiz...
       window.alert("You've completed the Detailed Quiz! Press the Report button to view your results!");
@@ -91,7 +91,7 @@ function DetailedQuestions() {
         setCurrSliderValue(sliderValues[questionNumber - 1])
         const previousQuestionIndex = questionNumber - 1;
         setQuestionBody(questions[previousQuestionIndex].question);
-        setColor(colors[Math.floor(Math.random() * colors.length)]);
+        //setColor(colors[Math.floor(Math.random() * colors.length)]); People didn't like it
         setQuestionNumber(previousQuestionIndex);
         
         if (previousQuestionIndex === 0) {
