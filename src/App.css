@@ -46,4 +46,11 @@ section {
   justify-content: space-between;
 }
 
-
+.app-footer {
+  width: 100%;
+  background-color: rgb(33, 33, 56);
+  color: white;
+  height: 80px;
+  text-align: center;
+  
+}
