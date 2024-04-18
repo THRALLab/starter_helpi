@@ -1,0 +1,152 @@
+.body {
+    --color-body-background: #8AD7F8;
+    --color-body-text: #000000;
+    --color-body-Headerbackground: #67CBF5;
+    --color-body-Headertext: #000000;
+    --color-body-Button: #a294ef;
+    --color-body-ButtonDisabled: #a294ef;
+    --color-body-ButtonHover: #b3a9ee;
+}
+
+.body-dark {
+    --color-body-background: #000000;
+    --color-body-text: #C9C9C9;
+    --color-body-Headerbackground: #173848;
+    --color-body-Headertext: #C9C9C9;
+    --color-body-Button: #a294ef75;
+    --color-body-ButtonDisabled: #a294ef75;
+    --color-body-ButtonHover: #a294efa6;
+}
+
+.General-header {
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(15px + 3vmin);
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    color: var(--color-body-Headertext);
+    background-color: var(--color-body-Headerbackground);
+}
+
+.Header-toggle {
+    position: absolute;
+    align-items: left;
+    font-size: calc(13px + 1vmin);
+    margin-left: 5%;
+    margin-top: 2px;
+    left: 0;
+    color: var(--color-body-Headertext);
+}
+
+.Header-button {
+    position: absolute;
+    align-items: right;
+    font-size: calc(10px + 2vmin);
+    margin-right: 5%;
+    margin-top: 2px;
+    right: 0;
+    color: var(--color-body-Headertext);
+}
+
+.Page-body {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: calc(6px + 2vmin);
+    position: relative;
+    padding-top: 3vh;
+    color: var(--color-body-text);
+    background-color: var(--color-body-background);
+}
+
+.Button-format {
+    height: '7vh';
+    width : '50vh'; 
+    font-size: "3vh";
+    color: var(--color-body-text);
+    background-color: var(--color-body-background);
+}
+
+.Button-link {
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button); 
+}
+
+.Button-link:hover {
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonHover); 
+}
+
+.Button-visible-true {
+    --visibility-button: visible;
+}
+
+.Button-visible-false {
+    --visibility-button: hidden;
+}
+
+.Button-next {
+    visibility: var(--visibility-button);
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button);
+}
+
+.Button-next:hover {
+    visibility: var(--visibility-button);
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonHover);
+}
+
+.Button-next-2 {
+    visibility: var(--visibility-button);
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button);
+}
+
+.Button-next-2:hover {
+    visibility: var(--visibility-button);
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonHover);
+}
+
+.Button-back {
+    font-weight: bold;
+    color: var(--color-body-text);
+    border: #000000;
+    background-color: var(--color-body-Button);
+}
+
+.Button-back:hover {
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonHover);
+}
+
+.Button-back:disabled {
+    color: var(--color-body-text);
+    background-color: var(--color-body-ButtonDisabled);
+}
+
+.Button-report {
+    visibility: var(--visibility-button);
+}
+
+.API-Footer {
+    background-color: black;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
