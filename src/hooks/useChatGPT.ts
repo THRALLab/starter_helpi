@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import detailedQuestions from "../detailedQuestions.json";
 
 interface Tools {
 	checkConnection: () => void;
@@ -31,14 +32,15 @@ export default function useChatGPT(): Tools {
 		}
 	}
 
+	const users_responses = localStorage.getItem("answered_questions");
+	console.log(detailedQuestions.length, users_responses);
+
 	function checkConnection() {
 		if (API_KEY) {
 			const openai: OpenAI = new OpenAI({
 				apiKey: JSON.parse(API_KEY), // converts the string literal to a string without the double quotes
 				dangerouslyAllowBrowser: true
 			});
-			const users_responses = localStorage.getItem("answered_questions");
-			console.log(users_responses);
 			callAPI(openai);
 		} else {
 			console.log("Please make sure you've entered your API key");

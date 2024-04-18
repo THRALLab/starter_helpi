@@ -100,9 +100,10 @@ function Detailed() {
 
 	const { checkConnection } = useChatGPT();
 
+	// TODO - [] check if you're at the last question, add have it call the 'checkConnection' function so that it can then call the ChatGPT API
+
 	return (
 		<>
-			<button onClick={checkConnection}>CLICK ME</button>;
 			<div className="quizContainer">
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
