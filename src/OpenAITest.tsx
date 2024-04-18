@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { keyData } from './APIFooter';
 import OpenAI, {ClientOptions} from "openai";
 
