@@ -4,21 +4,13 @@ import { Form, Button } from 'react-bootstrap';
 export function McSingleResponse({
     question,
     options,
-    aboluteAnswer,
-    setAnswer,
     onNext
 }: {
     question: string;
     options: string[];
-    aboluteAnswer: string;
-    setAnswer: (answer: string) => void;
-    onNext: () => void;
+    onNext: (answer: string) => void;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string>("");
-
-    useEffect(() => {
-        setAnswer(localAnswer);
-    });
     
     return (
         <div>
@@ -39,7 +31,9 @@ export function McSingleResponse({
                         </li>
                     ))}
                 </ul>
-                <Button onClick={onNext}>Next</Button>
+                <Button
+                    disabled={localAnswer === ""}
+                    onClick={() => onNext(localAnswer)}>Next</Button>
             </Form>
         </div>
     );
