@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import splash from "../images/job_search.jpg"
 import './homePage.css';
+import OpenAI from "openai";
 
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
     let keyData = "";
     const saveKeyData = "MYKEY";
-    //const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
+    const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 
     const HomePage = () => {
 
@@ -17,11 +18,40 @@ import './homePage.css';
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
         window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+        main();
     }
 
     //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
     function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
         setKey(event.target.value);
+    }
+
+    const openai = new OpenAI({
+        ///organization:,
+        apiKey: key,
+        dangerouslyAllowBrowser: true,
+      });
+      
+    async function main() {
+        const response = await openai.chat.completions.create({
+          model: "gpt-4-turbo",
+          messages: [
+            {
+              "role": "system",
+              "content": "You will tell me what career I should pursue based on my interests."
+            },
+            {
+              "role": "user",
+              "content": "I like math, computers, and logic."
+            }
+          ],
+          temperature: 0.8,
+          max_tokens: 64,
+          top_p: 1,
+        });
+      
+        console.log(response.choices[0].message.content);
+        console.log(key);
     }
 
     return (
