@@ -1,4 +1,3 @@
-// Import necessary hooks and components
 import { useState } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
@@ -91,6 +90,7 @@ export function DisplayQuiz(
 
     const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
+        description: currentQuestion.description,
         options: currentQuestion.options,
         onNext: handleAnswerSubmit
     };

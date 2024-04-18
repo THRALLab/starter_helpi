@@ -3,13 +3,16 @@ import { Button } from 'react-bootstrap';
 
 export function UserRanking({
     question,
+    description,
     options,
     onNext
 }: {
     question: string;
+    description: string;
     options: string[];
     onNext: (answer: string) => void;
 }): JSX.Element {
+    const [tooltip, setTooltip] = useState<string>("");
     const [categories, setCategories] = useState<string[]>(options);
     
     /**
@@ -48,7 +51,21 @@ export function UserRanking({
 
     return (
         <div>
-            <h3>{question}</h3>
+            <h3
+                onMouseEnter={() => setTooltip(`${description}`)}
+                onMouseLeave={() => setTooltip("")}
+            >{question}</h3>
+            {tooltip && (
+                <div style={{
+                    position: "relative", 
+                    border: "1px solid black",
+                    padding: "10px", 
+                    backgroundColor: "white", 
+                    pointerEvents: "none" 
+                }}>
+                    {tooltip}
+                </div>
+            )}
             <ol style={{textAlign: "left"}}>
                 {categories.map((category) => (
                     <li key={category}>
