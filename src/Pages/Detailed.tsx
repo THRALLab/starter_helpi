@@ -65,7 +65,7 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
                 <div key={idx}>
                     <h3>{q.question}</h3>
                     <div className="questionContainer">
-                        {q.options.map((option, i) => (
+                        {q.options.filter(option => option !== "").map((option, i) => (
                             <Button className="button-questions" key={i} onClick={() => handleOptionClick(option)}>{option}</Button>
                         ))}
                     </div>
