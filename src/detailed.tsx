@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../src/detailed.css";
 import questions from "./detailedQuestions.json";
-import useChatGPT from "./useChatGPT";
 
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 
