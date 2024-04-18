@@ -2,7 +2,6 @@ import React from "react";
 import branchTop from "../images/homePageImages/branchTop.png";
 import DescriptionTable from "../components/homePageComp/decriptionTable";
 
-
 const home: React.FC = () => {
 
     return (
