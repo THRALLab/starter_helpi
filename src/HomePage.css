@@ -1,0 +1,55 @@
+HomePage.css
+.HomePage {
+    text-align: center;
+    color: white;
+    font-family: monospace, fantasy;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .HomePage h1 {
+    font-weight: bold;
+    margin-bottom: 100px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px black;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .question {
+    margin: 20px;
+    text-align: center;
+    background-color:#99738E;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0, 4px, 6px, black;
+  }
+
+  .question h2 {
+    margin-bottom: 10px;
+  }
+
+  .question p {
+    line-height: 1.6;
+  }
+
+  .api-key-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .api-key-input input[type="password"] {
+    width: 200px; /* Adjust the width as needed */
+    margin-right: 10px; /* Add some spacing between the input and the button */
+  }
+  
