@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App';
 import './Home.css';
 import './General.css';
 import './Report.css';
@@ -7,13 +6,13 @@ import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
 import LinkButton from './LinkButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap';
+import { keyData, saveKeyData, updateKeyData } from './APIFooter';
+//import OpenAIRequest from './OpenAITest';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
+  updateKeyData(JSON.parse(prevKey));
 }
 
 function DetailedReport() {
