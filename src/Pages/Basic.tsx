@@ -4,6 +4,7 @@ import {Button} from 'react-bootstrap';
 import BrainIcon from './modifiedBrainIcon.svg';
 import homeIcon from './house.svg';
 import './Pages.css';
+import './questions.css';
 
 interface BasicProp {
     handlePage: (page: string) => void;
