@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 export function McMultiResponse({
@@ -33,6 +33,7 @@ export function McMultiResponse({
                     {options.map((choice) => (
                         <li key={choice}>
                             <Form.Check
+                                key={`${choice}Select`}
                                 type="checkbox"
                                 id={choice}
                                 label={choice}

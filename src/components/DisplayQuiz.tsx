@@ -5,6 +5,7 @@ import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
 import { TextResponse } from "./TextResponse"
 import { UserRanking } from "./UserRanking"
+import { SliderResponse } from "./SliderResponse";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -105,6 +106,8 @@ export function DisplayQuiz(
             return <UserRanking {...questionComponentProps} />;
         case "TEXT_RESPONSE":
             return <TextResponse {...questionComponentProps} />;
+        case "SLIDER_RESPONSE":
+            return <SliderResponse {...questionComponentProps} />;
         default:
             return <h1>Unknown question type</h1>;
     }

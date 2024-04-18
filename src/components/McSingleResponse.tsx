@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 export function McSingleResponse({
@@ -20,6 +20,7 @@ export function McSingleResponse({
                     {options.map((choice) => (
                         <li key={choice}>
                             <Form.Check
+                                key={`${choice}Select`}
                                 type="radio"
                                 id={choice}
                                 label={choice}

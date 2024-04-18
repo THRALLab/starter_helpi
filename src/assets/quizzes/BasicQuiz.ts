@@ -32,4 +32,11 @@ export const basicQuiz: Record<string, Question> = {
     prompt: "What is your favorite class you have taken?",
     options: [],
   },
+  question5: {
+    id: "question5",
+    type: "SLIDER_RESPONSE",
+    prompt: "What is your favorite number 1 to 100",
+    options: [],
+    getNextQuestionId: (userAnswer: string) => determineNextQuestionId("question5", userAnswer)
+  },
 };
