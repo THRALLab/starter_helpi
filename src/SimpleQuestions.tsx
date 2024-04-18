@@ -31,6 +31,7 @@ export function SimpleQuestions(): JSX.Element {
     const [questions, setQuestions] = useState<SimpleQuestion[]>([]);
     const [numberOfQuestions, setNumberOfQuestions] = useState(15)
     const [questionNumber, setQuestionNumber] = useState(0)
+    const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1)
     const [questionBody, setQuestionBody] = useState("Question...")
     const [option1, setOption1] = useState("Option 1...")
     const [option2, setOption2] = useState("Option 2...")
@@ -57,6 +58,7 @@ export function SimpleQuestions(): JSX.Element {
     }
 
     const nextQuestion = (selectedOption: string) => {
+        setCurrentQuestionNumber(currentQuestionNumber + 1)
         if (questionNumber < numberOfQuestions - 1) {
             questions[questionNumber].answer = selectedOption
             setBackButtonDisabled(false)
@@ -64,8 +66,8 @@ export function SimpleQuestions(): JSX.Element {
             setQuestionNumber(nextQuestion)
             setColor(colors[Math.floor(Math.random() * colors.length)])
             setQuestionBody(questions[nextQuestion].question)
-            setOption1(questions[nextQuestion].option1)
-            setOption2(questions[nextQuestion].option2)
+            setOption1(questions[nextQuestion ].option1)
+            setOption2(questions[nextQuestion ].option2)
         } else {
             // End of quiz...
             window.alert("You've completed the Simple Quiz!")
@@ -84,8 +86,9 @@ export function SimpleQuestions(): JSX.Element {
     }
 
     const previousQuestion = () => {
-        if (questionNumber >= 1) {
-            if(questionNumber === 14 && questionBody === "You have completed the quiz!" ){
+        if (questionNumber >= 0) {
+            setCurrentQuestionNumber(currentQuestionNumber - 1)
+            if (questionBody === "You have completed the quiz!" ){
                 let nextButton = document.getElementById("nextButton");
                 if(nextButton != null) {
                     nextButton.classList.remove("Button-visible-false");
@@ -99,8 +102,7 @@ export function SimpleQuestions(): JSX.Element {
                 setQuestionBody(questions[questionNumber].question)
                 setOption1(questions[questionNumber].option1)
                 setOption2(questions[questionNumber].option2)
-            }
-            else {
+            } else {
                 const previousQuestion = questionNumber - 1
                 setQuestionNumber(previousQuestion)
                 setColor(colors[Math.floor(Math.random() * colors.length)])
@@ -124,10 +126,10 @@ export function SimpleQuestions(): JSX.Element {
                 </span>
                 <div className='Simple-progress'>
                     <div className='Simple-progress-outer' style={{ backgroundColor: color}}>
-                        <div className='Simple-progress-inner' style={{ width: `${100 * ((questionNumber + 1) / numberOfQuestions)}%`, backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
+                        <div className='Simple-progress-inner' style={{ width: `${100 * ((currentQuestionNumber - 1) / numberOfQuestions)}%`, backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
                         Question {questionNumber + 1}/{numberOfQuestions}
                         <div className='Simple-progress-percentage'>
-                            {Math.round(100 * ((questionNumber + 1) / numberOfQuestions))}% completed
+                            {Math.round(100 * ((currentQuestionNumber - 1) / numberOfQuestions))}% completed
                         </div>
                     </div>
                 </div>
