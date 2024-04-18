@@ -1,5 +1,5 @@
 
-import React, { CSSProperties } from 'react';
+import React, { } from 'react';
 import {Button} from 'react-bootstrap';
 import BrainIcon from './modifiedBrainIcon.svg';
 import homeIcon from './house.svg';
@@ -15,32 +15,8 @@ interface QuestionOption {
 }
 
 const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
-    const style: { column: CSSProperties, questionContainer: CSSProperties, button: CSSProperties } = {
-        column: {
-            border: '1px solid #ccc',
-            margin: '10px',  // Added 'px' to ensure CSS is valid
-            padding: '20px',
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column'
-        },
-        questionContainer: {
-            display: 'flex',
-            justifyContent: 'center',  // Centers the options horizontally
-            alignItems: 'center',
-            marginBottom: '20px',  // Adds space below each question
-            flexWrap: 'nowrap'  // Prevents wrapping to ensure all options stay on one line
-        },
-        button: {
-            margin: '0 5px',  // Horizontal space between buttons
-            backgroundColor: '#007bff',
-            color: 'white',
-            borderRadius: '20px',
-            padding: '10px 20px',
-            border: 'none',
-            cursor: 'pointer',
-            outline: 'none'
-        }
+    const handleOptionClick = (option: string) => {
+        console.log(option);  // Implement other logic as necessary
     };
 
     const questions: QuestionOption[] = [
@@ -74,9 +50,6 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
         }
     ];
 
-    const handleOptionClick = (option: string) => {
-        console.log(option);  // Implement other logic as necessary
-    };
     return (
         <div>
        <header className="header">
@@ -86,13 +59,13 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
             <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
         </div>
         </header>
-        <div style={style.column}>
+        <div className="column">
             {questions.map((q, idx) => (
                 <div key={idx}>
                     <h3>{q.question}</h3>
-                    <div style={style.questionContainer}>
+                    <div className="questionContainer">
                         {q.options.map((option, i) => (
-                            <Button style={style.button} key={i} onClick={() => handleOptionClick(option)}>{option}</Button>
+                            <Button className="button-questions" key={i} onClick={() => handleOptionClick(option)}>{option}</Button>
                         ))}
                     </div>
                 </div>
