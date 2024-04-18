@@ -23,7 +23,7 @@ export default function useChatGPT(): Tools {
 					response += part.choices[0].delta.content;
 				}
 			}
-			console.log(response);
+			// console.log(response);
 		} catch (error) {
 			console.log(error);
 		}
