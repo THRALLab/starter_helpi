@@ -79,11 +79,13 @@ const BasicPage = () => {
 		</div>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
 		<span className="QuestionNum">#1</span>
+				
 			<span className="checkbox-distance" >
+			Do you prefer working on your own or working in a group?
 				<Form.Check 
 					type="radio"
 					id="q1-Option1"
-					label="holder"
+					label="In groups"
 					name="question1"
 					onChange={() => updateChoice(0)}
 					checked={response[0] ===true }
@@ -92,7 +94,7 @@ const BasicPage = () => {
 				<Form.Check
 					type="radio"
 					id="q-1Option2"
-					label="thing"
+					label="On my own."
 					name="question1"
 					onChange={() => updateChoice(1)}
 					checked={response[1] === true}
@@ -101,10 +103,11 @@ const BasicPage = () => {
 			</span>
 			<span className="QuestionNum">#2</span>
 			<span className="checkbox-distance">
+			Would you rather have your schedule made by your boss, or be allowed to clock in at your own discretion?
 				<Form.Check 
 					type="radio"
 					id="q2-Option1"
-					label="holder"
+					label="I want my schedule made for me"
 					name="question2"
 					onChange={() => updateChoice(2)}
 					checked={response[2] === true}
@@ -113,7 +116,7 @@ const BasicPage = () => {
 				<Form.Check 
 					type="radio"
 					id="q2-Option2"
-					label="holder"
+					label="I want to clock in when I want."
 					name="question2"
 					onChange={() => updateChoice(3)}
 					checked={response[3] === true}
@@ -122,10 +125,12 @@ const BasicPage = () => {
 			</span>
 			<span className="QuestionNum">#3</span>
 			<span className="checkbox-distance" >
+			When working on a task, do you prefer having detailed instructions or creative freedom?
+
 				<Form.Check 
 					type="radio"
 					id="q3-Option1"
-					label="holder"
+					label="I want detailed instructions."
 					name="question3"
 					onChange={() => updateChoice(4)}
 					checked={response[4] === true}
@@ -134,7 +139,7 @@ const BasicPage = () => {
 				<Form.Check 
 					type="radio"
 					id="q3-Option2"
-					label="holder"
+					label="I prefer creative freedom"
 					name="question3"
 					onChange={() => updateChoice(5)}
 					checked={response[5] === true}
@@ -144,10 +149,11 @@ const BasicPage = () => {
 			</span>
 			<span className="QuestionNum">#4</span>
 			<span className="checkbox-distance" >
+			Do you enjoy a job that challenges you?
 				<Form.Check 
 					type="radio"
 					id="q4-Option1"
-					label="holder"
+					label="Yes, I enjoy a challenge."
 					name="question4"
 					onChange={() => updateChoice(6)}
 					checked={response[6] === true}
@@ -157,7 +163,7 @@ const BasicPage = () => {
 				<Form.Check 
 					type="radio"
 					id="q4-Option2"
-					label="holder"
+					label="No, I want a job that is easy."
 					name="question4"
 					onChange={() => updateChoice(7)}
 					checked={response[7] === true}
