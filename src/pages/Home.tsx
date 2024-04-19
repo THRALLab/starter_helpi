@@ -10,7 +10,9 @@ export function ApiKeyInput(): JSX.Element {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
     // Logic to handle the API key, such as saving to local storage or state management
-    console.log(apiKey); // Example: output to console or replace with storage logic
+    console.log("apiKey->", apiKey); // Example: output to console or replace with storage logic
+    localStorage.removeItem("GBTKEY");
+    localStorage.setItem("GBTKEY", apiKey);
   };
 
   return (

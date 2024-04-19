@@ -1,21 +1,25 @@
-import { openai } from "./OpenaiToken";
+import { ChatCompletionStream } from "openai/lib/ChatCompletionStream";
+import { openai } from "src/controller/OpenaiToken"
 
-export async function openGBTStream({startingPrompt} : {startingPrompt: string}) {
-    const stream = await openai.beta.chat.completions.stream({
+export async function openGBTStream({startingPrompt} : {startingPrompt: string}): Promise<ChatCompletionStream> {
+    const stream = openai.beta.chat.completions.stream({
     model: 'gpt-4',
-    messages: [{ role: 'user', content: 'Say this is a test' }],
+    messages: [
+        { role: 'system', content: startingPrompt},
+    ],
     stream: true,
     });
+    return stream;
+}
 
+export async function sendDataGBTStream(stream: ChatCompletionStream) {
     stream.on('content', (delta, snapshot) => {
-    process.stdout.write(delta);
-    });
+        process.stdout.write(delta);
+      });
+    return stream;
+}
 
-    // // or, equivalently:
-    // for await (const chunk of stream) {
-    // process.stdout.write(chunk.choices[0]?.delta?.content || '');
-    // }
-
-    const chatCompletion = await stream.finalChatCompletion();
-    console.log(chatCompletion); // {id: "…", choices: […], …}
+export async function closeGBTStream(stream: ChatCompletionStream) {
+    stream.finalChatCompletion();
+    return stream;
 }

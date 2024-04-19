@@ -1,3 +1,4 @@
+import OpenAI from "openai";
 import { openai } from "./OpenaiToken";
 
 export async function callGBT(
@@ -19,5 +20,26 @@ export async function callGBT(
       model: 'gpt-3.5-turbo',
     });
     return chatCompletion;
+}
+
+export async function addResponseGBT(
+  {
+      choices,
+      newMessage
+  } 
+  : 
+  {
+      choices: OpenAI.ChatCompletion.Choice[],
+      newMessage: string
+  }
+) {
+  const messages = choices.map((choice: OpenAI.ChatCompletion.Choice) => choice.message)
+  const chatCompletion = await openai.chat.completions.create({
+    messages: [
+      ...messages,
+      {role: "user", content: newMessage}],
+    model: 'gpt-3.5-turbo',
+  });
+  return chatCompletion;
 }
 

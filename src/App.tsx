@@ -6,6 +6,7 @@ import { SelectQuiz } from "./pages/SelectQuiz";
 import './css/App.css';
 import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
 import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
+import { ChatGBTPage } from "./pages/chat-gbt-page/ChatGBTPage";
 
 function App(): JSX.Element {
   return (
@@ -13,12 +14,13 @@ function App(): JSX.Element {
       <div className="App">
         <header className="App-header">
           <nav>
-            <Link to="/">Home</Link> | <Link to="/select-quiz">Quiz</Link>
+            <Link to="/">Home</Link> | <Link to="/select-quiz">Quiz</Link> | <Link to="/chat-gbt-page">GBT</Link>
           </nav>
         </header>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/select-quiz" element={<SelectQuiz />}/>
+          <Route path="/chat-gbt-page" element={<ChatGBTPage />}/>
           <Route 
           path="/basic-quiz"
           element={<BasicQuiz/>}

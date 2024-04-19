@@ -7,7 +7,7 @@ import { openGBTStream } from './controller/OpenChatStream';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 const envKeyData = process.env.REACT_APP_CHATGBT_API_KEY;
-let saveKeyData = "MYKEY";
+let saveKeyData = "GBTKEY";
 
 // prev key is null, but is defined in .env
 if (envKeyData != null) {
@@ -15,7 +15,7 @@ if (envKeyData != null) {
   localStorage.setItem(saveKeyData, JSON.stringify(saveKeyData));
 }
 
-openGBTStream({startingPrompt: "give me a few pointers of what I should do with my day"});
+//openGBTStream({startingPrompt: "give me a few pointers of what I should do with my day"});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
