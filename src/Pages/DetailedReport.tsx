@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './Home.css';
-import './General.css';
-import './Report.css';
-import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
-import LinkButton from './LinkButton';
+import '../Formatting/Home.css';
+import '../Formatting/General.css';
+import '../Formatting/Report.css';
+import { DarkModeToggle, bodyClassName } from '../Components/DarkModeToggle';
+import LinkButton from '../Components/LinkButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap';
-import { keyData, saveKeyData, updateKeyData } from './APIFooter';
+import { keyData, saveKeyData, updateKeyData } from '../APIFooter';
 //import OpenAIRequest from './OpenAITest';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)

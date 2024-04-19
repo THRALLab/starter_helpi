@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
-import DetailedQuestions from './DetailedQuestions';
+import DetailedQuestions from '../Pages/DetailedQuestions';
 
 describe("Detailed Page Tests", () => {
     test('Has Header', () => {

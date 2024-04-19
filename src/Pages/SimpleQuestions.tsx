@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import './SimpleQuestions.css'
-import './General.css';
-import { DarkModeToggle, bodyClassName } from './DarkModeToggle';
-import LinkButton from './LinkButton';
-import { SimpleQuestion } from './SimpleQuestion';
+import '../Formatting/SimpleQuestions.css'
+import '../Formatting/General.css';
+import { DarkModeToggle, bodyClassName } from '../Components/DarkModeToggle';
+import LinkButton from '../Components/LinkButton';
+import { SimpleQuestion } from '../QuestionData/SimpleQuestion';
 import { Button, Form } from 'react-bootstrap';
-import jsonData from './SimpleQuestions.json';
+import jsonData from '../QuestionData/SimpleQuestions.json';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";

@@ -1,0 +1,90 @@
+.DetailedQuestions {
+  text-align: center;
+}
+
+.Slider-questions {
+  justify-content: left;
+  margin-left: 0px; 
+}
+
+.Slider-text {
+  visibility: var(--visibility-slider);
+  justify-content: left;
+  margin-left: 70px; 
+  font-size: 18px;
+}
+
+.Slider-value {
+  visibility: var(--visibility-slider);
+  justify-content: left;
+  margin-left: 41px; 
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+.Slider-visible-true {
+  --visibility-slider: visible;
+}
+
+.Slider-visible-false {
+  --visibility-slider: hidden;
+}
+
+.Slider-slider { 
+  visibility: var(--visibility-slider);
+  transform: rotate(270deg);
+  width: 100px;
+}
+
+.DetailedQuestions-questions{
+  align-items: left;
+  text-align: left;
+  align-self: left;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-top: 5vh;
+  margin-bottom: 0px;
+}
+
+.DetailedQuestions-buttons{
+  position: absolute;
+  top: 0;
+  margin-top: 45vh;
+}
+
+.DetailedQuestions-progress-bar{
+  position: absolute;
+  display: flex;
+  margin-top:5vh;
+  margin-left:20vh;
+  width: 200px;
+  height: 500px;
+  transform: rotate(180deg);
+}
+
+.DetailedQuestions-question-number {
+  position: absolute;
+  align-self: center;
+  margin-left: 30px;
+  margin-bottom: 450px;
+  transform: rotate(180deg);
+}
+
+.DetailedQuestions-progress-bar-percentage{
+  position: absolute;
+  align-self: center;
+  width: 200px;
+  margin-top: 450px;
+  transform: rotate(180deg);
+}
+
+.DetailedQuestions-progress-bar-foreground{
+  position: relative;
+  width: 200px;
+  height: 500px;
+}
+
+.DetailedQuestions-answers-display{
+  visibility: hidden;
+  margin-left: 300px;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Home from './Home';
+import Home from '../Pages/Home';
 import { HashRouter } from 'react-router-dom';
 
 describe("Home Page Tests", () => {
