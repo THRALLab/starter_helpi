@@ -20,6 +20,69 @@ const BasicPage = () => {
 			return updatedResponse;
 		  });
 	}
+
+	function getResponses() {
+		let answers = ["", "", "", "", "", "", "", ""];
+
+		if(response[0]){
+			answers[0] = "In groups";
+		}
+		else{
+			answers[0] = "On my own.";
+		}
+
+		if(response[2]){
+			answers[1] = "I want my schedule made for me";
+		}
+		else{
+			answers[1] = "I want to clock in when I want.";
+		}
+
+		if(response[4]){
+			answers[2] = "I want detailed instructions.";
+		}
+		else{
+			answers[2] = "I prefer creative freedom";
+		}
+
+		if(response[6]){
+			answers[3] = "Yes, I enjoy a challenge.";
+		}
+		else{
+			answers[3] = "No, I want a job that is easy.";
+		}
+
+		if(response[8]){
+			answers[4] = "Yes, I do.";
+		}
+		else{
+			answers[4] = "No, I don't.";
+		}
+
+		if(response[10]){
+			answers[5] = "I care more about the money.";
+		}
+		else{
+			answers[5] = "I'd only work a job I like.";
+		}
+
+		if(response[12]){
+			answers[6] = "Yes, I want to make a difference.";
+		}
+		else{
+			answers[6] = "No, I just want a job.";
+		}
+
+		if(response[14]){
+			answers[7] = "Yes, I love to travel.";
+		}
+		else{
+			answers[7]= "No, I don't.";
+		}
+
+		console.log(answers);
+	}
+
 	function updateProgress(responseList:boolean[]): number {
 		let completed: number = 0;
 		for (const response of responseList){
@@ -68,13 +131,7 @@ const BasicPage = () => {
 			</p>
 			
 		</div>
-		<div style={{textAlign:"center"}}>
-			<Button size="lg" disabled={!allow} >Answer</Button>
-			<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}/>
-			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"350px", marginRight:"350px"}}>
-				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-			</Alert>
-		</div>
+		<Button size="lg" disabled={!allow} onClick={getResponses}>Answer</Button>
 		<div style={{textAlign: "center", marginTop:"10px"}}>
 		</div>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
