@@ -3,18 +3,18 @@ import React, { useEffect, useState } from "react";
 import { Form, ProgressBar, Alert } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 const DetailedPage = () => {
-	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""])
+	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
 	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response3, setResponse3] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response4, setResponse4] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response5, setResponse5] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response6, setResponse6] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response7, setResponse7] = useState<(boolean | string)[]> ([false, false, false, false, ""])
-	console.log(Response1)
-	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false,false, false]); //correlates to the the "other" text inputs
-	function handleRadio(option:string, questionNum:number, index:number, otherIndex:number) { 
+	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false,false, false]); //correlates to the the "other" text inputs will be true if the "other" option is selected
+	
+	function handleRadio(option:string, questionNum:number, index:number, otherIndex:number) {  //handles regular radio buttons
 		const newOtherStatus = [...otherSelected];
-		const responseState = questionNum === 1 ? Response1 :
+		const responseState = questionNum === 1 ? Response1 : //chooses which array to use based on the hardcoded question num
         questionNum === 2 ? Response2 :
 		questionNum === 3 ? Response3 :
         questionNum === 4 ? Response4 :
@@ -23,20 +23,16 @@ const DetailedPage = () => {
         questionNum === 7 ? Response7 : [];
     	const newResponse = [...responseState];
 		if (option === "Other:") {
-			newOtherStatus[otherIndex] = true;
+			newOtherStatus[otherIndex] = true; //changes the otherSelected index to true
 			setOtherSelected(newOtherStatus);	
-			// Reset all options for this question to false
-			newResponse.fill(false, 0, 4);
-			} 
-		else {
+			newResponse.fill(false, 0, 4); // Reset all options for this question to false
+			} else {
 			newOtherStatus[otherIndex] = false;
 			setOtherSelected(newOtherStatus);
-			// Reset all options for this question to false
 			newResponse.fill(false,0,4);
-			// Set the selected option to true
-			newResponse[index] = true;
+			newResponse[index] = true; // Set the selected option to true
 		}
-		switch(questionNum){
+		switch(questionNum){ //change the array state based on the questionNum
 			case 1:
 				setResponse1(newResponse);
 				break;
@@ -60,8 +56,8 @@ const DetailedPage = () => {
 				break;
 		}
 	}
-	function handleOtherSelect(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, questionNum: number, index:number){ //updates the text input box
-		const responseState = questionNum === 1 ? Response1 :
+	function handleOtherSelect(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, questionNum: number, index:number){ //handles the "Other:" radio button and updates the text input box
+		const responseState = questionNum === 1 ? Response1 : //chooses which array to use based on questionNum
             questionNum === 2 ? Response2 :
             questionNum === 3 ? Response3 :
             questionNum === 4 ? Response4 :
@@ -69,8 +65,8 @@ const DetailedPage = () => {
             questionNum === 6 ? Response6 :
             questionNum === 7 ? Response7 : [];
     const newResponse = [...responseState];
-		newResponse[index] = event.target.value;
-		switch (questionNum) {
+		newResponse[index] = event.target.value; //updates the state realtime
+		switch (questionNum) { //sets the response of the array based on the questionNum
 			case 1:
 				setResponse1(newResponse);
 				break;
@@ -103,15 +99,12 @@ const DetailedPage = () => {
 		let completed: number = 0;
 		responses.forEach(response => {
 			if(response.some((option:boolean | string) => {
-				if(typeof option === "boolean" && option === true){
-					return true;
-				}
-				if(typeof option === "string" && option.trim().length > 0){
-					return true;
+				if((typeof option === "boolean" && option === true) || (typeof option === "string" && option.trim().length > 0)){ //Checks for true and non empty strings
+				return true;
 				}
 				return false
 			}))
-			completed +=1;
+			completed +=1; //adds 1 for each true or non empty string 
 		})
 		return completed;
 	}
@@ -121,7 +114,7 @@ const DetailedPage = () => {
 	const [alert, setAlert] = useState<boolean>(false);
    
 	useEffect(() => {
-       setAllow(answered === 7);
+       setAllow(answered === 7); //checks the amount of questions answered
 	   setAlert(answered === 7)
     }, [answered]);
 	return (<>
