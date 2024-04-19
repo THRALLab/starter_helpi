@@ -4,20 +4,20 @@
 
 .Slider-questions {
   justify-content: left;
-  margin-left: 0px; 
+  margin-left: 0px;
 }
 
 .Slider-text {
   visibility: var(--visibility-slider);
   justify-content: left;
-  margin-left: 70px; 
+  margin-left: 70px;
   font-size: 18px;
 }
 
 .Slider-value {
   visibility: var(--visibility-slider);
   justify-content: left;
-  margin-left: 41px; 
+  margin-left: 41px;
   font-size: 18px;
   margin-bottom: 50px;
 }
@@ -30,13 +30,13 @@
   --visibility-slider: hidden;
 }
 
-.Slider-slider { 
+.Slider-slider {
   visibility: var(--visibility-slider);
   transform: rotate(270deg);
   width: 100px;
 }
 
-.DetailedQuestions-questions{
+.DetailedQuestions-questions {
   align-items: left;
   text-align: left;
   align-self: left;
@@ -46,17 +46,17 @@
   margin-bottom: 0px;
 }
 
-.DetailedQuestions-buttons{
+.DetailedQuestions-buttons {
   position: absolute;
   top: 0;
   margin-top: 45vh;
 }
 
-.DetailedQuestions-progress-bar{
+.DetailedQuestions-progress-bar {
   position: absolute;
   display: flex;
-  margin-top:5vh;
-  margin-left:20vh;
+  margin-top: 5vh;
+  margin-left: 20vh;
   width: 200px;
   height: 500px;
   transform: rotate(180deg);
@@ -70,7 +70,7 @@
   transform: rotate(180deg);
 }
 
-.DetailedQuestions-progress-bar-percentage{
+.DetailedQuestions-progress-bar-percentage {
   position: absolute;
   align-self: center;
   width: 200px;
@@ -78,13 +78,13 @@
   transform: rotate(180deg);
 }
 
-.DetailedQuestions-progress-bar-foreground{
+.DetailedQuestions-progress-bar-foreground {
   position: relative;
   width: 200px;
   height: 500px;
 }
 
-.DetailedQuestions-answers-display{
+.DetailedQuestions-answers-display {
   visibility: hidden;
   margin-left: 300px;
 }

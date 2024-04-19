@@ -2,7 +2,7 @@ import OpenAIAPi from "openai";
 
 let APIKey = "X";
 
-const openai = new OpenAIAPi({apiKey: APIKey, dangerouslyAllowBrowser: true});
+const openai = new OpenAIAPi({ apiKey: APIKey, dangerouslyAllowBrowser: true });
 
 async function main() {
   const completion = await openai.chat.completions.create({

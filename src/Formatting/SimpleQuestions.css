@@ -1,87 +1,86 @@
 .body {
-    --color-body-background: #8AD7F8;
-    --color-body-text: #000000;
+  --color-body-background: #8ad7f8;
+  --color-body-text: #000000;
 }
 
 .body-dark {
-    --color-body-background: #000000;
-    --color-body-text: #C9C9C9;
+  --color-body-background: #000000;
+  --color-body-text: #c9c9c9;
 }
 
 .Simple-body {
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: calc(5px + 2vmin);
-    position: relative;
-    padding-top: 3vh;
-    background-color: var(--color-body-background);
-    color: var(--color-body-text);
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: calc(5px + 2vmin);
+  position: relative;
+  padding-top: 3vh;
+  background-color: var(--color-body-background);
+  color: var(--color-body-text);
 }
 
 .Simple-progress {
-    color: var(--color-body-text);
-    padding: 10px;
+  color: var(--color-body-text);
+  padding: 10px;
 }
 
 .Simple-progress-outer {
-    padding: 10px;
-    position: relative;
-    display: flex;
+  padding: 10px;
+  position: relative;
+  display: flex;
 }
 
 .Simple-progress-inner {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
 }
 
 .Simple-progress-percentage {
-    margin-left: auto;
-    align-self: right;
+  margin-left: auto;
+  align-self: right;
 }
 
 .Simple-question {
-    color: var(--color-body-text);
-    padding: 10px;
+  color: var(--color-body-text);
+  padding: 10px;
 }
 
 .Simple-buttons {
-    position: relative;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
+  position: relative;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .Simple-option-1 {
-    position: absolute;
-    left: 1;
-    right: 0;
-    padding-right: 55vw;
+  position: absolute;
+  left: 1;
+  right: 0;
+  padding-right: 55vw;
 }
 
 .Simple-option-2 {
-    position: absolute;
-    left: 1;
-    right: 1;
-    padding-left: 10vw;
+  position: absolute;
+  left: 1;
+  right: 1;
+  padding-left: 10vw;
 }
 
 .Simple-back-bottom {
-    position: absolute;
-    align-items: right;
-    margin-right: 5%;
-    margin-top: 0px;
-    right: 0;
+  position: absolute;
+  align-items: right;
+  margin-right: 5%;
+  margin-top: 0px;
+  right: 0;
 }
 
 .Simple-back-top {
-    position: relative;
-    align-items: left;
-    left: 0;
-    right: 1;
-    margin-right: 90vw;
-
+  position: relative;
+  align-items: left;
+  left: 0;
+  right: 1;
+  margin-right: 90vw;
 }
