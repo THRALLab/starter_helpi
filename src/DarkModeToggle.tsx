@@ -11,6 +11,7 @@ export const DarkModeToggle = () => {
   //Dark Mode Control
   function updateDarkMode(event: React.ChangeEvent<HTMLInputElement>) {
     setIsDarkMode(event.target.checked)
+    //Swaps the parent classname, see CSS file for what changes
     updateCurrentState();
     if (isDarkMode) {
       oldClassName = 'body-dark';
@@ -25,7 +26,7 @@ export const DarkModeToggle = () => {
       bigBody.classList.add(bodyClassName);
     }
   }
-    
+  //Dark Mode Toggle Icon
   return (
     <span>
       <span>
