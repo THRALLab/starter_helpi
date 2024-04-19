@@ -4,26 +4,87 @@ import Button from "react-bootstrap/esm/Button";
 
 
 const BasicPage = () => {
-	const [response, setResponse] = useState<(boolean)[]>
-	([false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false])
+	const [response, setResponse] = useState<(number)[]>
+	([-1, -1, -1, -1, -1, -1, -1, -1])
 	function updateChoice(index:number){
 		setResponse(prevResponse => {
 			const updatedResponse = [...prevResponse];
 			if(index % 2 === 0){
-				updatedResponse[index + 1] = false;
+				updatedResponse[index/2] = 1;
 			}
 			else{
-				updatedResponse[index - 1] = false;
+				updatedResponse[Math.floor(index/2)] = 0;
 			}
-
-			updatedResponse[index] = true;
 			return updatedResponse;
 		  });
 	}
-	function updateProgress(responseList:boolean[]): number {
+
+	function getResponses() {
+		let answers = ["", "", "", "", "", "", "", ""];
+
+		if(response[0]){
+			answers[0] = "In groups";
+		}
+		else{
+			answers[0] = "On my own.";
+		}
+
+		if(response[1]){
+			answers[1] = "I want my schedule made for me";
+		}
+		else{
+			answers[1] = "I want to clock in when I want.";
+		}
+
+		if(response[2]){
+			answers[2] = "I want detailed instructions.";
+		}
+		else{
+			answers[2] = "I prefer creative freedom";
+		}
+
+		if(response[3]){
+			answers[3] = "Yes, I enjoy a challenge.";
+		}
+		else{
+			answers[3] = "No, I want a job that is easy.";
+		}
+
+		if(response[4]){
+			answers[4] = "Yes, I do.";
+		}
+		else{
+			answers[4] = "No, I don't.";
+		}
+
+		if(response[5]){
+			answers[5] = "I care more about the money.";
+		}
+		else{
+			answers[5] = "I'd only work a job I like.";
+		}
+
+		if(response[6]){
+			answers[6] = "Yes, I want to make a difference.";
+		}
+		else{
+			answers[6] = "No, I just want a job.";
+		}
+
+		if(response[7]){
+			answers[7] = "Yes, I love to travel.";
+		}
+		else{
+			answers[7]= "No, I don't.";
+		}
+
+		console.log(answers);
+	}
+
+	function updateProgress(responseList:number[]): number {
 		let completed: number = 0;
 		for (const response of responseList){
-			if(response === true){
+			if(response === 1 || response === 0){
 				completed +=1;
 			}
 		}
@@ -68,13 +129,7 @@ const BasicPage = () => {
 			</p>
 			
 		</div>
-		<div style={{textAlign:"center"}}>
-			<Button size="lg" disabled={!allow} >Answer</Button>
-			<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}/>
-			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"350px", marginRight:"350px"}}>
-				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-			</Alert>
-		</div>
+		<Button size="lg" disabled={!allow} onClick={getResponses}>Answer</Button>
 		<div style={{textAlign: "center", marginTop:"10px"}}>
 		</div>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
@@ -88,7 +143,7 @@ const BasicPage = () => {
 					label="In groups"
 					name="question1"
 					onChange={() => updateChoice(0)}
-					checked={response[0] ===true }
+					checked={response[0] === 1 }
 		
 					/>
 				<Form.Check
@@ -97,7 +152,7 @@ const BasicPage = () => {
 					label="On my own."
 					name="question1"
 					onChange={() => updateChoice(1)}
-					checked={response[1] === true}
+					checked={response[0] === 0}
 				
 					/>
 			</span>
@@ -110,7 +165,7 @@ const BasicPage = () => {
 					label="I want my schedule made for me"
 					name="question2"
 					onChange={() => updateChoice(2)}
-					checked={response[2] === true}
+					checked={response[1] === 1}
 
 					/>
 				<Form.Check 
@@ -119,7 +174,7 @@ const BasicPage = () => {
 					label="I want to clock in when I want."
 					name="question2"
 					onChange={() => updateChoice(3)}
-					checked={response[3] === true}
+					checked={response[1] === 0}
 
 					/>
 			</span>
@@ -133,7 +188,7 @@ const BasicPage = () => {
 					label="I want detailed instructions."
 					name="question3"
 					onChange={() => updateChoice(4)}
-					checked={response[4] === true}
+					checked={response[2] === 1}
 
 					/>
 				<Form.Check 
@@ -142,7 +197,7 @@ const BasicPage = () => {
 					label="I prefer creative freedom"
 					name="question3"
 					onChange={() => updateChoice(5)}
-					checked={response[5] === true}
+					checked={response[2] === 0}
 
 
 					/>
@@ -156,7 +211,7 @@ const BasicPage = () => {
 					label="Yes, I enjoy a challenge."
 					name="question4"
 					onChange={() => updateChoice(6)}
-					checked={response[6] === true}
+					checked={response[3] === 1}
 
 
 					/>
@@ -166,7 +221,7 @@ const BasicPage = () => {
 					label="No, I want a job that is easy."
 					name="question4"
 					onChange={() => updateChoice(7)}
-					checked={response[7] === true}
+					checked={response[3] === 0}
 
 
 					/>
@@ -185,7 +240,7 @@ const BasicPage = () => {
 						label="Yes, I do."
 						name="question5"
 						onChange={() => updateChoice(8)}
-						checked={response[8] === true}
+						checked={response[4] === 1}
 						/>
 					<Form.Check  /* Fix the radio buttons and include state*/
 						type="radio"
@@ -193,7 +248,7 @@ const BasicPage = () => {
 						label="No, I don't."
 						name="question5"
 						onChange={() => updateChoice(9)}
-						checked={response[9] === true}
+						checked={response[4] === 0}
 
 					/>
 				</span>
@@ -209,7 +264,7 @@ const BasicPage = () => {
 						label="I care more about the money."
 						name="question6"
 						onChange={() => updateChoice(10)}
-						checked={response[10] === true}
+						checked={response[5] === 1}
 
 						/>
 					<Form.Check 
@@ -218,7 +273,7 @@ const BasicPage = () => {
 						label="I'd only work a job I like."
 						name="question6"
 						onChange={() => updateChoice(11)}
-						checked={response[11] === true}
+						checked={response[5] === 0}
 
 						/>
 
@@ -234,7 +289,7 @@ const BasicPage = () => {
 						label="Yes, I want to make a difference."
 						name="question7"
 						onChange={() => updateChoice(12)}
-						checked={response[12] === true}
+						checked={response[6] === 1}
 		
 						>
 					</Form.Check>
@@ -244,7 +299,7 @@ const BasicPage = () => {
 						label="No, I just want a job."
 						name="question7"
 						onChange={() => updateChoice(13)}
-						checked={response[13] === true}
+						checked={response[6] === 0}
 
 
 						>
@@ -261,7 +316,7 @@ const BasicPage = () => {
 						label="Yes, I love to travel."
 						name="question8"
 						onChange={() => updateChoice(14)}
-						checked={response[14] === true}
+						checked={response[7] === 1}
 
 
 						>
@@ -272,7 +327,7 @@ const BasicPage = () => {
 						label="holder"
 						name="question8"
 						onChange={() => updateChoice(15)}
-						checked={response[15] === true}
+						checked={response[7] === 0}
 						
 						>
 					</Form.Check>
