@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { HashRouter } from "react-router-dom";
-import { SimpleQuestions } from "../Pages/SimpleQuestions";
+import SimpleQuestions from "../Pages/SimpleQuestions";
 
 describe("Basic Page Tests", () => {
   test("Has Header", () => {

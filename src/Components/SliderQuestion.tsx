@@ -10,7 +10,7 @@ interface DetailedQuestionProps {
   onChange: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function SliderQuestion(props: DetailedQuestionProps) {
+export function SliderQuestion(props: DetailedQuestionProps) {
   function updateSliderValue(event: React.ChangeEvent<HTMLInputElement>) {
     props.onChange(parseInt(event.target.value));
   }
@@ -30,5 +30,3 @@ function SliderQuestion(props: DetailedQuestionProps) {
     </div>
   );
 }
-
-export default SliderQuestion;

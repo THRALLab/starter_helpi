@@ -8,7 +8,7 @@ interface LinkButtonProps {
 }
 
 //Special button made for navigating our webpages
-function LinkButton(props: LinkButtonProps) {
+export function LinkButton(props: LinkButtonProps) {
   const navigate = useNavigate();
   const handleButtonClick = (whereTo: string) => {
     navigate(whereTo);
@@ -19,4 +19,3 @@ function LinkButton(props: LinkButtonProps) {
     </Button>
   );
 }
-export default LinkButton;

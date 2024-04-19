@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
-import LinkButton from "../Components/LinkButton";
+import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
 import jsonData from "../QuestionData/SimpleQuestions.json";
@@ -15,7 +15,7 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-export function SimpleQuestions(): JSX.Element {
+function SimpleQuestions() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -212,3 +212,4 @@ export function SimpleQuestions(): JSX.Element {
     </div>
   );
 }
+export default SimpleQuestions;
