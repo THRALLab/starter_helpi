@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import LinkButton from "../Components/LinkButton";
+import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/Home.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
-import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
-import LinkButton from "../Components/LinkButton";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Form } from "react-bootstrap";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";

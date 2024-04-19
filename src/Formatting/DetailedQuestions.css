@@ -65,7 +65,8 @@
 .DetailedQuestions-question-number {
   position: absolute;
   align-self: center;
-  margin-left: 30px;
+  left: 0;
+  right: 0;
   margin-bottom: 450px;
   transform: rotate(180deg);
 }
@@ -73,6 +74,8 @@
 .DetailedQuestions-progress-bar-percentage {
   position: absolute;
   align-self: center;
+  left: 0;
+  right: 0;
   width: 200px;
   margin-top: 450px;
   transform: rotate(180deg);
