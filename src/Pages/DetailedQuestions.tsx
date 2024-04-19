@@ -3,14 +3,10 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import SliderQuestion from "../Components/SliderQuestion";
 import LinkButton from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
+import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import jsonData from "../QuestionData/DetailedQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/DetailedQuestions.css";
-
-interface DetailedQuestion {
-  num: number;
-  question: string;
-}
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -43,8 +39,6 @@ function DetailedQuestions() {
     const parsedData = JSON.parse(JSON.stringify(jsonData));
     const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
     setQuestions(detailedQuestions);
-    //setNumberOfQuestions(detailedQuestions.length)
-    //setQuestionNumber(questionNumber)
     setColor(colors[Math.floor(Math.random() * colors.length)]);
     setQuestionBody(detailedQuestions[questionNumber].question);
   };
@@ -52,6 +46,7 @@ function DetailedQuestions() {
   const nextQuestion = () => {
     let tempSliderValues = [...sliderValues];
     tempSliderValues[questionNumber] = currSliderValue;
+    questions[questionNumber].answer = currSliderValue.toString();
     setSliderValues(() => [...tempSliderValues]);
     if (questionNumber < numberOfQuestions - 1) {
       setCurrSliderValue(sliderValues[questionNumber + 1]);
