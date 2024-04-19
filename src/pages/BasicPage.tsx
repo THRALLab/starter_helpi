@@ -225,7 +225,6 @@ const BasicPage = () => {
 					</div>
 				</span>
 			<span className="QuestionNum">#7</span>
-			Is it important to you that your job makes the world a better place to live?
 				<span className="checkbox-distance" >
 					<div>
 					<Form.Check 
