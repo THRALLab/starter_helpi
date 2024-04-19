@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
-import { SimpleQuestions } from "../Pages/SimpleQuestions";
+import SimpleQuestions from "../Pages/SimpleQuestions";
 import DetailedQuestions from "../Pages/DetailedQuestions";
 import SimpleReport from "../Pages/SimpleReport";
 import DetailedReport from "../Pages/DetailedReport";
