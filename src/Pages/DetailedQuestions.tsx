@@ -136,7 +136,7 @@ function DetailedQuestions() {
         <span className="Header-toggle">
           <DarkModeToggle></DarkModeToggle>
         </span>
-        <span>The Career Lab </span>
+        <span>The Career Lab</span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
         </span>{" "}
