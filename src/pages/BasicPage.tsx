@@ -7,13 +7,14 @@ const BasicPage = () => {
 	const [response, setResponse] = useState<(boolean)[]>
 	([false, false, false, false, false, false, false, false])
 	function updateChoice(index:number){
+		console.log("Here:" + 11/2);
 		setResponse(prevResponse => {
 			const updatedResponse = [...prevResponse];
 			if(index % 2 === 0){
 				updatedResponse[index/2] = true;
 			}
 			else{
-				updatedResponse[index/2] = false;
+				updatedResponse[Math.floor(index/2)] = false;
 			}
 			return updatedResponse;
 		  });
@@ -143,7 +144,7 @@ const BasicPage = () => {
 					label="In groups"
 					name="question1"
 					onChange={() => updateChoice(0)}
-					checked={response[0] ===true }
+					checked={response[0] === true }
 		
 					/>
 				<Form.Check
