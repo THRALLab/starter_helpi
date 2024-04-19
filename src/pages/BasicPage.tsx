@@ -5,16 +5,15 @@ import Button from "react-bootstrap/esm/Button";
 
 const BasicPage = () => {
 	const [response, setResponse] = useState<(number)[]>
-	([0, 0, 0, 0, 0, 0, 0, 0])
+	([-1, -1, -1, -1, -1, -1, -1, -1])
 	function updateChoice(index:number){
-		console.log("Here:" + 11/2);
 		setResponse(prevResponse => {
 			const updatedResponse = [...prevResponse];
 			if(index % 2 === 0){
 				updatedResponse[index/2] = 1;
 			}
 			else{
-				updatedResponse[Math.floor(index/2)] = -1;
+				updatedResponse[Math.floor(index/2)] = 0;
 			}
 			return updatedResponse;
 		  });
@@ -85,7 +84,7 @@ const BasicPage = () => {
 	function updateProgress(responseList:number[]): number {
 		let completed: number = 0;
 		for (const response of responseList){
-			if(response === 1){
+			if(response === 1 || response === 0){
 				completed +=1;
 			}
 		}
@@ -153,7 +152,7 @@ const BasicPage = () => {
 					label="On my own."
 					name="question1"
 					onChange={() => updateChoice(1)}
-					checked={response[0] === -1}
+					checked={response[0] === 0}
 				
 					/>
 			</span>
@@ -175,7 +174,7 @@ const BasicPage = () => {
 					label="I want to clock in when I want."
 					name="question2"
 					onChange={() => updateChoice(3)}
-					checked={response[1] === -1}
+					checked={response[1] === 0}
 
 					/>
 			</span>
@@ -198,7 +197,7 @@ const BasicPage = () => {
 					label="I prefer creative freedom"
 					name="question3"
 					onChange={() => updateChoice(5)}
-					checked={response[2] === -1}
+					checked={response[2] === 0}
 
 
 					/>
@@ -222,7 +221,7 @@ const BasicPage = () => {
 					label="No, I want a job that is easy."
 					name="question4"
 					onChange={() => updateChoice(7)}
-					checked={response[3] === -1}
+					checked={response[3] === 0}
 
 
 					/>
@@ -249,7 +248,7 @@ const BasicPage = () => {
 						label="No, I don't."
 						name="question5"
 						onChange={() => updateChoice(9)}
-						checked={response[4] === -1}
+						checked={response[4] === 0}
 
 					/>
 				</span>
@@ -274,7 +273,7 @@ const BasicPage = () => {
 						label="I'd only work a job I like."
 						name="question6"
 						onChange={() => updateChoice(11)}
-						checked={response[5] === -1}
+						checked={response[5] === 0}
 
 						/>
 
@@ -300,7 +299,7 @@ const BasicPage = () => {
 						label="No, I just want a job."
 						name="question7"
 						onChange={() => updateChoice(13)}
-						checked={response[6] === -1}
+						checked={response[6] === 0}
 
 
 						>
@@ -328,7 +327,7 @@ const BasicPage = () => {
 						label="holder"
 						name="question8"
 						onChange={() => updateChoice(15)}
-						checked={response[7] === -1}
+						checked={response[7] === 0}
 						
 						>
 					</Form.Check>
