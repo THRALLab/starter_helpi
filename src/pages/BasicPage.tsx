@@ -76,6 +76,7 @@ const BasicPage = () => {
 		}
 		else{
 			answers[7]= "I don't like to travel.";
+
 		}
 
 		console.log(answers);
