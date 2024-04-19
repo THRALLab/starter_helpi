@@ -16,7 +16,7 @@ describe("Basic Page Tests", () => {
     });
     test('Has Progress Bar', () => {
         render(<HashRouter><SimpleQuestions /></HashRouter>);
-        const linkElement = screen.getByText("I am a hard worker");
+        const linkElement = screen.getByText("0% completed");
         expect(linkElement).toBeInTheDocument();
     });
     test('Has Footer', () => {

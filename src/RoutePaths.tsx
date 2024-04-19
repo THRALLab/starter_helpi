@@ -8,7 +8,6 @@ import DetailedReport from './DetailedReport';
 
 function RoutePaths() {
   return (
-    
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="detailedquestions" element={<DetailedQuestions />}/>
@@ -16,7 +15,6 @@ function RoutePaths() {
         <Route path="simplereport" element={<SimpleReport />}/>
         <Route path="detailedreport" element={<DetailedReport />}/>
       </Routes>
-    
   );
 }
 
