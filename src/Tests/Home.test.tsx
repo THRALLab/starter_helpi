@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Home from "../Pages/Home";
 import { HashRouter } from "react-router-dom";
+import Home from "../Pages/Home";
 
 describe("Home Page Tests", () => {
   test("Has Header", () => {

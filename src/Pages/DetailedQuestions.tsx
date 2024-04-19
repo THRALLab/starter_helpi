@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import "../Formatting/General.css";
-import "../Formatting/DetailedQuestions.css";
-import LinkButton from "../Components/LinkButton";
 import SliderQuestion from "../Components/SliderQuestion";
+import LinkButton from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import jsonData from "../QuestionData/DetailedQuestions.json";
+import "../Formatting/General.css";
+import "../Formatting/DetailedQuestions.css";
 
 interface DetailedQuestion {
   num: number;
