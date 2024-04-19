@@ -178,11 +178,11 @@ const BasicPage = () => {
 
 			<span className="QuestionNum">#5</span>
 				<span className="checkbox-distance" >
-					
+				Do you like to work with your hands?
 					<Form.Check 
 						type="radio"
 						id="q5-Option1"
-						label="holder"
+						label="Yes, I do."
 						name="question5"
 						onChange={() => updateChoice(8)}
 						checked={response[8] === true}
@@ -190,7 +190,7 @@ const BasicPage = () => {
 					<Form.Check  /* Fix the radio buttons and include state*/
 						type="radio"
 						id="q5-Option2"
-						label="holder"
+						label="No, I don't."
 						name="question5"
 						onChange={() => updateChoice(9)}
 						checked={response[9] === true}
@@ -201,11 +201,12 @@ const BasicPage = () => {
 
 			<span className="QuestionNum">#6</span>
 				<span className="checkbox-distance">
+				Would you work a job you dislike if it makes you a lot of money?
 					<div>
 						<Form.Check 
 						type="radio"
 						id="q6-Option1"
-						label="holder"
+						label="I care more about the money."
 						name="question6"
 						onChange={() => updateChoice(10)}
 						checked={response[10] === true}
@@ -214,7 +215,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q6-Option2"
-						label="holder"
+						label="I'd only work a job I like."
 						name="question6"
 						onChange={() => updateChoice(11)}
 						checked={response[11] === true}
@@ -224,12 +225,13 @@ const BasicPage = () => {
 					</div>
 				</span>
 			<span className="QuestionNum">#7</span>
+			Is it important to you that your job makes the world a better place to live?
 				<span className="checkbox-distance" >
 					<div>
 					<Form.Check 
 						type="radio"
 						id="q7-Option1"
-						label="holder"
+						label="Yes, I want to make a difference."
 						name="question7"
 						onChange={() => updateChoice(12)}
 						checked={response[12] === true}
@@ -239,7 +241,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q7-Option2"
-						label="holder"
+						label="No, I just want a job."
 						name="question7"
 						onChange={() => updateChoice(13)}
 						checked={response[13] === true}
@@ -250,12 +252,13 @@ const BasicPage = () => {
 					</div>
 				</span>
 			<span className="QuestionNum">#8</span>
+			Do you enjoy traveling?
 				<span className="checkbox-distance" >
 					<div>
 					<Form.Check 
 						type="radio"
 						id="q8-Option1"
-						label="holder"
+						label="Yes, I love to travel."
 						name="question8"
 						onChange={() => updateChoice(14)}
 						checked={response[14] === true}
