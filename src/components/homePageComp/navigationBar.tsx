@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import BasicQuestions from '../../pages/BasicQuestions';
-import DetailedQuestions from '../../pages/DetailedQuestions';
-import Home from '../../pages/Home';
+
 
 interface NavProp {
   handlePage: (page: string, tabname: string) => void;
 }
 
 const NavigationBar: React.FC<NavProp> = ({handlePage}) => {
-  const [activeTab, setActiveTab] = useState<string>('Home');
+  const [activeTab] = useState<string>('Home');
 
   return (
     <div>
