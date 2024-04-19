@@ -150,32 +150,33 @@ const DetailedPage = () => {
 		</div>
 		<h3>Question 1</h3>
 		<div className="question-box">
+		You slept through your alarm and barely missed the train to work. The next train isn’t for another 30 minutes, so you’ll definitely be late now. What do you do?
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option1"
-				label="holder"
+				label="I’ll call my boss and let them know I’ll be late."
 				name="question1"
 				onChange={() => handleRadio("holder", 1, 0, 0)}/>
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option2"
-				label="holder"
+				label="Call my friend to see if they can pick me up."
 				name="question1"
 				onChange={() => handleRadio("holder", 1,1, 0)}/>
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option3"
-				label="holder"
+				label="I’ll call in sick and take the day off."
 				name="question1"
 				onChange={() => handleRadio("holder",1, 2, 0)}/>
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option4"
-				label="holder"
+				label="I’ll take a taxi to work."
 				name="question1"
 				onChange={() => handleRadio("holder", 1, 3, 0)}/>
 			<Form.Check
