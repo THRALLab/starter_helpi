@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, ToggleButton } from 'react-bootstrap';
 
 export function McSingleResponse({
     question,
@@ -16,22 +16,22 @@ export function McSingleResponse({
         <div>
             <h3>{question}</h3>
             <Form>
-                <ul style={{ listStyleType: "none" }}>
+                <div>
                     {options.map((choice) => (
-                        <li key={choice}>
-                            <Form.Check
+                            <ToggleButton
                                 key={`${choice}Select`}
                                 type="radio"
                                 id={choice}
-                                label={choice}
                                 value={choice}
                                 checked={localAnswer === choice}
+                                variant={localAnswer === choice ? "primary" : "outline-secondary"}
                                 onChange={() => setLocalAnswer(choice)}
-                            />
-                        </li>
+                            > {choice}
+                                </ToggleButton>
                     ))}
-                </ul>
+                </div>
                 <Button
+                    variant={localAnswer === "" ? "outline-primary" : "primary"}
                     disabled={localAnswer === ""}
                     onClick={() => onNext(localAnswer)}>Next</Button>
             </Form>

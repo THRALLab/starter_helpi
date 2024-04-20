@@ -54,23 +54,23 @@ export function UserRanking({
                     <li key={category}>
                         <Button
                             key={`${category}⬆️`}
-                            variant="outline-secondary"
+                            variant="outline-success"
                             size="sm"
                             onClick={() => pushUp(category)}
-                        >⬆️</Button>
+                        >⬆</Button>
                         {' '}
                         <Button
                             key={`${category}⬇️`}
-                            variant="outline-secondary"
+                            variant="outline-danger"
                             size="sm"
                             onClick={() => pushDown(category)}
-                        >⬇️</Button>
+                        >⬇</Button>
                         {' '}
                         {category}
                     </li>
                 ))}
             </ol>
-            <Button onClick={() => onNext(compressAnswer())}></Button>  
+            <Button onClick={() => onNext(compressAnswer())}>Next</Button>  
         </div>
     )
 }

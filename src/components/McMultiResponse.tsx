@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, ToggleButton } from 'react-bootstrap';
 
 export function McMultiResponse({
     question,
@@ -32,14 +32,17 @@ export function McMultiResponse({
                 <ul>
                     {options.map((choice) => (
                         <li key={choice}>
-                            <Form.Check
+                            <ToggleButton
+                                variant={localAnswer.includes(choice) ? "primary" : "outline-primary"}
                                 key={`${choice}Select`}
                                 type="checkbox"
                                 id={choice}
-                                label={choice}
+                                value={choice}
                                 onChange={() => addAnswer(choice)}
                                 checked={localAnswer.includes(choice)}
-                            />
+                            >
+                                {choice} 
+                            </ToggleButton>
                         </li>
                     ))}
                 </ul>

@@ -17,12 +17,14 @@ export function TextResponse({
         <div>
             <h3>{question}</h3>
             <Form.Group>
-                <Form.Label>{question}</Form.Label>
                 <Form.Control
+                    as="textarea" rows={3}
+                    placeholder="Enter answer here"
                     value={localAnswer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
                 />
                 <Button 
+                    variant={localAnswer === "" ? "outline-primary" : "primary"}
                     disabled={localAnswer === ""}
                     onClick={() => onNext(localAnswer)}
                 >Next</Button>
