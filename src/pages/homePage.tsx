@@ -16,10 +16,9 @@ import OpenAI from "openai";
   
     //sets the local storage item to the api key the user inputed
     function handleSubmit() {
-        localStorage.setItem(saveKeyData, JSON.stringify(key));
-        main(); //Calls the main function once an API key has been submitted
-
+        localStorage.setItem(saveKeyData, JSON.stringify(key));       
         //window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+        main(); //Calls the main function once an API key has been submitted
     }
 
     //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
@@ -30,7 +29,7 @@ import OpenAI from "openai";
     const openai = new OpenAI({
         apiKey: key, //this is the api key that the user inputted
         dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
-      });
+    });
       
     async function main() { //This function is to test a fake conversation witht the GPT-4 model
         console.log("API Key: " + key); //purely for testing purposes
@@ -85,5 +84,6 @@ import OpenAI from "openai";
     );
 };
 
+export const key = localStorage.getItem("MYKEY") || ""; //this is to get the api key from the local storage
 export default HomePage;
 

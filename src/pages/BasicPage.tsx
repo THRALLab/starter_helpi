@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, /*ProgressBar, Alert*/ } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 import OpenAI from "openai";
+import { key } from "./homePage"
 
 
 const BasicPage = () => {
@@ -103,39 +104,42 @@ const BasicPage = () => {
 		return description;
 	}
 
+	function sendRespone(): void {
+		const openai = new OpenAI({
+			apiKey: key.replaceAll('"',"") || "", //this is the api key that the user inputted
+			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
+		});
+		  
+		async function runGPT() { //This function is to test a fake conversation witht the GPT-4 model
+			console.log("API Key: " + key); //purely for testing purposes
+			try{
+				const response = await openai.chat.completions.create({
+				model: "gpt-4-turbo",
+				messages: [
+					{
+					"role": "system",
+					"content": "You will tell me what career I should pursue based on my interests."
+					},
+					{
+					"role": "user",
+					"content": getResponses(),
+					}
+				],
+				temperature: 0.8,
+				max_tokens: 64,
+				top_p: 1,
+				});
+	
+				console.log(response.choices[0].message.content); //GPT Response to the user's input
+			}
+			catch(e){ //catches any errors that may occur with an invalid API key
+				console.log(e);
+			}  
+		}
 
-
-	const openai = new OpenAI({
-        apiKey: key, //this is the api key that the user inputted
-        dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
-    });
-
-	async function main() { //This function is to test a fake conversation witht the GPT-4 model
-        console.log("API Key: " + key); //purely for testing purposes
-        try{
-            const response = await openai.chat.completions.create({
-            model: "gpt-4-turbo",
-            messages: [
-                {
-                "role": "system",
-                "content": "You will tell me what career I should pursue based on my interests."
-                },
-                {
-                "role": "user",
-                "content": "I like math, computers, and logic."
-                }
-            ],
-            temperature: 0.8,
-            max_tokens: 64,
-            top_p: 1,
-            });
-
-            console.log(response.choices[0].message.content); //GPT Response to the user's input
-        }
-        catch(e){ //catches any errors that may occur with an invalid API key
-            console.log(e);
-        }  
-    }
+		runGPT();
+	
+	}
 
 	function updateProgress(responseList:number[]): number {
 		let completed: number = 0;
@@ -185,7 +189,7 @@ const BasicPage = () => {
 			</p>
 			
 		</div>
-		<Button size="lg" disabled={!allow} onClick={getResponses}>Answer</Button>
+		<Button size="lg" disabled={!allow} onClick={sendRespone}>Answer</Button>
 		<div style={{textAlign: "center", marginTop:"10px"}}>
 		</div>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
