@@ -9,4 +9,5 @@ export interface QuestionComponentProps {
   question: string;
   options: string[];
   onNext: (answer: string) => void; // submits the current answer and switches the question
+  isFirst: boolean; // determines if the question is the first in the quiz
 };

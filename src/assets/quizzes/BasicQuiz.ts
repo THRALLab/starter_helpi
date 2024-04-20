@@ -35,7 +35,19 @@ export const basicQuiz: Record<string, Question> = {
   question5: {
     id: "question5",
     type: "SLIDER_RESPONSE",
-    prompt: "What is your favorite number 1 to 100",
+    prompt: "What percentage of your day do you spend on a computer?",
+    options: [],
+  },
+  question6: {
+    id: "question6",
+    type: "MC_SINGLE_RESPONSE",
+    prompt: "What working environment do you prefer the most?",
+    options: ["Outdoors", "Indoors away from home", "Indoors at home"],
+  },
+  question7: {
+    id: "question7",
+    type: "SLIDER_RESPONSE",
+    prompt: "How many hours would you be willing to work in a week?",
     options: [],
   },
 };

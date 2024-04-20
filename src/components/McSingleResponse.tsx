@@ -4,11 +4,13 @@ import { Form, Button, ToggleButton } from 'react-bootstrap';
 export function McSingleResponse({
     question,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string>("");
     
@@ -26,14 +28,18 @@ export function McSingleResponse({
                                 checked={localAnswer === choice}
                                 variant={localAnswer === choice ? "primary" : "outline-secondary"}
                                 onChange={() => setLocalAnswer(choice)}
-                            > {choice}
+                                    > {choice}
                                 </ToggleButton>
                     ))}
                 </div>
                 <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(localAnswer)}>Back</Button>
+                <Button
                     variant={localAnswer === "" ? "outline-primary" : "primary"}
                     disabled={localAnswer === ""}
-                    onClick={() => onNext(localAnswer)}>Next</Button>
+                    onClick={() => onNext(localAnswer)}> Next</Button>
             </Form>
         </div>
     );

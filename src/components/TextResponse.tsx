@@ -5,11 +5,13 @@ import { Form } from 'react-bootstrap';
 export function TextResponse({
     question,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string>("");
     
@@ -23,6 +25,10 @@ export function TextResponse({
                     value={localAnswer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
                 />
+                <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(localAnswer)}>Back</Button>
                 <Button 
                     variant={localAnswer === "" ? "outline-primary" : "primary"}
                     disabled={localAnswer === ""}

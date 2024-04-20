@@ -13,11 +13,13 @@ import { Form } from 'react-bootstrap';
 export function SliderResponse({
     question,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [localAnswer, setLocalAnswer] = useState<string>("50");
     
@@ -30,6 +32,10 @@ export function SliderResponse({
                     value={localAnswer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
                 />
+                <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(localAnswer)}>Back</Button>
                 <Button onClick={() => onNext(localAnswer)}>Next</Button>
             </Form.Group>
         </div>

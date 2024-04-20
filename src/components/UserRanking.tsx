@@ -4,11 +4,13 @@ import { Button } from 'react-bootstrap';
 export function UserRanking({
     question,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [categories, setCategories] = useState<string[]>(options);
     
@@ -70,6 +72,10 @@ export function UserRanking({
                     </li>
                 ))}
             </ol>
+            <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(compressAnswer())}>Back</Button>
             <Button onClick={() => onNext(compressAnswer())}>Next</Button>  
         </div>
     )
