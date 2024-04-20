@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../App.css';
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {Q1} from "../DetailQuestions/Q1";
 import {Q2} from "../DetailQuestions/Q2";
 import {Q3} from "../DetailQuestions/Q3";
@@ -35,7 +35,7 @@ function Detail_Questions(): JSX.Element {
       <br></br>
       
       {questions[currentQuestion]}
-      <br></br>
+      
       <Button variant="primary" onClick={handlePrevClick} disabled={currentQuestion === 0}>
         Previous
       </Button>

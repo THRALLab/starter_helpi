@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../App.css';
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {Q1} from "../BasicQuestions/Q1";
 import {Q2} from "../BasicQuestions/Q2";
 import {Q3} from "../BasicQuestions/Q3";
@@ -10,6 +10,8 @@ import {Q6} from "../BasicQuestions/Q6";
 import {Q7} from "../BasicQuestions/Q7";
 import {Q8} from "../BasicQuestions/Q8";
 import { Footer } from "../components/Footer";
+
+
 
 function Basic_Questions(): JSX.Element {
 
@@ -35,15 +37,13 @@ function Basic_Questions(): JSX.Element {
       <br></br>
 
       {questions[currentQuestion]}
-      <br></br>
+      
       <Button size="sm" variant="primary" onClick={handlePrevClick} disabled={currentQuestion === 0}>
         Previous
       </Button>
       <Button size="sm" variant="primary" onClick={handleNextClick} disabled={currentQuestion === questions.length - 1}>
         Next
       </Button>
-      <br></br>
-
       <Footer/>
     </div>
   );
