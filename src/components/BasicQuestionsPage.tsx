@@ -47,14 +47,19 @@ export function BasicQuestionsPage(): JSX.Element {
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
+    const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
 
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
 
     const handleCurrentQuestion = () => {
         const currentQuestionIndex = currentQuestion + 1;
-
+        
         if (currentQuestionIndex < questions.length) {
             setCurrentQuestion(currentQuestionIndex)
+        }
+
+        if (currentQuestionIndex === questions.length - 1) {
+            setDisplayFinishButton(true);
         }
         
     
@@ -111,17 +116,20 @@ export function BasicQuestionsPage(): JSX.Element {
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
             />
+            <Button onClick={handleClearText}>Reset</Button>
             <div>
-                <p>{currentQuestion+1}</p>
+                <p>{currentQuestion+1}/{questions.length}</p>
                 <p>{questions[currentQuestion].questionText}</p>
             
             </div>
             <div>
                 <p>{questions[currentQuestion].answerOptions.map((answerOption) => <p>{answerOption.answerText}</p>)}</p>
             </div>
-            <div><Button onClick={handleCurrentQuestion}>Next Question</Button></div>
+            {!displayFinishButton && <div><Button onClick={handleCurrentQuestion}>Next Question</Button></div>}
+            {displayFinishButton && <div><Button onClick={handleCurrentQuestion}>Finish & Get Results</Button> <Button onClick={handleCurrentQuestion} disabled>Next Question</Button></div>}
+            
             <p></p>
-            <Button onClick={handleClearText}>Reset</Button>
+            
         </div>
     );
 }
