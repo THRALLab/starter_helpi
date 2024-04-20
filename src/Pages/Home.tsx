@@ -5,19 +5,12 @@ import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/Home.css";
 import "../Formatting/General.css";
-import OpenAIAPi from "openai";
-
-const APIKey = "APIKEYHERE";
-const openai = new OpenAIAPi({ apiKey: APIKey, dangerouslyAllowBrowser: true });
-export let completion: OpenAIAPi.Chat.Completions.ChatCompletion;
-let responseData = "Placeholder!";
+import { keyData, saveKeyData, updateKeyData } from "../APIFooter";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
+  updateKeyData(JSON.parse(prevKey));
 }
 
 function Home() {
@@ -31,25 +24,6 @@ function Home() {
 
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
-  }
-
-  async function ChatGPT()
-  {
-    completion = await openai.chat.completions.create({
-      messages: [
-        { "role": "system", "content": "You are a helpful assistant designed to output JSON." },
-        { "role": "user", "content": "Who won the world series in 2020?" }
-      ],
-      model: "gpt-3.5-turbo",
-      response_format: { "type": "json_object" }
-    });
-    //Stores response data
-    if(completion.choices[0].message.content !== null){
-      responseData = completion.choices[0].message.content;
-    }
-    else{
-      responseData = "Error!";
-    }
   }
 
   return (
@@ -110,13 +84,6 @@ function Home() {
             </Col>
           </Row>
         </Container>
-
-        <Form>
-          <Button className="Button-ChatGPT" onClick={ChatGPT}>
-            Generate Report
-          </Button>
-        </Form>
-        {responseData}
       </div>
 
       <div className="API-Footer">
