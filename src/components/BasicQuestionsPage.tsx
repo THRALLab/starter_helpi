@@ -5,11 +5,60 @@ import Button from '@mui/joy/Button';
 
 
 export function BasicQuestionsPage(): JSX.Element {
-    
+    const questions = [
+		{
+			questionText: 'Question 1',
+			answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
+			],
+		},
+		{
+			questionText: 'Question 2',
+			answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3' },
+				{ answerText: 'Option 4' },
+			],
+		},
+		{
+			questionText: 'Question 3',
+			answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3' },
+				{ answerText: 'Option 4' },
+			],
+		},
+		{
+			questionText: 'Question 4',
+			answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3' },
+				{ answerText: 'Option 4' },
+			],
+		},
+	];    
 
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
+
+    const [currentQuestion, setCurrentQuestion] = React.useState(0);
+
+    const handleCurrentQuestion = () => {
+        const currentQuestionIndex = currentQuestion + 1;
+
+        if (currentQuestionIndex < questions.length) {
+            setCurrentQuestion(currentQuestionIndex)
+        }
+        
+    
+    }
 
     const handleGoToHomePage = () => {
         setGoToHomePage(true);
@@ -62,6 +111,16 @@ export function BasicQuestionsPage(): JSX.Element {
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
             />
+            <div>
+                <p>{currentQuestion+1}</p>
+                <p>{questions[currentQuestion].questionText}</p>
+            
+            </div>
+            <div>
+                <p>{questions[currentQuestion].answerOptions.map((answerOption) => <p>{answerOption.answerText}</p>)}</p>
+            </div>
+            <div><Button onClick={handleCurrentQuestion}>Next Question</Button></div>
+            <p></p>
             <Button onClick={handleClearText}>Reset</Button>
         </div>
     );
