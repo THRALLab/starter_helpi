@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+
+const saveInfo = "DetailUserInputQ2";
 
 export function Q2():JSX.Element {
     const [userInfo, setUserInfo] = useState<string>("");
     function updateUserInfo(event: React.ChangeEvent<HTMLTextAreaElement>) {
         setUserInfo(event.target.value);
+    }
+    function saveData() {
+        localStorage.setItem(saveInfo, JSON.stringify(userInfo));
     }
     return (
         <div>
@@ -16,6 +21,7 @@ export function Q2():JSX.Element {
             value={userInfo}
             onChange={updateUserInfo} />
             </Form.Group>
+            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

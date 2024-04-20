@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 const reasons = [
     "Salary",
@@ -7,13 +7,19 @@ const reasons = [
     "Helping others",
     "Others Reasons",
 ];
+const saveInfoS = "DetailUserInputQ1_select";
+const saveInfoT = "DetailUserInputQ1_type";
 
 export function Q1():JSX.Element {
-    const [selectReason, setSelectReason] = useState(reasons[0]);
+    const [selectReason, setSelectReason] = useState<string | null>(null);
 
     const [userInfo, setUserInfo] = useState<string>("");
     function updateUserInfo(event: React.ChangeEvent<HTMLInputElement>) {
         setUserInfo(event.target.value);
+    }
+    function saveData() {
+        localStorage.setItem(saveInfoS, JSON.stringify(selectReason));
+        localStorage.setItem(saveInfoT, JSON.stringify(userInfo));
     }
 
     return (
@@ -29,12 +35,13 @@ export function Q1():JSX.Element {
                 />
             ))}
             <br></br>
-            if "Others", please indicate here:
+            if "Others" OR have anything to share, please indicate here:
             <Form.Control
                         type="textbox"
                         value={userInfo}
                         onChange={updateUserInfo}
                     />
+            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

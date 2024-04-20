@@ -1,20 +1,28 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+
+const saveInfo = "BasicUserInputQ8";
 
 export function Q8():JSX.Element {
-    const [userInfo, setUserInfo] = useState<string>("");
-    function updateUserInfo(event: React.ChangeEvent<HTMLInputElement>) {
-        setUserInfo(event.target.value);
+    const [data, setData] = useState<string>("");
+    function updateData(event: React.ChangeEvent<HTMLInputElement>) {
+        setData(event.target.value);
+    }
+    function saveData() {
+        localStorage.setItem(saveInfo, JSON.stringify(data));
     }
     return (
         <div>
-            What is your favorite subject?
-            <br></br>
-            <Form.Control
-                        type="textbox"
-                        value={userInfo}
-                        onChange={updateUserInfo}
+            <Form.Group controlId="userInput">
+                <Form.Label>What is your dream Company?</Form.Label>
+                
+                <Form.Control
+                    type="textbox"
+                    value={data}
+                    onChange={updateData}
                     />
+            </Form.Group>
+            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

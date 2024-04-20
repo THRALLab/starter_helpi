@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
-
+import { Button, Form } from "react-bootstrap";
+const saveInfo = "DetailUserInputQ4";
 const skills = [
     "attention to detail",
     "creativity",
@@ -10,8 +10,10 @@ const skills = [
 ];
 
 export function Q4():JSX.Element {
-    const [selectSkill, setSelectSkill] = useState(skills[0]);
-
+    const [selectSkill, setSelectSkill] = useState<string | null>(null);
+    function saveData() {
+        localStorage.setItem(saveInfo, JSON.stringify(selectSkill));
+    }
     return (
         <div>
             Which of the following skills do you possess and enjoy using?
@@ -24,6 +26,7 @@ export function Q4():JSX.Element {
                     onChange={() => setSelectSkill(skill)}
                 />
             ))}
+            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

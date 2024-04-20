@@ -1,24 +1,31 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+
+const saveInfo = "BasicUserInputQ1";
 
 export function Q1():JSX.Element {
-    const [color, setColor] = useState<string>("red");
+    const [data, setData] = useState<string>("");
 
-    function updateColor(event: React.ChangeEvent<HTMLSelectElement>) {
-        setColor(event.target.value);
+    function updateData(event: React.ChangeEvent<HTMLInputElement>) {
+        setData(event.target.value);
+    }
+
+    function saveData() {
+        localStorage.setItem(saveInfo, JSON.stringify(data));
     }
 
     return (
         <div>
-            <Form.Group controlId="colors">
-                <Form.Label>What is your favorite color?</Form.Label>
+            <Form.Group controlId="userInput">
+                <Form.Label>What do you like to do in your free time?</Form.Label>
                 
-                <Form.Select size="sm" value={color} onChange={updateColor}>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                </Form.Select>
+                <Form.Control
+                    type="textbox"
+                    value={data}
+                    onChange={updateData}
+                    />
             </Form.Group>
+            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

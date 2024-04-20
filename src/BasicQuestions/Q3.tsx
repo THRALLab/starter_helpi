@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+
+const saveInfo = "BasicUserInputQ3";
 
 export function Q3():JSX.Element {
     const [data, setData] = useState<string>("");
@@ -8,12 +10,17 @@ export function Q3():JSX.Element {
         setData(event.target.value);
     }
 
+    function saveData() {
+        localStorage.setItem(saveInfo, JSON.stringify(data));
+    }
+
     return (
         <div>
             <Form.Group controlId="userData">
                 <Form.Label>What is the highest education you have completed?</Form.Label>
                 <br></br>
                 <Form.Select value={data} onChange={updateData}>
+                    <option value="--">--</option>
                     <option value="middleSchool">Middle School</option>
                     <option value="highSchool">High School</option>
                     <option value="associate">Associate Degree</option>
@@ -22,6 +29,7 @@ export function Q3():JSX.Element {
                     <option value="doctor">Doctoral Degree</option>
                 </Form.Select>
             </Form.Group>
+            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

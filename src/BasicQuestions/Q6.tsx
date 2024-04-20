@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+
+const saveInfo = "BasicUserInputQ6";
 
 const seasons = [
     "Spring",
@@ -9,7 +11,11 @@ const seasons = [
 ];
 
 export function Q6():JSX.Element {
-    const [selectSeason, setSelectSeason] = useState(seasons[0]);
+    const [selectSeason, setSelectSeason] = useState<string | null>(null);
+
+    function saveData() {
+        localStorage.setItem(saveInfo, JSON.stringify(selectSeason));
+    }
 
     return (
         <div>
@@ -23,6 +29,7 @@ export function Q6():JSX.Element {
                     onChange={() => setSelectSeason(season)}
                 />
             ))}
+            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }
