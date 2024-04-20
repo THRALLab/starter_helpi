@@ -1,9 +1,77 @@
-export {}
+//export {}
 
+/*
+import OpenAIAPi from "openai";
 
+let APIKey = "API_KEY_HERE";
 
+const openai = new OpenAIAPi({ apiKey: APIKey, dangerouslyAllowBrowser: true });
+export let completion: OpenAIAPi.Chat.Completions.ChatCompletion;
 
+export async function ChatGPT() {
+  completion = await openai.chat.completions.create({
+    messages: [
+      { "role": "system", "content": "You are a helpful assistant designed to output JSON." },
+      { "role": "user", "content": "Who won the world series in 2020?" }
+    ],
+    model: "gpt-3.5-turbo",
+    response_format: { "type": "json_object" },
+  });
 
+  console.log(completion.choices[0]);
+  console.log(completion.choices[0].message.content);
+}
+*/
+
+/*
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const Chat = () => {
+  const [input, setInput] = useState('');
+  const [response, setResponse] = useState('');
+
+  const sendMessage = async () => {
+    try {
+      const apiUrl = 'https://api.openai.com/v1/engines/davinci-codex/completions'; // Update with the correct API endpoint
+      const apiKey = 'APIKEYHERE'; // Replace with your actual API key
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+        'DangerouslyAllowBrowser': true
+      };
+
+      const requestBody = {
+        messages: [{ role: 'user', content: input }],
+      };
+
+      const { data } = await axios.post(apiUrl, requestBody, { headers });
+
+      setResponse(data.choices[0].message.content);
+    } catch (error) {
+      setResponse("Error!");
+    }
+  };
+
+  return (
+    <div>
+      <div>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button onClick={sendMessage}>Send</button>
+      </div>
+      <div>
+        <p>{response}</p>
+      </div>
+    </div>
+  );
+};
+
+export default Chat;
+*/
 
 
 /*
