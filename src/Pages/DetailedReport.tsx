@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import OpenAIAPi from "openai";
 import { Button, Form } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
@@ -6,17 +7,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/Home.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
-import OpenAIAPi from "openai";
-import { keyData, saveKeyData, updateKeyData } from "../APIFooter";
-
-let completion: OpenAIAPi.Chat.Completions.ChatCompletion;
-let openai = new OpenAIAPi({ apiKey: keyData, dangerouslyAllowBrowser: true });
-let responseData = "Placeholder!";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
+let keyData = "";
+const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 if (prevKey !== null) {
-  updateKeyData(JSON.parse(prevKey));
+  keyData = JSON.parse(prevKey);
 }
 
 function DetailedReport() {
@@ -32,25 +29,31 @@ function DetailedReport() {
     setKey(event.target.value);
   }
 
-  async function ChatGPT()
-  {
+  const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
+  //Queries ChatGPT to generate report
+  async function ChatGPT() {
     //Creates ChatGPT
-    openai = new OpenAIAPi({ apiKey: keyData, dangerouslyAllowBrowser: true });
+    const openai = new OpenAIAPi({
+      apiKey: keyData,
+      dangerouslyAllowBrowser: true,
+    });
     //Queries ChatGPT
-    completion = await openai.chat.completions.create({
+    const completion = await openai.chat.completions.create({
       messages: [
-        { "role": "system", "content": "You are a helpful assistant designed to output JSON." },
-        { "role": "user", "content": "Who won the world series in 2020?" }
+        {
+          role: "system",
+          content: "You are a helpful assistant designed to output JSON.",
+        },
+        { role: "user", content: "Who won the world series in 2020?" },
       ],
       model: "gpt-3.5-turbo",
-      response_format: { "type": "json_object" }
+      response_format: { type: "json_object" },
     });
     //Stores response data
-    if(completion.choices[0].message.content !== null){
-      responseData = completion.choices[0].message.content;
-    }
-    else{
-      responseData = "Error!";
+    if (completion.choices[0].message.content !== null) {
+      setResponseData(completion.choices[0].message.content);
+    } else {
+      setResponseData("Error!");
     }
   }
 
