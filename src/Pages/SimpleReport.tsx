@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import OpenAIAPi from "openai";
 import { Button, Form } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
@@ -28,6 +29,34 @@ function SimpleReport() {
     setKey(event.target.value);
   }
 
+  const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
+  //Queries ChatGPT to get response
+  async function ChatGPT() {
+    //Creates ChatGPT
+    const openai = new OpenAIAPi({
+      apiKey: keyData,
+      dangerouslyAllowBrowser: true,
+    });
+    //Queries ChatGPT
+    const completion = await openai.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: "You are a helpful assistant designed to output JSON.",
+        },
+        { role: "user", content: "Who won the world series in 2020?" },
+      ],
+      model: "gpt-3.5-turbo",
+      response_format: { type: "json_object" },
+    });
+    //Stores response data
+    if (completion.choices[0].message.content !== null) {
+      setResponseData(completion.choices[0].message.content);
+    } else {
+      setResponseData("Error!");
+    }
+  }
+
   return (
     <div className={bodyClassName} id="bigBody">
       <header className="General-header">
@@ -43,15 +72,12 @@ function SimpleReport() {
       <div className="Page-body">
         <div className="Page-text">
           <p className="Report-header">View your Simple Quiz Results!</p>
-          <p className="Report-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <Form className="Report-body">
+            <Button className="Button-ChatGPT" onClick={ChatGPT}>
+              Generate Report
+            </Button>
+          </Form>
+          {responseData}
         </div>
       </div>
 
