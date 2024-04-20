@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert } from "react-bootstrap";
+import { Form, /*ProgressBar, Alert*/ } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
+import OpenAI from "openai";
 
 
 const BasicPage = () => {
@@ -19,68 +20,122 @@ const BasicPage = () => {
 		  });
 	}
 
-	function getResponses() {
-		let answers = ["", "", "", "", "", "", "", ""];
+	function getResponses(): string {
+		//let answers = ["", "", "", "", "", "", "", ""];
+
+		let description = "";
 
 		if(response[0]){
-			answers[0] = "I prefer working in a group.";
+			//answers[0] = "I prefer working in a group.";
+			description += "I prefer working in a group.\n";
 		}
 		else{
-			answers[0] = "I prefer working on my own.";
+			//answers[0] = "I prefer working on my own.";
+			description += "I prefer working on my own.\n";
 		}
 
 		if(response[1]){
-			answers[1] = "I prefer having my schedule made for me.";
+			//answers[1] = "I prefer having my schedule made for me.";
+			description += "I prefer having my schedule made for me.\n";
 		}
 		else{
-			answers[1] = "I want to be able to work when I want.";
+			//answers[1] = "I want to be able to work when I want.";
+			description += "I want to be able to work when I want.\n";
 		}
 
 		if(response[2]){
-			answers[2] = " I like having detailed instructions when doing a task.";
+			//answers[2] = "I like having detailed instructions when doing a task.";
+			description += "I like having detailed instructions when doing a task.\n";
 		}
 		else{
-			answers[2] = " I prefer having creative freedom when doing a task.";
+			//answers[2] = "I prefer having creative freedom when doing a task.";
+			description += "I prefer having creative freedom when doing a task.\n";
 		}
 
 		if(response[3]){
-			answers[3] = "I enjoy a job that challenges me.";
+			//answers[3] = "I enjoy a job that challenges me.";
+			description += "I enjoy a job that challenges me.\n";
 		}
 		else{
-			answers[3] = "I want a job that is easy.";
+			//answers[3] = "I want a job that is easy.";
+			description	+= "I want a job that is easy.\n";
 		}
 
 		if(response[4]){
-			answers[4] = "I enjoy working with my hands.";
+			//answers[4] = "I enjoy working with my hands.";
+			description += "I enjoy working with my hands.\n";
 		}
 		else{
-			answers[4] = "I don't like working with my hands.";
+			//answers[4] = "I don't like working with my hands.";
+			description += "I don't like working with my hands.\n";
 		}
 
 		if(response[5]){
-			answers[5] = "I would work a job I dislike for the money.";
+			//answers[5] = "I would work a job I dislike for the money.";
+			description += "I would work a job I dislike for the money.\n";
 		}
 		else{
-			answers[5] = "I would only ever work a job I like.";
+			//answers[5] = "I would only ever work a job I like.";
+			description += "I would only ever work a job I like.\n";
 		}
 
 		if(response[6]){
-			answers[6] = "I want to make a difference in the world.";
+			//answers[6] = "I want to make a difference in the world.";
+			description	+= "I want to make a difference in the world.\n";
 		}
 		else{
-			answers[6] = "I just want a job.";
+			//answers[6] = "I just want a job.";
+			description += "I just want a job.\n";
 		}
 
 		if(response[7]){
-			answers[7] = "I love to travel.";
+			//answers[7] = "I love to travel.";
+			description += "I love to travel.\n";
 		}
 		else{
-			answers[7]= "I don't like to travel.";
-
+			//answers[7]= "I don't like to travel.";
+			description += "I don't like to travel.\n";
 		}
 
-		console.log(answers);
+		//console.log(answers + '/n')
+		console.log(description);
+
+		return description;
 	}
+
+
+
+	const openai = new OpenAI({
+        apiKey: key, //this is the api key that the user inputted
+        dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
+    });
+
+	async function main() { //This function is to test a fake conversation witht the GPT-4 model
+        console.log("API Key: " + key); //purely for testing purposes
+        try{
+            const response = await openai.chat.completions.create({
+            model: "gpt-4-turbo",
+            messages: [
+                {
+                "role": "system",
+                "content": "You will tell me what career I should pursue based on my interests."
+                },
+                {
+                "role": "user",
+                "content": "I like math, computers, and logic."
+                }
+            ],
+            temperature: 0.8,
+            max_tokens: 64,
+            top_p: 1,
+            });
+
+            console.log(response.choices[0].message.content); //GPT Response to the user's input
+        }
+        catch(e){ //catches any errors that may occur with an invalid API key
+            console.log(e);
+        }  
+    }
 
 	function updateProgress(responseList:number[]): number {
 		let completed: number = 0;
@@ -94,7 +149,7 @@ const BasicPage = () => {
 
     let answered = updateProgress(response);
     const [allow, setAllow] = useState<boolean>(false);
-	const [alert, setAlert] = useState<boolean>(false);
+	const [/*alert*/, setAlert] = useState<boolean>(false);
 	
     useEffect(() => {
         if (answered === 8) {
