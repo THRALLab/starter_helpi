@@ -7,22 +7,26 @@ import { key } from "./homePage"
 
 const BasicPage = () => {
 	const [response, setResponse] = useState<(number)[]>
-	([-1, -1, -1, -1, -1, -1, -1, -1])
+	([-1, -1, -1, -1, -1, -1, -1, -1]) //initializes the responses to -1 so no radio button is checked
 	function updateChoice(index:number){
 		setResponse(prevResponse => {
 			const updatedResponse = [...prevResponse];
 			if(index % 2 === 0){
-				updatedResponse[index/2] = 1;
+				updatedResponse[index/2] = 1; //if the index is even, the first radio button is selected
 			}
 			else{
-				updatedResponse[Math.floor(index/2)] = 0;
+				updatedResponse[Math.floor(index/2)] = 0; // the second radio button is selected
 			}
 			return updatedResponse;
 		  });
 	}
 
-	function getResponses(): string {
+	function getResponses(): string { //returns a description of the user's responses to the questions
 		//let answers = ["", "", "", "", "", "", "", ""];
+
+		/*Originally stored each answer to a question as an array in a string.
+		However, there is no reason to access only one specific answer so instead
+		switch to one long string that has all the answers on a new line.*/
 
 		let description = "";
 
@@ -104,25 +108,25 @@ const BasicPage = () => {
 		return description;
 	}
 
-	function sendRespone(): void {
+	function sendRespone(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
 		const openai = new OpenAI({
-			apiKey: key.replaceAll('"',"") || "", //this is the api key that the user inputted
+			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
 			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
 		});
 		  
-		async function runGPT() { //This function is to test a fake conversation witht the GPT-4 model
-			console.log("API Key: " + key); //purely for testing purposes
+		async function runGPT() { //Creates conversation with the GPT-4 model
+			console.log("API Key: " + key); //for testing purposes
 			try{
 				const response = await openai.chat.completions.create({
 				model: "gpt-4-turbo",
 				messages: [
 					{
 					"role": "system",
-					"content": "You will tell me what career I should pursue based on my interests."
+					"content": "You will tell me what career I should pursue based on my interests." //What we want GPT to do
 					},
 					{
 					"role": "user",
-					"content": getResponses(),
+					"content": getResponses(), //calls the function that gets the description
 					}
 				],
 				temperature: 0.8,
@@ -137,14 +141,14 @@ const BasicPage = () => {
 			}  
 		}
 
-		runGPT();
+		runGPT(); //run the function at the end
 	
 	}
 
 	function updateProgress(responseList:number[]): number {
 		let completed: number = 0;
 		for (const response of responseList){
-			if(response === 1 || response === 0){
+			if(response === 1 || response === 0){ //if the user has answered the question aka no longer -1
 				completed +=1;
 			}
 		}
@@ -185,11 +189,13 @@ const BasicPage = () => {
 				Basic Quiz
 			</h1>
 			<p style={{ textAlign: "center" }}>
-				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
+				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
+				The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+				 With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
 			</p>
 			
 		</div>
-		<Button size="lg" disabled={!allow} onClick={sendRespone}>Answer</Button>
+		<Button size="lg" disabled={!allow} onClick={sendRespone}>Answer</Button> 
 		<div style={{textAlign: "center", marginTop:"10px"}}>
 		</div>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
