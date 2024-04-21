@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { currentState, updateCurrentState } from "./DarkModeParent";
-
+//Name of the class changes what colors are used
 export let bodyClassName = "body";
 
 export const DarkModeToggle = () => {

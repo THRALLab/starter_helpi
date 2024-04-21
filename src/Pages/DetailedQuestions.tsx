@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { SliderQuestion } from "../Components/SliderQuestion";
 import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
+import { SliderQuestion } from "../Components/SliderQuestion";
 import jsonData from "../QuestionData/DetailedQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
