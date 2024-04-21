@@ -4,7 +4,6 @@ import { Button, Form } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Formatting/Home.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
 
@@ -70,15 +69,13 @@ function DetailedReport() {
       </header>
 
       <div className="Page-body">
-        <div className="Page-text">
-          <p className="Report-header">View your Detailed Quiz Results!</p>
-          <Form className="Report-body">
-            <Button className="Button-ChatGPT" onClick={ChatGPT}>
-              Generate Report
-            </Button>
-          </Form>
-          {responseData}
-        </div>
+        <div className="Report-header">View your Simple Quiz Results!</div>
+        <Form className="Report-body">
+          <Button className="Button-chatGPT" onClick={ChatGPT}>
+            Generate Report
+          </Button>
+        </Form>
+        <div className="Report-results">{responseData}</div>
       </div>
 
       <div className="API-Footer">

@@ -6,6 +6,7 @@
   --color-body-Button: #a294ef;
   --color-body-ButtonDisabled: #a294ef;
   --color-body-ButtonHover: #b3a9ee;
+  --color-body-ButtonBorder: #000000;
 }
 
 .body-dark {
@@ -16,18 +17,17 @@
   --color-body-Button: #a294ef75;
   --color-body-ButtonDisabled: #a294ef75;
   --color-body-ButtonHover: #a294efa6;
+  --color-body-ButtonBorder: #000000;
 }
 
 .General-header {
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(15px + 3vmin);
   position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-flow: row nowrap;
+  min-height: 10vh;
+  font-size: calc(15px + 3vmin);
   color: var(--color-body-Headertext);
   background-color: var(--color-body-Headerbackground);
 }
@@ -35,40 +35,34 @@
 .Header-toggle {
   position: absolute;
   align-items: left;
-  font-size: calc(13px + 1vmin);
-  margin-left: 5%;
+  justify-content: center;
   margin-top: 2px;
+  margin-left: 5%;
   left: 0;
+  font-size: calc(13px + 1vmin);
   color: var(--color-body-Headertext);
 }
 
 .Header-button {
   position: absolute;
+  justify-content: center;
   align-items: right;
-  font-size: calc(10px + 2vmin);
-  margin-right: 5%;
   margin-top: 2px;
+  margin-right: 5%;
   right: 0;
+  font-size: calc(13px + 2vmin);
   color: var(--color-body-Headertext);
 }
 
 .Page-body {
-  min-height: 90vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: calc(6px + 2vmin);
-  position: relative;
   padding-top: 3vh;
-  color: var(--color-body-text);
-  background-color: var(--color-body-background);
-}
-
-.Button-format {
-  height: "7vh";
-  width: "50vh";
-  font-size: "3vh";
+  min-height: 90vh;
+  font-size: calc(6px + 2vmin);
   color: var(--color-body-text);
   background-color: var(--color-body-background);
 }
@@ -76,70 +70,13 @@
 .Button-link {
   font-weight: bold;
   color: var(--color-body-text);
-  border: #000000;
+  border: var(--color-body-ButtonBorder);
   background-color: var(--color-body-Button);
 }
 
 .Button-link:hover {
   color: var(--color-body-text);
   background-color: var(--color-body-ButtonHover);
-}
-
-.Button-visible-true {
-  --visibility-button: visible;
-}
-
-.Button-visible-false {
-  --visibility-button: hidden;
-}
-
-.Button-next {
-  visibility: var(--visibility-button);
-  font-weight: bold;
-  color: var(--color-body-text);
-  border: #000000;
-  background-color: var(--color-body-Button);
-}
-
-.Button-next:hover {
-  visibility: var(--visibility-button);
-  color: var(--color-body-text);
-  background-color: var(--color-body-ButtonHover);
-}
-
-.Button-next-2 {
-  visibility: var(--visibility-button);
-  font-weight: bold;
-  color: var(--color-body-text);
-  border: #000000;
-  background-color: var(--color-body-Button);
-}
-
-.Button-next-2:hover {
-  visibility: var(--visibility-button);
-  color: var(--color-body-text);
-  background-color: var(--color-body-ButtonHover);
-}
-
-.Button-back {
-  font-weight: bold;
-  color: var(--color-body-text);
-  border: #000000;
-  background-color: var(--color-body-Button);
-}
-
-.Button-back:hover {
-  color: var(--color-body-text);
-  background-color: var(--color-body-ButtonHover);
-}
-
-.Button-back:disabled {
-  color: var(--color-body-text);
-  background-color: var(--color-body-ButtonDisabled);
-}
-
-.Button-report {
-  visibility: var(--visibility-button);
 }
 
 .API-Footer {

@@ -1,13 +1,3 @@
-.body {
-  --color-body-background: #8ad7f8;
-  --color-body-text: #000000;
-}
-
-.body-dark {
-  --color-body-background: #000000;
-  --color-body-text: #c9c9c9;
-}
-
 .Simple-body {
   min-height: 90vh;
   display: flex;
