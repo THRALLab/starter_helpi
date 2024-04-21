@@ -1,5 +1,8 @@
-.button {
-  text-align: center;
+.Page-text {
+  text-align: left;
+  margin-bottom: 5vh;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .Text-basic {
@@ -12,9 +15,7 @@
   margin-left: 10%;
 }
 
-.Page-text {
-  margin-bottom: 5vh;
-  text-align: left;
-  margin-left: 15%;
-  margin-right: 16%;
+.Button-format {
+  color: var(--color-body-text);
+  background-color: var(--color-body-background);
 }

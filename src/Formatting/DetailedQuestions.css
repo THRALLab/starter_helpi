@@ -1,5 +1,9 @@
-.DetailedQuestions {
-  text-align: center;
+.Slider-visible-true {
+  --visibility-slider: visible;
+}
+
+.Slider-visible-false {
+  --visibility-slider: hidden;
 }
 
 .Slider-questions {
@@ -20,14 +24,6 @@
   margin-left: 41px;
   font-size: 18px;
   margin-bottom: 50px;
-}
-
-.Slider-visible-true {
-  --visibility-slider: visible;
-}
-
-.Slider-visible-false {
-  --visibility-slider: hidden;
 }
 
 .Slider-slider {

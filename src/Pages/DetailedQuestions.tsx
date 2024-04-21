@@ -6,6 +6,7 @@ import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import jsonData from "../QuestionData/DetailedQuestions.json";
 import "../Formatting/General.css";
+import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
