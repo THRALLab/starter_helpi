@@ -4,12 +4,57 @@ import { Buttons } from './Buttons';
 //import Item from '@mui/material/ListItem';
 //import 'App.css';
 import { Navigate } from 'react-router-dom';
-import Button from '@mui/joy/Button';
+import Button from '@mui/material/Button';
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { deepPurple, pink } from '@mui/material/colors';
+import Avatar from '@mui/material/Avatar';
 
 export function Home(): JSX.Element {
+    const customTheme = createTheme({
+        typography: {
+            fontFamily: [
+                '-apple-system',
+                'BlinkMacSystemFont',
+                '"Segoe UI"',
+                'Roboto',
+                '"Helvetica Neue"',
+                'Arial',
+                'sans-serif',
+                '"Apple Color Emoji"',
+                '"Segoe UI Emoji"',
+                '"Segoe UI Symbol"',
+              ].join(','),
+        },
+        palette: {
+          primary: {
+            main: '#ce93d8',
+          }, text: {
+            primary: '#000', // Change text color to white
+          }, secondary: {
+            main: '#ab47bc'
+          }
+        },
+      });
+      
+      const StyledButton = styled(Button)`
+        ${({ theme }) => `
+        cursor: pointer;
+        background-color: ${theme.palette.primary.main};
+        color: ${theme.palette.text.primary};
+        transition: ${theme.transitions.create(['background-color', 'transform'], {
+          duration: theme.transitions.duration.standard,
+        })};
+        &:hover {
+          background-color: ${theme.palette.secondary.main};
+          transform: scale(1.3);
+        }
+        `}
+      `;
+
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
     //const [goToHomePage, setGoToHomePage] = React.useState(false);
+    const [isHovered, setIsHovered] = React.useState(false);
 
     if (goToBasicQuestionsPage) {
         return <Navigate to="/BasicQuestionsPage"/>
@@ -18,6 +63,8 @@ export function Home(): JSX.Element {
     if (goToDetailedQuestionsPage) {
         return <Navigate to="/DetailedQuestionsPage"/>
     }
+
+
     
     return (
         
@@ -36,8 +83,12 @@ export function Home(): JSX.Element {
                 interests and career. 
             </p>
             <p></p>
-           
-            <Button color="primary" variant='solid' onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
+            <ThemeProvider theme={customTheme}>
+                <StyledButton onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</StyledButton>
+            </ThemeProvider>
+            {/*<Button className={`animated-button ${isHovered ? 'hovered' : ''}`}
+      onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)} color="primary" variant='solid' onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>*/}
         </div>
         <div className="box">
             <p></p>
@@ -48,7 +99,10 @@ export function Home(): JSX.Element {
                 thorough explanations. 
             </p>
             <p></p>
-            <Button color="primary" variant="solid" onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
+            {/*<Button color="primary" variant="solid" onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>*/}
+            <ThemeProvider theme={customTheme}>
+                <StyledButton onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</StyledButton>
+            </ThemeProvider>
         </div>
 
         </main>

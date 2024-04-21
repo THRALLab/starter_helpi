@@ -5,7 +5,7 @@
 
 .App {
   text-align: center;
-  background-color: #b8dcfb; /* Color in HEX */ 
+  background-color: #b4dcfa; /* Color in HEX */ 
 }
 
 .App-logo {
@@ -20,18 +20,18 @@
 }
 
 .App-header {
-  background-color: #b8dcfb;
+  background-color: #010f1a;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(180, 120, 89);
 }
 
 .Home-body {
-  background-color: #b8dcfb;
+  background-color: #11181e;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -61,7 +61,7 @@
   padding: 40px;
   margin: 20px;
   display: inline-block;
-  background-color: rgb(251, 223, 251);
+  background-color: #f3e5f5;
   position: static;
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -82,4 +82,12 @@
 
 .box-shadow {
     box-shadow: 10px 10px;
+}
+
+.animated-button {
+  transition: all 0.2s ease-in-out;
+}
+
+.animated-button.hovered {
+  transform: scale(1.1);
 }
