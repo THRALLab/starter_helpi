@@ -81,39 +81,39 @@ export function BasicQuestionsPage(): JSX.Element {
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
 
+
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
 
     const handleCurrentQuestion = () => {
         const currentQuestionIndex = currentQuestion + 1;
-        
-        if (currentQuestionIndex < questions.length) {
-            setCurrentQuestion(currentQuestionIndex)
-        }
 
-        if (currentQuestionIndex === questions.length - 1) {
-            setDisplayFinishButton(true);
-        }
+            if (currentQuestionIndex < questions.length) {
+                setCurrentQuestion(currentQuestionIndex)
+            }
     
-    }
-
-    const handleGoToHomePage = () => {
-        setGoToHomePage(true);
-    };
-
-    const handleClearText = () => {
-        setInputText("");
-    };
-
-    if (goToHomePage) {
-        return <Navigate to="/" />;
+            if (currentQuestionIndex === questions.length - 1) {
+                setDisplayFinishButton(true);
+            }
+    
     }
 
     const handleDisplayFinalResults = () => {
         setDisplayFinalResults(true);
         setDisplayFinishButton(false);
     }
-   
-    //const [goToHomePage, setGoToHomePage] = React.useState(false);
+
+    const handleClearText = () => {
+        setInputText("");
+    };
+
+
+    const handleGoToHomePage = () => {
+        setGoToHomePage(true);
+    };
+
+    if (goToHomePage) {
+        return <Navigate to="/" />;
+    }
 
     if (goToDetailedQuestionsPage) {
         return <Navigate to="/DetailedQuestionsPage"/>
@@ -156,6 +156,7 @@ export function BasicQuestionsPage(): JSX.Element {
                 height: '40vh', // Adjust this value according to your layout
                 padding: '30vh'
             }}>
+                
                 <Card variant="plain" sx={{ width: 1000, height: 400}}// Adjust this value according to your layout
                 >
                     <CardContent>
