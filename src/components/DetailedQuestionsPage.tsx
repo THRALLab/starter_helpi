@@ -78,7 +78,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
-    const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
+    const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
 
@@ -116,8 +116,8 @@ export function DetailedQuestionsPage(): JSX.Element {
         return <Navigate to="/" />;
     }
 
-    if (goToDetailedQuestionsPage) {
-        return <Navigate to="/DetailedQuestionsPage"/>
+    if (goToBasicQuestionsPage) {
+        return <Navigate to="/BasicQuestionsPage"/>
     }
 
     return (
@@ -129,7 +129,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                 <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
-                <Nav.Link onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Nav.Link>
+                <Nav.Link onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Nav.Link>
                      <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
