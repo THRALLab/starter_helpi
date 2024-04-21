@@ -9,12 +9,12 @@ interface DetailedQuestionProps {
   value: number;
   onChange: React.Dispatch<React.SetStateAction<number>>;
 }
-
+//Slider question component used on the detailed questions page
 export function SliderQuestion(props: DetailedQuestionProps) {
   function updateSliderValue(event: React.ChangeEvent<HTMLInputElement>) {
     props.onChange(parseInt(event.target.value));
   }
-
+  //Slider formatted using the detailed questions css
   return (
     <div className="DetailedQuestions-slider">
       <label>{props.label}</label>

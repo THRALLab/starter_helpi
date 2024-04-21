@@ -13,6 +13,7 @@ export function LinkButton(props: LinkButtonProps) {
   const handleButtonClick = (whereTo: string) => {
     navigate(whereTo);
   };
+  //Link button component, all formatted using the general css file
   return (
     <Button className="Button-link" onClick={() => handleButtonClick(props.to)}>
       {props.label}

@@ -41,18 +41,18 @@ function SimpleReport() {
       messages: [
         {
           role: "system",
-          content: "You are a helpful assistant designed to output JSON.",
+          content:
+            "You are a helpful career advisor. You will be provided a students result to a career quiz.",
         },
-        { role: "user", content: "Who won the world series in 2020?" },
+        { role: "user", content: "What should my career be?" },
       ],
       model: "gpt-3.5-turbo",
-      response_format: { type: "json_object" },
     });
     //Stores response data
     if (completion.choices[0].message.content !== null) {
       setResponseData(completion.choices[0].message.content);
     } else {
-      setResponseData("Error!");
+      setResponseData("Error! Maybe you forgot to input the API key?");
     }
   }
 
