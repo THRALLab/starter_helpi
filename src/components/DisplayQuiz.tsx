@@ -92,7 +92,8 @@ export function DisplayQuiz(
     const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
-        onNext: handleAnswerSubmit
+        onNext: handleAnswerSubmit,
+        isFirst: currentQuestionId === "question1"
     };
 
 
