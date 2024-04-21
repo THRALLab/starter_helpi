@@ -95,13 +95,17 @@ const DetailedPage = () => {
 
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
 		Response6: (boolean| string)[], Response7: (boolean| string)[]): number {
-		const responses: (boolean | string)[][] = [Response1, Response2, Response3, Response4, Response5, Response6, Response7]
-		const completed: number = responses.reduce((count: number, response: (boolean | string)[]) => {
-			const isComplete: boolean = response.some((option: boolean | string) => {
-				return (typeof option === "boolean" && option) || (typeof option === "string" && option.trim().length > 0);
-			})
-			return count + (isComplete ? 1 : 0);
-		}, 0);
+		const responses = [Response1, Response2, Response3, Response4, Response5, Response6, Response7]
+		let completed: number = 0;
+		responses.forEach(response => {
+			if(response.some((option:boolean | string) => {
+				if((typeof option === "boolean" && option === true) || (typeof option === "string" && option.trim().length > 0)){ //Checks for true and non empty strings
+				return true;
+				}
+				return false
+			}))
+			completed +=1; //adds 1 for each true or non empty string 
+		})
 		return completed;
 	}
 	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
@@ -117,14 +121,28 @@ const DetailedPage = () => {
 		<style>{`
         .question-box {
 		display:flex;
-		gap:100px	
+		gap:10px	
         }
 		h3 {
 		margin-left: 25px
 		}
 		.answer-box{
-			margin-left: -100px	
+			flex-grow: 1;
+			margin-left: 10px
 			}
+		.questionPrompt{
+			font-weight:bold;
+			margin-left: 25px
+			
+
+		}
+		.reg-radio{
+			display: inline-block;
+   			border: 1px solid #ccc; /* Add a border around the radio button */
+   			border-radius: 5px; /* Rounded corners */
+    		padding: 5px; /* Add padding around the radio button */
+    		margin-right: 2px; /* Add space between radio buttons */
+		}
         `}</style>
 		<div className="info-portion">
 			<h1>
@@ -144,38 +162,50 @@ const DetailedPage = () => {
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
 		</div>
-		<h3>Question 1</h3>
-		You slept through your alarm and barely missed the train to work. The next train isn’t for another 30 minutes, so you’ll definitely be late now. What do you do?
+		<h3>Question 1.</h3>
+		<span className="questionPrompt">You slept through your alarm and barely missed the train to work. The next train isn’t for another 30 minutes, so you’ll definitely be late now. What do you do?</span> 
 		<div className="question-box">
-		
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option1"
 				label="I’ll call my boss and let them know I’ll be late."
 				name="question1"
-				onChange={() => handleRadio("holder", 1, 0, 0)}/>
+				style={{width:"auto"}}
+				onChange={() => handleRadio("holder", 1, 0, 0)}
+				/>
+				</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option2"
 				label="Call my friend to see if they can pick me up."
 				name="question1"
+				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1,1, 0)}/>
+				</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option3"
 				label="I’ll call in sick and take the day off."
 				name="question1"
+				style={{width:"auto"}}
 				onChange={() => handleRadio("holder",1, 2, 0)}/>
+				</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option4"
 				label="I’ll take a taxi to work."
 				name="question1"
+				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 3, 0)}/>
+			</div>
 			<Form.Check
 					inline
 					type="radio"
@@ -188,40 +218,52 @@ const DetailedPage = () => {
 					placeholder="Enter your answer"
 					value={String(Response1[4])}
 					onChange={(event) => handleOtherSelect(event,1, 4)}
-					disabled={!otherSelected[0]}		/>
+					disabled={!otherSelected[0]}	/>
 				</div>
 			</div>
-			<h3>Question 2</h3>
-			You and a few coworkers are assigned to create a presentation for a conference that many shareholders of your company will be attending. What’s the first thing you’ll do?
+			<h3>Question 2.</h3>
+			<span className="questionPrompt">You and a few coworkers are assigned to create a presentation for a conference that many shareholders of your company will be attending. What’s the first thing you’ll do?</span>
 			<div className="question-box">
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q2-Option1"
 				label="I would try to meet shareholders to find out what think about our company."
 				name="question2"
+				style={{width:"200px"}}
 				onChange={() => handleRadio("holder",2,  0, 1)}/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q2-Option2"
 				label="I would assign tasks to our group members to organize our workflow."
 				name="question2"
+				style={{width:"230px"}}
 				onChange={() => handleRadio("holder",2,  1, 1)} />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q2-Option3"
 				label="I would start researching the topic and create a rough outline of the presentation."
 				name="question2"
+				style={{width:"275px"}}
 				onChange={() => handleRadio("holder",2,  2, 1)} />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q2-Option4"
 				label="I would begin designing the slides and decide what topics should be included."
 				name="question2"
+				style={{width:"300px"}}
 				onChange={() => handleRadio("holder",2,  3, 1)} />
+			</div>
 			<Form.Check
 					inline
 					type="radio"
@@ -234,40 +276,53 @@ const DetailedPage = () => {
 					placeholder="Enter your answer"
 					value={String(Response2[4])}
 					onChange={(event) => handleOtherSelect(event,2, 4)}
-					disabled={!otherSelected[1]}	/>
+					disabled={!otherSelected[1]}
+						/>
 				</div>
 			</div>
-		<h3>Question 3</h3>
-		A coworker comments on your part of the presentation and says it isn’t on the correct topic even though you think it is. What do you do to resolve the situation?
+		<h3>Question 3.</h3>
+		<span className="questionPrompt">A coworker comments on your part of the presentation and says it isn’t on the correct topic even though you think it is. What do you do to resolve the situation?</span>
 		<div className="question-box">
+		<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q3-Option1"
 				label="I would ask my coworker to explain what they think the topic is about."
 				name="question3"
+				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 3, 0, 2)} />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q3-Option2"
 				label="I would ask my boss what they think about my part of the presentation."
 				name="question3"
+				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 3, 1, 2)} />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q3-Option3"
 				label="I wouldn't change it because I know I'm right."
 				name="question3"
+				style={{width:"250px"}}
 				onChange={() => handleRadio("holder",3, 2, 2)} />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q3-Option4"
 				label="I would review the topic and see if I can make my part clearer."
 				name="question3"
+				style={{width:"200px"}}
 				onChange={() => handleRadio("holder",3,3, 2)} />
+			</div>
 			<Form.Check
 					inline
 					type="radio"
@@ -284,37 +339,49 @@ const DetailedPage = () => {
 						/>
 				</div>
 			</div>
-		<h3>Question 4</h3>
-		You’re in charge of scheduling the meetings for your presentation group. How often should you meet, and for how long?
+		<h3>Question 4.</h3>
+		<span className="questionPrompt">You’re in charge of scheduling the meetings for your presentation group. How often should you meet, and for how long?</span>
 		<div className="question-box">
+		<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q4-Option1"
 				label="We should check in every day for 15 minutes."
 				name="question4"
+				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 0, 3)} />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q4-Option2"
 				label="We should only meet once a week for an hour."
 				name="question4"
+				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 1, 3)}/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q4-Option3"
 				label="We should meet a few times a week."
 				name="question4"
+				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 2, 3)}/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q4-Option4"
 				label="I don't think we need to meet at all, email is fine."
 				name="question4"
+				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 3, 3)} />
+			</div>
 			<Form.Check
 					inline
 					type="radio"
@@ -330,37 +397,49 @@ const DetailedPage = () => {
 					disabled={!otherSelected[3]}		/>
 				</div>
 			</div>
-		<h3>Question 5</h3>
-		Recently, you feel that you have been working hard and deserve a higher salary. How will you go about asking your boss for a raise?
+		<h3>Question 5.</h3>
+		<span className="questionPrompt">Recently, you feel that you have been working hard and deserve a higher salary. How will you go about asking your boss for a raise?</span>
 		<div className="question-box">
+		<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q5-Option1"
 				label="I would ask for a raise during my next performance review."
 				name="question5"
+				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 0, 4)} />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q5-Option2"
 				label="I’ll just keep quiet until my boss notices my hard work."
 				name="question5"
+				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 1, 4)}	 />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q5-Option3"
 				label="I'll talk to my coworker about how to ask for a raise."
 				name="question5"
+				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 2, 4)} />
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q5-Option4"
 				label="I need to research how much I should ask for first."
 				name="question5"
+				style={{width:"235px"}}
 				onChange={() => handleRadio("holder", 5, 3, 4)} />
+			</div>
 			<Form.Check
 					inline
 					type="radio"
@@ -368,7 +447,8 @@ const DetailedPage = () => {
 					label="Other:"
 					name="question5"
 					onChange={() => handleRadio("Other:", 5, 4, 4)} />
-			<div className="answer-box"><Form.Control
+			<div className="answer-box">
+				<Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={String(Response5[4])}
@@ -377,40 +457,49 @@ const DetailedPage = () => {
 						/>
 				</div>
 			</div>
-		<h3>Question 6</h3>
-		As you’re leaving your job for the day, you see a stressed coworker with a pile of paperwork on their desk. What do you do?
+		<h3>Question 6.</h3>
+		<span className="questionPrompt">As you’re leaving your job for the day, you see a stressed coworker with a pile of paperwork on their desk. What do you do?</span>
 		<div className="question-box">
+		<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q6-Option1"
 				label="I would offer to help them finish their work."
 				name="question6"
-				onChange={() => handleRadio("holder", 6, 0, 5)}
-			/>
+				style={{width:"auto"}}
+				onChange={() => handleRadio("holder", 6, 0, 5)}/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q6-Option2"
 				label="I'm going home. I have my own work to do."
 				name="question6"
-				onChange={() => handleRadio("holder", 6, 1, 5)}
-			/>
+				style={{width:"auto"}}
+				onChange={() => handleRadio("holder", 6, 1, 5)}/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q6-Option3"
 				label="I would wait until tommorow to ask if they need help."
 				name="question6"
-				onChange={() => handleRadio("holder", 6, 2, 5)}
-			/>
+				style={{width:"275px"}}
+				onChange={() => handleRadio("holder", 6, 2, 5)}/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q6-Option4"
 				label="I would let my boss know that they need help."
 				name="question6"
+				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 3, 5)}			/>
+			</div>
 			<Form.Check
 					inline
 					type="radio"
@@ -426,38 +515,49 @@ const DetailedPage = () => {
 					disabled={!otherSelected[5]}		/>
 				</div>
 			</div>
-		<h3>Question 7</h3>
-		After a very stressful workweek, it’s finally time to relax. What do you do to destress over the weekend?
+		<h3>Question 7.</h3>
+		<span className="questionPrompt">After a very stressful workweek, it’s finally time to relax. What do you do to destress over the weekend?</span>
 		<div className="question-box">
+		<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q7-Option1"
 				label="I would go out with friends to relax."
 				name="question7"
-				onChange={() => handleRadio("holder", 7, 0, 6)}
-			/>
+				style={{width:"auto"}}
+				onChange={() => handleRadio("holder", 7, 0, 6)}/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q7-Option2"
 				label="I would stay home and watch TV to relax."
 				name="question7"
-				onChange={() => handleRadio("holder", 7, 1, 6)}			/>
+				style={{width:"auto"}}
+				onChange={() => handleRadio("holder", 7, 1, 6)}	/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q7-Option3"
 				label="I would go to the gym to relax."
 				name="question7"
-				onChange={() => handleRadio("holder", 7, 2, 6)}			/>
+				style={{width:"auto"}}
+				onChange={() => handleRadio("holder", 7, 2, 6)}	/>
+			</div>
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q7-Option4"
 				label="I would go to the beach to relax."
 				name="question7"
-				onChange={() => handleRadio("holder", 7, 3, 6)}			/>
+				style={{width:"auto"}}
+				onChange={() => handleRadio("holder", 7, 3, 6)}	/>
+			</div>
 			<Form.Check
 					inline
 					type="radio"
