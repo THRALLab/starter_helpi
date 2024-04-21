@@ -5,6 +5,7 @@ export const advancedQuiz: Record<string, Question> = {
     id: "question1",
     type: "USER_RANKING",
     prompt: "Rank these workplace environments in the order in which they appeal to you:",
+    description: "",
     options: [
       "Collaborative",
       "Enterprise/Competitive",
@@ -18,12 +19,14 @@ export const advancedQuiz: Record<string, Question> = {
     id: "question2",
     type: "MC_MULTI_RESPONSE",
     prompt: "Which area interests you the most?",
+    description: "",
     options: ["Science", "Arts", "Business", "Technology"],
   },
   question3: {
     id: "question3",
     type: "MC_SINGLE_RESPONSE",
     prompt: "What is your highest level of education?",
+    description: "",
     options: ["High School", "Bachelor's", "Master's", "PhD"],
   }
 };
