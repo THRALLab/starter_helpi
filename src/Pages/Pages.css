@@ -11,6 +11,11 @@
     src: url('./Poppins-Black.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Poppins Light';
+    src: url('./Poppins-Light.ttf') format('truetype');
+}
+
 .home-center {
     width: 1000px;
     height: 450px; 
@@ -25,8 +30,8 @@
     font-family: "Playfair Display Black", sans-serif;
     font-size: 42px;
     position: absolute;
-    top: 28%; /* Moves the text 50% from the top */
-    left: 32.55%; /* Moves the text 50% from the left */
+    top: 28%;
+    left: 32.55%; 
     transform: translate(-50%, -50%);
 }
 
@@ -63,7 +68,7 @@
 .basic-button {
     display: inline-block;
     margin-top: 370px;
-    margin-left: 30px; 
+    margin-left: 60px; 
     padding: 15px 65px;
     background-color: #86c0ff;
     color: white;
@@ -79,7 +84,7 @@
 .detailed-button {
     display: inline-block;
     margin-top: 370px;
-    margin-left: 320px; 
+    margin-left: 270px; 
     padding: 15px 65px;
     background-color: #86c0ff;
     color: white;
@@ -136,4 +141,39 @@
     position: absolute;
     margin-left: 2%;
     margin-top: 0.29%
+}
+
+.basic-page-description {
+    font-family: 'Poppins Light', sans-serif;
+    width: 400px;
+    text-align: center;
+    position: absolute;
+    margin-top: 16%;
+    margin-left: 0.5%;
+    background-color: rgb(235, 240, 245, 1);
+    padding: 1px;
+    border-radius: 20px; 
+}
+
+.detailed-page-description {
+    font-family: 'Poppins Light', sans-serif;
+    width: 400px;
+    text-align: center;
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 37%;
+    background-color: rgb(235, 240, 245, 1);
+    padding: 5px;
+}
+
+.background-image {
+    position: absolute;
+    top: 17%;
+    left: 56%;
+    width: 400px;
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+    opacity: 0.9;
 }
