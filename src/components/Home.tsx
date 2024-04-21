@@ -6,8 +6,6 @@ import { Buttons } from './Buttons';
 import { Navigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import { deepPurple, pink } from '@mui/material/colors';
-import Avatar from '@mui/material/Avatar';
 
 export function Home(): JSX.Element {
     const customTheme = createTheme({
@@ -54,7 +52,6 @@ export function Home(): JSX.Element {
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
     //const [goToHomePage, setGoToHomePage] = React.useState(false);
-    const [isHovered, setIsHovered] = React.useState(false);
 
     if (goToBasicQuestionsPage) {
         return <Navigate to="/BasicQuestionsPage"/>
