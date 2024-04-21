@@ -21,10 +21,10 @@
 	margin-bottom: 4rem;
 	color: white;
 }
-
-.body {
-	text-align: left;
+.body{
+	text-align: center;
 }
-.basic-page-container{
-	margin: 7rem 0;
+.accordion-button {
+    font-size: 18px; 
+    font-weight: bold; 
 }
