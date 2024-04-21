@@ -109,10 +109,10 @@ export function DetailedQuestions(key: AIKey): JSX.Element {
     ];
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState<string[]>(Array(questions.length).fill(''));
-    const [otherText, setOtherText] = useState<string>('');
+    const [otherText, setOtherText] = useState('');
+    const [hasStarted, setHasStarted] = useState(false);
 
     useEffect(() => {
-        // Initialize otherText for the current question if needed
         const currentAnswer = answers[currentQuestionIndex];
         if (currentAnswer.startsWith("Other (please specify): ")) {
             setOtherText(currentAnswer.substring("Other (please specify): ".length));
@@ -121,80 +121,100 @@ export function DetailedQuestions(key: AIKey): JSX.Element {
         }
     }, [currentQuestionIndex, answers]);
 
+    const handleStart = () => setHasStarted(true);
+    const handleRestart = () => {
+        setHasStarted(false);
+        setCurrentQuestionIndex(0);
+        setAnswers(Array(questions.length).fill(''));
+        setOtherText('');
+    };
+
     const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
-        const updatedAnswers = [...answers];
-        updatedAnswers[currentQuestionIndex] = value === "Other (please specify)" ? `Other (please specify): ${otherText}` : value;
-        setAnswers(updatedAnswers);
+        setAnswers(prevAnswers => {
+            const newAnswers = [...prevAnswers];
+            if (value === "Other (please specify)") {
+                newAnswers[currentQuestionIndex] = `Other (please specify): ${otherText}`; // Ensures that the "Other" prefix is there when the option is initially selected.
+            } else {
+                newAnswers[currentQuestionIndex] = value;
+            }
+            return newAnswers;
+        });
     };
 
     const handleOtherTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newOtherText = event.target.value;
         setOtherText(newOtherText);
-        if (answers[currentQuestionIndex].startsWith("Other (please specify):")) {
-            const updatedAnswers = [...answers];
-            updatedAnswers[currentQuestionIndex] = `Other (please specify): ${newOtherText}`;
-            setAnswers(updatedAnswers);
-        }
-    };
-
-    const handleSubmit = async () => {
-        // Replace with your API endpoint or backend handler
-        const response = await fetch('/suggest-career', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ answers }),
+        setAnswers(prevAnswers => {
+            const newAnswers = [...prevAnswers];
+            newAnswers[currentQuestionIndex] = `Other (please specify): ${newOtherText}`;
+            return newAnswers;
         });
-
-        const data = await response.json();
-        console.log(data.careerSuggestion);  // Display or process the career suggestion
     };
+
+    const handleSubmit = () => {
+        alert('Submission complete!'); // Placeholder for submission logic
+    };
+
 
     const canSubmit = answers.every(answer => answer.trim() !== '');
+
+    if (!hasStarted) {
+        return (
+            <div className="Pages">
+                <h1>Welcome to the Detailed Career Assessment</h1>
+                <p>Please click 'Start' to begin answering detailed questions that will help suggest a career path suitable for you.</p>
+                <Button variant="primary" onClick={handleStart}>Start</Button>
+            </div>
+        );
+    }
 
     return (
         <div className="Pages">
             <h1>Detailed Career Questions</h1>
             <QuestionProgressBar totalQuestions={questions.length} completedQuestions={currentQuestionIndex + 1} />
-            <div>
-                <h2>Question {currentQuestionIndex + 1}</h2>
-                <p>{questions[currentQuestionIndex].question}</p>
-                {questions[currentQuestionIndex].options.map((option, index) => (
-                    <Form.Check
-                        key={`${currentQuestionIndex}-${index}`}
-                        type="radio"
-                        name={`question${currentQuestionIndex}`}
-                        label={option}
-                        value={option}
-                        id={`option${index}`}
-                        checked={answers[currentQuestionIndex] === option}
-                        onChange={handleOptionChange}
-                    />
-                ))}
-                {answers[currentQuestionIndex].startsWith("Other (please specify):") && (
-                    <Form.Control
-                        type="text"
-                        value={otherText}
-                        onChange={handleOtherTextChange}
-                        placeholder="Please specify..."
-                    />
-                )}
-            </div>
-            <div className="navigation-buttons">
-                <Button variant="secondary" onClick={() => setCurrentQuestionIndex(Math.max(currentQuestionIndex - 1, 0))} disabled={currentQuestionIndex === 0}>
-                    Previous
-                </Button>
-                <Button variant="primary" onClick={() => setCurrentQuestionIndex(Math.min(currentQuestionIndex + 1, questions.length - 1))} disabled={currentQuestionIndex === questions.length - 1}>
-                    Next
-                </Button>
-                {currentQuestionIndex === questions.length - 1 && (
-                    <Button variant="success" onClick={handleSubmit} disabled={!canSubmit}>
-                        Submit
+            <Form onSubmit={handleSubmit}>
+                <div>
+                    <h2>Question {currentQuestionIndex + 1}</h2>
+                    <p>{questions[currentQuestionIndex].question}</p>
+                    {questions[currentQuestionIndex].options.map((option, index) => (
+                        <div key={`${currentQuestionIndex}-${index}`}
+                             className={`radio-option ${answers[currentQuestionIndex] === option || (option === "Other (please specify)" && answers[currentQuestionIndex].startsWith("Other (please specify):")) ? 'selected' : ''}`}>
+                            <Form.Check
+                                type="radio"
+                                name={`question${currentQuestionIndex}`}
+                                label={option}
+                                value={option}
+                                id={`option${index}`}
+                                checked={answers[currentQuestionIndex] === option || (option === "Other (please specify)" && answers[currentQuestionIndex].startsWith("Other (please specify):"))}
+                                onChange={handleOptionChange}
+                            />
+                        </div>
+                    ))}
+                    {answers[currentQuestionIndex].startsWith("Other (please specify):") && (
+                        <Form.Control
+                            type="text"
+                            value={otherText}
+                            onChange={handleOtherTextChange}
+                            placeholder="Please specify..."
+                        />
+                    )}
+                </div>
+                <div className="navigation-buttons">
+                    <Button variant="secondary" onClick={() => setCurrentQuestionIndex(Math.max(currentQuestionIndex - 1, 0))} disabled={currentQuestionIndex === 0}>
+                        Previous
                     </Button>
-                )}
-            </div>
+                    <Button variant="primary" onClick={() => setCurrentQuestionIndex(Math.min(currentQuestionIndex + 1, questions.length - 1))} disabled={currentQuestionIndex === questions.length - 1}>
+                        Next
+                    </Button>
+                    {currentQuestionIndex === questions.length - 1 && (
+                        <Button type="submit" variant="success" disabled={!canSubmit}>
+                            Submit
+                        </Button>
+                    )}
+                    <Button variant="info" onClick={handleRestart}>Restart</Button>  {/* Restart Button */}
+                </div>
+            </Form>
         </div>
     );
 }
