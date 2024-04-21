@@ -6,6 +6,7 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
 export function BasicQuestionsPage(): JSX.Element {
@@ -160,6 +161,18 @@ export function BasicQuestionsPage(): JSX.Element {
                 >
                     <CardContent>
                         <Typography level="title-md">Question {currentQuestion+1}/{questions.length}</Typography>
+                        <ProgressBar
+                            min={0} // Minimum value progress can begin from
+                            now={(currentQuestion + 1) * (100 / questions.length)} // Current value of progress
+                            max={100} // Maximum value progress can reach
+                            label={`${Math.round(((currentQuestion + 1) * (100 / questions.length)))}%`} // Show label that represents visual percentage
+                            visuallyHidden={true} // Show the label visually
+                            striped={currentQuestion >= 0} // Uses a gradient to create a striped effect when the progress is at least 0%
+                            animated={currentQuestion >= 0} // Animate the stripes from right to left when the progress is at least 0%
+                            variant="info" // Sets the background class of the progress bar to red
+                            style={{ width: '100%'}}
+                            >
+                        </ProgressBar>
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
                         <p>{questions[currentQuestion].questionText}</p>
                         <div style={{paddingBottom: '1vh', display: 'flex',
@@ -195,7 +208,7 @@ export function BasicQuestionsPage(): JSX.Element {
                         </div>}
                         {(!displayFinishButton && !displayFinalResults)&& <div style={{padding: '12vh'}}><Button onClick={handleCurrentQuestion}>Next Question</Button></div>}
             
-                        {displayFinalResults && <div>Final Results</div>}
+                        {displayFinalResults && <div>Final Results!</div>}
                         {(displayFinishButton) && <div style={{padding: '12vh'}}><Button color='success' onClick={handleDisplayFinalResults}>Finish & Get Results</Button></div>}
                         <p></p>
                         </Typography>
