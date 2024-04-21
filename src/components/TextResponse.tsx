@@ -7,12 +7,14 @@ export function TextResponse({
     question,
     description,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
     const [localAnswer, setLocalAnswer] = useState<string>("");
@@ -44,7 +46,7 @@ export function TextResponse({
     return (
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-                <h3 ref={questionRef}>{question}</h3>
+                <h4 ref={questionRef} style={{width: "50%"}}>{question}</h4>
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
@@ -70,12 +72,18 @@ export function TextResponse({
                 </div>
             )}
             <Form.Group>
-                <Form.Label>{question}</Form.Label>
                 <Form.Control
+                    as="textarea" rows={3}
+                    placeholder="Enter answer here"
                     value={localAnswer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
                 />
+                <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(localAnswer)}>Back</Button>
                 <Button 
+                    variant={localAnswer === "" ? "outline-primary" : "primary"}
                     disabled={localAnswer === ""}
                     onClick={() => onNext(localAnswer)}
                 >Next</Button>

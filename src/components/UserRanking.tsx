@@ -6,12 +6,14 @@ export function UserRanking({
     question,
     description,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
     const [categories, setCategories] = useState<string[]>(options);
@@ -77,7 +79,7 @@ export function UserRanking({
     return (
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-                <h3 ref={questionRef}>{question}</h3>
+                <h4 ref={questionRef} style={{width: "50%"}}>{question}</h4>
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
@@ -107,23 +109,27 @@ export function UserRanking({
                     <li key={category}>
                         <Button
                             key={`${category}⬆️`}
-                            variant="outline-secondary"
+                            variant="outline-success"
                             size="sm"
                             onClick={() => pushUp(category)}
-                        >⬆️</Button>
+                        >⬆</Button>
                         {' '}
                         <Button
                             key={`${category}⬇️`}
-                            variant="outline-secondary"
+                            variant="outline-danger"
                             size="sm"
                             onClick={() => pushDown(category)}
-                        >⬇️</Button>
+                        >⬇</Button>
                         {' '}
                         {category}
                     </li>
                 ))}
             </ol>
-            <Button onClick={() => onNext(compressAnswer())}></Button>  
+            <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(compressAnswer())}>Back</Button>
+            <Button onClick={() => onNext(compressAnswer())}>Next</Button>  
         </div>
     )
 }

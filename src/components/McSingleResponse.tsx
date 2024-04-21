@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, ToggleButton } from 'react-bootstrap';
 import { FaQuestionCircle } from 'react-icons/fa'; // This line imports a question circle icon from Font Awesome
 
 
@@ -7,12 +7,14 @@ export function McSingleResponse({
     question,
     description,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
     const [localAnswer, setLocalAnswer] = useState<string>("");
@@ -44,7 +46,7 @@ export function McSingleResponse({
     return (
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-                <h3 ref={questionRef}>{question}</h3>
+                <h4 ref={questionRef} style={{width: "50%"}}>{question}</h4>
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
@@ -70,26 +72,28 @@ export function McSingleResponse({
                 </div>
             )}
             <Form>
-                <ul style={{ listStyleType: "none" }}>
+                <div>
                     {options.map((choice) => (
-                        <li 
-                            key={choice}
-                        >
-                            <Form.Check
+                            <ToggleButton
                                 key={`${choice}Select`}
                                 type="radio"
                                 id={choice}
-                                label={choice}
                                 value={choice}
                                 checked={localAnswer === choice}
+                                variant={localAnswer === choice ? "primary" : "outline-secondary"}
                                 onChange={() => setLocalAnswer(choice)}
-                            />
-                        </li>
+                                    > {choice}
+                                </ToggleButton>
                     ))}
-                </ul>
+                </div>
                 <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(localAnswer)}>Back</Button>
+                <Button
+                    variant={localAnswer === "" ? "outline-primary" : "primary"}
                     disabled={localAnswer === ""}
-                    onClick={() => onNext(localAnswer)}>Next</Button>
+                    onClick={() => onNext(localAnswer)}> Next</Button>
             </Form>
         </div>
     );

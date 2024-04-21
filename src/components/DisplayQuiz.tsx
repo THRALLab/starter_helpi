@@ -92,7 +92,8 @@ export function DisplayQuiz(
         question: currentQuestion.prompt,
         description: currentQuestion.description,
         options: currentQuestion.options,
-        onNext: handleAnswerSubmit
+        onNext: handleAnswerSubmit,
+        isFirst: currentQuestionId === "question1"
     };
 
 

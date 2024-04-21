@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, ToggleButton } from 'react-bootstrap';
 import { FaQuestionCircle } from 'react-icons/fa';
 
 export function McMultiResponse({
     question,
     description,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
     const [localAnswer, setLocalAnswer] = useState<string[]>([]);
@@ -57,7 +59,7 @@ export function McMultiResponse({
     return (
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-                <h3 ref={questionRef}>{question}</h3>
+                <h4 ref={questionRef} style={{width: "50%"}}>{question}</h4>
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
@@ -86,17 +88,24 @@ export function McMultiResponse({
                 <ul>
                     {options.map((choice) => (
                         <li key={choice}>
-                            <Form.Check
+                            <ToggleButton
+                                variant={localAnswer.includes(choice) ? "primary" : "outline-primary"}
                                 key={`${choice}Select`}
                                 type="checkbox"
                                 id={choice}
-                                label={choice}
+                                value={choice}
                                 onChange={() => addAnswer(choice)}
                                 checked={localAnswer.includes(choice)}
-                            />
+                            >
+                                {choice} 
+                            </ToggleButton>
                         </li>
                     ))}
                 </ul>
+                <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(compressAnswer())}>Back</Button>
                 <Button onClick={() => onNext(compressAnswer())}>Next</Button>
             </Form>
         </div>

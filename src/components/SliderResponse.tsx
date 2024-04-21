@@ -15,15 +15,17 @@ export function SliderResponse({
     question,
     description,
     options,
-    onNext
+    onNext,
+    isFirst
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string) => void;
+    isFirst: boolean;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
-    const [localAnswer, setLocalAnswer] = useState<string>("");
+    const [localAnswer, setLocalAnswer] = useState<string>("50");
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
 
@@ -52,7 +54,7 @@ export function SliderResponse({
     return (
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-                <h3 ref={questionRef}>{question}</h3>
+                <h4 ref={questionRef} style={{width: "50%"}}>{question}</h4>
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
@@ -63,7 +65,7 @@ export function SliderResponse({
                 <div style={{
                     position: "absolute",
                     top: "0%",
-                    right: `calc(10% - ${questionWidth / 2}px - 20px)`,
+                    right: `calc(15% - ${questionWidth / 2}px - 20px)`,
                     transform: 'translateX(-100%)',
                     width: "max-content",
                     maxWidth: "200px",
@@ -78,11 +80,15 @@ export function SliderResponse({
                 </div>
             )}
             <Form.Group>
-                <Form.Label>{question}</Form.Label>
+                <Form.Label>{localAnswer}</Form.Label>
                 <Form.Range
                     value={localAnswer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
                 />
+                <Button
+                    variant={isFirst ? "outline-primary" : "primary"}
+                    disabled={isFirst}
+                    onClick={() => onNext(localAnswer)}>Back</Button>
                 <Button onClick={() => onNext(localAnswer)}>Next</Button>
             </Form.Group>
         </div>
