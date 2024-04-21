@@ -6,7 +6,6 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
-import Divider from '@mui/joy/Divider';
 
 export function DetailedQuestionsPage(): JSX.Element {
   const questions = [
@@ -155,7 +154,6 @@ export function DetailedQuestionsPage(): JSX.Element {
                         <Typography level="title-md">Question {currentQuestion+1}/{questions.length}</Typography>
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
                         <p>{questions[currentQuestion].questionText}</p>
-                        <Divider />
                         <div style={{paddingBottom: '1vh', display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center'}}>
