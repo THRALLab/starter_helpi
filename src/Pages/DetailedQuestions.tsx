@@ -5,9 +5,12 @@ import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import jsonData from "../QuestionData/DetailedQuestions.json";
+import fs from 'fs';
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
+//const fs = require('fs');
+
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -15,6 +18,12 @@ const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
+}
+
+//handling writing to json
+const answerPath = "../QuestionData/DetailedAnswers.json";
+function writeAnswers(answer: string, questionNum: number) {
+  //fs.writeFileSync(answerPath, "Placeholder");
 }
 
 function DetailedQuestions() {
@@ -65,6 +74,7 @@ function DetailedQuestions() {
       setQuestionBody(questions[questionNumber + 1].question);
       setQuestionNumber(questionNumber + 1);
       setBackButtonDisabled(false);
+      //fs.writeFileSync(answerPath, "Placeholder");
       //setColor(colors[Math.floor(Math.random() * colors.length)]); People didn't like it
     } else {
       // End of quiz...
