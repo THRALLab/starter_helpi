@@ -48,6 +48,7 @@ export function BasicQuestionsPage(): JSX.Element {
     const [inputText, setInputText] = React.useState("");
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
+    const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
 
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
 
@@ -61,7 +62,6 @@ export function BasicQuestionsPage(): JSX.Element {
         if (currentQuestionIndex === questions.length - 1) {
             setDisplayFinishButton(true);
         }
-        
     
     }
 
@@ -75,6 +75,11 @@ export function BasicQuestionsPage(): JSX.Element {
 
     if (goToHomePage) {
         return <Navigate to="/" />;
+    }
+
+    const handleDisplayFinalResults = () => {
+        setDisplayFinalResults(true);
+        setDisplayFinishButton(false);
     }
    
     //const [goToHomePage, setGoToHomePage] = React.useState(false);
@@ -117,17 +122,15 @@ export function BasicQuestionsPage(): JSX.Element {
                 onChange={(e) => setInputText(e.target.value)}
             />
             <Button onClick={handleClearText}>Reset</Button>
-            <div>
+            {!displayFinalResults && <div>
                 <p>{currentQuestion+1}/{questions.length}</p>
                 <p>{questions[currentQuestion].questionText}</p>
-            
-            </div>
-            <div>
                 <p>{questions[currentQuestion].answerOptions.map((answerOption) => <p>{answerOption.answerText}</p>)}</p>
-            </div>
-            {!displayFinishButton && <div><Button onClick={handleCurrentQuestion}>Next Question</Button></div>}
-            {displayFinishButton && <div><Button onClick={handleCurrentQuestion}>Finish & Get Results</Button> <Button onClick={handleCurrentQuestion} disabled>Next Question</Button></div>}
+            </div>}
+            {(!displayFinishButton && !displayFinalResults)&& <div><Button onClick={handleCurrentQuestion}>Next Question</Button></div>}
             
+            {displayFinalResults && <div>Final Results</div>}
+            {(displayFinishButton) && <div><Button color='success' onClick={handleDisplayFinalResults}>Finish & Get Results</Button></div>}
             <p></p>
             
         </div>
