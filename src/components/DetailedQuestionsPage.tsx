@@ -148,6 +148,13 @@ export function DetailedQuestionsPage(): JSX.Element {
         setDisplayFinishButton(false);
     }
 
+    const handleRetakeTest = () => {
+        setCurrentQuestion(0); // Reset current question to start from the beginning
+        setDisplayFinalResults(false); // Hide final results
+        setInputText(""); // Clear input text if any
+        // Reset any other state variables as needed
+    };
+
     const handleClearText = () => {
         setInputText("");
     };
@@ -262,6 +269,15 @@ export function DetailedQuestionsPage(): JSX.Element {
                         )}
 
                         {displayFinalResults && <div>Final Results!</div>}
+
+                        {displayFinalResults && (
+                            <div style={{ paddingTop: '15.5rem', textAlign: 'center' }}> {/* Adjust paddingTop to lower the button */}
+                            <StyledButton onClick={handleRetakeTest}
+                            style={{ marginBottom: '15.5rem' }} // Adjust marginBottom to lower the button
+                            >Retake Test
+                            </StyledButton>
+                            </div>
+                        )}
 
                         {/* Finish and Previous buttons */}
                         {displayFinishButton && !displayFinalResults && (
