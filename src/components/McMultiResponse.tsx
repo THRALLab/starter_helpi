@@ -12,7 +12,7 @@ export function McMultiResponse({
     question: string;
     description: string;
     options: string[];
-    onNext: (answer: string) => void;
+    onNext: (answer: string, forewards: boolean) => void;
     isFirst: boolean;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
@@ -105,8 +105,8 @@ export function McMultiResponse({
                 <Button
                     variant={isFirst ? "outline-primary" : "primary"}
                     disabled={isFirst}
-                    onClick={() => onNext(compressAnswer())}>Back</Button>
-                <Button onClick={() => onNext(compressAnswer())}>Next</Button>
+                    onClick={() => onNext(compressAnswer(), false)}>Back</Button>
+                <Button onClick={() => onNext(compressAnswer(), true)}>Next</Button>
             </Form>
         </div>
     );
