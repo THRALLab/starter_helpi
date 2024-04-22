@@ -10,10 +10,10 @@
 }
 
 .body-dark {
-  --color-body-background: #000000;
-  --color-body-text: #c9c9c9;
+  --color-body-background: #303030;
+  --color-body-text: #1EEB36;
   --color-body-Headerbackground: #173848;
-  --color-body-Headertext: #c9c9c9;
+  --color-body-Headertext: #1EEB36;
   --color-body-Button: #a294ef75;
   --color-body-ButtonDisabled: #a294ef75;
   --color-body-ButtonHover: #a294efa6;

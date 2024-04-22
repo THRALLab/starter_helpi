@@ -18,6 +18,7 @@
 .Simple-progress-outer {
   position: relative;
   display: flex;
+  background-image: linear-gradient(to right, black, var(--progress-color))
   padding: 10px;
 }
 

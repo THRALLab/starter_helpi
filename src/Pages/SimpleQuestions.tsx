@@ -149,7 +149,7 @@ function SimpleQuestions() {
         <div className="Simple-progress">
           <div
             className="Simple-progress-outer"
-            style={{ backgroundColor: color }}
+            style={{ "--progress-color": color} as any}
           >
             <div
               className="Simple-progress-inner"
