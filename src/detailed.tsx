@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import test from "./detailed.module.css";
+import "./detailed.css";
 import questions from "./detailedQuestions.json";
 
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
@@ -99,8 +99,8 @@ function Detailed() {
 
 	return (
 		<>
-			<div className={test.quizContainer}>
-				<div className={test.questionContainer}>
+			<div className="quizContainer">
+				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
 					<h3>
 						({questions[currentIndex].question_number}/{questions.length})
@@ -108,7 +108,7 @@ function Detailed() {
 						{questions[currentIndex].question}
 					</h3>
 				</div>
-				<div className={test.optionsContainer}>
+				<div className="optionsContainer">
 					{questions[currentIndex].type === "multiple_choice"
 						? questions[currentIndex].choices.map(
 								(choice: string, index: number) => (
@@ -163,7 +163,7 @@ function Detailed() {
 								></textarea>
 						  )}
 				</div>
-				<div className={test.containerFooter}>
+				<div className="containerFooter">
 					<button
 						disabled={currentIndex === 0}
 						onClick={() => {
