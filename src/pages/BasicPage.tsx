@@ -102,7 +102,7 @@ const BasicPage = () => {
                 .QuestionNum {
                 	font-size: 50px;
 					margin-left: 35px;
-					display:flex;
+					display:flex;	
                     }
 				hr{
 					width:max;
@@ -120,7 +120,6 @@ const BasicPage = () => {
 		</div>
 		<div style={{textAlign: "center"}}>
 			<Button size="lg" disabled={!allow} onClick={getResponses}>Answer</Button>
-			<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"10px"}}/>
 			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
@@ -144,13 +143,13 @@ const BasicPage = () => {
 					name="question1"
 					onChange={() => updateChoice(1)}
 					checked={response[0] === 0}
-				
+					style={{width:"200px"}}
 					/>
 			</Stack>
 		</span>
-			<span className="QuestionNum">#2</span>
-			<span className="checkbox-distance">
-				<Form.Check 
+			<span className="QuestionNum">#2</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Form.Check 
 					type="radio"
 					id="q2-Option1"
 					label="I prefer having my schedule made for me."
@@ -162,15 +161,16 @@ const BasicPage = () => {
 				<Form.Check 
 					type="radio"
 					id="q2-Option2"
-					label="I want to be able to work when I want."
+					label="I want to be able to work whenever I want."
 					name="question2"
 					onChange={() => updateChoice(3)}
 					checked={response[1] === 0}
-
+			
 					/>
+			</Stack>
 			</span>
-			<span className="QuestionNum">#3</span>
-			<span className="checkbox-distance" >
+			<span className="QuestionNum">#3</span> <span>
+				<Stack gap={3} style={{marginTop: "30px"}}> 
 				<Form.Check 
 					type="radio"
 					id="q3-Option1"
@@ -178,7 +178,6 @@ const BasicPage = () => {
 					name="question3"
 					onChange={() => updateChoice(4)}
 					checked={response[2] === 1}
-
 					/>
 				<Form.Check 
 					type="radio"
@@ -187,12 +186,11 @@ const BasicPage = () => {
 					name="question3"
 					onChange={() => updateChoice(5)}
 					checked={response[2] === 0}
-
-
 					/>
+				</Stack>
 			</span>
-			<span className="QuestionNum">#4</span>
-			<span className="checkbox-distance" >
+			<span className="QuestionNum">#4</span> <span>
+				<Stack gap={3} style={{marginTop: "30px"}}> 
 				<Form.Check 
 					type="radio"
 					id="q4-Option1"
@@ -200,8 +198,6 @@ const BasicPage = () => {
 					name="question4"
 					onChange={() => updateChoice(6)}
 					checked={response[3] === 1}
-
-
 					/>
 				<Form.Check 
 					type="radio"
@@ -210,17 +206,16 @@ const BasicPage = () => {
 					name="question4"
 					onChange={() => updateChoice(7)}
 					checked={response[3] === 0}
-
-
 					/>
-			</span>
+				</Stack>
+			</span>	
 		</div>
 		<hr></hr>
 
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "25px"}}>
-			<span className="QuestionNum">#5</span>
-				<span className="checkbox-distance" >
-					<Form.Check 
+			<span className="QuestionNum">#5</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}>
+			<Form.Check 
 						type="radio"
 						id="q5-Option1"
 						label="I enjoy working with my hands."
@@ -235,13 +230,10 @@ const BasicPage = () => {
 						name="question5"
 						onChange={() => updateChoice(9)}
 						checked={response[4] === 0}
-
 					/>
-				</span>
-				
-
+			</Stack>
+			</span>				
 			<span className="QuestionNum">#6</span>
-				<span className="checkbox-distance">
 					<div>
 						<Form.Check 
 						type="radio"
@@ -263,9 +255,7 @@ const BasicPage = () => {
 						/>
 
 					</div>
-				</span>
 			<span className="QuestionNum">#7</span>
-				<span className="checkbox-distance" >
 					<div>
 					<Form.Check 
 						type="radio"
@@ -289,9 +279,7 @@ const BasicPage = () => {
 						>
 					</Form.Check>
 					</div>
-				</span>
 			<span className="QuestionNum">#8</span>
-				<span className="checkbox-distance" >
 					<div>
 					<Form.Check 
 						type="radio"
@@ -313,8 +301,8 @@ const BasicPage = () => {
 						>
 					</Form.Check>
 					</div>
-				</span>
 		</div>
+		<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"30px", marginBottom: "30px"}}/>
 		</>
 		
 	);
