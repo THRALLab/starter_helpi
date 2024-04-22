@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import "./navbar.css";
 import animal from "./caribou.png";
 

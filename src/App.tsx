@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import logo from "./logo.svg";
-import "./App.css";
 import { Button, Form } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Basic from "./basic";
@@ -30,7 +28,7 @@ function App() {
 	}
 	return (
 		<Router>
-			<div className="App">
+			<>
 				<Navigation />
 				<Routes>
 					<Route path="/basic" Component={Basic} />
@@ -48,7 +46,7 @@ function App() {
 						Submit
 					</Button>
 				</Form>
-			</div>
+			</>
 		</Router>
 	);
 }

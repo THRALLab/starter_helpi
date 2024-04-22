@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../src/detailed.css";
+import test from "./detailed.module.css";
 import questions from "./detailedQuestions.json";
 
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
@@ -9,8 +9,6 @@ function Detailed() {
 		questionNo: number;
 		choice: string;
 	}
-
-	useChatGPT();
 
 	const [choice, setChoice] = useState<string>();
 
@@ -101,8 +99,8 @@ function Detailed() {
 
 	return (
 		<>
-			<div className="quizContainer">
-				<div className="questionContainer">
+			<div className={test.quizContainer}>
+				<div className={test.questionContainer}>
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
 					<h3>
 						({questions[currentIndex].question_number}/{questions.length})
@@ -110,7 +108,7 @@ function Detailed() {
 						{questions[currentIndex].question}
 					</h3>
 				</div>
-				<div className="optionsContainer">
+				<div className={test.optionsContainer}>
 					{questions[currentIndex].type === "multiple_choice"
 						? questions[currentIndex].choices.map(
 								(choice: string, index: number) => (
@@ -165,7 +163,7 @@ function Detailed() {
 								></textarea>
 						  )}
 				</div>
-				<div className="containerFooter">
+				<div className={test.containerFooter}>
 					<button
 						disabled={currentIndex === 0}
 						onClick={() => {
