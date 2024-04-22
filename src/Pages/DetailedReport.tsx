@@ -78,9 +78,6 @@ function DetailedReport() {
         </Form>
         <div className="Report-results">{responseData}</div>
       </div>
-      <div>
-        slider 1 value: {slidenums[0]}
-      </div>
 
       <div className="API-Footer">
         <Form>
