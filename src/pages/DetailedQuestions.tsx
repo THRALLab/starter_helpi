@@ -8,6 +8,8 @@ const detailedQuestions: React.FC<DetailedProp> = () => {
     <div>
         <h1 style={{ textAlign: 'center'}}>Detailed Assessment Page</h1>             
     </div>
+
+    
     );
 };
 export default detailedQuestions;

@@ -2,6 +2,23 @@
     background-color: #cca994;
 }
 
+.basicParagraph {
+    color: #000000;
+}
+
+.basicHeader {
+    color: #000000;
+    
+}
+
+.detailedParagraph {
+    color: #000000;
+}
+
+.detailedHeader {
+    color: #000;
+}
+
 /*all navigation css */
 
 .navbar-container {
@@ -43,6 +60,7 @@
     font-weight: bold;
 }
 
+
 /* all for the table on home page*/
 .container {
     display: flex;
@@ -60,4 +78,20 @@
 
 .paragraph {
     margin-top: 0;
+}
+
+
+/* All for the buttons on home Page */
+
+.rounded-button {
+    border-radius: 20px; /* Adjust the value to change button roundness */
+    border: none;
+    padding: 10px 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.blue-gradient {
+    background: linear-gradient(to right, #ADD8E6, #ffffff); /* Adjust color codes as needed */
 }
