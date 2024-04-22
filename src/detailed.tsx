@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../src/detailed.css";
+import "./detailed.css";
 import questions from "./detailedQuestions.json";
 
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
