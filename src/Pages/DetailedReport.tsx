@@ -6,6 +6,10 @@ import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
+import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
+import { slidenums } from "./DetailedQuestions";
+import jsonData from "../QuestionData/DetailedQuestions.json";
+
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -28,6 +32,22 @@ function DetailedReport() {
     setKey(event.target.value);
   }
 
+  //gets all 30 questions into an array from DetailedQuestions.json
+  const getQuestions = () => {
+    const parsedData = JSON.parse(JSON.stringify(jsonData));
+    const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
+    return detailedQuestions.map( (x) => x.question);
+  };
+
+  const joinQuestionsToAnswers = () => {
+    return getQuestions().map((x, i)=>{
+      return x + ": " + slidenums[i] + " ";
+    });
+  }
+
+  const userData = "I have rated these questions from 0 to 100 (100 being i strongly agree and 0 being strongly disagree)"
+   + joinQuestionsToAnswers();
+
   const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
   //Queries ChatGPT to generate report
   async function ChatGPT() {
@@ -44,7 +64,7 @@ function DetailedReport() {
           content:
             "You are a helpful career advisor. You will be provided a students result to a career quiz.",
         },
-        { role: "user", content: "What should my career be?" },
+        { role: "user", content: "What should my career be? " + userData},
       ],
       model: "gpt-3.5-turbo",
     });
