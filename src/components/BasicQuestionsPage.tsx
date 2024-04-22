@@ -82,39 +82,51 @@ export function BasicQuestionsPage(): JSX.Element {
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
 
-
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
 
     const handleCurrentQuestion = () => {
         const currentQuestionIndex = currentQuestion + 1;
+        
+        if (currentQuestionIndex < questions.length) {
+            setCurrentQuestion(currentQuestionIndex)
+        }
 
-            if (currentQuestionIndex < questions.length) {
-                setCurrentQuestion(currentQuestionIndex)
-            }
+        if (currentQuestionIndex === questions.length - 1) {
+            setDisplayFinishButton(true);
+        }
     
-            if (currentQuestionIndex === questions.length - 1) {
-                setDisplayFinishButton(true);
-            }
+    }
     
+    const handlePreviousQuestion = () => {
+        const previousQuestionIndex = currentQuestion - 1;
+    
+        if (previousQuestionIndex >= 0) {
+            setCurrentQuestion(previousQuestionIndex);
+        }
+    
+        if (previousQuestionIndex !== questions.length - 1) {
+            setDisplayFinishButton(false);
+        }
+    };
+
+    const handleGoToHomePage = () => {
+        setGoToHomePage(true);
+    };
+
+    const handleClearText = () => {
+        setInputText("");
+    };
+
+    if (goToHomePage) {
+        return <Navigate to="/" />;
     }
 
     const handleDisplayFinalResults = () => {
         setDisplayFinalResults(true);
         setDisplayFinishButton(false);
     }
-
-    const handleClearText = () => {
-        setInputText("");
-    };
-
-
-    const handleGoToHomePage = () => {
-        setGoToHomePage(true);
-    };
-
-    if (goToHomePage) {
-        return <Navigate to="/" />;
-    }
+   
+    //const [goToHomePage, setGoToHomePage] = React.useState(false);
 
     if (goToDetailedQuestionsPage) {
         return <Navigate to="/DetailedQuestionsPage"/>
@@ -157,12 +169,11 @@ export function BasicQuestionsPage(): JSX.Element {
                 height: '40vh', // Adjust this value according to your layout
                 padding: '30vh'
             }}>
-                
                 <Card variant="plain" sx={{ width: 1000, height: 400}}// Adjust this value according to your layout
                 >
                     <CardContent>
-                        {!displayFinalResults && <Typography level="title-md">Question {currentQuestion+1}/{questions.length}</Typography>}
-                        {!displayFinalResults && <ProgressBar
+                        <Typography level="title-md">Question {currentQuestion+1}/{questions.length}</Typography>
+                        <ProgressBar
                             min={0} // Minimum value progress can begin from
                             now={(currentQuestion + 1) * (100 / questions.length)} // Current value of progress
                             max={100} // Maximum value progress can reach
@@ -173,7 +184,7 @@ export function BasicQuestionsPage(): JSX.Element {
                             variant="info" // Sets the background class of the progress bar to red
                             style={{ width: '100%'}}
                             >
-                        </ProgressBar>}
+                        </ProgressBar>
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
                         <p>{questions[currentQuestion].questionText}</p>
                         <div style={{paddingBottom: '1vh', display: 'flex',
@@ -207,8 +218,15 @@ export function BasicQuestionsPage(): JSX.Element {
                         <div style={{paddingTop: '1vh'}}><Button onClick={handleClearText}>Reset</Button></div>
                         
                         </div>}
-                        {(!displayFinishButton && !displayFinalResults)&& <div style={{padding: '12vh'}}><Button onClick={handleCurrentQuestion}>Next Question</Button></div>}
-            
+                        
+                        {/* Next and Previous buttons */}
+                        {!displayFinishButton && !displayFinalResults && (
+                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'space-between' }}>
+                                <Button onClick={handlePreviousQuestion}>Previous Question</Button>
+                                <Button onClick={handleCurrentQuestion}>Next Question</Button>
+                            </div>
+                        )}
+                        
                         {displayFinalResults && <div>Final Results!</div>}
                         {(displayFinishButton) && <div style={{padding: '12vh'}}><Button color='success' onClick={handleDisplayFinalResults}>Finish & Get Results</Button></div>}
                         <p></p>
