@@ -6,7 +6,6 @@ import NavigationBar from "./components/homePageComp/navigation-bar/navigationBa
 import DetailedQuestions from './pages/DetailedQuestions';
 import BasicQuestions from './pages/BasicQuestions';
 import Home from './pages/Home';
-import Wave from "./components/homePageComp/waves/waveComponents/wave";
 import Canvas from "./components/homePageComp/waves/waveComponents/canvas";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
