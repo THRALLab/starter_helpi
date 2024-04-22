@@ -65,15 +65,23 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
                 <div key={x}>
                     <h3>{q.question}</h3>
                     <div className="questionContainer">
-                        {q.options.filter(option => option !== "").map((option, i) => (
-                            <Button className="button-questions" key={i} onClick={() => handleOptionClick(option)}>{option}</Button>
-                        ))}
-                    </div>
-                </div>
-            ))}
+    {q.options.filter(option => option !== "").map((option, i) => (
+        <div key={i} className="option">
+            <label>{option}</label>
+            <input
+                type="radio"
+                name={`question_${x}`} // Set a unique name for each group of radio buttons
+                value={option}
+                onClick={() => handleOptionClick(option)}
+            />
         </div>
+    ))}
+</div>
+            </div>
+        ))}
     </div>
-    )
+</div>
+)
 }
 
 export default Basic;

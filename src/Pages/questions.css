@@ -9,10 +9,26 @@
 
 .questionContainer {
     display: flex;
-    justify-content: center;  
+    flex-direction: row;
     align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: nowrap;  
+    justify-content: center;
+}
+
+.option {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px; /* Add some space between each option */
+}
+
+.option label {
+    font-size: 20px; /* Adjust the font size as needed */
+    margin-bottom: 10px; /* Add some space between the label and the radio button */
+}
+
+.option input[type="radio"] {
+    transform: scale(1.5); /* Increase the size of the radio button */
 }
 
 .button-questions {
