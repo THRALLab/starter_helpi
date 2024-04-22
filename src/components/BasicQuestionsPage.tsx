@@ -240,6 +240,7 @@ export function BasicQuestionsPage(): JSX.Element {
                         </Typography>
                     </CardContent>
                 </Card>
+                <p></p>
             </div>  
         </div>
     );
