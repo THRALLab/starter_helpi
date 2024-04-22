@@ -1,11 +1,11 @@
 .body {
-  --color-body-background: #8ad7f8;
-  --color-body-text: #000000;
-  --color-body-Headerbackground: #67cbf5;
-  --color-body-Headertext: #000000;
-  --color-body-Button: #a294ef;
-  --color-body-ButtonDisabled: #a294ef;
-  --color-body-ButtonHover: #b3a9ee;
+  --color-body-background: #6E0BD0;
+  --color-body-text: #EEFF00;
+  --color-body-Headerbackground: #173848;
+  --color-body-Headertext: #EEFF00;
+  --color-body-Button: #1F0665;
+  --color-body-ButtonDisabled: #1F0665;
+  --color-body-ButtonHover: #300A99;
   --color-body-ButtonBorder: #000000;
 }
 
@@ -14,9 +14,9 @@
   --color-body-text: #1EEB36;
   --color-body-Headerbackground: #173848;
   --color-body-Headertext: #1EEB36;
-  --color-body-Button: #a294ef75;
-  --color-body-ButtonDisabled: #a294ef75;
-  --color-body-ButtonHover: #a294efa6;
+  --color-body-Button: #425866;
+  --color-body-ButtonDisabled: #425866;
+  --color-body-ButtonHover: #4F6678;
   --color-body-ButtonBorder: #000000;
 }
 

@@ -45,7 +45,7 @@ function SimpleQuestions() {
   const [color, setColor] = useState("");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
-  const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
+  const colors = ["purple", "brown"];
 
   useEffect(() => {
     loadQuestions();
