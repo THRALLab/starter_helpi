@@ -33,6 +33,10 @@ function Detailed() {
 
 	const [modalVisibility, setModalVisibility] = useState(false);
 
+	function updateModalVisibility() {
+		setModalVisibility(!modalVisibility);
+	}
+
 	function saveAnswers(
 		choice: string,
 		question_num: number,
@@ -102,7 +106,8 @@ function Detailed() {
 
 	return (
 		<>
-			{modalVisibility ? <Modal /> : null};
+			{modalVisibility ? <Modal modalFunction={updateModalVisibility} /> : null}
+			;
 			<div className="quizContainer">
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
