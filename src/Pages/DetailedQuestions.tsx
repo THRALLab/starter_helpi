@@ -9,6 +9,7 @@ import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
 
+
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -16,6 +17,8 @@ const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: 
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
+
+export let slidenums = new Array<number>(30).fill(50);
 
 function DetailedQuestions() {
   const [key, setKey] = useState<string>(keyData); //for api key input
@@ -30,7 +33,7 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
 
-  let slidenums = new Array<number>(30).fill(50);
+  
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
@@ -73,6 +76,7 @@ function DetailedQuestions() {
       );
       setQuestionBody("You have completed the quiz!");
       setQuestionNumber(30);
+      slidenums = [...sliderValues];
       let nextButton = document.getElementById("nextButton");
       if (nextButton != null) {
         nextButton.classList.remove("Button-visible-true");
@@ -227,3 +231,4 @@ function DetailedQuestions() {
   );
 }
 export default DetailedQuestions;
+
