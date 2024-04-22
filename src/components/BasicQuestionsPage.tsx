@@ -221,14 +221,21 @@ export function BasicQuestionsPage(): JSX.Element {
                         
                         {/* Next and Previous buttons */}
                         {!displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'space-between' }}>
-                                <Button onClick={handlePreviousQuestion}>Previous Question</Button>
-                                <Button onClick={handleCurrentQuestion}>Next Question</Button>
+                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'center' }}>
+                            {currentQuestion > 0 && (<Button onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</Button>)}
+                            <Button onClick={handleCurrentQuestion} style={{ margin: '0 auto' }}>Next Question</Button>
                             </div>
                         )}
-                        
+
                         {displayFinalResults && <div>Final Results!</div>}
-                        {(displayFinishButton) && <div style={{padding: '12vh'}}><Button color='success' onClick={handleDisplayFinalResults}>Finish & Get Results</Button></div>}
+
+                        {/* Finish and Previous buttons */}
+                        {displayFinishButton && !displayFinalResults && (
+                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'center' }}>
+                            <Button onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</Button>
+                            <Button color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</Button>
+                            </div>
+                        )}
                         <p></p>
                         </Typography>
                     </CardContent>

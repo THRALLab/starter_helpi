@@ -98,6 +98,18 @@ export function DetailedQuestionsPage(): JSX.Element {
     
     }
 
+    const handlePreviousQuestion = () => {
+        const previousQuestionIndex = currentQuestion - 1;
+    
+        if (previousQuestionIndex >= 0) {
+            setCurrentQuestion(previousQuestionIndex);
+        }
+    
+        if (previousQuestionIndex !== questions.length - 1) {
+            setDisplayFinishButton(false);
+        }
+    };
+
     const handleDisplayFinalResults = () => {
         setDisplayFinalResults(true);
         setDisplayFinishButton(false);
@@ -207,10 +219,23 @@ export function DetailedQuestionsPage(): JSX.Element {
                         <div style={{paddingTop: '1vh'}}><Button onClick={handleClearText}>Reset</Button></div>
                         
                         </div>}
-                        {(!displayFinishButton && !displayFinalResults)&& <div style={{padding: '12vh'}}><Button onClick={handleCurrentQuestion}>Next Question</Button></div>}
-            
+                        {/* Next and Previous buttons */}
+                        {!displayFinishButton && !displayFinalResults && (
+                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'center' }}>
+                            {currentQuestion > 0 && (<Button onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</Button>)}
+                            <Button onClick={handleCurrentQuestion} style={{ margin: '0 auto' }}>Next Question</Button>
+                            </div>
+                        )}
+
                         {displayFinalResults && <div>Final Results!</div>}
-                        {(displayFinishButton) && <div style={{padding: '12vh'}}><Button color='success' onClick={handleDisplayFinalResults}>Finish & Get Results</Button></div>}
+
+                        {/* Finish and Previous buttons */}
+                        {displayFinishButton && !displayFinalResults && (
+                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'center' }}>
+                            <Button onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</Button>
+                            <Button color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</Button>
+                            </div>
+                        )}
                         <p></p>
                         </Typography>
                     </CardContent>
