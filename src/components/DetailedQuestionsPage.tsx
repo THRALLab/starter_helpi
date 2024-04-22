@@ -7,9 +7,42 @@ import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { styled, createTheme } from '@mui/material/styles';
 
 
 export function DetailedQuestionsPage(): JSX.Element {
+  
+
+    const StyledButton = styled(Button)`
+    ${({ theme }) => `
+    cursor: pointer;
+    background-color: ${theme.palette.primary.main};
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: ${theme.palette.primary.main};
+      transform: scale(1.3);
+    }
+    `}
+  `;
+
+  const StyledButton2 = styled(Button)`
+    ${({ theme }) => `
+    cursor: pointer;
+    background-color: #51bc51;
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #1f7a1f;
+      transform: scale(1.3);
+    }
+    `}
+  `;
+
     const questions = [
 		{
 			questionText: 'Question 1',
@@ -204,17 +237,18 @@ export function DetailedQuestionsPage(): JSX.Element {
                                     
                         }} />
                         </div>
-                        <div style={{paddingTop: '1vh'}}><Button onClick={handleClearText}>Reset</Button></div>
+                        <div style={{paddingTop: '1vh'}}><StyledButton onClick={handleClearText}>Reset</StyledButton></div>
                         
                         </div>}
-                        {(!displayFinishButton && !displayFinalResults)&& <div style={{padding: '12vh'}}><Button onClick={handleCurrentQuestion}>Next Question</Button></div>}
+                        {(!displayFinishButton && !displayFinalResults)&& <div style={{padding: '8vh'}}><StyledButton onClick={handleCurrentQuestion}>Next Question</StyledButton></div>}
             
                         {displayFinalResults && <div>Final Results!</div>}
-                        {(displayFinishButton) && <div style={{padding: '12vh'}}><Button color='success' onClick={handleDisplayFinalResults}>Finish & Get Results</Button></div>}
+                        {(displayFinishButton) && <div style={{padding: '8vh'}}><StyledButton2 color='success' onClick={handleDisplayFinalResults}>Finish & Get Results</StyledButton2></div>}
                         <p></p>
                         </Typography>
                     </CardContent>
                 </Card>
+                <p></p>
             </div>  
         </div>
     );

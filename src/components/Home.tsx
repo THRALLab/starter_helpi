@@ -27,7 +27,7 @@ export function Home(): JSX.Element {
           primary: {
             main: '#ce93d8',
           }, text: {
-            primary: '#000', // Change text color to white
+            primary: '#FFF', // Change text color to white
           }, secondary: {
             main: '#ab47bc'
           }
