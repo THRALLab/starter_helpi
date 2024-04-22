@@ -57,7 +57,7 @@ function SimpleReport() {
           content:
             "You are a helpful career advisor. You are provided a students result to a career quiz. Please provide at least 3 possible career paths based on the results.",
         },
-        { role: "user", content: prompt },
+        { role: "user", content: "What should my career be?" + prompt },
       ],
       model: "gpt-3.5-turbo",
     });
