@@ -10,7 +10,6 @@ import { DetailedPage } from './Components/DetailedPage/DetailedPage';
 let pageData = "Home";
 const savePageKey = "MYPAGE";
 const currPage = localStorage.getItem(savePageKey);
-console.log(currPage);
 if (currPage !== null) {
   pageData = currPage;
 }

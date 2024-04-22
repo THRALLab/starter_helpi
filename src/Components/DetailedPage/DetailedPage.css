@@ -23,5 +23,6 @@
 /* } */
 
 .carousel-indicators .active {
-  background-color: var(--purple) !important; 
+	background-color: var(--purple) !important;
 }
+
