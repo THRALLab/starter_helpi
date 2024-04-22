@@ -186,7 +186,9 @@ function Detailed() {
 							);
 						}}
 					>
-						{currentIndex === questions.length - 1 ? "END" : "NEXT"}
+						{currentIndex === questions.length - 1
+							? "SUBMIT RESPONSES"
+							: "NEXT"}
 					</button>
 				</div>
 			</div>
