@@ -1,25 +1,25 @@
 const useColor = () => {
-    const randomInteger = () => Math.floor(Math.random() * 180)
-  
     const generateColor = () => {
-      const red = randomInteger()
-      const green = randomInteger()
-      const blue = randomInteger()
-      const primary = `rgba(${red}, ${green}, ${blue}, 0.88)`
-      const secondary = `rgba(${red}, ${green}, ${blue}, 0.48)`
-      const bodyBackgroundColor = `rgba(${red}, ${green}, ${blue}, 0.28)`
-      // TODO: remove it from color generator
-      document.body.style.backgroundColor = bodyBackgroundColor
+      // Define a fixed shade of blue
+      const blue = 150; // Adjust this value to your desired shade of blue
+  
+      // Define the color with a fixed alpha value
+      const color = `rgba(0, 0, ${blue}, 0.88)`; // You can adjust the alpha value if needed
+  
+      // Apply background color to body (optional)
+      document.body.style.backgroundColor = color;
+  
       return {
-        frontWave: primary,
-        backWave: secondary,
-        backgroundColor: bodyBackgroundColor,
-      }
-    }
+        frontWave: color,
+        backWave: color, // Using the same color for both waves
+        backgroundColor: color,
+      };
+    };
   
     return {
       generateColor,
-    }
-  }
+    };
+  };
   
-  export default useColor
+  export default useColor;
+  
