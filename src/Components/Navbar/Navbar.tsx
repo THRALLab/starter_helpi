@@ -33,7 +33,7 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav'/>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="d-flex flex-grow-1 align-items-center justify-content-center">
+          <Nav className="d-flex flex-grow-1 align-items-left">
             <Nav.Link onClick={() => handleNavClick("Home")}>
               {(page === "Home" && (<div className='navbar-selected'>Home</div>)) || (page !== "Home" && (<text>Home</text>))}
             </Nav.Link>
@@ -44,7 +44,7 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
               {(page === "Detailed" && (<div className='navbar-selected'>Detailed</div>)) || (page !== "Detailed" && (<text>Detailed</text>))}
             </Nav.Link>
           </Nav>
-          <div className='ms-auto'>
+          <div className='ms-auto algin-items'>
             <AboutButton page={page} setPage={setPage}></AboutButton>
           </div>
         </Navbar.Collapse>

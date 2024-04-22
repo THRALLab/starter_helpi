@@ -1,0 +1,30 @@
+.about-us {
+    font-size: large;
+    font-size: 100px;
+    font-weight: 50%;
+    margin-top: -55px;
+    color: #6923ff;
+}
+
+.align-items-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+.row:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+      width: 100%;
+    }
+}
