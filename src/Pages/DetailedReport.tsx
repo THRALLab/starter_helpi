@@ -6,6 +6,7 @@ import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
+import { slidenums } from "./DetailedQuestions";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -76,6 +77,9 @@ function DetailedReport() {
           </Button>
         </Form>
         <div className="Report-results">{responseData}</div>
+      </div>
+      <div>
+        slider 1 value: {slidenums[0]}
       </div>
 
       <div className="API-Footer">

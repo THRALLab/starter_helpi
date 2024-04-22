@@ -5,11 +5,9 @@ import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import jsonData from "../QuestionData/DetailedQuestions.json";
-import fs from 'fs';
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
-//const fs = require('fs');
 
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -20,11 +18,7 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-//handling writing to json
-const answerPath = "../QuestionData/DetailedAnswers.json";
-function writeAnswers(answer: string, questionNum: number) {
-  //fs.writeFileSync(answerPath, "Placeholder");
-}
+export let slidenums = new Array<number>(30).fill(50);
 
 function DetailedQuestions() {
   const [key, setKey] = useState<string>(keyData); //for api key input
@@ -39,7 +33,7 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
 
-  let slidenums = new Array<number>(30).fill(50);
+  
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
@@ -74,7 +68,6 @@ function DetailedQuestions() {
       setQuestionBody(questions[questionNumber + 1].question);
       setQuestionNumber(questionNumber + 1);
       setBackButtonDisabled(false);
-      //fs.writeFileSync(answerPath, "Placeholder");
       //setColor(colors[Math.floor(Math.random() * colors.length)]); People didn't like it
     } else {
       // End of quiz...
@@ -83,6 +76,7 @@ function DetailedQuestions() {
       );
       setQuestionBody("You have completed the quiz!");
       setQuestionNumber(30);
+      slidenums = [...sliderValues];
       let nextButton = document.getElementById("nextButton");
       if (nextButton != null) {
         nextButton.classList.remove("Button-visible-true");
@@ -237,3 +231,4 @@ function DetailedQuestions() {
   );
 }
 export default DetailedQuestions;
+
