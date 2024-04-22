@@ -3,11 +3,11 @@ import OpenAIAPi from "openai";
 import { Button, Form } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
+import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
+import { getQuestions } from "../Pages/SimpleQuestions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
-import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
-import { getQuestions } from "../Pages/SimpleQuestions";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -19,7 +19,7 @@ if (prevKey !== null) {
 
 function SimpleReport() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const [prompt, setPrompt] = useState("")
+  const [prompt, setPrompt] = useState("");
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -35,9 +35,15 @@ function SimpleReport() {
   //Queries ChatGPT to get response
   async function ChatGPT() {
     //Create message for ChatGPT based on Simple Questions Responses
-    const questions = getQuestions()
-    const simpleQuestionQuizResults = questions.map((question: SimpleQuestion) => `${question.question}: ${question.answer}`).join(", \n")
-    setPrompt(`Based on the following criteria: \n${simpleQuestionQuizResults}\nWhat job suits me best?`)
+    const questions = getQuestions();
+    const simpleQuestionQuizResults = questions
+      .map(
+        (question: SimpleQuestion) => `${question.question}: ${question.answer}`
+      )
+      .join(", \n");
+    setPrompt(
+      `Based on my quiz results, what job suits me best? Here are my results: ${simpleQuestionQuizResults}`
+    );
     //Creates ChatGPT
     const openai = new OpenAIAPi({
       apiKey: keyData,
@@ -48,7 +54,8 @@ function SimpleReport() {
       messages: [
         {
           role: "system",
-          content: prompt,
+          content:
+            "You are a helpful career advisor. You are provided a students result to a career quiz. Please provide at least 3 possible career paths based on the results.",
         },
         { role: "user", content: prompt },
       ],
