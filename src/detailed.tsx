@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../src/detailed.css";
+import "./detailed.css";
 import questions from "./detailedQuestions.json";
 import useChatGPT from "./hooks/useChatGPT";
 
