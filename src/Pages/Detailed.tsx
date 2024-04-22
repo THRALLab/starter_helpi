@@ -63,7 +63,7 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
         <div className="column">
             {questions.map((q, idx) => (
                 <div key={idx}>
-                    <h3>{q.question}</h3>
+                    <h3 className="question">{q.question}</h3>
                     <div className="questionContainer">
     {q.options.filter(option => option !== "").map((option, i) => (
         <div key={i} className="option">
@@ -80,6 +80,7 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
             </div>
         ))}
     </div>
+    <footer className="footer-space"></footer>
 </div>
 )
 }
