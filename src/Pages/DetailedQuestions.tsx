@@ -43,7 +43,7 @@ function DetailedQuestions() {
   const [color, setColor] = useState("");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
-  const colors =  ["purple", "brown"]; //Feel free to add back in colors, but I'm gonna keep it as only purple
+  const colors =  ["purple", "brown"]; //Feel free to add back in colors, but I'm gonna keep it as only purple and brown for now
 
   useEffect(() => {
     loadQuestions();
