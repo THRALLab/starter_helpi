@@ -6,6 +6,25 @@
     color: #6923ff;
 }
 
+.our-team {
+    color: #6923ff;
+}
+
+.team-names {
+    color: white;
+}
+
+.about-us-section {
+    text-align: center;
+}
+
+.about-page-container {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .align-items-left {
     display: flex;
     flex-direction: column;

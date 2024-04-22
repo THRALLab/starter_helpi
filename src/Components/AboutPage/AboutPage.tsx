@@ -1,33 +1,45 @@
 import React from 'react'
 import './AboutPage.css'
 import { Container, Row, Col } from 'react-bootstrap';
+import colin_headshot from './ProfessionalHeadshot.jpg'
 
 export function AboutPage() {
     return (
-        <Container>
-            <Row>
-                <Col md={6}>
-                    {/* Display team member images on the left */}
-                    <h2>Our Team</h2>
-                    <Row>
-                        <Col md={6}>
-                            <img src="member1.jpg" alt="Member 1" className="img-fluid" />
-                            <p>Member 1</p>
-                        </Col>
-                        <Col md={6}>
-                            <img src="member2.jpg" alt="Member 2" className="img-fluid" />
-                            <p>Member 2</p>
-                        </Col>
-                        {/* Add more team member images and info here */}
-                    </Row>
-                </Col>
-                <Col md={6}>
-                    {/* Display general information about the site on the right */}
-                    <h1>About Us</h1>
-                    <p>This is the about page content. You can write a brief introduction about your company, team, or organization here.</p>
-                    <p>Feel free to add more paragraphs or sections as needed to provide comprehensive information.</p>
-                </Col>
-            </Row>
-        </Container>
+        <div className='about-page-container'>
+            <Container>
+                <Row>
+                    <Col md={6}>
+                        <h2 className='our-team'>Our Team</h2>
+                        <Row className='team-names'>
+                            <Col md={6}>
+                                <img src={colin_headshot} alt="Michael Lutz headshot" className="img-fluid" />
+                                <p>Michael Lutz</p>
+                            </Col>
+                            <Col md={6}>
+                                <img src={colin_headshot} alt="Colin Parsons headshot" className="img-fluid" />
+                                <p>Colin Parsons</p>
+                            </Col>
+                            <Col md={6}>
+                                <img src={colin_headshot} alt="Mike Forte headshot" className="img-fluid" />
+                                <p>Mike Forte</p>
+                            </Col>
+                            <Col md={6}>
+                                <img src={colin_headshot} alt="Jacob Wilber headshot" className="img-fluid" />
+                                <p>Jacob Wilber</p>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col md={6}>
+                        <div>
+                            <h1 className='our-team'>About Us</h1>
+                            <div className='team-names'>
+                                <p>Welcome to WorkWave! WorkWave is a comprehensive career test that utilizes AI / GPT4 to determine the ideal career for you!</p>
+                                <p>Feel free to add more paragraphs or sections as needed to provide comprehensive information.</p>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 }
