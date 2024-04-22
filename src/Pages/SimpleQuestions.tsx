@@ -16,6 +16,8 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+let simpleQuestionQuizCompleted: SimpleQuestion[] = []
+
 function SimpleQuestions() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   //sets the local storage item to the api key the user inputed
@@ -65,7 +67,7 @@ function SimpleQuestions() {
       setBackButtonDisabled(false);
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
-      //setColor(colors[Math.floor(Math.random() * colors.length)]) People didn't like it
+      //setColor(colors[Math.floor(Math.random() * colors.length)])
       setQuestionBody(questions[nextQuestion].question);
       setOption1(questions[nextQuestion].option1);
       setOption2(questions[nextQuestion].option2);
@@ -73,6 +75,7 @@ function SimpleQuestions() {
       // End of quiz...
       window.alert("You've completed the Simple Quiz!");
       setQuestionBody("You have completed the quiz!");
+      simpleQuestionQuizCompleted = questions
       let nextButton = document.getElementById("nextButton");
       if (nextButton != null) {
         nextButton.classList.remove("Button-visible-true");
@@ -106,7 +109,7 @@ function SimpleQuestions() {
       } else {
         const previousQuestion = questionNumber - 1;
         setQuestionNumber(previousQuestion);
-        //setColor(colors[Math.floor(Math.random() * colors.length)]) People didn't like it
+        //setColor(colors[Math.floor(Math.random() * colors.length)])
         setQuestionBody(questions[previousQuestion].question);
         setOption1(questions[previousQuestion].option1);
         setOption2(questions[previousQuestion].option2);
@@ -212,5 +215,10 @@ function SimpleQuestions() {
       </div>
     </div>
   );
+  
+}
+
+export function getQuestions(): SimpleQuestion[] {
+  return simpleQuestionQuizCompleted
 }
 export default SimpleQuestions;
