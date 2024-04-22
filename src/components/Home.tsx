@@ -3,51 +3,27 @@ import { Buttons } from './Buttons';
 //import Grid from '@mui/material/Grid'; // Grid version 1
 //import Item from '@mui/material/ListItem';
 //import 'App.css';
+
 import { Navigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '@mui/joy/Button';
+import { styled } from '@mui/material/styles';
 
 export function Home(): JSX.Element {
-    const customTheme = createTheme({
-        typography: {
-            fontFamily: [
-                '-apple-system',
-                'BlinkMacSystemFont',
-                '"Segoe UI"',
-                'Roboto',
-                '"Helvetica Neue"',
-                'Arial',
-                'sans-serif',
-                '"Apple Color Emoji"',
-                '"Segoe UI Emoji"',
-                '"Segoe UI Symbol"',
-              ].join(','),
-        },
-        palette: {
-          primary: {
-            main: '#ce93d8',
-          }, text: {
-            primary: '#FFF', // Change text color to white
-          }, secondary: {
-            main: '#ab47bc'
-          }
-        },
-      });
       
-      const StyledButton = styled(Button)`
-        ${({ theme }) => `
-        cursor: pointer;
-        background-color: ${theme.palette.primary.main};
-        color: ${theme.palette.text.primary};
-        transition: ${theme.transitions.create(['background-color', 'transform'], {
-          duration: theme.transitions.duration.standard,
-        })};
-        &:hover {
-          background-color: ${theme.palette.secondary.main};
-          transform: scale(1.3);
-        }
-        `}
-      `;
+    const StyledButton = styled(Button)`
+    ${({ theme }) => `
+    cursor: pointer;
+    background-color: #ce93d8;
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #ab47bc;
+      transform: scale(1.3);
+    }
+    `}
+  `;
 
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
@@ -80,9 +56,9 @@ export function Home(): JSX.Element {
                 interests and career. 
             </p>
             <p></p>
-            <ThemeProvider theme={customTheme}>
-                <StyledButton onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</StyledButton>
-            </ThemeProvider>
+
+                <StyledButton onClick={() => {setGoToBasicQuestionsPage(true)}}>BASIC QUESTIONS PAGE</StyledButton>
+
             {/*<Button className={`animated-button ${isHovered ? 'hovered' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)} color="primary" variant='solid' onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>*/}
@@ -97,9 +73,8 @@ export function Home(): JSX.Element {
             </p>
             <p></p>
             {/*<Button color="primary" variant="solid" onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>*/}
-            <ThemeProvider theme={customTheme}>
-                <StyledButton onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</StyledButton>
-            </ThemeProvider>
+            
+                <StyledButton onClick={() => {setGoToDetailedQuestionsPage(true)}}>DETAILED QUESTIONS PAGE</StyledButton>
         </div>
 
         </main>
