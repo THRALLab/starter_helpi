@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./detailed.css";
 import questions from "./detailedQuestions.json";
+import Modal from "./Modal";
 
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 
@@ -29,6 +30,8 @@ function Detailed() {
 	const [userInput, setUserInput] = useState<string>(
 		answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
 	);
+
+	const [modalVisibility, setModalVisibility] = useState(false);
 
 	function saveAnswers(
 		choice: string,
@@ -99,6 +102,7 @@ function Detailed() {
 
 	return (
 		<>
+			{modalVisibility ? <Modal /> : null};
 			<div className="quizContainer">
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
@@ -177,13 +181,17 @@ function Detailed() {
 						{currentIndex === 0 ? "END" : "PREV."}
 					</button>
 					<button
-						disabled={currentIndex === questions.length - 1 || !choice}
+						disabled={!choice}
 						onClick={() => {
-							setCurrentIndex(index => (index += 1 % questions.length));
-							setChoice(
-								answeredQuestions[currentIndex + 1] &&
-									answeredQuestions[currentIndex + 1].choice
-							);
+							if (currentIndex === questions.length - 1) {
+								setModalVisibility(!modalVisibility);
+							} else {
+								setCurrentIndex(index => (index += 1 % questions.length));
+								setChoice(
+									answeredQuestions[currentIndex + 1] &&
+										answeredQuestions[currentIndex + 1].choice
+								);
+							}
 						}}
 					>
 						{currentIndex === questions.length - 1
