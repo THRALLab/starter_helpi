@@ -29,7 +29,7 @@ function App() {
     setKey(event.target.value);
   }
 
-  const updatePageState = () => {
+  const updatePageState = () => { /* Function that renders new page when there is a switch */
     switch (currPg) {
       case 'Basic':
         return <Basic handlePage={setCurrPg} />;
@@ -44,13 +44,13 @@ function App() {
   return (
     <>
     <NavHome></NavHome>
-          {updatePageState()}
+          {updatePageState()/* Renders the page */} 
     
-  <footer className="footer">
+  <footer className="footer" /* Bottom of page */>
     <h2 className="footer-container">Contact Us</h2>
     <h2 className="footer-container">Help</h2>
     <Form className="api-form">
-  <Form.Group controlId="apiKey">
+  <Form.Group controlId="apiKey" /* Form for API Key Input */>
     <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey} />
   </Form.Group>
   <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
