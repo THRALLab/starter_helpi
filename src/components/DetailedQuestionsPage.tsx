@@ -7,7 +7,7 @@ import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { styled, createTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 
 export function DetailedQuestionsPage(): JSX.Element {
