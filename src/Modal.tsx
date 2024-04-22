@@ -15,7 +15,7 @@ export default function Modal({ modalFunction }: Props) {
 					button to proceed.
 				</p>
 				<div className="buttonContainer">
-					<button onClick={() => alert("CANCEL")}>CANCEL</button>
+					<button>CANCEL</button>
 					<button
 						onClick={e => {
 							e.stopPropagation();
