@@ -18,9 +18,6 @@
 	color: white;
 }
 
-/* .carousel-indicators button { */
-/*   background-color: red !important;  */
-/* } */
 
 .carousel-indicators .active {
 	background-color: var(--purple) !important;
