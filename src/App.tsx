@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
 // MOVED THE IMPORT STATEMENTS TO HOME PAGE FILE
-import NavigationBar from "./components/homePageComp/navigationBar";
+import NavigationBar from "./components/homePageComp/navigation-bar/navigationBar";
 import DetailedQuestions from './pages/DetailedQuestions';
 import BasicQuestions from './pages/BasicQuestions';
 import Home from './pages/Home';
+import Wave from "./components/homePageComp/waves/waveComponents/wave";
+import Canvas from "./components/homePageComp/waves/waveComponents/canvas";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -48,7 +50,7 @@ function App() {
         <div
             className="App"
             style={{
-                backgroundColor: "#6b2737",
+                backgroundColor: "#f6d7b0",
                 minHeight: "100vh",
                 color: "#fff"
             }}
@@ -56,23 +58,6 @@ function App() {
             {/* Buttons to switch states*/}
             <NavigationBar handlePage={setCurrPg}/>
             {updatePageState()}
-
-            {/* UNEDIT THIS IF NECESSARY vv
-            <div>
-                <h1 style={{ textAlign: 'center'}}> Home Page</h1>
-                <img src={branchTop} alt="Branch" style={{ position: 'absolute', top: 0, left: 0, width: '100px', height: '100px', zIndex: 1, transform: 'rotate(90deg)'}} />
-                <img src={branchTop} alt="Branch" style={{ position: 'absolute', top: 0, right: 0, width: '100px', height: '100px', zIndex: 1, transform: 'rotate(-90deg)' }} />
-                <NavigationBar />
-                <DescriptionTable />
-            </div>
-        {/*
-        {currentState === 1 && (
-            <div>
-                <h2> Basic Page</h2>
-                <p>This is the basic page.</p>
-            </div>
-        )}
-        */}
 
             <div style={{ textAlign: "center" }}>
                 <Form>
@@ -88,6 +73,7 @@ function App() {
                     </Button>
                 </Form>
             </div>
+            <Canvas />
         </div>
     );
 }

@@ -10,8 +10,6 @@ const home: React.FC<HomeProp> = ({handlePage}) => {
     return (
     <div>
         <h1 style={{ textAlign: 'center'}}> Home Page</h1>
-        <img src={branchTop} alt="Branch" style={{ position: 'absolute', top: 0, left: 0, width: '100px', height: '100px', zIndex: 1, transform: 'rotate(90deg)'}} />
-        <img src={branchTop} alt="Branch" style={{ position: 'absolute', top: 0, right: 0, width: '100px', height: '100px', zIndex: 1, transform: 'rotate(-90deg)' }} />
         <div className="container">
             <div className="section">
                 <h2 className="header">Basic</h2>
