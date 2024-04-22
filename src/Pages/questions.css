@@ -1,4 +1,9 @@
-.column {
+@font-face {
+    font-family: 'Poppins Light';
+    src: url('./Poppins-Light.ttf') format('truetype');
+}
+
+.column { /* Box for the questions */
     border: 1px solid #ccc;
     margin: 10px;  
     padding: 20px;
@@ -7,21 +12,41 @@
     flex-direction: column;  
 }
 
-.questionContainer {
+.questionContainer { /* Each question row */
     display: flex;
-    justify-content: center;  
+    flex-direction: row;
     align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: nowrap;  
+    justify-content: center;
 }
 
-.button-questions {
-    margin: 0 5px;
-    background-color: #86c0ff;  
-    color: white;
-    border-radius: 20px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    outline: none;
+.option { /* Class for radio buttons */
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px; 
+    margin-top: 10px;
+}
+
+.option label { /* Class for radio button text */
+    font-family: "Poppins light", sans-serif;
+    font-size: 14px; 
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 1px; 
+}
+
+.option input[type="radio"] { /* Class for the actual button */
+    transform: scale(1.5); 
+}
+
+.question {         /* Class for question text */
+    font-family: "Poppins light", sans-serif;
+    font-size: 20px;
+}
+
+.footer-space { /* Creates space at bottom of page */
+    height: 100px;
+    bottom: 0;
+    width: 100%;
 }
