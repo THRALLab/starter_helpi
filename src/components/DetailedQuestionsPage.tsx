@@ -16,13 +16,13 @@ export function DetailedQuestionsPage(): JSX.Element {
     const StyledButton = styled(Button)`
     ${({ theme }) => `
     cursor: pointer;
-    background-color: ${theme.palette.primary.main};
+    background-color: #ce93d8;
     color: #FFF;
     transition: ${theme.transitions.create(['background-color', 'transform'], {
       duration: theme.transitions.duration.standard,
     })};
     &:hover {
-      background-color: ${theme.palette.primary.main};
+      background-color: #ab47bc;
       transform: scale(1.3);
     }
     `}
@@ -255,9 +255,9 @@ export function DetailedQuestionsPage(): JSX.Element {
 
                         {/* Next and Previous buttons */}
                         {!displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'center' }}>
-                            {currentQuestion > 0 && (<Button onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</Button>)}
-                            <Button onClick={handleCurrentQuestion} style={{ margin: '0 auto' }}>Next Question</Button>
+                            <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
+                            {currentQuestion > 0 && (<StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>)}
+                            <StyledButton onClick={handleCurrentQuestion} style={{ margin: '0 auto' }}>Next Question</StyledButton>
                             </div>
                         )}
 
@@ -265,16 +265,11 @@ export function DetailedQuestionsPage(): JSX.Element {
 
                         {/* Finish and Previous buttons */}
                         {displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'center' }}>
-                            <Button onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</Button>
-                            <Button color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</Button>
+                            <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
+                            <StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>
+                            <StyledButton2 color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</StyledButton2>
                             </div>
                         )}
-
-                        {(!displayFinishButton && !displayFinalResults)&& <div style={{padding: '8vh'}}><StyledButton onClick={handleCurrentQuestion}>Next Question</StyledButton></div>}
-            
-                        {displayFinalResults && <div>Final Results!</div>}
-                        {(displayFinishButton) && <div style={{padding: '8vh'}}><StyledButton2 color='success' onClick={handleDisplayFinalResults}>Finish & Get Results</StyledButton2></div>}
 
                         <p></p>
                         </Typography>

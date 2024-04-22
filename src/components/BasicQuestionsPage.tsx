@@ -7,9 +7,40 @@ import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { styled } from '@mui/material/styles';
 
 
 export function BasicQuestionsPage(): JSX.Element {
+    const StyledButton = styled(Button)`
+    ${({ theme }) => `
+    cursor: pointer;
+    background-color: #ce93d8;
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #ab47bc;
+      transform: scale(1.3);
+    }
+    `}
+  `;
+
+  const StyledButton2 = styled(Button)`
+  ${({ theme }) => `
+  cursor: pointer;
+  background-color: #51bc51;
+  color: #FFF;
+  transition: ${theme.transitions.create(['background-color', 'transform'], {
+    duration: theme.transitions.duration.standard,
+  })};
+  &:hover {
+    background-color: #1f7a1f;
+    transform: scale(1.3);
+  }
+  `}
+`;
+
     const questions = [
 		{
 			questionText: 'Question 1',
@@ -215,15 +246,15 @@ export function BasicQuestionsPage(): JSX.Element {
                                     
                         }} />
                         </div>
-                        <div style={{paddingTop: '1vh'}}><Button onClick={handleClearText}>Reset</Button></div>
+                        <div style={{paddingTop: '1vh'}}><StyledButton onClick={handleClearText}>Reset</StyledButton></div>
                         
                         </div>}
                         
                         {/* Next and Previous buttons */}
                         {!displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'center' }}>
-                            {currentQuestion > 0 && (<Button onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</Button>)}
-                            <Button onClick={handleCurrentQuestion} style={{ margin: '0 auto' }}>Next Question</Button>
+                            <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
+                            {currentQuestion > 0 && (<StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>)}
+                            <StyledButton onClick={handleCurrentQuestion} style={{ margin: '0 auto' }}>Next Question</StyledButton>
                             </div>
                         )}
 
@@ -231,9 +262,9 @@ export function BasicQuestionsPage(): JSX.Element {
 
                         {/* Finish and Previous buttons */}
                         {displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '12vh', display: 'flex', justifyContent: 'center' }}>
-                            <Button onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</Button>
-                            <Button color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</Button>
+                            <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
+                            <StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>
+                            <StyledButton2 color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</StyledButton2>
                             </div>
                         )}
                         <p></p>
