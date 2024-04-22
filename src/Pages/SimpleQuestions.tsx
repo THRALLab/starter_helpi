@@ -16,7 +16,11 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-let simpleQuestionQuizCompleted: SimpleQuestion[] = []
+let simpleQuestionQuizCompleted: SimpleQuestion[] = [];
+
+export function getQuestions(): SimpleQuestion[] {
+  return simpleQuestionQuizCompleted;
+}
 
 function SimpleQuestions() {
   const [key, setKey] = useState<string>(keyData); //for api key input
@@ -75,7 +79,7 @@ function SimpleQuestions() {
       // End of quiz...
       window.alert("You've completed the Simple Quiz!");
       setQuestionBody("You have completed the quiz!");
-      simpleQuestionQuizCompleted = questions
+      simpleQuestionQuizCompleted = questions;
       let nextButton = document.getElementById("nextButton");
       if (nextButton != null) {
         nextButton.classList.remove("Button-visible-true");
@@ -215,10 +219,6 @@ function SimpleQuestions() {
       </div>
     </div>
   );
-  
 }
 
-export function getQuestions(): SimpleQuestion[] {
-  return simpleQuestionQuizCompleted
-}
 export default SimpleQuestions;
