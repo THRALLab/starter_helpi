@@ -203,8 +203,8 @@ export function BasicQuestionsPage(): JSX.Element {
                 <Card variant="plain" sx={{ width: 1000, height: 400}}// Adjust this value according to your layout
                 >
                     <CardContent>
-                        <Typography level="title-md">Question {currentQuestion+1}/{questions.length}</Typography>
-                        <ProgressBar
+                        {!displayFinalResults && <Typography level="title-md">Question {currentQuestion+1}/{questions.length}</Typography>}
+                        {!displayFinalResults && <ProgressBar
                             min={0} // Minimum value progress can begin from
                             now={(currentQuestion + 1) * (100 / questions.length)} // Current value of progress
                             max={100} // Maximum value progress can reach
@@ -215,7 +215,7 @@ export function BasicQuestionsPage(): JSX.Element {
                             variant="info" // Sets the background class of the progress bar to red
                             style={{ width: '100%'}}
                             >
-                        </ProgressBar>
+                        </ProgressBar>}
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
                         <p>{questions[currentQuestion].questionText}</p>
                         <div style={{paddingBottom: '1vh', display: 'flex',
