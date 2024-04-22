@@ -41,7 +41,7 @@ describe("Home Page Tests", () => {
       "This is a basic quiz with 15 questions."
     );
     const linkElement2 = screen.getByText(
-      "It will take around X to Y minutes to complete."
+      "It will take around 5 to 10 minutes to complete."
     );
     const linkElement3 = screen.getByText(
       "The questions are simple and multiple choice."
@@ -58,7 +58,7 @@ describe("Home Page Tests", () => {
       "This is a detailed quiz with 30 questions."
     );
     const linkElement1 = screen.getByText(
-      "It will take around Y to Z minutes to complete."
+      "It will take around 10 to 15 minutes to complete."
     );
     const linkElement2 = screen.getByText(
       "The questions are answered on a scale."
