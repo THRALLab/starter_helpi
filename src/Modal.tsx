@@ -11,8 +11,8 @@ export default function Modal({ modalFunction }: Props) {
 				<p>
 					Congratulations, you've answered all of the questions! Click the
 					cancel button if you would like to go back and review your answer
-					choices once more; otherwise, click the 'GET RESULTS!' button to
-					proceed.
+					choices once more. If you feel you're ready, click the 'GET RESULTS!'
+					button to proceed.
 				</p>
 				<div className="buttonContainer">
 					<button onClick={() => alert("CANCEL")}>CANCEL</button>
