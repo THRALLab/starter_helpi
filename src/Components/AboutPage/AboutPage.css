@@ -13,6 +13,18 @@
 .our-team {
     color: #6923ff;
     margin-bottom: 5%;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.our-team-info {
+    color: white;
+    font-size: medium;
+}
+
+.about-us-info {
+    color: white;
+    font-size: large;
 }
 
 .team-names {

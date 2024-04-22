@@ -13,9 +13,9 @@ export const CircleImage = ({ imageUrl} : { imageUrl : string }) => {
         borderRadius: '50%',
         overflow: 'hidden',
         transition: 'transform 0.3s ease-in-out',
-        border: '8px solid white',
-        width: '200px',
-        height: '200px',
+        border: '8px solid #6923ff',
+        width: '175px',
+        height: '175px',
         margin: '0 auto'
     }}
     >
