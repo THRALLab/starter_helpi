@@ -1,5 +1,4 @@
 import React from "react";
-import branchTop from "../images/homePageImages/branchTop.png";
 
 
 interface HomeProp {
@@ -9,7 +8,7 @@ interface HomeProp {
 const home: React.FC<HomeProp> = ({handlePage}) => {
     return (
     <div>
-        <h1 style={{ textAlign: 'center'}}> Home Page</h1>
+        <h1 style={{ textAlign: 'center'}}> Shore Path</h1>
         <div className="container">
             <div className="section">
                 <h2 className="header">Basic</h2>
