@@ -6,6 +6,8 @@ import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
+import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
+import { getQuestions } from "../Pages/SimpleQuestions";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -17,6 +19,7 @@ if (prevKey !== null) {
 
 function SimpleReport() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [prompt, setPrompt] = useState("")
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -31,6 +34,10 @@ function SimpleReport() {
   const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
   //Queries ChatGPT to get response
   async function ChatGPT() {
+    //Create message for ChatGPT based on Simple Questions Responses
+    const questions = getQuestions()
+    const simpleQuestionQuizResults = questions.map((question: SimpleQuestion) => `${question.question}: ${question.answer}`).join(", \n")
+    setPrompt(`Based on the following criteria: \n${simpleQuestionQuizResults}\nWhat job suits me best?`)
     //Creates ChatGPT
     const openai = new OpenAIAPi({
       apiKey: keyData,
@@ -41,10 +48,9 @@ function SimpleReport() {
       messages: [
         {
           role: "system",
-          content:
-            "You are a helpful career advisor. You will be provided a students result to a career quiz.",
+          content: prompt,
         },
-        { role: "user", content: "What should my career be?" },
+        { role: "user", content: prompt },
       ],
       model: "gpt-3.5-turbo",
     });
