@@ -60,7 +60,7 @@ function Home() {
                 This is a basic quiz with 15 questions.
               </p>
               <p className="Text-basic">
-                It will take around X to Y minutes to complete.
+                It will take around 5 to 10 minutes to complete.
               </p>
               <p className="Text-basic">
                 The questions are simple and multiple choice.
@@ -77,7 +77,7 @@ function Home() {
                 This is a detailed quiz with 30 questions.
               </p>
               <p className="Text-detailed">
-                It will take around Y to Z minutes to complete.
+                It will take around 10 to 15 minutes to complete.
               </p>
               <p className="Text-detailed">
                 The questions are answered on a scale.

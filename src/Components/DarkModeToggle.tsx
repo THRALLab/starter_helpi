@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { currentState, updateCurrentState } from "./DarkModeParent";
+import { darkModeState, updateDarkModeState } from "./DarkModeParent";
+
 //Name of the class changes what colors are used
 export let bodyClassName = "body";
 
 export const DarkModeToggle = () => {
   //DarkMode States
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(currentState);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(darkModeState);
   let oldClassName = "";
   //Dark Mode Control
   function updateDarkMode(event: React.ChangeEvent<HTMLInputElement>) {
     setIsDarkMode(event.target.checked);
     //Swaps the parent classname, see CSS file for what changes
-    updateCurrentState();
+    updateDarkModeState();
     if (isDarkMode) {
       oldClassName = "body-dark";
       bodyClassName = "body";
