@@ -10,7 +10,7 @@ const NavigationBar: React.FC<NavProp> = ({handlePage}) => {
 
   return (
     <div>
-    <nav style={{ backgroundColor: '#426B69', padding: '5px' }}>
+    <nav style={{ backgroundColor: '#2c6fbb', padding: '5px' }}>
       <ul style={{ listStyleType: 'none', margin: 0, padding: 0, display: 'flex', justifyContent: 'center' }}>
         <li className={activeTab === 'Home' ? 'active' : ''}>
           <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handlePage('Home', 'Home')}>Home</button>
