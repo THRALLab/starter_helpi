@@ -9,7 +9,6 @@ import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
 
-
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -33,7 +32,6 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
 
-  
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
@@ -231,4 +229,3 @@ function DetailedQuestions() {
   );
 }
 export default DetailedQuestions;
-
