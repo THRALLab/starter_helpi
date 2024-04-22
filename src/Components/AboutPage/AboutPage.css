@@ -1,17 +1,33 @@
 .about-us {
     font-size: large;
     font-size: 100px;
-    font-weight: 50%;
+    font-weight: 500;
     margin-top: -55px;
     color: #6923ff;
 }
 
+.headshots {
+    margin-bottom: 20px;
+}
+
 .our-team {
     color: #6923ff;
+    margin-bottom: 5%;
 }
 
 .team-names {
     color: white;
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.team-names-info {
+    color: white;
+    align-items: start;
+    font-size: 16px;
+    margin-top: -10px;
 }
 
 .about-us-section {
@@ -19,7 +35,7 @@
 }
 
 .about-page-container {
-    height: 70vh;
+    height: flex;
     display: flex;
     justify-content: center;
     align-items: center;
