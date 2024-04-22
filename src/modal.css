@@ -15,8 +15,7 @@
 }
 
 .modal-content {
-	/* background-color: #cdbbff; */
-	background-color: #231942;
+	background-color: #392c60;
 	margin: auto;
 	padding: 20px;
 	border: 2px solid #9f86c0;
@@ -30,9 +29,8 @@
 	padding: 10px;
 	width: 70%;
 	margin: 20px auto 30px;
-	line-height: 30px;
+	line-height: 35px;
 	font-weight: 400;
-	/* color: #5d22ff; */
 	color: white;
 }
 
@@ -42,9 +40,40 @@
 	display: inline-flex;
 }
 
+.modal-content .buttonContainer button:first-of-type {
+	background-color: #86142d;
+	border: 2px solid rgb(178, 40, 40);
+}
+
+.modal-content .buttonContainer button:first-of-type:hover {
+	background-color: #86142d;
+	border: 2px solid red;
+}
+
+.modal-content .buttonContainer button:first-of-type:active {
+	background-color: #a81132;
+}
+
 .modal-content .buttonContainer button {
 	width: 30%;
-	padding: 10px;
-	font-size: 15px;
-	margin: 0 auto;
+	margin: 0 auto 20px;
+	padding: 15px;
+	font-size: 18px;
+	background-color: #720874;
+	color: white;
+	border: 2px solid #8d5fca;
+	font-family: "Archivo", sans-serif;
+	font-weight: 600;
+	border-radius: 10px;
+}
+
+.modal-content .buttonContainer button:hover {
+	cursor: pointer;
+	border: 2px solid #a980de;
+	background-color: #8c098e;
+	transition: 0.5s ease;
+}
+
+.modal-content .buttonContainer button:active {
+	background-color: #c00ac4;
 }

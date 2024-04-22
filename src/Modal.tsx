@@ -5,13 +5,14 @@ export default function Modal() {
 		<div className="modal">
 			<div className="modal-content">
 				<p>
-					Congrats! You've completed all of the questions! Click cancel if you
-					would like to go back and review your answer choices once more;
-					otherwise, click 'Get Results!'.
+					Congratulations, you've answered all of the questions! Click the
+					cancel button if you would like to go back and review your answer
+					choices once more; otherwise, click the 'GET RESULTS!' button to
+					proceed.
 				</p>
 				<div className="buttonContainer">
-					<button>Cancel</button>
-					<button>Get Results!</button>
+					<button>CANCEL</button>
+					<button>GET RESULTS!</button>
 				</div>
 			</div>
 		</div>
