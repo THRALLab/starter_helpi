@@ -1,10 +1,26 @@
 
-import React, { } from 'react';
-import {Button} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import BrainIcon from './modifiedBrainIcon.svg';
 import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
+import Confetti from 'react-dom-confetti';
+
+const config = { /* Configuration for confetti */
+    angle: 90,
+    spread: 150,
+    startVelocity: 35,
+    elementCount: 200,
+    dragFriction: 0.12,
+    duration: 9000,
+    stagger: 3,
+    width: "0.9vw",
+    height: "0.9vw",
+    perspective: "500px",
+    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+    recycle: false,
+  };
 
 interface DetailedProp {
     handlePage: (page: string) => void;
@@ -16,9 +32,15 @@ interface QuestionOption {
 }
 
 const Detailed: React.FC<DetailedProp> = ({ handlePage }) => { /* Handes page changes */
-    const handleOptionClick = (option: string) => {
-        console.log(option); 
-    };
+const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+const [confetti, setConfetti] = useState(false);
+const [confettiTriggered, setConfettiTriggered] = useState(false);
+
+const handleOptionClick = (option: string, questionIndex: number) => {
+    const updatedSelectedOptions = [...selectedOptions];
+    updatedSelectedOptions[questionIndex] = option;
+    setSelectedOptions(updatedSelectedOptions);
+};
 
     const questions: QuestionOption[] = [ /* Questions and Options for detailed page */
         {
@@ -50,39 +72,62 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => { /* Handes page ch
             options: ["Office", "", "Neutral", "", "Changing Environment"]
         }
     ];
+    const allQuestionsAnswered = selectedOptions.length === questions.length && selectedOptions.every(option => option !== undefined);
+   
+    useEffect(() => {
+        if (selectedOptions.length === questions.length && !confettiTriggered) {
+            setConfetti(true);
+            setConfettiTriggered(true); // Set confettiTriggered to true once confetti is triggered
+            setTimeout(() => {
+                setConfetti(false);
+            }, 2000);
+        }
+    }, [questions.length, selectedOptions, confettiTriggered]);
 
     return (
         <div>
-       <header className="header" /* Top of page */>
+        <header className="header" /* Top of page */>
+        {allQuestionsAnswered && (
+      <div className="confetti-container">
+        <Confetti active={confetti} config={config} />
+      </div>
+            )} 
         <div className="title-container">
         <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} /* Brain icon (Can switch to home page on click) */ />
         <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
             <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
         </div>
         </header>
-        <div className="column" /* Box that contains all the questions */>
-            {questions.map((q, idx) => (
-                <div key={idx}>
-                    <h3 className="question">{q.question}</h3>
-                    <div className="questionContainer">
-    {q.options.filter(option => option !== "").map((option, i) => ( /* Filters empty strings and maps buttons */
-        <div key={i} className="option">
-            <label>{option}</label>
-            <input
-                type="radio" /* Radio buttons */
-                name={`question_${idx}`}
-                value={option}
-                onClick={() => handleOptionClick(option)}
-            />
-        </div>
-    ))}
-</div>
+        <div className="column">
+                {questions.map((q, idx) => (
+                    <div key={idx}>
+                        <h3 className="question">{q.question}</h3>
+                        <div className="questionContainer">
+                            {q.options.filter(option => option !== "").map((option, i) => (
+                                <div key={i} className="option">
+                                    <label>{option}</label>
+                                    <input
+                                        type="radio"
+                                        name={`question_${idx}`}
+                                        value={option}
+                                        onClick={() => handleOptionClick(option, idx)} // Pass question index to handleOptionClick
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
-        ))}
-    </div>
-    <footer className="footer-space" /* Leaves empty space in footer */ ></footer>
-</div>
-)
+            {allQuestionsAnswered && (
+      <div className="response">
+        <h3>Thank you for completing the questionnaire!</h3>
+        <p>Your responses have been recorded.</p>
+        <Button onClick={() => handlePage('Result')} className="response-button">View Results</Button>
+      </div>
+            )}
+            <footer className="footer-space"></footer>
+        </div>
+    );
 }
 
 export default Detailed;
