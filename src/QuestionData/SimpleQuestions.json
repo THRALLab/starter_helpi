@@ -21,8 +21,8 @@
     {
       "num": 4,
       "question": "Do you like learning new things or exploring new things physically?",
-      "option1": "Yes",
-      "option2": "No"
+      "option1": "New Things",
+      "option2": "Exploring Physically"
     },
     {
       "num": 5,
