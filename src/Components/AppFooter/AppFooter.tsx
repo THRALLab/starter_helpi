@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Form, OverlayTrigger, TooltipProps, Tooltip, InputGroup } from 'react-bootstrap';
 import './AppFooter.css';
 import { BsGithub } from 'react-icons/bs';
-import AboutButton from '../AboutButton/AboutButton';
 
 const AppFooter = ({ changeKey, handleSubmit }: {
   changeKey: (event: React.ChangeEvent<HTMLInputElement>) => void,

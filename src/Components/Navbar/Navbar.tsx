@@ -1,11 +1,9 @@
 import Container from 'react-bootstrap/Container';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from './FinalLogo.png'
 import '../Navbar/Navbar2.css'
-import { GoArrowLeft } from "react-icons/go";
-import Button from 'react-bootstrap/Button';
 import AboutButton from '../AboutButton/AboutButton';
 
 export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: string) => void }) {
@@ -19,10 +17,6 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
       setPreviousPage(page);
       setPage(newPage);
     }
-  }
-
-  const handleBackButtonClick = () => {
-    setPage(previousPage);
   }
 
   return (
