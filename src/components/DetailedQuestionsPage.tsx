@@ -11,7 +11,9 @@ import { styled } from '@mui/material/styles';
 import FormControl from '@mui/joy/FormControl';
 
 export function DetailedQuestionsPage(): JSX.Element {
-  
+    interface Responses {
+        [key: number]: string
+    }
 
     const StyledButton = styled(Button)`
     ${({ theme }) => `
@@ -115,13 +117,20 @@ export function DetailedQuestionsPage(): JSX.Element {
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
         const [currentQuestion, setCurrentQuestion] = React.useState(0);
+        const [responses, setResponses] = React.useState<Responses>({});
 
-
-    //const [responses, setResponses] = React.useState({});
-
-
+        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+          setInputText(e.target.value);
+          const { value } = e.target;
+          setResponses({ ...responses, [questions[currentQuestion].id]: value });
+        };
+      
+    const handlePreviousAnswerDisplay = () => {
+        setInputText(responses[questions[currentQuestion].id])
+    }
 
     const handleCurrentQuestion = () => {
+        setInputText("");
         const currentQuestionIndex = currentQuestion + 1;
 
             if (currentQuestionIndex < questions.length) {
@@ -135,6 +144,7 @@ export function DetailedQuestionsPage(): JSX.Element {
     }
 
     const handlePreviousQuestion = () => {
+        setInputText("");
         const previousQuestionIndex = currentQuestion - 1;
     
         if (previousQuestionIndex >= 0) {
@@ -160,8 +170,8 @@ export function DetailedQuestionsPage(): JSX.Element {
 
     const handleClearText = () => {
         setInputText("");
+        setResponses({...responses, [questions[currentQuestion].id]: ""})
     };
-
 
     const handleGoToHomePage = () => {
         setGoToHomePage(true);
@@ -239,7 +249,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                         />*/}
-                            <FormControl error={!inputText}>
+                            <FormControl>
                             <Input sx={{width: '500px', height: '75px', display: 'flex',
                                     justifyContent: 'center',
 
@@ -254,13 +264,16 @@ export function DetailedQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                    required
-                                    onChange={(e) => {
-                                    setInputText(e.target.value);
-                                    }}
-                                    defaultValue="Please enter an answer."
+                                    onClick={handlePreviousAnswerDisplay}
+                                    onChange={handleInputChange}
                                     />
+                                    
                                 </FormControl>
+                                {/*<p>{questions[currentQuestion].id}</p>
+                                <p>:</p>
+                                <p>{responses[questions[currentQuestion].id]}</p>*/}
+                                {/*<p>{inputText}</p>*/}
+                                
                         </div>
                         <div style={{paddingTop: '1vh'}}><StyledButton onClick={handleClearText}>Reset</StyledButton></div>
                         
