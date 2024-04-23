@@ -53,8 +53,7 @@ div .quiz-desc-container {
     &:hover {
         /* background-color: #e8ebed; */
         margin-top: -9px;
-        color: white;
-        background-color: rgb(51, 120, 238);
+        background-color: rgb(33, 72, 197);
     }
     cursor: pointer;
 }
