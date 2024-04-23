@@ -6,18 +6,26 @@ interface Tools {
 	checkConnection: () => void;
 }
 
+// TODO - [ ] will need to change ChatGPT prompt from 1 report to 4
+// TODO - [ ] will need to add markdown support since ChatGPT occasionally returns a response with markdown
+
 export default function useChatGPT(): Tools {
 	const API_KEY: string | null = localStorage.getItem("MYKEY");
 
 	async function callAPI(openai: OpenAI, users_responses: Answer[]) {
+		let formattedQ_A = "";
+		users_responses.map((a: Answer) => {
+			formattedQ_A += `(${a.questionNo}) ${a.question} \n ${a.choice} \n`;
+		});
+
 		let response = "";
 		try {
 			const stream = await openai.chat.completions.create({
 				model: "gpt-3.5-turbo",
 				messages: [
 					{
-						role: "user", // will need to change to 4 but for the time being, I'll do 1
-						content: `I am looking to generate 1 detailed report catered towards helping a user find 4 careers that would closely match with what they've answered given a set of questions. These questions are as follows:`
+						role: "user",
+						content: `I am looking to generate 1 detailed and lengthy report catered towards helping a user find a list of careers by name that would closely match with what they've answered given a set of questions. When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. These questions are as follows: ${formattedQ_A}`
 					}
 				],
 				stream: true
@@ -33,19 +41,14 @@ export default function useChatGPT(): Tools {
 		}
 	}
 
-	// let formattedQuestions = "";
 	const users_responses: string | null =
 		localStorage.getItem("answered_questions");
-	// users_responses &&
-	// 	JSON.parse(users_responses).map((a: Answer) => {
-	// 		console.log(a);
-	// 	});
 
 	function checkConnection() {
 		if (
 			API_KEY &&
 			users_responses &&
-			users_responses.length === detailedQuestions.length
+			JSON.parse(users_responses).length === detailedQuestions.length
 		) {
 			const openai: OpenAI = new OpenAI({
 				apiKey: JSON.parse(API_KEY), // converts the string literal to a string without the double quotes

@@ -107,6 +107,7 @@ function Detailed() {
 
 	return (
 		<>
+			<button onClick={checkConnection}>Click to test ChatGPT API</button>
 			<div className="quizContainer">
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
