@@ -15,7 +15,11 @@ export function LinkButton(props: LinkButtonProps) {
   };
   //Link button component, all formatted using the general css file
   return (
-    <Button className="Button-link" onClick={() => handleButtonClick(props.to)}>
+    <Button
+      className="Button-link"
+      role="Button-link"
+      onClick={() => handleButtonClick(props.to)}
+    >
       {props.label}
     </Button>
   );
