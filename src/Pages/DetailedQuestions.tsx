@@ -41,12 +41,12 @@ function DetailedQuestions() {
   const [color, setColor] = useState("");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
-  const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
+  //const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
+  const colors = ["green"];
 
   useEffect(() => {
     loadQuestions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   const loadQuestions = () => {
     const parsedData = JSON.parse(JSON.stringify(jsonData));
