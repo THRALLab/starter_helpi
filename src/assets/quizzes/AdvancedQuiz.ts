@@ -14,12 +14,12 @@ export const advancedQuiz: Record<string, Question> = {
     prompt: "Which describes you best?",
     description: "It is ok to be unsure",
     options: [
-        "I am unsure about what Career I want",
-        "I know the general field I would like to pursue",
-        "I know the specific field I would like to specialize in",
-        "I already have a lot of exprience and am looking to take the next step to further my career",
-        "I have a lot of expeience in my current career, but am looking to make a change",
-        "None of these fit me"
+        "Unsure about what Career I want",
+        "Know the general field I would like to pursue",
+        "Know the specific field I would like to specialize in",
+        "Already have a lot of exprience and am looking to take the next step to further my career",
+        "Have a lot of expeience in my current career, but am looking to make a career change",
+        "None of these apply"
       ],
   },
   question3: {
@@ -39,7 +39,7 @@ export const advancedQuiz: Record<string, Question> = {
   question5: {
     id: "question5",
     type: "TEXT_RESPONSE",
-    prompt: "What do you hope to get out of this quiz?",
+    prompt: "What kind of career advice do you hope to get from this quiz? (ie. general field, specific career, other advice for furthering career)",
     description: "If you are unsure about what you want, talk about your current interests",
     options: []
   }
