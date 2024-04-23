@@ -9,7 +9,6 @@ import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
 import FormControl from '@mui/joy/FormControl';
-import Fade from '@mui/material/Fade';
 import Grow from '@mui/material/Grow';
 
 export function BasicQuestionsPage(): JSX.Element {
@@ -219,6 +218,7 @@ export function BasicQuestionsPage(): JSX.Element {
             <h1 className='padding3'>Basic Questions Page</h1>
             <p className="text-muted">This basic career assessment is hand crafted to help comprehend preferences and strengths that you have and which specific careers they are best suited for. You'll gain insights into the types of careers and opportunities that may suit you best. Coming soon. </p>
             
+            <main className="padding2">
             <div
                 style={{
                 display: 'flex',
@@ -240,7 +240,7 @@ export function BasicQuestionsPage(): JSX.Element {
                             visuallyHidden={true} // Show the label visually
                             striped={currentQuestion >= 0} // Uses a gradient to create a striped effect when the progress is at least 0%
                             animated={currentQuestion >= 0} // Animate the stripes from right to left when the progress is at least 0%
-                            variant="info" // Sets the background class of the progress bar to red
+                            variant="info" // Sets the background class of the progress bar to blue
                             style={{ width: '100%'}}
                             >
                         </ProgressBar>}
@@ -321,8 +321,8 @@ export function BasicQuestionsPage(): JSX.Element {
                         
                     </CardContent>
                 </Card>
-                <p></p>
             </div>  
+            </main>
         </div>
     );
 }
