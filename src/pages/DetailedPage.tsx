@@ -109,6 +109,19 @@ const DetailedPage = () => {
 		return completed;
 	}
 	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
+	
+	function doReset(): void{ //clears all the choices 
+		const defaultResponse: (boolean |string)[] = [false, false, false, false, ""];
+		const resetOther: boolean[] = [false, false, false, false, false, false, false];
+		setOtherSelected(resetOther);
+		setResponse1(defaultResponse);
+		setResponse2(defaultResponse);
+		setResponse3(defaultResponse);
+		setResponse4(defaultResponse);
+		setResponse5(defaultResponse);
+		setResponse6(defaultResponse);
+		setResponse7(defaultResponse);
+	  }
 
     const [allow, setAllow] = useState<boolean>(false);
 	const [alert, setAlert] = useState<boolean>(false);
@@ -156,7 +169,7 @@ const DetailedPage = () => {
 			</>
 		</div>
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" disabled={!allow}>Answer</Button>
+		<Button size="lg" disabled={!allow}>Answer</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
@@ -174,7 +187,7 @@ const DetailedPage = () => {
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 0, 0)}
-				/>
+				checked={Response1[0] === true}/>
 				</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -185,6 +198,7 @@ const DetailedPage = () => {
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1,1, 0)}/>
+				{Response1[1] === true}
 				</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -194,7 +208,8 @@ const DetailedPage = () => {
 				label="I’ll call in sick and take the day off."
 				name="question1"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder",1, 2, 0)}/>
+				onChange={() => handleRadio("holder",1, 2, 0)}
+				checked={Response1[2] === true}/>
 				</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -204,7 +219,8 @@ const DetailedPage = () => {
 				label="I’ll take a taxi to work."
 				name="question1"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 1, 3, 0)}/>
+				onChange={() => handleRadio("holder", 1, 3, 0)}
+				checked={Response1[3] === true}/>
 			</div>
 			<Form.Check
 					inline
@@ -212,7 +228,9 @@ const DetailedPage = () => {
 					id="q1-Option5"
 					label="Other:"
 					name="question1"
-					onChange={() => handleRadio("Other:",1,  4, 0)}/>
+					onChange={() => handleRadio("Other:",1,  4, 0)}
+					checked={otherSelected[0] === true}
+					/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
@@ -232,7 +250,8 @@ const DetailedPage = () => {
 				label="I would try to meet shareholders to find out what think about our company."
 				name="question2"
 				style={{width:"200px"}}
-				onChange={() => handleRadio("holder",2,  0, 1)}/>
+				onChange={() => handleRadio("holder",2,  0, 1)}
+				checked={Response2[0] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -242,7 +261,8 @@ const DetailedPage = () => {
 				label="I would assign tasks to our group members to organize our workflow."
 				name="question2"
 				style={{width:"230px"}}
-				onChange={() => handleRadio("holder",2,  1, 1)} />
+				onChange={() => handleRadio("holder",2,  1, 1)}
+				checked={Response2[1] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -252,7 +272,8 @@ const DetailedPage = () => {
 				label="I would start researching the topic and create a rough outline of the presentation."
 				name="question2"
 				style={{width:"275px"}}
-				onChange={() => handleRadio("holder",2,  2, 1)} />
+				onChange={() => handleRadio("holder",2,  2, 1)}
+				checked={Response2[2] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -262,7 +283,8 @@ const DetailedPage = () => {
 				label="I would begin designing the slides and decide what topics should be included."
 				name="question2"
 				style={{width:"300px"}}
-				onChange={() => handleRadio("holder",2,  3, 1)} />
+				onChange={() => handleRadio("holder",2,  3, 1)}
+				checked={Response2[3] === true}/>
 			</div>
 			<Form.Check
 					inline
@@ -270,14 +292,14 @@ const DetailedPage = () => {
 					id="q2-Option5"
 					label="Other:"
 					name="question2"
-					onChange={() => handleRadio("Other:",2, 4, 1)}/>	
+					onChange={() => handleRadio("Other:",2, 4, 1)}
+					checked={otherSelected[1] === true}/>	
 				<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={String(Response2[4])}
 					onChange={(event) => handleOtherSelect(event,2, 4)}
-					disabled={!otherSelected[1]}
-						/>
+					disabled={!otherSelected[1]}/>
 				</div>
 			</div>
 		<h3>Question 3.</h3>
@@ -291,7 +313,8 @@ const DetailedPage = () => {
 				label="I would ask my coworker to explain what they think the topic is about."
 				name="question3"
 				style={{width:"275px"}}
-				onChange={() => handleRadio("holder", 3, 0, 2)} />
+				onChange={() => handleRadio("holder", 3, 0, 2)}
+				checked={Response3[0] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -301,7 +324,8 @@ const DetailedPage = () => {
 				label="I would ask my boss what they think about my part of the presentation."
 				name="question3"
 				style={{width:"275px"}}
-				onChange={() => handleRadio("holder", 3, 1, 2)} />
+				onChange={() => handleRadio("holder", 3, 1, 2)}
+				checked={Response3[1] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -311,7 +335,8 @@ const DetailedPage = () => {
 				label="I wouldn't change it because I know I'm right."
 				name="question3"
 				style={{width:"250px"}}
-				onChange={() => handleRadio("holder",3, 2, 2)} />
+				onChange={() => handleRadio("holder",3, 2, 2)}
+				checked={Response3[2] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -321,7 +346,8 @@ const DetailedPage = () => {
 				label="I would review the topic and see if I can make my part clearer."
 				name="question3"
 				style={{width:"200px"}}
-				onChange={() => handleRadio("holder",3,3, 2)} />
+				onChange={() => handleRadio("holder",3,3, 2)}
+				checked={Response3[3] === true}/>
 			</div>
 			<Form.Check
 					inline
@@ -329,14 +355,15 @@ const DetailedPage = () => {
 					id="q3-Option5"
 					label="Other:"
 					name="question3"
-					onChange={() => handleRadio("Other:",3, 4 , 2)} />		
+					onChange={() => handleRadio("Other:",3, 4 , 2)}
+					checked={otherSelected[2] === true}
+					/>
 				<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={String(Response3[4])}
 					onChange={(event) => handleOtherSelect(event,3, 4)}
-					disabled={!otherSelected[2]}		
-						/>
+					disabled={!otherSelected[2]}/>
 				</div>
 			</div>
 		<h3>Question 4.</h3>
@@ -350,7 +377,8 @@ const DetailedPage = () => {
 				label="We should check in every day for 15 minutes."
 				name="question4"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 4, 0, 3)} />
+				onChange={() => handleRadio("holder", 4, 0, 3)}
+				checked={Response4[0] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -360,7 +388,8 @@ const DetailedPage = () => {
 				label="We should only meet once a week for an hour."
 				name="question4"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 4, 1, 3)}/>
+				onChange={() => handleRadio("holder", 4, 1, 3)}
+				checked={Response4[1] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -370,7 +399,8 @@ const DetailedPage = () => {
 				label="We should meet a few times a week."
 				name="question4"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 4, 2, 3)}/>
+				onChange={() => handleRadio("holder", 4, 2, 3)}
+				checked={Response4[2] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -380,7 +410,8 @@ const DetailedPage = () => {
 				label="I don't think we need to meet at all, email is fine."
 				name="question4"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 4, 3, 3)} />
+				onChange={() => handleRadio("holder", 4, 3, 3)}
+				checked={Response4[3] === true}/>
 			</div>
 			<Form.Check
 					inline
@@ -388,13 +419,14 @@ const DetailedPage = () => {
 					id="q4-Option5"
 					label="Other:"
 					name="question4"
-					onChange={() => handleRadio("Other:", 4, 4, 3)} />
+					onChange={() => handleRadio("Other:", 4, 4, 3)}
+					checked={otherSelected[3] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={String(Response4[4])}
 					onChange={(event) => handleOtherSelect(event,4, 4)}
-					disabled={!otherSelected[3]}		/>
+					disabled={!otherSelected[3]}/>
 				</div>
 			</div>
 		<h3>Question 5.</h3>
@@ -408,7 +440,8 @@ const DetailedPage = () => {
 				label="I would ask for a raise during my next performance review."
 				name="question5"
 				style={{width:"265px"}}
-				onChange={() => handleRadio("holder", 5, 0, 4)} />
+				onChange={() => handleRadio("holder", 5, 0, 4)}
+				checked={Response5[0] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -418,7 +451,8 @@ const DetailedPage = () => {
 				label="I’ll just keep quiet until my boss notices my hard work."
 				name="question5"
 				style={{width:"265px"}}
-				onChange={() => handleRadio("holder", 5, 1, 4)}	 />
+				onChange={() => handleRadio("holder", 5, 1, 4)}
+				checked={Response5[1] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -428,7 +462,8 @@ const DetailedPage = () => {
 				label="I'll talk to my coworker about how to ask for a raise."
 				name="question5"
 				style={{width:"265px"}}
-				onChange={() => handleRadio("holder", 5, 2, 4)} />
+				onChange={() => handleRadio("holder", 5, 2, 4)}
+				checked={Response5[2] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -438,7 +473,8 @@ const DetailedPage = () => {
 				label="I need to research how much I should ask for first."
 				name="question5"
 				style={{width:"235px"}}
-				onChange={() => handleRadio("holder", 5, 3, 4)} />
+				onChange={() => handleRadio("holder", 5, 3, 4)}
+				checked={Response5[3] === true}/>
 			</div>
 			<Form.Check
 					inline
@@ -446,15 +482,15 @@ const DetailedPage = () => {
 					id="q5-Option5"
 					label="Other:"
 					name="question5"
-					onChange={() => handleRadio("Other:", 5, 4, 4)} />
+					onChange={() => handleRadio("Other:", 5, 4, 4)}
+					checked={otherSelected[4] === true}	/>
 			<div className="answer-box">
 				<Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={String(Response5[4])}
 					onChange={(event) => handleOtherSelect(event,5, 4)}
-					disabled={!otherSelected[4]}		
-						/>
+					disabled={!otherSelected[4]}/>
 				</div>
 			</div>
 		<h3>Question 6.</h3>
@@ -468,7 +504,8 @@ const DetailedPage = () => {
 				label="I would offer to help them finish their work."
 				name="question6"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 6, 0, 5)}/>
+				onChange={() => handleRadio("holder", 6, 0, 5)}
+				checked={Response6[0] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -478,7 +515,8 @@ const DetailedPage = () => {
 				label="I'm going home. I have my own work to do."
 				name="question6"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 6, 1, 5)}/>
+				onChange={() => handleRadio("holder", 6, 1, 5)}
+				checked={Response6[1] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -488,7 +526,8 @@ const DetailedPage = () => {
 				label="I would wait until tommorow to ask if they need help."
 				name="question6"
 				style={{width:"275px"}}
-				onChange={() => handleRadio("holder", 6, 2, 5)}/>
+				onChange={() => handleRadio("holder", 6, 2, 5)}
+				checked={Response6[2] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -498,7 +537,8 @@ const DetailedPage = () => {
 				label="I would let my boss know that they need help."
 				name="question6"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 6, 3, 5)}			/>
+				onChange={() => handleRadio("holder", 6, 3, 5)}
+				checked={Response6[3] === true}/>
 			</div>
 			<Form.Check
 					inline
@@ -506,13 +546,14 @@ const DetailedPage = () => {
 					id="q6-Option5"
 					label="Other:"
 					name="question6"
-					onChange={() => handleRadio("Other:", 6, 4, 5)}			/>
+					onChange={() => handleRadio("Other:", 6, 4, 5)}
+					checked={otherSelected[5] === true}	/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={String(Response6[4])}
 					onChange={(event) => handleOtherSelect(event,6, 4)}
-					disabled={!otherSelected[5]}		/>
+					disabled={!otherSelected[5]}/>
 				</div>
 			</div>
 		<h3>Question 7.</h3>
@@ -526,7 +567,8 @@ const DetailedPage = () => {
 				label="I would go out with friends to relax."
 				name="question7"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 7, 0, 6)}/>
+				onChange={() => handleRadio("holder", 7, 0, 6)}
+				checked={Response7[0] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -536,7 +578,8 @@ const DetailedPage = () => {
 				label="I would stay home and watch TV to relax."
 				name="question7"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 7, 1, 6)}	/>
+				onChange={() => handleRadio("holder", 7, 1, 6)}
+				checked={Response7[1] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -546,7 +589,8 @@ const DetailedPage = () => {
 				label="I would go to the gym to relax."
 				name="question7"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 7, 2, 6)}	/>
+				onChange={() => handleRadio("holder", 7, 2, 6)}
+				checked={Response7[2] === true}/>
 			</div>
 			<div className="reg-radio">
 			<Form.Check
@@ -556,7 +600,8 @@ const DetailedPage = () => {
 				label="I would go to the beach to relax."
 				name="question7"
 				style={{width:"auto"}}
-				onChange={() => handleRadio("holder", 7, 3, 6)}	/>
+				onChange={() => handleRadio("holder", 7, 3, 6)}
+				checked={Response7[3] === true}/>
 			</div>
 			<Form.Check
 					inline
@@ -564,13 +609,14 @@ const DetailedPage = () => {
 					id="q7-Option5"
 					label="Other:"
 					name="question7"
-					onChange={() => handleRadio("Other:", 7, 4, 6)}			/>
+					onChange={() => handleRadio("Other:", 7, 4, 6)}	
+					checked={otherSelected[6] ===true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
 					value={String(Response7[4])}
 					onChange={(event) => handleOtherSelect(event,7, 4)}
-					disabled={!otherSelected[6]}		/>
+					disabled={!otherSelected[6]}/>
 				</div>
 			</div>
 	</>
