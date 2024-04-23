@@ -116,14 +116,14 @@ export function DetailedQuestionsPage(): JSX.Element {
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
-        const [currentQuestion, setCurrentQuestion] = React.useState(0);
-        const [responses, setResponses] = React.useState<Responses>({});
+    const [currentQuestion, setCurrentQuestion] = React.useState(0);
+    const [responses, setResponses] = React.useState<Responses>({});
 
-        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-          setInputText(e.target.value);
-          const { value } = e.target;
-          setResponses({ ...responses, [questions[currentQuestion].id]: value });
-        };
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputText(e.target.value);
+      const { value } = e.target;
+      setResponses({ ...responses, [questions[currentQuestion].id]: value });
+    };
       
     const handlePreviousAnswerDisplay = () => {
         setInputText(responses[questions[currentQuestion].id])
@@ -166,6 +166,7 @@ export function DetailedQuestionsPage(): JSX.Element {
         setDisplayFinalResults(false); // Hide final results
         setInputText(""); // Clear input text if any
         // Reset any other state variables as needed
+        setResponses({});
     };
 
     const handleClearText = () => {
