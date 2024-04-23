@@ -6,6 +6,7 @@ import { SelectQuiz } from "./pages/SelectQuiz";
 import './css/App.css';
 import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
 import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
+import { ChatGBTPage } from "./pages/chat-gbt-page/ChatGBTPage";
 
 function App(): JSX.Element {
   return (
@@ -19,6 +20,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="starter_helpi/*" element={<Home />} />
           <Route path="/select-quiz" element={<SelectQuiz />}/>
+          <Route path="/chat-gbt-page" element={<ChatGBTPage />}/>
           <Route 
           path="/basic-quiz"
           element={<BasicQuiz/>}
