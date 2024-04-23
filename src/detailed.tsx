@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import "./detailed.css";
 import questions from "./detailedQuestions.json";
+import Modal from "./Modal";
+import Confetti from "react-confetti";
+
+// TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
+// TODO - [ ] add confetti effect when the user clicks the 'submit responses' button
+// There is a minor bug where if you get to the free response section and enter your response in the first input, it populates in the second input also too
 import useChatGPT from "./hooks/useChatGPT";
 
 // TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
@@ -32,6 +38,13 @@ function Detailed() {
 	const [userInput, setUserInput] = useState<string>(
 		answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
 	);
+
+	const [modalVisibility, setModalVisibility] = useState(false);
+	const [showConfetti, setShowConfetti] = useState(false);
+
+	function updateModalVisibility() {
+		setModalVisibility(!modalVisibility);
+	}
 
 	function saveAnswers(
 		choice: string,
@@ -107,6 +120,8 @@ function Detailed() {
 
 	return (
 		<>
+			{showConfetti && <Confetti />}
+			{modalVisibility ? <Modal modalFunction={updateModalVisibility} /> : null}
 			<div className="quizContainer">
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
@@ -116,6 +131,7 @@ function Detailed() {
 						{questions[currentIndex].question}
 					</h3>
 				</div>
+
 				<div className="optionsContainer">
 					{questions[currentIndex].type === "multiple_choice"
 						? questions[currentIndex].choices.map(
@@ -187,13 +203,22 @@ function Detailed() {
 						{currentIndex === 0 ? "END" : "PREV."}
 					</button>
 					<button
-						disabled={currentIndex === questions.length - 1 || !choice}
+						disabled={!choice}
 						onClick={() => {
-							setCurrentIndex(index => (index += 1 % questions.length));
-							setChoice(
-								answeredQuestions[currentIndex + 1] &&
-									answeredQuestions[currentIndex + 1].choice
-							);
+							if (currentIndex === questions.length - 1) {
+								setModalVisibility(!modalVisibility);
+								setShowConfetti(true);
+
+								setTimeout(() => {
+									setShowConfetti(false);
+								}, 8000);
+							} else {
+								setCurrentIndex(index => (index += 1 % questions.length));
+								setChoice(
+									answeredQuestions[currentIndex + 1] &&
+										answeredQuestions[currentIndex + 1].choice
+								);
+							}
 						}}
 					>
 						{currentIndex === questions.length - 1
@@ -202,7 +227,6 @@ function Detailed() {
 					</button>
 				</div>
 			</div>
-			;
 		</>
 	);
 }
