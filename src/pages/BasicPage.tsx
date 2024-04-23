@@ -151,11 +151,6 @@ const BasicPage = () => {
 	const resetResponse: number[] = Array(response.length).fill(-1);
 	setResponse(resetResponse)
   }
-
-
-  const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0)
-
-   
 	const [allow, setAllow] = useState<boolean>(false);
 	const [alert, setAlert] = useState<boolean>(false);
 	
