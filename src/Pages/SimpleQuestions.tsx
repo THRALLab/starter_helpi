@@ -43,9 +43,18 @@ function SimpleQuestions() {
   const [option1, setOption1] = useState("Option 1...");
   const [option2, setOption2] = useState("Option 2...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
+  const [color, setColor] = useState("");
 
   useEffect(() => {
-    const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
+    const colors = [
+      "red",
+      "orange",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+      "brown",
+    ];
     setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
