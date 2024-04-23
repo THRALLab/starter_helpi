@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import OpenAIAPi from "openai";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
@@ -20,6 +20,7 @@ if (prevKey !== null) {
 
 function DetailedReport() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [loading, setLoading] = useState(false);
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -51,6 +52,7 @@ function DetailedReport() {
   const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
   //Queries ChatGPT to generate report
   async function ChatGPT() {
+    setLoading(true);
     //Creates ChatGPT
     const openai = new OpenAIAPi({
       apiKey: keyData,
@@ -74,6 +76,7 @@ function DetailedReport() {
     } else {
       setResponseData("Error! Maybe you forgot to input the API key?");
     }
+    setLoading(false);
   }
 
   return (
@@ -95,6 +98,14 @@ function DetailedReport() {
             Generate Report
           </Button>
         </Form>
+        {loading && (
+          <div>
+            <Spinner animation="border" role="status">
+              <span className="sr-only"></span>
+            </Spinner>
+            <p>Generating Your Results...</p>
+          </div>
+        )}
         <div className="Report-results">{responseData}</div>
       </div>
 
