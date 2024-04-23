@@ -1,6 +1,11 @@
 .site-title {
     padding-left: 20px;
-    color: black;
+    color: rgb(33, 72, 197);
+    font-size: 42px;
+    margin-top: 15px;
+    margin-left: 5px;
+    font-weight: bold;
+    font-family: copperhead;
 }
 
 

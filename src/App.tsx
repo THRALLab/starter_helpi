@@ -25,7 +25,9 @@ function App() {
         
       </div>
       <div className='app-footer'>
-        <p>Footer text</p>
+        <p>Jobnav.com©</p>
+        <p>Developed by Saini, Le, Torres, and Walsh</p>
+        <p>For more information, email jassaini@udel.edu</p>
       </div>
     </>
   );

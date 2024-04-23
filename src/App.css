@@ -47,10 +47,17 @@ section {
 }
 
 .app-footer {
+  height: 120px;
   width: 100%;
+  position: static;
+  bottom: 0%;
   background-color: rgb(33, 33, 56);
   color: white;
-  height: 80px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+
   
 }
+

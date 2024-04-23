@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import splash from "../images/job_search.jpg"
+import splash from "../images/businessman.png"
+import pie from "../images/piechart.png"
 import './homePage.css';
 //import OpenAI from "openai";
 
@@ -64,7 +65,14 @@ import './homePage.css';
 
     return (
         <>
-        <img src={splash} alt="infograph" className="splashPage"></img>
+        <div className="splash-container">
+            <img src={splash} alt="businessMountains" className="splashPage"></img>
+            <div className="one">Struggling to find your way?</div>
+            <div className="two">Looking for answers and coming up short?</div>
+            <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
+            <Button>Find your quiz!</Button>
+        </div>
+        <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
             <div className="quiz-desc">
                 <a href="./BasicPage">
@@ -75,8 +83,17 @@ import './homePage.css';
             <div className="quiz-desc">
                 <a href="./DetailedPage">
                     <h3>Detailed Quiz</h3>
-                    <p></p>
+                    <p>If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
                 </a>
+            </div>
+        </div>
+        <div className="quiz-data-container">
+            <div className="quiz-data-text">
+                <p>Career quizzes are proven to help the masses achieve thier goals and secure professional success. Money can buy happiness, but only purpose can bring fulfillment.</p>
+            </div>
+            <div className="quiz-data-graph">
+                <img src={pie} alt="graph"></img>
+                <p>Satisfaction rates from other users!</p>
             </div>
         </div>
         <Form>

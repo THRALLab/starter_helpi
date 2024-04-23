@@ -8,7 +8,7 @@ const Navbar = () => {
         <>
             <Nav>
                 <div className="site-title">
-                    <h1>Website Title</h1>
+                    <p>JobNav.com</p>
                 </div>
                 <NavMenu>
                     <NavLink to="/">Home Page</NavLink>

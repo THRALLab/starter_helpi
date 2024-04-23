@@ -3,13 +3,55 @@
     width: 100%;
 }
 
+.splash-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.splash-container div{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.2vw;
+    font-weight: bold;
+    font-family: "Ivar Headline";
+    text-shadow: 5px 5px #558ABB;
+}
+
+.splash-container div.one {
+    top: 20%;
+}
+
+.splash-container div.two {
+    top: 40%;
+}
+
+.splash-container div.three {
+    top: 65%;
+}
+
+.splash-container Button {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 85%;
+    font-size: 2vw;
+    background-color: white;
+    border: solid 1px rgb(33, 72, 197);
+    color: rgb(33, 72, 197);
+    &:hover {
+        background-color: rgb(33, 72, 197);
+    }
+}
+
 div .quiz-desc-container {
     height: 450px;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-top: solid 2px grey;
+    border-top: solid 1px grey;
 }
 
 .quiz-desc {
@@ -20,10 +62,12 @@ div .quiz-desc-container {
     transition: background-color 0.75s ease, margin-top 0.75s ease;
     border-radius: 5px;
     overflow: overlay;
+    box-shadow: 10px 5px 5px rgb(86, 86, 86);
    
     &:hover {
-        background-color: #e8ebed;
+        /* background-color: #e8ebed; */
         margin-top: -9px;
+        background-color: rgb(33, 72, 197);
     }
     cursor: pointer;
 }
@@ -40,4 +84,34 @@ div .quiz-desc-container {
 .quiz-desc a {
     color:black;
     text-decoration: none;
+    transition: color 0.75s ease;
+    &:hover {
+        color: white;
+    }
+}
+
+div .quiz-data-container {
+    height: 450px;
+    background-color: #e8ebed;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.quiz-data-text {
+    width: 20%;
+    text-align: center;
+    overflow: overlay;
+    font-size: 26px;
+    height: 90%;
+}
+
+.quiz-data-graph {
+    border: solid 1px grey;
+}
+
+.quiz-data-graph p {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 12px;
 }
