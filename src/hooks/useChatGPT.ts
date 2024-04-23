@@ -18,10 +18,12 @@ export default function useChatGPT(): Tools {
 			formattedQ_A += `(${a.questionNo}) ${a.question} \n ${a.choice} \n`;
 		});
 
+		console.log("Loading ChatGPT's response...");
+
 		let response = "";
 		try {
 			const stream = await openai.chat.completions.create({
-				model: "gpt-3.5-turbo",
+				model: "gpt-4-turbo",
 				messages: [
 					{
 						role: "user",
