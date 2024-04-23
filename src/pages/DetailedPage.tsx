@@ -92,22 +92,20 @@ const DetailedPage = () => {
 				break;
 		}
 	}
-
+//checks which questions are answered
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
-		Response6: (boolean| string)[], Response7: (boolean| string)[]): number {
+		Response6: (boolean| string)[], Response7: (boolean| string)[]): number { 
 		const responses = [Response1, Response2, Response3, Response4, Response5, Response6, Response7]
 		const completed: number = responses.reduce((count, response) => {
 			const check: boolean = response.some(option => {
 				return (
-					(typeof option === "boolean" && option === true) || (typeof option ==="string" && option.trim().length > 0)
+					(typeof option === "boolean" && option === true) || (typeof option ==="string" && option.trim().length > 0) 
 				);
 			});
 			return count + (check ? 1 : 0)
 		},0)
 		return completed;
-	}
-	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
-	
+	}	
 	function doReset(): void{ //clears all the choices 
 		const defaultResponse: (boolean |string)[] = [false, false, false, false, ""];
 		const resetOther: boolean[] = [false, false, false, false, false, false, false];
@@ -121,6 +119,7 @@ const DetailedPage = () => {
 		setResponse7(defaultResponse);
 	  }
 
+	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
     const [allow, setAllow] = useState<boolean>(false);
 	const [alert, setAlert] = useState<boolean>(false);
    
@@ -157,7 +156,7 @@ const DetailedPage = () => {
         `}</style>
 		<div className="info-portion">
 			<h1>
-				Detailed Page Stuff
+				Detailed Quiz
 			</h1>
 			<>
 				Welcome! For this quiz, you will answer the statements by 
@@ -167,7 +166,7 @@ const DetailedPage = () => {
 			</>
 		</div>
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" disabled={!allow}>Answer</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<Button size="lg" disabled={!allow}>Get Answer</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
