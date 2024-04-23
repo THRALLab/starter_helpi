@@ -291,10 +291,10 @@ export function DetailedQuestionsPage(): JSX.Element {
 
                         {displayFinalResults && (
                             <div style={{ paddingTop: '15.5rem', textAlign: 'center' }}> {/* Adjust paddingTop to lower the button */}
-                            <StyledButton onClick={handleRetakeTest}
-                            style={{ marginBottom: '15.5rem' }} // Adjust marginBottom to lower the button
+                            <div style={{ marginBottom: '15vh' }}><StyledButton onClick={handleRetakeTest}
+                             // Adjust marginBottom to lower the button
                             >Retake Test
-                            </StyledButton>
+                            </StyledButton></div>
                             </div>
                         )}
 
