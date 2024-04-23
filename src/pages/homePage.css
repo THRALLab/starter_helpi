@@ -3,6 +3,22 @@
     width: 100%;
 }
 
+.splash-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.splash-container div {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    font-weight: bold;
+    font-family: "Ivar Headline"
+}
+
 div .quiz-desc-container {
     height: 450px;
     background-color: white;

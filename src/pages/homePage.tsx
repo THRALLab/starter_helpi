@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import splash from "../images/job_search.jpg"
+import splash from "../images/businessman.png"
 import './homePage.css';
 //import OpenAI from "openai";
 
@@ -64,7 +64,10 @@ import './homePage.css';
 
     return (
         <>
-        <img src={splash} alt="infograph" className="splashPage"></img>
+        <div className="splash-container">
+            <img src={splash} alt="infograph" className="splashPage"></img>
+            <div>Choose the quiz that's right for you!</div>
+        </div>
         <div className="quiz-desc-container">
             <div className="quiz-desc">
                 <a href="./BasicPage">
