@@ -40,23 +40,26 @@ function DetailedQuestions() {
   const [numberOfQuestions] = useState(30);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [questionBody, setQuestionBody] = useState("Question...");
-  const [color, setColor] = useState("");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
-
-  const colors =  ["purple", "brown"]; //Feel free to add back in colors, but I'm gonna keep it as only purple and brown for now
+  const [color, setColor] = useState("");
 
   useEffect(() => {
-    loadQuestions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const colors =  ["purple", "brown"]; //Add more colors later using hex values
+    setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
-  const loadQuestions = () => {
-    const parsedData = JSON.parse(JSON.stringify(jsonData));
-    const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
-    setQuestions(detailedQuestions);
-    setColor(colors[Math.floor(Math.random() * colors.length)]);
-    setQuestionBody(detailedQuestions[questionNumber].question);
-  };
+  useEffect(() => {
+    const loadQuestions = () => {
+      const parsedData = JSON.parse(JSON.stringify(jsonData));
+      const detailedQuestions: DetailedQuestion[] =
+        parsedData.DETAILED_QUESTIONS;
+      setQuestions(detailedQuestions);
+      if (detailedQuestions[questionNumber] !== undefined) {
+        setQuestionBody(detailedQuestions[questionNumber].question);
+      }
+    };
+    loadQuestions();
+  }, [questionNumber]);
 
   const nextQuestion = () => {
     let tempSliderValues = [...sliderValues];
