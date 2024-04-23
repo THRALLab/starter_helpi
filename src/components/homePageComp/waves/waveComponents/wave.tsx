@@ -9,7 +9,7 @@ const Wave: FC = () => {
   const { width, height } = useResponsiveSize()
   const { generateColor } = useColor()
 
-  let frequency = 0.013
+  let frequency = 0.010
   let colors: { [key: string]: string } = generateColor()
   let timer = 1
   const waves = {

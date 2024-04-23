@@ -141,8 +141,10 @@ h2 {
 
 .footer {
     position: absolute;
+    text-align: center;
     bottom: 0px;
-    padding: 80px;
+    padding: 10px;
+    width: 100%;
 }
 /* All for the buttons on home Page */
 

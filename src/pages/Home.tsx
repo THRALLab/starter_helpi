@@ -13,8 +13,8 @@ const home: React.FC<HomeProp> = ({handlePage}) => {
         <h2>In the ocean of opportunities find which career suits you best</h2>
         <div className="container">
             <div className="box">
-                <h2 className="basicHeader">Basic Quiz</h2>
-                <p className="basicParagraph">
+                <h2 style={{ color: "#2c6fbb"}}>Basic Quiz</h2>
+                <p style={{ color: "#2c6fbb"}}>
                     The Basic Quiz is a short questionaire designed
                     to gauge your knowledge with simple
                     questions. With immediate feedback, you will know which
@@ -23,8 +23,8 @@ const home: React.FC<HomeProp> = ({handlePage}) => {
                 <button className="rounded-button blue-gradient" onClick={() => handlePage('Basic')}> Start Basic Quiz</button>
             </div>
             <div className="box">
-                <h2 className="detailedHeader">Detailed Quiz</h2>
-                <p className="detailedParagraph">
+                <h2 style={{ color: "#2c6fbb"}}>Detailed Quiz</h2>
+                <p style={{ color: "#2c6fbb"}}>
                     The Detailed Quiz is a longer assessment consisting of more questions with more detailed choices. It
                     will give you a more accurate and detailed assesment of what
                     carreer you should choose.
