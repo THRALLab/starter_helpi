@@ -50,29 +50,71 @@ export function BasicQuestionsPage(): JSX.Element {
     const questions = [
 		{
 			id: 1,
+            answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
+			],
 		},
 		{
 			id: 2,
+            answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
+			],
 			
 		},
 		{
 			id: 3,
+            answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
+			],
 			
 		},
 		{
 			id: 4,
+            answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
+			],
 			
 		},
         {
 			id: 5,
+            answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
+			],
 			
 		},
         {
 			id: 6,
+            answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
+			],
 			
 		},
         {
 			id: 7,
+            answerOptions: [
+				{ answerText: 'Option 1' },
+				{ answerText: 'Option 2' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
+			],
 			
 		}
 	];    
