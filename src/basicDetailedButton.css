@@ -1,16 +1,39 @@
+.button-container {
+    display : flex;
+    justify-content : center;
+    margin-top : 90px
+}
+
+
 .basic-button {
     background-color : rgb(251, 187, 244);
     color : rgb(195, 26, 26);
-    font-size : 30px;
-    border-radius : 5px;
-    border : none;
 }
 
 .detailed-button{
     background-color : rgb(251, 187, 244);
     color : rgb(195, 26, 26);
+    /*
     font-size : 30px;
     border-radius : 5px;
     border : none;
+    float : right;
+    margin-top : 90px;
+    margin-right : 30px
+    */
+}
+
+.par-container{
+    display : flex;
+    justify-content : center;
+    margin-top : 120px;
+}
+
+.par-basic{
+    color :rgb(195, 26, 26);
+}
+
+.par-detailed{
+    color :rgb(195, 26, 26);
 }
 
