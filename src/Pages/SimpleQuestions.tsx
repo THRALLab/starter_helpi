@@ -46,15 +46,7 @@ function SimpleQuestions() {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    const colors = [
-      "red",
-      "orange",
-      "green",
-      "blue",
-      "purple",
-      "pink",
-      "brown",
-    ];
+    const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
     setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
