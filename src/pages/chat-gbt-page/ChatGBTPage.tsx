@@ -27,7 +27,7 @@ export const ChatGBTPage = () => {
     const [userInput, setUserInput] = useState<string>("");
     const [chat, setChat] = useState<ChatCompletion>();
     const [chats, setChats] = useState<OpenAI.ChatCompletion.Choice[]>([]);
-    const [stream, setStream] = useState<ChatCompletionStream>();
+    //const [stream, setStream] = useState<ChatCompletionStream>();
 
     async function sendToGBT (userInput: string): Promise<void>{
         
