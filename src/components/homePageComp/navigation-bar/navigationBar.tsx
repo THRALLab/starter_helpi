@@ -18,16 +18,16 @@ const NavigationBar: React.FC<NavProp> = ({handlePage}) => {
     <div>
     <nav style={{ backgroundColor: '#2c6fbb', padding: '5px' }}>
       <ul style={{ listStyleType: 'none', margin: 0, padding: 0, display: 'flex', justifyContent: 'center' }}>
-        <li className={activeTab === 'Home' ? 'active' : ''}>
+        <li className={activeTab === 'Home' ? 'active' : 'default'}>
           <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handleTabChange('Home', 'Home')}>Home</button>
         </li>
-        <li className={activeTab === 'Basic' ? 'active' : ''}>
+        <li className={activeTab === 'Basic' ? 'active' : 'default'}>
           <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handleTabChange('Basic', 'Basic')}>Basic</button>
         </li>
-        <li className={activeTab === 'Detailed' ? 'active' : ''}>
+        <li className={activeTab === 'Detailed' ? 'active' : 'default'}>
           <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handleTabChange('Detailed', 'Detailed')}>Detailed</button>
         </li>
-        <li className={activeTab === 'Contact' ? 'active' : ''}>
+        <li className={activeTab === 'Contact' ? 'active' : 'default'}>
           <button style={{ backgroundColor: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }} onClick={() => handleTabChange('Contact', 'Contact')}>Contact</button>
         </li>
       </ul>

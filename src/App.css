@@ -50,16 +50,30 @@
     padding: 8px 12px;
     text-decoration: none;
     font-size: 16px;
+    transition: all 0.3s;
 }
 
 .navigation-list li button:hover {
-    background-color: #eee;
+    background-color: #ffffff;
 }
 
-.active button {
+.default button:hover {
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    text-decoration: none;
+    transition: all 0.3s;
     font-weight: bold;
 }
 
+.active button {
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
 
 /* all for the table on home page*/
 .container {
