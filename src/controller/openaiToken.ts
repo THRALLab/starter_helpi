@@ -6,9 +6,7 @@ const getApiKey = (): string => {
     return"";
 }
 
-export const openai = new OpenAI({
+export const openaiToken = new OpenAI({
     apiKey: getApiKey(),
     dangerouslyAllowBrowser: true // allows for running in the browser
 });
-
-console.log(openai);

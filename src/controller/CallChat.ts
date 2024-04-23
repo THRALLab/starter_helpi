@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { openai } from "./OpenaiToken";
+import { openaiToken } from "./openaiToken"
 
 export async function callGBT(
     {
@@ -12,7 +12,7 @@ export async function callGBT(
         startingPrompt: string
     }
 ) {
-    const chatCompletion = await openai.chat.completions.create({
+    const chatCompletion = await openaiToken.chat.completions.create({
       messages: [
         { role: 'system', content: startingPrompt },
         { role: 'user', content: userPrompt}
@@ -35,7 +35,7 @@ export async function addResponseGBT(
 ) {
   // maps previous choices to an array of message objects
   const messages = choices.map((choice: OpenAI.ChatCompletion.Choice) => choice.message);
-  const chatCompletion = await openai.chat.completions.create({
+  const chatCompletion = await openaiToken.chat.completions.create({
     messages: [
       ...messages,
       {role: 'user', content: newMessage}
