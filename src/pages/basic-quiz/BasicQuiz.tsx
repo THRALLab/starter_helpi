@@ -21,6 +21,7 @@ export const BasicQuiz = () => {
             <Row>
                 <DisplayQuiz 
                     quiz={basicQuiz}
+                    title="Basic Quiz"
                     questionsAnswerd={questionsAnswered} 
                     setQuestionsAnswerd={setQuestionsAnswered} 
                 />

@@ -1,5 +1,20 @@
 :root {
   --buttonColor1 : rgb(118, 165, 219);
+
+  /* whites and tans */
+  --off-white : #fefaf6;
+  --off-tan : #eadbc8;
+  --british-khaki : #dac0a3;
+  --tericotta-mesa-yellow : #ecb159;
+  --mysterious-george-brown : #b67352;
+
+  /* blues */
+  --diamond-blue : #91c8e4;
+  --ocean-eyes : #749bc2;
+  --almost-teal : #8cb9bd;
+  --dawn-dish-blue : #4682a9;
+  --dark-royal-blue : #102c57;
+  --gift-wrap-purple : #352369;
 }
 
 body {
@@ -9,6 +24,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style-type: none;
 }
 
 code {

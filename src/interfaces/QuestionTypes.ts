@@ -3,5 +3,13 @@ export interface Question {
   type: string; // E.g., "MC_SINGLE_RESPONSE", "MC_MULTI_RESPONSE"
   prompt: string;
   options: string[];
-  getNextQuestionId: (userAnswer: string) => string; // Returns next question ID or an empty string for the last question of quiz
+  description: string;
 }
+
+export interface QuestionComponentProps {
+  question: string;
+  description: string;
+  options: string[];
+  onNext: (answer: string) => void; // submits the current answer and switches the question
+  isFirst: boolean; // determines if the question is the first in the quiz
+};

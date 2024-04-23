@@ -1,9 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
-import { Form, Button, ToggleButton } from 'react-bootstrap';
-import { FaQuestionCircle } from 'react-icons/fa'; // This line imports a question circle icon from Font Awesome
+import { useEffect, useRef, useState } from "react";
+import { Button } from "react-bootstrap";
+import { Form } from 'react-bootstrap';
+import { FaQuestionCircle } from "react-icons/fa";
 
-
-export function McSingleResponse({
+/**
+ * 
+ * @param question - input of the question
+ * @param options - options of the question (the min and max of the slider)
+ * @param setanswer - function for setting the answer
+ * @param onNext - function for getting the next question
+ * @returns 
+ */
+export function SliderResponse({
     question,
     description,
     options,
@@ -17,7 +25,7 @@ export function McSingleResponse({
     isFirst: boolean;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
-    const [localAnswer, setLocalAnswer] = useState<string>("");
+    const [localAnswer, setLocalAnswer] = useState<string>("50");
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
 
@@ -57,7 +65,7 @@ export function McSingleResponse({
                 <div style={{
                     position: "absolute",
                     top: "0%",
-                    right: `calc(10% - ${questionWidth / 2}px - 20px)`,
+                    right: `calc(15% - ${questionWidth / 2}px - 20px)`,
                     transform: 'translateX(-100%)',
                     width: "max-content",
                     maxWidth: "200px",
@@ -71,30 +79,19 @@ export function McSingleResponse({
                     {tooltip}
                 </div>
             )}
-            <Form>
-                <div>
-                    {options.map((choice) => (
-                        <ToggleButton
-                            key={`${choice}Select`}
-                            type="radio"
-                            id={choice}
-                            value={choice}
-                            checked={localAnswer === choice}
-                            variant={localAnswer === choice ? "primary" : "outline-secondary"}
-                            onChange={() => setLocalAnswer(choice)}
-                                > {choice}
-                        </ToggleButton>
-                    ))}
-                </div>
+            <Form.Group>
+                <Form.Label>{localAnswer}</Form.Label>
+                <Form.Range
+                    value={localAnswer}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
+                />
                 <Button
                     variant={isFirst ? "outline-primary" : "primary"}
                     disabled={isFirst}
                     onClick={() => onNext(localAnswer)}>Back</Button>
-                <Button
-                    variant={localAnswer === "" ? "outline-primary" : "primary"}
-                    disabled={localAnswer === ""}
-                    onClick={() => onNext(localAnswer)}> Next</Button>
-            </Form>
+                <Button onClick={() => onNext(localAnswer)}>Next</Button>
+            </Form.Group>
         </div>
-    );
+    )
 }
+

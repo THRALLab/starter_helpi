@@ -19,8 +19,9 @@ export const AdvancedQuiz = () => {
                 />
             </Row>
             <Row>
-                <DisplayQuiz 
+                <DisplayQuiz
                     quiz={advancedQuiz}
+                    title="Advanced Quiz"
                     questionsAnswerd={questionsAnswered} 
                     setQuestionsAnswerd={setQuestionsAnswered} 
                 />
