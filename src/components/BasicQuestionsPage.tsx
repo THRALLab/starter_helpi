@@ -9,6 +9,8 @@ import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
 import FormControl from '@mui/joy/FormControl';
+import Fade from '@mui/material/Fade';
+import Grow from '@mui/material/Grow';
 
 export function BasicQuestionsPage(): JSX.Element {
     interface Responses {
@@ -118,6 +120,7 @@ export function BasicQuestionsPage(): JSX.Element {
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [responses, setResponses] = React.useState<Responses>({});
+    const [checked, setChecked] = React.useState(false)
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value);
@@ -157,6 +160,7 @@ export function BasicQuestionsPage(): JSX.Element {
     };
 
     const handleDisplayFinalResults = () => {
+        setChecked(true);
         setDisplayFinalResults(true);
         setDisplayFinishButton(false);
     }
@@ -183,7 +187,7 @@ export function BasicQuestionsPage(): JSX.Element {
     }
 
     if (goToBasicQuestionsPage) {
-        return <Navigate to="/BasicQuestionsPage"/>
+        return <Navigate to="/DetailedQuestionsPage"/>
     }
 
     return (
@@ -241,7 +245,9 @@ export function BasicQuestionsPage(): JSX.Element {
                             >
                         </ProgressBar>}
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
+         
                         <p>{questions[currentQuestion].id}</p>
+                        
                         <div style={{paddingBottom: '1vh', display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center'}}>
@@ -288,7 +294,10 @@ export function BasicQuestionsPage(): JSX.Element {
                             </div>
                         )}
 
-                        {displayFinalResults && <div>Final Results!</div>}
+                        <Grow in={checked}
+                        {...(checked ? { timeout: 1500 } : {})}>
+                            <div>{displayFinalResults && <div>Final Results!</div>}</div>
+                        </Grow>
 
                         {displayFinalResults && (
                             <div style={{ paddingTop: '15.5rem', textAlign: 'center' }}> {/* Adjust paddingTop to lower the button */}
@@ -309,6 +318,7 @@ export function BasicQuestionsPage(): JSX.Element {
 
                         <p></p>
                         </Typography>
+                        
                     </CardContent>
                 </Card>
                 <p></p>
