@@ -1,4 +1,4 @@
-import { Button, Form } from "react-bootstrap";
+/*import { Button, Form } from "react-bootstrap";*/
 import { Link, useLocation } from "react-router-dom";
 import "./basicDetailedButton.css"
 import {useState, useEffect} from "react";
@@ -22,7 +22,7 @@ function BasicDetailedButtons() {
         <div>
            {isHome && !clicked && (<div>
                 <Link to="/basic">
-                    <button onClick={handleClick}>Basic Quiz</button>
+                    <button className="basic-button" onClick={handleClick}>Basic Quiz</button>
                 </Link>
             </div>)}
             {isHome && !clicked && (<p>
@@ -32,7 +32,7 @@ function BasicDetailedButtons() {
 
             {isHome && !clicked && (<div>
                 <Link to="/detailed">
-                    <button onClick={handleClick}>Detailed Quiz</button>
+                    <button className="detailed-button" onClick={handleClick}>Detailed Quiz</button>
                 </Link>
             </div>)}
             {isHome && !clicked && (<p>
@@ -40,6 +40,8 @@ function BasicDetailedButtons() {
                 <p>understand your goals and passions in</p>
                 <p>order to provide potential careers.</p>
             </p>)}
+
+            <img src="src/homePage.jpg" alt="place holder for alt text"/>
         </div>  
 )}
 export default BasicDetailedButtons;
