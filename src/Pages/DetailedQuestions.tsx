@@ -40,19 +40,32 @@ function DetailedQuestions() {
   const [questionBody, setQuestionBody] = useState("Question...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
   const [color, setColor] = useState("");
-  const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
-
-  const loadQuestions = () => {
-    const parsedData = JSON.parse(JSON.stringify(jsonData));
-    const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
-    setQuestions(detailedQuestions);
-    setColor(colors[Math.floor(Math.random() * colors.length)]);
-    setQuestionBody(detailedQuestions[questionNumber].question);
-  };
 
   useEffect(() => {
-    loadQuestions();
+    const colors = [
+      "red",
+      "orange",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+      "brown",
+    ];
+    setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
+
+  useEffect(() => {
+    const loadQuestions = () => {
+      const parsedData = JSON.parse(JSON.stringify(jsonData));
+      const detailedQuestions: DetailedQuestion[] =
+        parsedData.DETAILED_QUESTIONS;
+      setQuestions(detailedQuestions);
+      if (detailedQuestions[questionNumber] !== undefined) {
+        setQuestionBody(detailedQuestions[questionNumber].question);
+      }
+    };
+    loadQuestions();
+  }, [questionNumber]);
 
   const nextQuestion = () => {
     let tempSliderValues = [...sliderValues];
