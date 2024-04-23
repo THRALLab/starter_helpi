@@ -3,9 +3,11 @@ import "./detailed.css";
 import questions from "./detailedQuestions.json";
 import useChatGPT from "./hooks/useChatGPT";
 
-// TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
+// TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
+// TODO - [ ] have the object hold the question itself also
 
 export interface Answer {
+	question: string;
 	questionNo: number;
 	choice: string;
 }
@@ -34,7 +36,8 @@ function Detailed() {
 	function saveAnswers(
 		choice: string,
 		question_num: number,
-		question_type: string
+		question_type: string,
+		question: string
 	) {
 		if (question_type === "free_response" && !choice.trim()) {
 			setChoice("");
@@ -78,12 +81,12 @@ function Detailed() {
 				// the object does not contain the question; add it to the object
 				setAnsweredQuestions([
 					...answeredQuestions,
-					{ questionNo: question_num, choice }
+					{ question, questionNo: question_num, choice }
 				]);
 			}
 		} else {
 			// if it is empty, add the question number and choice to the array object
-			setAnsweredQuestions([{ questionNo: question_num, choice }]);
+			setAnsweredQuestions([{ question, questionNo: question_num, choice }]);
 		}
 	}
 
@@ -124,7 +127,8 @@ function Detailed() {
 											saveAnswers(
 												choice,
 												questions[currentIndex].question_number,
-												questions[currentIndex].type
+												questions[currentIndex].type,
+												questions[currentIndex].question
 											);
 										}}
 										style={{
@@ -162,7 +166,8 @@ function Detailed() {
 										saveAnswers(
 											e.target.value,
 											questions[currentIndex].question_number,
-											questions[currentIndex].type
+											questions[currentIndex].type,
+											questions[currentIndex].question
 										);
 									}}
 								></textarea>
@@ -191,7 +196,9 @@ function Detailed() {
 							);
 						}}
 					>
-						{currentIndex === questions.length - 1 ? "END" : "NEXT"}
+						{currentIndex === questions.length - 1
+							? "SUBMIT RESPONSES"
+							: "NEXT"}
 					</button>
 				</div>
 			</div>
