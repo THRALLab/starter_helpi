@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, /*ProgressBar, Alert*/ } from "react-bootstrap";
+import { Form, ProgressBar, Alert, Stack } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 import OpenAI from "openai";
 import { key } from "./homePage"
@@ -145,19 +145,12 @@ const BasicPage = () => {
 	
 	}
 
-	function updateProgress(responseList:number[]): number {
-		let completed: number = 0;
-		for (const response of responseList){
-			if(response === 1 || response === 0){ //if the user has answered the question aka no longer -1
-				completed +=1;
-			}
-		}
-		return completed;
-	}
 
-    let answered = updateProgress(response);
-    const [allow, setAllow] = useState<boolean>(false);
-	const [/*alert*/, setAlert] = useState<boolean>(false);
+  const answered = response.reduce((currentTotal: number, num: number) => num === 1 || num ===0 ?  currentTotal+=1 : currentTotal+=0, 0)
+	console.log(answered)
+   
+	const [allow, setAllow] = useState<boolean>(false);
+	const [alert, setAlert] = useState<boolean>(false);
 	
     useEffect(() => {
         if (answered === 8) {
@@ -172,15 +165,11 @@ const BasicPage = () => {
 	<style>{`
                 .QuestionNum {
                 	font-size: 50px;
-					margin-left: 193px
-					
-					
+					margin-left: 35px;
+					display:flex;	
                     }
-				.checkbox-distance{
-					margin-left: 10px;
-				}
 				hr{
-					width:1142;
+					width:max;
 					margin-top: 50px;
 				}
                 `}</style>
@@ -195,14 +184,18 @@ const BasicPage = () => {
 			</p>
 			
 		</div>
-		<Button size="lg" disabled={!allow} onClick={sendRespone}>Answer</Button> 
-		<div style={{textAlign: "center", marginTop:"10px"}}>
+
+		<div style={{textAlign: "center"}}>
+			<Button size="lg" disabled={!allow} onClick={getResponses}>Get Answer</Button>
+			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
+				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
+			</Alert>
+
 		</div>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
-		<span className="QuestionNum">#1</span>
-				
-			<span className="checkbox-distance" >
-				<Form.Check 
+		<span className="QuestionNum">#1</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}>
+			<Form.Check 
 					type="radio"
 					id="q1-Option1"
 					label="I prefer working in a group."
@@ -218,12 +211,13 @@ const BasicPage = () => {
 					name="question1"
 					onChange={() => updateChoice(1)}
 					checked={response[0] === 0}
-				
+					style={{width:"200px"}}
 					/>
-			</span>
-			<span className="QuestionNum">#2</span>
-			<span className="checkbox-distance">
-				<Form.Check 
+			</Stack>
+		</span>
+			<span className="QuestionNum">#2</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Form.Check 
 					type="radio"
 					id="q2-Option1"
 					label="I prefer having my schedule made for me."
@@ -235,15 +229,16 @@ const BasicPage = () => {
 				<Form.Check 
 					type="radio"
 					id="q2-Option2"
-					label="I want to be able to work when I want."
+					label="I want to be able to work whenever I want."
 					name="question2"
 					onChange={() => updateChoice(3)}
 					checked={response[1] === 0}
-
+			
 					/>
+			</Stack>
 			</span>
-			<span className="QuestionNum">#3</span>
-			<span className="checkbox-distance" >
+			<span className="QuestionNum">#3</span> <span>
+				<Stack gap={3} style={{marginTop: "30px"}}> 
 				<Form.Check 
 					type="radio"
 					id="q3-Option1"
@@ -251,7 +246,6 @@ const BasicPage = () => {
 					name="question3"
 					onChange={() => updateChoice(4)}
 					checked={response[2] === 1}
-
 					/>
 				<Form.Check 
 					type="radio"
@@ -260,12 +254,11 @@ const BasicPage = () => {
 					name="question3"
 					onChange={() => updateChoice(5)}
 					checked={response[2] === 0}
-
-
 					/>
+				</Stack>
 			</span>
-			<span className="QuestionNum">#4</span>
-			<span className="checkbox-distance" >
+			<span className="QuestionNum">#4</span> <span>
+				<Stack gap={3} style={{marginTop: "30px"}}> 
 				<Form.Check 
 					type="radio"
 					id="q4-Option1"
@@ -273,8 +266,6 @@ const BasicPage = () => {
 					name="question4"
 					onChange={() => updateChoice(6)}
 					checked={response[3] === 1}
-
-
 					/>
 				<Form.Check 
 					type="radio"
@@ -283,18 +274,16 @@ const BasicPage = () => {
 					name="question4"
 					onChange={() => updateChoice(7)}
 					checked={response[3] === 0}
-
-
 					/>
-			</span>
+				</Stack>
+			</span>	
 		</div>
 		<hr></hr>
 
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "25px"}}>
-
-			<span className="QuestionNum">#5</span>
-				<span className="checkbox-distance" >
-					<Form.Check 
+			<span className="QuestionNum">#5</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}>
+			<Form.Check 
 						type="radio"
 						id="q5-Option1"
 						label="I enjoy working with my hands."
@@ -302,30 +291,27 @@ const BasicPage = () => {
 						onChange={() => updateChoice(8)}
 						checked={response[4] === 1}
 						/>
-					<Form.Check  /* Fix the radio buttons and include state*/
+					<Form.Check  
 						type="radio"
 						id="q5-Option2"
 						label="I don't like working with my hands."
 						name="question5"
 						onChange={() => updateChoice(9)}
 						checked={response[4] === 0}
+						style={{marginBottom:"30px"}}
 
 					/>
-				</span>
-				
-
-			<span className="QuestionNum">#6</span>
-				<span className="checkbox-distance">
-					<div>
-						<Form.Check 
+			</Stack>
+			</span>				
+			<span className="QuestionNum">#6</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}> 
+					<Form.Check 
 						type="radio"
 						id="q6-Option1"
 						label="I would work a job I dislike for the money."
 						name="question6"
 						onChange={() => updateChoice(10)}
-						checked={response[5] === 1}
-
-						/>
+						checked={response[5] === 1}/>
 					<Form.Check 
 						type="radio"
 						id="q6-Option2"
@@ -333,24 +319,18 @@ const BasicPage = () => {
 						name="question6"
 						onChange={() => updateChoice(11)}
 						checked={response[5] === 0}
-
-						/>
-
-					</div>
-				</span>
-			<span className="QuestionNum">#7</span>
-				<span className="checkbox-distance" >
-					<div>
-					<Form.Check 
+						style={{marginBottom:"30px"}}/>
+			</Stack>
+			</span>		
+			<span className="QuestionNum">#7</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Form.Check 
 						type="radio"
 						id="q7-Option1"
 						label="I want to make a difference in the world."
 						name="question7"
 						onChange={() => updateChoice(12)}
-						checked={response[6] === 1}
-		
-						>
-					</Form.Check>
+						checked={response[6] === 1}/>
 					<Form.Check 
 						type="radio"
 						id="q7-Option2"
@@ -358,26 +338,18 @@ const BasicPage = () => {
 						name="question7"
 						onChange={() => updateChoice(13)}
 						checked={response[6] === 0}
-
-
-						>
-					</Form.Check>
-					</div>
-				</span>
-			<span className="QuestionNum">#8</span>
-				<span className="checkbox-distance" >
-					<div>
-					<Form.Check 
+						style={{marginBottom:"30px"}}/>
+			</Stack>
+			</span>	
+			<span className="QuestionNum">#8</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Form.Check 
 						type="radio"
 						id="q8-Option1"
 						label="I love to travel."
 						name="question8"
 						onChange={() => updateChoice(14)}
-						checked={response[7] === 1}
-
-
-						>
-					</Form.Check>
+						checked={response[7] === 1}/>
 					<Form.Check 
 						type="radio"
 						id="q8-Option2"
@@ -385,12 +357,12 @@ const BasicPage = () => {
 						name="question8"
 						onChange={() => updateChoice(15)}
 						checked={response[7] === 0}
-						
-						>
-					</Form.Check>
-					</div>
-				</span>
+						style={{marginBottom:"30px"}}/>
+			</Stack>
+			</span>
+					
 		</div>
+		<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"30px", marginBottom: "30px"}}/>
 		</>
 		
 	);
