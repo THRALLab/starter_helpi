@@ -166,6 +166,7 @@ export function BasicQuestionsPage(): JSX.Element {
         setDisplayFinalResults(false); // Hide final results
         setInputText(""); // Clear input text if any
         // Reset any other state variables as needed
+        setResponses({});
     };
 
     const handleClearText = () => {
