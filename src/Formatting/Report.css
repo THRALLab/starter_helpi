@@ -20,3 +20,7 @@
   margin-right: 10vw;
   margin-bottom: 1vh;
 }
+
+ol>li ::before{
+  font-weight: bold;
+}
