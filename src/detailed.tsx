@@ -5,12 +5,12 @@ import useChatGPT from "./hooks/useChatGPT";
 
 // TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 
-function Detailed() {
-	interface Answer {
-		questionNo: number;
-		choice: string;
-	}
+export interface Answer {
+	questionNo: number;
+	choice: string;
+}
 
+function Detailed() {
 	const [choice, setChoice] = useState<string>();
 
 	const saved_index: number =
