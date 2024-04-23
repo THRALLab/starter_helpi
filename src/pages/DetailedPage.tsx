@@ -96,16 +96,14 @@ const DetailedPage = () => {
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
 		Response6: (boolean| string)[], Response7: (boolean| string)[]): number {
 		const responses = [Response1, Response2, Response3, Response4, Response5, Response6, Response7]
-		let completed: number = 0;
-		responses.forEach(response => {
-			if(response.some((option:boolean | string) => {
-				if((typeof option === "boolean" && option === true) || (typeof option === "string" && option.trim().length > 0)){ //Checks for true and non empty strings
-				return true;
-				}
-				return false
-			}))
-			completed +=1; //adds 1 for each true or non empty string 
-		})
+		const completed: number = responses.reduce((count, response) => {
+			const check: boolean = response.some(option => {
+				return (
+					(typeof option === "boolean" && option === true) || (typeof option ==="string" && option.trim().length > 0)
+				);
+			});
+			return count + (check ? 1 : 0)
+		},0)
 		return completed;
 	}
 	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
