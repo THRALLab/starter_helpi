@@ -42,7 +42,6 @@ function SimpleQuestions() {
   const [questionBody, setQuestionBody] = useState("Question...");
   const [option1, setOption1] = useState("Option 1...");
   const [option2, setOption2] = useState("Option 2...");
-  const [color, setColor] = useState("");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
   useEffect(() => {
