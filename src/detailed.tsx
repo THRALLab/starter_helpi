@@ -101,7 +101,7 @@ function Detailed() {
 		}
 	}, [answeredQuestions]);
 
-	const { checkConnection } = useChatGPT();
+	// const { checkConnection } = useChatGPT();
 
 	// TODO - [] check if you're at the last question, add have it call the 'checkConnection' function so that it can then call the ChatGPT API
 
