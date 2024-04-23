@@ -1,5 +1,5 @@
 import Container from 'react-bootstrap/Container';
-import { useState } from 'react';
+import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from './FinalLogo.png'
@@ -7,16 +7,9 @@ import '../Navbar/Navbar2.css'
 import AboutButton from '../AboutButton/AboutButton';
 
 export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: string) => void }) {
-  const [previousPage, setPreviousPage] = useState<string>("Home");
 
   const handleNavClick = (newPage: string) => {
-    if (newPage === page) {
-      setPage(newPage);
-    }
-    else {
-      setPreviousPage(page);
-      setPage(newPage);
-    }
+    setPage(newPage);
   }
 
   return (
