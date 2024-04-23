@@ -5,14 +5,15 @@
 
 body {
   background-color: #242582;
-  /* background-image: url(https://wallpapers.com/images/hd/dark-blue-aesthetic-sky-at-night-loaluwkdu9aaky5b.jpg); */
+  background-image: url(https://images.pexels.com/photos/7894879/pexels-photo-7894879.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   /* background-size: cover; */
 }
 
 
 button {
-  background-color: #F64C72;
-  color: white;
+  background-color: #FBEEC1;
+  color: #DAAD86;
+  border-color: #DAAD86;
   padding: 10px 20px;
   border: 2px solid;
   border-radius: 5px;
@@ -21,7 +22,7 @@ button {
 }
 
 button:hover{
-  background-color: #553D67;
+  background-color: #BC986A;
 }
 
 

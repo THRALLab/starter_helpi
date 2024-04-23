@@ -22,7 +22,7 @@ if (prevKey !== null) {
 const HomePage: React.FC = () => {
   return (
     <div className="HomePage">
-      <h1>Career Quiz Home Page</h1>
+      <h1>Career Quiz</h1>
       <div className="content">
         <div className="question">
           <h2>Basic Questions</h2>
