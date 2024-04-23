@@ -1,3 +1,4 @@
+// Import necessary hooks and components
 import { useState } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
@@ -31,14 +32,21 @@ export function DisplayQuiz(
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("question1"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
     const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
+    const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
 
     // used to determine next question
-    const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps): string => {
+    const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps, forewards: boolean): string => {
         // questions are id'd as `quiestion${questionNumber}`
         if (currentQuestionId.includes("question")) {
-          const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`;
-          if (newId in quiz) return (newId);
-          else return "";
+          if (forewards) {
+            const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`;
+            if (newId in quiz) return (newId);
+            else return "";
+          } else {
+            const newId = `question${parseInt(currentQuestionId.substring(8)) - 1}`;
+            if (newId in quiz) return (newId);
+            else return ""
+          }
         } 
         else return "";
       };
@@ -50,14 +58,29 @@ export function DisplayQuiz(
      * the next question is then displayed
      * if there is no next question then the quiz is over
      */
-    const handleAnswerSubmit = (answer: string) => {
-        setAnswers([...answers, {questionId: currentQuestionId, answer: answer}])
-        const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz);
-        setQuestionsAnswerd(questionsAnswerd + 1)
-        if (nextQuestionId === "") {
-            setIsQuizComplete(true); // End of the quiz
+    const handleAnswerSubmit = (answer: string, forewards: boolean) => {
+        
+        if (forewards) {
+            const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz, true);
+            if (questionsAnswerd === lastQuestionArray) { // if questions answered is equal to the latest array, appends it with newest answer
+                setAnswers([...answers, {questionId: currentQuestionId, answer: answer}])
+                setQuestionArray(lastQuestionArray + 1);
+            } else { // else, splices array and puts in the new answer
+                const newAnswers = [...answers]
+                newAnswers.splice(questionsAnswerd, 1, {questionId: currentQuestionId, answer: answer})
+                setAnswers(newAnswers);
+            }
+            setQuestionsAnswerd(questionsAnswerd + 1);
+
+            if (nextQuestionId === "") {
+                setIsQuizComplete(true); // End of the quiz
+            } else {
+                setCurrentQuestionId(nextQuestionId); // Move to the next question
+            }
         } else {
-            setCurrentQuestionId(nextQuestionId); // Move to the next question
+            setQuestionsAnswerd(questionsAnswerd - 1);
+            const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz, false);
+            setCurrentQuestionId(nextQuestionId);
         }
     }
 
@@ -90,10 +113,10 @@ export function DisplayQuiz(
 
     const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
-        description: currentQuestion.description,
         options: currentQuestion.options,
         onNext: handleAnswerSubmit,
-        isFirst: currentQuestionId === "question1"
+        isFirst: currentQuestionId === "question1",
+        description: ""
     };
 
 

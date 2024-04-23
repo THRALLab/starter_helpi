@@ -13,7 +13,7 @@ export function TextResponse({
     question: string;
     description: string;
     options: string[];
-    onNext: (answer: string) => void;
+    onNext: (answer: string, forewards: boolean) => void;
     isFirst: boolean;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
@@ -81,11 +81,11 @@ export function TextResponse({
                 <Button
                     variant={isFirst ? "outline-primary" : "primary"}
                     disabled={isFirst}
-                    onClick={() => onNext(localAnswer)}>Back</Button>
+                    onClick={() => onNext(localAnswer, false)}>Back</Button>
                 <Button 
                     variant={localAnswer === "" ? "outline-primary" : "primary"}
                     disabled={localAnswer === ""}
-                    onClick={() => onNext(localAnswer)}
+                    onClick={() => onNext(localAnswer, true)}
                 >Next</Button>
             </Form.Group>
         </div>
