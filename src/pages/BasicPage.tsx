@@ -1,88 +1,152 @@
 import React, { useEffect, useState } from "react";
 import { Form, ProgressBar, Alert, Stack } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
+import OpenAI from "openai";
+import { key } from "./homePage"
 
 
 const BasicPage = () => {
 	const [response, setResponse] = useState<(number)[]>
-	([-1, -1, -1, -1, -1, -1, -1, -1])
+	([-1, -1, -1, -1, -1, -1, -1, -1]) //initializes the responses to -1 so no radio button is checked
 	function updateChoice(index:number){
 		setResponse(prevResponse => {
 			const updatedResponse = [...prevResponse];
 			if(index % 2 === 0){
-				updatedResponse[index/2] = 1;
+				updatedResponse[index/2] = 1; //if the index is even, the first radio button is selected
 			}
 			else{
-				updatedResponse[Math.floor(index/2)] = 0;
+				updatedResponse[Math.floor(index/2)] = 0; // the second radio button is selected
 			}
 			return updatedResponse;
 		  });
 	}
 
-	function getResponses() {
-		let answers = ["", "", "", "", "", "", "", ""];
+	function getResponses(): string { //returns a description of the user's responses to the questions
+		//let answers = ["", "", "", "", "", "", "", ""];
+
+		/*Originally stored each answer to a question as an array in a string.
+		However, there is no reason to access only one specific answer so instead
+		switch to one long string that has all the answers on a new line.*/
+
+		let description = "";
 
 		if(response[0]){
-			answers[0] = "I prefer working in a group.";
+			//answers[0] = "I prefer working in a group.";
+			description += "I prefer working in a group.\n";
 		}
 		else{
-			answers[0] = "I prefer working on my own.";
+			//answers[0] = "I prefer working on my own.";
+			description += "I prefer working on my own.\n";
 		}
 
 		if(response[1]){
-			answers[1] = "I prefer having my schedule made for me.";
+			//answers[1] = "I prefer having my schedule made for me.";
+			description += "I prefer having my schedule made for me.\n";
 		}
 		else{
-			answers[1] = "I want to be able to work when I want.";
+			//answers[1] = "I want to be able to work when I want.";
+			description += "I want to be able to work when I want.\n";
 		}
 
 		if(response[2]){
-			answers[2] = " I like having detailed instructions when doing a task.";
+			//answers[2] = "I like having detailed instructions when doing a task.";
+			description += "I like having detailed instructions when doing a task.\n";
 		}
 		else{
-			answers[2] = " I prefer having creative freedom when doing a task.";
+			//answers[2] = "I prefer having creative freedom when doing a task.";
+			description += "I prefer having creative freedom when doing a task.\n";
 		}
 
 		if(response[3]){
-			answers[3] = "I enjoy a job that challenges me.";
+			//answers[3] = "I enjoy a job that challenges me.";
+			description += "I enjoy a job that challenges me.\n";
 		}
 		else{
-			answers[3] = "I want a job that is easy.";
+			//answers[3] = "I want a job that is easy.";
+			description	+= "I want a job that is easy.\n";
 		}
 
 		if(response[4]){
-			answers[4] = "I enjoy working with my hands.";
+			//answers[4] = "I enjoy working with my hands.";
+			description += "I enjoy working with my hands.\n";
 		}
 		else{
-			answers[4] = "I don't like working with my hands.";
+			//answers[4] = "I don't like working with my hands.";
+			description += "I don't like working with my hands.\n";
 		}
 
 		if(response[5]){
-			answers[5] = "I would work a job I dislike for the money.";
+			//answers[5] = "I would work a job I dislike for the money.";
+			description += "I would work a job I dislike for the money.\n";
 		}
 		else{
-			answers[5] = "I would only ever work a job I like.";
+			//answers[5] = "I would only ever work a job I like.";
+			description += "I would only ever work a job I like.\n";
 		}
 
 		if(response[6]){
-			answers[6] = "I want to make a difference in the world.";
+			//answers[6] = "I want to make a difference in the world.";
+			description	+= "I want to make a difference in the world.\n";
 		}
 		else{
-			answers[6] = "I just want a job.";
+			//answers[6] = "I just want a job.";
+			description += "I just want a job.\n";
 		}
 
 		if(response[7]){
-			answers[7] = "I love to travel.";
+			//answers[7] = "I love to travel.";
+			description += "I love to travel.\n";
 		}
 		else{
-			answers[7]= "I don't like to travel.";
-
+			//answers[7]= "I don't like to travel.";
+			description += "I don't like to travel.\n";
 		}
 
-		console.log(answers);
+		//console.log(answers + '/n')
+		console.log(description);
+
+		return description;
 	}
 
-    const answered = response.reduce((currentTotal: number, num: number) => num === 1 || num ===0 ?  currentTotal+=1 : currentTotal+=0, 0)
+	function sendRespone(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+		const openai = new OpenAI({
+			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
+			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
+		});
+		  
+		async function runGPT() { //Creates conversation with the GPT-4 model
+			console.log("API Key: " + key); //for testing purposes
+			try{
+				const response = await openai.chat.completions.create({
+				model: "gpt-4-turbo",
+				messages: [
+					{
+					"role": "system",
+					"content": "You will tell me what career I should pursue based on my interests." //What we want GPT to do
+					},
+					{
+					"role": "user",
+					"content": getResponses(), //calls the function that gets the description
+					}
+				],
+				temperature: 0.8,
+				max_tokens: 64,
+				top_p: 1,
+				});
+	
+				console.log(response.choices[0].message.content); //GPT Response to the user's input
+			}
+			catch(e){ //catches any errors that may occur with an invalid API key
+				console.log(e);
+			}  
+		}
+
+		runGPT(); //run the function at the end
+	
+	}
+
+
+  const answered = response.reduce((currentTotal: number, num: number) => num === 1 || num ===0 ?  currentTotal+=1 : currentTotal+=0, 0)
 	console.log(answered)
    
 	const [allow, setAllow] = useState<boolean>(false);
@@ -114,15 +178,19 @@ const BasicPage = () => {
 				Basic Quiz
 			</h1>
 			<p style={{ textAlign: "center" }}>
-				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
+				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
+				The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+				 With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
 			</p>
 			
 		</div>
+
 		<div style={{textAlign: "center"}}>
 			<Button size="lg" disabled={!allow} onClick={getResponses}>Get Answer</Button>
 			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
+
 		</div>
 		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
 		<span className="QuestionNum">#1</span> <span>
