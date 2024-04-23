@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Form, Button, ToggleButton } from 'react-bootstrap';
+import { Form, Button, ToggleButton, FormControl } from 'react-bootstrap';
 import { FaQuestionCircle } from 'react-icons/fa';
 
 export function McMultiResponse({
@@ -19,18 +19,36 @@ export function McMultiResponse({
     const [localAnswer, setLocalAnswer] = useState<string[]>([]);
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
+
+    const [customAnswer, setCustomAnswer] = useState<string>("");
+    const otherOption = "Other(click to specify)"; // Define the text for the "Other" option
+
     
 
     // compresses the current answer into a string format
     function compressAnswer(): string {
-        return localAnswer.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : combined + selected, "")
+        if (localAnswer.includes(otherOption) && customAnswer) {
+            // Replace the "Other" placeholder with the actual custom answer.
+            const answerIndex = localAnswer.indexOf(otherOption);
+            localAnswer.splice(answerIndex, 1, customAnswer);
+        }
+        return localAnswer.join(", ");
     }
 
     function addAnswer(currAnswer: string) {
-        if (localAnswer.includes(currAnswer)) {
-            setLocalAnswer(localAnswer.filter((target: string) => target !== currAnswer));
+        if (currAnswer === otherOption) {
+            if (localAnswer.includes(currAnswer)) {
+                setLocalAnswer(localAnswer.filter(answer => answer !== currAnswer));
+                setCustomAnswer(""); // Clear the custom answer if "Other" is deselected.
+            } else {
+                setLocalAnswer([...localAnswer, currAnswer]);
+            }
         } else {
-            setLocalAnswer([...localAnswer, currAnswer]);
+            if (localAnswer.includes(currAnswer)) {
+                setLocalAnswer(localAnswer.filter(target => target !== currAnswer));
+            } else {
+                setLocalAnswer([...localAnswer, currAnswer]);
+            }
         }
     }
 
@@ -101,6 +119,26 @@ export function McMultiResponse({
                             </ToggleButton>
                         </li>
                     ))}
+                    <li key="Other(click to specify)">
+                        <ToggleButton
+                            variant={localAnswer.includes(otherOption) ? "primary" : "outline-primary"}
+                            type="checkbox"
+                            id="other"
+                            value="Other"
+                            onChange={() => addAnswer(otherOption)}
+                            checked={localAnswer.includes(otherOption)}
+                        >
+                            Other
+                        </ToggleButton>
+                        {localAnswer.includes(otherOption) && (
+                            <FormControl
+                                style={{ marginTop: '10px' }}
+                                placeholder="Type your custom answer here"
+                                value={customAnswer}
+                                onChange={(event) => setCustomAnswer(event.target.value)}
+                            />
+                        )}
+                    </li>
                 </ul>
                 <Button
                     variant={isFirst ? "outline-primary" : "primary"}
