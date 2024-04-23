@@ -10,7 +10,7 @@ interface QuestionData {
 const questions = ['What is your name?', 'What is your age?', 'What is your?', 'What is your name?', 'What is your age?', 'What is your?', 'What is your name?'];
 let pageData = Array.from(questions, (question: string) => ({ question: question, answer: '' })) as QuestionData[];
 const saveDetailedDataKey = "DETAILED_DATA";
-const currData = localStorage.getItem(saveDetailedDataKey);
+const currData = sessionStorage.getItem(saveDetailedDataKey);
 if (currData !== null) {
     pageData = JSON.parse(currData) as QuestionData[];
 }
@@ -21,7 +21,7 @@ export function DetailedPage() {
 
     // Array of objects to store question and answer data
     const [questionData, setQuestionData] = React.useState(pageData);
-    const [isFinished, setIsFinished] = React.useState(false);
+    const [isFinished, setIsFinished] = React.useState(questionData.every((question) => question.answer.length > 0));
 
     const handleSelect = (selectedIndex: number) => {
         setQuestionNumber(selectedIndex);
@@ -36,7 +36,7 @@ export function DetailedPage() {
             // Check if all questions have been answered
             setIsFinished(data.every((question) => question.answer.length > 0));
             // Save data to local storage
-            localStorage.setItem(saveDetailedDataKey, JSON.stringify(data));
+            sessionStorage.setItem(saveDetailedDataKey, JSON.stringify(data));
         }
     }
 
