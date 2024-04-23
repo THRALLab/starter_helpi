@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { HashRouter } from "react-router-dom";
 import DetailedReport from "../Pages/DetailedReport";
 
-describe("Detailed Page Tests", () => {
+describe("Detailed Report Tests", () => {
   test("Has Header", () => {
     render(
       <HashRouter>
