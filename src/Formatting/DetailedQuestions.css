@@ -8,22 +8,21 @@
 
 .Slider-questions {
   justify-content: left;
-  margin-left: 0px;
 }
 
 .Slider-text {
   visibility: var(--visibility-slider);
   justify-content: left;
+  font-size: large;
   margin-left: 70px;
-  font-size: 18px;
 }
 
 .Slider-value {
   visibility: var(--visibility-slider);
   justify-content: left;
+  font-size: large;
   margin-left: 41px;
-  font-size: 18px;
-  margin-bottom: 50px;
+  margin-bottom: 1vh;
 }
 
 .Slider-slider {

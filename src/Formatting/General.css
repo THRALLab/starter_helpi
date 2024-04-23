@@ -36,7 +36,8 @@
   position: absolute;
   align-items: left;
   justify-content: center;
-  margin-top: 2px;
+  top: 0;
+  margin-top: 3vh;
   margin-left: 5%;
   left: 0;
   font-size: calc(13px + 1vmin);
@@ -47,7 +48,8 @@
   position: absolute;
   justify-content: center;
   align-items: right;
-  margin-top: 2px;
+  top: 0;
+  margin-top: 2vh;
   margin-right: 5%;
   right: 0;
   font-size: calc(13px + 2vmin);
@@ -82,8 +84,8 @@
 .API-Footer {
   background-color: black;
   color: white;
-  padding-top: 5px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
