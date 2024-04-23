@@ -1,23 +1,23 @@
 .body {
-  --color-body-background: #EEB3F9;
+  --color-body-background: #eeb3f9;
   --color-body-text: #000000;
   --color-body-Headerbackground: #5261ab;
   --color-body-Headertext: #000000;
-  --color-body-Button: #00B3FF;
-  --color-body-ButtonDisabled: #00B3FF;
-  --color-body-ButtonHover: #52CBFF;
+  --color-body-Button: #00b3ff;
+  --color-body-ButtonDisabled: #00b3ff;
+  --color-body-ButtonHover: #52cbff;
   --color-body-ButtonBorder: #000000;
-  --color-body-questionText: #FFFFFF;
+  --color-body-questionText: #ffffff;
 }
 
 .body-dark {
   --color-body-background: #303030;
-  --color-body-text: #1EEB36;
+  --color-body-text: #1eeb36;
   --color-body-Headerbackground: #173848;
-  --color-body-Headertext: #1EEB36;
+  --color-body-Headertext: #1eeb36;
   --color-body-Button: #425866;
   --color-body-ButtonDisabled: #425866;
-  --color-body-ButtonHover: #4F6678;
+  --color-body-ButtonHover: #4f6678;
   --color-body-ButtonBorder: #000000;
 }
 
@@ -37,11 +37,9 @@
   position: absolute;
   align-items: left;
   justify-content: center;
-  top: 0;
-  margin-top: 3vh;
-  margin-left: 5%;
+  margin-left: 2%;
   left: 0;
-  font-size: calc(13px + 1vmin);
+  font-size: calc(10px + 1vw);
   color: var(--color-body-Headertext);
 }
 
@@ -49,11 +47,9 @@
   position: absolute;
   justify-content: center;
   align-items: right;
-  top: 0;
-  margin-top: 2vh;
-  margin-right: 5%;
+  margin-right: 2%;
   right: 0;
-  font-size: calc(13px + 2vmin);
+  font-size: calc(10px + 2vw);
   color: var(--color-body-Headertext);
 }
 
