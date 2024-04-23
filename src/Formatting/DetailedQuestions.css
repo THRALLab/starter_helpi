@@ -55,6 +55,7 @@
   width: 200px;
   height: 500px;
   transform: rotate(180deg);
+  background-image: linear-gradient(180deg, black, var(--progress-color))
 }
 
 .DetailedQuestions-question-number {
@@ -64,6 +65,7 @@
   right: 0;
   margin-bottom: 450px;
   transform: rotate(180deg);
+  color: var(--color-body-questionText);
 }
 
 .DetailedQuestions-progress-bar-percentage {
@@ -74,6 +76,7 @@
   width: 200px;
   margin-top: 450px;
   transform: rotate(180deg);
+  color: var(--color-body-questionText);
 }
 
 .DetailedQuestions-progress-bar-foreground {

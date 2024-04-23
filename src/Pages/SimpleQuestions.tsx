@@ -46,7 +46,7 @@ function SimpleQuestions() {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
+    const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E"];
     setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
@@ -150,7 +150,7 @@ function SimpleQuestions() {
         <div className="Simple-progress">
           <div
             className="Simple-progress-outer"
-            style={{ backgroundColor: color }}
+            style={{ "--progress-color": color} as any}
           >
             <div
               className="Simple-progress-inner"

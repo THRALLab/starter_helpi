@@ -9,6 +9,7 @@ import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
 
+
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -32,6 +33,7 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
 
+  
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
@@ -42,15 +44,7 @@ function DetailedQuestions() {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    const colors = [
-      "red",
-      "orange",
-      "green",
-      "blue",
-      "purple",
-      "pink",
-      "brown",
-    ];
+    const colors =  ["purple", "brown"]; //Add more colors later using hex values
     setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
@@ -193,7 +187,7 @@ function DetailedQuestions() {
             <Col>
               <div
                 className="DetailedQuestions-progress-bar"
-                style={{ backgroundColor: color }}
+                style={{ "--progress-color": color } as any}
               >
                 <span className="DetailedQuestions-question-number">
                   Question {questionNumber}/{numberOfQuestions}
@@ -240,3 +234,4 @@ function DetailedQuestions() {
   );
 }
 export default DetailedQuestions;
+
