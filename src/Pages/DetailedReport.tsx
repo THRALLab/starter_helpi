@@ -66,7 +66,7 @@ function DetailedReport() {
         {
           role: "system",
           content:
-            "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a report of 3 careers, splitting each section with an @ symbol. Here is the format: " + exampleFormat,
+            "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a report of 3 careers, splitting each section with an @ symbol. No need for numbering Here is the format: " + exampleFormat,
         },
         { role: "user", content: "What should my career be? " + userData },
       ],
@@ -110,7 +110,7 @@ function DetailedReport() {
             <p>Generating Your Results...</p>
           </div>
         )}
-        {!loading && <div className="Report-results">
+        {!loading && careerList.length === 3 && <div className="Report-results">
           Based on your results:
           <ol>
             <li>{careerList[0]}</li>
