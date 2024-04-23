@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { openaiToken } from "./openaiToken"
+import { openaiToken } from "src/controller/openaiToken";
 
 export async function callGBT(
     {
