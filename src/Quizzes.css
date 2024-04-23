@@ -1,0 +1,126 @@
+/* Radio */
+[type="radio"] {
+  opacity: 0;
+}
+
+[type="radio"] + label {
+  position: relative;
+  align-items: center;
+  /* justify-content: center; */
+  padding-left: 30px;
+  cursor: pointer;
+  display: flex;
+  margin-left: 47%;
+  color: white;
+  line-height: 18px;
+}
+
+[type="radio"] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  border: 10px dashed black;
+  background: #fff;
+}
+
+[type="radio"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: radial-gradient(
+    ellipse farthest-corner at 100% 35%,
+    rgb(35, 31, 32) 40%,
+    rgb(161, 159, 160) 68%
+  );
+  transform: scale(1);
+  opacity: 10;
+  transition: all 0.3s ease;
+}
+
+[type="radio"]:not(checked) + label::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: #fff;
+  transform: scale(0);
+  opacity: 0;
+}
+
+/*CheckBox*/
+[type="checkbox"] {
+  opacity: 0;
+}
+
+[type="checkbox"] + label {
+  position: relative;
+  align-items: center;
+  padding-left: 30px;
+  cursor: pointer;
+  display: flex;
+  margin-left: 47%;
+  color: white;
+  line-height: 18px;
+}
+
+[type="checkbox"] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 30%;
+  border: 10px dashed black;
+  background: #fff;
+}
+
+[type="checkbox"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: radial-gradient(
+    ellipse farthest-corner at 100% 35%,
+    rgb(35, 31, 32) 40%,
+    rgb(161, 159, 160) 68%
+  );
+  transform: scale(1);
+  opacity: 10;
+  transition: all 0.3s ease;
+}
+
+[type="checkbox"]:not(checked) + label::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 1px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: #fff;
+  transform: scale(0);
+  opacity: 0;
+}
+
+.ButtonSpace {
+  padding-top: 10px;
+}
+
+.StaticBackground {
+  height: 300px;
+}
