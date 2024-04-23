@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './css/global.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { openGBTStream } from './controller/OpenChatStream';
+// import { openGBTStream } from './controller/OpenChatStream';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 const envKeyData = process.env.REACT_APP_CHATGBT_API_KEY;
