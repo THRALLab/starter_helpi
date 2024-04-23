@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Basic from "./basic";
 import Detailed from "./detailed";
 import Navigation from "./navbar";
+import Footer from "./Footer";
 import BasicDetailedButtons from "./basicDetailedButton";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -18,6 +19,7 @@ function App() {
 		<Router>
 			<div className="App">
 				<Navigation />
+				<BasicDetailedButtons />
 				<Routes>
 					<Route path="/basic" Component={Basic} />
 					<Route path="/detailed" Component={Detailed} />

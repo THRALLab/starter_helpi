@@ -41,7 +41,6 @@ function BasicDetailedButtons() {
                 <p>order to provide potential careers.</p>
             </p>)}
 
-            <img src="src/homePage.jpg" alt="place holder for alt text"/>
         </div>  
 )}
 export default BasicDetailedButtons;
