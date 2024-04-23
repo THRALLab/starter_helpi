@@ -49,6 +49,8 @@ function DetailedReport() {
     "I have rated these questions from 0 to 100 (100 being I strongly agree and 0 being strongly disagree)" +
     joinQuestionsToAnswers();
 
+    const exampleFormat = "(no beginning sentence, just get right into the report, but include the '@' symbol) @Sample Career: 2-3 sentences of why this is a good fit @Another Sample Career: 2-3 sentences of why this is a good fit @Final Sample Career: 2-3 sentences of why this is a good fit"
+
   const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
   //Queries ChatGPT to generate report
   async function ChatGPT() {
@@ -64,7 +66,7 @@ function DetailedReport() {
         {
           role: "system",
           content:
-            "You are a helpful career advisor. You will be provided a students result to a career quiz.",
+            "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a report of 3 careers, splitting each section with an @ symbol. Here is the format: " + exampleFormat,
         },
         { role: "user", content: "What should my career be? " + userData },
       ],
@@ -78,6 +80,8 @@ function DetailedReport() {
     }
     setLoading(false);
   }
+
+  const careerList = responseData.split("@");
 
   return (
     <div className={bodyClassName} id="bigBody">
@@ -106,7 +110,14 @@ function DetailedReport() {
             <p>Generating Your Results...</p>
           </div>
         )}
-        <div className="Report-results">{responseData}</div>
+        {!loading && <div className="Report-results">
+          Based on your results:
+          <ol>
+            <li>{careerList[1]}</li>
+            <li>{careerList[2]}</li>
+            <li>{careerList[3]}</li>
+          </ol>  
+        </div>}
       </div>
 
       <div className="API-Footer">

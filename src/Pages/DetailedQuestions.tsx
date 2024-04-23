@@ -20,9 +20,6 @@ if (prevKey !== null) {
 export let slidenums = new Array<number>(30).fill(50);
 
 function DetailedQuestions() {
-  //let testStringVariable = "<div>guh</div>";
-  //let parser = new DOMParser();
-  //let testElementVariable = React.createElement(parser.parseFromString(testStringVariable, "text/xml"));
   const [key, setKey] = useState<string>(keyData); //for api key input
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
