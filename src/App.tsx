@@ -10,8 +10,7 @@ import { AboutPage } from './Components/AboutPage/AboutPage'
 
 let pageData = "Home";
 const savePageKey = "MYPAGE";
-const currPage = localStorage.getItem(savePageKey);
-console.log(currPage);
+const currPage = sessionStorage.getItem(savePageKey);
 if (currPage !== null) {
   pageData = currPage;
 }
@@ -40,7 +39,7 @@ function App() {
   }
 
   function changePage(newPage: string) {
-    localStorage.setItem(savePageKey, newPage);
+    sessionStorage.setItem(savePageKey, newPage);
     setPage(newPage);
   }
   return (

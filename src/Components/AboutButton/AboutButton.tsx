@@ -1,4 +1,4 @@
-import { BsGithub, BsInfo } from 'react-icons/bs';
+import { BsInfo } from 'react-icons/bs';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
