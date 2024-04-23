@@ -5,7 +5,6 @@ import { useState } from "react"
 import { Button, Form } from "react-bootstrap";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
 import { openGBTStream } from "src/controller/OpenChatStream";
-import { start } from "repl";
 
 const MapGBTOutput = ({chats} : {chats : OpenAI.ChatCompletion.Choice[]}) => {
     return (
@@ -33,7 +32,7 @@ export const ChatGBTPage = () => {
     async function sendToGBT (userInput: string): Promise<void>{
         
         const response = (chat?.choices == null) ? await callGBT({
-            prompt: userInput,
+            userPrompt: userInput,
             startingPrompt: startingPrompt
         }) 
         :

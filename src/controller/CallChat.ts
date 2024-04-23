@@ -3,19 +3,19 @@ import { openai } from "./OpenaiToken";
 
 export async function callGBT(
     {
-        prompt, 
+        userPrompt, 
         startingPrompt
     } 
     : 
     {
-        prompt: string, 
+        userPrompt: string, 
         startingPrompt: string
     }
 ) {
     const chatCompletion = await openai.chat.completions.create({
       messages: [
         { role: 'system', content: startingPrompt },
-        { role: 'user', content: prompt}
+        { role: 'user', content: userPrompt}
         ],
       model: 'gpt-3.5-turbo',
     });
@@ -33,11 +33,13 @@ export async function addResponseGBT(
       newMessage: string
   }
 ) {
-  const messages = choices.map((choice: OpenAI.ChatCompletion.Choice) => choice.message)
+  // maps previous choices to an array of message objects
+  const messages = choices.map((choice: OpenAI.ChatCompletion.Choice) => choice.message);
   const chatCompletion = await openai.chat.completions.create({
     messages: [
       ...messages,
-      {role: "user", content: newMessage}],
+      {role: 'user', content: newMessage}
+    ],
     model: 'gpt-3.5-turbo',
   });
   return chatCompletion;
