@@ -5,6 +5,7 @@ import { HomeScreen } from './Components/HomeScreen/HomeScreen';
 import AppFooter from './Components/AppFooter/AppFooter';
 import { BasicPage } from './Components/BasicPage/BasicPage';
 import { DetailedPage } from './Components/DetailedPage/DetailedPage';
+import { AboutPage } from './Components/AboutPage/AboutPage'
 
 
 let pageData = "Home";
@@ -48,6 +49,7 @@ function App() {
       {page === "Home" && <HomeScreen page={page} setPage={changePage}/>}
       {page === "Basic" && <BasicPage/>}
       {page === "Detailed" && <DetailedPage/>}
+      {page === "About" && <AboutPage/>}
       <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
     </div>
   );
