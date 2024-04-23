@@ -145,7 +145,7 @@ const BasicPage = () => {
 	
 	}
 
-  const answered = response.reduce((currentTotal: number, num: number) => num === 1 || num ===0 ?  currentTotal+=1 : currentTotal+=0, 0);
+  const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
 
   function doReset(): void{ //clears all the choices by setting all elements in array to -1
 	const resetResponse: number[] = Array(response.length).fill(-1);

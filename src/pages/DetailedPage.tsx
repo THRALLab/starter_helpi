@@ -229,8 +229,7 @@ const DetailedPage = () => {
 					label="Other:"
 					name="question1"
 					onChange={() => handleRadio("Other:",1,  4, 0)}
-					checked={otherSelected[0] === true}
-					/>
+					checked={otherSelected[0] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
@@ -356,8 +355,7 @@ const DetailedPage = () => {
 					label="Other:"
 					name="question3"
 					onChange={() => handleRadio("Other:",3, 4 , 2)}
-					checked={otherSelected[2] === true}
-					/>
+					checked={otherSelected[2] === true}/>
 				<div className="answer-box"><Form.Control
 					type="text"
 					placeholder="Enter your answer"
