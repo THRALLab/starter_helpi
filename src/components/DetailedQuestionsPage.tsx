@@ -10,6 +10,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
 import FormControl from '@mui/joy/FormControl';
 
+import Grow from '@mui/material/Grow';
+
 export function DetailedQuestionsPage(): JSX.Element {
     interface Responses {
         [key: number]: string
@@ -118,6 +120,7 @@ export function DetailedQuestionsPage(): JSX.Element {
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [responses, setResponses] = React.useState<Responses>({});
+    const [checked, setChecked] = React.useState(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value);
@@ -157,6 +160,7 @@ export function DetailedQuestionsPage(): JSX.Element {
     };
 
     const handleDisplayFinalResults = () => {
+        setChecked(true);
         setDisplayFinalResults(true);
         setDisplayFinishButton(false);
     }
@@ -167,6 +171,7 @@ export function DetailedQuestionsPage(): JSX.Element {
         setInputText(""); // Clear input text if any
         // Reset any other state variables as needed
         setResponses({});
+        setChecked(false);
     };
 
     const handleClearText = () => {
@@ -288,7 +293,10 @@ export function DetailedQuestionsPage(): JSX.Element {
                             </div>
                         )}
 
-                        {displayFinalResults && <div>Final Results!</div>}
+                        <Grow in={checked}
+                            {...(checked ? { timeout: 1500 } : {})}>
+                            <div>{displayFinalResults && <div>Final Results!</div>}</div>
+                        </Grow>
 
                         {displayFinalResults && (
                             <div style={{ paddingTop: '15.5rem', textAlign: 'center' }}> {/* Adjust paddingTop to lower the button */}
