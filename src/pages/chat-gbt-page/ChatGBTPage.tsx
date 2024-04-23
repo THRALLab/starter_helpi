@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { ChatCompletion } from "openai/resources";
-import { ChatCompletionStream } from "openai/lib/ChatCompletionStream";
+//import { ChatCompletionStream } from "openai/lib/ChatCompletionStream";
 import { useState } from "react"
 import { Button, Form } from "react-bootstrap";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
