@@ -119,7 +119,7 @@ const BasicPage = () => {
 			
 		</div>
 		<div style={{textAlign: "center"}}>
-			<Button size="lg" disabled={!allow} onClick={getResponses}>Answer</Button>
+			<Button size="lg" disabled={!allow} onClick={getResponses}>Get Answer</Button>
 			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
@@ -230,20 +230,20 @@ const BasicPage = () => {
 						name="question5"
 						onChange={() => updateChoice(9)}
 						checked={response[4] === 0}
+						style={{marginBottom:"30px"}}
+
 					/>
 			</Stack>
 			</span>				
-			<span className="QuestionNum">#6</span>
-					<div>
-						<Form.Check 
+			<span className="QuestionNum">#6</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}> 
+					<Form.Check 
 						type="radio"
 						id="q6-Option1"
 						label="I would work a job I dislike for the money."
 						name="question6"
 						onChange={() => updateChoice(10)}
-						checked={response[5] === 1}
-
-						/>
+						checked={response[5] === 1}/>
 					<Form.Check 
 						type="radio"
 						id="q6-Option2"
@@ -251,22 +251,18 @@ const BasicPage = () => {
 						name="question6"
 						onChange={() => updateChoice(11)}
 						checked={response[5] === 0}
-
-						/>
-
-					</div>
-			<span className="QuestionNum">#7</span>
-					<div>
-					<Form.Check 
+						style={{marginBottom:"30px"}}/>
+			</Stack>
+			</span>		
+			<span className="QuestionNum">#7</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Form.Check 
 						type="radio"
 						id="q7-Option1"
 						label="I want to make a difference in the world."
 						name="question7"
 						onChange={() => updateChoice(12)}
-						checked={response[6] === 1}
-		
-						>
-					</Form.Check>
+						checked={response[6] === 1}/>
 					<Form.Check 
 						type="radio"
 						id="q7-Option2"
@@ -274,22 +270,18 @@ const BasicPage = () => {
 						name="question7"
 						onChange={() => updateChoice(13)}
 						checked={response[6] === 0}
-
-
-						>
-					</Form.Check>
-					</div>
-			<span className="QuestionNum">#8</span>
-					<div>
-					<Form.Check 
+						style={{marginBottom:"30px"}}/>
+			</Stack>
+			</span>	
+			<span className="QuestionNum">#8</span> <span>
+			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Form.Check 
 						type="radio"
 						id="q8-Option1"
 						label="I love to travel."
 						name="question8"
 						onChange={() => updateChoice(14)}
-						checked={response[7] === 1}
-						>
-					</Form.Check>
+						checked={response[7] === 1}/>
 					<Form.Check 
 						type="radio"
 						id="q8-Option2"
@@ -297,10 +289,10 @@ const BasicPage = () => {
 						name="question8"
 						onChange={() => updateChoice(15)}
 						checked={response[7] === 0}
-						
-						>
-					</Form.Check>
-					</div>
+						style={{marginBottom:"30px"}}/>
+			</Stack>
+			</span>
+					
 		</div>
 		<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"30px", marginBottom: "30px"}}/>
 		</>
