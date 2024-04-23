@@ -19,7 +19,7 @@
     color: #000;
 }
 
-/*all navigation css */
+/*Navigation Bar Styling*/
 
 .navbar-container {
     display: flex;
@@ -50,21 +50,80 @@
     padding: 8px 12px;
     text-decoration: none;
     font-size: 16px;
+    transition: all 0.3s;
 }
 
 .navigation-list li button:hover {
-    background-color: #eee;
+    background-color: #ffffff;
 }
 
-.active button {
+.default button:hover { /*default button styling for nav bar*/
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    text-decoration: none;
+    transition: all 0.3s;
     font-weight: bold;
 }
 
+.active button {/*active button styling for nav bar*/
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
 
-/* all for the table on home page*/
+/*Home Page Styling*/
+
+h1 {
+	font-size: 350%;
+    text-align: center;
+	font-family: tahoma;
+    padding: 0px;
+	margin: 0;
+    color:#a9714d
+	
+}
+h2 {
+    margin: 0;
+    text-align: center;
+    color:#cf9c7c
+}
 .container {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+.container .box { /*Basic Quiz and Detailed Quit Boxes*/
+    background-color: white;
+    align-items: center;
+    border-radius: 20px;
+    width: 400px;
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 20px; 
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.container .box h2 {
+    margin: 0; 
+    font-size: 20px; 
+}
+
+.container .box p {
+    font-size: 16px;
+}
+
+.bigBox { /*everything on Home page*/
+    top: 65px;
+    position: relative;
+	margin: 10px;
+	padding: 10px;
+    border-radius: 20px;
 }
 
 .section {
@@ -80,7 +139,11 @@
     margin-top: 0;
 }
 
-
+.footer {
+    position: absolute;
+    bottom: 0px;
+    padding: 80px;
+}
 /* All for the buttons on home Page */
 
 .rounded-button {
@@ -92,6 +155,15 @@
     cursor: pointer;
 }
 
+.rounded-button:hover {
+    color: rgb(62, 124, 160);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 110%;
+    font-weight: bold;
+}
+
 .blue-gradient {
-    background: linear-gradient(to right, #ADD8E6, #ffffff); /* Adjust color codes as needed */
+    background: linear-gradient(to right, #82c0d5, #ffffff); /* Adjust color codes as needed */
 }
