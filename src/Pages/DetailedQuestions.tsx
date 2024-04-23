@@ -157,7 +157,6 @@ function DetailedQuestions() {
                   className="Button-back"
                   onClick={previousQuestion}
                   disabled={backButtonDisabled}
-                  style={{ marginRight: "20px" }}
                 >
                   Back
                 </Button>
@@ -165,17 +164,18 @@ function DetailedQuestions() {
                   <Button
                     className="Button-next"
                     onClick={() => nextQuestion()}
+                    style={{ marginLeft: "90px", marginRight: "30px" }}
                   >
                     Next
                   </Button>
                 </span>
                 <span className="Button-visible-false" id="reportButton">
-                  <p className="Button-report">
+                  <span className="Button-report">
                     <LinkButton
                       to="/detailedreport"
                       label="Report"
                     ></LinkButton>
-                  </p>
+                  </span>
                 </span>
               </span>
             </Col>
