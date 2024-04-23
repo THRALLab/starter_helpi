@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
-// MOVED THE IMPORT STATEMENTS TO HOME PAGE FILE
 import NavigationBar from "./components/homePageComp/navigation-bar/navigationBar";
 import DetailedQuestions from './pages/DetailedQuestions';
 import BasicQuestions from './pages/BasicQuestions';
@@ -58,7 +57,7 @@ function App() {
             <NavigationBar handlePage={setCurrPg}/>
             {updatePageState()}
             <div className = "footer">
-            <div style={{ textAlign: "center"}}>
+            <div>
                 <Form>
                     <Form.Label>API Key:</Form.Label>
                     <Form.Control
