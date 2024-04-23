@@ -8,12 +8,13 @@ export let bodyClassName = "body";
 export const DarkModeToggle = () => {
   //DarkMode States
   const [isDarkMode, setIsDarkMode] = useState<boolean>(darkModeState);
-  let oldClassName = "";
   //Dark Mode Control
   function updateDarkMode(event: React.ChangeEvent<HTMLInputElement>) {
     setIsDarkMode(event.target.checked);
+    let oldClassName = "";
     //Swaps the parent classname, see CSS file for what changes
     updateDarkModeState();
+    //Gets the bodyclassname and the next class name
     if (isDarkMode) {
       oldClassName = "body-dark";
       bodyClassName = "body";
@@ -21,6 +22,7 @@ export const DarkModeToggle = () => {
       oldClassName = "body";
       bodyClassName = "body-dark";
     }
+    //Gets the page, if page successfully gotten, swaps the class name
     let bigBody = document.getElementById("bigBody");
     if (bigBody != null) {
       bigBody.classList.remove(oldClassName);
@@ -35,6 +37,7 @@ export const DarkModeToggle = () => {
           type="switch"
           id="dark-mode-switch"
           label="Dark Mode"
+          role="switch"
           checked={isDarkMode}
           onChange={updateDarkMode}
         />
