@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from './FinalLogo.png'
 import '../Navbar/Navbar2.css'
-import AboutButton from '../AboutButton/AboutButton';
+import AboutButton from '../AboutButton/AboutButton'
 
 export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: string) => void }) {
 
@@ -22,13 +22,13 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="d-flex flex-grow-1 align-items-left">
             <Nav.Link onClick={() => handleNavClick("Home")}>
-              {(page === "Home" && (<div className='navbar-selected'>Home</div>)) || (page !== "Home" && (<text>Home</text>))}
+              {(page === "Home" && (<div className='navbar-selected'>Home</div>)) || (page !== "Home" && (<div>Home</div>))}
             </Nav.Link>
             <Nav.Link onClick={() => handleNavClick("Basic")}>
-              {(page === "Basic" && (<div className='navbar-selected'>Basic</div>)) || (page !== "Basic" && (<text>Basic</text>))}
+              {(page === "Basic" && (<div className='navbar-selected'>Basic</div>)) || (page !== "Basic" && (<div>Basic</div>))}
             </Nav.Link>
             <Nav.Link onClick={() => handleNavClick("Detailed")}>
-              {(page === "Detailed" && (<div className='navbar-selected'>Detailed</div>)) || (page !== "Detailed" && (<text>Detailed</text>))}
+              {(page === "Detailed" && (<div className='navbar-selected'>Detailed</div>)) || (page !== "Detailed" && (<div>Detailed</div>))}
             </Nav.Link>
           </Nav>
           <div className='ms-auto algin-items'>
