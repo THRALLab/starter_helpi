@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
-import Form from 'react-bootstrap/Form';
 import './BasicPage.css'
 import RangeSlider from "./Rangeslider";
 
