@@ -1,12 +1,13 @@
 .body {
-  --color-body-background: #6E0BD0;
-  --color-body-text: #EEFF00;
-  --color-body-Headerbackground: #173848;
-  --color-body-Headertext: #EEFF00;
-  --color-body-Button: #1F0665;
-  --color-body-ButtonDisabled: #1F0665;
-  --color-body-ButtonHover: #300A99;
+  --color-body-background: #EEB3F9;
+  --color-body-text: #000000;
+  --color-body-Headerbackground: #5261ab;
+  --color-body-Headertext: #000000;
+  --color-body-Button: #00B3FF;
+  --color-body-ButtonDisabled: #00B3FF;
+  --color-body-ButtonHover: #52CBFF;
   --color-body-ButtonBorder: #000000;
+  --color-body-questionText: #FFFFFF;
 }
 
 .body-dark {
