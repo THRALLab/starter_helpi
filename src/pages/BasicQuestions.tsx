@@ -289,6 +289,9 @@ const BasicQuestions: React.FC<BasicProp> = () => {
                     </div>
                 </>
             )}
+            <div id="progressBar">
+                <div id="myBar"></div>
+            </div>
         </div>
     );
 };
