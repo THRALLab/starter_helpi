@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 
 const saveInfo = "BasicUserInputQ6";
 
@@ -13,9 +13,9 @@ const seasons = [
 export function Q6():JSX.Element {
     const [selectSeason, setSelectSeason] = useState<string | null>(null);
 
-    function saveData() {
+    useEffect(() => {
         localStorage.setItem(saveInfo, JSON.stringify(selectSeason));
-    }
+      }, [selectSeason]);
 
     return (
         <div>
@@ -29,7 +29,6 @@ export function Q6():JSX.Element {
                     onChange={() => setSelectSeason(season)}
                 />
             ))}
-            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

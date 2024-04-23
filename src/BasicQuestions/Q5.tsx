@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 
 const saveInfo = "BasicUserInputQ5";
 
@@ -10,9 +10,9 @@ export function Q5():JSX.Element {
         setData(event.target.value);
     }
 
-    function saveData() {
+    useEffect(() => {
         localStorage.setItem(saveInfo, JSON.stringify(data));
-    }
+      }, [data]);
 
     return (
         <div>
@@ -33,7 +33,6 @@ export function Q5():JSX.Element {
                     <option value="health">Health</option>
                 </Form.Select>
             </Form.Group>
-            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

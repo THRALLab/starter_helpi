@@ -86,3 +86,7 @@
     transform: rotate(360deg);
   }
 }
+
+Footer {
+  background-color: burlywood;
+}

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 
 const saveInfo = "DetailUserInputQ3";
 
@@ -13,9 +13,9 @@ const places = [
 
 export function Q3():JSX.Element {
     const [selectPlace, setSelectPlace] = useState<string | null>(null);
-    function saveData() {
+    useEffect(() => {
         localStorage.setItem(saveInfo, JSON.stringify(selectPlace));
-    }
+      }, [selectPlace]);
     return (
         <div>
             Which of the following work environments would you thrive in the most?
@@ -28,7 +28,6 @@ export function Q3():JSX.Element {
                     onChange={() => setSelectPlace(place)}
                 />
             ))}
-            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

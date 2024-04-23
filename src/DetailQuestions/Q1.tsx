@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 
 const reasons = [
     "Salary",
@@ -17,10 +17,10 @@ export function Q1():JSX.Element {
     function updateUserInfo(event: React.ChangeEvent<HTMLInputElement>) {
         setUserInfo(event.target.value);
     }
-    function saveData() {
+    useEffect(() => {
         localStorage.setItem(saveInfoS, JSON.stringify(selectReason));
         localStorage.setItem(saveInfoT, JSON.stringify(userInfo));
-    }
+      }, [selectReason, userInfo]);
 
     return (
         <div>
@@ -41,7 +41,6 @@ export function Q1():JSX.Element {
                         value={userInfo}
                         onChange={updateUserInfo}
                     />
-            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

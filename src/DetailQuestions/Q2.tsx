@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 
 const saveInfo = "DetailUserInputQ2";
 
@@ -8,9 +8,9 @@ export function Q2():JSX.Element {
     function updateUserInfo(event: React.ChangeEvent<HTMLTextAreaElement>) {
         setUserInfo(event.target.value);
     }
-    function saveData() {
+    useEffect(() => {
         localStorage.setItem(saveInfo, JSON.stringify(userInfo));
-    }
+      }, [userInfo]);
     return (
         <div>
             <Form.Group controlId="work-schedule">
@@ -21,7 +21,6 @@ export function Q2():JSX.Element {
             value={userInfo}
             onChange={updateUserInfo} />
             </Form.Group>
-            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }

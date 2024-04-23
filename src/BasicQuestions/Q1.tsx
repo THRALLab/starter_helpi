@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Form } from "react-bootstrap";
 
 const saveInfo = "BasicUserInputQ1";
 
@@ -10,9 +10,9 @@ export function Q1():JSX.Element {
         setData(event.target.value);
     }
 
-    function saveData() {
+    useEffect(() => {
         localStorage.setItem(saveInfo, JSON.stringify(data));
-    }
+      }, [data]);
 
     return (
         <div>
@@ -25,7 +25,6 @@ export function Q1():JSX.Element {
                     onChange={updateData}
                     />
             </Form.Group>
-            <Button onClick={saveData}>Save</Button>
         </div>
     );
 }
