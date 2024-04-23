@@ -66,7 +66,9 @@ import './homePage.css';
         <>
         <div className="splash-container">
             <img src={splash} alt="infograph" className="splashPage"></img>
-            <div>Choose the quiz that's right for you!</div>
+            <div className="one">Struggling to find your way?</div>
+            <div className="two">Looking for answers and coming up short?</div>
+            <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
         </div>
         <div className="quiz-desc-container">
             <div className="quiz-desc">
@@ -78,7 +80,7 @@ import './homePage.css';
             <div className="quiz-desc">
                 <a href="./DetailedPage">
                     <h3>Detailed Quiz</h3>
-                    <p></p>
+                    <p>Lorem ipsum latin schpeel. Words and sentences and a few more words. That'll do.</p>
                 </a>
             </div>
         </div>

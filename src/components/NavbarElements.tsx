@@ -12,7 +12,7 @@ export const Nav = styled.nav`
     align-items: center;
     position: sticky;
     top: 0px;
-    border-bottom: solid 2px grey;
+    border-bottom: solid 1px grey;
 `;
  
 export const NavLink = styled(Link)`

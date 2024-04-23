@@ -9,14 +9,27 @@
     color: white;
 }
 
-.splash-container div {
-    top: 50%;
-    left: 50%;
+
+.splash-container div{
     position: absolute;
+    left: 50%;
     transform: translate(-50%, -50%);
     font-size: 36px;
     font-weight: bold;
-    font-family: "Ivar Headline"
+    font-family: "Ivar Headline";
+    text-shadow: 5px 5px #558ABB;
+}
+
+.splash-container div.one {
+    top: 20%;
+}
+
+.splash-container div.two {
+    top: 40%;
+}
+
+.splash-container div.three {
+    top: 65%;
 }
 
 div .quiz-desc-container {
@@ -38,8 +51,10 @@ div .quiz-desc-container {
     overflow: overlay;
    
     &:hover {
-        background-color: #e8ebed;
+        /* background-color: #e8ebed; */
         margin-top: -9px;
+        color: white;
+        background-color: rgb(51, 120, 238);
     }
     cursor: pointer;
 }
@@ -56,4 +71,8 @@ div .quiz-desc-container {
 .quiz-desc a {
     color:black;
     text-decoration: none;
+    transition: color 0.75s ease;
+    &:hover {
+        color: white;
+    }
 }
