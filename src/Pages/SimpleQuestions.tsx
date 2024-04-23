@@ -42,27 +42,36 @@ function SimpleQuestions() {
   const [questionBody, setQuestionBody] = useState("Question...");
   const [option1, setOption1] = useState("Option 1...");
   const [option2, setOption2] = useState("Option 2...");
-  const [color, setColor] = useState("");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
-
-  const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
+  const [color, setColor] = useState("");
 
   useEffect(() => {
-    loadQuestions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const colors = [
+      "red",
+      "orange",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+      "brown",
+    ];
+    setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
-  const loadQuestions = () => {
-    const parsedData = JSON.parse(JSON.stringify(jsonData));
-    const simpleQuestions: SimpleQuestion[] = parsedData.SIMPLE_QUESTIONS;
-    setQuestions(simpleQuestions);
-    setNumberOfQuestions(simpleQuestions.length);
-    setQuestionNumber(questionNumber);
-    setColor(colors[Math.floor(Math.random() * colors.length)]);
-    setQuestionBody(simpleQuestions[questionNumber].question);
-    setOption1(simpleQuestions[questionNumber].option1);
-    setOption2(simpleQuestions[questionNumber].option2);
-  };
+  useEffect(() => {
+    const loadQuestions = () => {
+      const parsedData = JSON.parse(JSON.stringify(jsonData));
+      const simpleQuestions: SimpleQuestion[] = parsedData.SIMPLE_QUESTIONS;
+      setQuestions(simpleQuestions);
+      setNumberOfQuestions(simpleQuestions.length);
+      setQuestionNumber(questionNumber);
+      setQuestionBody(simpleQuestions[questionNumber].question);
+      setOption1(simpleQuestions[questionNumber].option1);
+      setOption2(simpleQuestions[questionNumber].option2);
+    };
+
+    loadQuestions();
+  }, [questionNumber]);
 
   const nextQuestion = (selectedOption: string) => {
     setCurrentQuestionNumber(currentQuestionNumber + 1);

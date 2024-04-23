@@ -38,23 +38,34 @@ function DetailedQuestions() {
   const [numberOfQuestions] = useState(30);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [questionBody, setQuestionBody] = useState("Question...");
-  const [color, setColor] = useState("");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
-
-  const colors = ["red", "orange", "green", "blue", "purple", "pink", "brown"];
+  const [color, setColor] = useState("");
 
   useEffect(() => {
-    loadQuestions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const colors = [
+      "red",
+      "orange",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+      "brown",
+    ];
+    setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
-  const loadQuestions = () => {
-    const parsedData = JSON.parse(JSON.stringify(jsonData));
-    const detailedQuestions: DetailedQuestion[] = parsedData.DETAILED_QUESTIONS;
-    setQuestions(detailedQuestions);
-    setColor(colors[Math.floor(Math.random() * colors.length)]);
-    setQuestionBody(detailedQuestions[questionNumber].question);
-  };
+  useEffect(() => {
+    const loadQuestions = () => {
+      const parsedData = JSON.parse(JSON.stringify(jsonData));
+      const detailedQuestions: DetailedQuestion[] =
+        parsedData.DETAILED_QUESTIONS;
+      setQuestions(detailedQuestions);
+      if (detailedQuestions[questionNumber] !== undefined) {
+        setQuestionBody(detailedQuestions[questionNumber].question);
+      }
+    };
+    loadQuestions();
+  }, [questionNumber]);
 
   const nextQuestion = () => {
     let tempSliderValues = [...sliderValues];
@@ -157,7 +168,6 @@ function DetailedQuestions() {
                   className="Button-back"
                   onClick={previousQuestion}
                   disabled={backButtonDisabled}
-                  style={{ marginRight: "20px" }}
                 >
                   Back
                 </Button>
@@ -165,17 +175,18 @@ function DetailedQuestions() {
                   <Button
                     className="Button-next"
                     onClick={() => nextQuestion()}
+                    style={{ marginLeft: "90px", marginRight: "30px" }}
                   >
                     Next
                   </Button>
                 </span>
                 <span className="Button-visible-false" id="reportButton">
-                  <p className="Button-report">
+                  <span className="Button-report">
                     <LinkButton
                       to="/detailedreport"
                       label="Report"
                     ></LinkButton>
-                  </p>
+                  </span>
                 </span>
               </span>
             </Col>

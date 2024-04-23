@@ -1,11 +1,11 @@
 .Simple-body {
-  min-height: 90vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   text-align: center;
-  font-size: calc(5px + 2vmin);
-  position: relative;
+  min-height: 90vh;
   padding-top: 3vh;
+  font-size: calc(5px + 2vmin);
   background-color: var(--color-body-background);
   color: var(--color-body-text);
 }
@@ -16,9 +16,9 @@
 }
 
 .Simple-progress-outer {
-  padding: 10px;
   position: relative;
   display: flex;
+  padding: 10px;
 }
 
 .Simple-progress-inner {
@@ -40,9 +40,9 @@
 
 .Simple-buttons {
   position: relative;
-  padding: 10px;
   display: flex;
   justify-content: center;
+  padding: 10px;
 }
 
 .Simple-option-1 {
