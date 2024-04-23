@@ -8,12 +8,13 @@ import RangeSlider from "./Rangeslider";
 
 
 export function BasicPage() {
-
-    const [, setRangeSliderValue] = useState("3")
-  
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setRangeSliderValue(event.target.value)
+    interface QuestionAnswer{
+        question:string;
+        answer: string;
     }
+
+    const [rangeSlider, setRangeSliderValue] = useState("3");
+  
 
     const questions: string[] = 
     [
@@ -25,6 +26,18 @@ export function BasicPage() {
     "6. I prefer a job that allows for a flexible schedule and the possibility of remote work:",
     "7. I am more creative than analytical:"
     ]
+
+
+    const [responses, setResponses] = useState<QuestionAnswer[]>(questions.map(question => ({question, answer: rangeSlider})));
+
+    const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>, question: string, newValue: string) => {
+        setResponses(responses.map(resp =>
+          resp.question === question ? { ...resp, answer: newValue } : resp
+        ));
+        setRangeSliderValue(event.target.value)
+        console.log(responses);
+      };
+
     let eventKey = 0;
     return (
         <div className='basic-page-container'>
@@ -35,7 +48,7 @@ export function BasicPage() {
                         <Accordion.Item key={eventKey} eventKey={(eventKey++).toString()} className="item">
                             <Accordion.Header className='header'>{question}</Accordion.Header>
                             <Accordion.Body className='body'>
-                                <RangeSlider handleChange={handleChange}/>
+                                <RangeSlider question={question} handleSliderChange={handleSliderChange} />
                             </Accordion.Body>
                         </Accordion.Item>
                     )
