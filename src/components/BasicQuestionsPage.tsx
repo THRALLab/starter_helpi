@@ -8,9 +8,13 @@ import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
-
+import FormControl from '@mui/joy/FormControl';
 
 export function BasicQuestionsPage(): JSX.Element {
+    interface Responses {
+        [key: number]: string
+    }
+
     const StyledButton = styled(Button)`
     ${({ theme }) => `
     cursor: pointer;
@@ -27,23 +31,23 @@ export function BasicQuestionsPage(): JSX.Element {
   `;
 
   const StyledButton2 = styled(Button)`
-  ${({ theme }) => `
-  cursor: pointer;
-  background-color: #51bc51;
-  color: #FFF;
-  transition: ${theme.transitions.create(['background-color', 'transform'], {
-    duration: theme.transitions.duration.standard,
-  })};
-  &:hover {
-    background-color: #1f7a1f;
-    transform: scale(1.3);
-  }
-  `}
-`;
+    ${({ theme }) => `
+    cursor: pointer;
+    background-color: #51bc51;
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #1f7a1f;
+      transform: scale(1.3);
+    }
+    `}
+  `;
 
     const questions = [
 		{
-			questionText: 'Question 1',
+			id: 1,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -52,7 +56,7 @@ export function BasicQuestionsPage(): JSX.Element {
 			],
 		},
 		{
-			questionText: 'Question 2',
+			id: 2,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -61,7 +65,7 @@ export function BasicQuestionsPage(): JSX.Element {
 			],
 		},
 		{
-			questionText: 'Question 3',
+			id: 3,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -70,7 +74,7 @@ export function BasicQuestionsPage(): JSX.Element {
 			],
 		},
 		{
-			questionText: 'Question 4',
+			id: 4,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -79,7 +83,7 @@ export function BasicQuestionsPage(): JSX.Element {
 			],
 		},
         {
-			questionText: 'Question 5',
+			id: 5,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -88,7 +92,7 @@ export function BasicQuestionsPage(): JSX.Element {
 			],
 		},
         {
-			questionText: 'Question 6',
+			id: 6,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -97,7 +101,7 @@ export function BasicQuestionsPage(): JSX.Element {
 			],
 		},
         {
-			questionText: 'Question 7',
+			id: 7,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -109,26 +113,38 @@ export function BasicQuestionsPage(): JSX.Element {
 
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
-    const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
+    const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
-
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
+    const [responses, setResponses] = React.useState<Responses>({});
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputText(e.target.value);
+      const { value } = e.target;
+      setResponses({ ...responses, [questions[currentQuestion].id]: value });
+    };
+      
+    const handlePreviousAnswerDisplay = () => {
+        setInputText(responses[questions[currentQuestion].id])
+    }
 
     const handleCurrentQuestion = () => {
+        setInputText("");
         const currentQuestionIndex = currentQuestion + 1;
-        
-        if (currentQuestionIndex < questions.length) {
-            setCurrentQuestion(currentQuestionIndex)
-        }
 
-        if (currentQuestionIndex === questions.length - 1) {
-            setDisplayFinishButton(true);
-        }
+            if (currentQuestionIndex < questions.length) {
+                setCurrentQuestion(currentQuestionIndex)
+            }
+    
+            if (currentQuestionIndex === questions.length - 1) {
+                setDisplayFinishButton(true);
+            }
     
     }
-    
+
     const handlePreviousQuestion = () => {
+        setInputText("");
         const previousQuestionIndex = currentQuestion - 1;
     
         if (previousQuestionIndex >= 0) {
@@ -139,18 +155,6 @@ export function BasicQuestionsPage(): JSX.Element {
             setDisplayFinishButton(false);
         }
     };
-
-    const handleGoToHomePage = () => {
-        setGoToHomePage(true);
-    };
-
-    const handleClearText = () => {
-        setInputText("");
-    };
-
-    if (goToHomePage) {
-        return <Navigate to="/" />;
-    }
 
     const handleDisplayFinalResults = () => {
         setDisplayFinalResults(true);
@@ -163,11 +167,22 @@ export function BasicQuestionsPage(): JSX.Element {
         setInputText(""); // Clear input text if any
         // Reset any other state variables as needed
     };
-   
-    //const [goToHomePage, setGoToHomePage] = React.useState(false);
 
-    if (goToDetailedQuestionsPage) {
-        return <Navigate to="/DetailedQuestionsPage"/>
+    const handleClearText = () => {
+        setInputText("");
+        setResponses({...responses, [questions[currentQuestion].id]: ""})
+    };
+
+    const handleGoToHomePage = () => {
+        setGoToHomePage(true);
+    };
+
+    if (goToHomePage) {
+        return <Navigate to="/" />;
+    }
+
+    if (goToBasicQuestionsPage) {
+        return <Navigate to="/BasicQuestionsPage"/>
     }
 
     return (
@@ -179,7 +194,7 @@ export function BasicQuestionsPage(): JSX.Element {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                 <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
-                <Nav.Link onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Nav.Link>
+                <Nav.Link onClick={() => {setGoToBasicQuestionsPage(true)}}>Detailed Questions Page</Nav.Link>
                      <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -207,6 +222,7 @@ export function BasicQuestionsPage(): JSX.Element {
                 height: '40vh', // Adjust this value according to your layout
                 padding: '30vh'
             }}>
+                
                 <Card variant="plain" sx={{ width: 1000, height: 400}}// Adjust this value according to your layout
                 >
                     <CardContent>
@@ -224,7 +240,7 @@ export function BasicQuestionsPage(): JSX.Element {
                             >
                         </ProgressBar>}
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
-                        <p>{questions[currentQuestion].questionText}</p>
+                        <p>{questions[currentQuestion].id}</p>
                         <div style={{paddingBottom: '1vh', display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center'}}>
@@ -233,6 +249,7 @@ export function BasicQuestionsPage(): JSX.Element {
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                         />*/}
+                            <FormControl>
                             <Input sx={{width: '500px', height: '75px', display: 'flex',
                                     justifyContent: 'center',
 
@@ -247,16 +264,21 @@ export function BasicQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                    required
-                                    onChange={(e) => {
-                                    setInputText(e.target.value);
+                                    onClick={handlePreviousAnswerDisplay}
+                                    onChange={handleInputChange}
+                                    />
                                     
-                        }} />
+                                </FormControl>
+                                {/*<p>{questions[currentQuestion].id}</p>
+                                <p>:</p>
+                                <p>{responses[questions[currentQuestion].id]}</p>*/}
+                                {/*<p>{inputText}</p>*/}
+                                
                         </div>
                         <div style={{paddingTop: '1vh'}}><StyledButton onClick={handleClearText}>Reset</StyledButton></div>
                         
                         </div>}
-                        
+
                         {/* Next and Previous buttons */}
                         {!displayFinishButton && !displayFinalResults && (
                             <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
@@ -269,10 +291,10 @@ export function BasicQuestionsPage(): JSX.Element {
 
                         {displayFinalResults && (
                             <div style={{ paddingTop: '15.5rem', textAlign: 'center' }}> {/* Adjust paddingTop to lower the button */}
-                            <StyledButton onClick={handleRetakeTest}
-                            style={{ marginBottom: '15.5rem' }} // Adjust marginBottom to lower the button
+                            <div style={{ marginBottom: '15vh' }}><StyledButton onClick={handleRetakeTest}
+                             // Adjust marginBottom to lower the button
                             >Retake Test
-                            </StyledButton>
+                            </StyledButton></div>
                             </div>
                         )}
 
@@ -283,6 +305,7 @@ export function BasicQuestionsPage(): JSX.Element {
                             <StyledButton2 color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</StyledButton2>
                             </div>
                         )}
+
                         <p></p>
                         </Typography>
                     </CardContent>
