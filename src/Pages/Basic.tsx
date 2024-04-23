@@ -15,12 +15,12 @@ interface QuestionOption {
     options: string[];
 }
 
-const Basic: React.FC<BasicProp> = ({ handlePage }) => {
+const Basic: React.FC<BasicProp> = ({ handlePage }) => { /* Handes page changes */
     const handleOptionClick = (option: string) => {
         console.log(option);
     };
 
-    const questions: QuestionOption[] = [
+    const questions: QuestionOption[] = [ /* Questions and Options for basic page */
         {
             question: "How much do you prefer working independently over working collaboratively?",
             options: ["Not at All", "Neutral", "Very much"]
@@ -47,33 +47,42 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
         },
         {
             question: "Do you prefer an office environment or an environment that is frequently changing?",
-            options: ["Office", "Neutral", "Changing Environment"] // Corrected options split
+            options: ["Office", "Neutral", "Changing Environment"]
         }
     ];
 
     return (
         <div>
-        <header className="header">
+        <header className="header" /* Top of page */> 
         <div className="title-container">
-        <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')}/>
+        <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} /* Brain icon (Can switch to home page on click) */ />
         <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
-            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
+            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
         </div>
         </header>
-        <div className="column">
+        <div className="column" /* Box that contains all the questions */>
             {questions.map((q, x) => (
                 <div key={x}>
-                    <h3>{q.question}</h3>
+                    <h3 className="question">{q.question}</h3>
                     <div className="questionContainer">
-                        {q.options.filter(option => option !== "").map((option, i) => (
-                            <Button className="button-questions" key={i} onClick={() => handleOptionClick(option)}>{option}</Button>
-                        ))}
-                    </div>
-                </div>
-            ))}
+    {q.options.filter(option => option !== "").map((option, i) => ( /* Filters empty strings and maps buttons */
+        <div key={i} className="option">
+            <label>{option}</label>
+            <input
+                type="radio" /* Radio buttons */
+                name={`question_${x}`}
+                value={option}
+                onClick={() => handleOptionClick(option)}
+            />
         </div>
+    ))}
+</div>
+            </div>
+        ))}
     </div>
-    )
+    <footer className="footer-space" /* Leaves empty space in footer */ ></footer>
+</div>
+)
 }
 
 export default Basic;
