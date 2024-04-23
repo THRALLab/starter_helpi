@@ -49,7 +49,7 @@ function DetailedReport() {
     "I have rated these questions from 0 to 100 (100 being I strongly agree and 0 being strongly disagree)" +
     joinQuestionsToAnswers();
 
-    const exampleFormat = "(no beginning sentence, just get right into the report, but include the '@' symbol) @Sample Career: 2-3 sentences of why this is a good fit @Another Sample Career: 2-3 sentences of why this is a good fit @Final Sample Career: 2-3 sentences of why this is a good fit"
+    const exampleFormat = "(no beginning sentence, just get right into the report, but include the '@' symbol) Sample Career: 2-3 sentences of why this is a good fit@Another Sample Career: 2-3 sentences of why this is a good fit@Final Sample Career: 2-3 sentences of why this is a good fit"
 
   const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
   //Queries ChatGPT to generate report
@@ -113,9 +113,9 @@ function DetailedReport() {
         {!loading && <div className="Report-results">
           Based on your results:
           <ol>
+            <li>{careerList[0]}</li>
             <li>{careerList[1]}</li>
             <li>{careerList[2]}</li>
-            <li>{careerList[3]}</li>
           </ol>  
         </div>}
       </div>
