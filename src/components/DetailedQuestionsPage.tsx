@@ -8,10 +8,12 @@ import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
-
+import FormControl from '@mui/joy/FormControl';
 
 export function DetailedQuestionsPage(): JSX.Element {
-  
+    interface Responses {
+        [key: number]: string
+    }
 
     const StyledButton = styled(Button)`
     ${({ theme }) => `
@@ -45,7 +47,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 
     const questions = [
 		{
-			questionText: 'Question 1',
+			id: 1,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -54,7 +56,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 			],
 		},
 		{
-			questionText: 'Question 2',
+			id: 2,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -63,7 +65,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 			],
 		},
 		{
-			questionText: 'Question 3',
+			id: 3,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -72,7 +74,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 			],
 		},
 		{
-			questionText: 'Question 4',
+			id: 4,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -81,7 +83,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 			],
 		},
         {
-			questionText: 'Question 5',
+			id: 5,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -90,7 +92,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 			],
 		},
         {
-			questionText: 'Question 6',
+			id: 6,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -99,7 +101,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 			],
 		},
         {
-			questionText: 'Question 7',
+			id: 7,
 			answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
@@ -114,11 +116,21 @@ export function DetailedQuestionsPage(): JSX.Element {
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
+        const [currentQuestion, setCurrentQuestion] = React.useState(0);
+        const [responses, setResponses] = React.useState<Responses>({});
 
-
-    const [currentQuestion, setCurrentQuestion] = React.useState(0);
+        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+          setInputText(e.target.value);
+          const { value } = e.target;
+          setResponses({ ...responses, [questions[currentQuestion].id]: value });
+        };
+      
+    const handlePreviousAnswerDisplay = () => {
+        setInputText(responses[questions[currentQuestion].id])
+    }
 
     const handleCurrentQuestion = () => {
+        setInputText("");
         const currentQuestionIndex = currentQuestion + 1;
 
             if (currentQuestionIndex < questions.length) {
@@ -132,6 +144,7 @@ export function DetailedQuestionsPage(): JSX.Element {
     }
 
     const handlePreviousQuestion = () => {
+        setInputText("");
         const previousQuestionIndex = currentQuestion - 1;
     
         if (previousQuestionIndex >= 0) {
@@ -157,8 +170,8 @@ export function DetailedQuestionsPage(): JSX.Element {
 
     const handleClearText = () => {
         setInputText("");
+        setResponses({...responses, [questions[currentQuestion].id]: ""})
     };
-
 
     const handleGoToHomePage = () => {
         setGoToHomePage(true);
@@ -227,7 +240,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                             >
                         </ProgressBar>}
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
-                        <p>{questions[currentQuestion].questionText}</p>
+                        <p>{questions[currentQuestion].id}</p>
                         <div style={{paddingBottom: '1vh', display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center'}}>
@@ -236,6 +249,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                         />*/}
+                            <FormControl>
                             <Input sx={{width: '500px', height: '75px', display: 'flex',
                                     justifyContent: 'center',
 
@@ -250,11 +264,16 @@ export function DetailedQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                    required
-                                    onChange={(e) => {
-                                    setInputText(e.target.value);
+                                    onClick={handlePreviousAnswerDisplay}
+                                    onChange={handleInputChange}
+                                    />
                                     
-                        }} />
+                                </FormControl>
+                                {/*<p>{questions[currentQuestion].id}</p>
+                                <p>:</p>
+                                <p>{responses[questions[currentQuestion].id]}</p>*/}
+                                {/*<p>{inputText}</p>*/}
+                                
                         </div>
                         <div style={{paddingTop: '1vh'}}><StyledButton onClick={handleClearText}>Reset</StyledButton></div>
                         
