@@ -54,11 +54,11 @@ function App() {
                 color: "#fff"
             }}
         >
-            {/* Buttons to switch states*/}
+            {/* Navigation Bar*/}
             <NavigationBar handlePage={setCurrPg}/>
             {updatePageState()}
-
-            <div style={{ textAlign: "center" }}>
+            <div className = "footer">
+            <div style={{ textAlign: "center"}}>
                 <Form>
                     <Form.Label>API Key:</Form.Label>
                     <Form.Control
@@ -71,6 +71,7 @@ function App() {
                         Submit
                     </Button>
                 </Form>
+            </div>
             </div>
             <Canvas />
         </div>
