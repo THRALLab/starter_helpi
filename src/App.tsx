@@ -32,7 +32,7 @@ function App() {
     function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
         setKey(event.target.value);
     }
-
+    // changes pages
     const updatePageState = () => {
         switch (currPg) {
             case 'Basic':
