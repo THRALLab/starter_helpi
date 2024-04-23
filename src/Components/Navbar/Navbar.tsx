@@ -1,27 +1,15 @@
 import Container from 'react-bootstrap/Container';
-import React, { useState } from 'react';
+import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from './FinalLogo.png'
 import '../Navbar/Navbar2.css'
-import { GoArrowLeft } from "react-icons/go";
-import Button from 'react-bootstrap/Button';
+import AboutButton from '../AboutButton/AboutButton';
 
 export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: string) => void }) {
-  const [previousPage, setPreviousPage] = useState<string>("Home");
 
   const handleNavClick = (newPage: string) => {
-    if (newPage === page) {
-      setPage(newPage);
-    }
-    else {
-      setPreviousPage(page);
-      setPage(newPage);
-    }
-  }
-
-  const handleBackButtonClick = () => {
-    setPage(previousPage);
+    setPage(newPage);
   }
 
   return (
@@ -32,7 +20,7 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav'/>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="d-flex flex-grow-1 align-items-center justify-content-center">
+          <Nav className="d-flex flex-grow-1 align-items-left">
             <Nav.Link onClick={() => handleNavClick("Home")}>
               {(page === "Home" && (<div className='navbar-selected'>Home</div>)) || (page !== "Home" && (<text>Home</text>))}
             </Nav.Link>
@@ -43,19 +31,8 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
               {(page === "Detailed" && (<div className='navbar-selected'>Detailed</div>)) || (page !== "Detailed" && (<text>Detailed</text>))}
             </Nav.Link>
           </Nav>
-          <div className='ms-auto'>
-            {(page !== previousPage) && (
-              <Button onClick={handleBackButtonClick} className='d-flex align-items-center navbar-back' style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
-                <GoArrowLeft style={{ marginRight: '2px' }} />
-                <Nav.Link >Back</Nav.Link>
-              </Button>
-            )}
-            {(page === previousPage) && (
-              <Button onClick={handleBackButtonClick} className='disabled d-flex align-items-center navbar-back' style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
-                <GoArrowLeft style={{ marginRight: '2px' }} />
-                <Nav.Link >Back</Nav.Link>
-              </Button>
-            )}
+          <div className='ms-auto algin-items'>
+            <AboutButton page={page} setPage={setPage}></AboutButton>
           </div>
         </Navbar.Collapse>
       </Container>
