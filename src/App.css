@@ -19,7 +19,7 @@
     color: #000;
 }
 
-/*all navigation css */
+/*Navigation Bar Styling*/
 
 .navbar-container {
     display: flex;
@@ -57,7 +57,7 @@
     background-color: #ffffff;
 }
 
-.default button:hover {
+.default button:hover { /*default button styling for nav bar*/
     color: white;
     cursor: pointer;
     padding: 8px 12px;
@@ -66,7 +66,7 @@
     font-weight: bold;
 }
 
-.active button {
+.active button {/*active button styling for nav bar*/
     border: none;
     color: white;
     cursor: pointer;
@@ -75,11 +75,49 @@
     text-decoration: none;
 }
 
-/* all for the table on home page*/
+/*Home Page Styling*/
+h1 {
+	font-size: 350%;
+    text-align: center;
+	font-family: tahoma;
+    padding: 0px;
+	margin: 0;
+    color:#a9714d
+	
+}
+h2 {
+    margin: 0;
+    text-align: center;
+    color:#cf9c7c
+}
 .container {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
+.container .box {
+    background-color: white;
+    align-items: center;
+    border-radius: 20px;
+    width: 400px;
+    height: 200px;
+    border: 1px solid #ccc; /* Border for each box */
+    padding: 20px; /* Padding inside the boxes */
+    margin: 10px; /* Space between the boxes */
+    text-align: center; /* Centers text horizontally */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+.container .box h2 {
+    margin: 0; /* Removes default margin */
+    font-size: 20px; /* Font size for the header */
+}
+
+.container .box p {
+    font-size: 16px; /* Font size for the paragraph */
+}
+
+
 
 .section {
     margin: 0 20px;
@@ -106,6 +144,15 @@
     cursor: pointer;
 }
 
+.rounded-button:hover {
+    color: rgb(62, 124, 160);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 110%;
+    font-weight: bold;
+}
+
 .blue-gradient {
-    background: linear-gradient(to right, #ADD8E6, #ffffff); /* Adjust color codes as needed */
+    background: linear-gradient(to right, #82c0d5, #ffffff); /* Adjust color codes as needed */
 }
