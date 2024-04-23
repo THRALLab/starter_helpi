@@ -74,16 +74,16 @@ export function McSingleResponse({
             <Form>
                 <div>
                     {options.map((choice) => (
-                            <ToggleButton
-                                key={`${choice}Select`}
-                                type="radio"
-                                id={choice}
-                                value={choice}
-                                checked={localAnswer === choice}
-                                variant={localAnswer === choice ? "primary" : "outline-secondary"}
-                                onChange={() => setLocalAnswer(choice)}
-                                    > {choice}
-                                </ToggleButton>
+                        <ToggleButton
+                            key={`${choice}Select`}
+                            type="radio"
+                            id={choice}
+                            value={choice}
+                            checked={localAnswer === choice}
+                            variant={localAnswer === choice ? "primary" : "outline-secondary"}
+                            onChange={() => setLocalAnswer(choice)}
+                                > {choice}
+                        </ToggleButton>
                     ))}
                 </div>
                 <Button
