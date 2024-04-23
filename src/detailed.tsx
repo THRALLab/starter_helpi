@@ -3,7 +3,6 @@ import "./detailed.css";
 import questions from "./detailedQuestions.json";
 import Modal from "./Modal";
 import Confetti from "react-confetti";
-import useChatGPT from "./hooks/useChatGPT";
 
 // TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 // TODO - [x] add confetti effect when the user clicks the 'submit responses' button
@@ -111,8 +110,6 @@ function Detailed() {
 			);
 		}
 	}, [answeredQuestions]);
-
-	const { checkConnection } = useChatGPT();
 
 	return (
 		<>
