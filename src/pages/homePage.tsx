@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import splash from "../images/businessman.png"
-import filler from "../images/career-plan.png"
+import pie from "../images/piechart.png"
 import './homePage.css';
 //import OpenAI from "openai";
 
@@ -70,7 +70,9 @@ import './homePage.css';
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
+            <Button>Find your quiz!</Button>
         </div>
+        <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
             <div className="quiz-desc">
                 <a href="./BasicPage">
@@ -90,7 +92,8 @@ import './homePage.css';
                 <p>Career quizzes are proven to help the masses achieve thier goals and secure professional success. Money can buy happiness, but only purpose can bring fulfillment.</p>
             </div>
             <div className="quiz-data-graph">
-                <img src={filler} alt="graph"></img>
+                <img src={pie} alt="graph"></img>
+                <p>Satisfaction rates from other users!</p>
             </div>
         </div>
         <Form>

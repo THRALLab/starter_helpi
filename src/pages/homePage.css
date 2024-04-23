@@ -9,12 +9,11 @@
     color: white;
 }
 
-
 .splash-container div{
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 36px;
+    font-size: 3.2vw;
     font-weight: bold;
     font-family: "Ivar Headline";
     text-shadow: 5px 5px #558ABB;
@@ -30,6 +29,20 @@
 
 .splash-container div.three {
     top: 65%;
+}
+
+.splash-container Button {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 85%;
+    font-weight: bold;
+    background-color: white;
+    border: solid 1px rgb(33, 72, 197);
+    color: rgb(33, 72, 197);
+    &:hover {
+        background-color: rgb(33, 72, 197);
+    }
 }
 
 div .quiz-desc-container {
@@ -78,11 +91,10 @@ div .quiz-desc-container {
 
 div .quiz-data-container {
     height: 450px;
-    background-color: white;
+    background-color: #e8ebed;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-top: solid 1px grey;
 }
 
 .quiz-data-text {
@@ -90,4 +102,15 @@ div .quiz-data-container {
     text-align: center;
     overflow: overlay;
     font-size: 26px;
+    height: 90%;
+}
+
+.quiz-data-graph {
+    border: solid 1px grey;
+}
+
+.quiz-data-graph p {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 12px;
 }
