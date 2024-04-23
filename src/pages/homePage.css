@@ -36,7 +36,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     top: 85%;
-    font-weight: bold;
+    font-size: 2vw;
     background-color: white;
     border: solid 1px rgb(33, 72, 197);
     color: rgb(33, 72, 197);
