@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+.quizButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.quizButtonContainer div p {
+  margin: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +45,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.custom-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+}
+.progressBar {
+  width: 50%;
+  margin: 0 auto;
 }
