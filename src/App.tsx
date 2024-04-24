@@ -10,6 +10,7 @@ import {
 import DetailedPage from './pages/DetailedPage';
 import HomePage from './pages/homePage';
 import BasicPage from './pages/BasicPage';
+import ResultsPage from './pages/ResultsPage';
 
 function App() {
    
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/detailedPage" element={<DetailedPage />} />
         <Route path="/BasicPage" element={<BasicPage/>}/>
+        <Route path="/ResultsPage" element={<ResultsPage/>}/>
       </Routes>
     </Router><div className="App">
         

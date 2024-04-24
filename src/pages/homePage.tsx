@@ -83,7 +83,7 @@ import './homePage.css';
             <div className="quiz-desc">
                 <a href="./DetailedPage">
                     <h3>Detailed Quiz</h3>
-                    <p>Lorem ipsum latin schpeel. Words and sentences and a few more words. That'll do.</p>
+                    <p>If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
                 </a>
             </div>
         </div>
@@ -96,6 +96,7 @@ import './homePage.css';
                 <p>Satisfaction rates from other users!</p>
             </div>
         </div>
+        <Button href="./ResultsPage">Temporary Results Link</Button>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
