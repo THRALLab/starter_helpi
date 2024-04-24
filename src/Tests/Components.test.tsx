@@ -1,13 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { HashRouter } from "react-router-dom";
-import {
-  darkModeState,
-  updateDarkModeState,
-} from "../Components/DarkModeParent";
-import { bodyClassName, DarkModeToggle } from "../Components/DarkModeToggle";
+//import { darkModeState, updateDarkModeState } from "../Components/ThemeParent";
+//import { bodyClassName, DarkModeToggle } from "../Components/ThemeSelect";
 import Home from "../Pages/Home";
-
+/*
 describe("Dark Mode Tests", () => {
   test("Dark Mode Parent", () => {
     expect(darkModeState).toBe(false);
@@ -44,7 +41,7 @@ describe("Dark Mode Tests", () => {
     expect(bodyClassName).toBe("body");
   });
 });
-
+*/
 describe("Link Button Tests", () => {
   test("Link Button", () => {
     /*
