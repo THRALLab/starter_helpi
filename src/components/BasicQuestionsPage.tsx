@@ -9,7 +9,6 @@ import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
 import FormControl from '@mui/joy/FormControl';
-
 import Grow from '@mui/material/Grow';
 
 export function BasicQuestionsPage(): JSX.Element {
@@ -128,18 +127,15 @@ export function BasicQuestionsPage(): JSX.Element {
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [responses, setResponses] = React.useState<Responses>({});
     const [checked, setChecked] = React.useState(false)
-    const [inputEmpty, setInputEmpty] = React.useState(true);
-    const [clicked, setInputClicked] = React.useState(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value);
-      setInputEmpty(false);
       const { value } = e.target;
       setResponses({ ...responses, [questions[currentQuestion].id]: value });
     };
       
     const handlePreviousAnswerDisplay = () => {
-
+        
         setInputText(responses[questions[currentQuestion].id])
     }
 
@@ -230,7 +226,6 @@ export function BasicQuestionsPage(): JSX.Element {
             <h1 className='padding3'>Basic Questions Page</h1>
             <p className="text-muted">This basic career assessment is hand crafted to help comprehend preferences and strengths that you have and which specific careers they are best suited for. You'll gain insights into the types of careers and opportunities that may suit you best. Coming soon. </p>
             
-            <main className="padding2">
             <div
                 style={{
                 display: 'flex',
@@ -252,7 +247,7 @@ export function BasicQuestionsPage(): JSX.Element {
                             visuallyHidden={true} // Show the label visually
                             striped={currentQuestion >= 0} // Uses a gradient to create a striped effect when the progress is at least 0%
                             animated={currentQuestion >= 0} // Animate the stripes from right to left when the progress is at least 0%
-                            variant="info" // Sets the background class of the progress bar to blue
+                            variant="info" // Sets the background class of the progress bar to red
                             style={{ width: '100%'}}
                             >
                         </ProgressBar>}
@@ -283,11 +278,11 @@ export function BasicQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                    
+                                    onClick={handlePreviousAnswerDisplay}
                                     onChange={handleInputChange}
 
                                     //Show error when input is empty
-                                    error={inputEmpty}
+                                  
 
                                     />
                                     
@@ -337,8 +332,8 @@ export function BasicQuestionsPage(): JSX.Element {
                         
                     </CardContent>
                 </Card>
+                <p></p>
             </div>  
-            </main>
         </div>
     );
 }
