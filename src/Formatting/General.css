@@ -1,23 +1,59 @@
-.body {
-  --color-body-background: #eeb3f9;
+.body-theme1 {
+  --color-body-background: #59c9a5;
   --color-body-text: #000000;
-  --color-body-Headerbackground: #5261ab;
+  --color-body-Headerbackground: #56e39f;
   --color-body-Headertext: #000000;
-  --color-body-Button: #00b3ff;
-  --color-body-ButtonDisabled: #00b3ff;
-  --color-body-ButtonHover: #52cbff;
+  --color-body-Button: #c5696f;
+  --color-body-ButtonDisabled: #b7656b;
+  --color-body-ButtonHover: #ae5b61;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #ffffff;
 }
 
-.body-dark {
-  --color-body-background: #303030;
-  --color-body-text: #1eeb36;
-  --color-body-Headerbackground: #173848;
-  --color-body-Headertext: #1eeb36;
-  --color-body-Button: #425866;
-  --color-body-ButtonDisabled: #425866;
-  --color-body-ButtonHover: #4f6678;
+.body-theme2 {
+  --color-body-background: #59c9a5;
+  --color-body-text: #000000;
+  --color-body-Headerbackground: #56e39f;
+  --color-body-Headertext: #000000;
+  --color-body-Button: #c5696f;
+  --color-body-ButtonDisabled: #b7656b;
+  --color-body-ButtonHover: #ae5b61;
+  --color-body-ButtonBorder: #000000;
+  --color-body-questionText: #ffffff;
+}
+
+.body-theme3 {
+  --color-body-background: #59c9a5;
+  --color-body-text: #000000;
+  --color-body-Headerbackground: #56e39f;
+  --color-body-Headertext: #000000;
+  --color-body-Button: #c5696f;
+  --color-body-ButtonDisabled: #b7656b;
+  --color-body-ButtonHover: #ae5b61;
+  --color-body-ButtonBorder: #000000;
+  --color-body-questionText: #ffffff;
+}
+
+.body-theme4 {
+  --color-body-background: #59c9a5;
+  --color-body-text: #000000;
+  --color-body-Headerbackground: #56e39f;
+  --color-body-Headertext: #000000;
+  --color-body-Button: #c5696f;
+  --color-body-ButtonDisabled: #b7656b;
+  --color-body-ButtonHover: #ae5b61;
+  --color-body-ButtonBorder: #000000;
+  --color-body-questionText: #ffffff;
+}
+
+.body-theme5 {
+  --color-body-background: #000000;
+  --color-body-text: #ffffffac;
+  --color-body-Headerbackground: #000000;
+  --color-body-Headertext: #ffffffac;
+  --color-body-Button: #c5696f;
+  --color-body-ButtonDisabled: #b7656b;
+  --color-body-ButtonHover: #ae5b61;
   --color-body-ButtonBorder: #000000;
 }
 

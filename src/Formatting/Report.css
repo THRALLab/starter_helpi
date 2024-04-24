@@ -14,14 +14,14 @@
   background-color: var(--color-body-Button);
 }
 
+.Report-results-header {
+  font-weight: bold;
+  font-size: 26px;
+}
+
 .Report-results {
   text-align: left;
   margin-left: 10vw;
   margin-right: 10vw;
-  margin-bottom: 1vh;
-}
-
-.Report-results-header{
-  font-weight: bold;
-  font-size: 26px;
+  margin-bottom: 2vh;
 }

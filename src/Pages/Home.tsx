@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
-import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
+import { themeState } from "../Components/ThemeParent";
+import { ThemeSelect } from "../Components/ThemeSelect";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Home.css";
@@ -28,10 +29,10 @@ function Home() {
   }
 
   return (
-    <div className={bodyClassName} id="bigBody">
+    <div className={themeState} id="bigBody">
       <div className="General-header">
         <span className="Header-toggle">
-          <DarkModeToggle></DarkModeToggle>
+          <ThemeSelect></ThemeSelect>
         </span>
         <span className="Header-text">The Career Lab</span>
         <span className="Header-button">
@@ -45,7 +46,7 @@ function Home() {
           find your ideal career. Your answers will be reviewed by ChatGPT to
           generate a custom report of what caeer paths suit you the best. This
           project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory
-          Jordan
+          Jordan.
         </p>
         <Container>
           <Row>
