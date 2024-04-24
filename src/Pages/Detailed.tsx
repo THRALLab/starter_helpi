@@ -34,7 +34,7 @@ interface QuestionOption {
 const Detailed: React.FC<DetailedProp> = ({ handlePage }) => { /* Handes page changes */
 const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 const [confetti, setConfetti] = useState(false);
-const [confettiTriggered, setConfettiTriggered] = useState(false);
+const [confettiShown, setConfettiShown] = useState(false); 
 
 const handleOptionClick = (option: string, questionIndex: number) => {
     const updatedSelectedOptions = [...selectedOptions];
@@ -72,17 +72,18 @@ const handleOptionClick = (option: string, questionIndex: number) => {
             options: ["Office", "", "Neutral", "", "Changing Environment"]
         }
     ];
-    const allQuestionsAnswered = selectedOptions.length === questions.length && selectedOptions.every(option => option !== undefined);
+    const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
    
     useEffect(() => {
-        if (selectedOptions.length === questions.length && !confettiTriggered) {
+        if (allQuestionsAnswered && !confettiShown) { /* Confetti effect when all questions are answered */
             setConfetti(true);
-            setConfettiTriggered(true); // Set confettiTriggered to true once confetti is triggered
+            setConfettiShown(true); 
             setTimeout(() => {
                 setConfetti(false);
             }, 2000);
         }
-    }, [questions.length, selectedOptions, confettiTriggered]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedOptions, confettiShown]);
 
     return (
         <div>
@@ -103,14 +104,15 @@ const handleOptionClick = (option: string, questionIndex: number) => {
                     <div key={idx}>
                         <h3 className="question">{q.question}</h3>
                         <div className="questionContainer">
-                            {q.options.filter(option => option !== "").map((option, i) => (
+                            {q.options.filter(option => option !== "").map((option, i) => ( /* Creates questions with radio buttons */
                                 <div key={i} className="option">
                                     <label>{option}</label>
                                     <input
                                         type="radio"
                                         name={`question_${idx}`}
                                         value={option}
-                                        onClick={() => handleOptionClick(option, idx)} // Pass question index to handleOptionClick
+                                        checked={selectedOptions[idx] === option}
+                                        onChange={() => handleOptionClick(option, idx)}
                                     />
                                 </div>
                             ))}
@@ -118,7 +120,7 @@ const handleOptionClick = (option: string, questionIndex: number) => {
                     </div>
                 ))}
             </div>
-            {allQuestionsAnswered && (
+            {allQuestionsAnswered && ( /* Response displayed when all questions are answered */
       <div className="response">
         <h3>Thank you for completing the questionnaire!</h3>
         <p>Your responses have been recorded.</p>
