@@ -6,6 +6,9 @@ import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
 import Confetti from 'react-dom-confetti';
+import smileIcon from './smile.svg';
+import mehIcon from './meh.svg';
+import sadIcon from './sad.svg';
 
 const config = { /* Configuration for confetti */
     angle: 90,
@@ -28,8 +31,9 @@ interface DetailedProp {
 
 interface QuestionOption {
     question: string;
-    options: string[];
+    options: { label: string; iconSrc: string }[];
 }
+
 
 const Detailed: React.FC<DetailedProp> = ({ handlePage }) => { /* Handes page changes */
 const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -42,36 +46,64 @@ const handleOptionClick = (option: string, questionIndex: number) => {
     setSelectedOptions(updatedSelectedOptions);
 };
 
-    const questions: QuestionOption[] = [ /* Questions and Options for detailed page */
-        {
-            question: "Do you see yourself as a natural leader and enjoy taking charge of projects?",
-            options: ["Not at All", "", "Neutral", "","Very much"]
-        },
-        {
-            question: "How significant is the opportunity to be creative and have passion within your work?",
-            options: ["Not at All", "", "Neutral","", "Very Significant"]
-        },
-        {
-            question: "How easily do you adapt to changes in your work environment and job responsibilities?",
-            options: ["Difficult", "", "Neutral","","Easy"]
-        },
-        {
-            question: "How important is it for you to make a measurable and meaningful impact through your work?",
-            options: ["Not at All", "", "Neutral", "", "Very Important"]
-        },
-        {
-            question: "How important is collaborative learning in your professional development?",
-            options: ["Not at All", "", "Neutral", "", "Very Important"]
-        },
-        {
-            question: "How significant is a structured and consistent routine within your workplace to your overall job satisfaction and productivity?",
-            options: ["Not at All", "", "Neutral", "", "Very Significant"]
-        },
-        {
-            question: "Do you prefer an office environment or an environment that is frequently changing?",
-            options: ["Office", "", "Neutral", "", "Changing Environment"]
-        }
-    ];
+const questions: QuestionOption[] = [
+    {
+        question: "Do you see yourself as a natural leader and enjoy taking charge of projects?",
+        options: [
+            { label: "Not at All", iconSrc: sadIcon },
+            { label: "Neutral", iconSrc: mehIcon },
+            { label: "Very much", iconSrc: smileIcon }
+        ]
+    },
+    {
+        question: "How significant is the opportunity to be creative and have passion within your work?",
+        options: [
+            { label: "Not at All", iconSrc: sadIcon },
+            { label: "Neutral", iconSrc: mehIcon },
+            { label: "Very Significant", iconSrc: smileIcon }
+        ]
+    },
+    {
+        question: "How easily do you adapt to changes in your work environment and job responsibilities?",
+        options: [
+            { label: "Difficult", iconSrc: sadIcon },
+            { label: "Neutral", iconSrc: mehIcon },
+            { label: "Easy", iconSrc: smileIcon }
+        ]
+    },
+    {
+        question: "How important is it for you to make a measurable and meaningful impact through your work?",
+        options: [
+            { label: "Not at All", iconSrc: sadIcon },
+            { label: "Neutral", iconSrc: mehIcon },
+            { label: "Very Important", iconSrc: smileIcon }
+        ]
+    },
+    {
+        question: "How important is collaborative learning in your professional development?",
+        options: [
+            { label: "Not at All", iconSrc: sadIcon },
+            { label: "Neutral", iconSrc: mehIcon },
+            { label: "Very Important", iconSrc: smileIcon }
+        ]
+    },
+    {
+        question: "How significant is a structured and consistent routine within your workplace to your overall job satisfaction and productivity?",
+        options: [
+            { label: "Not at All", iconSrc: sadIcon },
+            { label: "Neutral", iconSrc: mehIcon },
+            { label: "Very Significant", iconSrc: smileIcon }
+        ]
+    },
+    {
+        question: "Do you prefer an office environment or an environment that is frequently changing?",
+        options: [
+            { label: "Office", iconSrc: sadIcon },
+            { label: "Neutral", iconSrc: mehIcon },
+            { label: "Changing Environment", iconSrc: smileIcon }
+        ]
+    }
+];
     const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
    
     useEffect(() => {
@@ -99,23 +131,25 @@ const handleOptionClick = (option: string, questionIndex: number) => {
             <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
         </div>
         </header>
+        <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button>
         <div className="column">
                 {questions.map((q, idx) => (
                     <div key={idx}>
                         <h3 className="question">{q.question}</h3>
                         <div className="questionContainer">
-                            {q.options.filter(option => option !== "").map((option, i) => ( /* Creates questions with radio buttons */
-                                <div key={i} className="option">
-                                    <label>{option}</label>
-                                    <input
-                                        type="radio"
-                                        name={`question_${idx}`}
-                                        value={option}
-                                        checked={selectedOptions[idx] === option}
-                                        onChange={() => handleOptionClick(option, idx)}
-                                    />
-                                </div>
-                            ))}
+                        {q.options.filter(option => option.label !== "").map((option, i) => (
+    <label key={i} className="option">
+        <input
+            type="radio"
+            name={`question_${idx}`}
+            value={option.label}
+            checked={selectedOptions[idx] === option.label}
+            onChange={() => handleOptionClick(option.label, idx)}
+        />
+        <img src={option.iconSrc} alt={`${option.label} Icon`} className="label-icon" />
+        {option.label}
+    </label>
+))}
                         </div>
                     </div>
                 ))}

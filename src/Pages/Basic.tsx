@@ -6,6 +6,9 @@ import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
 import Confetti from 'react-dom-confetti';
+import smileIcon from './smile.svg';
+import mehIcon from './meh.svg';
+import sadIcon from './sad.svg';
 
 const config = {
     angle: 90,
@@ -28,7 +31,7 @@ interface BasicProp {
 
 interface QuestionOption {
     question: string;
-    options: string[];
+    options: { label: string; iconSrc: string }[];
 }
 
 const Basic: React.FC<BasicProp> = ({ handlePage }) => {
@@ -42,42 +45,70 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
         setSelectedOptions(updatedSelectedOptions);
     };
 
-    const questions: QuestionOption[] = [ /* Questions and Options for basic page */
+    const questions: QuestionOption[] = [
         {
             question: "How much do you prefer working independently over working collaboratively?",
-            options: ["Not at All", "Neutral", "Very much"]
+            options: [
+                { label: "Not at All", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very much", iconSrc: smileIcon }
+            ]
         },
         {
             question: "How important is expressing creativity and passion in your work?",
-            options: ["Not at All Important", "Neutral", "Very Important"]
+            options: [
+                { label: "Not at All Important", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very Important", iconSrc: smileIcon }
+            ]
         },
         {
             question: "How easily do you adapt to changes in your work environment and job responsibilities?",
-            options: ["Difficult", "Neutral", "Easy"]
+            options: [
+                { label: "Difficult", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Easy", iconSrc: smileIcon }
+            ]
         },
         {
             question: "How important is it for you to make a tangible impact through your work?",
-            options: ["Not at All important", "Neutral", "Very Important"]
+            options: [
+                { label: "Not at All important", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very Important", iconSrc: smileIcon }
+            ]
         },
         {
             question: "How important is having a set routine in the workplace to you?",
-            options: ["Not at All important", "Neutral", "Very Important"]
+            options: [
+                { label: "Not at All important", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very Important", iconSrc: smileIcon }
+            ]
         },
         {
             question: "Do you see yourself as a natural leader and enjoy taking charge of projects?",
-            options: ["Not at All", "Neutral", "Very Much"]
+            options: [
+                { label: "Not at All", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very Much", iconSrc: smileIcon }
+            ]
         },
         {
             question: "Do you prefer an office environment or an environment that is frequently changing?",
-            options: ["Office", "Neutral", "Changing Environment"]
+            options: [
+                { label: "Office", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Changing Environment", iconSrc: smileIcon }
+            ]
         }
     ];
     const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
    
     useEffect(() => {
-        if (allQuestionsAnswered && !confettiShown) { // Check if all questions are answered and confetti hasn't been shown yet
+        if (allQuestionsAnswered && !confettiShown) { /* Confetti effect when all questions are answered */
             setConfetti(true);
-            setConfettiShown(true); // Set confettiShown to true once confetti is shown
+            setConfettiShown(true); 
             setTimeout(() => {
                 setConfetti(false);
             }, 2000);
@@ -99,28 +130,30 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
             <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
         </div>
         </header>
+        <Button className="detailed-switch" onClick={() => handlePage('Detailed')}>Detailed</Button>
         <div className="column">
                 {questions.map((q, x) => (
                     <div key={x}>
                         <h3 className="question">{q.question}</h3>
                         <div className="questionContainer">
-                            {q.options.filter(option => option !== "").map((option, i) => (
-                                <div key={i} className="option">
-                                    <label>{option}</label>
-                                    <input
-                                        type="radio"
-                                        name={`question_${x}`}
-                                        value={option}
-                                        checked={selectedOptions[x] === option}
-                                        onChange={() => handleOptionClick(option, x)}
-                                    />
-                                </div>
-                            ))}
+                        {q.options.filter(option => option.label !== "").map((option, i) => (
+    <label key={i} className="option">
+        <input
+            type="radio"
+            name={`question_${x}`}
+            value={option.label}
+            checked={selectedOptions[x] === option.label}
+            onChange={() => handleOptionClick(option.label, x)}
+        />
+        <img src={option.iconSrc} alt={`${option.label} Icon`} className="label-icon" />
+        {option.label}
+    </label>
+))}
                         </div>
                     </div>
                 ))}
             </div>
-            {allQuestionsAnswered && (
+            {allQuestionsAnswered && ( /* Response displayed when all questions are answered */
       <div className="response">
         <h3>Thank you for completing the questionnaire!</h3>
         <p>Your responses have been recorded.</p>
