@@ -5,12 +5,12 @@ import Modal from "./Modal";
 import Confetti from "react-confetti";
 
 // TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
-// TODO - [ ] add confetti effect when the user clicks the 'submit responses' button
+// TODO - [x] add confetti effect when the user clicks the 'submit responses' button
 // There is a minor bug where if you get to the free response section and enter your response in the first input, it populates in the second input also too
+// TODO - [x] have the object hold the question itself also
+// TODO - [ ] add  a character limit to the text-areas
+// TODO - [x] check if you're at the last question, add have it call the 'checkConnection' function so that it can then call the ChatGPT API
 // import useChatGPT from "./hooks/useChatGPT";
-
-// TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
-// TODO - [ ] have the object hold the question itself also
 
 export interface Answer {
 	question: string;
@@ -114,10 +114,6 @@ function Detailed() {
 		}
 	}, [answeredQuestions]);
 
-	// const { checkConnection } = useChatGPT();
-
-	// TODO - [] check if you're at the last question, add have it call the 'checkConnection' function so that it can then call the ChatGPT API
-
 	return (
 		<>
 			{showConfetti && <Confetti />}
@@ -131,7 +127,6 @@ function Detailed() {
 						{questions[currentIndex].question}
 					</h3>
 				</div>
-
 				<div className="optionsContainer">
 					{questions[currentIndex].type === "multiple_choice"
 						? questions[currentIndex].choices.map(
