@@ -1,6 +1,6 @@
 import React from 'react'
 import './DetailedPage.css'
-import { Card, Form, Carousel } from 'react-bootstrap'
+import { Card, Form, Carousel, ProgressBar } from 'react-bootstrap'
 import AnswerBox from './AnswerBox'
 import SubmitButton from './SubmitButton'
 
@@ -40,7 +40,7 @@ export function DetailedPage() {
 
     const handleAnswerChange = (e: React.ChangeEvent<HTMLInputElement>, question: string) => {
         if (e.target.value.length < maxAnswerLength) {
-            let data = questionData;
+            let data = [...questionData];
             data[questionNumber] = { question: question, answer: e.target.value };
             setQuestionData(data);
             // Check if all questions have been answered
@@ -50,10 +50,20 @@ export function DetailedPage() {
         }
     }
 
+    const calculateFilledAnswers = (data: QuestionData[]) => {
+        return data.filter(question => question.answer.trim() !== '').length;
+    }
+
+    const filledAnswers = calculateFilledAnswers(questionData);
+    const totalQuestions = questionData.length;
+    const progressPercentage = (filledAnswers / totalQuestions) * 100;
 
     return (
         <div className='page-container'>
-            <h1>Detailed <span style={{ color: 'var(--purple)' }}>Quiz</span></h1>
+            <div className='heading-container'>
+                <h1>Detailed Quiz</h1>
+                <ProgressBar className='custom-progress-bar' min={0} max={100} now={progressPercentage} animated striped />
+            </div>
             <Card className='question-card' style={{ backgroundColor: "var(--light-bg)" }}>
                 <Card.Header as='h4' style={{ color: 'white', padding: '1rem 0' }}>
                     Question {questionNumber + 1}
