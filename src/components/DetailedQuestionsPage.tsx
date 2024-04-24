@@ -10,7 +10,10 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
 import FormControl from '@mui/joy/FormControl';
 
-import Grow from '@mui/material/Grow';
+import FormHelperText from '@mui/joy/FormHelperText';
+import InfoOutlined from '@mui/icons-material/InfoOutlined';
+import { Grow } from '@mui/material';
+
 
 export function DetailedQuestionsPage(): JSX.Element {
     interface Responses {
@@ -121,6 +124,10 @@ export function DetailedQuestionsPage(): JSX.Element {
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [responses, setResponses] = React.useState<Responses>({});
     const [checked, setChecked] = React.useState(false);
+    
+    const [inputClicked, setInputClicked] = React.useState(false);
+    const [inputFocused, setInputFocused] = React.useState(false);
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value);
@@ -135,6 +142,8 @@ export function DetailedQuestionsPage(): JSX.Element {
 
     const handleCurrentQuestion = () => {
         setInputText("");
+        setInputClicked(false); 
+        setInputFocused(false);
         const currentQuestionIndex = currentQuestion + 1;
 
             if (currentQuestionIndex < questions.length) {
@@ -257,7 +266,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                         />*/}
-                            <FormControl>
+                            <FormControl error={inputText==='' && inputClicked && !inputFocused}>
                             <Input sx={{width: '500px', height: '75px', display: 'flex',
                                     justifyContent: 'center',
 
@@ -272,10 +281,24 @@ export function DetailedQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                //onClick={handlePreviousAnswerDisplay}
+                                    onClick={() => setInputClicked(true)}
+                                    onFocus={() => setInputFocused(true)}
+                                    onBlur={() => setInputFocused(false)}
                                     onChange={handleInputChange}
-                                    />
                                     
+
+                                    //error
+                                    error={inputText==='' && inputClicked && !inputFocused}
+                                    
+                                    
+                                    />
+                                    {inputText === '' && inputClicked && !inputFocused && (
+                                        <FormHelperText>
+                                            <InfoOutlined/>
+                                            Please enter an answer.
+                                        </FormHelperText>
+                                    )}
+                                   
                                 </FormControl>
                                 {/*<p>{questions[currentQuestion].id}</p>
                                 <p>:</p>
@@ -289,9 +312,9 @@ export function DetailedQuestionsPage(): JSX.Element {
 
                         {/* Next and Previous buttons */}
                         {!displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
+                            <div style={{ padding: '6vh', display: 'flex', justifyContent: 'center' }}>
                             {currentQuestion > 0 && (<StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>)}
-                            <StyledButton onClick={handleCurrentQuestion} style={{ margin: '0 auto' }}>Next Question</StyledButton>
+                            <StyledButton onClick={handleCurrentQuestion} style={{ margin: '0 auto' }} disabled={inputText === ''}>Next Question</StyledButton>
                             </div>
                         )}
 
