@@ -61,6 +61,7 @@ function DetailedQuestions() {
     loadQuestions();
   }, [questionNumber]);
 
+  //Function to handle moving on to the next question
   const nextQuestion = () => {
     let tempSliderValues = [...sliderValues];
     tempSliderValues[questionNumber] = currSliderValue;

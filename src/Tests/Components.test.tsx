@@ -9,6 +9,8 @@ import { bodyClassName, DarkModeToggle } from "../Components/DarkModeToggle";
 import Home from "../Pages/Home";
 import { LinkButton } from "../Components/LinkButton";
 import { Route, Routes } from "react-router-dom";
+import { SliderQuestion } from "../Components/SliderQuestion";
+//import React, { useState } from "react";
 
 describe("Dark Mode Tests", () => {
   test("Dark Mode Parent", () => {
@@ -54,7 +56,7 @@ describe("Link Button Tests", () => {
       <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-       </Routes>
+        </Routes>
         <LinkButton to="/" label="Home"></LinkButton>
       </HashRouter>
     );
@@ -63,6 +65,29 @@ describe("Link Button Tests", () => {
       testLinkButton[0].click();
     });
     const linkElement = screen.getByText("The Career Lab");
+    expect(linkElement).toBeInTheDocument();
+    
+  });
+});
+
+describe("Slider Question Tests", () => {
+  test("Slider Question", () => {
+    
+    
+    render(
+      
+      <SliderQuestion 
+      value={50}
+      onChange={()=>(50)}
+      label="Question: "
+      question={"questionBody"}>
+      </SliderQuestion>
+    );
+    const testLinkButton: HTMLElement[] = screen.getAllByRole("DetailedQuestions-slider");
+    act(() => {
+      testLinkButton[0].click();
+    });
+    const linkElement = screen.getByText("50");
     expect(linkElement).toBeInTheDocument();
     
   });
