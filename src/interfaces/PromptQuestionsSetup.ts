@@ -1,4 +1,7 @@
 export interface PromptQuestionsSetup {
-    userEducation: string,
-    
+    education: string,
+    status: string,
+    interests: string,
+    experience: string,
+    specificNeeds: string,
 }
