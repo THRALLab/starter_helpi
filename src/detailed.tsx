@@ -5,7 +5,9 @@ import Modal from "./Modal";
 import Confetti from "react-confetti";
 
 // TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
+// TODO - [x] add confetti effect when the user clicks the 'submit responses' button
 // There is a minor bug where if you get to the free response section and enter your response in the first input, it populates in the second input also too
+// TODO - [ ] have the object hold the question itself also
 // TODO - [ ] add  a character limit to the text-areas
 
 export interface Answer {
