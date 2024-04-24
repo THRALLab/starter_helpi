@@ -4,13 +4,13 @@ import './Rangeslider.css'
 
 
 type RangeSliderProps = {
-    handleSliderChange: (e: React.ChangeEvent<HTMLInputElement>, question: string, resp: string) => void;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>, question: string, resp: string) => void;
     question: string
 
 }
 
 
-const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleSliderChange}, {question}) => {
+const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleChange, question}) => {
   
   const rangeValues: Record<string, string> = {
     1: "Strongly Disagree",
@@ -21,14 +21,12 @@ const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleSliderChange}, 
   };
 
   const [range, setRange] = useState("3");
-  
-  
 
   const handleAnswerUpdate = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setRange(event.target.value); 
-    handleSliderChange(event as ChangeEvent<HTMLInputElement>, question, range);
+    handleChange(event as ChangeEvent<HTMLInputElement>, question, range);
   };
 
   return (
@@ -39,8 +37,7 @@ const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleSliderChange}, 
         {range === "5" ? <span style = {{color: '#6923ff', fontWeight: 'bold'}}>Agree</span> : <span style = {{color: 'white', fontWeight: 'bold'}}>Agree</span>}
       </div>
       <Form.Control
-        id={question}
-        style ={{background: 'black', border: 'black'}}
+        style ={{background: 'black'}}
         value={range} // Current value of range slider
         type="range" // Form type
         min={1} // Lowest possible value

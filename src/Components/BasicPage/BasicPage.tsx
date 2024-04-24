@@ -48,7 +48,7 @@ export function BasicPage() {
                         <Accordion.Item key={eventKey} eventKey={(eventKey++).toString()} className="item">
                             <Accordion.Header className='header'>{question}</Accordion.Header>
                             <Accordion.Body className='body'>
-                                <RangeSlider question={question} handleSliderChange={handleSliderChange} />
+                                <RangeSlider question={question} handleChange={handleSliderChange} />
                             </Accordion.Body>
                         </Accordion.Item>
                     )
