@@ -19,15 +19,14 @@
   color: var(--color-body-questionText);
   position: relative;
   display: flex;
-  background-image: linear-gradient(to right, black, var(--progress-color));
+  background: black;
   padding: 10px;
 }
 
-.Simple-progress-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
+.progress-bar-indicator {
   height: 100%;
+  border-radius: 10px; /* Half of the height to make it round */
+  transition: width 0.5s ease; /* Adding transition for animation */
 }
 
 .Simple-progress-percentage {

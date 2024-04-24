@@ -149,16 +149,16 @@ function SimpleQuestions() {
         </span>
         <div className="Simple-progress">
           <div
-            className="Simple-progress-outer"
-            style={{ "--progress-color": color} as any}
+            className="Simple-progress-container"
+            //style={{ "--progress-color": color} as any}
           >
             <div
-              className="Simple-progress-inner"
+              className="Simple-progress-indicator"
               style={{
                 width: `${
                   100 * ((currentQuestionNumber - 1) / numberOfQuestions)
                 }%`,
-                backgroundColor: "rgba(0, 0, 0, 0.3)",
+                background: `linear-gradient(to right, black, ${color})`
               }}
             ></div>
             Question {questionNumber + 1}/{numberOfQuestions}
