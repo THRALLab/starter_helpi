@@ -170,7 +170,7 @@ const DetailedPage = () => {
 		</div>
 		<div style={{textAlign:"center"}}>
 		<Button size="lg" disabled={!allow} onClick={getResponses}>Answer</Button>
-		<Button size="lg" disabled={!allow}>Get Answer</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<Button size="lg" onClick={(doReset)}>Clear All</Button>
 		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>

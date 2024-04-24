@@ -163,7 +163,7 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
-	console.log(response)
+	//console.log(response)
 	return (<>
 	<style>{`
                 .QuestionNum {
