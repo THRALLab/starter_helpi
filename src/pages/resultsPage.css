@@ -31,6 +31,10 @@
     box-shadow: 10px 5px 5px rgb(86, 86, 86);
 }
 
+.subCareers h3 {
+    margin-top: 10px;
+}
+
 .career-desc p {
     margin: 0 10px;
 }
