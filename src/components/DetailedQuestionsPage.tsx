@@ -47,7 +47,7 @@ export function DetailedQuestionsPage(): JSX.Element {
     `}
   `;
 
-    const questions = [
+    const questions = React.useMemo(() => [
 		{
 			id: 1,
 			answerOptions: [
@@ -111,7 +111,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 				{ answerText: 'Option 4' },
 			],
 		}
-	];    
+	], []);    
 
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
@@ -127,10 +127,11 @@ export function DetailedQuestionsPage(): JSX.Element {
       const { value } = e.target;
       setResponses({ ...responses, [questions[currentQuestion].id]: value });
     };
+
+    React.useEffect(() => {
+        setInputText(responses[questions[currentQuestion]?.id] || ""); // Set input text based on previous response or an empty string
+    }, [currentQuestion, questions, responses]);
       
-    const handlePreviousAnswerDisplay = () => {
-        setInputText(responses[questions[currentQuestion].id])
-    }
 
     const handleCurrentQuestion = () => {
         setInputText("");
@@ -271,7 +272,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                    onClick={handlePreviousAnswerDisplay}
+                                //onClick={handlePreviousAnswerDisplay}
                                     onChange={handleInputChange}
                                     />
                                     

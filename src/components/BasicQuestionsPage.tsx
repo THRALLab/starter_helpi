@@ -9,6 +9,7 @@ import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
 import FormControl from '@mui/joy/FormControl';
+
 import Grow from '@mui/material/Grow';
 
 export function BasicQuestionsPage(): JSX.Element {
@@ -49,7 +50,7 @@ export function BasicQuestionsPage(): JSX.Element {
     const questions = [
 		{
 			id: 1,
-			answerOptions: [
+            answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
 				{ answerText: 'Option 3'},
@@ -58,57 +59,63 @@ export function BasicQuestionsPage(): JSX.Element {
 		},
 		{
 			id: 2,
-			answerOptions: [
+            answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
 			],
+			
 		},
 		{
 			id: 3,
-			answerOptions: [
+            answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
 			],
+			
 		},
 		{
 			id: 4,
-			answerOptions: [
+            answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
 			],
+			
 		},
         {
 			id: 5,
-			answerOptions: [
+            answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
 			],
+			
 		},
         {
 			id: 6,
-			answerOptions: [
+            answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
 			],
+			
 		},
         {
 			id: 7,
-			answerOptions: [
+            answerOptions: [
 				{ answerText: 'Option 1' },
 				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
+				{ answerText: 'Option 3'},
+				{ answerText: 'Option 4'},
 			],
+			
 		}
 	];    
 
