@@ -121,6 +121,10 @@ export function DetailedQuestionsPage(): JSX.Element {
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [responses, setResponses] = React.useState<Responses>({});
     const [checked, setChecked] = React.useState(false);
+    
+    const [inputClicked, setInputClicked] = React.useState(false);
+    const [inputFocused, setInputFocused] = React.useState(false);
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value);
@@ -271,8 +275,14 @@ export function DetailedQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                //onClick={handlePreviousAnswerDisplay}
+                                    onClick={() => setInputClicked(true)}
+                                    onFocus={() => setInputFocused(true)}
+                                    onBlur={() => setInputFocused(false)}
                                     onChange={handleInputChange}
+
+                                    //error
+                                    error={inputText==='' && inputClicked && !inputFocused}
+
                                     />
                                     
                                 </FormControl>

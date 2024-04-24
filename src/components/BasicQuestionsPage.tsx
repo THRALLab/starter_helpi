@@ -119,6 +119,7 @@ export function BasicQuestionsPage(): JSX.Element {
 		}
 	];    
 
+   
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
@@ -127,14 +128,18 @@ export function BasicQuestionsPage(): JSX.Element {
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [responses, setResponses] = React.useState<Responses>({});
     const [checked, setChecked] = React.useState(false)
+    const [inputEmpty, setInputEmpty] = React.useState(true);
+    const [clicked, setInputClicked] = React.useState(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value);
+      setInputEmpty(false);
       const { value } = e.target;
       setResponses({ ...responses, [questions[currentQuestion].id]: value });
     };
       
     const handlePreviousAnswerDisplay = () => {
+
         setInputText(responses[questions[currentQuestion].id])
     }
 
@@ -277,8 +282,12 @@ export function BasicQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                    onClick={handlePreviousAnswerDisplay}
+                                    
                                     onChange={handleInputChange}
+
+                                    //Show error when input is empty
+                                    error={inputEmpty}
+
                                     />
                                     
                                 </FormControl>
