@@ -160,9 +160,17 @@ function SimpleQuestions() {
                 }%`,
                 background: `linear-gradient(to right, black, ${color})`,
               }}
-            ></div>
-            Question {questionNumber + 1}/{numberOfQuestions}
-            <div className="Simple-progress-percentage">
+            >
+            </div>
+            <div className="Simple-question-number"
+              style = {{
+                position: "absolute",
+              }}
+              >
+                Question {questionNumber + 1}/{numberOfQuestions}
+              </div>
+            <div className="Simple-progress-percentage"
+              style={{position: "relative"}}>
               {Math.round(
                 100 * ((currentQuestionNumber - 1) / numberOfQuestions)
               )}
