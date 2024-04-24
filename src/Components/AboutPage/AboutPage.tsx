@@ -2,6 +2,7 @@ import React from 'react'
 import './AboutPage.css'
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import colin_headshot from './ProfessionalHeadshot.jpg'
+import mike_headshot from './MForte-headshot.jpg'
 import CircleImage from '../CircleImages/CircleImage';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 
@@ -60,12 +61,12 @@ export function AboutPage() {
                             </Row>
                             <Row style={{marginBottom: 15}}>
                                 <Col md={2} style={{marginRight: -15}}>
-                                    <CircleImage imageUrl={colin_headshot}/>
+                                    <CircleImage imageUrl={mike_headshot}/>
                                 </Col>
                                 <Col md={9}>
                                     <p className='team-names'>Mike Forte</p>
-                                    <p className='team-names-info'>University of Delaware 202_</p>
-                                    <p className='team-names-info' style={{marginTop: -14}}>Major: _</p>
+                                    <p className='team-names-info'>University of Delaware 2024</p>
+                                    <p className='team-names-info' style={{marginTop: -14}}>Major: Mechanical Engineering</p>
                                     <Col>
                                         <a href="https://github.com/Mforte5115" target="_blank" rel="noreferrer">
                                             <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }}>
