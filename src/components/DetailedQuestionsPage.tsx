@@ -10,7 +10,9 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
 import FormControl from '@mui/joy/FormControl';
 
-import Grow from '@mui/material/Grow';
+import FormHelperText from '@mui/joy/FormHelperText';
+import InfoOutlined from '@mui/icons-material/InfoOutlined';
+import { Grow } from '@mui/material';
 
 
 export function DetailedQuestionsPage(): JSX.Element {
@@ -263,7 +265,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                         />*/}
-                            <FormControl>
+                            <FormControl error={inputText==='' && inputClicked && !inputFocused}>
                             <Input sx={{width: '500px', height: '75px', display: 'flex',
                                     justifyContent: 'center',
 
@@ -287,7 +289,14 @@ export function DetailedQuestionsPage(): JSX.Element {
                                     //error
                                     error={inputText==='' && inputClicked && !inputFocused}
                                     
+                                    
                                     />
+                                    {inputText === '' && inputClicked && !inputFocused && (
+                                        <FormHelperText>
+                                            <InfoOutlined/>
+                                            Please enter an answer.
+                                        </FormHelperText>
+                                    )}
                                    
                                 </FormControl>
                                 {/*<p>{questions[currentQuestion].id}</p>
@@ -302,7 +311,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 
                         {/* Next and Previous buttons */}
                         {!displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
+                            <div style={{ padding: '6vh', display: 'flex', justifyContent: 'center' }}>
                             {currentQuestion > 0 && (<StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>)}
                             <StyledButton onClick={handleCurrentQuestion} style={{ margin: '0 auto' }} disabled={inputText === ''}>Next Question</StyledButton>
                             </div>
