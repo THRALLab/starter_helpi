@@ -4,6 +4,7 @@ import { ChatCompletion } from "openai/resources";
 import { useState } from "react"
 import { Button, Form } from "react-bootstrap";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
+//import { CreateStartingPrompt } from "src/controller/StartingPrompt";
 // import { openGBTStream } from "src/controller/OpenChatStream";
 
 const MapGBTOutput = ({chats} : {chats : OpenAI.ChatCompletion.Choice[]}) => {
@@ -22,7 +23,7 @@ const DisplayKey = () => {
 }
 
 export const ChatGBTPage = () => {
-    const startingPrompt:string = ""
+    const startingPrompt:string = "CreateStartingPrompt()";
 
     const [userInput, setUserInput] = useState<string>("");
     const [chat, setChat] = useState<ChatCompletion>();

@@ -22,8 +22,8 @@ export const BasicQuiz = () => {
                 <DisplayQuiz 
                     quiz={basicQuiz}
                     title="Basic Quiz"
-                    questionsAnswerd={questionsAnswered} 
-                    setQuestionsAnswerd={setQuestionsAnswered} 
+                    questionsAnswerd={questionsAnswered}
+                    setQuestionsAnswerd={setQuestionsAnswered}
                 />
             </Row>
         </Container>
