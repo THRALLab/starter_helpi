@@ -15,18 +15,19 @@
   padding: 10px;
 }
 
-.Simple-progress-container {
+.Simple-progress-outer {
   color: var(--color-body-questionText);
   position: relative;
   display: flex;
-  background: black;
+  /*background-image: linear-gradient(to right, black, var(--progress-color));*/
   padding: 10px;
 }
 
-.progress-bar-indicator {
+.Simple-progress-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
-  border-radius: 10px; /* Half of the height to make it round */
-  transition: width 0.5s ease; /* Adding transition for animation */
 }
 
 .Simple-progress-percentage {
