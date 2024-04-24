@@ -34,7 +34,6 @@ interface QuestionOption {
 const Detailed: React.FC<DetailedProp> = ({ handlePage }) => { /* Handes page changes */
 const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 const [confetti, setConfetti] = useState(false);
-const [confettiTriggered, setConfettiTriggered] = useState(false);
 
 const handleOptionClick = (option: string, questionIndex: number) => {
     const updatedSelectedOptions = [...selectedOptions];
@@ -72,17 +71,17 @@ const handleOptionClick = (option: string, questionIndex: number) => {
             options: ["Office", "", "Neutral", "", "Changing Environment"]
         }
     ];
-    const allQuestionsAnswered = selectedOptions.length === questions.length && selectedOptions.every(option => option !== undefined);
+    const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
    
     useEffect(() => {
-        if (selectedOptions.length === questions.length && !confettiTriggered) {
+        if (allQuestionsAnswered) {
             setConfetti(true);
-            setConfettiTriggered(true); // Set confettiTriggered to true once confetti is triggered
             setTimeout(() => {
                 setConfetti(false);
             }, 2000);
         }
-    }, [questions.length, selectedOptions, confettiTriggered]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedOptions]);
 
     return (
         <div>
@@ -110,7 +109,8 @@ const handleOptionClick = (option: string, questionIndex: number) => {
                                         type="radio"
                                         name={`question_${idx}`}
                                         value={option}
-                                        onClick={() => handleOptionClick(option, idx)} // Pass question index to handleOptionClick
+                                        checked={selectedOptions[idx] === option}
+                                        onChange={() => handleOptionClick(option, idx)}
                                     />
                                 </div>
                             ))}
