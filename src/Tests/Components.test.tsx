@@ -26,7 +26,6 @@ describe("Theme Tests", () => {
     });
     //expect(testToggle[0]).toHaveValue("body-theme2");
   });
-
   test("Changed body name", () => {
     render(
       <HashRouter>
@@ -44,7 +43,6 @@ describe("Theme Tests", () => {
 
 describe("Link Button Tests", () => {
   test("Link Button", () => {
-    
     render(
       <HashRouter>
         <Routes>
@@ -59,29 +57,26 @@ describe("Link Button Tests", () => {
     });
     const linkElement = screen.getByText("The Career Lab");
     expect(linkElement).toBeInTheDocument();
-    
   });
 });
 
 describe("Slider Question Tests", () => {
   test("Slider Question", () => {
-    
-    
     render(
-      
-      <SliderQuestion 
-      value={50}
-      onChange={()=>(50)}
-      label="Question: "
-      question={"questionBody"}>
-      </SliderQuestion>
+      <SliderQuestion
+        value={50}
+        onChange={() => 50}
+        label="Question: "
+        question={"questionBody"}
+      ></SliderQuestion>
     );
-    const testLinkButton: HTMLElement[] = screen.getAllByRole("DetailedQuestions-slider");
+    const testLinkButton: HTMLElement[] = screen.getAllByRole(
+      "DetailedQuestions-slider"
+    );
     act(() => {
       testLinkButton[0].click();
     });
     const linkElement = screen.getByText("50");
     expect(linkElement).toBeInTheDocument();
-    
   });
 });
