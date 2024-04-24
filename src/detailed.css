@@ -76,7 +76,6 @@
 
 .quizContainer .optionsContainer button:hover {
 	background-color: #00538f;
-	/* transition: 0.5s ease-out; */
 	cursor: pointer;
 }
 
