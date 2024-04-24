@@ -15,7 +15,7 @@
   padding: 10px;
 }
 
-.Simple-progress-outer {
+.Simple-progress-container {
   color: var(--color-body-questionText);
   position: relative;
   display: flex;
