@@ -1,13 +1,23 @@
 import React from 'react'
 import './DetailedPage.css'
-import { Card, Form, Carousel, Button } from 'react-bootstrap'
+import { Card, Form, Carousel } from 'react-bootstrap'
 import AnswerBox from './AnswerBox'
+import SubmitButton from './SubmitButton'
+
 interface QuestionData {
     question: string;
     answer: string;
 }
 
-const questions = ['What is your name?', 'What is your age?', 'What is your?', 'What is your name?', 'What is your age?', 'What is your?', 'What is your name?'];
+const questions = [
+    'What subjects or activites were you most interested in during your school years?',
+    'Describe an accomplishment or project that you are particularly proud of. What did it involve?',
+    'What are the top three tasks you enjoy doing the most in your current or past jobs?',
+    'What work environment do you thrive in? For example, fast-paced, structured, autonomous, etc.',
+    'If you had unlimited resources, what kind of work would you want to do?',
+    'Can you identify any industries r careers that you have always found intriguing? Why?',
+    'What are your long-term career goals? Where do you see yourself in five to ten years?'
+];
 let pageData = Array.from(questions, (question: string) => ({ question: question, answer: '' })) as QuestionData[];
 const saveDetailedDataKey = "DETAILED_DATA";
 const currData = sessionStorage.getItem(saveDetailedDataKey);
@@ -35,7 +45,7 @@ export function DetailedPage() {
             setQuestionData(data);
             // Check if all questions have been answered
             setIsFinished(data.every((question) => question.answer.length > 0));
-            // Save data to local storage
+            // Save data to session storage
             sessionStorage.setItem(saveDetailedDataKey, JSON.stringify(data));
         }
     }
@@ -43,7 +53,7 @@ export function DetailedPage() {
 
     return (
         <div className='page-container'>
-            <h1>Detailed Quiz</h1>
+            <h1>Detailed <span style={{ color: 'var(--purple)' }}>Quiz</span></h1>
             <Card className='question-card' style={{ backgroundColor: "var(--light-bg)" }}>
                 <Card.Header as='h4' style={{ color: 'white', padding: '1rem 0' }}>
                     Question {questionNumber + 1}
@@ -53,12 +63,11 @@ export function DetailedPage() {
                         <Carousel activeIndex={questionNumber} onSelect={handleSelect} interval={null}>
                             {questionData.map(({ question, answer }) => (
                                 <Carousel.Item key={questionKey++} style={{ height: '20rem' }}>
-                                    <h1 style={{ color: 'white' }}>
+                                    <h1 style={{ color: 'white', fontSize: '1.5rem', marginBottom: '3.5rem' }}>
                                         {question}
                                     </h1>
                                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                                         <Form.Group style={{ textAlign: 'left' }}>
-                                            <Form.Label>Your Answer</Form.Label>
                                             <AnswerBox
                                                 handleAnswerChange={handleAnswerChange}
                                                 answer={answer}
@@ -71,7 +80,7 @@ export function DetailedPage() {
                             )
                             )}
                         </Carousel>
-                        <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }} disabled={!isFinished}>Submit</Button>
+                        <SubmitButton isFinished={isFinished} />
                     </Form>
                 </Card.Body>
             </Card>
