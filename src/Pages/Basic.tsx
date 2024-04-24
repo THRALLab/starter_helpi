@@ -34,6 +34,7 @@ interface QuestionOption {
 const Basic: React.FC<BasicProp> = ({ handlePage }) => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     const [confetti, setConfetti] = useState(false);
+    const [confettiShown, setConfettiShown] = useState(false); 
 
     const handleOptionClick = (option: string, questionIndex: number) => {
         const updatedSelectedOptions = [...selectedOptions];
@@ -74,14 +75,15 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
     const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
    
     useEffect(() => {
-        if (allQuestionsAnswered) {
+        if (allQuestionsAnswered && !confettiShown) { // Check if all questions are answered and confetti hasn't been shown yet
             setConfetti(true);
+            setConfettiShown(true); // Set confettiShown to true once confetti is shown
             setTimeout(() => {
                 setConfetti(false);
             }, 2000);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedOptions]);
+    }, [selectedOptions, confettiShown]);
 
     return (
         <div>
