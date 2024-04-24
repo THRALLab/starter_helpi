@@ -4,6 +4,10 @@ import { HashRouter } from "react-router-dom";
 import { themeState, updateThemeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import Home from "../Pages/Home";
+import { LinkButton } from "../Components/LinkButton";
+import { Route, Routes } from "react-router-dom";
+import { SliderQuestion } from "../Components/SliderQuestion";
+//import React, { useState } from "react";
 
 describe("Theme Tests", () => {
   test("Theme Parent", () => {
@@ -40,9 +44,12 @@ describe("Theme Tests", () => {
 
 describe("Link Button Tests", () => {
   test("Link Button", () => {
-    /*
+    
     render(
       <HashRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
         <LinkButton to="/" label="Home"></LinkButton>
       </HashRouter>
     );
@@ -52,6 +59,29 @@ describe("Link Button Tests", () => {
     });
     const linkElement = screen.getByText("The Career Lab");
     expect(linkElement).toBeInTheDocument();
-    */
+    
+  });
+});
+
+describe("Slider Question Tests", () => {
+  test("Slider Question", () => {
+    
+    
+    render(
+      
+      <SliderQuestion 
+      value={50}
+      onChange={()=>(50)}
+      label="Question: "
+      question={"questionBody"}>
+      </SliderQuestion>
+    );
+    const testLinkButton: HTMLElement[] = screen.getAllByRole("DetailedQuestions-slider");
+    act(() => {
+      testLinkButton[0].click();
+    });
+    const linkElement = screen.getByText("50");
+    expect(linkElement).toBeInTheDocument();
+    
   });
 });
