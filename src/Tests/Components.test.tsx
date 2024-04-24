@@ -7,6 +7,8 @@ import {
 } from "../Components/DarkModeParent";
 import { bodyClassName, DarkModeToggle } from "../Components/DarkModeToggle";
 import Home from "../Pages/Home";
+import { LinkButton } from "../Components/LinkButton";
+import { Route, Routes } from "react-router-dom";
 
 describe("Dark Mode Tests", () => {
   test("Dark Mode Parent", () => {
@@ -47,9 +49,12 @@ describe("Dark Mode Tests", () => {
 
 describe("Link Button Tests", () => {
   test("Link Button", () => {
-    /*
+    
     render(
       <HashRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+       </Routes>
         <LinkButton to="/" label="Home"></LinkButton>
       </HashRouter>
     );
@@ -59,6 +64,6 @@ describe("Link Button Tests", () => {
     });
     const linkElement = screen.getByText("The Career Lab");
     expect(linkElement).toBeInTheDocument();
-    */
+    
   });
 });

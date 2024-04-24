@@ -113,7 +113,6 @@ function DetailedReport() {
         {!loading && careerList.length >= 3 && <div className="Report-results">
           Based on your results:
           <div>
-            <br/>
             <span className="Report-results-header">Career 1:</span>
             <li>{careerList[1]}</li><br/>
             <span className="Report-results-header">Career 2:</span>
