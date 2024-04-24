@@ -221,6 +221,7 @@ export function DetailedQuestionsPage(): JSX.Element {
             <h1 className='padding3'>Detailed Questions Page</h1>
             <p className="text-muted">The detailed career assessment goes in depth to plan out your professional preferences, skills, and motivators. Completing this assessment will provide you with a complex overview of career paths that align with your detailed profile. Coming soon.  </p>
             
+            <main className="padding2">
             <div
                 style={{
                 display: 'flex',
@@ -315,13 +316,12 @@ export function DetailedQuestionsPage(): JSX.Element {
                             <StyledButton2 color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</StyledButton2>
                             </div>
                         )}
-
-                        <p></p>
                         </Typography>
                     </CardContent>
                 </Card>
                 <p></p>
             </div>  
+            </main>
         </div>
     );
 }
