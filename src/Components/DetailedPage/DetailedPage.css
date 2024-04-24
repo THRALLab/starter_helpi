@@ -23,3 +23,10 @@
 	background-color: var(--purple) !important;
 }
 
+.custom-progress-bar {
+	background-color: #ffffff
+}
+
+.custom-progress-bar .progress-bar {
+	background-color: #6923ff;
+}
