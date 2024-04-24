@@ -99,6 +99,7 @@ const handleOptionClick = (option: string, questionIndex: number) => {
             <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
         </div>
         </header>
+        <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button>
         <div className="column">
                 {questions.map((q, idx) => (
                     <div key={idx}>
