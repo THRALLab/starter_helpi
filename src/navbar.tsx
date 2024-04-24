@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
@@ -20,6 +19,7 @@ function NavHome({handlePage} : {handlePage: (page: string) => void}) {
    </div>
    </header>
   */
+
   return (
       <>
         <Navbar bg="0000" variant="primary">

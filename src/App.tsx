@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import Basic from './Pages/Basic';
 import Detailed from './Pages/Detailed';
 import NavHome from './navbar';
+import CareerSearchByInterest from './Pages/interests';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -35,6 +36,8 @@ function App() {
         return <Basic handlePage={setCurrPg} />;
       case 'Detailed':
         return <Detailed handlePage={setCurrPg} />;
+      case 'interests':
+        return <CareerSearchByInterest handlePage={setCurrPg} />;
       case 'Home':
       default:
         return <Home handlePage={setCurrPg} />;
@@ -44,7 +47,8 @@ function App() {
   return (
     <>
     <NavHome handlePage={setCurrPg}></NavHome>
-          {updatePageState()/* Renders the page */} 
+    
+    {updatePageState()/* Renders the page */} 
     
   <footer className="footer" /* Bottom of page */>
     <h2 className="footer-container">Contact Us</h2>

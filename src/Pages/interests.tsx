@@ -1,8 +1,20 @@
-import React from 'react';
 import { Container, Row, Col, Nav, Tab, ListGroup } from 'react-bootstrap';
+import homeIcon from './house.svg';
+import BrainIcon from './modifiedBrainIcon.svg';
+import { Button } from 'react-bootstrap';
 
-const CareerSearchByInterest = () => {
+function CareerSearchByInterest({handlePage} : {handlePage: (page: string) => void}) {
+
     return (
+        <>
+        <header className="header">
+          <div className="title-container">
+            <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} />
+            <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
+            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
+          </div>
+        </header>
+
         <Container className="mt-5">
             <Tab.Container id="interest-tabs" defaultActiveKey="realistic">
                 <Row>
@@ -30,7 +42,8 @@ const CareerSearchByInterest = () => {
                 </Row>
             </Tab.Container>
         </Container>
-    );
-};
+        </>
+      )
+}
 
 export default CareerSearchByInterest;

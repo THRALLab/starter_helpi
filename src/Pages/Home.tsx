@@ -1,11 +1,8 @@
 import React, {} from 'react';
 import {Button} from 'react-bootstrap';
-import BrainIcon from './modifiedBrainIcon.svg';
-import homeIcon from './house.svg';
 import arrowIcon from './arrow.svg';
 import './Pages.css';
 import telescopeManImage from './telescope-man.png';
-import NavHome from '../navbar';
 
 interface HomeProp {
     handlePage: (page: string) => void;
