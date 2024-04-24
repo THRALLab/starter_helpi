@@ -96,6 +96,7 @@ import './homePage.css';
                 <p>Satisfaction rates from other users!</p>
             </div>
         </div>
+        <Button href="./ResultsPage">Temporary Results Link</Button>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
