@@ -21,6 +21,7 @@
   margin-bottom: 1vh;
 }
 
-ol>li ::before{
+.Report-results-header{
   font-weight: bold;
+  font-size: 26px;
 }
