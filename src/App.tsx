@@ -17,7 +17,7 @@ if (prevKey !== null) {
 function App() {
 	return (
 		<Router>
-			<div className="App">
+			<>
 				<Navigation />
 				<BasicDetailedButtons />
 				<Routes>
@@ -25,7 +25,7 @@ function App() {
 					<Route path="/detailed" Component={Detailed} />
 				</Routes>
 				<Footer />
-			</div>
+			</>
 		</Router>
 	);
 }
