@@ -1,3 +1,4 @@
+import { findByLabelText, findByRole, findByTestId, queryByTestId } from "@testing-library/react";
 import "./detailedPage.css";
 import React, { useEffect, useState } from "react";
 import { Form, ProgressBar, Alert } from "react-bootstrap";
@@ -10,7 +11,7 @@ const DetailedPage = () => {
 	const [Response5, setResponse5] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response6, setResponse6] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response7, setResponse7] = useState<(boolean | string)[]> ([false, false, false, false, ""])
-	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false,false, false]); //correlates to the the "other" text inputs will be true if the "other" option is selected
+	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false, false, false]); //correlates to the the "other" text inputs will be true if the "other" option is selected
 	
 	function handleRadio(option:string, questionNum:number, index:number, otherIndex:number) {  //handles regular radio buttons
 		const newOtherStatus = [...otherSelected];
@@ -156,7 +157,7 @@ const DetailedPage = () => {
 			</>
 		</div>
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" disabled={!allow}>Answer</Button>
+		<Button size="lg" disabled={!allow} onClick={getResponses}>Answer</Button>
 		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
@@ -165,11 +166,12 @@ const DetailedPage = () => {
 		<h3>Question 1.</h3>
 		<span className="questionPrompt">You slept through your alarm and barely missed the train to work. The next train isn’t for another 30 minutes, so you’ll definitely be late now. What do you do?</span> 
 		<div className="question-box">
-			<div className="reg-radio">
+			<div id="q1" className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option1"
+				role="radio-1"
 				label="I’ll call my boss and let them know I’ll be late."
 				name="question1"
 				style={{width:"auto"}}
@@ -575,5 +577,20 @@ const DetailedPage = () => {
 			</div>
 	</>
 	);
+
+	function getResponses(): string[] { //returns the responses of the user
+		let answers: string[] = [];
+
+		let index = Response1.findIndex((option) => option === true); //returns index of answer in that question
+
+		const container = document.getElementById("q1");
+		
+		if (container) {
+			console.log("Container: " + container.innerText);
+			console.log("Role: " + findByRole(container, "radio-1").then((element) => console.log("THIS: " + element.textContent)));
+		}
+		
+		return answers;
+	}
 };
 export default DetailedPage;
