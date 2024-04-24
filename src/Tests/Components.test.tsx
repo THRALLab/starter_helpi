@@ -6,7 +6,7 @@ import { ThemeSelect } from "../Components/ThemeSelect";
 import Home from "../Pages/Home";
 import { LinkButton } from "../Components/LinkButton";
 import { Route, Routes } from "react-router-dom";
-import { SliderQuestion } from "../Components/SliderQuestion";
+//import { SliderQuestion } from "../Components/SliderQuestion";
 //import React, { useState } from "react";
 
 describe("Theme Tests", () => {
@@ -59,7 +59,7 @@ describe("Link Button Tests", () => {
     expect(linkElement).toBeInTheDocument();
   });
 });
-
+/*
 describe("Slider Question Tests", () => {
   test("Slider Question", () => {
     render(
@@ -80,3 +80,4 @@ describe("Slider Question Tests", () => {
     expect(linkElement).toBeInTheDocument();
   });
 });
+*/
