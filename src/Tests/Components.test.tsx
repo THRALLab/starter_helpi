@@ -73,6 +73,7 @@ describe("Slider Question Tests", () => {
     const testLinkButton: HTMLElement[] = screen.getAllByRole(
       "DetailedQuestions-slider"
     );
+    const testLinkButton: HTMLElement[] = screen.getAllByRole("form");
     act(() => {
       testLinkButton[0].click();
     });
