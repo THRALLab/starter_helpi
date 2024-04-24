@@ -49,7 +49,7 @@ function DetailedReport() {
     "I have rated these questions from 0 to 100 (100 being I strongly agree and 0 being strongly disagree)" +
     joinQuestionsToAnswers();
 
-    const exampleFormat = "(no beginning sentence, just get right into the report, but include the '@' symbol) Sample Career: 2-3 sentences of why this is a good fit@Another Sample Career: 2-3 sentences of why this is a good fit@Final Sample Career: 2-3 sentences of why this is a good fit"
+    const exampleFormat = "~Sample Career: 2-3 sentences of why this is a good fit~Another Sample Career: 2-3 sentences of why this is a good fit~Final Sample Career: 2-3 sentences of why this is a good fit"
 
   const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
   //Queries ChatGPT to generate report
@@ -66,7 +66,7 @@ function DetailedReport() {
         {
           role: "system",
           content:
-            "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a report of 3 careers, splitting each section with an @ symbol. No need for numbering Here is the format: " + exampleFormat,
+            "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a list of 3 careers, with '~' as the bulletpoint. Here is the example format" + exampleFormat + "Include the tilda (~) in the report string, it is important",
         },
         { role: "user", content: "What should my career be? " + userData },
       ],
@@ -81,7 +81,7 @@ function DetailedReport() {
     setLoading(false);
   }
 
-  const careerList = responseData.split("@");
+  const careerList = responseData.split("~");
 
   return (
     <div className={bodyClassName} id="bigBody">
@@ -110,13 +110,17 @@ function DetailedReport() {
             <p>Generating Your Results...</p>
           </div>
         )}
-        {!loading && careerList.length === 3 && <div className="Report-results">
+        {!loading && careerList.length >= 3 && <div className="Report-results">
           Based on your results:
-          <ol>
-            <li>{careerList[0]}</li>
-            <li>{careerList[1]}</li>
-            <li>{careerList[2]}</li>
-          </ol>  
+          <div>
+            <br/>
+            <span className="Report-results-header">Career 1:</span>
+            <li>{careerList[1]}</li><br/>
+            <span className="Report-results-header">Career 2:</span>
+            <li>{careerList[2]}</li><br/>
+            <span className="Report-results-header">Career 3:</span>
+            <li>{careerList[3]}</li>
+          </div>  
         </div>}
       </div>
 
