@@ -1,8 +1,10 @@
 import { findByLabelText, findByRole, findByTestId, queryByTestId } from "@testing-library/react";
 import "./detailedPage.css";
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert } from "react-bootstrap";
+import { Form, ProgressBar, Alert, FormLabel } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
+import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
+import { getValue } from "@testing-library/user-event/dist/utils";
 const DetailedPage = () => {
 	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
 	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""])
@@ -165,14 +167,15 @@ const DetailedPage = () => {
 		</div>
 		<h3>Question 1.</h3>
 		<span className="questionPrompt">You slept through your alarm and barely missed the train to work. The next train isn’t for another 30 minutes, so you’ll definitely be late now. What do you do?</span> 
-		<div className="question-box">
-			<div id="q1" className="reg-radio">
+		<div id="q1" className="question-box">
+			<div className="reg-radio">
 			<Form.Check
 				inline
 				type="radio"
 				id="q1-Option1"
 				role="radio-1"
 				label="I’ll call my boss and let them know I’ll be late."
+				value="I’ll call my boss and let them know I’ll be late."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 0, 0)}
@@ -184,6 +187,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q1-Option2"
 				label="Call my friend to see if they can pick me up."
+				value = "Call my friend to see if they can pick me up."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1,1, 0)}/>
@@ -193,7 +197,8 @@ const DetailedPage = () => {
 				inline
 				type="radio"
 				id="q1-Option3"
-				label="I’ll call in sick and take the day off."
+				value="I’ll call in sick and take the day off."
+				label = "I’ll call in sick and take the day off."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder",1, 2, 0)}/>
@@ -204,6 +209,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q1-Option4"
 				label="I’ll take a taxi to work."
+				value="I’ll take a taxi to work."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 3, 0)}/>
@@ -583,11 +589,20 @@ const DetailedPage = () => {
 
 		let index = Response1.findIndex((option) => option === true); //returns index of answer in that question
 
+		if (index === -1) {
+			index = Response1.findIndex((option) => typeof option === "string" && option.trim().length > 0);
+		}
+
 		const container = document.getElementById("q1");
 		
+		
 		if (container) {
-			console.log("Container: " + container.innerText);
-			console.log("Role: " + findByRole(container, "radio-1").then((element) => console.log("THIS: " + element.textContent)));
+			const mini = container.querySelector('input[type="radio"]:checked');
+			console.log("Container: " + mini?.getAttribute("value"));
+			
+		}
+		else {
+			console.log("Container is null");
 		}
 		
 		return answers;
