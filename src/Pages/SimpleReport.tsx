@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import OpenAIAPi from "openai";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
-import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
+import { themeState } from "../Components/ThemeParent";
+import { ThemeSelect } from "../Components/ThemeSelect";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
 import { getQuestions } from "../Pages/SimpleQuestions";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -73,10 +74,10 @@ function SimpleReport() {
   }
 
   return (
-    <div className={bodyClassName} id="bigBody">
+    <div className={themeState} id="bigBody">
       <header className="General-header">
         <span className="Header-toggle">
-          <DarkModeToggle></DarkModeToggle>
+          <ThemeSelect></ThemeSelect>
         </span>
         <span>The Career Lab</span>
         <span className="Header-button">
@@ -87,7 +88,11 @@ function SimpleReport() {
       <div className="Page-body">
         <div className="Report-header">View your Simple Quiz Results!</div>
         <Form className="Report-body">
-          <Button className="Button-chatGPT" onClick={ChatGPT} disabled={loading}>
+          <Button
+            className="Button-chatGPT"
+            onClick={ChatGPT}
+            disabled={loading}
+          >
             Generate Report
           </Button>
         </Form>

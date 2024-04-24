@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
-import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
+import { themeState } from "../Components/ThemeParent";
+import { ThemeSelect } from "../Components/ThemeSelect";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import { SliderQuestion } from "../Components/SliderQuestion";
 import jsonData from "../QuestionData/DetailedQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
-
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -33,7 +33,6 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
 
-  
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
@@ -44,7 +43,7 @@ function DetailedQuestions() {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    const colors =  ["purple", "brown"]; //Add more colors later using hex values
+    const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E"];
     setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
@@ -135,10 +134,10 @@ function DetailedQuestions() {
   };
 
   return (
-    <div className={bodyClassName} id="bigBody">
+    <div className={themeState} id="bigBody">
       <header className="General-header">
         <span className="Header-toggle">
-          <DarkModeToggle></DarkModeToggle>
+          <ThemeSelect></ThemeSelect>
         </span>
         <span>The Career Lab</span>
         <span className="Header-button">
@@ -235,4 +234,3 @@ function DetailedQuestions() {
   );
 }
 export default DetailedQuestions;
-
