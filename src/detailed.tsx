@@ -7,7 +7,7 @@ import Confetti from "react-confetti";
 // TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 // TODO - [ ] add confetti effect when the user clicks the 'submit responses' button
 // There is a minor bug where if you get to the free response section and enter your response in the first input, it populates in the second input also too
-import useChatGPT from "./hooks/useChatGPT";
+// import useChatGPT from "./hooks/useChatGPT";
 
 // TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 // TODO - [ ] have the object hold the question itself also
