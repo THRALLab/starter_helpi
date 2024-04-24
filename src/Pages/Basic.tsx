@@ -75,9 +75,9 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
     const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
    
     useEffect(() => {
-        if (allQuestionsAnswered && !confettiShown) { // Check if all questions are answered and confetti hasn't been shown yet
+        if (allQuestionsAnswered && !confettiShown) { /* Confetti effect when all questions are answered */
             setConfetti(true);
-            setConfettiShown(true); // Set confettiShown to true once confetti is shown
+            setConfettiShown(true); 
             setTimeout(() => {
                 setConfetti(false);
             }, 2000);
@@ -99,12 +99,13 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
             <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
         </div>
         </header>
+        <Button className="detailed-switch" onClick={() => handlePage('Detailed')}>Detailed</Button>
         <div className="column">
                 {questions.map((q, x) => (
                     <div key={x}>
                         <h3 className="question">{q.question}</h3>
                         <div className="questionContainer">
-                            {q.options.filter(option => option !== "").map((option, i) => (
+                            {q.options.filter(option => option !== "").map((option, i) => ( /* Creates questions with radio buttons */
                                 <div key={i} className="option">
                                     <label>{option}</label>
                                     <input
@@ -120,7 +121,7 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
                     </div>
                 ))}
             </div>
-            {allQuestionsAnswered && (
+            {allQuestionsAnswered && ( /* Response displayed when all questions are answered */
       <div className="response">
         <h3>Thank you for completing the questionnaire!</h3>
         <p>Your responses have been recorded.</p>
