@@ -11,6 +11,8 @@ import Confetti from "react-confetti";
 // TODO - [ ] add  a character limit to the text-areas
 // TODO - [x] check if you're at the last question, add have it call the 'checkConnection' function so that it can then call the ChatGPT API
 
+// import useChatGPT from "./hooks/useChatGPT";
+
 export interface Answer {
 	question: string;
 	questionNo: number;
