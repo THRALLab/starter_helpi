@@ -43,7 +43,7 @@ function App() {
 
   return (
     <>
-    <NavHome></NavHome>
+    <NavHome handlePage={setCurrPg}></NavHome>
           {updatePageState()/* Renders the page */} 
     
   <footer className="footer" /* Bottom of page */>

@@ -118,18 +118,13 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
 
     return (
         <div>
-        <header className="header" /* Top of page */>
+     
         {allQuestionsAnswered && (
       <div className="confetti-container">
         <Confetti active={confetti} config={config} />
       </div>
             )} 
-        <div className="title-container">
-        <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} /* Brain icon (Can switch to home page on click) */ />
-        <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
-            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
-        </div>
-        </header>
+
         <Button className="detailed-switch" onClick={() => handlePage('Detailed')}>Detailed</Button>
         <div className="column">
                 {questions.map((q, x) => (

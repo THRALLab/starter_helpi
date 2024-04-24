@@ -13,13 +13,7 @@ interface HomeProp {
 const Home: React.FC<HomeProp> = ({ handlePage }) => { /* Handes page changes */
     return (
         <div>
-    <header className="header" /* Top of page */>
-        <div className="title-container">
-        <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} /* Brain icon (Can switch to home page on click) */ />
-        <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
-            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
-        </div>
-        </header>
+   
         <div className="home-center" /* Middle of page */>
         <div className="background-image" style={{backgroundImage: `url(${telescopeManImage})`}}></div>
             <h1 className="center-title">Start your future here</h1>
