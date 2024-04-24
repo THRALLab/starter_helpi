@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { ChatCompletion } from "openai/resources";
-import { ChatCompletionStream } from "openai/lib/ChatCompletionStream";
+//import { ChatCompletionStream } from "openai/lib/ChatCompletionStream";
 import { useState } from "react"
 import { Button, Form } from "react-bootstrap";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
@@ -27,7 +27,7 @@ export const ChatGBTPage = () => {
     const [userInput, setUserInput] = useState<string>("");
     const [chat, setChat] = useState<ChatCompletion>();
     const [chats, setChats] = useState<OpenAI.ChatCompletion.Choice[]>([]);
-    const [stream, setStream] = useState<ChatCompletionStream>();
+    //const [stream, setStream] = useState<ChatCompletionStream>();
 
     async function sendToGBT (userInput: string): Promise<void>{
         
