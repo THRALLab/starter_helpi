@@ -12,6 +12,7 @@ import FormControl from '@mui/joy/FormControl';
 
 import Grow from '@mui/material/Grow';
 
+
 export function DetailedQuestionsPage(): JSX.Element {
     interface Responses {
         [key: number]: string
@@ -139,6 +140,8 @@ export function DetailedQuestionsPage(): JSX.Element {
 
     const handleCurrentQuestion = () => {
         setInputText("");
+        setInputClicked(false); 
+        setInputFocused(false);
         const currentQuestionIndex = currentQuestion + 1;
 
             if (currentQuestionIndex < questions.length) {
@@ -279,12 +282,13 @@ export function DetailedQuestionsPage(): JSX.Element {
                                     onFocus={() => setInputFocused(true)}
                                     onBlur={() => setInputFocused(false)}
                                     onChange={handleInputChange}
+                                    
 
                                     //error
                                     error={inputText==='' && inputClicked && !inputFocused}
-
-                                    />
                                     
+                                    />
+                                   
                                 </FormControl>
                                 {/*<p>{questions[currentQuestion].id}</p>
                                 <p>:</p>
@@ -300,7 +304,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                         {!displayFinishButton && !displayFinalResults && (
                             <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
                             {currentQuestion > 0 && (<StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>)}
-                            <StyledButton onClick={handleCurrentQuestion} style={{ margin: '0 auto' }}>Next Question</StyledButton>
+                            <StyledButton onClick={handleCurrentQuestion} style={{ margin: '0 auto' }} disabled={inputText === ''}>Next Question</StyledButton>
                             </div>
                         )}
 
