@@ -129,7 +129,6 @@ function Detailed() {
 						{questions[currentIndex].question}
 					</h3>
 				</div>
-
 				<div className="optionsContainer">
 					{questions[currentIndex].type === "multiple_choice"
 						? questions[currentIndex].choices.map(
