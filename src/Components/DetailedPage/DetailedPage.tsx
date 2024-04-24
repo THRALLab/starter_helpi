@@ -1,6 +1,6 @@
 import React from 'react'
 import './DetailedPage.css'
-import { Card, Form, Carousel, Button } from 'react-bootstrap'
+import { Card, Form, Carousel, Button, ProgressBar } from 'react-bootstrap'
 import AnswerBox from './AnswerBox'
 interface QuestionData {
     question: string;
@@ -44,6 +44,9 @@ export function DetailedPage() {
     return (
         <div className='page-container'>
             <h1>Detailed Quiz</h1>
+            <div className='progress-bar-container'>
+                <ProgressBar />
+            </div>
             <Card className='question-card' style={{ backgroundColor: "var(--light-bg)" }}>
                 <Card.Header as='h4' style={{ color: 'white', padding: '1rem 0' }}>
                     Question {questionNumber + 1}
