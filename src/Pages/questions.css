@@ -134,3 +134,35 @@
     border-color: #86c0ff;
     font-weight: bold;
 }
+
+.label-icon {
+    width: 1.9vw;
+    height: 1.9;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5vw; 
+    margin-top: 0.5vw; 
+    transition: width 0.3s, height 0.3s;
+}
+
+.label-icon:hover {
+    width: 2.2vw;
+    height: 2.2vw;
+    border-radius: 50px;
+    filter: drop-shadow(0 0 0.5vw rgb(255, 247, 0));
+}
+
+.option input[type="radio"]:checked + .label-icon {
+    /* Increase size and change border color for checked state */
+    width: 2.3vw;
+    height: 2.3vw;
+    filter: drop-shadow(0 0 0.5vw rgb(255, 247, 0));
+    border-radius: 50px;
+}
+
+input[type="radio"] {
+    display: none;
+  }

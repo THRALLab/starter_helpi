@@ -6,6 +6,9 @@ import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
 import Confetti from 'react-dom-confetti';
+import happyIcon from './smile.svg';
+import mehIcon from './meh.svg';
+import sadIcon from './sad.svg';
 
 const config = { /* Configuration for confetti */
     angle: 90,
