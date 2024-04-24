@@ -1,47 +1,43 @@
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { HashRouter } from "react-router-dom";
-//import { darkModeState, updateDarkModeState } from "../Components/ThemeParent";
-//import { bodyClassName, DarkModeToggle } from "../Components/ThemeSelect";
+import { themeState, updateThemeState } from "../Components/ThemeParent";
+import { ThemeSelect } from "../Components/ThemeSelect";
 import Home from "../Pages/Home";
-/*
-describe("Dark Mode Tests", () => {
-  test("Dark Mode Parent", () => {
-    expect(darkModeState).toBe(false);
-    updateDarkModeState();
-    expect(darkModeState).toBe(true);
+
+describe("Theme Tests", () => {
+  test("Theme Parent", () => {
+    expect(themeState).toBe("body-theme1");
+    updateThemeState("body-theme2");
+    expect(themeState).toBe("body-theme2");
+    updateThemeState("body-theme1");
   });
-  test("Dark Mode Toggle", () => {
-    render(<DarkModeToggle></DarkModeToggle>);
-    const testToggle: HTMLElement[] = screen.getAllByRole("switch");
-    expect(testToggle[0].id).toBe("dark-mode-switch");
-    expect(bodyClassName).toBe("body");
-    expect(testToggle[0]).toBeChecked();
+  test("Theme Drop Down", () => {
+    render(<ThemeSelect></ThemeSelect>);
+    const testToggle: HTMLElement[] = screen.getAllByRole("Theme-Select");
+    expect(themeState).toBe("body-theme1");
+    expect(testToggle[0]).toHaveValue("body-theme1");
     act(() => {
       testToggle[0].click();
     });
-    expect(testToggle[0]).not.toBeChecked();
-    act(() => {
-      testToggle[0].click();
-    });
-    expect(testToggle[0]).toBeChecked();
+    //expect(testToggle[0]).toHaveValue("body-theme2");
   });
+
   test("Changed body name", () => {
     render(
       <HashRouter>
         <Home />
       </HashRouter>
     );
-    expect(bodyClassName).toBe("body-dark");
-    const testToggle: HTMLElement[] = screen.getAllByRole("switch");
-    expect(testToggle[0].id).toBe("dark-mode-switch");
+    expect(themeState).toBe("body-theme1");
+    const testToggle: HTMLElement[] = screen.getAllByRole("Theme-Select");
     act(() => {
       testToggle[0].click();
     });
-    expect(bodyClassName).toBe("body");
+    //expect(themeState).toBe("body-theme2");
   });
 });
-*/
+
 describe("Link Button Tests", () => {
   test("Link Button", () => {
     /*

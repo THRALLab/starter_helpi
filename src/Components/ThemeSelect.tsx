@@ -27,7 +27,7 @@ export const ThemeSelect = () => {
       <span>
         <Form.Group controlId="userEmotions">
           <Form.Label>Select a Theme:</Form.Label>
-          <Form.Select value={theme} onChange={updateTheme}>
+          <Form.Select value={theme} onChange={updateTheme} role="Theme-Select">
             <option value="body-theme1">Theme 1</option>
             <option value="body-theme2">Theme 2</option>
             <option value="body-theme3">Theme 3</option>
