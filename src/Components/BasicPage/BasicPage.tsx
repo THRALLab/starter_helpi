@@ -2,7 +2,8 @@ import React from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import './BasicPage.css'
 import RangeSlider from "./Rangeslider";
-import { Button } from 'react-bootstrap';
+import SubmitButton from '../DetailedPage/SubmitButton';
+import { ProgressBar } from 'react-bootstrap';
 
 interface QuestionData{
     question:string;
@@ -58,7 +59,7 @@ const reverseMap: Record<string, string>= {
 export function BasicPage() {
 
     const [questionData, setQuestionData] = React.useState(pageData);
-    const [answered, setAnswered] = React.useState(0);
+    const [isFinished, setIsFinished] = React.useState(questionData.every((question) => question.answer.length > 0));
 
     const handleSliderChange = (question: string, resp: string) => {
         const newAnswer = rangeValues[resp]
@@ -66,17 +67,25 @@ export function BasicPage() {
         data[index[question]] = { question: question, answer: newAnswer};
         setQuestionData(data);
         // Check if all questions have been answered
-        let plus = answered + 1;
-        setAnswered(plus);
+        setIsFinished(data.every((question) => question.answer.length > 0));
             // Save data to local storage
         sessionStorage.setItem(saveDetailedDataKey, JSON.stringify(data));
         console.log(data)
     };
 
+    const calculateFilledAnswers = (data: QuestionData[]) => {
+        return data.filter(question => question.answer.trim() !== '').length;
+    }
+
+    const filledAnswers = calculateFilledAnswers(questionData);
+    const totalQuestions = questionData.length;
+    const progressPercentage = (filledAnswers / totalQuestions) * 100;
+
     let eventKey = 0;
     return (
         <div className='basic-page-container'>
             <h1 className='title'>Basic Quiz</h1>
+            <ProgressBar className='custom-progress-bar' min={0} max={100} now={progressPercentage} animated striped />
             <div className='accordion-container'>
                 <Accordion defaultActiveKey={questions.map((_, i) => i.toString())} style={{ width: '50%', backgroundColor: '#21273b' }} alwaysOpen>
                     {questions.map((question: string) => (
@@ -95,7 +104,7 @@ export function BasicPage() {
                     )
                     )}
                 </Accordion>
-                <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }} disabled={answered < 7}>Submit</Button>
+                <SubmitButton isFinished={isFinished} />
             </div>
         </div>
     )
