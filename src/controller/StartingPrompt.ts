@@ -76,7 +76,7 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
 }
 
 export const CreateBasicStartingPrompt = (requestQuestions: number, answerdQuestions: number): string => {
-    return`Create ${requestQuestions} more questions starting at question${answerdQuestions} , to ask the user`;
+    return`Create ${requestQuestions+1} more questions starting at question${answerdQuestions} , to ask the user`;
 }
 
 export const CreateAdvancedStartingPrompt = (): string => {
@@ -85,4 +85,17 @@ export const CreateAdvancedStartingPrompt = (): string => {
 
 export const createNewQuestions = () => {
     return"";
+}
+
+export const createFinalResponse = (questionAns: QuestionAnswer[]) => {
+    return("The user has entered the following question answers in reponse to their carrer quiz\n"
+        + mapQuestionsToAnswers(questionAns) +
+        `please provide your career advice as a json object described in the format below\n` +
+        `answer: {\n` +
+        `    advice: string` +
+        `    resoning: string` +
+        `    result: string` +
+        `}\n\n` +
+        "advice should be your opinion on the next steps the user should take, resoning should be why you feel this way, and result is your final answer as to what career advisment you would give the quiz taker"
+    );
 }
