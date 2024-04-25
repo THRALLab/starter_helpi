@@ -24,7 +24,9 @@ export const ThemeSelect = () => {
 
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
-      <Form.Label htmlFor="userEmotions" style={{ marginRight: "10px" }}>Theme:</Form.Label>
+      <Form.Label htmlFor="userEmotions" style={{ marginRight: "10px" }}>
+        Theme:
+      </Form.Label>
       <Form.Select
         id="userEmotions"
         value={theme}
@@ -32,10 +34,11 @@ export const ThemeSelect = () => {
         style={{ marginRight: "10px" }}
       >
         <option value="body-theme1">Watermelon</option>
-        <option value="body-theme2">Modern</option>
         <option value="body-theme3">Cotton Candy</option>
+        <option value="body-theme2">Modern</option>
+        <option value="body-theme5">Midnight</option>
         <option value="body-theme4">Retro</option>
-        <option value="body-theme5">Dark Mode</option>
+        <option value="body-theme6">Placeholder</option>
       </Form.Select>
     </div>
   );
