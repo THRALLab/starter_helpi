@@ -58,13 +58,13 @@
 }
 
 .body-theme6 {
-  --color-body-background: #000000;
-  --color-body-text: #ffffffac;
-  --color-body-Headerbackground: #1a1625;
-  --color-body-Headertext: #ffffffac;
-  --color-body-Button: #382bf0;
-  --color-body-ButtonDisabled: #5e43f3;
-  --color-body-ButtonHover: #5e43f3;
+  --color-body-background: #0b3312;
+  --color-body-text: #ffffffd8;
+  --color-body-Headerbackground: #04280b;
+  --color-body-Headertext: #ffffffda;
+  --color-body-Button: #1c7c2d;
+  --color-body-ButtonDisabled: #144d1f;
+  --color-body-ButtonHover: #32b64c;
   --color-body-ButtonBorder: #000000;
 }
 
