@@ -18,6 +18,7 @@ export async function callGBT(
         { role: 'user', content: userPrompt}
         ],
       model: 'gpt-3.5-turbo',
+      response_format: { type: 'json_object' }
     });
     return chatCompletion;
 }

@@ -5,3 +5,11 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
         `You are a assistant helping a ${questionAns.userEducation}`
     )
 }
+
+export const CreateBasicStartingPrompt = (): string => {
+    return"";
+}
+
+export const CreateAdvancedStartingPrompt = (): string => {
+    return"";
+}

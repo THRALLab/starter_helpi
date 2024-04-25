@@ -6,6 +6,9 @@ import { McMultiResponse } from "./McMultiResponse";
 import { TextResponse } from "./TextResponse"
 import { UserRanking } from "./UserRanking"
 import { SliderResponse } from "./SliderResponse";
+import { callGBT } from "src/controller/CallChat";
+import OpenAI from "openai";
+import { CreateAdvancedStartingPrompt, CreateBasicStartingPrompt, CreateStartingPrompt } from "src/controller/StartingPrompt";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -19,6 +22,7 @@ export function DisplayQuiz(
         quiz,
         title,
         questionsAnswerd,
+        maxQuestions,
         setQuestionsAnswerd 
     } 
     : 
@@ -26,13 +30,28 @@ export function DisplayQuiz(
         title: string,
         quiz : DisplayQuizProps,
         questionsAnswerd : number,
+        maxQuestions: number,
         setQuestionsAnswerd : (questionsAnswerd: number) => void 
     }
     ): JSX.Element {
+
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("question1"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
     const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
     const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
+    const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion>();
+    const [nextPrompt, setNextPrompt] = useState<string>("");
+
+    async function connectToGBT(startingPrompt: string, prompt: string)  {
+        const response = await callGBT({startingPrompt: startingPrompt, userPrompt: prompt});
+        // will parse the response so the messages are added
+        setGBTConversation(response);
+    }
+
+    async function createNextQuestion() {
+        
+        return
+    }
 
     // used to determine next question
     const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps, forewards: boolean): string => {
@@ -41,8 +60,12 @@ export function DisplayQuiz(
           if (forewards) {
             const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`;
             if (newId in quiz) return (newId);
+            else if(questionsAnswerd < maxQuestions) {
+                createNextQuestion();
+            }
             else return "";
-          } else {
+          } 
+          else { //go-back
             const newId = `question${parseInt(currentQuestionId.substring(8)) - 1}`;
             if (newId in quiz) return (newId);
             else return ""
@@ -51,6 +74,14 @@ export function DisplayQuiz(
         else return "";
       };
 
+    const createNextPrompt = (questionNumber: number): void => {
+        const prompt = "";
+        setNextPrompt(prompt);
+    }
+    const createQuiz = () => {
+        if(title === "Basic Quiz") connectToGBT(CreateBasicStartingPrompt(), nextPrompt);
+        if(title === "Advanced Quiz") connectToGBT(CreateAdvancedStartingPrompt(), nextPrompt);
+    }
     /**
      * 
      * @param answer - the answer for the current question
@@ -65,7 +96,8 @@ export function DisplayQuiz(
             if (questionsAnswerd === lastQuestionArray) { // if questions answered is equal to the latest array, appends it with newest answer
                 setAnswers([...answers, {questionId: currentQuestionId, answer: answer}])
                 setQuestionArray(lastQuestionArray + 1);
-            } else { // else, splices array and puts in the new answer
+            } 
+            else { // else, splices array and puts in the new answer
                 const newAnswers = [...answers]
                 newAnswers.splice(questionsAnswerd, 1, {questionId: currentQuestionId, answer: answer})
                 setAnswers(newAnswers);
@@ -74,15 +106,19 @@ export function DisplayQuiz(
 
             if (nextQuestionId === "") {
                 setIsQuizComplete(true); // End of the quiz
-            } else {
+            } 
+            else {
                 setCurrentQuestionId(nextQuestionId); // Move to the next question
             }
-        } else {
+        } 
+        else { // backwards
             setQuestionsAnswerd(questionsAnswerd - 1);
             const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz, false);
             setCurrentQuestionId(nextQuestionId);
         }
     }
+    if(Object.keys(quiz).length) createQuiz();
+    
 
     if (isQuizComplete) {
         return (<>

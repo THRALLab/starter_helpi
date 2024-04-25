@@ -8,7 +8,7 @@ import { ProgressBar } from "src/components/ProgressBar"
 
 export const BasicQuiz = () => {
     const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
-    const totalQuestions = Object.keys(basicQuiz).length;
+    const totalQuestions = 20;
     return(
     <div className="basicQuiz-container">
         <Container>
@@ -22,6 +22,7 @@ export const BasicQuiz = () => {
                 <DisplayQuiz 
                     quiz={basicQuiz}
                     title="Basic Quiz"
+                    maxQuestions={totalQuestions}
                     questionsAnswerd={questionsAnswered} 
                     setQuestionsAnswerd={setQuestionsAnswered} 
                 />
