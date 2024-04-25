@@ -1,31 +1,12 @@
-import { Container, Row, Col, Nav, Tab, ListGroup } from 'react-bootstrap';
-import homeIcon from './house.svg';
-import BrainIcon from './modifiedBrainIcon.svg';
-import { Button } from 'react-bootstrap';
+import { Container, Row, Col, Tab, ListGroup } from 'react-bootstrap';
 
-function CareerSearchByInterest({handlePage} : {handlePage: (page: string) => void}) {
+function Interests({handlePage} : {handlePage: (page: string) => void}) {
 
     return (
         <>
-        <header className="header">
-          <div className="title-container">
-            <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} />
-            <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
-            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
-          </div>
-        </header>
-
         <Container className="mt-5">
             <Tab.Container id="interest-tabs" defaultActiveKey="realistic">
                 <Row>
-                    <Col sm={3}>
-                        <Nav variant="pills" className="flex-column">
-                            <Nav.Item>
-                                <Nav.Link eventKey="realistic">Realistic</Nav.Link>
-                            </Nav.Item>
-                            {/* Add other interest categories here */}
-                        </Nav>
-                    </Col>
                     <Col sm={9}>
                         <Tab.Content>
                             <Tab.Pane eventKey="realistic">
@@ -46,4 +27,4 @@ function CareerSearchByInterest({handlePage} : {handlePage: (page: string) => vo
       )
 }
 
-export default CareerSearchByInterest;
+export default Interests;

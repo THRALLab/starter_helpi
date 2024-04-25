@@ -45,3 +45,13 @@
   width: 10vw; 
 }
 
+.navBar {
+    background-color: #6fb4fe;
+    font-size: 2.7vw;
+    color: white;
+    flex: 100 100 auto; /* adjust as needed */
+}
+
+.search-bar {
+  height: 50% !important;
+}

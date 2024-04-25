@@ -3,28 +3,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import { Button } from 'react-bootstrap';
+import homeIcon from './Pages/house.svg';
 
 function NavHome({handlePage} : {handlePage: (page: string) => void}) {
-
-  const navigateToInterests = () => {
-    window.location.href = '/interests';
-  }
-
+  //const [showInterests, setShowInterests] = useState(false);
   /*
-   <header className="header">
-   <div className="title-container">
-   <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} />
-   <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
-       <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
-   </div>
-   </header>
+  const handleTestButtonClick = () => {
+    setShowInterests(true); // Set showInterests to true to render Interests component
+  };
   */
 
   return (
-      <>
+    <div className="navBar">
         <Navbar bg="0000" variant="primary">
           <Container>
-            <Navbar.Brand onClick={navigateToInterests}>Career by Interests</Navbar.Brand>
+            <Navbar.Brand onClick={() => handlePage('interests')}>
+            Careers Search
+            </Navbar.Brand>
             <Form className="d-flex ms-auto">
               <FormControl
                 type="search"
@@ -32,12 +27,12 @@ function NavHome({handlePage} : {handlePage: (page: string) => void}) {
                 className="mr-2"
                 aria-label="Search"
               />
-              <Button className="Careers-button" onClick={() => handlePage('Career')} />
+            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
             </Form>
           </Container>
-        </Navbar>
-      </>
-    )
+        </Navbar> 
+    </div>
+  )
 }
 
 export default NavHome;

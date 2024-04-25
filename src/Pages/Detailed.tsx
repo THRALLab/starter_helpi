@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-import BrainIcon from './modifiedBrainIcon.svg';
-import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
 import Confetti from 'react-dom-confetti';
@@ -118,18 +116,11 @@ const questions: QuestionOption[] = [
 
     return (
         <div>
-        <header className="header" /* Top of page */>
         {allQuestionsAnswered && (
-      <div className="confetti-container">
-        <Confetti active={confetti} config={config} />
-      </div>
-            )} 
-        <div className="title-container">
-        <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} /* Brain icon (Can switch to home page on click) */ />
-        <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
-            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
-        </div>
-        </header>
+            <div className="confetti-container">
+                <Confetti active={confetti} config={config} />
+            </div>
+        )}
         <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button>
         <div className="column">
                 {questions.map((q, idx) => (

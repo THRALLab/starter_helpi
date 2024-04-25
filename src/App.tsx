@@ -30,19 +30,12 @@ function App() {
     setKey(event.target.value);
   }
 
-  const updatePageState = () => { /* Function that renders new page when there is a switch */
-    switch (currPg) {
-      case 'Basic':
-        return <Basic handlePage={setCurrPg} />;
-      case 'Detailed':
-        return <Detailed handlePage={setCurrPg} />;
-      case 'interests':
-        return <CareerSearchByInterest handlePage={setCurrPg} />;
-      case 'Home':
-      default:
-        return <Home handlePage={setCurrPg} />;
-    }
-  };
+  const updatePageState = () => {
+  return currPg === 'Basic' ? <Basic handlePage={setCurrPg} />
+    : currPg === 'Detailed' ? <Detailed handlePage={setCurrPg} />
+    : currPg === 'interests' ? <CareerSearchByInterest handlePage={setCurrPg} />
+    : <Home handlePage={setCurrPg} />;
+};
 
   return (
     <>
