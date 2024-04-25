@@ -3,6 +3,7 @@ import './AboutPage.css'
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import colin_headshot from './ProfessionalHeadshot.jpg'
 import mike_headshot from './MForte-headshot.jpg'
+import michael_headshot from './MLutz-headshot.png'
 import CircleImage from '../CircleImages/CircleImage';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 
@@ -16,12 +17,12 @@ export function AboutPage() {
                         <div className='headshots'>
                             <Row style={{marginBottom: 15}}>
                                 <Col md={2} style={{marginRight: -15}}>
-                                    <CircleImage imageUrl={colin_headshot}/>
+                                    <CircleImage imageUrl={michael_headshot}/>
                                 </Col>
                                 <Col md={9}>
                                     <p className='team-names'>Michael Lutz</p>
-                                    <p className='team-names-info'>University of Delaware 202_</p>
-                                    <p className='team-names-info'>Major: _</p>
+                                    <p className='team-names-info'>University of Delaware 2026</p>
+                                    <p className='team-names-info'>Major: Computer Science</p>
                                     <p className='team-names-info' style={{fontSize: 13}}>Scrum Master</p>
                                     <Col>
                                         <a href="https://github.com/MichaelLutz1" target="_blank" rel="noreferrer">
