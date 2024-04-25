@@ -45,6 +45,7 @@ function SimpleQuestions() {
   const [option2, setOption2] = useState("Option 2...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
   const [color, setColor] = useState("");
+  const barGradient = "black";
 
   useEffect(() => {
     const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E"];
@@ -151,7 +152,7 @@ function SimpleQuestions() {
         <div className="Simple-progress">
           <div
             className="Simple-progress-outer"
-            style = {{backgroundColor: "black"}}
+            style={{ backgroundColor: "black" }}
           >
             <div
               className="Simple-progress-inner"
@@ -159,19 +160,21 @@ function SimpleQuestions() {
                 width: `${
                   100 * ((currentQuestionNumber - 1) / numberOfQuestions)
                 }%`,
-                background: `linear-gradient(to right, black, ${color})`,
+                background: `linear-gradient(to right, ${barGradient}, ${color})`,
               }}
-            >
-            </div>
-            <div className="Simple-question-number"
-              style = {{
+            ></div>
+            <div
+              className="Simple-question-number"
+              style={{
                 position: "absolute",
               }}
-              >
-                Question {questionNumber + 1}/{numberOfQuestions}
-              </div>
-            <div className="Simple-progress-percentage"
-              style={{position: "relative"}}>
+            >
+              Question {questionNumber + 1}/{numberOfQuestions}
+            </div>
+            <div
+              className="Simple-progress-percentage"
+              style={{ position: "relative" }}
+            >
               {Math.round(
                 100 * ((currentQuestionNumber - 1) / numberOfQuestions)
               )}

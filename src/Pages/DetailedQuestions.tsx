@@ -41,6 +41,7 @@ function DetailedQuestions() {
   const [questionBody, setQuestionBody] = useState("Question...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
   const [color, setColor] = useState("");
+  const barGradient = "black";
 
   useEffect(() => {
     const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E"];
@@ -187,24 +188,28 @@ function DetailedQuestions() {
             <Col>
               <div
                 className="DetailedQuestions-progress-bar"
-                style={{ backgroundColor: "black"}}
+                style={{ backgroundColor: "black" }}
               >
-                <span className="DetailedQuestions-question-number"
-                style={{position: "absolute"}}>
-                  Question {questionNumber}/{numberOfQuestions}
-                </span>
-                <span className="DetailedQuestions-progress-bar-percentage"
-                style={{position: "absolute"}}>
-                  {Math.trunc(100 * (questionNumber / numberOfQuestions))}%
-                  completed
-                </span>
-                <span
+                <div
                   className="DetailedQuestions-progress-bar-foreground"
                   style={{
                     height: `${100 * (questionNumber / numberOfQuestions)}%`,
-                    background: `linear-gradient(to right, black, ${color})`,
+                    background: `linear-gradient(to right, ${barGradient}, ${color})`,
                   }}
-                ></span>
+                ></div>
+                <span
+                  className="DetailedQuestions-question-number"
+                  style={{ position: "absolute" }}
+                >
+                  Question {questionNumber}/{numberOfQuestions}
+                </span>
+                <span
+                  className="DetailedQuestions-progress-bar-percentage"
+                  style={{ position: "absolute" }}
+                >
+                  {Math.trunc(100 * (questionNumber / numberOfQuestions))}%
+                  completed
+                </span>
               </div>
               <span className="DetailedQuestions-answers-display">
                 {sliderValues.map((x, i) => (
