@@ -75,11 +75,8 @@ export function DisplayQuiz(
         const response = (title === "Basic Quiz") ?
             await connectToGBT(CreateStartingPrompt({
                 questionsAns: questionAns,
-                status: "",
-                interests: "",
-                experience: "",
-                specificNeeds: ""
-            }), CreateBasicStartingPrompt()) :
+                status: ""
+            }), CreateBasicStartingPrompt(maxQuestions-questionsAnswerd, questionsAnswerd)) :
             await addResponseGBT({choices: gbtConversation, newMessage: createNewQuestions()});
         console.log("GBT response", response);
         parseChatHistory(response);
@@ -89,7 +86,7 @@ export function DisplayQuiz(
     }
 
     // used to determine next question
-    const determineNextQuestionId = (currentQuestionId: string, curQuiz: DisplayQuizProps, forewards: boolean): string => {
+    const determineNextQuestionId = async (currentQuestionId: string, curQuiz: DisplayQuizProps, forewards: boolean): Promise<string> => {
         // questions are id'd as `quiestion${questionNumber}`
         if (currentQuestionId.includes("question")) {
           if (forewards) { // process for getting the next question
@@ -97,7 +94,7 @@ export function DisplayQuiz(
             if (newId in curQuiz) return (newId);
             // curQuiz is not not
             else if(questionsAnswerd < maxQuestions) {
-                createNextQuestion();
+                await createNextQuestion();
                 // assuming nothing breaks and the next question is actually loaded
                 return `question${parseInt(currentQuestionId.substring(8)) + 1}`;
             }
@@ -117,7 +114,7 @@ export function DisplayQuiz(
         setNextPrompt(prompt);
     }
     const createQuiz = () => {
-        if(title === "Basic Quiz") connectToGBT(CreateBasicStartingPrompt(), nextPrompt);
+        if(title === "Basic Quiz") connectToGBT(CreateBasicStartingPrompt(maxQuestions-questionsAnswerd, questionsAnswerd), nextPrompt);
         if(title === "Advanced Quiz") connectToGBT(CreateAdvancedStartingPrompt(), nextPrompt);
     }
     /**
@@ -127,7 +124,7 @@ export function DisplayQuiz(
      * the next question is then displayed
      * if there is no next question then the curQuiz is over
      */
-    const handleAnswerSubmit = (answer: string, forewards: boolean) => {
+    const handleAnswerSubmit = async (answer: string, forewards: boolean) => {
         
         if (forewards) { // if going to next question
             const nextQuestionId = determineNextQuestionId(currentQuestionId, curQuiz, true);
@@ -142,17 +139,17 @@ export function DisplayQuiz(
             }
             setQuestionsAnswerd(questionsAnswerd + 1); // increments questions answered
 
-            if (nextQuestionId === "") {
+            if (await nextQuestionId === "") {
                 setIsQuizComplete(true); // End of the curQuiz
             } 
             else {
-                setCurrentQuestionId(nextQuestionId); // Move to the next question
+                setCurrentQuestionId(await nextQuestionId); // Move to the next question
             }
         } 
         else { // backwards
             setQuestionsAnswerd(questionsAnswerd - 1);
             const nextQuestionId = determineNextQuestionId(currentQuestionId, curQuiz, false);
-            setCurrentQuestionId(nextQuestionId);
+            setCurrentQuestionId(await nextQuestionId);
         }
     }
     // if(Object.keys(quiz).length === 0) createQuiz();

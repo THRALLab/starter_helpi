@@ -2,10 +2,7 @@ import { Question } from "./QuestionTypes"
 
 export interface PromptQuestionsSetup {
     questionsAns: QuestionAnswer[]
-    status: string,
-    interests: string,
-    experience: string,
-    specificNeeds: string,
+    status: string
 }
 
 export type QuestionAnswer = {

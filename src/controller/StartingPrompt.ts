@@ -75,8 +75,8 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
     )
 }
 
-export const CreateBasicStartingPrompt = (): string => {
-    return"Create 4 more questions starting at question 8, to ask the user";
+export const CreateBasicStartingPrompt = (requestQuestions: number, answerdQuestions: number): string => {
+    return`Create ${requestQuestions} more questions starting at question${answerdQuestions} , to ask the user`;
 }
 
 export const CreateAdvancedStartingPrompt = (): string => {
