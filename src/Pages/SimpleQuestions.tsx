@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
-import { DarkModeToggle, bodyClassName } from "../Components/DarkModeToggle";
+import { themeState } from "../Components/ThemeParent";
+import { ThemeSelect } from "../Components/ThemeSelect";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
 import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
@@ -126,10 +127,10 @@ function SimpleQuestions() {
   };
 
   return (
-    <div className={bodyClassName} id="bigBody">
+    <div className={themeState} id="bigBody">
       <header className="General-header">
         <span className="Header-toggle">
-          <DarkModeToggle></DarkModeToggle>
+          <ThemeSelect></ThemeSelect>
         </span>
         <span>The Career Lab</span>
         <span className="Header-button">
