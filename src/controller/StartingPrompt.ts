@@ -162,7 +162,7 @@ userStatus +
 
 
         `The questions should be structured as follows:\n` +
-        `const questionSet: Record<string, Question> = {\n` +
+        `{\n` +
         `  question1: {\n` +
         `    id: "question1",\n` +
         `    type: "MC_SINGLE_RESPONSE",\n` +
