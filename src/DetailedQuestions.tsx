@@ -96,7 +96,7 @@ const DetailedQuestions: React.FC = () => {
     <div className="detailed-questions">
       <div>
         <Link to="/">
-          <Button variant="primary">Return to Home</Button>
+          <Button>Return to Home</Button>
         </Link>
       </div>
       <div style={{ paddingTop: '50px' }}>
