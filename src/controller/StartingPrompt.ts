@@ -73,3 +73,11 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
         `This final report aims to be a comprehensive guide that assists users in making informed decisions about their career paths, whether they are just beginning to explore or are considering a change.\n`
     )
 }
+
+export const CreateBasicStartingPrompt = (): string => {
+    return"";
+}
+
+export const CreateAdvancedStartingPrompt = (): string => {
+    return"";
+}

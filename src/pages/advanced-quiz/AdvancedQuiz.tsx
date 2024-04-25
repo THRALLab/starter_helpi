@@ -7,22 +7,23 @@ import { ProgressBar } from "src/components/ProgressBar"
 
 
 export const AdvancedQuiz = () => {
+    const maxQuestions = 20;
     const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
-    const totalQuestions = Object.keys(advancedQuiz).length;
     return(
     <div className="basicQuiz-container">
         <Container>
             <Row>
                 <ProgressBar
                     value={questionsAnswered}
-                    max={totalQuestions}
+                    max={maxQuestions}
                 />
             </Row>
             <Row>
                 <DisplayQuiz
-                    quiz={advancedQuiz}
+                    quiz={{}}
                     title="Advanced Quiz"
-                    questionsAnswerd={questionsAnswered} 
+                    questionsAnswerd={questionsAnswered}
+                    maxQuestions={maxQuestions}
                     setQuestionsAnswerd={setQuestionsAnswered} 
                 />
             </Row>
