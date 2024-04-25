@@ -1,27 +1,33 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import { AnswerContext } from "../AnswerContext";
+
+const saveInfo = "DetailUserInputQ2";
 
 export function Q2(): JSX.Element {
-  const [age, setAge] = useState<string>("");
-  const { userAnswers, setUserAnswers } = useContext(AnswerContext);
-
-  function updateAge(event: React.ChangeEvent<HTMLInputElement>) {
-    setAge(event.target.value);
-    setUserAnswers((prevAnswers: string[]) => {
-      const answer = event.target.value;
-      const updatedAnswers = [...prevAnswers];
-      updatedAnswers[1] = answer;
-      return updatedAnswers;
+    const [userInfo, setUserInfo] = useState<string>(() => {
+        const savedUserInfo = localStorage.getItem(saveInfo);
+        return savedUserInfo ? JSON.parse(savedUserInfo) : "";
     });
-    console.log(userAnswers);
-  }
 
-  return (
-    <div>
-      How old are you?
-      <br></br>
-      <Form.Control type="textbox" value={age} onChange={updateAge} />
-    </div>
-  );
+    function updateUserInfo(event: React.ChangeEvent<HTMLTextAreaElement>) {
+        setUserInfo(event.target.value);
+    }
+
+    useEffect(() => {
+        localStorage.setItem(saveInfo, JSON.stringify(userInfo));
+    }, [userInfo]);
+
+    return (
+        <div>
+            <Form.Group controlId="work-schedule">
+                <Form.Label>What is your ideal working schedule?</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    rows={5}
+                    value={userInfo}
+                    onChange={updateUserInfo}
+                />
+            </Form.Group>
+        </div>
+    );
 }
