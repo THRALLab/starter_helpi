@@ -19,6 +19,30 @@
     color: #000;
 }
 
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.starfish {
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    width: 150px;
+    height: auto;
+}
+
+.shell {
+    position: absolute;
+    top: 350px;
+    right: 80px;
+    width: 150px;
+    height: auto;
+}
 /*Navigation Bar Styling*/
 
 
