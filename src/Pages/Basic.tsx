@@ -1,10 +1,29 @@
 
-import React, { useState } from 'react';
-import {Button, ProgressBar} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Button, ProgressBar } from 'react-bootstrap';
 import BrainIcon from './modifiedBrainIcon.svg';
 import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
+import Confetti from 'react-dom-confetti';
+import smileIcon from './smile.svg';
+import mehIcon from './meh.svg';
+import sadIcon from './sad.svg';
+
+const config = {
+    angle: 90,
+    spread: 150,
+    startVelocity: 35,
+    elementCount: 200,
+    dragFriction: 0.12,
+    duration: 9000,
+    stagger: 3,
+    width: "0.9vw",
+    height: "0.9vw",
+    perspective: "500px",
+    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+    recycle: false,
+  };
 
 interface BasicProp {
     handlePage: (page: string) => void;
@@ -12,89 +31,145 @@ interface BasicProp {
 
 interface QuestionOption {
     question: string;
-    options: string[];
+    options: { label: string; iconSrc: string }[];
 }
 
 const Basic: React.FC<BasicProp> = ({ handlePage }) => {
-    // Create object where keys are question indexes and values are the selected options
-    const [activeOptions, setActiveOptions] = useState<{ [key: number]: string }>({});
+    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    const [confetti, setConfetti] = useState(false);
+    const [confettiShown, setConfettiShown] = useState(false); 
 
-    const handleOptionClick = (questionIndex: number, option: string) => {
-        // Update the active option for specific question
-        setActiveOptions(prevState => ({
-            ...prevState,
-            [questionIndex]: option
-        }));
+    const handleOptionClick = (option: string, questionIndex: number) => {
+        const updatedSelectedOptions = [...selectedOptions];
+        updatedSelectedOptions[questionIndex] = option;
+        setSelectedOptions(updatedSelectedOptions);
     };
 
     const questions: QuestionOption[] = [
         {
             question: "How much do you prefer working independently over working collaboratively?",
-            options: ["Not at All", "Neutral", "Very much"]
+            options: [
+                { label: "Not at All", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very much", iconSrc: smileIcon }
+            ]
         },
         {
             question: "How important is expressing creativity and passion in your work?",
-            options: ["Not at All Important", "Neutral", "Very Important"]
+            options: [
+                { label: "Not at All Important", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very Important", iconSrc: smileIcon }
+            ]
         },
         {
             question: "How easily do you adapt to changes in your work environment and job responsibilities?",
-            options: ["Difficult", "Neutral", "Easy"]
+            options: [
+                { label: "Difficult", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Easy", iconSrc: smileIcon }
+            ]
         },
         {
             question: "How important is it for you to make a tangible impact through your work?",
-            options: ["Not at All Important", "Neutral", "Very Important"]
+            options: [
+                { label: "Not at All Important", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very Important", iconSrc: smileIcon }
+            ]
         },
         {
             question: "How important is having a set routine in the workplace to you?",
-            options: ["Not at All Important", "Neutral", "Very Important"]
+            options: [
+                { label: "Not at All Important", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very Important", iconSrc: smileIcon }
+            ]
         },
         {
             question: "Do you see yourself as a natural leader and enjoy taking charge of projects?",
-            options: ["Not at All", "Neutral", "Very Much"]
+            options: [
+                { label: "Not at All", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Very Much", iconSrc: smileIcon }
+            ]
         },
         {
             question: "Do you prefer an office environment or an environment that is frequently changing?",
-            options: ["Office", "Neutral", "Changing Environment"] 
+            options: [
+                { label: "Office", iconSrc: sadIcon },
+                { label: "Neutral", iconSrc: mehIcon },
+                { label: "Changing Environment", iconSrc: smileIcon }
+            ]
         }
     ];
+    const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
+   
+    useEffect(() => {
+        if (allQuestionsAnswered && !confettiShown) { /* Confetti effect when all questions are answered */
+            setConfetti(true);
+            setConfettiShown(true); 
+            setTimeout(() => {
+                setConfetti(false);
+            }, 2000);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedOptions, confettiShown]);
 
     const totalQuestions = questions.length;
-    const answeredQuestions = Object.keys(activeOptions).length;
+    const answeredQuestions = Object.keys(selectedOptions).length;
     const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
 
     return (
         <div>
-            <header className="header">
-                <div className="title-container">
-                    <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick={() => handlePage('Home')} />
-                    <h2 className="title" onClick={() => handlePage('Home')}>Brain Spark</h2>
-                    <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /></Button>
-                </div>
-            </header>
-            <div className="progressBarContainer">
+        <header className="header" /* Top of page */>
+        {allQuestionsAnswered && (
+      <div className="confetti-container">
+        <Confetti active={confetti} config={config} />
+      </div>
+            )} 
+        <div className="title-container">
+        <img src={BrainIcon} alt="Brain Icon" className="brainIcon" onClick ={() => handlePage('Home')} /* Brain icon (Can switch to home page on click) */ />
+        <h2 className="title" onClick ={() => handlePage('Home')}>Brain Spark</h2>
+            <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
+        </div>
+        </header>
+        <div className="progressBarContainer">
                 <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
             </div>
-            <div className="column">
-                {questions.map((question, index) => (
-                    <div key={index}>
-                        <h3>{question.question}</h3>
+        <Button className="detailed-switch" onClick={() => handlePage('Detailed')}>Detailed</Button>
+        <div className="column">
+                {questions.map((q, x) => (
+                    <div key={x}>
+                        <h3 className="question">{q.question}</h3>
                         <div className="questionContainer">
-                            {question.options.map((option, optionIndex) => (
-                                <Button
-                                    className={`button-questions ${option === activeOptions[index] ? 'button-pressed' : ''}`}
-                                    key={optionIndex}
-                                    onClick={() => handleOptionClick(index, option)}
-                                >
-                                    {option}
-                                </Button>
-                            ))}
+                        {q.options.filter(option => option.label !== "").map((option, i) => (
+    <label key={i} className="option">
+        <input
+            type="radio"
+            name={`question_${x}`}
+            value={option.label}
+            checked={selectedOptions[x] === option.label}
+            onChange={() => handleOptionClick(option.label, x)}
+        />
+        <img src={option.iconSrc} alt={`${option.label} Icon`} className="label-icon" />
+        {option.label}
+    </label>
+))}
                         </div>
                     </div>
                 ))}
             </div>
+            {allQuestionsAnswered && ( /* Response displayed when all questions are answered */
+      <div className="response">
+        <h3>Thank you for completing the questionnaire!</h3>
+        <p>Your responses have been recorded.</p>
+        <Button onClick={() => handlePage('Result')} className="response-button">View Results</Button>
+      </div>
+            )}
+            <footer className="footer-space"></footer>
         </div>
     );
-    
 }
 
 export default Basic;
