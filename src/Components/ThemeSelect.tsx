@@ -23,19 +23,20 @@ export const ThemeSelect = () => {
   }
 
   return (
-    <span>
-      <span>
-        <Form.Group controlId="userEmotions">
-          <Form.Label>Theme:</Form.Label>
-          <Form.Select value={theme} onChange={updateTheme} role="Theme-Select">
-            <option value="body-theme1">Watermelon</option>
-            <option value="body-theme2">Theme 2</option>
-            <option value="body-theme3">Theme 3</option>
-            <option value="body-theme4">Retro</option>
-            <option value="body-theme5">Dark Mode</option>
-          </Form.Select>
-        </Form.Group>
-      </span>
-    </span>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <Form.Label htmlFor="userEmotions" style={{ marginRight: "10px" }}>Theme:</Form.Label>
+      <Form.Select
+        id="userEmotions"
+        value={theme}
+        onChange={updateTheme}
+        style={{ marginRight: "10px" }}
+      >
+        <option value="body-theme1">Watermelon</option>
+        <option value="body-theme2">Modern</option>
+        <option value="body-theme3">Cotton Candy</option>
+        <option value="body-theme4">Retro</option>
+        <option value="body-theme5">Dark Mode</option>
+      </Form.Select>
+    </div>
   );
 };
