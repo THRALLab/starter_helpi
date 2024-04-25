@@ -84,7 +84,7 @@ export function BasicPage() {
     let eventKey = 0;
     return (
         <div className='basic-page-container'>
-            <div className='heading-container'>
+            <div className='basic-heading-container'>
                 <h1 className='title'>Basic Quiz</h1>
                 <ProgressBar style={{width: '50vw'}}className='custom-progress-bar' min={0} max={100} now={progressPercentage} animated striped />
             </div>
