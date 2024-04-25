@@ -2,59 +2,44 @@ import { Question } from "../../interfaces/QuestionTypes";
 
 export const basicQuiz: Record<string, Question> = {
   question1: {
-    id: "question1",
+    id: "basic1",
     type: "MC_SINGLE_RESPONSE",
-    prompt: "What is your highest level of education?",
-    description: "If currently in school, select your current level",
-    options: ["High School", "Bachelor's", "Master's", "PhD"]
+    prompt: "What level of education are you currently pursuing or have completed?",
+    description: "Select the highest level of education you have achieved or are currently pursuing.",
+    options: ["Middle School or lower", "High School", "Some College", "Associate Degree", "Bachelor’s Degree"]
   },
   question2: {
-    id: "question2",
-    type: "MC_MULTI_RESPONSE",
-    prompt: "Which area interests you the most?",
-    description: "Select all that apply",
-    options: ["Science", "Arts", "Business", "Technology"]
+    id: "basic2",
+    type: "MC_SINGLE_RESPONSE",
+    prompt: "How would you describe your current understanding of potential careers?",
+    description: "Choose the option that best describes your current situation.",
+    options: [
+      "I'm just starting to think about careers",
+      "I have some ideas but need to learn more",
+      "I know what interests me but not how to get there",
+      "I'm exploring several options",
+      "I'm not sure where to start"
+    ],
   },
   question3: {
-    id: "question3",
-    type: "USER_RANKING",
-    prompt: "Rank these workplace environments in the order in which they appeal to you:",
-    description: "Use the arrow buttons to change the order of questions",
-    options: [
-      "Collaborative",
-      "Enterprise/Competitive",
-      "Hybrid/Virtual",
-      "Investigative",
-      "Traditional Largescale Business Model/Hierarchy",
-      "Production"
-    ]
+    id: "basic3",
+    type: "MC_SINGLE_RESPONSE",
+    prompt: "What are your main interests?",
+    description: "Select the area that you are most interested in learning about career opportunities.",
+    options: ["Sciences", "Arts and Humanities", "Business and Finance", "Technology and Engineering", "Healthcare"],
   },
   question4: {
-    id: "question4",
+    id: "basic4",
     type: "TEXT_RESPONSE",
-    prompt: "What is your favorite class you have taken?",
-    description: "Feel free to list multiple classes",
+    prompt: "What hobbies or activities do you enjoy most?",
+    description: "This can include anything from extracurricular activities to personal hobbies.",
     options: []
   },
   question5: {
-    id: "question5",
-    type: "SLIDER_RESPONSE",
-    prompt: "What percentage of your day do you spend on a computer?",
-    description: "Rough estimate is ok",
-    options: [],
-  },
-  question6: {
-    id: "question6",
+    id: "basic5",
     type: "MC_SINGLE_RESPONSE",
-    prompt: "What working environment do you prefer the most?",
-    description: "Think about hybrid vs in person vs virtual",
-    options: ["Outdoors", "Indoors away from home", "Indoors at home"],
-  },
-  question7: {
-    id: "question7",
-    type: "SLIDER_RESPONSE",
-    prompt: "How many hours would you be willing to work in a week?",
-    description: "Rough estimate is ok",
-    options: []
-  },
+    prompt: "What do you value most in a future career?",
+    description: "Select the factor that is most important to you in a career.",
+    options: ["Job stability", "High income", "Helping others", "Working with technology", "Creative expression"]
+  }
 };

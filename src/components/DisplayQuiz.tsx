@@ -203,7 +203,7 @@ export function DisplayQuiz(
         options: currentQuestion.options,
         onNext: handleAnswerSubmit,
         isFirst: currentQuestionId === "question1",
-        description: ""
+        description: currentQuestion.description
     };
 
 

@@ -29,7 +29,6 @@ export const BasicQuiz = () => {
                         setQuestionsAnswerd={setQuestionsAnswered} 
                     />
                 </Suspense>
-                
             </Row>
         </Container>
     </div>)
