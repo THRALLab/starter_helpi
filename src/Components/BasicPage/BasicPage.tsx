@@ -31,7 +31,7 @@ const questions: string[] =
     "7. I am more creative than analytical:"
     ]
 
-let pageData = Array.from(questions, (question: string) => ({ question: question, answer: "Neither Agree nor Disagree" })) as QuestionData[];
+let pageData = Array.from(questions, (question: string) => ({ question: question, answer: "" })) as QuestionData[];
 const saveDetailedDataKey = "BASIC_DATA";
 const currData = sessionStorage.getItem(saveDetailedDataKey);
 if (currData !== null) {
