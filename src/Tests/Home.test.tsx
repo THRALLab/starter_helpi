@@ -10,7 +10,9 @@ describe("Home Page Tests", () => {
         <Home />
       </HashRouter>
     );
-    const linkElement = screen.getByText("The Career Lab");
+    let linkElement = screen.getByText("The Career Lab");
+    expect(linkElement).toBeInTheDocument();
+    linkElement = screen.getByText("Home");
     expect(linkElement).toBeInTheDocument();
   });
   test("Has Basic Button", () => {

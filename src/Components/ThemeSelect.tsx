@@ -8,11 +8,11 @@ export const ThemeSelect = () => {
 
   //Theme Control
   function updateTheme(event: React.ChangeEvent<HTMLSelectElement>) {
-    //Stores the old class name
+    //Stores the current theme
     let oldThemeName = theme;
-    //Sets the theme
+    //Sets the theme to the new selected theme
     setTheme(event.target.value);
-    //Updates the state
+    //Sets the theme in the parent theme file
     updateThemeState(event.target.value);
     //Gets the page, if page successfully gotten, swaps the class name
     let bigBody = document.getElementById("bigBody");
