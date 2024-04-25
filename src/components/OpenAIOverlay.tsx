@@ -105,7 +105,7 @@ export function OpenAIOverlay({
       exec();
       console.log(userMessage);
     }
-  }, [currentQuestion]);
+  }, [currentQuestion]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // run through initialization
   // show overlay with report result
