@@ -47,7 +47,7 @@ nav{
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  /*background-color: #F09738;*/
+  background-color: #F09738;
   color: black;
   font-size: 14px;
 }
@@ -165,19 +165,6 @@ h3{
   margin-right: auto;
 }
 
-:root {
-  --blob-color: #3498db;
-}
-
-.blob {
-  width: 500px;
-  height: 500px;
-  background-color: var(--blob-color);
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  position: relative;
-  overflow: hidden;
-}
-
 footer{
   background-color: #6B7AA3;
   height: 100%;
@@ -222,42 +209,4 @@ footer{
 
 .Submit-Button:hover{
   background-color: #EE6B2C;
-}
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

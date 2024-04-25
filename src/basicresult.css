@@ -1,0 +1,39 @@
+.job-and-salary-area{
+    padding-top: 20px;
+    background-color: white !important;
+    margin-top: 20%;
+    align-items: center;
+    justify-content: center;
+}
+.card-body{
+    margin-bottom: 20px;
+}
+.card{
+    margin-bottom: 20px;
+}
+.salary{
+    margin-right: 200px;
+    min-width: 400px;
+    border-radius: 25px;
+    background: #0f14b7;
+    box-shadow:   -12px -12px 24px #adaebe,
+    12px 12px 24px #dddef2;;
+    color: #ffff;
+
+}
+.job{
+    min-width: 400px;
+}
+.cat-logo2 {
+    content: url('images/calico_cat_sitting.webp');
+    content: url('/src/images/calico_cat_sitting.webp');
+    max-width: 200px;
+    position: absolute;
+    align-items: left;
+    margin-left: 190px !important;
+    display: block;
+    margin-top:20px;
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
