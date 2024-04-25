@@ -1,32 +1,16 @@
-import React, { ChangeEvent, FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import { Form } from "react-bootstrap";
 import './Rangeslider.css'
 
-
 type RangeSliderProps = {
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (question: string, resp: string) => void;
+    question: string
+    numresp: string 
+    rangeValues: Record<string, string>
 }
-
-
-const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleChange}) => {
+const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleChange, question, rangeValues, numresp}) => {
+  const [range, setRange] = React.useState(numresp);
   
-  const rangeValues: Record<string, string> = {
-    1: "Strongly Disagree",
-    2: "Somewhat Disagree",
-    3: "Neither Agree nor Disagree",
-    4: "Somewhat Agree",
-    5: "Strongly Agree"
-  };
-
-  const [range, setRange] = useState("3");
-
-  const handleAnswerUpdate = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    setRange(event.target.value); 
-    handleChange(event as ChangeEvent<HTMLInputElement>);
-  };
-
   return (
     <Form.Group >
       <div className="flexbox">
@@ -35,14 +19,18 @@ const RangeSlider: FunctionComponent<RangeSliderProps> = ({handleChange}) => {
         {range === "5" ? <span style = {{color: '#6923ff', fontWeight: 'bold'}}>Agree</span> : <span style = {{color: 'white', fontWeight: 'bold'}}>Agree</span>}
       </div>
       <Form.Control
-        style ={{background: 'black'}}
-        value={range} // Current value of range slider
-        type="range" // Form type
-        min={1} // Lowest possible value
-        max={5} // Highest possible value
-        step={1} // Incremental change of 1
-        // Function that is called when the range slider is manipulated
-        onChange={event => handleAnswerUpdate(event)}
+          style ={{background: 'black'}}
+          value={range}
+          type="range"
+          min={1} 
+          max={5} 
+          step={1}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const newRange = e.target.value;
+            console.log("Slider value before state update:", newRange);
+            setRange(newRange);
+            handleChange(question, newRange);
+          }}
       />
     </Form.Group>
   );
