@@ -5,6 +5,7 @@ import SimpleQuestions from "../Pages/SimpleQuestions";
 import DetailedQuestions from "../Pages/DetailedQuestions";
 import SimpleReport from "../Pages/SimpleReport";
 import DetailedReport from "../Pages/DetailedReport";
+
 //Routes between pages
 function RoutePaths() {
   return (

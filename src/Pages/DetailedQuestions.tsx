@@ -201,7 +201,9 @@ function DetailedQuestions() {
                   className="DetailedQuestions-question-number"
                   style={{ position: "absolute" }}
                 >
-                  Question {questionNumber}/{numberOfQuestions}
+                  Question{" "}
+                  {questionNumber === 30 ? questionNumber : questionNumber + 1}/
+                  {numberOfQuestions}
                 </span>
                 <span
                   className="DetailedQuestions-progress-bar-percentage"
