@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
 import NavigationBar from "./components/homePageComp/navigation-bar/navigationBar";
+//import starfish from "./images/starfish.png";
 import DetailedQuestions from './pages/DetailedQuestions';
 import BasicQuestions from './pages/BasicQuestions';
 import Home from './pages/Home';
@@ -46,6 +47,7 @@ function App() {
 
     return (
         <div
+        
             className="App"
             style={{
                 backgroundColor: "#f6d7b0",
