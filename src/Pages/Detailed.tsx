@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, ProgressBar } from 'react-bootstrap';
 import BrainIcon from './modifiedBrainIcon.svg';
 import homeIcon from './house.svg';
 import './Pages.css';
@@ -117,6 +117,10 @@ const questions: QuestionOption[] = [
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedOptions, confettiShown]);
 
+    const totalQuestions = questions.length;
+    const answeredQuestions = Object.keys(selectedOptions).length;
+    const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
+
     return (
         <div>
         <header className="header" /* Top of page */>
@@ -131,6 +135,9 @@ const questions: QuestionOption[] = [
             <Button className="home-button" onClick={() => handlePage('Home')}><img src={homeIcon} alt="Home Page" className="homeIcon" /* Home button (switch to home page on click) */ /></Button>
         </div>
         </header>
+        <div className="progressBarContainer">
+                <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+            </div>
         <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button>
         <div className="column">
                 {questions.map((q, idx) => (

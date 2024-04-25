@@ -168,3 +168,43 @@
     background-position: right center;
     opacity: 0.9;
 }
+
+h3 {
+    font-family: 'Helvetica', 'Arial', sans-serif; 
+    font-size: 18px;  
+    color: #333;  
+}
+
+.button-questions {
+    font-family: 'Helvetica', 'Arial', sans-serif;  
+    font-size: 14px;  
+    color: #333;  
+    background-color: #0066cc; 
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* transition for color changes */
+
+}
+
+.button-questions:hover, .button-pressed {
+    background-color: #004499; /* Dark blue */
+}
+
+.progressBarContainer {
+    width: 45%; 
+    margin: 0 auto; 
+    padding: 10px 0; 
+}
+
+.progressBar {
+    height: 20px; 
+    border-radius: 10px; 
+    background-color: #f0f0f0; 
+}
+
+.progressBar .progress-bar {
+    background-color: #4eca88; 
+    border-radius: 10px; 
+}
