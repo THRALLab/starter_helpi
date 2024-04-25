@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ProgressBar, Button, Form } from 'react-bootstrap';
 
 const DetailedQuestions: React.FC = () => {
-  // Define the questions and options
   const [questions] = useState([
     {
       id: 1,
@@ -74,13 +73,11 @@ const DetailedQuestions: React.FC = () => {
         "Continuous learning and personal development in various fields"
       ]
     },
-    // Add more questions here
+    // Add more questions her
   ]);
 
-  // State to track selected options for each question
   const [selectedOptions, setSelectedOptions] = useState<Record<number, string>>({});
 
-  // Function to handle option selection
   const handleOptionSelect = (questionId: number, option: string) => {
     setSelectedOptions(prevOptions => ({
       ...prevOptions,
@@ -88,74 +85,41 @@ const DetailedQuestions: React.FC = () => {
     }));
   };
 
-  // Function to handle "Get Results" button click
   const handleGetResults = () => {
-    // Placeholder for future functionality
     console.log("Results will be displayed in the future.");
   };
 
-  // Calculate progress based on the number of questions answered
   const progress = (Object.keys(selectedOptions).length / questions.length) * 100;
 
   return (
     <div className="detailed-questions">
-      <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
-      <h1>Detailed Questions</h1>
-      {/* <Form>
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0 }}>
+        <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
+      </div>
+      <div style={{ paddingTop: '50px' }}> {/* Adjust padding-top to match the height of the progress bar */}
+        <h2>Detailed Questions</h2>
         {questions.map(question => (
-          <div className = "options-container" key={question.id}>
-            <h2>{question.question}</h2>
-            {question.options.map(option => (
-              <Form.Check
-                key={option}
-                type="radio"
-                id={option}
-                label={<span className = "option-label">{option}</span>}
-                checked={selectedOptions[question.id] === option}
-                onChange={() => handleOptionSelect(question.id, option)}
-                className={selectedOptions[question.id] === option ? "option-selected" : ""}
-              />
-            ))}
-            <br />
+          <div key={question.id} style={{ backgroundColor: 'rgba(139, 0, 0, 0.8)', padding: '10px', borderRadius: '10px', border: '2px solid #8b0000', margin: '0 200px 20px 200px' }}>
+            <h3 style={{ color: 'white' }}>{question.question}</h3>
+            <Form>
+              {question.options.map(option => (
+                <Form.Check
+                  key={option}
+                  type="checkbox"
+                  id={option}
+                  label={option}
+                  checked={selectedOptions[question.id] === option}
+                  onChange={() => handleOptionSelect(question.id, option)}
+                  style={{ backgroundColor: selectedOptions[question.id] === option ? '#420303' : 'transparent', padding: '5px', borderRadius: '5px' }}
+                />
+              ))}
+            </Form>
           </div>
         ))}
         <Button variant="primary" onClick={handleGetResults} disabled={Object.keys(selectedOptions).length !== questions.length}>
           Get Results
         </Button>
-      </Form> */}
-      <Form>
-  {questions.map(question => (
-    <div className="options-container" key={question.id}>
-      <h2>{question.question}</h2>
-      {question.options.map(option => (
-        <Form.Check
-          key={option}
-          type="radio"
-          id={option}
-          label={
-            <span className="option-label">
-              <input
-                type="radio"
-                checked={selectedOptions[question.id] === option}
-                onChange={() => handleOptionSelect(question.id, option)}
-              />
-              {option}
-            </span>
-          }
-          className={selectedOptions[question.id] === option ? "option-selected" : ""}
-        />
-      ))}
-      <br />
-    </div>
-  ))}
-  <Button
-    variant="primary"
-    onClick={handleGetResults}
-    disabled={Object.keys(selectedOptions).length !== questions.length}
-  >
-    Get Results
-  </Button>
-</Form>
+      </div>
     </div>
   );
 };

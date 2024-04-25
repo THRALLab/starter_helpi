@@ -35,3 +35,7 @@
   .get-results-btn {
     margin-top: 20px;
   }
+  .selectedOption {
+    background-color: #f0f0f0; /* Change the background color to your desired highlight color */
+  }
+  
