@@ -31,7 +31,7 @@ export const ThemeSelect = () => {
             <option value="body-theme1">Watermelon</option>
             <option value="body-theme2">Theme 2</option>
             <option value="body-theme3">Theme 3</option>
-            <option value="body-theme4">Theme 3</option>
+            <option value="body-theme4">Retro</option>
             <option value="body-theme5">Dark Mode</option>
           </Form.Select>
         </Form.Group>
