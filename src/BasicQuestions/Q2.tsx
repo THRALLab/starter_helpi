@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form } from "react-bootstrap";
-
-const saveInfo = "BasicUserInputQ2";
+import { AnswerContext } from "../AnswerContext";
 
 export function Q2(): JSX.Element {
-    const [data, setData] = useState<string>(() => {
-        const savedData = localStorage.getItem(saveInfo);
-        return savedData ? JSON.parse(savedData) : "";
+  const [age, setAge] = useState<string>("");
+  const { userAnswers, setUserAnswers } = useContext(AnswerContext);
+
+  function updateAge(event: React.ChangeEvent<HTMLInputElement>) {
+    setAge(event.target.value);
+    setUserAnswers((prevAnswers: string[]) => {
+      const answer = event.target.value;
+      const updatedAnswers = [...prevAnswers];
+      updatedAnswers[1] = answer;
+      return updatedAnswers;
     });
+    console.log(userAnswers);
+  }
 
-    function updateData(event: React.ChangeEvent<HTMLSelectElement>) {
-        setData(event.target.value);
-    }
-
-    useEffect(() => {
-        localStorage.setItem(saveInfo, JSON.stringify(data));
-    }, [data]);
-
-    return (
-        <div>
-            <Form.Group controlId="userInput">
-                <Form.Label>Do you have any short-term or long-term goals?</Form.Label>
-                <Form.Select value={data} onChange={updateData}>
-                    <option value="--">--</option>
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </Form.Select>
-            </Form.Group>
-        </div>
-    );
+  return (
+    <div>
+      How old are you?
+      <br></br>
+      <Form.Control type="textbox" value={age} onChange={updateAge} />
+    </div>
+  );
 }

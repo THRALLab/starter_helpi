@@ -1,33 +1,26 @@
-import React, { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Form } from "react-bootstrap";
-
-const saveInfo = "BasicUserInputQ7";
+import { AnswerContext } from "../AnswerContext";
 
 export function Q7(): JSX.Element {
-    const [data, setData] = useState<string>(() => {
-        const savedData = localStorage.getItem(saveInfo);
-        return savedData ? JSON.parse(savedData) : "";
+  const [userInfo, setUserInfo] = useState<string>("");
+  const { userAnswers, setUserAnswers } = useContext(AnswerContext);
+
+  function updateUserInfo(event: React.ChangeEvent<HTMLInputElement>) {
+    setUserInfo(event.target.value);
+    setUserAnswers((prevAnswers: string[]) => {
+      const answer = event.target.value;
+      const updatedAnswers = [...prevAnswers];
+      updatedAnswers[6] = answer;
+      return updatedAnswers;
     });
-
-    function updateData(event: React.ChangeEvent<HTMLInputElement>) {
-        setData(event.target.value);
-    }
-
-    useEffect(() => {
-        localStorage.setItem(saveInfo, JSON.stringify(data));
-    }, [data]);
-
-    return (
-        <div>
-            <Form.Group controlId="userInput">
-                <Form.Label>What is your dream career?</Form.Label>
-                
-                <Form.Control
-                    type="textbox"
-                    value={data}
-                    onChange={updateData}
-                    />
-            </Form.Group>
-        </div>
-    );
+    console.log(userAnswers);
+  }
+  return (
+    <div>
+      What is your dream career?
+      <br></br>
+      <Form.Control type="textbox" value={userInfo} onChange={updateUserInfo} />
+    </div>
+  );
 }

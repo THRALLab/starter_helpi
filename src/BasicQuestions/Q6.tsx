@@ -1,42 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { Form } from "react-bootstrap";
+import { useState, useContext } from "react";
+import { Form, Container, Row, Col } from "react-bootstrap";
+import { AnswerContext } from "../AnswerContext";
 
-const saveInfo = "BasicUserInputQ6";
+// Custom CSS for right-aligned radio buttons
+const rightAlignedRadioStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+};
 
-const seasons = [
-    "Spring",
-    "Summer",
-    "Autumn",
-    "Winter",
-];
+const seasons = ["Spring", "Summer", "Autumn", "Winter"];
 
 export function Q6(): JSX.Element {
-    const [selectSeason, setSelectSeason] = useState<string | null>(() => {
-        const savedSeason = localStorage.getItem(saveInfo);
-        return savedSeason ? JSON.parse(savedSeason) : null;
-      });
+  const [selectSeason, setSelectSeason] = useState(seasons[0]);
+  const { userAnswers, setUserAnswers } = useContext(AnswerContext);
 
-      useEffect(() => {
-        localStorage.setItem(saveInfo, JSON.stringify(selectSeason));
-      }, [selectSeason]);
-    
-      const SeasonChange = (selectedSeason: string) => {
-        setSelectSeason(selectedSeason);
-      };
-    
-      return (
-        <div>
-          <h3>What is your favorite season?</h3>
+  return (
+    <Container>
+      <h4>What is your favorite season?</h4>
+      <Row className="justify-content-center">
+        <Col md={6}>
           {seasons.map((season) => (
-            <Form.Check
-              key={season}
-              type="radio"
-              label={season}
-              name="season-button"
-              checked={selectSeason === season}
-              onChange={() => SeasonChange(season)}
-            />
+            <div key={season} style={rightAlignedRadioStyle}>
+              <span>{season}</span>
+              <Form.Check
+                type="radio"
+                id={`season-${season}`}
+                name="season-button"
+                checked={selectSeason === season}
+                onChange={() => {
+                  setSelectSeason(season);
+                  setUserAnswers((prevAnswers: string[]) => {
+                    const updatedAnswers = [...prevAnswers];
+                    updatedAnswers[5] = season;
+                    return updatedAnswers;
+                  });
+                  console.log(userAnswers);
+                }}
+              />
+            </div>
           ))}
-        </div>
-      );
+        </Col>
+      </Row>
+    </Container>
+  );
 }
