@@ -1,7 +1,7 @@
 HomePage.css
 .HomePage {
     text-align: center;
-    color: white;
+    color: rgb(255, 255, 255);
     font-family: monospace, fantasy;
     padding: 20px;
     display: flex;
@@ -16,6 +16,7 @@ HomePage.css
     margin-bottom: 100px;
     font-size: 2.5em;
     text-shadow: 2px 2px 4px black;
+    height: 50px;
   }
   
   .content {
@@ -26,12 +27,13 @@ HomePage.css
   }
   
   .question {
-    margin: 20px;
+    margin: 15px;
     text-align: center;
-    background-color:#99738E;
+    background-color:#8d8741a0;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 50px;
     box-shadow: 0, 4px, 6px, black;
+    width: 1000px;
   }
 
   .question h2 {
