@@ -23,7 +23,7 @@ export const basicQuiz: Record<string, Question> = {
   },
   question3: {
     id: "basic3",
-    type: "MC_SINGLE_RESPONSE",
+    type: "MC_MULTI_RESPONSE",
     prompt: "What are your main interests?",
     description: "Select the area that you are most interested in learning about career opportunities.",
     options: ["Sciences", "Arts and Humanities", "Business and Finance", "Technology and Engineering", "Healthcare"],
