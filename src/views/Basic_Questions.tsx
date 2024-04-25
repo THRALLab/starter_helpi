@@ -8,7 +8,6 @@ import { Q5 } from "../BasicQuestions/Q5";
 import { Q6 } from "../BasicQuestions/Q6";
 import { Q7 } from "../BasicQuestions/Q7";
 import { Q8 } from "../BasicQuestions/Q8";
-import { Footer } from "../components/Footer";
 import { OpenAIOverlay } from "../components/OpenAIOverlay";
 import { AnswerContext } from "../AnswerContext";
 
