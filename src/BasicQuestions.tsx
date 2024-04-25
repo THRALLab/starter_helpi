@@ -1,10 +1,10 @@
 
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, ProgressBar } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import './App.css';
-
+//Radio Button options
 const OPTIONS = [
   "Disagree",
   "Slightly Disagree",
@@ -12,8 +12,9 @@ const OPTIONS = [
   "Slightly Agree",
   "Agree"
 ]
+//list of questions for basic question page
 const QUESTIONS = [
-  "I am more creative subjects more then STEM subjects",
+  "I like creative subjects more then STEM subjects",
   "I am comfortable leading a team of people or giving orders to others",
   "I would prefer not to be behind a desk for the majority of my job",
   "I would prefer it if my work tasks varied on a day to day basis",
@@ -24,16 +25,17 @@ const QUESTIONS = [
   "I value making money more then fulfillment in my job",
   "I would like it if travel was a large part of my job"
 ]
-
 const BasicQuestions: React.FC = () => {
-  const [chosenOption, setChosenOption] = useState<Array<string | null[]>>(Array(QUESTIONS.length).fill(null));
+  const [chosenOption, setChosenOption] = useState<Array<string | null>>(Array(QUESTIONS.length).fill(null));
   function updateOption(event: React.ChangeEvent<HTMLInputElement>, index: number) {
     const newOptions = [...chosenOption];
     newOptions[index] = event.target.value;
     setChosenOption(newOptions);
   }
+  const progress = (chosenOption.filter(option => option !== null).length / QUESTIONS.length) * 100;
   return (
       <div>
+      <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
         <h1>
           Basic Career Aptitude Test
           <div>
