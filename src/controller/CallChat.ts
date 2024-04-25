@@ -12,6 +12,8 @@ export async function callGBT(
         startingPrompt: string
     }
 ) {
+  console.log("user prompt:", userPrompt);
+  console.log("starting prompt", startingPrompt);
     const chatCompletion = await openaiToken.chat.completions.create({
       messages: [
         { role: 'system', content: startingPrompt },

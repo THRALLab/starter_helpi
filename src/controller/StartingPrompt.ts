@@ -1,4 +1,9 @@
-import { PromptQuestionsSetup } from "src/interfaces/PromptQuestionsSetup"
+import { PromptQuestionsSetup, QuestionAnswer } from "src/interfaces/PromptQuestionsSetup"
+
+export const mapQuestionsToAnswers = (questions: QuestionAnswer[]): string => {
+    return questions.reduce((totalString: string, q: QuestionAnswer) => totalString + `Question asked: ${q.question.prompt}, Answer Given: ${q.answer}\n`,"")
+}
+
 
 export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string => {
     
@@ -14,11 +19,7 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
         `Each call you will be able to make one of three actions: ` +
         
         `To start off, you are given the following information:\n` +
-        `- The user's current level of education is ${questionAns.education}\n` +
-        userStatus + 
-        `- The user's interests include: ${questionAns.interests}\n` +
-        `- The user's current experience includes: ${questionAns.experience}\n` +
-        `- This is what the user would like you to assist with: ${questionAns.specificNeeds}\n\n` +
+        mapQuestionsToAnswers(questionAns.questionsAns) +
 
         `Your job is to ask the user additional questions in order to obtain the necessary information to meet their specific needs.\n` +
         `You will have five question types to choose from, although they all take the same exact inputs regardless of type. \n` +
@@ -75,7 +76,7 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
 }
 
 export const CreateBasicStartingPrompt = (): string => {
-    return"";
+    return"Create 4 more questions starting at question 8, to ask the user";
 }
 
 export const CreateAdvancedStartingPrompt = (): string => {

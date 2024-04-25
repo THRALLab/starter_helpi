@@ -1,5 +1,5 @@
 // Import necessary hooks and components
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
@@ -9,6 +9,7 @@ import { SliderResponse } from "./SliderResponse";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
 import OpenAI from "openai";
 import { CreateAdvancedStartingPrompt, CreateBasicStartingPrompt, CreateStartingPrompt, createNewQuestions } from "src/controller/StartingPrompt";
+import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -36,7 +37,7 @@ export function DisplayQuiz(
     ): JSX.Element {
     const [curQuiz, setCurQuiz] = useState<DisplayQuizProps>(quiz);
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("question1"); // Starting question ID
-    const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
+    const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when curQuiz is complete
     const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
     const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
     const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
@@ -45,16 +46,21 @@ export function DisplayQuiz(
     async function connectToGBT(startingPrompt: string, prompt: string)  {
         const response = await callGBT({startingPrompt: startingPrompt, userPrompt: prompt});
         // will parse the response so the messages are added
-        setGBTConversation(response.choices);
+        return response;
     }
 
     const addToQuiz = (newQuestions: DisplayQuizProps): void => {
-        setCurQuiz({...curQuiz, ...newQuestions})
+        console.log("new questions:", newQuestions);
+        const quizTotal = {...curQuiz, ...newQuestions};
+        console.log("combination ", {...curQuiz, ...newQuestions});
+        setCurQuiz(quizTotal);
+        console.log("Current Quiz:", curQuiz);
     }
 
     // when passed new chats from gbt it gets the last chat, parses
-    // it as json and adds it to the quiz
+    // it as json and adds it to the curQuiz
     const parseChatHistory = (newChats: OpenAI.ChatCompletion) => {
+        console.log("new chats:", newChats);
         const len = newChats.choices.length;
         if(len === 0) return;
         const res = newChats.choices[len-1].message.content;
@@ -64,14 +70,17 @@ export function DisplayQuiz(
 
     // gets the next questions
     async function createNextQuestion() {
-        // if basic quiz only one call is nessesary
-        if(title === "Basic Quiz") {
-            const response = await connectToGBT(CreateStartingPrompt(), CreateBasicStartingPrompt())
-        }
-        // advanced quiz for on-demand question calling
-        else {
-            const response = await addResponseGBT({choices: gbtConversation, newMessage: createNewQuestions()});
-        }
+        // if basic curQuiz only one call is nessesary
+        const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
+        const response = (title === "Basic Quiz") ?
+            await connectToGBT(CreateStartingPrompt({
+                questionsAns: questionAns,
+                status: "",
+                interests: "",
+                experience: "",
+                specificNeeds: ""
+            }), CreateBasicStartingPrompt()) :
+            await addResponseGBT({choices: gbtConversation, newMessage: createNewQuestions()});
         console.log("GBT response", response);
         parseChatHistory(response);
         //adding new messages to chat history
@@ -80,13 +89,13 @@ export function DisplayQuiz(
     }
 
     // used to determine next question
-    const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps, forewards: boolean): string => {
+    const determineNextQuestionId = (currentQuestionId: string, curQuiz: DisplayQuizProps, forewards: boolean): string => {
         // questions are id'd as `quiestion${questionNumber}`
         if (currentQuestionId.includes("question")) {
           if (forewards) { // process for getting the next question
             const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`; // returns next numerical question
-            if (newId in quiz) return (newId);
-            // quiz is not not
+            if (newId in curQuiz) return (newId);
+            // curQuiz is not not
             else if(questionsAnswerd < maxQuestions) {
                 createNextQuestion();
                 // assuming nothing breaks and the next question is actually loaded
@@ -96,7 +105,7 @@ export function DisplayQuiz(
           } 
           else { //go-back
             const newId = `question${parseInt(currentQuestionId.substring(8)) - 1}`;
-            if (newId in quiz) return (newId);
+            if (newId in curQuiz) return (newId);
             else return ""
           }
         } 
@@ -116,12 +125,12 @@ export function DisplayQuiz(
      * @param answer - the answer for the current question
      * when an answer is submitted the answer is passed and added to the answers
      * the next question is then displayed
-     * if there is no next question then the quiz is over
+     * if there is no next question then the curQuiz is over
      */
     const handleAnswerSubmit = (answer: string, forewards: boolean) => {
         
         if (forewards) { // if going to next question
-            const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz, true);
+            const nextQuestionId = determineNextQuestionId(currentQuestionId, curQuiz, true);
             if (questionsAnswerd === lastQuestionArray) { // if questions answered is equal to the latest array, appends it with newest answer
                 setAnswers([...answers, {questionId: currentQuestionId, answer: answer}])
                 setQuestionArray(lastQuestionArray + 1);
@@ -134,7 +143,7 @@ export function DisplayQuiz(
             setQuestionsAnswerd(questionsAnswerd + 1); // increments questions answered
 
             if (nextQuestionId === "") {
-                setIsQuizComplete(true); // End of the quiz
+                setIsQuizComplete(true); // End of the curQuiz
             } 
             else {
                 setCurrentQuestionId(nextQuestionId); // Move to the next question
@@ -142,11 +151,11 @@ export function DisplayQuiz(
         } 
         else { // backwards
             setQuestionsAnswerd(questionsAnswerd - 1);
-            const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz, false);
+            const nextQuestionId = determineNextQuestionId(currentQuestionId, curQuiz, false);
             setCurrentQuestionId(nextQuestionId);
         }
     }
-    if(Object.keys(quiz).length === 0) createQuiz();
+    // if(Object.keys(quiz).length === 0) createQuiz();
     
 
     if (isQuizComplete) {
@@ -159,7 +168,7 @@ export function DisplayQuiz(
         <span>GPT will be given the option of three actions to make:</span>
         <ul>
             <li><strong>Ask Question:</strong> (GPT returns parameters to feed into question component)</li>
-            <li><strong>End quiz:</strong> (Only ends on user’s side. Triggers AI to start to formulating final output)</li>
+            <li><strong>End curQuiz:</strong> (Only ends on user’s side. Triggers AI to start to formulating final output)</li>
             <li><strong>Final Output:</strong> (Quiz complete)</li>
         </ul>
         <br></br> 
@@ -174,8 +183,12 @@ export function DisplayQuiz(
         </>)
     }
 
-    const currentQuestion = quiz[currentQuestionId];
+    const Loading = () => {
+        return<h1>Loading</h1>
+    }
 
+    const currentQuestion = curQuiz[currentQuestionId];
+    
     const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
