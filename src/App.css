@@ -1,11 +1,47 @@
 .App {
   text-align: center;
+  color: white;
 }
 
-.App-logo {
+body {
+  background-color: #242582;
+  /* background-image: url(https://images.pexels.com/photos/7894879/pexels-photo-7894879.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); */
+  background-image: url(https://img.freepik.com/premium-photo/pixel-art-desert-day-with-blue-sky_887552-25458.jpg);
+  background-size: cover;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25); /* Adjust the alpha value (last parameter) to control darkness */
+  z-index: -1; /* Ensure the overlay is behind other content */
+}
+
+
+button {
+  background-color: #FBEEC1;
+  color: #DAAD86;
+  border-color: #DAAD86;
+  padding: 10px 20px;
+  border: 2px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover{
+  background-color: #BC986A;
+}
+
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -13,7 +49,94 @@
   }
 }
 
-.App-header {
+/* title at the top of the page*/
+h1 {
+  font-weight: bold;
+  margin-bottom: 100px;
+  font-size: 2.5em;
+  text-shadow: 4px 4px 6px black;
+  height: 50px;
+}
+
+/* detailed question title style & question title on homepage */
+h2 {
+  /* font-weight: bold; */
+  font-size: 2em;
+  text-shadow: 2px 2px 4px black;
+  height: 50px;
+  text-decoration: underline;
+}
+
+/* basic question title style */
+.question_two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  text-shadow: 2px 2px 4px black;
+  height: 50px;
+  margin-top: 50px; /* Adjust margin top as needed */
+}
+
+.question-container {
+  text-align: center;
+}
+
+.basic-questions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px; /* Adjust margin top as needed */
+
+}
+
+.BasicQuestions p {
+  font-weight: bold;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px black;
+  height: 50px;
+  text-decoration: solid; 
+};
+
+
+.DetailedQuestions p {
+  /* font-weight: bold; */
+  font-size: 1em;
+  text-shadow: 2px 2px 4px black;
+  height: 50px;
+  text-decoration: solid; 
+};
+
+
+.options-container {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* detailed question options style */
+.option-label { 
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  /* font-weight: bold; */
+  /* color: black; */
+}
+
+.option-label input[type="radio"] {
+  margin-right: 0px; /* Adjust spacing between radio button and option text */
+}
+
+.option-selected {
+  color: black;
+  font-weight: bold; /* Make the selected option bold */
+}
+
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -21,18 +144,18 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
+  color: rgb(123, 255, 209);
+} */
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
-  }
-}
+  } 
+} */

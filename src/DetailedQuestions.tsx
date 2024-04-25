@@ -1,18 +1,78 @@
 import React, { useState } from 'react';
 import { ProgressBar, Button, Form } from 'react-bootstrap';
 
-const DetailedQuestions = () => {
+const DetailedQuestions: React.FC = () => {
   // Define the questions and options
   const [questions] = useState([
     {
       id: 1,
-      question: "What type of work environment do you prefer?",
-      options: ["Fast-paced", "Team-oriented", "Independent", "Creative"]
+      question: "How do you approach solving complex problems?",
+      options: [
+        "Analyzing data and facts systematically",
+        "Brainstorming creative solutions",
+        "Seeking advice from mentors or colleagues",
+        "Experimenting with different strategies until a solution is found"
+      ]
     },
     {
       id: 2,
-      question: "How do you handle stress?",
-      options: ["By staying organized", "By talking it out with others", "By taking breaks", "By problem-solving"]
+      question: "How would you describe your communication style in a professional setting?",
+      options: [
+        "Concise and to the point",
+        "Persuasive and influential",
+        "Empathetic and understanding",
+        "Collaborative and inclusive"
+      ]
+    },
+    {
+      id: 3,
+      question: "What type of work environment do you thrive in?",
+      options: [
+        "Dynamic and fast-paced",
+        "Structured and organized",
+        "Innovative and entrepreneurial",
+        "Supportive and team-oriented"
+      ]
+    },
+    {
+      id: 4,
+      question: "How do you make decisions when faced with multiple options?",
+      options: [
+        "Rely on logical reasoning and analysis",
+        "Trust your intuition and gut feeling",
+        "Consult with others and gather opinions",
+        "Experiment with different options before deciding"
+      ]
+    },
+    {
+      id: 5,
+      question: "If given the opportunity, how would you lead a team?",
+      options: [
+        "Provide clear direction and guidance",
+        "Inspire and motivate team members",
+        "Delegate tasks and empower team members",
+        "Foster creativity and innovation within the team"
+      ]
+    },
+    {
+      id: 6,
+      question: "How do you respond to unexpected changes or challenges in the workplace?",
+      options: [
+        "Remain calm and assess the situation rationally",
+        "Embrace change and view it as an opportunity for growth",
+        "Seek support from others and collaborate on finding solutions",
+        "Take initiative to address the issue proactively"
+      ]
+    },
+    {
+      id: 7,
+      question: "What are your long-term career aspirations?",
+      options: [
+        "Climbing the corporate ladder within a specific industry",
+        "Pursuing entrepreneurial ventures and starting your own business",
+        "Making a positive impact on society or the environment",
+        "Continuous learning and personal development in various fields"
+      ]
     },
     // Add more questions here
   ]);
@@ -40,19 +100,20 @@ const DetailedQuestions = () => {
   return (
     <div className="detailed-questions">
       <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
-      <h2>Detailed Questions</h2>
-      <Form>
+      <h1>Detailed Questions</h1>
+      {/* <Form>
         {questions.map(question => (
-          <div key={question.id}>
-            <h3>{question.question}</h3>
+          <div className = "options-container" key={question.id}>
+            <h2>{question.question}</h2>
             {question.options.map(option => (
               <Form.Check
                 key={option}
                 type="radio"
                 id={option}
-                label={option}
+                label={<span className = "option-label">{option}</span>}
                 checked={selectedOptions[question.id] === option}
                 onChange={() => handleOptionSelect(question.id, option)}
+                className={selectedOptions[question.id] === option ? "option-selected" : ""}
               />
             ))}
             <br />
@@ -61,7 +122,40 @@ const DetailedQuestions = () => {
         <Button variant="primary" onClick={handleGetResults} disabled={Object.keys(selectedOptions).length !== questions.length}>
           Get Results
         </Button>
-      </Form>
+      </Form> */}
+      <Form>
+  {questions.map(question => (
+    <div className="options-container" key={question.id}>
+      <h2>{question.question}</h2>
+      {question.options.map(option => (
+        <Form.Check
+          key={option}
+          type="radio"
+          id={option}
+          label={
+            <span className="option-label">
+              <input
+                type="radio"
+                checked={selectedOptions[question.id] === option}
+                onChange={() => handleOptionSelect(question.id, option)}
+              />
+              {option}
+            </span>
+          }
+          className={selectedOptions[question.id] === option ? "option-selected" : ""}
+        />
+      ))}
+      <br />
+    </div>
+  ))}
+  <Button
+    variant="primary"
+    onClick={handleGetResults}
+    disabled={Object.keys(selectedOptions).length !== questions.length}
+  >
+    Get Results
+  </Button>
+</Form>
     </div>
   );
 };
