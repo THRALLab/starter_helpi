@@ -34,27 +34,48 @@ export function DisplayQuiz(
         setQuestionsAnswerd : (questionsAnswerd: number) => void 
     }
     ): JSX.Element {
-
+    const [curQuiz, setCurQuiz] = useState<DisplayQuizProps>(quiz);
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("question1"); // Starting question ID
     const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when quiz is complete
     const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
     const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
-    const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion>();
+    const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
     const [nextPrompt, setNextPrompt] = useState<string>("");
 
     async function connectToGBT(startingPrompt: string, prompt: string)  {
         const response = await callGBT({startingPrompt: startingPrompt, userPrompt: prompt});
         // will parse the response so the messages are added
-        setGBTConversation(response);
+        setGBTConversation(response.choices);
     }
 
+    const addToQuiz = (newQuestions: DisplayQuizProps): void => {
+        setCurQuiz({...curQuiz, ...newQuestions})
+    }
+
+    // when passed new chats from gbt it gets the last chat, parses
+    // it as json and adds it to the quiz
     const parseChatHistory = (newChats: OpenAI.ChatCompletion) => {
-
+        const len = newChats.choices.length;
+        if(len === 0) return;
+        const res = newChats.choices[len-1].message.content;
+        if(res === null) return;
+        addToQuiz(JSON.parse(res));
     }
 
+    // gets the next questions
     async function createNextQuestion() {
-        const response = await addResponseGBT({choices: gbtConversation?.choices, newMessage: createNewQuestions()});
-        const gbtResponse = 
+        // if basic quiz only one call is nessesary
+        if(title === "Basic Quiz") {
+            const response = await connectToGBT(CreateStartingPrompt(), CreateBasicStartingPrompt())
+        }
+        // advanced quiz for on-demand question calling
+        else {
+            const response = await addResponseGBT({choices: gbtConversation, newMessage: createNewQuestions()});
+        }
+        console.log("GBT response", response);
+        parseChatHistory(response);
+        //adding new messages to chat history
+        setGBTConversation(gbtConversation);
         return
     }
 
@@ -68,6 +89,8 @@ export function DisplayQuiz(
             // quiz is not not
             else if(questionsAnswerd < maxQuestions) {
                 createNextQuestion();
+                // assuming nothing breaks and the next question is actually loaded
+                return `question${parseInt(currentQuestionId.substring(8)) + 1}`;
             }
             else return "";
           } 
@@ -123,7 +146,7 @@ export function DisplayQuiz(
             setCurrentQuestionId(nextQuestionId);
         }
     }
-    if(Object.keys(quiz).length) createQuiz();
+    if(Object.keys(quiz).length === 0) createQuiz();
     
 
     if (isQuizComplete) {
