@@ -47,6 +47,7 @@ function SimpleReport() {
     setPrompt(
       `Based on my quiz results, what job suits me best? Here are my results: ${simpleQuestionQuizResults}`
     );
+    const exampleFormat = "~Sample Career: 2-3 sentences of why this is a good fit~Another Sample Career: 2-3 sentences of why this is a good fit~Final Sample Career: 2-3 sentences of why this is a good fit";
     //Creates ChatGPT
     const openai = new OpenAIAPi({
       apiKey: keyData,
@@ -57,10 +58,11 @@ function SimpleReport() {
       messages: [
         {
           role: "system",
-          content:
-            "You are a helpful career advisor. You are provided a students result to a career quiz. Please provide at least 3 possible career paths based on the results.",
+          content: "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a list of 3 careers, with '~' as the bulletpoint. Here is the example format" + 
+          exampleFormat + 
+          "Include the tilda (~) in the report string, it is important",
         },
-        { role: "user", content: "What should my career be?" + prompt },
+        { role: "user", content: prompt },
       ],
       model: "gpt-3.5-turbo",
     });
@@ -72,6 +74,8 @@ function SimpleReport() {
     }
     setLoading(false);
   }
+
+  const careerList = responseData.split("~");
 
   return (
     <div className={themeState} id="bigBody">
@@ -104,7 +108,22 @@ function SimpleReport() {
             <p>Generating Your Results...</p>
           </div>
         )}
-        <div className="Report-results">{responseData}</div>
+        {!loading && careerList.length >= 3 && (
+          <div className="Report-results">
+            Based on your results:
+            <div>
+              <br />
+              <span className="Report-results-header">Career 1:</span>
+              <li>{careerList[1]}</li>
+              <br />
+              <span className="Report-results-header">Career 2:</span>
+              <li>{careerList[2]}</li>
+              <br />
+              <span className="Report-results-header">Career 3:</span>
+              <li>{careerList[3]}</li>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="API-Footer">
