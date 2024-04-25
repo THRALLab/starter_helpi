@@ -25,16 +25,15 @@ const QUESTIONS = [
   "I value making money more then fulfillment in my job",
   "I would like it if travel was a large part of my job"
 ]
-
+//let ANSWERS: string[] = [];
 const BasicQuestions: React.FC = () => {
-  let newOptions:Array<string | null[]> = []
-  const [chosenOption, setChosenOption] = useState<Array<string | null[]>>(Array(QUESTIONS.length).fill(null));
+  const [chosenOption, setChosenOption] = useState<Array<string | null>>(Array(QUESTIONS.length).fill(null));
   function updateOption(event: React.ChangeEvent<HTMLInputElement>, index: number) {
-    newOptions = [...chosenOption];
+    const newOptions = [...chosenOption];
     newOptions[index] = event.target.value;
     setChosenOption(newOptions);
   }
-  const progress = (Object.keys(newOptions).length / QUESTIONS.length) * 100;
+  const progress = (chosenOption.filter(option => option !== null).length / QUESTIONS.length) * 100;
   return (
       <div>
       <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
