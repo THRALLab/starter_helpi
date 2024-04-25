@@ -180,6 +180,52 @@ h2 {
     color: #2c6fbb;
     padding: 5px;
     margin: 5px;
+    font-family: tahoma;
+    font-weight: bold;
+  }
+
+  label {
+    color: #7fa4ce;
+  }
+  /*radio button styling*/
+  .radio-group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+  .radio-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .radio-button input[type="radio"] {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .radio-button .custom-radio {
+    display: inline-block;
+    height: 20px; /* Adjust size */
+    width: 20px; /* Adjust size */
+    background-color: #ccc; /* Default color */
+    border-radius: 50%; /* Circular shape */
+    border: 1px solid #aaa; /* Border */
+    position: relative;
+  }
+  
+  .radio-button input[type="radio"]:checked + .custom-radio {
+    background-color: #2196F3; /* Color when checked */
+    border: 1px solid #2196F3; /* Border when checked */
+  }
+  
+ 
+  
+  .radio-button input[type="radio"]:checked + .custom-radio:after {
+    display: block; /* Visible when checked */
   }
 
   #Next {
