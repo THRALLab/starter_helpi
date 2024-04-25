@@ -18,7 +18,7 @@ function NavHome({handlePage} : {handlePage: (page: string) => void}) {
         <Navbar bg="0000" variant="primary">
           <Container>
             <Navbar.Brand onClick={() => handlePage('interests')}>
-            Careers Search
+            Career Search
             </Navbar.Brand>
             <Form className="d-flex ms-auto">
               <FormControl

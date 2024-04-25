@@ -1,4 +1,5 @@
-import { Container, Row, Col, Tab, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Nav, Tab, ListGroup } from 'react-bootstrap';
+import './interests.css';
 
 function Interests({handlePage} : {handlePage: (page: string) => void}) {
 
@@ -11,6 +12,7 @@ function Interests({handlePage} : {handlePage: (page: string) => void}) {
                         <Tab.Content>
                             <Tab.Pane eventKey="realistic">
                                 <h3>Realistic Interests</h3>
+                                <p className="small-text">work involves building, repairing, maintaining, installing, driving, or working with hands. People with Realistic interests often like work that includes plants, animals, electronics, real-world materials like wood, the outdoors, machines, equipment, or tools.</p>
                                 <ListGroup>
                                     <ListGroup.Item>Airline Pilots / Copilots & Flight Engineers</ListGroup.Item>
                                     <ListGroup.Item>Automotive Engineers</ListGroup.Item>
