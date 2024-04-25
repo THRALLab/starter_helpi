@@ -74,7 +74,8 @@ export function McSingleResponse({
             <Form>
                 <div>
                     {options.map((choice) => (
-                        <ToggleButton
+                        <ToggleButton  
+                            className="App-quiz"
                             key={`${choice}Select`}
                             type="radio"
                             id={choice}
