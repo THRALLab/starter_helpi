@@ -29,7 +29,7 @@
     font-weight: bold; 
 }
 
-.heading-container {
+.basic-heading-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
