@@ -41,7 +41,6 @@ export function McSingleResponse({
 
         return () => window.removeEventListener('resize', updateTooltipPosition);
     }, [question]);
-
     
     return (
         <div style={{ position: 'relative' }}>
@@ -50,6 +49,7 @@ export function McSingleResponse({
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
+                    size={25}
                     style={{ cursor: 'pointer',  color: "darkblue", marginLeft: '5px'}}
                 />
             </div>
