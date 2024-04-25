@@ -44,7 +44,7 @@ function DetailedQuestions() {
   const barGradient = "#6B6B6B";
 
   useEffect(() => {
-    const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E"];
+    const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E", "#5AAA95", "#86A873", "#668586", "#82AEB1"];
     setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 

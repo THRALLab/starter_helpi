@@ -11,27 +11,27 @@
 }
 
 .body-theme2 {
-  --color-body-background: #59c9a5;
-  --color-body-text: #000000;
-  --color-body-Headerbackground: #56e39f;
-  --color-body-Headertext: #000000;
-  --color-body-Button: #c5696f;
-  --color-body-ButtonDisabled: #b7656b;
-  --color-body-ButtonHover: #ae5b61;
-  --color-body-ButtonBorder: #000000;
-  --color-body-questionText: #ffffff;
+  --color-body-background: #087D8C;
+  --color-body-text: #FAF9F6;
+  --color-body-Headerbackground: #095265;
+  --color-body-Headertext: #FAF9F6;
+  --color-body-Button: #BB9F06;
+  --color-body-ButtonDisabled: #9B870C;
+  --color-body-ButtonHover: #9B870C;
+  --color-body-ButtonBorder: #FAF9F6;
+  --color-body-questionText: #FAF9F6;
 }
 
 .body-theme3 {
-  --color-body-background: #59c9a5;
-  --color-body-text: #000000;
-  --color-body-Headerbackground: #56e39f;
-  --color-body-Headertext: #000000;
-  --color-body-Button: #c5696f;
-  --color-body-ButtonDisabled: #b7656b;
-  --color-body-ButtonHover: #ae5b61;
-  --color-body-ButtonBorder: #000000;
-  --color-body-questionText: #ffffff;
+  --color-body-background: #A7ACD9;
+  --color-body-text: #FAF9F6;
+  --color-body-Headerbackground: #9E8FB2;
+  --color-body-Headertext: #FAF9F6;
+  --color-body-Button: #93C6D6;
+  --color-body-ButtonDisabled: #008080;
+  --color-body-ButtonHover: #008080;
+  --color-body-ButtonBorder: #FAF9F6;
+  --color-body-questionText: #FAF9F6;
 }
 
 .body-theme4 {
