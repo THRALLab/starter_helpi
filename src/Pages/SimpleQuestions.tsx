@@ -45,7 +45,7 @@ function SimpleQuestions() {
   const [option2, setOption2] = useState("Option 2...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
   const [color, setColor] = useState("");
-  const barGradient = "black";
+  const barGradient = "#6B6B6B";
 
   useEffect(() => {
     const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E"];
