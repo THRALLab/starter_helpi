@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { Row, Container } from "react-bootstrap"
-// import { advancedQuiz } from "src/assets/quizzes/AdvancedQuiz"
+import { advancedQuiz } from "src/assets/quizzes/AdvancedQuiz"
 import { DisplayQuiz } from "src/components/DisplayQuiz"
+import { Loading } from "src/components/Loading"
 import { ProgressBar } from "src/components/ProgressBar"
+
 
 
 
@@ -19,13 +21,15 @@ export const AdvancedQuiz = () => {
                 />
             </Row>
             <Row>
-                <DisplayQuiz
-                    quiz={{}}
-                    title="Advanced Quiz"
-                    questionsAnswerd={questionsAnswered}
-                    maxQuestions={maxQuestions}
-                    setQuestionsAnswerd={setQuestionsAnswered} 
-                />
+                <Suspense fallback={<Loading/>}>
+                    <DisplayQuiz
+                        quiz={advancedQuiz}
+                        title="Advanced Quiz"
+                        maxQuestions={maxQuestions}
+                        questionsAnswerd={questionsAnswered} 
+                        setQuestionsAnswerd={setQuestionsAnswered}
+                    />
+                </Suspense>
             </Row>
         </Container>
     </div>)
