@@ -94,12 +94,13 @@ const DetailedQuestions: React.FC = () => {
 
   return (
     <div className="detailed-questions">
-      <div>
-        <Link to="/">
-          <Button variant="primary">Return to Home</Button>
-        </Link>
-      </div>
-      <div style={{ paddingTop: '50px' }}>
+      <div style={{ marginTop: '20px' }}>
+  <Link to="/">
+    <Button variant="primary">Return to Home</Button>
+  </Link>
+</div>
+
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0 }}>
         <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
       </div>
       <div style={{ paddingTop: '50px' }}>
