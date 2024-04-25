@@ -91,12 +91,12 @@ export const createFinalResponse = (questionAns: QuestionAnswer[]) => {
     return("The user has entered the following question answers in reponse to their carrer quiz\n"
         + mapQuestionsToAnswers(questionAns) +
         `please provide your career advice as a json object described in the format below\n` +
-        `answer: {\n` +
+        `{\n` +
         `    advice: string` +
-        `    resoning: string` +
+        `    reasoning: string` +
         `    result: string` +
         `}\n\n` +
-        "you must include adivice, resoning, and result as part of your json response" +
-        "advice should be your opinion on the next steps the user should take, resoning should be why you feel this way, result is your final answer as to what career advisment you would give the quiz taker"
+        "you must include adivice, reasoning, and result as part of your json response" +
+        "advice should be your opinion on the next steps the user should take, reasoning should be why you feel this way, result is your final answer as to what career advisment you would give the quiz taker"
     );
 }

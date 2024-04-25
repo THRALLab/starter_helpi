@@ -10,6 +10,7 @@ import { addResponseGBT, callGBT } from "src/controller/CallChat";
 import OpenAI from "openai";
 import { CreateAdvancedStartingPrompt, CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse, createNewQuestions } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
+import { Loading } from "./Loading";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -19,11 +20,9 @@ type QuestionAns = {
 }
 
 type AnswerResponse = {
-    answer: {
-        advice: string,
-        resoning: string,
-        result: string
-    }
+    advice: string,
+    reasoning: string,
+    result: string
 }
 
 export function DisplayQuiz(
@@ -157,23 +156,22 @@ export function DisplayQuiz(
         }
     }
     // if(Object.keys(quiz).length === 0) createQuiz();
-    const Loading = () => {
-        return(
-            <div className="loading">loading</div>
-        )
-    }
 
     const DisplayResults = () => {
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
         const [response, setResponse] = useState<OpenAI.ChatCompletion>();
+        const [loaded, setLoaded] = useState<boolean>(false);
         useEffect(() => {
             async function getFinalResponse() {
                 const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
+                setLoaded(true);
                 setResponse(response);
             }
-            getFinalResponse();
+            if(response === null || response === undefined) getFinalResponse();
         }, [questionAns, response]
     )
+        if(!loaded) return<Loading/>;
+        console.log(response);
 
         if(response === undefined) return <></>;
         const finalResponse = response.choices[response.choices.length-1].message.content;
@@ -182,20 +180,19 @@ export function DisplayQuiz(
 
         return(
             <>
-                <p>{finalAns.answer.result}</p>
-                <p>{finalAns.answer.advice}</p>
-                <p>{finalAns.answer.resoning}</p>
+                <p>{finalAns.result}</p>
+                <p>{finalAns.advice}</p>
+                <p>{finalAns.reasoning}</p>
             </>
         )
     }
     
 
     if (isQuizComplete) {
-        return (<>
+        return (
+        <>
             <h2>Your results</h2>
-            <Suspense fallback={<Loading/>}>
-                <DisplayResults/>
-            </Suspense>
+            <DisplayResults/>
         </>)
     }
 
