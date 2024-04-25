@@ -6,9 +6,9 @@ import { McMultiResponse } from "./McMultiResponse";
 import { TextResponse } from "./TextResponse"
 import { UserRanking } from "./UserRanking"
 import { SliderResponse } from "./SliderResponse";
-import { callGBT } from "src/controller/CallChat";
+import { addResponseGBT, callGBT } from "src/controller/CallChat";
 import OpenAI from "openai";
-import { CreateAdvancedStartingPrompt, CreateBasicStartingPrompt, CreateStartingPrompt } from "src/controller/StartingPrompt";
+import { CreateAdvancedStartingPrompt, CreateBasicStartingPrompt, CreateStartingPrompt, createNewQuestions } from "src/controller/StartingPrompt";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -48,8 +48,13 @@ export function DisplayQuiz(
         setGBTConversation(response);
     }
 
+    const parseChatHistory = (newChats: OpenAI.ChatCompletion) => {
+
+    }
+
     async function createNextQuestion() {
-        
+        const response = await addResponseGBT({choices: gbtConversation?.choices, newMessage: createNewQuestions()});
+        const gbtResponse = 
         return
     }
 
@@ -60,6 +65,7 @@ export function DisplayQuiz(
           if (forewards) { // process for getting the next question
             const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`; // returns next numerical question
             if (newId in quiz) return (newId);
+            // quiz is not not
             else if(questionsAnswerd < maxQuestions) {
                 createNextQuestion();
             }

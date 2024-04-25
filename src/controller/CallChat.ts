@@ -30,12 +30,13 @@ export async function addResponseGBT(
   } 
   : 
   {
-      choices: OpenAI.ChatCompletion.Choice[],
+      choices: OpenAI.ChatCompletion.Choice[] | undefined,
       newMessage: string
   }
 ) {
   // maps previous choices to an array of message objects
-  const messages = choices.map((choice: OpenAI.ChatCompletion.Choice) => choice.message);
+  var messages = choices?.map((choice: OpenAI.ChatCompletion.Choice) => choice.message);
+  if(messages === undefined) messages = [];
   const chatCompletion = await openaiToken.chat.completions.create({
     messages: [
       ...messages,
