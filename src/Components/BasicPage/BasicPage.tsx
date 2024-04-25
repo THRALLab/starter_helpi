@@ -84,8 +84,10 @@ export function BasicPage() {
     let eventKey = 0;
     return (
         <div className='basic-page-container'>
-            <h1 className='title'>Basic Quiz</h1>
-            <ProgressBar className='custom-progress-bar' min={0} max={100} now={progressPercentage} animated striped />
+            <div className='heading-container'>
+                <h1 className='title'>Basic Quiz</h1>
+                <ProgressBar style={{width: '50vw'}}className='custom-progress-bar' min={0} max={100} now={progressPercentage} animated striped />
+            </div>
             <div className='accordion-container'>
                 <Accordion defaultActiveKey={questions.map((_, i) => i.toString())} style={{ width: '50%', backgroundColor: '#21273b' }} alwaysOpen>
                     {questions.map((question: string) => (
