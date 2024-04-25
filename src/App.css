@@ -240,7 +240,7 @@ Footer {
 #slide6:checked ~ #controls label:nth-child(7),
 #slide7:checked ~ #controls label:nth-child(8),
 #slide8:checked ~ #controls label:nth-child(1) {
-  background-color: #000000;
+  background-image: url(../src/rightArrow.png);
   float:right;
   margin:0 -800px 0 0;
   display:block;
@@ -253,10 +253,10 @@ Footer {
 #slide3:checked ~ #controls label:nth-child(2),
 #slide2:checked ~ #controls label:nth-child(1),
 #slide1:checked ~ #controls label:nth-child(8) {
-  background-color: #000000;
+  background-image: url(../src/leftArrow.png);
   float:left;
   margin:0 0 0 -100px;
-  display:block;
+  display: block;
 }
 #bullets{
   margin:100px 0 0;
@@ -431,7 +431,7 @@ Footer {
 #slide5:checked ~ #controls label:nth-child(6),
 #slide6:checked ~ #controls label:nth-child(7),
 #slide7:checked ~ #controls label:nth-child(1) {
-  background-color: #000000;
+  background-image: url(../src/rightArrow.png);
   float:right;
   margin:0 -800px 0 0;
   display:block;
@@ -443,7 +443,7 @@ Footer {
 #slide3:checked ~ #controls label:nth-child(2),
 #slide2:checked ~ #controls label:nth-child(1),
 #slide1:checked ~ #controls label:nth-child(7) {
-  background-color: #000000;
+  background-image: url(../src/leftArrow.png);
   float:left;
   margin:0 0 0 -100px;
   display:block;
