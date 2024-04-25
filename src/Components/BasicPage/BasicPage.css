@@ -28,3 +28,11 @@
     font-size: 18px; 
     font-weight: bold; 
 }
+
+.heading-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-self: center;
+	align-items: center;
+}
