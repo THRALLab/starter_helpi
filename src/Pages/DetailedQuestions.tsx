@@ -211,9 +211,10 @@ function DetailedQuestions() {
                   className="DetailedQuestions-question-number"
                   style={{ position: "absolute" }}
                 >
-                  Question{" "}
-                  {questionNumber === 30 ? questionNumber : questionNumber + 1}/
-                  {numberOfQuestions}
+                  {questionNumber === 30
+                    ? "Quiz Complete!"
+                    : "Question " + (questionNumber + 1)}
+                  {questionNumber === 30 ? "" : "/" + numberOfQuestions}
                 </span>
                 <span
                   className="DetailedQuestions-progress-bar-percentage"

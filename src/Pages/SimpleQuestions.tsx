@@ -179,7 +179,10 @@ function SimpleQuestions() {
                 position: "absolute",
               }}
             >
-              Question {questionNumber + 1}/{numberOfQuestions}
+              {currentQuestionNumber === 16
+                ? "Quiz Complete!"
+                : "Question " + currentQuestionNumber}
+              {currentQuestionNumber === 16 ? "" : "/" + numberOfQuestions}
             </div>
             <div
               className="Simple-progress-percentage"
