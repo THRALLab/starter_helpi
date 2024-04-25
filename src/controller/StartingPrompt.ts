@@ -96,6 +96,7 @@ export const createFinalResponse = (questionAns: QuestionAnswer[]) => {
         `    resoning: string` +
         `    result: string` +
         `}\n\n` +
-        "advice should be your opinion on the next steps the user should take, resoning should be why you feel this way, and result is your final answer as to what career advisment you would give the quiz taker"
+        "you must include adivice, resoning, and result as part of your json response" +
+        "advice should be your opinion on the next steps the user should take, resoning should be why you feel this way, result is your final answer as to what career advisment you would give the quiz taker"
     );
 }

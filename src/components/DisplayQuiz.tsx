@@ -169,8 +169,9 @@ export function DisplayQuiz(
         useEffect(() => {
             async function getFinalResponse() {
                 const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
+                setResponse(response);
             }
-            setResponse(response);
+            getFinalResponse();
         }, [questionAns, response]
     )
 
