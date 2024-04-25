@@ -34,27 +34,27 @@ const BasicQuestions: React.FC = () => {
   }
   return (
       <div>
-        <h2>
+        <h1>
           Basic Career Aptitude Test
           <div>
              <Link to = '/'>
                <button>Return to Home Page</button>
              </Link>
           </div>
-        </h2>
+        </h1>
         <p>
           Answer the following questions to the best of your ability. Then we will 
           then we will use your answers to determine possible career paths for you.
         </p>
-        <div>
+        <div className = "basic-question-container">
           {QUESTIONS.map((question, index) => (
-            <div key={question} style={{ marginBottom: "20px" }}>
-              <div>{question}</div>
-              <div style={{ display: "flex", justifyContent: "center" }}>
+            <div key={question} className = "question-container">
+              <div className = "question_two">{question}</div>
+              <div className = "options-container">
               {OPTIONS.map((option) => (
                 <Form.Check
                     key={ option }
-                    style={{ marginRight: "10px" }}
+                    style={{ marginRight: "10px"}}
                     inline
                     type="radio"
                     name={ `option-${question}` }
@@ -63,6 +63,7 @@ const BasicQuestions: React.FC = () => {
                     label={ option }
                     value={ option }
                     checked={ chosenOption[index] === option }
+                    className={chosenOption[index] === option ? "option-selected" : ""}
                     />
               ))}
               </div>
