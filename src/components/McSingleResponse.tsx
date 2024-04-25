@@ -47,12 +47,8 @@ export function McSingleResponse({
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
                 <FaQuestionCircle
-                    onMouseEnter={() => {
-                        setTooltip(description);
-                    }}
-                    onMouseLeave={() => {
-                        setTooltip('');
-                    }}
+                    onMouseEnter={() => setTooltip(description)}
+                    onMouseLeave={() => setTooltip('')}
                     size={25}
                     style={{ cursor: 'pointer',  color: "darkblue", marginLeft: '5px'}}
                 />
