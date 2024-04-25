@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import { Footer } from "../components/Footer";
 import "../App.css";
 import React, { useState } from 'react';
@@ -23,7 +23,7 @@ function Home() {
                 UNIVERSITY OF DELAWARE STUDENTS
             </h4>
         
-            <div style = {{position: 'relative', top: '150px'}}>
+            <Container style = {{position: 'relative', top: '150px'}}>
                 <Row className='text-center'>
                     <Col style = {{border: '2px solid black'}}>
                         <h3>
@@ -57,7 +57,7 @@ function Home() {
                     </Col>
                 </Row>
                 <Footer/>
-            </div>
+            </Container>
         </div>
     )
   }
@@ -79,10 +79,16 @@ function Home() {
   }
 
   return (
-    <div className="App">
+    <div>
       <div className="page-container">
-        <div className="page-navigation">
-        <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('HomePage')}>
+        <Row>
+        <Col className="page-navigation" style={{borderBottom: '2px solid black', textAlign: 'left'}}>
+        <span style = {{padding: '10px', fontSize: '35px', verticalAlign: 'center'}}>
+          FindYourCareer
+        </span>
+        </Col>
+        <Col className="page-navigation" style={{borderBottom: '2px solid black', textAlign: 'right'}}>
+        <button className="button btn1" style={{ verticalAlign: 'middle', alignSelf: 'right' }} onClick={() => setCurrentPage('HomePage')}>
             <span>HomePage</span>
           </button>
           <button className="button btn1" style={{ verticalAlign: 'middle' }}onClick={() => setCurrentPage('BasicPage')}>
@@ -91,7 +97,8 @@ function Home() {
           <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('DetailPage')}>
             <span>Detailed Page</span>
             </button>
-        </div>
+        </Col>
+        </Row>
         <div className="page-content">
           {currentPage === 'HomePage' && <HomePageContent />}
           {currentPage === 'BasicPage' && <BasicPageContent />}
