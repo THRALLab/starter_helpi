@@ -101,7 +101,7 @@ const DetailedQuestions: React.FC = () => {
     <div className="detailed-questions">
       <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
       <h1>Detailed Questions</h1>
-      <Form>
+      {/* <Form>
         {questions.map(question => (
           <div className = "options-container" key={question.id}>
             <h2>{question.question}</h2>
@@ -122,7 +122,40 @@ const DetailedQuestions: React.FC = () => {
         <Button variant="primary" onClick={handleGetResults} disabled={Object.keys(selectedOptions).length !== questions.length}>
           Get Results
         </Button>
-      </Form>
+      </Form> */}
+      <Form>
+  {questions.map(question => (
+    <div className="options-container" key={question.id}>
+      <h2>{question.question}</h2>
+      {question.options.map(option => (
+        <Form.Check
+          key={option}
+          type="radio"
+          id={option}
+          label={
+            <span className="option-label">
+              <input
+                type="radio"
+                checked={selectedOptions[question.id] === option}
+                onChange={() => handleOptionSelect(question.id, option)}
+              />
+              {option}
+            </span>
+          }
+          className={selectedOptions[question.id] === option ? "option-selected" : ""}
+        />
+      ))}
+      <br />
+    </div>
+  ))}
+  <Button
+    variant="primary"
+    onClick={handleGetResults}
+    disabled={Object.keys(selectedOptions).length !== questions.length}
+  >
+    Get Results
+  </Button>
+</Form>
     </div>
   );
 };
