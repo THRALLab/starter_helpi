@@ -58,7 +58,7 @@ const reverseMap: Record<string, string>= {
 export function BasicPage() {
 
     const [questionData, setQuestionData] = React.useState(pageData);
-    const [isFinished, setIsFinished] = React.useState(questionData.every((question) => question.answer.length > 0));
+    const [answered, setAnswered] = React.useState(0);
 
     const handleSliderChange = (question: string, resp: string) => {
         const newAnswer = rangeValues[resp]
@@ -66,7 +66,8 @@ export function BasicPage() {
         data[index[question]] = { question: question, answer: newAnswer};
         setQuestionData(data);
         // Check if all questions have been answered
-        setIsFinished(data.every((question) => question.answer.length > 0));
+        let plus = answered + 1;
+        setAnswered(plus);
             // Save data to local storage
         sessionStorage.setItem(saveDetailedDataKey, JSON.stringify(data));
         console.log(data)
@@ -94,7 +95,7 @@ export function BasicPage() {
                     )
                     )}
                 </Accordion>
-                <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }} disabled={!isFinished}>Submit</Button>
+                <Button style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }} disabled={answered < 7}>Submit</Button>
             </div>
         </div>
     )
