@@ -73,7 +73,7 @@ export function DetailedPage() {
                         <Carousel activeIndex={questionNumber} onSelect={handleSelect} interval={null}>
                             {questionData.map(({ question, answer }) => (
                                 <Carousel.Item key={questionKey++} style={{ height: '20rem' }}>
-                                    <h1 style={{ color: 'white', fontSize: '1.5rem', marginBottom: '3.5rem' }}>
+                                    <h1 style={{ color: 'white', fontSize: '1.4rem', marginBottom: '3.5rem', marginTop: '0.5rem' }}>
                                         {question}
                                     </h1>
                                     <div style={{ display: 'flex', justifyContent: 'center' }}>
