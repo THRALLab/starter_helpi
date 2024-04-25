@@ -1,40 +1,38 @@
 import React, { useState } from "react";
+
 import { Form } from "react-bootstrap";
 
 const reasons = [
-    "Salary",
-    "Work-life balance",
-    "Helping others",
-    "Others Reasons",
+  "Salary",
+  "Work-life balance",
+  "Helping others",
+  "Others Reasons",
 ];
 
-export function Q1():JSX.Element {
-    const [selectReason, setSelectReason] = useState(reasons[0]);
+export function Q1(): JSX.Element {
+  const [selectReason, setSelectReason] = useState(reasons[0]);
 
-    const [userInfo, setUserInfo] = useState<string>("");
-    function updateUserInfo(event: React.ChangeEvent<HTMLInputElement>) {
-        setUserInfo(event.target.value);
-    }
+  const [userInfo, setUserInfo] = useState<string>("");
+  function updateUserInfo(event: React.ChangeEvent<HTMLInputElement>) {
+    const answer = event.target.value;
+    setUserInfo(answer);
+  }
 
-    return (
-        <div>
-            What is most important to you in a job?
-            {reasons.map((reason) => (
-                <Form.Check
-                    type="radio"
-                    label={reason}
-                    name="reason-button"
-                    checked={selectReason === reason}
-                    onChange={() => setSelectReason(reason)}
-                />
-            ))}
-            <br></br>
-            if "Others", please indicate here:
-            <Form.Control
-                        type="textbox"
-                        value={userInfo}
-                        onChange={updateUserInfo}
-                    />
-        </div>
-    );
+  return (
+    <div>
+      What is most important to you in a job?
+      {reasons.map((reason) => (
+        <Form.Check
+          type="radio"
+          label={reason}
+          name="reason-button"
+          checked={selectReason === reason}
+          onChange={() => setSelectReason(reason)}
+        />
+      ))}
+      <br></br>
+      if "Others", please indicate here:
+      <Form.Control type="textbox" value={userInfo} onChange={updateUserInfo} />
+    </div>
+  );
 }
