@@ -48,7 +48,17 @@ function SimpleQuestions() {
   const barGradient = "#6B6B6B";
 
   useEffect(() => {
-    const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E", "#5AAA95", "#86A873", "#668586", "#82AEB1"];
+    const colors = [
+      "purple",
+      "brown",
+      "#0E666C",
+      "#2B13A4",
+      "#6C0E4E",
+      "#5AAA95",
+      "#86A873",
+      "#668586",
+      "#82AEB1",
+    ];
     setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
@@ -169,7 +179,10 @@ function SimpleQuestions() {
                 position: "absolute",
               }}
             >
-              Question {questionNumber + 1}/{numberOfQuestions}
+              {currentQuestionNumber === 16
+                ? "Quiz Complete!"
+                : "Question " + currentQuestionNumber}
+              {currentQuestionNumber === 16 ? "" : "/" + numberOfQuestions}
             </div>
             <div
               className="Simple-progress-percentage"

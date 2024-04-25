@@ -44,7 +44,17 @@ function DetailedQuestions() {
   const barGradient = "#6B6B6B";
 
   useEffect(() => {
-    const colors = ["purple", "brown", "#0E666C", "#2B13A4", "#6C0E4E", "#5AAA95", "#86A873", "#668586", "#82AEB1"];
+    const colors = [
+      "purple",
+      "brown",
+      "#0E666C",
+      "#2B13A4",
+      "#6C0E4E",
+      "#5AAA95",
+      "#86A873",
+      "#668586",
+      "#82AEB1",
+    ];
     setColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
@@ -201,9 +211,10 @@ function DetailedQuestions() {
                   className="DetailedQuestions-question-number"
                   style={{ position: "absolute" }}
                 >
-                  Question{" "}
-                  {questionNumber === 30 ? questionNumber : questionNumber + 1}/
-                  {numberOfQuestions}
+                  {questionNumber === 30
+                    ? "Quiz Complete!"
+                    : "Question " + (questionNumber + 1)}
+                  {questionNumber === 30 ? "" : "/" + numberOfQuestions}
                 </span>
                 <span
                   className="DetailedQuestions-progress-bar-percentage"
