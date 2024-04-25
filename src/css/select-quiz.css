@@ -14,8 +14,8 @@
     width: 75%;
     text-align: center;
     text-decoration: inherit;
-    color: rgb(241, 235, 235);
-    background-color: var(--buttonColor1);
-    border: solid 20px var(--buttonColor1);
+    color: var(--off-white);
+    background-color: var(--dawn-dish-blue);
+    border: solid 20px var(--dawn-dish-blue);
     border-radius: 25px;
 }

@@ -108,6 +108,7 @@ export function UserRanking({
                 {categories.map((category) => (
                     <li key={category}>
                         <Button
+                            className="App-quiz"
                             key={`${category}⬆️`}
                             variant="outline-success"
                             size="sm"
@@ -115,6 +116,7 @@ export function UserRanking({
                         >⬆</Button>
                         {' '}
                         <Button
+                            className="App-quiz"
                             key={`${category}⬇️`}
                             variant="outline-danger"
                             size="sm"

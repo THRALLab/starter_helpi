@@ -38,12 +38,12 @@ export function DisplayQuiz(
     const determineNextQuestionId = (currentQuestionId: string, quiz: DisplayQuizProps, forewards: boolean): string => {
         // questions are id'd as `quiestion${questionNumber}`
         if (currentQuestionId.includes("question")) {
-          if (forewards) {
-            const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`;
+          if (forewards) { // process for getting the next question
+            const newId = `question${parseInt(currentQuestionId.substring(8)) + 1}`; // returns next numerical question
             if (newId in quiz) return (newId);
             else return "";
-          } else {
-            const newId = `question${parseInt(currentQuestionId.substring(8)) - 1}`;
+          } else { // else goes backwards
+            const newId = `question${parseInt(currentQuestionId.substring(8)) - 1}`; // returns previous numerical question
             if (newId in quiz) return (newId);
             else return ""
           }
@@ -60,17 +60,17 @@ export function DisplayQuiz(
      */
     const handleAnswerSubmit = (answer: string, forewards: boolean) => {
         
-        if (forewards) {
+        if (forewards) { // if going to next question
             const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz, true);
             if (questionsAnswerd === lastQuestionArray) { // if questions answered is equal to the latest array, appends it with newest answer
                 setAnswers([...answers, {questionId: currentQuestionId, answer: answer}])
                 setQuestionArray(lastQuestionArray + 1);
             } else { // else, splices array and puts in the new answer
-                const newAnswers = [...answers]
-                newAnswers.splice(questionsAnswerd, 1, {questionId: currentQuestionId, answer: answer})
-                setAnswers(newAnswers);
+                const newAnswers = [...answers] // creates a copy of the existing answers array
+                newAnswers.splice(questionsAnswerd, 1, {questionId: currentQuestionId, answer: answer}) // splices in new answer
+                setAnswers(newAnswers); // sets new array as the accepted array
             }
-            setQuestionsAnswerd(questionsAnswerd + 1);
+            setQuestionsAnswerd(questionsAnswerd + 1); // increments questions answered
 
             if (nextQuestionId === "") {
                 setIsQuizComplete(true); // End of the quiz
@@ -78,9 +78,9 @@ export function DisplayQuiz(
                 setCurrentQuestionId(nextQuestionId); // Move to the next question
             }
         } else {
-            setQuestionsAnswerd(questionsAnswerd - 1);
-            const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz, false);
-            setCurrentQuestionId(nextQuestionId);
+            setQuestionsAnswerd(questionsAnswerd - 1); // Increments to previous question
+            const nextQuestionId = determineNextQuestionId(currentQuestionId, quiz, false); // Determines previous question id
+            setCurrentQuestionId(nextQuestionId); // sets previous as current
         }
     }
 
