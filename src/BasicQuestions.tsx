@@ -25,7 +25,6 @@ const QUESTIONS = [
   "I value making money more then fulfillment in my job",
   "I would like it if travel was a large part of my job"
 ]
-//let ANSWERS: string[] = [];
 const BasicQuestions: React.FC = () => {
   const [chosenOption, setChosenOption] = useState<Array<string | null>>(Array(QUESTIONS.length).fill(null));
   function updateOption(event: React.ChangeEvent<HTMLInputElement>, index: number) {
