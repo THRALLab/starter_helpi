@@ -1,0 +1,18 @@
+.form-check {
+    display: flex;
+    align-items: center;
+    margin: 2.5px auto;
+  }
+  
+  .form-check input[type="radio"] {
+    margin-right: 5px; /* Add minimal spacing between the radio button and the option text */
+    margin-left: 20px;
+  }
+
+.form-check-input {
+    
+}
+
+.question-option {
+    height: 40vh;
+}
