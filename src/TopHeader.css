@@ -1,0 +1,43 @@
+/*For Header Background*/
+nav {
+	background-color: #ACE4FA;
+	display: flex;
+	justify-content: space-between;
+}
+/*For Career Compass*/
+nav h1 { 
+	line-height: 0;
+	font-weight: 775;
+	font-size: 50px;
+	margin: 1;
+	margin-top: -20px;
+	margin-left: 10px;
+	color: #366358;
+}
+/*For Career Compass hover*/
+nav h1:hover {
+	color: #b5b2e4;
+	transition: 0.3s ease;
+}
+/*Keeps things in one line*/
+nav ul {
+	display: inline-flex;
+
+}
+/*For Question tab*/
+nav ul a {
+	text-decoration: none;
+	color: #366358;
+	list-style-type: none;
+}
+/*For Question tab size*/
+nav ul li {
+	margin: 15px;
+	font-size: 30px;
+	font-weight: 775;
+}
+/*For Question tab Hover*/
+nav ul li:hover {
+	color: #b5b2e4;
+	transition: 0.3s ease;
+}
