@@ -1,15 +1,24 @@
 import React, { useState } from "react";
+import ProgressBar from "../components/progress-bar/progressBar"
 
 interface BasicProp {
     handlePage: (page: string) => void;
 }
+
 
 const BasicQuestions: React.FC<BasicProp> = () => {
     // Set up state to manage form inputs
     const [responses, setResponses] = useState({
       question1: '',
       question2: '',
+      question3: ''
     });
+    const [progress, setProgress] = useState(0); // Add state for progress
+
+    //progress bar handling
+    const incrementProgress = () => {
+        setProgress((prev) => (prev < 100 ? prev + 20: prev));
+    }
   
     // Handle radio button change
     function handleRadioChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -31,11 +40,11 @@ const BasicQuestions: React.FC<BasicProp> = () => {
   
     return (
       <div className = "basicForm"><form>
-            <h2>Basic Quiz</h2>
+            <h1>Basic Quiz</h1>
 
             {/* Question 1 */}
-            <div>
-                <p>1. I enjoy solving complex problems.</p>
+            <div className = "questions">
+                <p>I like working in a team</p>
                 {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
                     (label, index) => (
                         <label key={`question1-${index}`}>
@@ -52,8 +61,8 @@ const BasicQuestions: React.FC<BasicProp> = () => {
             </div>
 
             {/* Question 2 */}
-            <div>
-                <p>2. I prefer working in a team environment.</p>
+            <div className = "questions">
+                <p>I prefer working alone </p>
                 {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
                     (label, index) => (
                         <label key={`question2-${index}`}>
@@ -68,13 +77,28 @@ const BasicQuestions: React.FC<BasicProp> = () => {
                     )
                 )}
             </div>
+            {/* Question 3 */}
+            <div className = "questions">
+                <p>I am fascinated by different ideas </p>
+                {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
+                    (label, index) => (
+                        <label key={`question3-${index}`}>
+                            <input
+                                type="radio"
+                                name="question3"
+                                value={index + 1}
+                                checked={responses.question3 === `${index + 1}`}
+                                onChange={handleRadioChange} />
+                            {label}
+                        </label>
+                    )
+                )}
+            </div>
 
-            {/* Submit Button */}
-            <button type="submit">Submit</button>
+            {/* Next Button */}
+            <button type='button' id = "Next" onClick={incrementProgress}>Next</button>
         </form>
-        <div id="progressBar">
-                <div id="myProgress"></div>
-        </div>
+        <ProgressBar progress={progress} max={100} color="#2c6fbb" />
     </div>
     );
 };
