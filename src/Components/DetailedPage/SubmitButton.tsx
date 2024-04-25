@@ -3,13 +3,13 @@ import { Button, Overlay, Tooltip } from 'react-bootstrap';
 import './SubmitButton.css';
 
 const SubmitButton = ({ isFinished }: { isFinished: boolean }) => {
-    const [showPopup, setShowPopup] = useState(isFinished);
+    const [showPopup, setShowPopup] = useState(false);
     const target = useRef(null);
 
     const hideTooltip = () => {
         setTimeout(() => {
             setShowPopup(false);
-        }, 1500);
+        }, 2000);
     }
     useEffect(() => {
         setShowPopup(isFinished);
