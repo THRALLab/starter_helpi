@@ -7,9 +7,9 @@ export const mapQuestionsToAnswers = (questions: QuestionAnswer[]): string => {
 
 export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string => {
     
-    const userStatus = questionAns.status !== "None of these apply"
-        ? `The user is ${questionAns.status.replace("I", "They").replace("am", "are").replace("my", "their")}\n`
-        : "";
+    // const userStatus = questionAns.status !== "None of these apply"
+    //     ? `The user is ${questionAns.status.replace("I", "They").replace("am", "are").replace("my", "their")}\n`
+    //     : "";
 
 
     return(
@@ -97,6 +97,7 @@ export const createFinalResponse = (questionAns: QuestionAnswer[]) => {
         `    result: string` +
         `}\n\n` +
         "you must include adivice, reasoning, and result as part of your json response" +
-        "advice should be your opinion on the next steps the user should take, reasoning should be why you feel this way, result is your final answer as to what career advisment you would give the quiz taker"
+        "advice should be your opinion on the next steps the user should take, reasoning should be why you feel this way" + 
+        "result is your final answer as to what career advisment you would give the quiz taker, result is of one to three definitive careers the user should consider"
     );
 }

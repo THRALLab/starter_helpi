@@ -1,5 +1,5 @@
 // Import necessary hooks and components
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
@@ -8,7 +8,7 @@ import { UserRanking } from "./UserRanking"
 import { SliderResponse } from "./SliderResponse";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
 import OpenAI from "openai";
-import { CreateAdvancedStartingPrompt, CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse, createNewQuestions } from "src/controller/StartingPrompt";
+import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse, createNewQuestions } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
 
@@ -48,7 +48,7 @@ export function DisplayQuiz(
     const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
     const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
     const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
-    const [nextPrompt, setNextPrompt] = useState<string>("");
+    // const [nextPrompt, setNextPrompt] = useState<string>("");
 
     async function connectToGBT(startingPrompt: string, prompt: string)  {
         const response = await callGBT({startingPrompt: startingPrompt, userPrompt: prompt});

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Row, Container } from "react-bootstrap"
-import { advancedQuiz } from "src/assets/quizzes/AdvancedQuiz"
+// import { advancedQuiz } from "src/assets/quizzes/AdvancedQuiz"
 import { DisplayQuiz } from "src/components/DisplayQuiz"
 import { ProgressBar } from "src/components/ProgressBar"
 
