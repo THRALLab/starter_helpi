@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ProgressBar, Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const DetailedQuestions: React.FC = () => {
   const [questions] = useState([
@@ -93,25 +94,32 @@ const DetailedQuestions: React.FC = () => {
 
   return (
     <div className="detailed-questions">
-      <div style={{ position: 'fixed', top: 0, left: 0, right: 0 }}>
+      <div>
+        <Link to="/">
+          <Button variant="primary">Return to Home</Button>
+        </Link>
+      </div>
+      <div style={{ paddingTop: '50px' }}>
         <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
       </div>
-      <div style={{ paddingTop: '50px' }}> {/* Adjust padding-top to match the height of the progress bar */}
+      <div style={{ paddingTop: '50px' }}>
         <h2>Detailed Questions</h2>
         {questions.map(question => (
           <div key={question.id} style={{ backgroundColor: 'rgba(139, 0, 0, 0.8)', padding: '10px', borderRadius: '10px', border: '2px solid #8b0000', margin: '0 200px 20px 200px' }}>
             <h3 style={{ color: 'white' }}>{question.question}</h3>
             <Form>
               {question.options.map(option => (
-                <Form.Check
-                  key={option}
-                  type="checkbox"
-                  id={option}
-                  label={option}
-                  checked={selectedOptions[question.id] === option}
-                  onChange={() => handleOptionSelect(question.id, option)}
-                  style={{ backgroundColor: selectedOptions[question.id] === option ? '#420303' : 'transparent', padding: '5px', borderRadius: '5px' }}
-                />
+                <div key={option} style={{ marginBottom: '5px' }}>
+                  <Form.Check
+                    type="radio"
+                    id={`${question.id}-${option}`}
+                    label={option}
+                    checked={selectedOptions[question.id] === option}
+                    onChange={() => handleOptionSelect(question.id, option)}
+                    style={{ display: 'none' }} // Hide the radio button
+                  />
+                  <label htmlFor={`${question.id}-${option}`} style={{ cursor: 'pointer', backgroundColor: selectedOptions[question.id] === option ? '#420303' : 'transparent', padding: '5px', borderRadius: '5px' }}>{option}</label>
+                </div>
               ))}
             </Form>
           </div>
