@@ -31,6 +31,7 @@
   --color-body-ButtonDisabled: #144d1f;
   --color-body-ButtonHover: #32b64c;
   --color-body-ButtonBorder: #000000;
+  --color-body-questionText: #faf9f6;
 }
 
 .body-theme4 {
@@ -54,6 +55,7 @@
   --color-body-ButtonDisabled: #5e43f3;
   --color-body-ButtonHover: #5e43f3;
   --color-body-ButtonBorder: #000000;
+  --color-body-questionText: #faf9f6;
 }
 
 .body-theme6 {
