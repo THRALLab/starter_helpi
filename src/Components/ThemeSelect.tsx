@@ -33,12 +33,13 @@ export const ThemeSelect = () => {
         onChange={updateTheme}
         style={{ marginRight: "10px" }}
       >
-        <option value="body-theme1">Watermelon</option>
-        <option value="body-theme3">Cotton Candy</option>
-        <option value="body-theme2">Modern</option>
+        <option value="body-theme1">Basic</option>
+        <option value="body-theme2">Cotton Candy</option>
+        <option value="body-theme3">Forest</option>
+        <option value="body-theme4">Modern</option>
         <option value="body-theme5">Midnight</option>
-        <option value="body-theme4">Retro</option>
-        <option value="body-theme6">Forest</option>
+        <option value="body-theme6">Retro</option>
+        <option value="body-theme7">Watermelon</option>
       </Form.Select>
     </div>
   );
