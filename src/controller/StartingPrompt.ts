@@ -13,3 +13,7 @@ export const CreateBasicStartingPrompt = (): string => {
 export const CreateAdvancedStartingPrompt = (): string => {
     return"";
 }
+
+export const createNewQuestions = () => {
+    return"";
+}
