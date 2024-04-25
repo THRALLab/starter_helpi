@@ -3,8 +3,6 @@ import './AboutPage.css'
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import colin_headshot from './ProfessionalHeadshot.jpg'
 import mike_headshot from './MForte-headshot.jpg'
-import michael_headshot from './MLutz-headshot.png'
-import Aromando from './Aromando.png'
 import Musky from './Musky.jpg'
 import Zuck from './Zuck.png'
 import CircleImage from '../CircleImages/CircleImage';
