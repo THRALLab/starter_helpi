@@ -1,14 +1,15 @@
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { Row, Container } from "react-bootstrap"
 import { basicQuiz } from "src/assets/quizzes/BasicQuiz"
 import { DisplayQuiz } from "src/components/DisplayQuiz"
+import { Loading } from "src/components/Loading"
 import { ProgressBar } from "src/components/ProgressBar"
 
 
 
 export const BasicQuiz = () => {
     const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
-    const totalQuestions = Object.keys(basicQuiz).length;
+    const totalQuestions = 15;
     return(
     <div className="basicQuiz-container">
         <Container>
@@ -19,12 +20,15 @@ export const BasicQuiz = () => {
                 />
             </Row>
             <Row>
-                <DisplayQuiz 
-                    quiz={basicQuiz}
-                    title="Basic Quiz"
-                    questionsAnswerd={questionsAnswered}
-                    setQuestionsAnswerd={setQuestionsAnswered}
-                />
+                <Suspense fallback={<Loading/>}>
+                    <DisplayQuiz 
+                        quiz={basicQuiz}
+                        title="Basic Quiz"
+                        maxQuestions={totalQuestions}
+                        questionsAnswerd={questionsAnswered} 
+                        setQuestionsAnswerd={setQuestionsAnswered} 
+                    />
+                </Suspense>
             </Row>
         </Container>
     </div>)

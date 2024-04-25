@@ -1,7 +1,11 @@
+import { Question } from "./QuestionTypes"
+
 export interface PromptQuestionsSetup {
-    education: string,
-    status: string,
-    interests: string,
-    experience: string,
-    specificNeeds: string,
+    questionsAns: QuestionAnswer[]
+    status: string
+}
+
+export type QuestionAnswer = {
+    question: Question,
+    answer: string
 }
