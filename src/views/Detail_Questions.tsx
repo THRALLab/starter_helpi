@@ -29,22 +29,24 @@ function Detail_Questions(): JSX.Element {
   };
 
   return (
-    <div style = {{position: 'relative', top: '100px'}}className="App">
-
-      <h1 className="Detail_Question">Detail Questions</h1>
-      <br></br>
-      
-      {questions[currentQuestion]}
-      
-      <Button variant="primary" onClick={handlePrevClick} disabled={currentQuestion === 0}>
-        Previous
-      </Button>
-      <Button variant="primary" onClick={handleNextClick} disabled={currentQuestion === questions.length - 1}>
-        Next
-      </Button>
+    <div style={{ display: 'grid', gridTemplateRows: '1fr auto', minHeight: '100vh' }} className="App">
       <br></br>
 
-      <Footer/>
+      <div style={{ gridRow: '1 / 2', border: '1px solid black', padding: '10px', maxWidth: '500px', margin: '0 auto' }}>
+        {questions[currentQuestion]}
+        <div style={{ gridRow: '2 / 3', display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>
+        <Button size="sm" variant="primary" onClick={handlePrevClick} disabled={currentQuestion === 0}>
+          Previous
+        </Button>
+        <Button size="sm" variant="primary" onClick={handleNextClick} disabled={currentQuestion === questions.length - 1}>
+          Next
+        </Button>
+      </div>
+      </div>
+
+      <footer style={{ gridRow: '3 / 4', width: '100%' }} className='Footer'>
+        <Footer />
+      </footer>
     </div>
   );
 }
