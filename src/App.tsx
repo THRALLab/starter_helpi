@@ -14,7 +14,10 @@ function App(): JSX.Element {
       <div className="App">
         <header className="App-header">
           <nav>
-            <Link to="starter_helpi/">Home</Link> | <Link to="/select-quiz">Select Quiz</Link>
+            <Link to="starter_helpi/">Home</Link>
+          </nav>
+          <nav>
+            <Link to="/select-quiz">Select Quiz</Link>
           </nav>
         </header>
         <Routes>

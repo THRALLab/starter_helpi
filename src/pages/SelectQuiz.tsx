@@ -5,7 +5,7 @@ export function SelectQuiz(): JSX.Element {
   // allow for navigation to new quiz
   return (
   <div className="quiz-select-container">
-    <h2>Select Your Quiz</h2>
+    <h2 className="App-misc-text">Select Your Quiz</h2>
     <div className="quiz-link-select-container">
       <div></div>
       <Link className="select-quiz-link" to="/basic-quiz">
