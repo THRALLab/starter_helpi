@@ -45,54 +45,63 @@ const BasicQuestions: React.FC<BasicProp> = () => {
             {/* Question 1 */}
             <div className = "questions">
                 <p>I like working in a team</p>
+                <div className = "radio-group">
                 {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
                     (label, index) => (
-                        <label key={`question1-${index}`}>
+                        <label className = "radio-button" key={`question1-${index}`}>
                             <input
                                 type="radio"
                                 name="question1"
                                 value={index + 1}
                                 checked={responses.question1 === `${index + 1}`}
                                 onChange={handleRadioChange} />
+                                <span className="custom-radio"></span>
                             {label}
                         </label>
                     )
                 )}
+                </div>
             </div>
 
             {/* Question 2 */}
             <div className = "questions">
                 <p>I prefer working alone </p>
+                <div className = "radio-group">
                 {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
                     (label, index) => (
-                        <label key={`question2-${index}`}>
+                        <label className = "radio-button" key={`question2-${index}`}>
                             <input
                                 type="radio"
                                 name="question2"
                                 value={index + 1}
                                 checked={responses.question2 === `${index + 1}`}
                                 onChange={handleRadioChange} />
+                                <span className="custom-radio"></span>
                             {label}
                         </label>
                     )
                 )}
+                </div>
             </div>
             {/* Question 3 */}
             <div className = "questions">
                 <p>I am fascinated by different ideas </p>
+                <div className = "radio-group">
                 {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
                     (label, index) => (
-                        <label key={`question3-${index}`}>
+                        <label className = "radio-button" key={`question3-${index}`}>
                             <input
                                 type="radio"
                                 name="question3"
                                 value={index + 1}
                                 checked={responses.question3 === `${index + 1}`}
                                 onChange={handleRadioChange} />
+                                <span className="custom-radio"></span>
                             {label}
                         </label>
                     )
                 )}
+                </div>
             </div>
 
             {/* Next Button */}

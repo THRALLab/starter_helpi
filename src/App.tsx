@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
 import NavigationBar from "./components/homePageComp/navigation-bar/navigationBar";
-//import starfish from "./images/starfish.png";
+import shorepathlogo from "./images/homePageImages/shorepathlogo.png";
+import starfish from "./images/homePageImages/starfish.png";
+import shell from "./images/homePageImages/shell.png";
 import DetailedQuestions from './pages/DetailedQuestions';
 import BasicQuestions from './pages/BasicQuestions';
 import Home from './pages/Home';
@@ -58,6 +60,10 @@ function App() {
             {/* Navigation Bar*/}
             <NavigationBar handlePage={setCurrPg}/>
             {updatePageState()}
+            {/*adds the ShorePath Logo*/}
+            <img src={shorepathlogo} alt="ShorePath Logo" className="logo" />
+            <img src={starfish} alt="Starfish" className="starfish" />
+            <img src={shell} alt="Shell" className="shell" />
             <div className = "footer">
             <div>
                 <Form>
