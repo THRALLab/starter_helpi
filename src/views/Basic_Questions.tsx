@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import '../App.css';
 import { Button } from "react-bootstrap";
 import { Q1 } from "../BasicQuestions/Q1";
 import { Q2 } from "../BasicQuestions/Q2";
@@ -11,12 +12,17 @@ import { Q8 } from "../BasicQuestions/Q8";
 import { Footer } from "../components/Footer";
 
 function Basic_Questions(): JSX.Element {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(() => {
+    const storedIndex = localStorage.getItem('currentQuestion');
+    return storedIndex ? parseInt(storedIndex, 10) : 0;
+  });
+
   const questions = [<Q1 />, <Q2 />, <Q3 />, <Q4 />, <Q5 />, <Q6 />, <Q7 />, <Q8 />];
+
   const totalQuestions = questions.length;
 
   const handleNextClick = () => {
-    if (currentQuestion < totalQuestions - 1) {
+    if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
@@ -27,21 +33,32 @@ function Basic_Questions(): JSX.Element {
     }
   };
 
+  useEffect(() => {
+    localStorage.setItem('currentQuestion', currentQuestion.toString());
+  }, [currentQuestion]);
+
   const progress = ((currentQuestion + 1) / totalQuestions) * 100;
 
   return (
-    <div style={{ position: 'relative', top: '200px' }} className="App">
-      <h1 className="Basic_Question">Basic Questions</h1>
+    <div style={{ display: 'grid', gridTemplateRows: '1fr auto', minHeight: '100vh' }} className="App">
+      <br></br>
+
+      <div style={{ gridRow: '1 / 2', border: '1px solid black', padding: '10px', maxWidth: '500px', margin: '0 auto' }}>
+        {questions[currentQuestion]}
+        <div style={{ gridRow: '2 / 3', display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>
+        <Button size="sm" variant="primary" onClick={handlePrevClick} disabled={currentQuestion === 0}>
+          Previous
+        </Button>
+        <Button size="sm" variant="primary" onClick={handleNextClick} disabled={currentQuestion === questions.length - 1}>
+          Next
+        </Button>
+      </div>
       <progress value={progress} max="100" style={{ width: '100%' }} />
-      <br />
-      {questions[currentQuestion]}
-      <Button size="sm" variant="primary" onClick={handlePrevClick} disabled={currentQuestion === 0}>
-        Previous
-      </Button>
-      <Button size="sm" variant="primary" onClick={handleNextClick} disabled={currentQuestion === totalQuestions - 1}>
-        Next
-      </Button>
-      <Footer />
+      </div>
+
+      <footer style={{ gridRow: '3 / 4', width: '100%' }} className='Footer'>
+        <Footer />
+      </footer>
     </div>
   );
 }

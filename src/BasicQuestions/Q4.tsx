@@ -1,24 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 
-export function Q4():JSX.Element {
-    const [ethnic, setEthnic] = useState<string>("");
+const saveInfo = "BasicUserInputQ4";
 
-    function updateEthnic(event: React.ChangeEvent<HTMLSelectElement>) {
-        setEthnic(event.target.value);
+export function Q4(): JSX.Element {
+    const [data, setData] = useState<string>(() => {
+        const savedData = localStorage.getItem(saveInfo);
+        return savedData ? JSON.parse(savedData) : "";
+    });
+
+    function updateData(event: React.ChangeEvent<HTMLSelectElement>) {
+        setData(event.target.value);
     }
+
+    useEffect(() => {
+        localStorage.setItem(saveInfo, JSON.stringify(data));
+    }, [data]);
 
     return (
         <div>
-            <Form.Group controlId="userEthnicities">
-                <Form.Label>What is your ethnicity?</Form.Label>
+            <Form.Group controlId="userData">
+                <Form.Label>I find myself frequently setting priorities and creating schedules to effectively manage my time and tasks, ensuring that important deadlines are met.</Form.Label>
                 <br></br>
-                <Form.Select value={ethnic} onChange={updateEthnic}>
-                    <option value="asian">Asian</option>
-                    <option value="african">African</option>
-                    <option value="arab">Arab</option>
-                    <option value="latinx">Latinx</option>
-                    <option value="white">White</option>
+                <Form.Select value={data} onChange={updateData}>
+                    <option value="--">--</option>
+                    <option value="true">True</option>
+                    <option value="false">False</option>
                 </Form.Select>
             </Form.Group>
         </div>

@@ -1,22 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
-export function Q2():JSX.Element {
-    const [age, setAge] = useState<string>("");
+const saveInfo = "BasicUserInputQ2";
 
-    function updateAge(event: React.ChangeEvent<HTMLInputElement>) {
-        setAge(event.target.value);
+export function Q2(): JSX.Element {
+    const [data, setData] = useState<string>(() => {
+        const savedData = localStorage.getItem(saveInfo);
+        return savedData ? JSON.parse(savedData) : "";
+    });
+
+    function updateData(event: React.ChangeEvent<HTMLSelectElement>) {
+        setData(event.target.value);
     }
+
+    useEffect(() => {
+        localStorage.setItem(saveInfo, JSON.stringify(data));
+    }, [data]);
 
     return (
         <div>
-            "How old are you?"
-            <br></br>
-            <Form.Control
-                        type="textbox"
-                        value={age}
-                        onChange={updateAge}
-                    />
+            <Form.Group controlId="userInput">
+                <Form.Label>Do you have any short-term or long-term goals?</Form.Label>
+                <Form.Select value={data} onChange={updateData}>
+                    <option value="--">--</option>
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </Form.Select>
+            </Form.Group>
         </div>
     );
 }
