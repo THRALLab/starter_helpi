@@ -12,41 +12,86 @@ import { Footer } from "../components/Footer";
 
 
 function Detail_Questions(): JSX.Element {
-  
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const questions = [<Q1 />, <Q2 />, <Q3 />, <Q4 />, <Q5 />, <Q6 />, <Q7 />];
-
-  const handleNextClick = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    }
-  };
-
-  const handlePrevClick = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    }
-  };
 
   return (
-    <div style={{ display: 'grid', gridTemplateRows: '1fr auto', minHeight: '100vh' }} className="App">
-      <br></br>
+    <div className="App">
 
-      <div style={{ gridRow: '1 / 2', border: '1px solid black', padding: '10px', maxWidth: '500px', margin: '0 auto' }}>
-        {questions[currentQuestion]}
-        <div style={{ gridRow: '2 / 3', display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>
-        <Button size="sm" variant="primary" onClick={handlePrevClick} disabled={currentQuestion === 0}>
-          Previous
-        </Button>
-        <Button size="sm" variant="primary" onClick={handleNextClick} disabled={currentQuestion === questions.length - 1}>
-          Next
-        </Button>
-      </div>
+      <div id="slider2">
+        <input type="radio" name="slider2" id="slide1"></input>
+        <input type="radio" name="slider2" id="slide2"></input>
+        <input type="radio" name="slider2" id="slide3"></input>
+        <input type="radio" name="slider2" id="slide4"></input>
+        <input type="radio" name="slider2" id="slide5"></input>
+        <input type="radio" name="slider2" id="slide6"></input>
+        <input type="radio" name="slider2" id="slide7"></input>
+        <input type="radio" name="slider2" id="slide8"></input>
+        <div id="slides2">
+          <div id="overflow">
+            <div className="inner">
+              <div className="slide slide_1">
+                <div className="slide_content">
+                  <Q1></Q1>
+                </div>
+              </div>
+              <div className="slide slide_2">
+                <div className="slide_content">
+                  <Q2></Q2>
+                </div>
+              </div>
+              <div className="slide slide_3">
+                <div className="slide_content">
+                  <Q3></Q3>
+                </div>
+              </div>
+              <div className="slide slide_4">
+                <div className="slide_content">
+                  <Q4></Q4>
+                </div>
+              </div>
+              <div className="slide slide_5">
+                <div className="slide_content">
+                  <Q5></Q5>
+                </div>
+              </div>
+              <div className="slide slide_6">
+                <div className="slide_content">
+                  <Q6></Q6>
+                </div>
+              </div>
+              <div className="slide slide_7">
+                <div className="slide_content">
+                  <Q7></Q7>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="controls">
+          <label htmlFor="slide1"></label>
+          <label htmlFor="slide2"></label>
+          <label htmlFor="slide3"></label>
+          <label htmlFor="slide4"></label>
+          <label htmlFor="slide5"></label>
+          <label htmlFor="slide6"></label>
+          <label htmlFor="slide7"></label>
+          
+        </div>
+        <div id="bullets">
+          <label htmlFor="slide1"></label>
+          <label htmlFor="slide2"></label>
+          <label htmlFor="slide3"></label>
+          <label htmlFor="slide4"></label>
+          <label htmlFor="slide5"></label>
+          <label htmlFor="slide6"></label>
+          <label htmlFor="slide7"></label>
+          
+        </div>
       </div>
 
-      <footer style={{ gridRow: '3 / 4', width: '100%' }} className='Footer'>
+      <footer style={{ gridRow: '3 / 4'}} className='Footer'>
         <Footer />
       </footer>
+      
     </div>
   );
 }

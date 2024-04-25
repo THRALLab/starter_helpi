@@ -82,7 +82,7 @@ function Home() {
     <div className="App">
       <div className="page-container">
         <div className="page-navigation">
-        <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('HomePage')}>
+          <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('HomePage')}>
             <span>HomePage</span>
           </button>
           <button className="button btn1" style={{ verticalAlign: 'middle' }}onClick={() => setCurrentPage('BasicPage')}>
@@ -90,7 +90,7 @@ function Home() {
             </button>
           <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('DetailPage')}>
             <span>Detailed Page</span>
-            </button>
+          </button>
         </div>
         <div className="page-content">
           {currentPage === 'HomePage' && <HomePageContent />}
