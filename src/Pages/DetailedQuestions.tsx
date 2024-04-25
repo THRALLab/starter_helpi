@@ -194,7 +194,7 @@ function DetailedQuestions() {
                   className="DetailedQuestions-progress-bar-foreground"
                   style={{
                     height: `${100 * (questionNumber / numberOfQuestions)}%`,
-                    background: `linear-gradient(to right, ${barGradient}, ${color})`,
+                    background: `linear-gradient(to bottom, ${barGradient}, ${color})`,
                   }}
                 ></div>
                 <span

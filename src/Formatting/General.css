@@ -1,11 +1,11 @@
 .body-theme1 {
-  --color-body-background: #59c9a5;
+  --color-body-background: #42cb9f;
   --color-body-text: #000000;
   --color-body-Headerbackground: #56e39f;
   --color-body-Headertext: #000000;
-  --color-body-Button: #c5696f;
+  --color-body-Button: #d04750;
   --color-body-ButtonDisabled: #b7656b;
-  --color-body-ButtonHover: #ae5b61;
+  --color-body-ButtonHover: #c5696f;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #ffffff;
 }
@@ -36,14 +36,14 @@
 
 .body-theme4 {
   --color-body-background: #303030;
-  --color-body-text: #1EEB36;
+  --color-body-text: #1eeb36;
   --color-body-Headerbackground: #173848;
-  --color-body-Headertext: #1EEB36;
+  --color-body-Headertext: #1eeb36;
   --color-body-Button: #425866;
   --color-body-ButtonDisabled: #425866;
-  --color-body-ButtonHover: #4F6678;
+  --color-body-ButtonHover: #4f6678;
   --color-body-ButtonBorder: #000000;
-  --color-body-questionText: #1EEB36;
+  --color-body-questionText: #1eeb36;
 }
 
 .body-theme5 {
