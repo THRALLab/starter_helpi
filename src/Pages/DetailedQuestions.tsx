@@ -187,12 +187,14 @@ function DetailedQuestions() {
             <Col>
               <div
                 className="DetailedQuestions-progress-bar"
-                style={{ "--progress-color": color } as any}
+                style={{ backgroundColor: "black"}}
               >
-                <span className="DetailedQuestions-question-number">
+                <span className="DetailedQuestions-question-number"
+                style={{position: "absolute"}}>
                   Question {questionNumber}/{numberOfQuestions}
                 </span>
-                <span className="DetailedQuestions-progress-bar-percentage">
+                <span className="DetailedQuestions-progress-bar-percentage"
+                style={{position: "absolute"}}>
                   {Math.trunc(100 * (questionNumber / numberOfQuestions))}%
                   completed
                 </span>
@@ -200,7 +202,7 @@ function DetailedQuestions() {
                   className="DetailedQuestions-progress-bar-foreground"
                   style={{
                     height: `${100 * (questionNumber / numberOfQuestions)}%`,
-                    backgroundColor: "rgba(0, 0, 0, 0.3)",
+                    background: `linear-gradient(to right, black, ${color})`,
                   }}
                 ></span>
               </div>

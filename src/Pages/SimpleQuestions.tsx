@@ -151,7 +151,7 @@ function SimpleQuestions() {
         <div className="Simple-progress">
           <div
             className="Simple-progress-outer"
-            style={{ "--progress-color": color } as any}
+            style = {{backgroundColor: "black"}}
           >
             <div
               className="Simple-progress-inner"
@@ -159,11 +159,19 @@ function SimpleQuestions() {
                 width: `${
                   100 * ((currentQuestionNumber - 1) / numberOfQuestions)
                 }%`,
-                backgroundColor: "rgba(0, 0, 0, 0.3)",
+                background: `linear-gradient(to right, black, ${color})`,
               }}
-            ></div>
-            Question {questionNumber + 1}/{numberOfQuestions}
-            <div className="Simple-progress-percentage">
+            >
+            </div>
+            <div className="Simple-question-number"
+              style = {{
+                position: "absolute",
+              }}
+              >
+                Question {questionNumber + 1}/{numberOfQuestions}
+              </div>
+            <div className="Simple-progress-percentage"
+              style={{position: "relative"}}>
               {Math.round(
                 100 * ((currentQuestionNumber - 1) / numberOfQuestions)
               )}
