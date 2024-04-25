@@ -50,6 +50,7 @@ export function McSingleResponse({
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
+                    size={25}
                     style={{ cursor: 'pointer',  color: "darkblue", marginLeft: '5px'}}
                 />
             </div>
