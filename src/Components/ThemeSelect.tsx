@@ -24,11 +24,11 @@ export const ThemeSelect = () => {
 
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
-      <Form.Label htmlFor="userEmotions" style={{ marginRight: "10px" }}>
+      <Form.Label htmlFor="userThemes" style={{ marginRight: "10px" }}>
         Theme:
       </Form.Label>
       <Form.Select
-        id="userEmotions"
+        id="userThemes"
         value={theme}
         onChange={updateTheme}
         style={{ marginRight: "10px" }}
