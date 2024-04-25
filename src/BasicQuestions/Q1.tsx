@@ -1,23 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 
-export function Q1():JSX.Element {
-    const [color, setColor] = useState<string>("red");
+const saveInfo = "BasicUserInputQ1";
 
-    function updateColor(event: React.ChangeEvent<HTMLSelectElement>) {
-        setColor(event.target.value);
+export function Q1(): JSX.Element {
+    const [data, setData] = useState<string>(() => {
+        const savedData = localStorage.getItem(saveInfo);
+        return savedData ? JSON.parse(savedData) : "";
+    });
+
+    function updateData(event: React.ChangeEvent<HTMLInputElement>) {
+        setData(event.target.value);
     }
+
+    useEffect(() => {
+        localStorage.setItem(saveInfo, JSON.stringify(data));
+    }, [data]);
 
     return (
         <div>
-            <Form.Group controlId="colors">
-                <Form.Label>What is your favorite color?</Form.Label>
+            <Form.Group controlId="userInput">
+                <Form.Label>What do you like to do in your free time?</Form.Label>
                 
-                <Form.Select size="sm" value={color} onChange={updateColor}>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                </Form.Select>
+                <Form.Control
+                    type="textbox"
+                    value={data}
+                    onChange={updateData}
+                />
             </Form.Group>
         </div>
     );
