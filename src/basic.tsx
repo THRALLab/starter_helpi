@@ -1,58 +1,17 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
+import basicQuestions from "./basicQuestions.json";
 function Basic() {
-	const basicQuestions: { question: string; options: string[] }[] = [
-		{
-			question: "1. What is your ideal environment to live in?",
-			options: ["City", "Suburb", "Rural", "Town"]
-		},
-		{
-			question: "2. What personal skill do you most value?",
-			options: ["time management", "resourceful", "organization", "leadership"]
-		},
-		{
-			question: "3. What level of your academic career are you at?",
-			options: [
-				"some high school",
-				"high school degree/GED",
-				"college",
-				"graduate school"
-			]
-		},
-		{
-			question:
-				"4. Besides career interests, what other activites interest you?",
-			options: ["relaxing", "art", "exercise", "volunteering"]
-		},
-		{
-			question: "5. How many hours would you like to work per week?",
-			options: ["20 or less", "20-30", "30-35", "35+"]
-		},
-		{
-			question: "6. What topics or ideas spark your interest?",
-			options: [
-				"physical sciences",
-				"mathematics/engineering",
-				"history/social sciences",
-				"art"
-			]
-		},
-		{
-			question: "7. Would you like to work in-person, hybrid, or virtual?",
-			options: ["in-person", "hybrid", "virtual", "no-preference"]
-		}
-	];
 	return (
 		<div>
-			<h1>This is the Basic Quiz.</h1>
-			{basicQuestions.map((question, index) => (
-				<div key={index}>
-					<h2>{question.question}</h2>
-					<QuestionFormatComponent options={question.options} />
-				</div>
-			))}
-		</div>
-	);
+		basicQuestions.map((q => {
+		<h2>{q.question}</h2>
+		{q.options.map(o => {
+		<p>{o.option}</p>
+		})}
+	}))</div>
+	)
 }
+		
 interface QuestionFormatProps {
 	options: string[];
 }
@@ -63,8 +22,14 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	const optionSelect = (option: string) => {
 		setSelected(option);
 	};
+	useEffect(()=>{
+		setSelected(basicQuestions);
+	},[]);
 	return (
 		<div>
+			if(q.type == "multiple choice"){
+				//use below function, otherwise use slider
+			}
 			<p>Select an option:</p>
 			{options.map(option => (
 				<label key={option}>
