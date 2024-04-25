@@ -24,7 +24,6 @@ function Detail_Questions(): JSX.Element {
         <input type="radio" name="slider2" id="slide5"></input>
         <input type="radio" name="slider2" id="slide6"></input>
         <input type="radio" name="slider2" id="slide7"></input>
-        <input type="radio" name="slider2" id="slide8"></input>
         <div id="slides2">
           <div id="overflow">
             <div className="inner">
