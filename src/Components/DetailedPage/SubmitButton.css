@@ -1,0 +1,4 @@
+div{
+  --bs-tooltip-bg: var(--bs-success);
+  --bs-tooltip-padding-y: 0.5rem;
+}
