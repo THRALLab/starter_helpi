@@ -1,4 +1,4 @@
-import { Container, Row, Col, Nav, Tab, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Tab, ListGroup } from 'react-bootstrap';
 import './interests.css';
 
 function Interests({handlePage} : {handlePage: (page: string) => void}) {

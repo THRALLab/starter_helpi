@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Button, ProgressBar } from 'react-bootstrap';
-import BrainIcon from './modifiedBrainIcon.svg';
-import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
 import Confetti from 'react-dom-confetti';
