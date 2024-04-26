@@ -48,6 +48,7 @@ export function DisplayQuiz(
     const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
     const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
     const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
+    const [isLoading, setIsLoading] = useState(false);
     // const [nextPrompt, setNextPrompt] = useState<string>("");
 
     async function connectToGBT(startingPrompt: string, prompt: string)  {
@@ -77,6 +78,7 @@ export function DisplayQuiz(
 
     // gets the next questions
     async function createNextQuestion() {
+        setIsLoading(true);
         // if basic curQuiz only one call is nessesary
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
         const response = (title === "Basic Quiz") ?
@@ -89,6 +91,7 @@ export function DisplayQuiz(
         parseChatHistory(response);
         //adding new messages to chat history
         setGBTConversation(gbtConversation);
+        setIsLoading(false); 
         return
     }
 
@@ -187,6 +190,9 @@ export function DisplayQuiz(
         )
     }
     
+    if (isLoading) {
+        return <Loading />;
+    }    
 
     if (isQuizComplete) {
         return (

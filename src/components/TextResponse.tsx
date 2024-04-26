@@ -50,7 +50,8 @@ export function TextResponse({
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
-                    style={{ cursor: 'pointer',  color: "darkblue", marginLeft: '5px'}}
+                    size={35}
+                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (
