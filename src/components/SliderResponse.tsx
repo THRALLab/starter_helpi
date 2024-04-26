@@ -58,7 +58,8 @@ export function SliderResponse({
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
-                    style={{ cursor: 'pointer',  color: "darkblue", marginLeft: '5px'}}
+                    size={35}
+                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (
@@ -84,6 +85,7 @@ export function SliderResponse({
                 <Form.Range
                     value={localAnswer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
+                    size={25}
                 />
                 <Button
                     variant={isFirst ? "outline-primary" : "primary"}

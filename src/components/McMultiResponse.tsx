@@ -81,8 +81,8 @@ export function McMultiResponse({
                 <FaQuestionCircle
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
-                    size={25}
-                    style={{ cursor: 'pointer',  color: "darkblue", marginLeft: '5px'}}
+                    size={35}
+                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (
