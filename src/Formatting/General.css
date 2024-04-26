@@ -85,7 +85,7 @@
   --color-body-questionText: #1eeb36;
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #6b6b6b;
-  --color-body-BarColor: red;
+  --color-body-BarColor: rgb(47, 145, 101);
 }
 
 .body-theme7 {
