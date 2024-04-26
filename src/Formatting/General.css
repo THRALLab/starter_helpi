@@ -8,6 +8,9 @@
   --color-body-ButtonHover: #c490d1;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
+  --color-body-ProgressBackground: #000000;
+  --color-body-BarGradient: #6b6b6b;
+  --color-body-BarColor: red;
 }
 
 .body-theme2 {
@@ -20,6 +23,9 @@
   --color-body-ButtonHover: #008080;
   --color-body-ButtonBorder: #faf9f6;
   --color-body-questionText: #faf9f6;
+  --color-body-ProgressBackground: #000000;
+  --color-body-BarGradient: #6b6b6b;
+  --color-body-BarColor: red;
 }
 
 .body-theme3 {
@@ -32,6 +38,9 @@
   --color-body-ButtonHover: #32b64c;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
+  --color-body-ProgressBackground: #000000;
+  --color-body-BarGradient: #6b6b6b;
+  --color-body-BarColor: red;
 }
 
 .body-theme4 {
@@ -44,6 +53,9 @@
   --color-body-ButtonHover: #9b870c;
   --color-body-ButtonBorder: #faf9f6;
   --color-body-questionText: #faf9f6;
+  --color-body-ProgressBackground: #000000;
+  --color-body-BarGradient: #6b6b6b;
+  --color-body-BarColor: red;
 }
 
 .body-theme5 {
@@ -56,6 +68,9 @@
   --color-body-ButtonHover: #5e43f3;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
+  --color-body-ProgressBackground: #000000;
+  --color-body-BarGradient: #6b6b6b;
+  --color-body-BarColor: red;
 }
 
 .body-theme6 {
@@ -68,6 +83,9 @@
   --color-body-ButtonHover: #4f6678;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #1eeb36;
+  --color-body-ProgressBackground: #000000;
+  --color-body-BarGradient: #6b6b6b;
+  --color-body-BarColor: red;
 }
 
 .body-theme7 {
@@ -80,6 +98,9 @@
   --color-body-ButtonHover: #c5696f;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #ffffff;
+  --color-body-ProgressBackground: #000000;
+  --color-body-BarGradient: #6b6b6b;
+  --color-body-BarColor: red;
 }
 
 .General-header {
@@ -148,3 +169,15 @@
   padding-left: 1vw;
   padding-right: 1vw;
 }
+
+/*
+  purple
+  brown
+  #0E666C
+  #2B13A4
+  #6C0E4E
+  #5AAA95
+  #86A873
+  #668586
+  #82AEB1
+*/

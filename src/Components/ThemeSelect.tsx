@@ -31,6 +31,7 @@ export const ThemeSelect = () => {
         id="userThemes"
         value={theme}
         onChange={updateTheme}
+        role="Theme-Select"
         style={{ marginRight: "10px" }}
       >
         <option value="body-theme1">Basic</option>

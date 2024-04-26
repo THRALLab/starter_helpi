@@ -40,23 +40,6 @@ function DetailedQuestions() {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [questionBody, setQuestionBody] = useState("Question...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
-  const [color, setColor] = useState("");
-  const barGradient = "#6B6B6B";
-
-  useEffect(() => {
-    const colors = [
-      "purple",
-      "brown",
-      "#0E666C",
-      "#2B13A4",
-      "#6C0E4E",
-      "#5AAA95",
-      "#86A873",
-      "#668586",
-      "#82AEB1",
-    ];
-    setColor(colors[Math.floor(Math.random() * colors.length)]);
-  }, []);
 
   useEffect(() => {
     const loadQuestions = () => {
@@ -196,15 +179,11 @@ function DetailedQuestions() {
               </span>
             </Col>
             <Col>
-              <div
-                className="DetailedQuestions-progress-bar"
-                style={{ backgroundColor: "black" }}
-              >
+              <div className="DetailedQuestions-progress-bar">
                 <div
                   className="DetailedQuestions-progress-bar-foreground"
                   style={{
                     height: `${100 * (questionNumber / numberOfQuestions)}%`,
-                    background: `linear-gradient(to bottom, ${barGradient}, ${color})`,
                   }}
                 ></div>
                 <span
