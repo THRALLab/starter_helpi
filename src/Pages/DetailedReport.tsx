@@ -130,6 +130,11 @@ function DetailedReport() {
             </div>
           </div>
         )}
+        {!loading && careerList.length < 3 && (
+          <div>
+            {responseData}
+          </div>
+        )}
       </div>
 
       <div className="API-Footer">
