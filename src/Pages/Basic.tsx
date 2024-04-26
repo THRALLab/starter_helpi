@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, ProgressBar } from 'react-bootstrap';
+import BrainIcon from './modifiedBrainIcon.svg';
+import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
 import Confetti from 'react-dom-confetti';
@@ -71,7 +73,7 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
         {
             question: "How important is it for you to make a tangible impact through your work?",
             options: [
-                { label: "Not at All important", iconSrc: sadIcon },
+                { label: "Not at All Important", iconSrc: sadIcon },
                 { label: "Neutral", iconSrc: mehIcon },
                 { label: "Very Important", iconSrc: smileIcon }
             ]
@@ -79,7 +81,7 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
         {
             question: "How important is having a set routine in the workplace to you?",
             options: [
-                { label: "Not at All important", iconSrc: sadIcon },
+                { label: "Not at All Important", iconSrc: sadIcon },
                 { label: "Neutral", iconSrc: mehIcon },
                 { label: "Very Important", iconSrc: smileIcon }
             ]
@@ -114,34 +116,40 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedOptions, confettiShown]);
 
+    const totalQuestions = questions.length;
+    const answeredQuestions = Object.keys(selectedOptions).length;
+    const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
+
     return (
         <div>
-     
+        <header className="header" /* Top of page */>
         {allQuestionsAnswered && (
       <div className="confetti-container">
         <Confetti active={confetti} config={config} />
       </div>
             )} 
-
+        </header>
+        <div className="progressBarContainer">
+                <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+            </div>
         <Button className="detailed-switch" onClick={() => handlePage('Detailed')}>Detailed</Button>
         <div className="column">
                 {questions.map((q, x) => (
                     <div key={x}>
                         <h3 className="question">{q.question}</h3>
                         <div className="questionContainer">
-                        {q.options.filter(option => option.label !== "").map((option, i) => (
-    <label key={i} className="option">
-        <input
-            type="radio"
-            name={`question_${x}`}
-            value={option.label}
-            checked={selectedOptions[x] === option.label}
-            onChange={() => handleOptionClick(option.label, x)}
-        />
-        <img src={option.iconSrc} alt={`${option.label} Icon`} className="label-icon" />
-        {option.label}
-    </label>
-))}
+                            {q.options.filter(option => option.label !== "").map((option, i) => (
+                                <label key={i} className="option">
+                                    <input
+                                        type="radio"
+                                        name={`question_${x}`}
+                                        value={option.label}
+                                        checked={selectedOptions[x] === option.label}
+                                        onChange={() => handleOptionClick(option.label, x)} />
+                                    <img src={option.iconSrc} alt={`${option.label} Icon`} className="label-icon" />
+                                    {option.label}
+                                </label>
+                            ))}
                         </div>
                     </div>
                 ))}

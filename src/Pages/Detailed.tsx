@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, ProgressBar } from 'react-bootstrap';
+import BrainIcon from './modifiedBrainIcon.svg';
+import homeIcon from './house.svg';
 import './Pages.css';
 import './questions.css';
 import Confetti from 'react-dom-confetti';
@@ -113,6 +115,10 @@ const questions: QuestionOption[] = [
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedOptions, confettiShown]);
+
+    const totalQuestions = questions.length;
+    const answeredQuestions = Object.keys(selectedOptions).length;
+    const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
 
     return (
         <div>
