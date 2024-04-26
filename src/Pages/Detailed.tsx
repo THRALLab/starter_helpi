@@ -120,30 +120,32 @@ const questions: QuestionOption[] = [
 
     return (
         <div>
-        {allQuestionsAnswered && (
-            <div className="confetti-container">
-                <Confetti active={confetti} config={config} />
-            </div>
-        )}
-        <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button>
-        <div className="column">
+            <header className="header" /* Top of page */></header>
+            {allQuestionsAnswered && (
+                <div className="confetti-container">
+                    <Confetti active={confetti} config={config} />
+                </div>
+            )}
+        <header/>
+        <div className="progressBarContainer">
+                <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+            </div><Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button><div className="column">
                 {questions.map((q, idx) => (
                     <div key={idx}>
                         <h3 className="question">{q.question}</h3>
                         <div className="questionContainer">
-                        {q.options.filter(option => option.label !== "").map((option, i) => (
-    <label key={i} className="option">
-        <input
-            type="radio"
-            name={`question_${idx}`}
-            value={option.label}
-            checked={selectedOptions[idx] === option.label}
-            onChange={() => handleOptionClick(option.label, idx)}
-        />
-        <img src={option.iconSrc} alt={`${option.label} Icon`} className="label-icon" />
-        {option.label}
-    </label>
-))}
+                            {q.options.filter(option => option.label !== "").map((option, i) => (
+                                <label key={i} className="option">
+                                    <input
+                                        type="radio"
+                                        name={`question_${idx}`}
+                                        value={option.label}
+                                        checked={selectedOptions[idx] === option.label}
+                                        onChange={() => handleOptionClick(option.label, idx)} />
+                                    <img src={option.iconSrc} alt={`${option.label} Icon`} className="label-icon" />
+                                    {option.label}
+                                </label>
+                            ))}
                         </div>
                     </div>
                 ))}
