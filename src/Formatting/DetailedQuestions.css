@@ -55,6 +55,15 @@
   width: 200px;
   height: 500px;
   transform: rotate(180deg);
+  background-color: var(--color-body-ProgressBackground);
+}
+
+.DetailedQuestions-progress-bar-foreground {
+  background: linear-gradient(
+    to bottom,
+    var(--color-body-BarGradient),
+    var(--color-body-BarColor)
+  );
 }
 
 .DetailedQuestions-question-number {
