@@ -9,8 +9,8 @@
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
   --color-body-ProgressBackground: #000000;
-  --color-body-BarGradient: #6b6b6b;
-  --color-body-BarColor: red;
+  --color-body-BarGradient: orange;
+  --color-body-BarColor: green;
 }
 
 .body-theme2 {
@@ -69,8 +69,8 @@
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
   --color-body-ProgressBackground: #000000;
-  --color-body-BarGradient: #6b6b6b;
-  --color-body-BarColor: red;
+  --color-body-BarGradient: #6c0e4e;
+  --color-body-BarColor: #2b13a4;
 }
 
 .body-theme6 {
@@ -99,7 +99,7 @@
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #ffffff;
   --color-body-ProgressBackground: #000000;
-  --color-body-BarGradient: #6b6b6b;
+  --color-body-BarGradient: #5aaa95;
   --color-body-BarColor: red;
 }
 
