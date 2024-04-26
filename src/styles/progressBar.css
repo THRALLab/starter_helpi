@@ -1,0 +1,30 @@
+/* Larger size */
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  border: 2px solid #f9f8f8; /* Add border */
+
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* Gradient Colors */
+.progress-bar {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+
+/* Animation */
+@keyframes fillProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,88 @@
+/* from https://www.w3schools.com/Css/css_navbar_horizontal.asp */
+ul {
+  list-style-type: none;
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  background-color: var(--white-color);
+  color: var(--black-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: grid;
+  column-gap: 50px;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  z-index: 1100;
+  align-items: center;
+ 
+}
+
+.icon-text {
+  font-family: "PT Sans";
+  font-size: 30px;
+  margin: auto;
+  border: 2.5px solid transparent;
+  border-radius: 5px;
+}
+
+.left-links {
+  justify-self: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-links {
+ justify-self: end;
+ padding-right: 10px;
+}
+
+li {
+  float: left;
+  
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 8px 12px;
+  text-decoration: none;
+  margin: 0px 3px;
+  color: var(--black-color);
+  margin: auto;
+  border: 2.5px solid transparent;
+  border-radius: 5px;
+}
+
+
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  border-color: var(--black-color);
+  color: var(--black-color);
+}
+
+.icon-text:hover {
+  border-color: var(--black-color);
+  color: var(--black-color);
+}
+
+.inverted-btn {
+  background-color: var(--white-color);
+  margin: 0px 3px 0px 3px;
+  border-radius: 5px;
+  border: 2.5px solid var(--black-color);
+}
+
+.inverted-btn:hover {
+  margin: 0px 3px 0px 3px;
+  background-color: var(--accent-color);
+  color: var(--black-color);
+}
+
+
+.nav-item:visited {
+  color: var(--black-color);
+}
