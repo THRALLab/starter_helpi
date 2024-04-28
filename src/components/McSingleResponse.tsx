@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Form, Button, ToggleButton } from 'react-bootstrap';
+import { Form, Button, ToggleButton, FormControl } from 'react-bootstrap';
 import { FaQuestionCircle } from 'react-icons/fa'; // This line imports a question circle icon from Font Awesome
 
 
@@ -20,6 +20,7 @@ export function McSingleResponse({
     const [localAnswer, setLocalAnswer] = useState<string>("");
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
+    const [customAnswer, setCustomAnswer] = useState<string>("");
 
     useEffect(() => {
         /**
@@ -41,6 +42,23 @@ export function McSingleResponse({
 
         return () => window.removeEventListener('resize', updateTooltipPosition);
     }, [question]);
+
+    const DisplayOther = ({thisKey}:{thisKey : string}): JSX.Element => {
+        if (!localAnswer.includes("other")) {
+            return(
+                <ToggleButton
+                    className="App-quiz"
+                    variant={localAnswer === thisKey ? "primary" : "outline-secondary"}
+                    type="radio"
+                    id="other"
+                    value="Other"
+                    onChange={() => setLocalAnswer("Other")}
+                >
+                    Other
+                </ToggleButton>
+            )
+        } else return <></>
+    }
     
     return (
         <div style={{ position: 'relative' }}>
@@ -74,17 +92,34 @@ export function McSingleResponse({
             <Form>
                 <div>
                     {options.map((choice) => (
-                        <ToggleButton  
-                            className="App-quiz"
-                            key={`${choice}Select`}
-                            type="radio"
-                            id={choice}
-                            value={choice}
-                            checked={localAnswer === choice}
-                            variant={localAnswer === choice ? "primary" : "outline-secondary"}
-                            onChange={() => setLocalAnswer(choice)}
-                                > {choice}
-                        </ToggleButton>
+                        choice.toLowerCase().includes("other")
+                        ? (
+                            <>
+                            <DisplayOther thisKey={choice}/>
+                            {(localAnswer === "Other") && (
+                                <FormControl
+                                    style={{ marginTop: '10px' }}
+                                    placeholder="Type your custom answer here"
+                                    value={customAnswer}
+                                    onChange={(event) => setCustomAnswer(event.target.value)}
+                                />
+                            )}
+                        </>
+                        ) :
+                        <>
+                            <ToggleButton  
+                                className="App-quiz"
+                                key={`${choice}Select`}
+                                type="radio"
+                                id={choice}
+                                value={choice}
+                                checked={localAnswer === choice}
+                                variant={localAnswer === choice ? "primary" : "outline-secondary"}
+                                onChange={() => setLocalAnswer(choice)}
+                                    > {choice}
+                            </ToggleButton>
+                            <br></br>
+                        </>
                     ))}
                 </div>
                 <Button

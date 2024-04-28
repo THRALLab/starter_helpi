@@ -19,7 +19,7 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
 
         `Generate these questions in sets rather than individually to enhance efficiency and reduce the number of interactions required. Ensure each set of questions is designed to be independent of answers to previous sets to prevent any bias or influence on the subsequent sets.\n\n` +
 
-        `Here's how you should structure the questions:\n` +
+        `You should structure the questions in the following JSON format:\n` +
         `{\n` +
         `  question1: {\n` +
         `    id: "question1",\n` +
@@ -85,11 +85,13 @@ export const createFinalResponse = (questionAns: QuestionAnswer[]) => {
     return(
         "The user has entered the following question answers in response to their career quiz:\n" +
         mapQuestionsToAnswers(questionAns) +
-        "\nBased on the information provided, here is your personalized career advice:\n" +
+        "\nBased on the information provided, here is your personalized career advice in the following JSON format:\n" +
         `{\n` +
-        `    "advice": "Based on your responses, we suggest focusing on areas where you've shown strong interest and skills. Continue to explore and gain experience in these fields through further education, internships, or entry-level positions.",\n` +
-        `    "reasoning": "This advice is given to help you build on your existing skills and interests, which are fundamental to finding a satisfying career path.",\n` +
-        `    "result": "Considering your background and interests, careers in [specific careers based on user's answers] might be suitable for you."\n` +
+        `    "summary": "Your interests in [fields from user answers] and your background in [education from user answers] suggest several exciting career paths.",\n` +
+        `    "advice": "Given your stage in [education/career stage from user answers], consider [actionable steps such as specific internships, certifications, or professional networks].",\n` +
+        `    "interactiveElements": "Explore the following links to deepen your understanding of each area: [link1], [link2], [link3], tailored to your interests in [fields from user answers].",\n` +
+        `    "recommendations": "Careers such as [specific careers based on user's answers] could be particularly suitable for you, aligning with your skills and goals.",\n` +
+        `    "reasoning": "These paths are recommended based on current industry demand and your personal preferences discussed earlier in the quiz.",\n` +
         `}\n\n` +
         "This advice is tailored to assist you in making informed decisions about your potential career paths."
     );
