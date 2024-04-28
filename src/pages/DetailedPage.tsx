@@ -145,9 +145,7 @@ const DetailedPage = () => {
 			}
 		.questionPrompt{
 			font-weight:bold;
-			margin-left: 25px
-			
-
+			margin-left: 25px;
 		}
 		.reg-radio{
 			display: inline-block;
@@ -155,22 +153,27 @@ const DetailedPage = () => {
    			border-radius: 5px; /* Rounded corners */
     		padding: 5px; /* Add padding around the radio button */
     		margin-right: 2px; /* Add space between radio buttons */
+			transition: background-color 0.75s ease; /* Makes the container blue and changes text to white */
+    		&:hover {
+        background-color: #0d6efd;
+		color: white;
+   			 }
 		}
         `}</style>
 		<div className="info-portion">
 			<h1>
 				Detailed Quiz
 			</h1>
-			<>
+			<p style={{textAlign:"center", marginLeft: "25px", marginRight: "25px"}}>
 				Welcome! For this quiz, you will answer the statements by 
 				choosing one of the corresponding multiple choice options
 				 below! You will be able to click the "Answer" which will 
 				allow you to see the results of you future career.
-			</>
+			</p>
 		</div>
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" disabled={!allow} onClick={getResponses}>Answer</Button>
-		<Button size="lg" onClick={(doReset)}>Clear All</Button>
+
+		<Button size="lg" disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
