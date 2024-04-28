@@ -36,12 +36,14 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
         `MC_SINGLE_RESPONSE:\n` +
         `This types is a single response multiple choice question.\n` +
         `You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
+        `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+        `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
         `MC_MULTI_RESPONSE:\n` +
         `This type is a multiple response multiple choice question.\n` +
         `You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
-        `The MC_MULTI_RESPONSE type also has a special feature, unique to this question type:\n` +
-        `   If you list 'Other (click to specify)' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
+        `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+        `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
         `TEXT_RESPONSE:\n` +
         `This type is a text response question, similar to short/long answer question types.\n` +

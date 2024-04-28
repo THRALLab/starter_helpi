@@ -7,16 +7,18 @@ export function UserRanking({
     description,
     options,
     onNext,
-    isFirst
+    isFirst,
+    prevAnswer
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string, forewards: boolean) => void;
     isFirst: boolean;
+    prevAnswer: string;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
-    const [categories, setCategories] = useState<string[]>(options);
+    const [categories, setCategories] = useState<string[]>(prevAnswer.split(","));
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
     

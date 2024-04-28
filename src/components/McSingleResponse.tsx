@@ -8,16 +8,18 @@ export function McSingleResponse({
     description,
     options,
     onNext,
-    isFirst
+    isFirst,
+    prevAnswer
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string, forewards: boolean) => void;
     isFirst: boolean;
+    prevAnswer: string;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
-    const [localAnswer, setLocalAnswer] = useState<string>("");
+    const [localAnswer, setLocalAnswer] = useState<string>(prevAnswer);
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
     const [customAnswer, setCustomAnswer] = useState<string>("");
