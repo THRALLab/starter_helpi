@@ -38,7 +38,7 @@ export function McMultiResponse({
         if (localAnswer.includes(otherOption) && customAnswer) {
             // Replace the "Other" placeholder with the actual custom answer.
             const answerIndex = localAnswer.indexOf(otherOption);
-            localAnswer.splice(answerIndex, 1, customAnswer);
+            localAnswer.splice(answerIndex, 1, customAnswer.trim());
         }
         console.log(`Answers: ${localAnswer.join(",")}`)
         return localAnswer.join(", ");
@@ -51,13 +51,13 @@ export function McMultiResponse({
                 setLocalAnswer(localAnswer.filter(answer => answer !== currAnswer));
                 setCustomAnswer(""); // Clear the custom answer if "Other" is deselected.
             } else {
-                setLocalAnswer([...localAnswer, currAnswer]);
+                setLocalAnswer([...localAnswer, currAnswer.trim()]);
             }
         } else {
             if (localAnswer.includes(currAnswer)) {
                 setLocalAnswer(localAnswer.filter(target => target !== currAnswer));
             } else {
-                setLocalAnswer([...localAnswer, currAnswer]);
+                setLocalAnswer([...localAnswer, currAnswer.trim()]);
             }
         }
     }
@@ -144,7 +144,7 @@ export function McMultiResponse({
                                     style={{ marginTop: '10px' }}
                                     placeholder="Type your custom answer here"
                                     value={customAnswer.substring(otherOption.length + 2)}
-                                    onChange={(event) => setCustomAnswer(`${otherOption}: ${event.target.value}`.trim())}
+                                    onChange={(event) => setCustomAnswer(`${otherOption}: ${event.target.value}`)}
                                 />
                             )}
                             </>
