@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { SelectQuiz } from "./pages/SelectQuiz";
 // Import any other components or pages you have
+import { ApiKeyInput } from "./pages/Home";
 import './css/App.css';
 import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
 import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
@@ -34,6 +35,9 @@ function App(): JSX.Element {
         />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
+      </div>
+      <div className="App-footer"> 
+       <ApiKeyInput></ApiKeyInput>
       </div>
     </Router>
   );

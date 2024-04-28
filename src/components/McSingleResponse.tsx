@@ -81,18 +81,18 @@ export function McSingleResponse({
                             id={choice}
                             value={choice}
                             checked={localAnswer === choice}
-                            variant={localAnswer === choice ? "primary" : "outline-secondary"}
+                            variant={localAnswer === choice ? "selected" : "outline-secondary"}
                             onChange={() => setLocalAnswer(choice)}
                                 > {choice}
                         </ToggleButton>
                     ))}
                 </div>
                 <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(localAnswer, false)}>Back</Button>
                 <Button
-                    variant={localAnswer === "" ? "outline-primary" : "primary"}
+                    variant={localAnswer === "" ? "nav-disabled" : "nav"}
                     disabled={localAnswer === ""}
                     onClick={() => onNext(localAnswer, true)}> Next</Button>
             </Form>

@@ -80,11 +80,11 @@ export function TextResponse({
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
                 />
                 <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(localAnswer, false)}>Back</Button>
                 <Button 
-                    variant={localAnswer === "" ? "outline-primary" : "primary"}
+                    variant={localAnswer === "" ? "nav-disabled" : "nav"}
                     disabled={localAnswer === ""}
                     onClick={() => onNext(localAnswer, true)}
                 >Next</Button>

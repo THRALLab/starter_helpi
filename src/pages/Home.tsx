@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, Container, Form, Row, Col } from "react-bootstrap";
+import { Button, Form, Row, Col } from "react-bootstrap";
 
 export function ApiKeyInput(): JSX.Element {
   const [apiKey, setApiKey] = useState<string>("");
+  const [isSubmit, setSubmit] = useState<boolean>(false)
 
   const changeKey = (event: React.ChangeEvent<HTMLInputElement>) => {
     setApiKey(event.target.value);
@@ -13,31 +14,31 @@ export function ApiKeyInput(): JSX.Element {
     console.log("apiKey->", apiKey); // Example: output to console or replace with storage logic
     localStorage.removeItem("GBTKEY");
     localStorage.setItem("GBTKEY", apiKey);
+    setSubmit(true);
   };
 
-  return (
-    <Container>
-      <Row className="justify-content-md-center">
-        <Col md="6">
-          <h2>Enter API Key</h2>
+  return <div>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formApiKey">
-              <Form.Label>API Key:</Form.Label>
+              <Row>
+                <Col>
               <Form.Control
                 type="password"
-                placeholder="Insert API Key Here"
+                placeholder="Enter API key:"
                 value={apiKey}
                 onChange={changeKey}
               />
+              </Col>
+              <Col>
+              <Button variant="nav" type="submit">Submit</Button>
+              {!isSubmit ? "✗" : "✓"}
+              </Col>
+              <Col>
+              </Col>
+              </Row>
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
           </Form>
-        </Col>
-      </Row>
-    </Container>
-  );
+          </div>
 }
 
 export const Home = () => {

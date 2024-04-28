@@ -109,7 +109,7 @@ export function McMultiResponse({
                         <li key={choice}>
                             <ToggleButton
                                 className="App-quiz"
-                                variant={localAnswer.includes(choice) ? "primary" : "outline-primary"}
+                                variant={localAnswer.includes(choice) ? "selected" : "selected-outlined"}
                                 key={`${choice}Select`}
                                 type="checkbox"
                                 id={choice}
@@ -124,7 +124,7 @@ export function McMultiResponse({
                     <li key="Other(click to specify)">
                         <ToggleButton  
                             className="App-quiz"
-                            variant={localAnswer.includes(otherOption) ? "primary" : "outline-primary"}
+                            variant={localAnswer.includes(otherOption) ? "selected" : "selected-outlined"}
                             type="checkbox"
                             id="other"
                             value="Other"
@@ -144,10 +144,10 @@ export function McMultiResponse({
                     </li>
                 </ul>
                 <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(compressAnswer(), false)}>Back</Button>
-                <Button onClick={() => onNext(compressAnswer(), true)}>Next</Button>
+                <Button variant="nav" onClick={() => onNext(compressAnswer(), true)}>Next</Button>
             </Form>
         </div>
     );
