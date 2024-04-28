@@ -45,7 +45,8 @@
 }
 
 .App-quiz {
-  background-color: var(--off-white);
+  text-align: center;
+  background-color: var(--off-tan);
 }
 
 @keyframes App-logo-spin {

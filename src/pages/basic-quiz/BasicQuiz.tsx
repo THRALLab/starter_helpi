@@ -11,7 +11,7 @@ export const BasicQuiz = () => {
     const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
     const totalQuestions = 15;
     return(
-    <div className="basicQuiz-container">
+    <div className="App-quiz">
         <Container>
             <Row>
                 <ProgressBar
