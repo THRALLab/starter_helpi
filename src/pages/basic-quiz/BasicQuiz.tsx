@@ -20,7 +20,7 @@ export const BasicQuiz = () => {
                 />
             </Row>
             <Row>
-                <Suspense fallback={<Loading/>}>
+                <Suspense fallback={<Loading type="Basic Quiz"/>}>
                     <DisplayQuiz 
                         quiz={basicQuiz}
                         title="Basic Quiz"

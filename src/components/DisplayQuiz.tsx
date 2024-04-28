@@ -20,9 +20,11 @@ type QuestionAns = {
 }
 
 type AnswerResponse = {
+    summary: string,
     advice: string,
-    reasoning: string,
-    result: string
+    interactiveElements: string,
+    recommendations: string,
+    reasoning: string
 }
 
 export function DisplayQuiz(
@@ -49,6 +51,7 @@ export function DisplayQuiz(
     const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
     const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
     const [isLoading, setIsLoading] = useState(false);
+    const [type, setType ] = useState("");
     // const [nextPrompt, setNextPrompt] = useState<string>("");
 
     async function connectToGBT(startingPrompt: string, prompt: string)  {
@@ -60,7 +63,7 @@ export function DisplayQuiz(
     const addToQuiz = (newQuestions: DisplayQuizProps): void => {
         console.log("new questions:", newQuestions);
         const quizTotal = {...curQuiz, ...newQuestions};
-        console.log("combination ", {...curQuiz, ...newQuestions});
+        //console.log("combination ", {...curQuiz, ...newQuestions});
         setCurQuiz(quizTotal);
         console.log("Current Quiz:", curQuiz);
     }
@@ -78,7 +81,8 @@ export function DisplayQuiz(
 
     // gets the next questions
     async function createNextQuestion() {
-        setIsLoading(true);
+        //setIsLoading(true);
+        setType("generatingQuestions")
         // if basic curQuiz only one call is nessesary
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
         const response = (title === "Basic Quiz") ?
@@ -91,7 +95,7 @@ export function DisplayQuiz(
         parseChatHistory(response);
         //adding new messages to chat history
         setGBTConversation(gbtConversation);
-        setIsLoading(false); 
+        //setIsLoading(false); 
         return
     }
 
@@ -130,6 +134,8 @@ export function DisplayQuiz(
      * if there is no next question then the curQuiz is over
      */
     const handleAnswerSubmit = async (answer: string, forewards: boolean) => {
+        setIsLoading(true);
+        setType("nextQuestion")
         
         if (forewards) { // if going to next question
             const nextQuestionId = await determineNextQuestionId(currentQuestionId, curQuiz, true);
@@ -157,41 +163,83 @@ export function DisplayQuiz(
             const nextQuestionId = determineNextQuestionId(currentQuestionId, curQuiz, false);
             setCurrentQuestionId(await nextQuestionId);
         }
+        setIsLoading(false);
     }
     // if(Object.keys(quiz).length === 0) createQuiz();
 
+    // const DisplayResults = () => {
+    //     const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
+    //     const [response, setResponse] = useState<OpenAI.ChatCompletion>();
+    //     const [loaded, setLoaded] = useState<boolean>(false);
+    //     useEffect(() => {
+    //         async function getFinalResponse() {
+    //             const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
+    //             setLoaded(true);
+    //             setResponse(response);
+    //         }
+    //         if(response === null || response === undefined) getFinalResponse();
+    //     }, [questionAns, response]
+    // )
+    //     if(!loaded) return<Loading type="finalReport"/>;
+    //     console.log(response);
+
+    //     if(response === undefined) return <></>;
+    //     const finalResponse = response.choices[response.choices.length-1].message.content;
+    //     if(finalResponse == null) return<>Error Occured</>
+    //     const finalAns: AnswerResponse = JSON.parse(finalResponse);
+
+    //     return(
+    //         <>
+    //             <p>{finalAns.result}</p>
+    //             <p>{finalAns.advice}</p>
+    //             <p>{finalAns.reasoning}</p>
+    //         </>
+    //     )
+    // }
+    
     const DisplayResults = () => {
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
         const [response, setResponse] = useState<OpenAI.ChatCompletion>();
-        const [loaded, setLoaded] = useState<boolean>(false);
+        const [loaded, setLoaded] = useState(false);
+    
         useEffect(() => {
             async function getFinalResponse() {
                 const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
-                setLoaded(true);
                 setResponse(response);
+                setLoaded(true);
             }
-            if(response === null || response === undefined) getFinalResponse();
-        }, [questionAns, response]
-    )
-        if(!loaded) return<Loading/>;
-        console.log(response);
+    
+            if (!response) getFinalResponse();
+        }, [questionAns, response]);
+    
+        if (!loaded) return <Loading type="finalReport"/>;
+    
+        if (!response || !response.choices.length) return <p>Error Occurred</p>;
 
-        if(response === undefined) return <></>;
-        const finalResponse = response.choices[response.choices.length-1].message.content;
-        if(finalResponse == null) return<>Error Occured</>
-        const finalAns: AnswerResponse = JSON.parse(finalResponse);
-
-        return(
+        const finalAns = response.choices[response.choices.length-1].message.content;
+        if(finalAns == null) return<>Error Occured</>
+        const finalResponse: AnswerResponse = JSON.parse(finalAns);
+    
+        return (
             <>
-                <p>{finalAns.result}</p>
-                <p>{finalAns.advice}</p>
-                <p>{finalAns.reasoning}</p>
+                <h2>Career Report Summary</h2>
+                <p>{finalResponse.summary}</p>
+                <h3>Detailed Advice</h3>
+                <p>{finalResponse.advice}</p>
+                <h3>Explore Further</h3>
+                <p>{finalResponse.interactiveElements}</p>
+                <h3>Recommended Career Paths</h3>
+                <p>{finalResponse.recommendations}</p>
+                <h3>Why These Paths?</h3>
+                <p>{finalResponse.reasoning}</p>
             </>
-        )
+        );
     }
     
+
+
     if (isLoading) {
-        return <Loading />;
+        return <Loading type={type}/>;
     }    
 
     if (isQuizComplete) {

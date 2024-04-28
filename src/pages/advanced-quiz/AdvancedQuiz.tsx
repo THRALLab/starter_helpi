@@ -21,7 +21,7 @@ export const AdvancedQuiz = () => {
                 />
             </Row>
             <Row>
-                <Suspense fallback={<Loading/>}>
+                <Suspense fallback={<Loading type="Advanced Quiz"/>}>
                     <DisplayQuiz
                         quiz={advancedQuiz}
                         title="Advanced Quiz"
