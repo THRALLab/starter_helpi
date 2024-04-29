@@ -34,6 +34,7 @@ function App() {
   return currPg === 'Basic' ? <Basic handlePage={setCurrPg} />
     : currPg === 'Detailed' ? <Detailed handlePage={setCurrPg} />
     : currPg === 'interests' ? <CareerSearchByInterest handlePage={setCurrPg} />
+    : currPg === 'Results' ? <Results handlePage={setCurrPg} />
     : <Home handlePage={setCurrPg} />;
 };
 
