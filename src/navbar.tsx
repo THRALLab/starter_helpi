@@ -17,7 +17,7 @@ function NavHome({handlePage} : {handlePage: (page: string) => void}) {
     <div className="navBar">
         <Navbar bg="0000" variant="primary">
           <Container>
-          <Navbar.Brand className="title">
+          <Navbar.Brand className="title" onClick={() => handlePage('Home')}>
             Brain Spark
             </Navbar.Brand>
             <Form className="d-flex ms-auto">
