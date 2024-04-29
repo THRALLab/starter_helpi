@@ -153,7 +153,7 @@ const questions: QuestionOption[] = [
       <div className="response">
         <h3>Thank you for completing the questionnaire!</h3>
         <p>Your responses have been recorded.</p>
-        <Button onClick={() => handlePage('Result')} className="response-button">View Results</Button>
+        <Button onClick={() => handlePage('Results')} className="response-button">View Results</Button>
       </div>
             )}
             <footer className="footer-space"></footer>
