@@ -28,16 +28,16 @@ h1 {
     background-color: rgb(235, 240, 245);
     margin-top: 5.5vw;
     margin-left: 16.5vw;
-    border-radius: 10px;
-    padding-bottom: 1.5%;
+    border-radius: 1vw;
+    padding-bottom: 1.6vw;
 }
 
 .center-title { /* Title in center gray box */
     font-family: "Playfair Display Black", sans-serif;
     font-size: 2.7vw;
     position: absolute;
-    top: 25%;
-    left: 19%; 
+    top: 11vw;
+    left: 18.5vw; 
 }
 
 .center-left { /* Subtitle in center gray box */
@@ -46,8 +46,8 @@ h1 {
     font-weight: bold;
     color: #17aaff;
     position: absolute;
-    top: 35%; 
-    left: 19%; 
+    top: 16vw; 
+    left: 19vw; 
 }
 
 .home-button { /* Home icon button in top right */
@@ -178,18 +178,18 @@ h1 {
 }
 
 .progressBarContainer {
-    width: 45%; 
-    margin: 0 auto; 
-    padding: 10px 0; 
+    width: 45vw; 
+    margin-left: 28vw; 
+    margin-top: 2vw;
 }
 
 .progressBar {
-    height: 20px; 
-    border-radius: 10px; 
+    height: 1.4vw; 
+    border-radius: 1vw; 
     background-color: #f0f0f0; 
 }
 
 .progressBar .progress-bar {
     background-color: #4eca88; 
-    border-radius: 10px; 
+    border-radius: 1vw; 
 }
