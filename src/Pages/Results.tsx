@@ -9,7 +9,14 @@ interface ResultsProp {
 
 const Results: React.FC<ResultsProp> = ({ handlePage }) => { /* Handes page changes */
     return (
-        <div></div>
+        <div>
+
+<div className="column">
+    <h2 className="results-title">Your Results</h2>
+    <p>*Insert result process*</p>
+</div>
+
+        </div>
     );
 }
 
