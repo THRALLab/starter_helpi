@@ -166,36 +166,6 @@ export function DisplayQuiz(
         setIsLoading(false);
     }
     // if(Object.keys(quiz).length === 0) createQuiz();
-
-    // const DisplayResults = () => {
-    //     const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
-    //     const [response, setResponse] = useState<OpenAI.ChatCompletion>();
-    //     const [loaded, setLoaded] = useState<boolean>(false);
-    //     useEffect(() => {
-    //         async function getFinalResponse() {
-    //             const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
-    //             setLoaded(true);
-    //             setResponse(response);
-    //         }
-    //         if(response === null || response === undefined) getFinalResponse();
-    //     }, [questionAns, response]
-    // )
-    //     if(!loaded) return<Loading type="finalReport"/>;
-    //     console.log(response);
-
-    //     if(response === undefined) return <></>;
-    //     const finalResponse = response.choices[response.choices.length-1].message.content;
-    //     if(finalResponse == null) return<>Error Occured</>
-    //     const finalAns: AnswerResponse = JSON.parse(finalResponse);
-
-    //     return(
-    //         <>
-    //             <p>{finalAns.result}</p>
-    //             <p>{finalAns.advice}</p>
-    //             <p>{finalAns.reasoning}</p>
-    //         </>
-    //     )
-    // }
     
     const DisplayResults = () => {
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
@@ -251,13 +221,16 @@ export function DisplayQuiz(
     }
 
     const currentQuestion = curQuiz[currentQuestionId];
+
+    const foundAnswer = answers.find((targetAnswer) => (targetAnswer.questionId === currentQuestion.id))
     
     const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
         onNext: handleAnswerSubmit,
         isFirst: currentQuestionId === "question1",
-        description: currentQuestion.description
+        description: currentQuestion.description,
+        prevAnswer: foundAnswer ? foundAnswer.answer : ""
     };
 
 
