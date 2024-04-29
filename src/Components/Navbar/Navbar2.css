@@ -23,6 +23,20 @@
     background-color: rgba(105, 35, 255, 0)
 }
 
+.navbar-collapse {
+    background-color: rgb(33, 39, 59);
+}
+
+.navbar-collapse.show {
+    top: 4rem;
+    left: .25rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-bottom: .5rem;
+    border-radius: .25rem;
+    box-shadow: 0 .5rem rgba(0,0,0,.15);
+}
+
 .logo-img {
     width: 140px;
     height: auto;

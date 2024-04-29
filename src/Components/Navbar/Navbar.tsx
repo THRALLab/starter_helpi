@@ -19,7 +19,7 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
           <img src={logo} alt='logo' className="logo-img" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav'/>
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" className='navbar-collapse'>
           <Nav className="d-flex flex-grow-1 align-items-left">
             <Nav.Link onClick={() => handleNavClick("Home")}>
               {(page === "Home" && (<div className='navbar-selected'>Home</div>)) || (page !== "Home" && (<div>Home</div>))}
