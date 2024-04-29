@@ -41,7 +41,7 @@ function App() {
       {/* Footer with API key input field */}
       <footer style={{ backgroundColor: '#f3e5f5', padding: '10px', position: 'fixed', bottom: '0', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ flex: '1', textAlign: 'left', marginLeft: '10px', fontSize: '12px'}}>
-          <p>© 2024 CareerFinder4U. All rights reserved.</p>
+          <p>© 2024 CareerFinder4U. All rights reserved. | <a href="/contact">Contact Us</a> | <a href="/contact">Latest Information</a> </p>
         </div>
         <div style={{ flex: '1', textAlign: 'right', fontSize: '12px' }}>
           <Form>
