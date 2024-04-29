@@ -120,7 +120,6 @@ const questions: QuestionOption[] = [
 
     return (
         <div>
-            <header className="header" /* Top of page */></header>
             {allQuestionsAnswered && (
                 <div className="confetti-container">
                     <Confetti active={confetti} config={config} />

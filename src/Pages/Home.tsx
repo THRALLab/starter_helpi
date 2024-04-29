@@ -10,7 +10,7 @@ interface HomeProp {
 const Home: React.FC<HomeProp> = ({ handlePage }) => { /* Handes page changes */
     return (
         <div>
-   
+
         <div className="home-center" /* Middle of page */>
         <div className="background-image" style={{backgroundImage: `url(${telescopeManImage})`}}></div>
             <h1 className="center-title">Start your future here</h1>

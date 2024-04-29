@@ -4,7 +4,7 @@ font-face { /* Center box title font */
 }
 
 @font-face {
-    font-family: 'Playfair Display Black';
+    font-family: 'Poppins';
     src: url('./Poppins-Bold.ttf') format('truetype');
 }
 
@@ -26,8 +26,9 @@ h1 {
     width: 66%;
     height: auto; 
     background-color: rgb(235, 240, 245);
+    margin-top: 5.5vw;
+    margin-left: 16.5vw;
     border-radius: 10px;
-    margin: 2.5vw auto 4vw; 
     padding-bottom: 1.5%;
 }
 
@@ -35,7 +36,7 @@ h1 {
     font-family: "Playfair Display Black", sans-serif;
     font-size: 2.7vw;
     position: absolute;
-    top: 23%;
+    top: 25%;
     left: 19%; 
 }
 
@@ -45,17 +46,15 @@ h1 {
     font-weight: bold;
     color: #17aaff;
     position: absolute;
-    top: 33%; 
+    top: 35%; 
     left: 19%; 
 }
 
 .home-button { /* Home icon button in top right */
-    margin-left: auto;
-    margin-right: 20px; 
-    background-color: white;
-    color: white;
-    border-radius: 20px;
-    border-color: white;
+    margin-left: 0.4vw; 
+    background-color: #6fb4fe;
+    border-radius: 1vw;
+    border-color: #6fb4fe;
     cursor: pointer;
     font-size: 1.5vw; 
     font-weight: bold;
@@ -69,7 +68,7 @@ h1 {
     padding: 1vw 3.8vw; 
     background-color: #86c0ff;
     color: white;
-    border-radius: 20px;
+    border-radius: 1.25vw;
     border-color: white;
     cursor: pointer;
     font-size: 1.2vw; 
@@ -83,7 +82,7 @@ h1 {
     padding: 1vw 3.8vw; 
     background-color: #86c0ff;
     color: white;
-    border-radius: 20px;
+    border-radius: 1.25vw;
     border-color: white;
     cursor: pointer;
     font-size: 1.2vw; 
@@ -91,11 +90,11 @@ h1 {
     font-family: "Poppins", sans-serif;
     transition: background-color 0.3s, transform 0.3s;
 }
-
-.home-button:hover{ /* Hover effect for home icon button */
-    transform: scale(1.1);
-    background-color: white;
+.home-button:hover {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
 }
+
 .basic-button:hover,
 .detailed-button:hover { /*Hover effects for detailed and basic page buttons */
     background-color: #4a90e2;
@@ -121,8 +120,7 @@ h1 {
 .title { /* Website title */
     font-family: 'Poppins Black', sans-serif;
     font-size: 2.6vw; 
-    color: #17aaff;
-    margin-top: 0.5vw;
+    color: #ffffff;
     cursor: pointer;
     margin-left: 0.8vw; 
 }
@@ -165,7 +163,7 @@ h1 {
 
 .background-image { /* Image in center gray box */
     position: absolute;
-    top: 7.4vw; 
+    top: 6.9vw; 
     left: 55.5vw; 
     width: 24vw; 
     height: 24vw; 
@@ -173,25 +171,6 @@ h1 {
     background-repeat: no-repeat;
     background-position: right center;
     opacity: 0.9;
-}
-
-h3 {
-    font-family: 'Helvetica', 'Arial', sans-serif; 
-    font-size: 18px;  
-    color: #333;  
-}
-
-.button-questions {
-    font-family: 'Helvetica', 'Arial', sans-serif;  
-    font-size: 14px;  
-    color: #333;  
-    background-color: #0066cc; 
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* transition for color changes */
-
 }
 
 .button-questions:hover, .button-pressed {
