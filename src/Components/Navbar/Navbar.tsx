@@ -20,7 +20,7 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav'/>
         <Navbar.Collapse id="basic-navbar-nav" className='navbar-collapse'>
-          <Nav className="d-flex flex-grow-1 align-items-left">
+          <Nav className="d-flex flex-grow-1 align-items-left me-auto">
             <Nav.Link onClick={() => handleNavClick("Home")}>
               {(page === "Home" && (<div className='navbar-selected'>Home</div>)) || (page !== "Home" && (<div>Home</div>))}
             </Nav.Link>

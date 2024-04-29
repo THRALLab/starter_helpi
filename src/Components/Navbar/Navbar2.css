@@ -30,11 +30,11 @@
 .navbar-collapse.show {
     top: 4rem;
     left: .25rem;
+    margin-top: 10px;
     padding-left: .5rem;
     padding-right: .5rem;
     padding-bottom: .5rem;
     border-radius: .25rem;
-    box-shadow: 0 .5rem rgba(0,0,0,.15);
 }
 
 .logo-img {
@@ -45,12 +45,6 @@
     border: 20px;
 }
 
-.mx-auto .nav-link:hover {
+.navbar-collapse .nav-link:hover {
     color: white;
-}
-
-.disabled-navbar .nav-link,
-.disabled-navbar .navbar-back {
-  pointer-events: none;
-  opacity: 0.5;
 }
