@@ -6,6 +6,7 @@ import Basic from './Pages/Basic';
 import Detailed from './Pages/Detailed';
 import NavHome from './navbar';
 import CareerSearchByInterest from './Pages/interests';
+import Results from './Pages/Results';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
