@@ -165,6 +165,7 @@ function Detailed() {
 								<>
 									<textarea
 										placeholder="Enter your response..."
+										maxLength={500}
 										value={
 											answeredQuestions[currentIndex] &&
 											answeredQuestions[currentIndex].choice
