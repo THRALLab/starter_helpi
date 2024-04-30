@@ -64,7 +64,7 @@
     var(--color-body-BarGradient),
     var(--color-body-BarColor)
   );
-  transition: width 0.5s ease; /* Not working right now with detailed questions someone fix it */
+  transition: height 0.5s ease;
 }
 
 .DetailedQuestions-question-number {

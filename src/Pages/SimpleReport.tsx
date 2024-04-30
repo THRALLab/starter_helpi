@@ -47,7 +47,8 @@ function SimpleReport() {
     setPrompt(
       `Based on my quiz results, what job suits me best? Here are my results: ${simpleQuestionQuizResults}`
     );
-    const exampleFormat = "~Sample Career: 2-3 sentences of why this is a good fit~Another Sample Career: 2-3 sentences of why this is a good fit~Final Sample Career: 2-3 sentences of why this is a good fit";
+    const exampleFormat =
+      "~Sample Career: 2-3 sentences of why this is a good fit~Another Sample Career: 2-3 sentences of why this is a good fit~Final Sample Career: 2-3 sentences of why this is a good fit";
     //Creates ChatGPT
     const openai = new OpenAIAPi({
       apiKey: keyData,
@@ -58,9 +59,10 @@ function SimpleReport() {
       messages: [
         {
           role: "system",
-          content: "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a list of 3 careers, with '~' as the bulletpoint. Here is the example format" + 
-          exampleFormat + 
-          "Include the tilda (~) in the report string, it is important",
+          content:
+            "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a list of 3 careers, with '~' as the bulletpoint. Here is the example format" +
+            exampleFormat +
+            "Include the tilda (~) in the report string, it is important",
         },
         { role: "user", content: prompt },
       ],
