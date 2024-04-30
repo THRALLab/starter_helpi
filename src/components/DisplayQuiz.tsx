@@ -32,16 +32,22 @@ export function DisplayQuiz(
         quiz,
         title,
         questionsAnswerd,
-        maxQuestions,
-        setQuestionsAnswerd 
+        initialMax,
+        totalQuestions,
+        currTotQuestions,
+        setQuestionsAnswerd,
+        setCurrTotQuestions
     } 
     : 
     {
         title: string,
         quiz : DisplayQuizProps,
         questionsAnswerd : number,
-        maxQuestions: number,
+        initialMax: number,
+        totalQuestions: number,
+        currTotQuestions: number,
         setQuestionsAnswerd : (questionsAnswerd: number) => void 
+        setCurrTotQuestions: (currTotQuestions: number) => void
     }
     ): JSX.Element {
     const [curQuiz, setCurQuiz] = useState<DisplayQuizProps>(quiz);
@@ -52,6 +58,7 @@ export function DisplayQuiz(
     const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
     const [isLoading, setIsLoading] = useState(false);
     const [type, setType ] = useState("");
+    const [followUp, setFollowUp] = useState<boolean>(false);
     // const [nextPrompt, setNextPrompt] = useState<string>("");
 
     async function connectToGBT(startingPrompt: string, prompt: string)  {
@@ -81,15 +88,20 @@ export function DisplayQuiz(
 
     // gets the next questions
     async function createNextQuestion() {
+        if (currTotQuestions >= initialMax) setFollowUp(true);
         //setIsLoading(true);
         setType("generatingQuestions")
         // if basic curQuiz only one call is nessesary
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
+        const newQuestions = currTotQuestions < initialMax ? initialMax-currTotQuestions : totalQuestions - currTotQuestions
+        console.log(`new total: ${currTotQuestions + newQuestions}`);
+        setCurrTotQuestions(currTotQuestions + newQuestions);
         const response = (title === "Basic Quiz") ?
             await connectToGBT(CreateStartingPrompt({
                 questionsAns: questionAns,
-                status: ""
-            }), CreateBasicStartingPrompt(maxQuestions-questionsAnswerd, questionsAnswerd)) :
+                status: followUp ? "followUp" : "",
+                quiz: title
+            }), CreateBasicStartingPrompt(newQuestions, questionsAnswerd)) :
             await addResponseGBT({choices: gbtConversation, newMessage: createNewQuestions()});
         console.log("GBT response", response);
         parseChatHistory(response);
@@ -108,9 +120,9 @@ export function DisplayQuiz(
             if (newId in curQuiz) return (newId);
             //quiz is done
             console.log("Q Id:", newId);
-            if(parseInt(currentQuestionId.substring(8)) >= maxQuestions) return "";
+            if(parseInt(currentQuestionId.substring(8)) >= totalQuestions) return "";
             // curQuiz is not over but needs more questions
-            else if(questionsAnswerd < maxQuestions) {
+            else if(currTotQuestions < totalQuestions) {
                 await createNextQuestion();
                 // assuming nothing breaks and the next question is actually loaded
                 return `question${parseInt(currentQuestionId.substring(8)) + 1}`;
