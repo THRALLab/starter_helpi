@@ -43,6 +43,14 @@
 
 .api-form .Submit-Button {
   width: 10vw; 
+  background-color: #0980ff;
+  border-color: #0980ff;
+}
+
+.api-form .Submit-Button:hover {
+  width: 10vw; 
+  background-color: #0053ac;
+  border-color: #0053ac;
 }
 
 .navBar {
