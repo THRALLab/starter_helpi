@@ -1,5 +1,12 @@
 import './resultsPage.css';
 
+function parseAnswers(answers: string): string[] {
+    let array = answers.substring(1,answers.length-1).split(",");
+    array = array.map((answer) => answer.substring(1,answer.length-1));
+    return array;
+}
+
+//get the string-array from the question pages and pass through here.
 
 const ResultsPage = () => {
 
