@@ -4,12 +4,14 @@ import Basic from "./basic";
 import Detailed from "./detailed";
 import Navigation from "./navbar";
 import Footer from "./Footer";
+import BasicDetailedButtons from "./basicDetailedButton";
 
 function App() {
 	return (
 		<Router>
 			<>
 				<Navigation />
+				<BasicDetailedButtons />
 				<Routes>
 					<Route path="/basic" Component={Basic} />
 					<Route path="/detailed" Component={Detailed} />

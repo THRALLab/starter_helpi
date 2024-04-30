@@ -15,7 +15,7 @@ export default function useChatGPT(): Tools {
 	async function callAPI(openai: OpenAI, users_responses: Answer[]) {
 		let formattedQ_A = "";
 		users_responses.map((a: Answer) => {
-			formattedQ_A += `(${a.questionNo}) ${a.question} \n ${a.choice} \n`;
+			return (formattedQ_A += `(${a.questionNo}) ${a.question} \n ${a.choice} \n`);
 		});
 
 		console.log("Loading ChatGPT's response...");
