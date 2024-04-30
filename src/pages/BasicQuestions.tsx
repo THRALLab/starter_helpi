@@ -1,115 +1,109 @@
 import React, { useState } from "react";
-import ProgressBar from "../components/progress-bar/progressBar"
+import ProgressBar from "../components/progress-bar/progressBar";
 
-interface BasicProp {
-    handlePage: (page: string) => void;
+interface BasicProps {
+  handlePage: (page: string) => void;
 }
 
+const BasicQuestions: React.FC<BasicProps> = ({ handlePage }) => {
+  const [responses, setResponses] = useState<{ [key: number]: { [key: string]: string } }>({});
+  const [progress, setProgress] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
-const BasicQuestions: React.FC<BasicProp> = () => {
-    // Set up state to manage form inputs
-    const [responses, setResponses] = useState({
-      question1: '',
-      question2: '',
-      question3: ''
-    });
-    const [progress, setProgress] = useState(0); // Add state for progress
+  const questions = [
+    [
+      { question: "I like working in a team", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+      { question: "I prefer working alone", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+      { question: "I am fascinated by different ideas", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+      { question: "I enjoy helping others", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] }
+    ],
+    [
+      { question: "I am good at counseling people", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+      { question: "I am an organized person", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+      { question: "I am a creative person", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+      { question: "I see the good in people", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] }
+    ],
+    [
+        { question: "I am a hands-on person", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+        { question: "I work well under pressure", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+        { question: "I like taking care of plants", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+        { question: "I am an organized person", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },],
+        [
+            { question: "I understand animasl over humans", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+            { question: "I prefer job roles that allow me to be creative and innovative.", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree']},
+         { question: "I am interested in working in the healthcare industry", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },
+            { question: "I excel in organizing and planning tasks or projects", options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'] },]
+        
+            
+        ];
+    // Add more pages as needed
 
-    //progress bar handling
-    const incrementProgress = () => {
-        setProgress((prev) => (prev < 100 ? prev + 20: prev));
+
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setResponses((prevResponses) => ({
+      ...prevResponses,
+      [currentPage]: {
+        ...prevResponses[currentPage],
+        [name]: value
+      }
+    }));
+  };
+
+  const handleNext = () => {
+    if (currentPage < questions.length - 1) {
+      setCurrentPage(currentPage + 1);
+      const newProgress = ((currentPage + 1) * 100) / questions.length;
+      setProgress(newProgress);
+    } else {
+      handlePage("Results");
     }
-  
-    // Handle radio button change
-    function handleRadioChange(event: React.ChangeEvent<HTMLInputElement>) {
-        const {name, value} = event.target;
-        setResponses((prevResponses) => ({
-        ...prevResponses,
-        [name]: value,
-      }));
-    };
-  
-    // Handle form submission
-    /*
-    const handleSubmit = (e) => {
-      e.preventDefault(); // Prevent default form submission
-      console.log('Form Submitted:', responses);
-      // Perform your desired submission logic, like sending to a backend
-    };
-    */
-  
-    return (
-      <div className = "basicForm"><form>
-            <h1>Basic Quiz</h1>
+  };
 
-            {/* Question 1 */}
-            <div className = "questions">
-                <p>I like working in a team</p>
-                <div className = "radio-group">
-                {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
-                    (label, index) => (
-                        <label className = "radio-button" key={`question1-${index}`}>
-                            <input
-                                type="radio"
-                                name="question1"
-                                value={index + 1}
-                                checked={responses.question1 === `${index + 1}`}
-                                onChange={handleRadioChange} />
-                                <span className="custom-radio"></span>
-                            {label}
-                        </label>
-                    )
-                )}
-                </div>
-            </div>
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+      const newProgress = ((currentPage - 1) * 100) / questions.length;
+      setProgress(newProgress);
+    } else {
+      handlePage("Results");
+    }
+  };
 
-            {/* Question 2 */}
-            <div className = "questions">
-                <p>I prefer working alone </p>
-                <div className = "radio-group">
-                {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
-                    (label, index) => (
-                        <label className = "radio-button" key={`question2-${index}`}>
-                            <input
-                                type="radio"
-                                name="question2"
-                                value={index + 1}
-                                checked={responses.question2 === `${index + 1}`}
-                                onChange={handleRadioChange} />
-                                <span className="custom-radio"></span>
-                            {label}
-                        </label>
-                    )
-                )}
-                </div>
+  return (
+    <div className="basicForm">
+      <form>
+        <h1>Basic Quiz</h1>
+        {questions[currentPage].map((questionObj, questionIndex) => (
+          <div className="questions" key={questionIndex}>
+            <p>{questionObj.question}</p>
+            <div className="radio-group">
+              {questionObj.options.map((option, optionIndex) => (
+                <label className="radio-button" key={`question${questionIndex + 1}-${optionIndex}`}>
+                  <input
+                    type="radio"
+                    name={`question${questionIndex + 1}`} // Unique name per question
+                    value={option}
+                    checked={responses[currentPage]?.[`question${questionIndex + 1}`] === option}
+                    onChange={handleRadioChange}
+                  />
+                  <span className="custom-radio"></span>
+                  {option}
+                </label>
+              ))}
             </div>
-            {/* Question 3 */}
-            <div className = "questions">
-                <p>I am fascinated by different ideas </p>
-                <div className = "radio-group">
-                {['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'].map(
-                    (label, index) => (
-                        <label className = "radio-button" key={`question3-${index}`}>
-                            <input
-                                type="radio"
-                                name="question3"
-                                value={index + 1}
-                                checked={responses.question3 === `${index + 1}`}
-                                onChange={handleRadioChange} />
-                                <span className="custom-radio"></span>
-                            {label}
-                        </label>
-                    )
-                )}
-                </div>
-            </div>
-
-            {/* Next Button */}
-            <button type='button' id = "Next" onClick={incrementProgress}>Next</button>
-        </form>
-        <ProgressBar progress={progress} max={100} color="#2c6fbb" />
+          </div>
+        ))}
+        <button type="button" onClick={handlePrev} disabled={currentPage === 0}>
+          Previous
+        </button>
+        <button type="button" onClick={handleNext} disabled={currentPage === questions.length - 1}>
+          Next
+        </button>
+      </form>
+      <ProgressBar progress={progress} max={100} color="#2c6fbb" />
     </div>
-    );
+  );
 };
 
 export default BasicQuestions;
