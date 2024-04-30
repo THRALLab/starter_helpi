@@ -45,6 +45,7 @@ export function Home(): JSX.Element {
             <Buttons></Buttons>
         <p></p>
         <h1 className='padding3'>Home Page</h1>
+        <h1 className='text-3xl font-bold underline'>nnnn</h1>
         <p></p>
         <main className='padding2'>
         <div className="box">

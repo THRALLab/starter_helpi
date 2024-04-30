@@ -3,6 +3,11 @@
 @import "tailwindcss/utilities";
 
 
+* {
+   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Apply specified font family to all text */
+
+}
+
 .App {
   text-align: center;
   background-color: #b4dcfa; /* Color in HEX */ 
@@ -11,6 +16,10 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Apply specified font family to all text */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -39,6 +48,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Apply specified font family to all text */
 }
 
 .App-link {
