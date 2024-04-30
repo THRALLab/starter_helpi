@@ -122,7 +122,8 @@ const BasicPage = () => {
 				messages: [
 					{
 					"role": "system",
-					"content": "You will tell me what career I should pursue based on my interests." //What we want GPT to do
+					"content": "You are a helpful assistant that will generate a potential career path for the user based on their preferences. You will also generate three other career paths the user may like. Please complete this in this format, with each field contained in quotes and separated by commas: [ Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3 ]"
+					//What we want GPT to do
 					},
 					{
 					"role": "user",
@@ -130,7 +131,7 @@ const BasicPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 64,
+				max_tokens: 64, //should be 512
 				top_p: 1,
 				});
 	

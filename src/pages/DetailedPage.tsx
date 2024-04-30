@@ -7,13 +7,13 @@ import Button from "react-bootstrap/esm/Button";
 import OpenAI from "openai";
 import { key } from "./homePage"
 
-const QUESTIONSTARTS = ["If I slept through my alarm, I would ", 
-						"If I was assigned to create a presentation for a conference, I would ",
-						"If a coworker tells me to redo my part of the presentation, I would ", 
-						"If I was in charge of scheduling the meetings for my presentation group, we would meet ", 
-						"If I felt that I deserved a higher salary, I would ", 
-						"If I saw a stressed coworker with a pile of paperwork on their desk, I would ", 
-						"To relax on the weekend, I would "];
+const QUESTIONSTARTS = [" If I slept through my alarm, I would ", 
+						" If I was assigned to create a presentation for a conference, I would ",
+						" If a coworker tells me to redo my part of the presentation, I would ", 
+						" If I was in charge of scheduling the meetings for my presentation group, we would meet ", 
+						" If I felt that I deserved a higher salary, I would ", 
+						" If I saw a stressed coworker with a pile of paperwork on their desk, I would ", 
+						" To relax on the weekend, I would "];
 
 const DetailedPage = () => {
 	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
@@ -222,8 +222,8 @@ const DetailedPage = () => {
 				inline
 				type="radio"
 				id="q1-Option3"
-				value="I’ll call in sick and take the day off."
-				label = "call in sick and take the day off."
+				value="call in sick and take the day off."
+				label = "I'll call in sick and take the day off."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder",1, 2, 0)}
@@ -681,10 +681,10 @@ const DetailedPage = () => {
 
 		for(let i = 0; i < 7; i++) {
 			let container = document.getElementById("q" + (i + 1));
-			if (container && mini?.getAttribute("value")) {
+			if (container) {
 				const mini = container.querySelector('input[type="radio"]:checked');
 				//console.log("Container: " + mini?.getAttribute("value"));
-				answers = answers + QUESTIONSTARTS[i] + mini?.getAttribute("value");				
+				if(mini?.getAttribute("value")) {answers = answers + QUESTIONSTARTS[i] + mini?.getAttribute("value");}			
 			}
 			else {
 				console.log("Container is null");
@@ -710,7 +710,7 @@ const DetailedPage = () => {
 				messages: [
 					{
 					"role": "system",
-					"content": "You will tell me what career I should pursue based on my interests." //What we want GPT to do
+					"content": "You are a helpful assistant that will generate a potential career path for the user based on a few hypothetical situations. You will also generate three other career paths the user may like.Please complete this in this format, with each field contained in quotes and separated by commas:[ Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3 ]" //What we want GPT to do
 					},
 					{
 					"role": "user",
@@ -718,7 +718,7 @@ const DetailedPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 64,
+				max_tokens: 64,//should be 512
 				top_p: 1,
 				});
 	
