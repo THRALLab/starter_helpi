@@ -7,6 +7,14 @@ import Button from "react-bootstrap/esm/Button";
 import OpenAI from "openai";
 import { key } from "./homePage"
 
+const QUESTIONSTARTS = ["If I slept through my alarm, I would ", 
+						"If I was assigned to create a presentation for a conference, I would ",
+						"If a coworker tells me to redo my part of the presentation, I would ", 
+						"If I was in charge of scheduling the meetings for my presentation group, I would ", 
+						"If I felt that I deserved a higher salary, I would ", 
+						"If I saw a stressed coworker with a pile of paperwork on their desk, I would ", 
+						"To relax on the weekend, I would "];
+
 const DetailedPage = () => {
 	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
 	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""])
@@ -191,7 +199,7 @@ const DetailedPage = () => {
 				id="q1-Option1"
 				role="radio-1"
 				label="I’ll call my boss and let them know I’ll be late."
-				value="I’ll call my boss and let them know I’ll be late."
+				value="call my boss and let them know I’ll be late."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 0, 0)}
