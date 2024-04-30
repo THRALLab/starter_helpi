@@ -7,21 +7,29 @@ export function McMultiResponse({
     description,
     options,
     onNext,
-    isFirst
+    isFirst,
+    prevAnswer
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string, forewards: boolean) => void;
     isFirst: boolean;
+    prevAnswer: string;
 }): JSX.Element {
+    const otherOption = "Other"; // Define the text for the "Other" option
     const [tooltip, setTooltip] = useState<string>("");
-    const [localAnswer, setLocalAnswer] = useState<string[]>([]);
+    const [localAnswer, setLocalAnswer] = useState<string[]>(
+        prevAnswer ? 
+        (prevAnswer.includes(otherOption) ? [...prevAnswer.split(",").filter((currTarget) => (!currTarget.includes(otherOption))).map((currTarget) => (currTarget.trim())), otherOption] : prevAnswer.split(",").map((currTarget) => (currTarget.trim())))
+        : []
+    );
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
-
-    const [customAnswer, setCustomAnswer] = useState<string>("");
-    const otherOption = "Other(click to specify)"; // Define the text for the "Other" option
+    
+    const initialOther = prevAnswer.split(", ").find(part => part.startsWith(otherOption + ": "));
+    const [customAnswer, setCustomAnswer] = useState<string>(initialOther ? initialOther : "");
+    
 
     
 
@@ -30,9 +38,11 @@ export function McMultiResponse({
         if (localAnswer.includes(otherOption) && customAnswer) {
             // Replace the "Other" placeholder with the actual custom answer.
             const answerIndex = localAnswer.indexOf(otherOption);
-            localAnswer.splice(answerIndex, 1, customAnswer);
+            localAnswer.splice(answerIndex, 1, customAnswer.trim());
         }
+        console.log(`Answers: ${localAnswer.join(",")}`)
         return localAnswer.join(", ");
+        
     }
 
     function addAnswer(currAnswer: string) {
@@ -41,13 +51,13 @@ export function McMultiResponse({
                 setLocalAnswer(localAnswer.filter(answer => answer !== currAnswer));
                 setCustomAnswer(""); // Clear the custom answer if "Other" is deselected.
             } else {
-                setLocalAnswer([...localAnswer, currAnswer]);
+                setLocalAnswer([...localAnswer, currAnswer.trim()]);
             }
         } else {
             if (localAnswer.includes(currAnswer)) {
                 setLocalAnswer(localAnswer.filter(target => target !== currAnswer));
             } else {
-                setLocalAnswer([...localAnswer, currAnswer]);
+                setLocalAnswer([...localAnswer, currAnswer.trim()]);
             }
         }
     }
@@ -72,6 +82,26 @@ export function McMultiResponse({
 
         return () => window.removeEventListener('resize', updateTooltipPosition);
     }, [question]);
+
+
+    const DisplayOther = ({thisKey}:{thisKey : string}): JSX.Element => {
+        if (!localAnswer.includes(thisKey)) {
+            return(
+            <li key="Other">
+                <ToggleButton
+                    className="App-quiz"
+                    variant={localAnswer.includes(otherOption) ? "selected" : "selected-outlined"}
+                    type="checkbox"
+                    id="other"
+                    value="Other"
+                    onChange={() => addAnswer(otherOption)}
+                    checked={localAnswer.includes(otherOption)}
+                >
+                    Other
+                </ToggleButton>
+            </li>)
+        } else return <></>
+    }
 
     
     return (
@@ -105,42 +135,36 @@ export function McMultiResponse({
             <Form>
                 <ul>
                     {options.map((choice) => (
-                        <li key={choice}>
-                            <ToggleButton
-                                className="App-quiz"
-                                variant={localAnswer.includes(choice) ? "selected" : "selected-outlined"}
-                                key={`${choice}Select`}
-                                type="checkbox"
-                                id={choice}
-                                value={choice}
-                                onChange={() => addAnswer(choice)}
-                                checked={localAnswer.includes(choice)}
-                            >
-                                {choice} 
-                            </ToggleButton>
-                        </li>
+                        choice.toLowerCase().includes("other")
+                        ? (<>
+                            <DisplayOther thisKey={choice}/>
+                            {localAnswer.includes(otherOption) && (
+                                <FormControl
+                                    style={{ marginTop: '10px' }}
+                                    placeholder="Type your custom answer here"
+                                    value={customAnswer.substring(otherOption.length + 2)}
+                                    onChange={(event) => setCustomAnswer(`${otherOption}: ${event.target.value}`)}
+                                />
+                            )}
+                            </>
+                         )
+                        : (
+                            <li key={choice}>
+                                <ToggleButton
+                                    className="App-quiz"
+                                    variant={localAnswer.includes(choice) ? "selected" : "selected-outlined"}
+                                    key={`${choice}Select`}
+                                    type="checkbox"
+                                    id={choice}
+                                    value={choice}
+                                    onChange={() => addAnswer(choice.trim())}
+                                    checked={localAnswer.includes(choice.trim())}
+                                >
+                                    {choice} 
+                                </ToggleButton>
+                            </li>
+                        )
                     ))}
-                    <li key="Other(click to specify)">
-                        <ToggleButton  
-                            className="App-quiz"
-                            variant={localAnswer.includes(otherOption) ? "selected" : "selected-outlined"}
-                            type="checkbox"
-                            id="other"
-                            value="Other"
-                            onChange={() => addAnswer(otherOption)}
-                            checked={localAnswer.includes(otherOption)}
-                        >
-                            Other
-                        </ToggleButton>
-                        {localAnswer.includes(otherOption) && (
-                            <FormControl
-                                style={{ marginTop: '10px' }}
-                                placeholder="Type your custom answer here"
-                                value={customAnswer}
-                                onChange={(event) => setCustomAnswer(event.target.value)}
-                            />
-                        )}
-                    </li>
                 </ul>
                 <Button
                     variant={isFirst ? "nav-disabled" : "nav"}

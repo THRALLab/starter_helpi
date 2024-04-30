@@ -7,28 +7,20 @@ export function UserRanking({
     description,
     options,
     onNext,
-    isFirst
+    isFirst,
+    prevAnswer
 }: {
     question: string;
     description: string;
     options: string[];
     onNext: (answer: string, forewards: boolean) => void;
     isFirst: boolean;
+    prevAnswer: string;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
-    const [categories, setCategories] = useState<string[]>(options);
+    const [categories, setCategories] = useState<string[]>(prevAnswer ? prevAnswer.split(",") : options);
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
-    
-    /**
-    const updatePriorities = (priority: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.target.checked
-            ? setCategories([...categories, priority])
-            : setCategories(
-                [...categories].filter((chosenMember: string): boolean => chosenMember !== priority)
-            )
-    }
-     */
 
     function compressAnswer(): string {
         return categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, "");
@@ -80,11 +72,10 @@ export function UserRanking({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle
+                <FaQuestionCircle className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
-                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (

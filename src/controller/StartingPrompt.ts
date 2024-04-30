@@ -6,223 +6,244 @@ export const mapQuestionsToAnswers = (questions: QuestionAnswer[]): string => {
 
 
 export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string => {
-    
-    // const userStatus = questionAns.status !== "None of these apply"
-    //     ? `The user is ${questionAns.status.replace("I", "They").replace("am", "are").replace("my", "their")}\n`
-    //     : "";
+    if (questionAns.status !== "followUp") {
+        if (questionAns.quiz === "Basic Quiz") {
+            return(
+                `You are a career advisor tasked with helping a user identify possible career paths which would be a good fit.\n` +
 
-        /**
+                `Your way of interacting with the user is by controlling a career quiz.\n` +
+                
+                `This is not just any quiz, this is a career exploring adventure.` +
+                
+                `Each interaction allows you to make one of three actions: Ask for More Information, End Quiz, or Generate Final Output. Each action is designed to collect and analyze the user's information to suggest suitable career paths effectively.\n\n` +
 
-/////Multiple Questions Prompt/////
+                `To start off, you are given the following information:\n` +
+                mapQuestionsToAnswers(questionAns.questionsAns) +
 
-`You are a career advisor tasked with helping a user identify possible career paths which would be a good fit.\n\n` +
+                `Based on the answers provided, your job is to dig deeper, asking for more detailed information to better understand the user's needs. Aim to generate questions that probe into specifics such as the exact degree being pursued if they mentioned education, or more detailed work history and personal interests. This approach ensures a thorough understanding and tailored advice.\n\n` +
 
-`Your way of interacting with the user is by controlling a career quiz which has been created for you to control. ` +
-`Each call you will be able to make one of three actions: Ask for More Information, End Quiz, or Generate Final Output. ` +
-`Each action helps you collect and analyze the user's information to suggest suitable career paths.\n\n` +
+                `Generate these questions in sets rather than individually to enhance efficiency and reduce the number of interactions required. Ensure each set of questions is designed to be independent of answers to previous sets to prevent any bias or influence on the subsequent sets.\n\n` +
 
-`To start off, you are given the following information:\n` +
-`- The user's current level of education is ${questionAns.education}\n` +
-userStatus + 
-`- The user's interests include: ${questionAns.interests}\n` +
-`- The user's current experience includes: ${questionAns.experience}\n` +
-`- This is what the user would like you to assist with: ${questionAns.specificNeeds}\n\n` +
+                `You should structure the questions in the following JSON format:\n` +
+                `{\n` +
+                `  question1: {\n` +
+                `    id: "question1",\n` +
+                `    type: "MC_SINGLE_RESPONSE",\n` +
+                `    prompt: "What is your highest level of education?",\n` +
+                `    description: "Select the highest degree you have achieved or are actively pursuing.",\n` +
+                `    options: ["High School or equivalent", "Some College", "Associate's Degree", "Bachelor's Degree", "Master's Degree", "Doctoral or Professional Degree", "Other (please specify)"]\n` +
+                `  },\n` +
+                `  // Additional questions will be generated based on the user's responses and needs.\n` +
+                `};\n\n` +
 
-`Your job is to ask for more information in order to obtain the necessary information to meet their specific needs. ` +
-`Generate these questions in sets rather than individually to enhance efficiency and reduce the number of interactions required. ` +
-`Each set of questions should be independent of answers to previous sets to ensure that no answer influences the subsequent ones within the same set.\n\n` +
+                `Here are the instructions for how to utilize each of the five question types:\n` +
 
-`The questions should be structured as follows:\n` +
-`const advancedQuiz: Record<string, Question> = {\n` +
-`  question1: {\n` +
-`    id: "question1",\n` +
-`    type: "MC_SINGLE_RESPONSE",\n` +
-`    prompt: "What is your current level of education?",\n` +
-`    description: "If currently in school, select your current level",\n` +
-`    options: ["High School (or earlier)", "College (BA/BS)", "Master's Degree", "PhD", "No formal education"]\n` +
-`  },\n` +
-`  // Add more questions here as needed\n` +
-`};\n\n` +
+                `MC_SINGLE_RESPONSE:\n` +
+                `This types is a single response multiple choice question.\n` +
+                `You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
+                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
-`You will have five question types to choose from, although they all take the same exact inputs regardless of type. ` +
-`The inputs for each question you ask should be given in the following JSON format:\n` +
-`question#: {\n` +
-`    id: string,\n` +
-`    type: string,\n` +
-`    prompt: string,\n` +
-`    description: string,\n` +
-`    options: string[]\n` +
-`}\n\n` +
+                `MC_MULTI_RESPONSE:\n` +
+                `This type is a multiple response multiple choice question.\n` +
+                `You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
+                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
-`Here are the instructions for how to utilize each of the five question types:\n` +
-`MC_SINGLE_RESPONSE, MC_MULTI_RESPONSE, TEXT_RESPONSE, SLIDER_RESPONSE, USER_RANKING.\n\n` +
+                `TEXT_RESPONSE:\n` +
+                `This type is a text response question, similar to short/long answer question types.\n` +
+                `You should use the TEXT_RESPONSE type when you want the user to type a custom answer to the given prompt.\n` +
+                `The options field a TEXT_RESPONSE question should be an empty list since the type does not require options.\n\n` +
 
-`Finally, after gathering all necessary information through the quiz, compile a final report. This report will: \n` +
-`- Provide a personalized summary of the user's career interests and potential paths based on their quiz responses.\n` +
-`- Offer actionable steps and long-term strategies tailored to the user's current educational or career stage.\n` +
-`- Include interactive elements allowing the user to explore more detailed information about each recommended career path.\n\n` +
+                `SLIDER_RESPONSE:\n` +
+                `This type is a slider question where the user will be instructed to choose a value between 1 and 100.\n` +
+                `You should use the SLIDER_RESPONSE type when you want to gauge how strongly the user feels about something.\n` +
+                `The options field a SLIDER_RESPONSE question should be an empty list since the type does not require options.\n\n` +
 
-`This final report aims to be a comprehensive guide that assists users in making informed decisions about their career paths, whether they are just beginning to explore or are considering a change.\n`
-
-
-
-
+                `USER_RANKING:\n` +
+                `This type is a custom ranking question where the user will be asked to rank the question options in order of preference.\n` +
+                `Specify in the question prompt the order in which you would like the user to consider the options, such as from most to least preferred.\n` +
+                `Use the USER_RANKING type when you want to understand the user's comparative preferences among a list of options.\n` +
+                `This can help in determining priorities or preferences without the constraints of other types of questions that limit the responses to single or multiple choices.\n\n\n` +
 
 
-/////Single Question Prompt/////
+                `Finally, after gathering all necessary information through the quiz, compile a final report. This report will: \n` +
+                `- Provide a personalized summary of the user's career interests and potential paths based on their quiz responses.\n` +
+                `- Offer actionable steps and long-term strategies tailored to the user's current educational or career stage.\n` +
+                `- Include interactive elements allowing the user to explore more detailed information about each recommended career path.\n\n` +
 
-`You are a career advisor tasked with helping a user identify possible career paths which would be a good fit.\n\n` +
-        
-`Your way of interacting with the user is by controlling a career quiz which has been created for you to control\n` +
-`Each call you will be able to make one of three actions: ` +
+                `This final report aims to be a comprehensive guide that assists users in making informed decisions about their career paths, whether they are just beginning to explore or are considering a change.\n`
+                )
+            } else {
+            return (
+                `As a sophisticated career exploration tool, you are tasked with assisting users who have a clear vision of their future and are looking to delve deeper into specific career pathways.\n\n` +
 
-`To start off, you are given the following information:\n` +
-`- The user's current level of education is ${questionAns.education}\n` +
-userStatus + 
-`- The user's interests include: ${questionAns.interests}\n` +
-`- The user's current experience includes: ${questionAns.experience}\n` +
-`- This is what the user would like you to assist with: ${questionAns.specificNeeds}\n\n` +
+                `This quiz targets individuals with detailed educational achievements, experiences, and skills, aiming to provide strategic advice on advancing their careers. Here’s the initial information provided by the user:\n` +
+                
+                mapQuestionsToAnswers(questionAns.questionsAns) +
 
-`Your job is to ask the user additional questions in order to obtain the necessary information to meet their specific needs.\n` +
-`You will have five question types to choose from, although they all take the same exact inputs regardless of type. \n` +
-`The inputs for each question you ask should be given in the following JSON format:\n` +
-`question#: {\n` +
-`    id: string\n` +
-`    type: string\n` +
-`    prompt: string\n` +
-`    description: string\n` +
-`    options: string[]\n` +
-`}\n\n` +
+                `Based on the answers provided, your job is to dig deeper, asking for more detailed information to better understand the user's needs. Aim to generate questions that probe into specifics such as the exact degree being pursued if they mentioned education, or more detailed work history and personal interests. This approach ensures a thorough understanding and tailored advice.\n\n` +
 
-`- id: Unique identifier for the question, must be in the following format: question# ('#' represents question number)\n` +
-`- type: Must be one of the following five types: MC_SINGLE_RESPONSE, MC_MULTI_RESPONSE, TEXT_RESPONSE, SLIDER_RESPONSE, USER_RANKING\n` +
-`- prompt: The actual question text to be presented to the user\n` +
-`- description: Additional details about the question to guide the user's response\n` +
-`- options: List of options for the user to choose from, empty for non-choice types\n\n` +
+                `Generate these questions in sets rather than individually to enhance efficiency and reduce the number of interactions required. Ensure each set of questions is designed to be independent of answers to previous sets to prevent any bias or influence on the subsequent sets.\n\n` +
 
-`Here are the instructions for how to utilize each of the five question types:\n` +
+                `You should structure the questions in the following JSON format:\n` +
+                `{\n` +
+                `  question1: {\n` +
+                `    id: "question1",\n` +
+                `    type: "MC_SINGLE_RESPONSE",\n` +
+                `    prompt: "What is your highest level of education?",\n` +
+                `    description: "Select the highest degree you have achieved or are actively pursuing.",\n` +
+                `    options: ["High School or equivalent", "Some College", "Associate's Degree", "Bachelor's Degree", "Master's Degree", "Doctoral or Professional Degree", "Other (please specify)"]\n` +
+                `  },\n` +
+                `  // Additional questions will be generated based on the user's responses and needs.\n` +
+                `};\n\n` +
 
-`MC_SINGLE_RESPONSE:\n` +
-`This types is a single response multiple choice question.\n` +
-`You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
+                `Here are the instructions for how to utilize each of the five question types:\n` +
 
-`MC_MULTI_RESPONSE:\n` +
-`This type is a multiple response multiple choice question.\n` +
-`You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
-`The MC_MULTI_RESPONSE type also has a special feature, unique to this question type:\n` +
-`   If you list 'Other (click to specify)' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
+                `MC_SINGLE_RESPONSE:\n` +
+                `This types is a single response multiple choice question.\n` +
+                `You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
+                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
-`TEXT_RESPONSE:\n` +
-`This type is a text response question, similar to short/long answer question types.\n` +
-`You should use the TEXT_RESPONSE type when you want the user to type a custom answer to the given prompt.\n` +
-`The options field a TEXT_RESPONSE question should be an empty list since the type does not require options.\n\n` +
+                `MC_MULTI_RESPONSE:\n` +
+                `This type is a multiple response multiple choice question.\n` +
+                `You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
+                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
-`SLIDER_RESPONSE:\n` +
-`This type is a slider question where the user will be instructed to choose a value between 1 and 100.\n` +
-`You should use the SLIDER_RESPONSE type when you want to gauge how strongly the user feels about something.\n` +
-`The options field a SLIDER_RESPONSE question should be an empty list since the type does not require options.\n\n` +
+                `TEXT_RESPONSE:\n` +
+                `This type is a text response question, similar to short/long answer question types.\n` +
+                `You should use the TEXT_RESPONSE type when you want the user to type a custom answer to the given prompt.\n` +
+                `The options field a TEXT_RESPONSE question should be an empty list since the type does not require options.\n\n` +
 
-`USER_RANKING:\n` +
-`This type is a custom ranking question where the user will be asked to rank the question options in order of preference.\n` +
-`Specify in the question prompt the order in which you would like the user to consider the options, such as from most to least preferred.\n` +
-`Use the USER_RANKING type when you want to understand the user's comparative preferences among a list of options.\n` +
-`This can help in determining priorities or preferences without the constraints of other types of questions that limit the responses to single or multiple choices.\n\n` +
+                `SLIDER_RESPONSE:\n` +
+                `This type is a slider question where the user will be instructed to choose a value between 1 and 100.\n` +
+                `You should use the SLIDER_RESPONSE type when you want to gauge how strongly the user feels about something.\n` +
+                `The options field a SLIDER_RESPONSE question should be an empty list since the type does not require options.\n\n` +
 
-`Finally, after gathering all necessary information through the quiz, the you will compile a final report. This report will: \n` +
-`- Provide a personalized summary of the user's career interests and potential paths based on their quiz responses.\n` +
-`- Offer actionable steps and long-term strategies tailored to the user's current educational or career stage.\n` +
-`- Include interactive elements allowing the user to explore more detailed information about each recommended career path.\n\n` +
-
-`This final report aims to be a comprehensive guide that assists users in making informed decisions about their career paths, whether they are just beginning to explore or are considering a change.\n`
+                `USER_RANKING:\n` +
+                `This type is a custom ranking question where the user will be asked to rank the question options in order of preference.\n` +
+                `Specify in the question prompt the order in which you would like the user to consider the options, such as from most to least preferred.\n` +
+                `Use the USER_RANKING type when you want to understand the user's comparative preferences among a list of options.\n` +
+                `This can help in determining priorities or preferences without the constraints of other types of questions that limit the responses to single or multiple choices.\n\n\n` +
 
 
+                `Finally, after gathering all necessary information through the quiz, compile a final report. This report will: \n` +
+                `- Provide a personalized summary of the user's career interests and potential paths based on their quiz responses.\n` +
+                `- Offer actionable steps and long-term strategies tailored to the user's current educational or career stage.\n` +
+                `- Include interactive elements allowing the user to explore more detailed information about each recommended career path.\n\n` +
 
+                `This final report aims to be a comprehensive guide that assists users in making informed decisions about their career paths, whether they are just beginning to explore or are considering a change.\n`
+            )
+        }
+    } else {
+        return (
+            `
+            You are an advanced AI career advisor tasked with helping users refine their career choices and identify specific job roles that match their qualifications, personality, and work preferences.\n
+            
+            Here are the initial responses:\n
 
+            ${mapQuestionsToAnswers(questionAns.questionsAns)}\n
+            
+            Your goal now is to narrow down potential careers and specific roles by asking follow-up questions that delve deeper into the user's preferences, skills, and career aspirations.\n
 
+            Your questions should aim to:\n
+            1. **Clarify and expand on interests**: Tailor each question to probe deeper based on the user’s previous answers to uncover specific preferences that align with particular career paths and roles.\n
+            2. **Assess personality and work style fit**: Include questions that help determine the suitability of the user for specific job roles, considering factors such as teamwork versus independence, leadership tendencies, and preferred work environments.\n
+            3. **Encourage thoughtful responses**: Frame questions that require more than yes/no answers, prompting users to think about what truly motivates and interests them in their professional life.\n
+            4. **Use hypothetical scenarios**: These can be effective in revealing how a user might react to common situations in different job roles, helping to assess fit and satisfaction with those roles.\n
+            5. **Prioritize clarity and openness**: Ensure questions are open-ended where possible, allowing a broad range of responses that can provide clearer guidance on the most fitting career paths and roles.\n
+            ` +
+            
+            `You should structure the questions in the following JSON format:\n` +
+                `{\n` +
+                `  question1: {\n` +
+                `    id: "question1",\n` +
+                `    type: "MC_SINGLE_RESPONSE",\n` +
+                `    prompt: "What is your highest level of education?",\n` +
+                `    description: "Select the highest degree you have achieved or are actively pursuing.",\n` +
+                `    options: ["High School or equivalent", "Some College", "Associate's Degree", "Bachelor's Degree", "Master's Degree", "Doctoral or Professional Degree", "Other (please specify)"]\n` +
+                `  },\n` +
+                `  // Additional questions will be generated based on the user's responses and needs.\n` +
+                `};\n\n` +
 
-         */
+                `Here are the instructions for how to utilize each of the five question types:\n` +
 
+                `MC_SINGLE_RESPONSE:\n` +
+                `This types is a single response multiple choice question.\n` +
+                `You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
+                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
-    return(
-        `You are a career advisor tasked with helping a user identify possible career paths which would be a good fit.\n\n` +
+                `MC_MULTI_RESPONSE:\n` +
+                `This type is a multiple response multiple choice question.\n` +
+                `You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
+                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
+                `TEXT_RESPONSE:\n` +
+                `This type is a text response question, similar to short/long answer question types.\n` +
+                `You should use the TEXT_RESPONSE type when you want the user to type a custom answer to the given prompt.\n` +
+                `The options field a TEXT_RESPONSE question should be an empty list since the type does not require options.\n\n` +
 
-        `Your way of interacting with the user is by controlling a career quiz which has been created for you to control. ` +
-        `Each call you will be able to make one of three actions: Ask for More Information, End Quiz, or Generate Final Output. ` +
-        `Each action helps you collect and analyze the user's information to suggest suitable career paths.\n\n` +
+                `SLIDER_RESPONSE:\n` +
+                `This type is a slider question where the user will be instructed to choose a value between 1 and 100.\n` +
+                `You should use the SLIDER_RESPONSE type when you want to gauge how strongly the user feels about something.\n` +
+                `The options field a SLIDER_RESPONSE question should be an empty list since the type does not require options.\n\n` +
 
+                `USER_RANKING:\n` +
+                `This type is a custom ranking question where the user will be asked to rank the question options in order of preference.\n` +
+                `Specify in the question prompt the order in which you would like the user to consider the options, such as from most to least preferred.\n` +
+                `Use the USER_RANKING type when you want to understand the user's comparative preferences among a list of options.\n` +
+                `This can help in determining priorities or preferences without the constraints of other types of questions that limit the responses to single or multiple choices.\n\n\n` + 
+                `You should structure the questions in the following JSON format:\n` +
+                `{\n` +
+                `  question1: {\n` +
+                `    id: "question1",\n` +
+                `    type: "MC_SINGLE_RESPONSE",\n` +
+                `    prompt: "What is your highest level of education?",\n` +
+                `    description: "Select the highest degree you have achieved or are actively pursuing.",\n` +
+                `    options: ["High School or equivalent", "Some College", "Associate's Degree", "Bachelor's Degree", "Master's Degree", "Doctoral or Professional Degree", "Other (please specify)"]\n` +
+                `  },\n` +
+                `  // Additional questions will be generated based on the user's responses and needs.\n` +
+                `};\n\n` +
 
-        `To start off, you are given the following information:\n` +
-        mapQuestionsToAnswers(questionAns.questionsAns) +
+                `Here are the instructions for how to utilize each of the five question types:\n` +
 
+                `MC_SINGLE_RESPONSE:\n` +
+                `This types is a single response multiple choice question.\n` +
+                `You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
+                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
-        `Your job is to ask for more information in order to obtain the necessary information to meet their specific needs.\n` +
-        `Generate these questions in sets rather than individually to enhance efficiency and reduce the number of interactions required.\n` +
-        `Each set of questions should be independent of answers to previous sets to ensure that no answer influences the subsequent ones within the same set.\n\n\n` +
+                `MC_MULTI_RESPONSE:\n` +
+                `This type is a multiple response multiple choice question.\n` +
+                `You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
+                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
+                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
 
+                `TEXT_RESPONSE:\n` +
+                `This type is a text response question, similar to short/long answer question types.\n` +
+                `You should use the TEXT_RESPONSE type when you want the user to type a custom answer to the given prompt.\n` +
+                `The options field a TEXT_RESPONSE question should be an empty list since the type does not require options.\n\n` +
 
-        `The questions should be structured as follows:\n` +
-        `{\n` +
-        `  question1: {\n` +
-        `    id: "question1",\n` +
-        `    type: "MC_SINGLE_RESPONSE",\n` +
-        `    prompt: "What is your current level of education?",\n` +
-        `    description: "If currently in school, select your current level",\n` +
-        `    options: ["High School (or earlier)", "College (BA/BS)", "Master's Degree", "PhD", "No formal education"]\n` +
-        `  },\n` +
-        `  // Add more questions here as needed\n` +
-        `};\n\n` +
+                `SLIDER_RESPONSE:\n` +
+                `This type is a slider question where the user will be instructed to choose a value between 1 and 100.\n` +
+                `You should use the SLIDER_RESPONSE type when you want to gauge how strongly the user feels about something.\n` +
+                `The options field a SLIDER_RESPONSE question should be an empty list since the type does not require options.\n\n` +
 
-        `You will have five question types to choose from, although they all take the same exact inputs regardless of type. ` +
-        `The inputs for each question you ask should be given in the following JSON format:\n` +
-        `question#: {\n` +
-        `    id: string,\n` +
-        `    type: string,\n` +
-        `    prompt: string,\n` +
-        `    description: string,\n` +
-        `    options: string[]\n` +
-        `}\n\n` +
-
-        `Here are the instructions for how to utilize each of the five question types:\n` +
-
-        `MC_SINGLE_RESPONSE:\n` +
-        `This types is a single response multiple choice question.\n` +
-        `You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
-
-        `MC_MULTI_RESPONSE:\n` +
-        `This type is a multiple response multiple choice question.\n` +
-        `You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
-        `The MC_MULTI_RESPONSE type also has a special feature, unique to this question type:\n` +
-        `   If you list 'Other (click to specify)' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
-
-        `TEXT_RESPONSE:\n` +
-        `This type is a text response question, similar to short/long answer question types.\n` +
-        `You should use the TEXT_RESPONSE type when you want the user to type a custom answer to the given prompt.\n` +
-        `The options field a TEXT_RESPONSE question should be an empty list since the type does not require options.\n\n` +
-
-        `SLIDER_RESPONSE:\n` +
-        `This type is a slider question where the user will be instructed to choose a value between 1 and 100.\n` +
-        `You should use the SLIDER_RESPONSE type when you want to gauge how strongly the user feels about something.\n` +
-        `The options field a SLIDER_RESPONSE question should be an empty list since the type does not require options.\n\n` +
-
-        `USER_RANKING:\n` +
-        `This type is a custom ranking question where the user will be asked to rank the question options in order of preference.\n` +
-        `Specify in the question prompt the order in which you would like the user to consider the options, such as from most to least preferred.\n` +
-        `Use the USER_RANKING type when you want to understand the user's comparative preferences among a list of options.\n` +
-        `This can help in determining priorities or preferences without the constraints of other types of questions that limit the responses to single or multiple choices.\n\n\n` +
-
-
-        `Finally, after gathering all necessary information through the quiz, compile a final report. This report will: \n` +
-        `- Provide a personalized summary of the user's career interests and potential paths based on their quiz responses.\n` +
-        `- Offer actionable steps and long-term strategies tailored to the user's current educational or career stage.\n` +
-        `- Include interactive elements allowing the user to explore more detailed information about each recommended career path.\n\n` +
-
-        `This final report aims to be a comprehensive guide that assists users in making informed decisions about their career paths, whether they are just beginning to explore or are considering a change.\n`
-    )
+                `USER_RANKING:\n` +
+                `This type is a custom ranking question where the user will be asked to rank the question options in order of preference.\n` +
+                `Specify in the question prompt the order in which you would like the user to consider the options, such as from most to least preferred.\n` +
+                `Use the USER_RANKING type when you want to understand the user's comparative preferences among a list of options.\n` +
+                `This can help in determining priorities or preferences without the constraints of other types of questions that limit the responses to single or multiple choices.\n\n\n`
+        )
+    }
 }
 
 export const CreateBasicStartingPrompt = (requestQuestions: number, answerdQuestions: number): string => {
-    return`Create ${requestQuestions+1} more questions starting at question${answerdQuestions} , to ask the user`;
+    return`Create ${requestQuestions} more questions starting at question${answerdQuestions+1} , to ask the user`;
 }
 
 export const CreateAdvancedStartingPrompt = (): string => {
@@ -234,16 +255,17 @@ export const createNewQuestions = () => {
 }
 
 export const createFinalResponse = (questionAns: QuestionAnswer[]) => {
-    return("The user has entered the following question answers in reponse to their carrer quiz\n"
-        + mapQuestionsToAnswers(questionAns) +
-        `please provide your career advice as a json object described in the format below\n` +
+    return(
+        "The user has entered the following question answers in response to their career quiz:\n" +
+        mapQuestionsToAnswers(questionAns) +
+        "\nBased on the information provided, here is your personalized career advice in the following JSON format:\n" +
         `{\n` +
-        `    advice: string` +
-        `    reasoning: string` +
-        `    result: string` +
+        `    "summary": "Your interests in [fields from user answers] and your background in [education from user answers] suggest several exciting career paths.",\n` +
+        `    "advice": "Given your stage in [education/career stage from user answers], consider [actionable steps such as specific internships, certifications, or professional networks].",\n` +
+        `    "interactiveElements": "Explore the following links to deepen your understanding of each area: [link1], [link2], [link3], tailored to your interests in [fields from user answers].",\n` +
+        `    "recommendations": "Careers such as [specific careers based on user's answers] could be particularly suitable for you, aligning with your skills and goals.",\n` +
+        `    "reasoning": "These paths are recommended based on current industry demand and your personal preferences discussed earlier in the quiz.",\n` +
         `}\n\n` +
-        "you must include adivice, reasoning, and result as part of your json response" +
-        "advice should be your opinion on the next steps the user should take, reasoning should be why you feel this way" + 
-        "result is your final answer as to what career advisment you would give the quiz taker, result is of one to three definitive careers the user should consider"
+        "This advice is tailored to assist you in making informed decisions about your potential career paths."
     );
 }

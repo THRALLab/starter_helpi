@@ -59,7 +59,8 @@
 }
 
 .App-quiz {
-  background-color: var(--off-white);
+  text-align: center;
+  background-color: var(--off-tan);
 }
 
 .quiz-tooltip{
@@ -99,6 +100,7 @@
 .btn-selected-outlined {
   color: var(--gift-wrap-purple);
   outline-color: var(--gift-wrap-purple);
+  background-color: var(--off-white);
   outline-width: 2px;
   outline-style: solid;
 }
@@ -106,6 +108,15 @@
 .btn-selected-outlined:hover {
   background-color: var(--gift-wrap-purple);
   color: var(--off-white);
+}
+
+.btn-single-selected {
+  background-color: var(--off-white);
+  color: var(--diamond-blue);
+  outline-color: var(--diamond-blue);
+  outline-width: 2px;
+  outline-style: solid;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {

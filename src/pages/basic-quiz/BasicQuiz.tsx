@@ -9,24 +9,29 @@ import { ProgressBar } from "src/components/ProgressBar"
 
 export const BasicQuiz = () => {
     const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
-    const totalQuestions = 15;
+    const [currTotQuestions, setCurrTotQuestions] = useState<number>(3);
+    const totalQuestions = 20;
+    const initialMax = 7
     return(
-    <div className="basicQuiz-container">
+    <div className="App-quiz">
         <Container>
             <Row>
                 <ProgressBar
                     value={questionsAnswered}
-                    max={totalQuestions}
+                    max={currTotQuestions}
                 />
             </Row>
             <Row>
-                <Suspense fallback={<Loading/>}>
+                <Suspense fallback={<Loading type="Basic Quiz"/>}>
                     <DisplayQuiz 
                         quiz={basicQuiz}
                         title="Basic Quiz"
-                        maxQuestions={totalQuestions}
-                        questionsAnswerd={questionsAnswered} 
-                        setQuestionsAnswerd={setQuestionsAnswered} 
+                        initialMax={initialMax}
+                        totalQuestions={totalQuestions}
+                        questionsAnswerd={questionsAnswered}
+                        currTotQuestions={currTotQuestions}
+                        setQuestionsAnswerd={setQuestionsAnswered}
+                        setCurrTotQuestions={setCurrTotQuestions}
                     />
                 </Suspense>
             </Row>

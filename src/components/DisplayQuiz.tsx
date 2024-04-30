@@ -8,7 +8,7 @@ import { UserRanking } from "./UserRanking"
 import { SliderResponse } from "./SliderResponse";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
 import OpenAI from "openai";
-import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse, createNewQuestions } from "src/controller/StartingPrompt";
+import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
 
@@ -20,9 +20,11 @@ type QuestionAns = {
 }
 
 type AnswerResponse = {
+    summary: string,
     advice: string,
-    reasoning: string,
-    result: string
+    interactiveElements: string,
+    recommendations: string,
+    reasoning: string
 }
 
 export function DisplayQuiz(
@@ -30,16 +32,22 @@ export function DisplayQuiz(
         quiz,
         title,
         questionsAnswerd,
-        maxQuestions,
-        setQuestionsAnswerd 
+        initialMax,
+        totalQuestions,
+        currTotQuestions,
+        setQuestionsAnswerd,
+        setCurrTotQuestions
     } 
     : 
     {
         title: string,
         quiz : DisplayQuizProps,
         questionsAnswerd : number,
-        maxQuestions: number,
+        initialMax: number,
+        totalQuestions: number,
+        currTotQuestions: number,
         setQuestionsAnswerd : (questionsAnswerd: number) => void 
+        setCurrTotQuestions: (currTotQuestions: number) => void
     }
     ): JSX.Element {
     const [curQuiz, setCurQuiz] = useState<DisplayQuizProps>(quiz);
@@ -49,6 +57,8 @@ export function DisplayQuiz(
     const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
     const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
     const [isLoading, setIsLoading] = useState(false);
+    const [type, setType ] = useState("");
+    const [followUp, setFollowUp] = useState<boolean>(false);
     // const [nextPrompt, setNextPrompt] = useState<string>("");
 
     async function connectToGBT(startingPrompt: string, prompt: string)  {
@@ -60,7 +70,7 @@ export function DisplayQuiz(
     const addToQuiz = (newQuestions: DisplayQuizProps): void => {
         console.log("new questions:", newQuestions);
         const quizTotal = {...curQuiz, ...newQuestions};
-        console.log("combination ", {...curQuiz, ...newQuestions});
+        //console.log("combination ", {...curQuiz, ...newQuestions});
         setCurQuiz(quizTotal);
         console.log("Current Quiz:", curQuiz);
     }
@@ -78,20 +88,25 @@ export function DisplayQuiz(
 
     // gets the next questions
     async function createNextQuestion() {
-        setIsLoading(true);
+        //setIsLoading(true);
+        setType("generatingQuestions")
         // if basic curQuiz only one call is nessesary
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
-        const response = (title === "Basic Quiz") ?
-            await connectToGBT(CreateStartingPrompt({
+        const newQuestions = currTotQuestions < initialMax ? initialMax-currTotQuestions : totalQuestions - currTotQuestions
+        if ((currTotQuestions + newQuestions) >= initialMax) setFollowUp(true);
+        console.log(`new total: ${currTotQuestions + newQuestions}`);
+        followUp ? console.log("follow up questions") : console.log("initial questions")
+        setCurrTotQuestions(currTotQuestions + newQuestions);
+        const response = await connectToGBT(CreateStartingPrompt({
                 questionsAns: questionAns,
-                status: ""
-            }), CreateBasicStartingPrompt(maxQuestions-questionsAnswerd, questionsAnswerd)) :
-            await addResponseGBT({choices: gbtConversation, newMessage: createNewQuestions()});
+                status: followUp ? "followUp" : "",
+                quiz: title
+            }), CreateBasicStartingPrompt(newQuestions, questionsAnswerd));
         console.log("GBT response", response);
         parseChatHistory(response);
         //adding new messages to chat history
         setGBTConversation(gbtConversation);
-        setIsLoading(false); 
+        //setIsLoading(false); 
         return
     }
 
@@ -104,9 +119,9 @@ export function DisplayQuiz(
             if (newId in curQuiz) return (newId);
             //quiz is done
             console.log("Q Id:", newId);
-            if(parseInt(currentQuestionId.substring(8)) >= maxQuestions) return "";
+            if(parseInt(currentQuestionId.substring(8)) >= totalQuestions) return "";
             // curQuiz is not over but needs more questions
-            else if(questionsAnswerd < maxQuestions) {
+            else if(currTotQuestions < totalQuestions) {
                 await createNextQuestion();
                 // assuming nothing breaks and the next question is actually loaded
                 return `question${parseInt(currentQuestionId.substring(8)) + 1}`;
@@ -130,6 +145,8 @@ export function DisplayQuiz(
      * if there is no next question then the curQuiz is over
      */
     const handleAnswerSubmit = async (answer: string, forewards: boolean) => {
+        setIsLoading(true);
+        setType("nextQuestion")
         
         if (forewards) { // if going to next question
             const nextQuestionId = await determineNextQuestionId(currentQuestionId, curQuiz, true);
@@ -157,41 +174,53 @@ export function DisplayQuiz(
             const nextQuestionId = determineNextQuestionId(currentQuestionId, curQuiz, false);
             setCurrentQuestionId(await nextQuestionId);
         }
+        setIsLoading(false);
     }
     // if(Object.keys(quiz).length === 0) createQuiz();
-
+    
     const DisplayResults = () => {
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
         const [response, setResponse] = useState<OpenAI.ChatCompletion>();
-        const [loaded, setLoaded] = useState<boolean>(false);
+        const [loaded, setLoaded] = useState(false);
+    
         useEffect(() => {
             async function getFinalResponse() {
                 const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
-                setLoaded(true);
                 setResponse(response);
+                setLoaded(true);
             }
-            if(response === null || response === undefined) getFinalResponse();
-        }, [questionAns, response]
-    )
-        if(!loaded) return<Loading/>;
-        console.log(response);
+    
+            if (!response) getFinalResponse();
+        }, [questionAns, response]);
+    
+        if (!loaded) return <Loading type="finalReport"/>;
+    
+        if (!response || !response.choices.length) return <p>Error Occurred</p>;
 
-        if(response === undefined) return <></>;
-        const finalResponse = response.choices[response.choices.length-1].message.content;
-        if(finalResponse == null) return<>Error Occured</>
-        const finalAns: AnswerResponse = JSON.parse(finalResponse);
-
-        return(
+        const finalAns = response.choices[response.choices.length-1].message.content;
+        if(finalAns == null) return<>Error Occured</>
+        const finalResponse: AnswerResponse = JSON.parse(finalAns);
+    
+        return (
             <>
-                <p>{finalAns.result}</p>
-                <p>{finalAns.advice}</p>
-                <p>{finalAns.reasoning}</p>
+                <h2>Career Report Summary</h2>
+                <p>{finalResponse.summary}</p>
+                <h3>Detailed Advice</h3>
+                <p>{finalResponse.advice}</p>
+                <h3>Explore Further</h3>
+                <p>{finalResponse.interactiveElements}</p>
+                <h3>Recommended Career Paths</h3>
+                <p>{finalResponse.recommendations}</p>
+                <h3>Why These Paths?</h3>
+                <p>{finalResponse.reasoning}</p>
             </>
-        )
+        );
     }
     
+
+
     if (isLoading) {
-        return <Loading />;
+        return <Loading type={type}/>;
     }    
 
     if (isQuizComplete) {
@@ -203,13 +232,16 @@ export function DisplayQuiz(
     }
 
     const currentQuestion = curQuiz[currentQuestionId];
+
+    const foundAnswer = answers.find((targetAnswer) => (targetAnswer.questionId === currentQuestion.id))
     
     const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
         onNext: handleAnswerSubmit,
         isFirst: currentQuestionId === "question1",
-        description: currentQuestion.description
+        description: currentQuestion.description,
+        prevAnswer: foundAnswer ? foundAnswer.answer : ""
     };
 
 
