@@ -114,10 +114,10 @@ export function UserRanking({
                 ))}
             </ol>
             <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(compressAnswer(), false)}>Back</Button>
-            <Button onClick={() => onNext(compressAnswer(), true)}>Next</Button>  
+            <Button variant="nav" onClick={() => onNext(compressAnswer(), true)}>Next</Button>  
         </div>
     )
 }
