@@ -1,10 +1,12 @@
-import { findByLabelText, findByRole, findByTestId, queryByTestId } from "@testing-library/react";
+
 import "./detailedPage.css";
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert, FormLabel } from "react-bootstrap";
+import { Form, ProgressBar, Alert, /*FormLabel*/ } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
-import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
-import { getValue } from "@testing-library/user-event/dist/utils";
+//import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
+import OpenAI from "openai";
+import { key } from "./homePage"
+
 const DetailedPage = () => {
 	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
 	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""])
@@ -173,7 +175,7 @@ const DetailedPage = () => {
 		</div>
 		<div style={{textAlign:"center"}}>
 
-		<Button size="lg" disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<Button size="lg" onClick={sendRespone} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
@@ -660,8 +662,8 @@ const DetailedPage = () => {
 	</>
 	);
 
-	function getResponses(): string[] { //returns the responses of the user
-		let answers: string[] = [];
+	function getResponses(): string { //returns the responses of the user
+		let answers: string = "";
 
 		let index = Response1.findIndex((option) => option === true); //returns index of answer in that question
 
@@ -673,15 +675,55 @@ const DetailedPage = () => {
 			let container = document.getElementById("q" + (i + 1));
 			if (container) {
 				const mini = container.querySelector('input[type="radio"]:checked');
-				console.log("Container: " + mini?.getAttribute("value"));
+				//console.log("Container: " + mini?.getAttribute("value"));
+				answers = answers + (mini?.getAttribute("value") || "");
 				
 			}
 			else {
 				console.log("Container is null");
 			}
 		}
-		
+
+
+		console.log(answers);
 		return answers;
+	}
+
+	function sendRespone(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+		const openai = new OpenAI({
+			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
+			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
+		});
+		  
+		async function runGPT() { //Creates conversation with the GPT-4 model
+			console.log("API Key: " + key); //for testing purposes
+			try{
+				const response = await openai.chat.completions.create({
+				model: "gpt-4-turbo",
+				messages: [
+					{
+					"role": "system",
+					"content": "You will tell me what career I should pursue based on my interests." //What we want GPT to do
+					},
+					{
+					"role": "user",
+					"content": getResponses(), //calls the function that gets the description
+					}
+				],
+				temperature: 0.8,
+				max_tokens: 64,
+				top_p: 1,
+				});
+	
+				console.log(response.choices[0].message.content); //GPT Response to the user's input
+			}
+			catch(e){ //catches any errors that may occur with an invalid API key
+				console.log(e);
+			}  
+		}
+
+		runGPT(); //run the function at the end
+	
 	}
 };
 export default DetailedPage;
