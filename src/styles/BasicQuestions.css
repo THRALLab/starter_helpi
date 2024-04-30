@@ -1,0 +1,14 @@
+
+.basic-questions-page {
+    padding-top: 61px;
+    color: var(--white-color);
+    background-color: var(--black-color);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.basic-q-title {
+    font-size: 70px;
+}

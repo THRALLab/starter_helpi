@@ -1,0 +1,62 @@
+.navigation {
+    margin-top: 0px;
+    margin-left: auto;
+    width: auto;
+    height: 10vh;
+}
+
+.btn {
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 3px 0px 3px;
+    border-radius: 5px;
+    padding: 6px 12px;
+    border: none;
+}
+
+.prev-btn {
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+.next-btn {
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+.submit-btn {
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: var(--black-color);
+}
+
+.submit-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--black-color);
+}
+
+
+
+.question-card {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    width: 70%;
+    height: 60vh;
+    margin: auto; /* Center the card horizontally */
+    padding: 20px;
+    padding-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.question-card h2 {
+    height: 10vh;
+    font-size: 27px;
+    text-align: start;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}

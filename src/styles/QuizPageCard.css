@@ -1,0 +1,40 @@
+.card {
+    width: 500px;
+    height: 400px;
+    background-image: radial-gradient(circle, var(--accent-color), var(--white-color));
+    color: var(--black-color);
+    padding: 10px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.title {
+    padding: 10px;
+    margin: 0px;
+}
+
+.desc {
+    text-align: center;
+    padding: 0px;
+    margin: 30px auto 10px auto;
+    width: 80%;
+    height: 220px;
+}
+
+.link-btn {
+    display: block;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    text-align: center;
+    padding: 16px 24px;
+    text-decoration: none;
+    margin: 0px auto;
+    border: 2.5px solid var(--black-color);
+    border-radius: 5px;
+}
+
+.link-btn:hover {
+    background-color: var(--black-color);
+    color: var(--white-color);
+    opacity: 0.9;
+}
