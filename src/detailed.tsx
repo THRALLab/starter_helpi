@@ -10,6 +10,8 @@ export interface Answer {
 	choice: string;
 }
 
+// There is a minor bug where if you get to the free response section and enter your response in the first input, it populates in the second input also too
+
 function Detailed() {
 	const [choice, setChoice] = useState<string>();
 
