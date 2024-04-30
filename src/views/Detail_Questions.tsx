@@ -54,9 +54,7 @@ function Detail_Questions(): JSX.Element {
       <progress value={progress} max="100" style={{ width: '100%' }} />
       </div>
 
-      <footer style={{ gridRow: '3 / 4', width: '100%' }} className='Footer'>
-        <Footer />
-      </footer>
+      
     </div>
   );
 }

@@ -57,9 +57,9 @@ export function Footer(): JSX.Element {
   }
 
   return (
-    <Container className="fixed-bottom bg-light border-top p-3">
+    <Container className="fixed-bottom">
       <Form>
-        <Form.Label>OpenAI API Key:</Form.Label>
+        <Form.Label style={{color: 'Background'}}>OpenAI API Key:</Form.Label>
         <Form.Control
           type="password"
           size="sm"
