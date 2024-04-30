@@ -24,8 +24,8 @@
   --color-body-ButtonBorder: #faf9f6;
   --color-body-questionText: #faf9f6;
   --color-body-ProgressBackground: #000000;
-  --color-body-BarGradient: #6b6b6b;
-  --color-body-BarColor: red;
+  --color-body-BarGradient: #af73ca;
+  --color-body-BarColor: #67b1c8;
 }
 
 .body-theme3 {
@@ -40,7 +40,7 @@
   --color-body-questionText: #faf9f6;
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #6b6b6b;
-  --color-body-BarColor: red;
+  --color-body-BarColor: rgb(62, 160, 84);
 }
 
 .body-theme4 {
@@ -55,7 +55,7 @@
   --color-body-questionText: #faf9f6;
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #6b6b6b;
-  --color-body-BarColor: red;
+  --color-body-BarColor: #9b870c;
 }
 
 .body-theme5 {
@@ -99,7 +99,7 @@
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #ffffff;
   --color-body-ProgressBackground: #000000;
-  --color-body-BarGradient: #5aaa95;
+  --color-body-BarGradient: #4fffaa;
   --color-body-BarColor: red;
 }
 
