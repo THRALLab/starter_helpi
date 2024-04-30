@@ -1,0 +1,66 @@
+/*For Header Background*/
+nav {
+	background: rgb(0, 27, 51);
+    background: -moz-linear-gradient(120deg, rgba(0, 27, 51, 1) 0%, rgba(2, 56, 103, 1) 65%, rgba(0, 126, 204, 1) 100%);
+    background: -webkit-linear-gradient(120deg, rgba(0, 27, 51, 1) 0%, rgba(2, 56, 103, 1) 65%, rgba(0, 126, 204, 1) 100%);
+    background: linear-gradient(120deg, rgba(0, 27, 51, 1) 0%, rgba(2, 56, 103, 1) 65%, rgba(0, 126, 204, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001b33", endColorstr="#007ecc", GradientType=1);
+    display: flex;
+    align-items: center;
+    padding: 20px 12px;
+    justify-content: space-between;
+}
+/*For Career Compass*/
+nav h1 { 
+	line-height: 0;
+	font-weight: 775;
+	font-size: 50px;
+	margin: 1;
+	margin-top: -20px;
+	margin-left: 10px;
+	color: #366358;
+}
+/*For Career Compass hover*/
+nav h1:hover {
+	color: #82a7e6;
+	transition: 0.3s ease;
+}
+/*Keeps things in one line*/
+nav ul {
+	display: inline-flex;
+
+}
+/*For Question tab*/
+nav ul a {
+	text-decoration: none;
+	color: #ffffff;
+	list-style-type: none;
+}
+/*For Question tab size*/
+nav ul li {
+	margin: 15px;
+	font-size: 30px;
+	font-weight: 775;
+}
+/*For Question tab Hover*/
+nav ul li:hover {
+	color: #82a7e6;
+	transition: 0.3s ease;
+}
+nav p{
+	text-indent: 0%;
+	font-size: 30px;
+	font-weight: 775;
+	text-decoration: solid;
+	color: #fff;
+	list-style-type: none;
+}
+.header h1 {
+    padding: 0 20px;
+    font-family: 'Lato','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3em;
+    margin: 0;
+    line-height: .9;
+    color: #fff;
+    text-transform: uppercase;
+}
