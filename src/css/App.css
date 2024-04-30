@@ -62,6 +62,11 @@
   background-color: var(--off-white);
 }
 
+.quiz-tooltip{
+  cursor: pointer;
+  color: var(--dawn-dish-blue);
+  margin-left: 5px
+}
 
 /*Styling for the different nav buttons in the app */
 .btn-nav-disabled {
