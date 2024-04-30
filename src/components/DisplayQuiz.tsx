@@ -8,7 +8,7 @@ import { UserRanking } from "./UserRanking"
 import { SliderResponse } from "./SliderResponse";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
 import OpenAI from "openai";
-import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse, createNewQuestions } from "src/controller/StartingPrompt";
+import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
 
@@ -88,21 +88,20 @@ export function DisplayQuiz(
 
     // gets the next questions
     async function createNextQuestion() {
-        if (currTotQuestions >= initialMax) setFollowUp(true);
         //setIsLoading(true);
         setType("generatingQuestions")
         // if basic curQuiz only one call is nessesary
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
         const newQuestions = currTotQuestions < initialMax ? initialMax-currTotQuestions : totalQuestions - currTotQuestions
+        if ((currTotQuestions + newQuestions) >= initialMax) setFollowUp(true);
         console.log(`new total: ${currTotQuestions + newQuestions}`);
+        followUp ? console.log("follow up questions") : console.log("initial questions")
         setCurrTotQuestions(currTotQuestions + newQuestions);
-        const response = (title === "Basic Quiz") ?
-            await connectToGBT(CreateStartingPrompt({
+        const response = await connectToGBT(CreateStartingPrompt({
                 questionsAns: questionAns,
                 status: followUp ? "followUp" : "",
                 quiz: title
-            }), CreateBasicStartingPrompt(newQuestions, questionsAnswerd)) :
-            await addResponseGBT({choices: gbtConversation, newMessage: createNewQuestions()});
+            }), CreateBasicStartingPrompt(newQuestions, questionsAnswerd));
         console.log("GBT response", response);
         parseChatHistory(response);
         //adding new messages to chat history
