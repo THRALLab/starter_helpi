@@ -1,23 +1,25 @@
-import React, {useState} from 'react';
-function basicSlider(
-    const basicSlider: React.FC = () => {
-        const [value, setSlideVal] = useState<number>(11);
+import React, { useState } from 'react';
+
+const BasicSlider: React.FC = () => {
+    const [sliderVal, setSliderVal] = useState<number>(5);
     
-        const adjust = (event: React.ChangeEvent<HTMLInputElement>) => {
-            setSlideVal(parseInt(event.target.value, 10));
-        };
-        return(
-            <div>
-                <input
-                type="range"
-                min={1}
-                max={10}
-                value={value}
-                onChange={handleChange}
-                />
-                <p>Value: {value} </p>
-            </div>
-        );
-    };
-)
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSliderVal(Number(event.target.value));
+
+};
+
+return (
+    <div>
+        <input
+            type="range"
+            min={0}
+            max={10}
+            value={sliderVal}
+            onChange={handleChange}
+        />
+        <p>Value: {sliderVal}</p>
+    </div>
+    );
+};
+
 export default BasicSlider;
