@@ -1,38 +1,273 @@
 .App {
-  text-align: center;
+    background-color: #cca994;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.basicParagraph {
+    color: #000000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.basicHeader {
+    color: #000000;
+    
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.detailedParagraph {
+    color: #000000;
+}
+
+.detailedHeader {
+    color: #000;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.starfish {
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    width: 150px;
+    height: auto;
+}
+
+.shell {
+    position: absolute;
+    top: 350px;
+    right: 80px;
+    width: 150px;
+    height: auto;
+}
+/*Navigation Bar Styling*/
+
+
+.default button{
+    border-radius: 20px;
+    background-color: #2c6fbb;
+    color: white;
+    border: none;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;    
+}
+
+.default button:hover { /*default button styling for nav bar*/
+    color: white;
+    background-color: #7fa4ce;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.active button {/*active button styling for nav bar*/
+    color: white;
+    background-color: #7fa4ce;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/*Home Page Styling*/
+
+h1 {
+	font-size: 350%;
+    text-align: center;
+	font-family: tahoma;
+    padding: 0px;
+	margin: 0;
+    color:#a9714d
+	
+}
+h2 {
+    margin: 0;
+    text-align: center;
+    color:#cf9c7c
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .box { /*Basic Quiz and Detailed Quit Boxes*/
+    background-color: white;
+    align-items: center;
+    border-radius: 20px;
+    width: 400px;
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 20px; 
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.container .box h2 {
+    margin: 0; 
+    font-size: 20px; 
+}
+
+.container .box p {
+    font-size: 16px;
+}
+
+.bigBox { /*everything on Home page*/
+    top: 65px;
+    position: relative;
+	margin: 10px;
+	padding: 10px;
+    border-radius: 20px;
+}
+
+.section {
+    margin: 0 20px;
+    text-align: center;
+}
+
+.header {
+    font-size: 1.5em;
+}
+
+.paragraph {
+    margin-top: 0;
+}
+
+.footer {
+    position: fixed;
+    font-family: tahoma;
+    text-align: center;
+    bottom: 0px;
+    padding: 10px;
+    width: 100%;
+    background-color: #2c6fbb;
+}
+/* All for the buttons on home Page */
+
+.rounded-button {
+    border-radius: 20px; /* Adjust the value to change button roundness */
+    border: none;
+    padding: 10px 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.rounded-button:hover {
+    color: rgb(62, 124, 160);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.blue-gradient {
+    background: linear-gradient(to right, #82c0d5, #ffffff); /* Adjust color codes as needed */
+}
+
+/*BasicQuestions Page Styling*/
+
+#progressBar {
+    width: 100%;
+    background-color: gray;
+}
+#myBar { 
+    width: 10%;
+  height: 30px;
+  background-color: #04AA6D;
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.basicForm {
+    border: 2px solid #ccc; /* Form border */
+    padding: 20px;          /* Padding within the form */
+    max-width: 600px;       /* Max width to center the form */
+    margin: auto; 
+    background-color: white;
+    border-radius:20px;
+    font-family:tahoma;
+    text-align:center;
+    color: #2c6fbb;
+  }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .questions {
+    color: #2c6fbb;
+    padding: 5px;
+    margin: 5px;
+    font-family: tahoma;
+    font-weight: bold;
   }
-  to {
-    transform: rotate(360deg);
+
+  label {
+    color: #7fa4ce;
   }
-}
+  /*radio button styling*/
+  .radio-group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+  .radio-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .radio-button input[type="radio"] {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .radio-button .custom-radio {
+    display: inline-block;
+    height: 20px; /* Adjust size */
+    width: 20px; /* Adjust size */
+    background-color: #ccc; /* Default color */
+    border-radius: 50%; /* Circular shape */
+    border: 1px solid #aaa; /* Border */
+    position: relative;
+  }
+  
+  .radio-button input[type="radio"]:checked + .custom-radio {
+    background-color: #2196F3; /* Color when checked */
+    border: 1px solid #2196F3; /* Border when checked */
+  }
+  
+ 
+  
+  .radio-button input[type="radio"]:checked + .custom-radio:after {
+    display: block; /* Visible when checked */
+  }
+
+  #Next {
+    border-radius: 20px;
+    background: linear-gradient(to right, #82c0d5, #ffffff); /* Adjust color codes as needed */
+    background-color: #2c6fbb;
+    color: black;
+    border: none;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;  
+  }
+  #Next:hover {
+    color: rgb(62, 124, 160);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 105%;
+    font-weight: bold;
+  }
