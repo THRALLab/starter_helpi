@@ -1,38 +1,119 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+/*
+Color pallete
+#cbb19b
+#bd977c
+#9b7960
+#66452a
+#dfe0e0
+https://www.color-hex.com/color-palette/106259
+*/
+
+.TB-ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3c2918;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+}
+
+.TB-li {
+  float: right;
+  display: block;
+  color: #dbc6b6;
   text-align: center;
+  text-decoration: none;
+  padding: 19px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.TB-li:hover {
+  background-color: #dbc6b6;
+  color: #3c2918;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Taskbar {
+  margin: auto;
+  color: #dbc6b6;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.APIform {
+  float: left;
+  color: #dbc6b6;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 10px 5px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 25px;
 }
 
-.App-link {
-  color: #61dafb;
+.APIform input {
+  max-height: 33px;
+  color: #dbc6b6;
+  background-color: #3c2918;
+  border: none;
+}
+.APIform input::placeholder {
+  color: #dbc6b6;
+}
+.APIform input:focus {
+  background-color: #dbc6b6;
+  color: #3c2918;
+}
+.APIform:hover {
+  background-color: #3c2918;
+}
+.SubmitButton {
+  color: #dbc6b6;
+  text-align: center;
+  text-decoration: none;
+  padding: 19px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  float: left;
+}
+.SubmitButton:hover {
+  background-color: #dbc6b6;
+  color: #3c2918;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.TaskbarHeader {
+  color: #dbc6b6;
+  position: absolute;
+  left: 42vw;
+  font-size: 35px;
+  margin: 0px;
+  top: 0px;
+  padding-top: 0vh;
+}
+.TaskbarHeader:hover {
+  background-color: transparent;
+  color: #dbc6b6;
+  cursor: default;
 }
