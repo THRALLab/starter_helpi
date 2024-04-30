@@ -1,20 +1,8 @@
-import React, { useState , useEffect} from "react";
-import basicQuestions from "./basicQuestions.json";
-function Basic() {
-	return (
-		<div>
-		basicQuestions.map((q => {
-		<h2>{q.question}</h2>
-		{q.options.map(o => {
-		<p>{o.option}</p>
-		})}
-	}))</div>
-	)
-}
-		
-interface QuestionFormatProps {
-	options: string[];
-}
+import React, { useState} from "react";
+import questions from "./basicQuestions.json";
+import { QuestionFormatProps } from "./interfaces/questionFormat"
+import './ProgressBar';
+
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
@@ -22,14 +10,11 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	const optionSelect = (option: string) => {
 		setSelected(option);
 	};
-	useEffect(()=>{
+	/*useEffect(()=>{
 		setSelected(basicQuestions);
-	},[]);
+	},[]);*/
 	return (
 		<div>
-			if(q.type == "multiple choice"){
-				//use below function, otherwise use slider
-			}
 			<p>Select an option:</p>
 			{options.map(option => (
 				<label key={option}>
@@ -42,7 +27,22 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 					{option}
 				</label>
 			))}
+			<p>You selected: {selected}</p>
 		</div>
 	);
 };
+
+function Basic() {
+	return (
+		<div>
+			<h1>This is the Basic Quiz.</h1>
+			{questions.map((question: QuestionFormatProps, question_number) => (
+				<div key={question_number}>
+					<h2>{question.question}</h2>
+					<QuestionFormatComponent options={question.options} question={""}/>
+				</div>
+			))}
+		</div>
+	);
+}
 export default Basic;

@@ -1,15 +1,15 @@
-"basicQuestions": [
+[
 		{
 			"question_number": 1,
 			"question": "1. What is your ideal environment to live in?",
 			"options": ["City", "Suburb", "Rural", "Town"],
-            "type": "multuple choice"
+            "type": "multiple choice"
 		},
 		{
 			"question_number": 2,
 			"question": "2. What personal skill do you most value?",
 			"options": ["time management", "resourceful", "organization", "leadership"],
-            "type": "multuple choice"
+            "type": "multiple choice"
         },
 		{
 			"question_number": 3,
@@ -20,19 +20,19 @@
 				"college",
 				"graduate school"
 			],
-            "type": "multuple choice"
+            "type": "multiple choice"
 		},
 		{
 			"question_number": 4,
 			"question": "4. Besides career interests, what other activites interest you?",
 			"options": ["relaxing", "art", "exercise", "volunteering"],
-            "type": "multuple choice"
+            "type": "multiple choice"
 		},
 		{
 			"question_number": 5,
 			"question": "5. How many hours would you like to work per week?",
 			"options": ["20 or less", "20-30", "30-35", "35+"],
-            "type": "multuple choice"
+            "type": "multiple choice"
 		},
 		{
 			"question_number": 6,
@@ -43,7 +43,7 @@
 				"history/social sciences",
 				"art"
 			],
-            "type": "multuple choice"
+            "type": "multiple choice"
 		},
 		{
 			"question_number": 7,
@@ -55,19 +55,19 @@
 			"question_number": 8,
             "question":"8. What time of day are you most productive?",
             "options": ["early morning (5am-7am)","mid-morning (8am-11am)","afternoon (12pm-5pm)","night (after 6pm)"],
-            "type": "multuple choice"
+            "type": "multiple choice"
         },
         {
 			"question_number": 9,
             "question":"9. What type of company environment are you looking for?",
             "options": ["high-stress, high salary", "low stress, low salary"],
-            "type": "multuple choice",
+            "type": "multiple choice"
         },
         {
 			"question_number": 10,
             "question":"10. What is the highest level of education that you would like to complete?",
             "options": ["high school/GED","college","Masters or PhD","trade school"],
-            "type": "multiple choice",
+            "type": "multiple choice"
         },
         {
 			"question_number": 11,
@@ -85,18 +85,18 @@
 			"question_number": 13,
             "question":"13. How many hours would you like to work per week?",
             "options":[">25","25-30","30-35","35+"],
-            "type": "multiple choice",
+            "type": "multiple choice"
         },
         {
 			"question_number": 14,
             "question":"14. Do you enjoy learning on a constant basis?",
             "options":["yes","no"],
-            "type": "multiple choice",
+            "type": "multiple choice"
         },
         {
 			"question_number": 15,
             "question":"15. Do you enjoy working on a team?",
             "options":["yes","no","sometimes"],
-            "type": "multiple choice",
+            "type": "multiple choice"
         }
-	];
+]
