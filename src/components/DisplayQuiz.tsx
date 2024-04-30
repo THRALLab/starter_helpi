@@ -8,7 +8,7 @@ import { UserRanking } from "./UserRanking"
 import { SliderResponse } from "./SliderResponse";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
 import OpenAI from "openai";
-import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse, createNewQuestions } from "src/controller/StartingPrompt";
+import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
 
@@ -32,16 +32,22 @@ export function DisplayQuiz(
         quiz,
         title,
         questionsAnswerd,
-        maxQuestions,
-        setQuestionsAnswerd 
+        initialMax,
+        totalQuestions,
+        currTotQuestions,
+        setQuestionsAnswerd,
+        setCurrTotQuestions
     } 
     : 
     {
         title: string,
         quiz : DisplayQuizProps,
         questionsAnswerd : number,
-        maxQuestions: number,
+        initialMax: number,
+        totalQuestions: number,
+        currTotQuestions: number,
         setQuestionsAnswerd : (questionsAnswerd: number) => void 
+        setCurrTotQuestions: (currTotQuestions: number) => void
     }
     ): JSX.Element {
     const [curQuiz, setCurQuiz] = useState<DisplayQuizProps>(quiz);
@@ -52,6 +58,7 @@ export function DisplayQuiz(
     const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
     const [isLoading, setIsLoading] = useState(false);
     const [type, setType ] = useState("");
+    const [followUp, setFollowUp] = useState<boolean>(false);
     // const [nextPrompt, setNextPrompt] = useState<string>("");
 
     async function connectToGBT(startingPrompt: string, prompt: string)  {
@@ -85,12 +92,16 @@ export function DisplayQuiz(
         setType("generatingQuestions")
         // if basic curQuiz only one call is nessesary
         const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
-        const response = (title === "Basic Quiz") ?
-            await connectToGBT(CreateStartingPrompt({
+        const newQuestions = currTotQuestions < initialMax ? initialMax-currTotQuestions : totalQuestions - currTotQuestions
+        if ((currTotQuestions + newQuestions) >= initialMax) setFollowUp(true);
+        console.log(`new total: ${currTotQuestions + newQuestions}`);
+        followUp ? console.log("follow up questions") : console.log("initial questions")
+        setCurrTotQuestions(currTotQuestions + newQuestions);
+        const response = await connectToGBT(CreateStartingPrompt({
                 questionsAns: questionAns,
-                status: ""
-            }), CreateBasicStartingPrompt(maxQuestions-questionsAnswerd, questionsAnswerd)) :
-            await addResponseGBT({choices: gbtConversation, newMessage: createNewQuestions()});
+                status: followUp ? "followUp" : "",
+                quiz: title
+            }), CreateBasicStartingPrompt(newQuestions, questionsAnswerd));
         console.log("GBT response", response);
         parseChatHistory(response);
         //adding new messages to chat history
@@ -108,9 +119,9 @@ export function DisplayQuiz(
             if (newId in curQuiz) return (newId);
             //quiz is done
             console.log("Q Id:", newId);
-            if(parseInt(currentQuestionId.substring(8)) >= maxQuestions) return "";
+            if(parseInt(currentQuestionId.substring(8)) >= totalQuestions) return "";
             // curQuiz is not over but needs more questions
-            else if(questionsAnswerd < maxQuestions) {
+            else if(currTotQuestions < totalQuestions) {
                 await createNextQuestion();
                 // assuming nothing breaks and the next question is actually loaded
                 return `question${parseInt(currentQuestionId.substring(8)) + 1}`;

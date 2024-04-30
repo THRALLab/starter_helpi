@@ -18,19 +18,9 @@ export function UserRanking({
     prevAnswer: string;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
-    const [categories, setCategories] = useState<string[]>(prevAnswer.split(","));
+    const [categories, setCategories] = useState<string[]>(prevAnswer ? prevAnswer.split(",") : options);
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
-    
-    /**
-    const updatePriorities = (priority: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.target.checked
-            ? setCategories([...categories, priority])
-            : setCategories(
-                [...categories].filter((chosenMember: string): boolean => chosenMember !== priority)
-            )
-    }
-     */
 
     function compressAnswer(): string {
         return categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, "");
