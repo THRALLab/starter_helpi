@@ -6,7 +6,6 @@ interface Tools {
 	checkConnection: () => void;
 }
 
-// TODO - [ ] will need to change ChatGPT prompt from 1 report to 4
 // TODO - [ ] will need to add markdown support since ChatGPT occasionally returns a response with markdown
 
 export default function useChatGPT(): Tools {
