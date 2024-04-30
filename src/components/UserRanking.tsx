@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from 'react-bootstrap';
-import { FaQuestionCircle } from "react-icons/fa";
+import { FaQuestionCircle, FaGripLines  } from "react-icons/fa";
+
+
+
+
+
+
 
 export function UserRanking({
     question,
@@ -18,33 +24,31 @@ export function UserRanking({
     prevAnswer: string;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
-    const [categories, setCategories] = useState<string[]>(prevAnswer ? prevAnswer.split(",") : options);
+    const [categories, setCategories] = useState<string[]>(prevAnswer ? prevAnswer.split(",").filter((item:string) => (!item.toLowerCase().includes("other"))) : options.filter((item:string) => (!item.toLowerCase().includes("other"))));
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
 
     function compressAnswer(): string {
         return categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, "");
     }
-    const pushUp = (priority: string) => {
-        const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
-        if (currIndex > 0) {
-            // Swap with the previous item
-            const newPriorities = [...categories];
-            [newPriorities[currIndex - 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex - 1]];
-            setCategories(newPriorities);
-        }
-    }
 
-    const pushDown = (priority: string) => {
-        const currCount = categories.reduce((count: number, chosenMember: string) => count += 1, 0);
-        const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
-        if (currIndex < (currCount - 1)) {
-            // Swap with the previous item
-            const newPriorities = [...categories];
-            [newPriorities[currIndex + 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex + 1]];
-            setCategories(newPriorities);
+    const handleDragStart = (index: number) => (event: React.DragEvent<HTMLLIElement>) => {
+        event.dataTransfer.setData("text/plain", index.toString());
+    };
+
+    const handleDragOver = (event: React.DragEvent<HTMLLIElement>) => {
+        event.preventDefault();  // Necessary for allowing drop
+    };
+
+    const handleDrop = (index: number) => (event: React.DragEvent<HTMLLIElement>) => {
+        const draggedIndex = parseInt(event.dataTransfer.getData("text/plain"), 10);
+        if (draggedIndex !== index) {
+            const newCategories = [...categories];
+            const item = newCategories.splice(draggedIndex, 1)[0];
+            newCategories.splice(index, 0, item);
+            setCategories(newCategories);
         }
-    }
+    };
 
     useEffect(() => {
         /**
@@ -97,26 +101,16 @@ export function UserRanking({
                 </div>
             )}
             <ol style={{textAlign: "left"}}>
-                {categories.map((category) => (
-                    <li key={category}>
-                        <Button
-                            className="App-quiz"
-                            key={`${category}⬆️`}
-                            variant="outline-success"
-                            size="sm"
-                            onClick={() => pushUp(category)}
-                        >⬆</Button>
-                        {' '}
-                        <Button
-                            className="App-quiz"
-                            key={`${category}⬇️`}
-                            variant="outline-danger"
-                            size="sm"
-                            onClick={() => pushDown(category)}
-                        >⬇</Button>
-                        {' '}
-                        {category}
-                    </li>
+                {categories.map((category, index) =>  (
+                    <li 
+                    key={category}
+                    draggable={true}
+                    onDragStart={handleDragStart(index)}
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop(index)}
+                    style={{ cursor: 'move', marginBottom: '10px', listStyle: "none", margin: "0px", padding: "0px" }}>
+                    <FaGripLines></FaGripLines>{category}
+                </li>
                 ))}
             </ol>
             <Button

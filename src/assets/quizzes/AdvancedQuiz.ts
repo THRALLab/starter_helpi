@@ -1,8 +1,8 @@
 import { Question } from "../../interfaces/QuestionTypes";
 
 export const advancedQuiz: Record<string, Question> = {
-  question1: {
-    id: "question1",
+  question3: {
+    id: "question3",
     type: "MC_SINGLE_RESPONSE",
     prompt: "What is your current level of education?",
     description: "If currently in school, select your current level",
@@ -22,10 +22,10 @@ export const advancedQuiz: Record<string, Question> = {
         "None of these apply"
       ],
   },
-  question3: {
-    id: "question3",
-    type: "MC_MULTI_RESPONSE",
-    prompt: "Which area interests you the most?",
+  question1: {
+    id: "question1",
+    type: "USER_RANKING",
+    prompt: "Rank your preference:",
     description: "",
     options: ["Science", "Arts", "Business", "Technology", "Other(click to specify)"],
   },
