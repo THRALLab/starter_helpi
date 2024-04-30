@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ProgressBar from "../components/progress-bar/progressBar";
+import { Button } from "react-bootstrap";
 
 interface BasicProps {
   handlePage: (page: string) => void;
@@ -94,10 +95,10 @@ const BasicQuestions: React.FC<BasicProps> = ({ handlePage }) => {
             </div>
           </div>
         ))}
-        <button type="button" onClick={handlePrev} disabled={currentPage === 0}>
+        <Button type="button" id = "Next" onClick={handlePrev} disabled={currentPage === 0}>
           Previous
-        </button>
-        <button type="button" onClick={handleNext} disabled={currentPage === questions.length - 1}>
+        </Button>
+        <button type="button" id= "Next" onClick={handleNext} disabled={currentPage === questions.length - 1}>
           Next
         </button>
       </form>
