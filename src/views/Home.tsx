@@ -12,8 +12,8 @@ function Home() {
 
   function HomePageContent() {
     return (
-        <div style = {{position: 'relative', top: '100px'}} className="text-center">
-            <h1 className="text-center">
+        <div style = {{position: 'relative', top: '90px', padding: 'none'}} className="text-center">
+            <h1 className="text-center" style={{fontSize: '100px', color: 'black'}}>
                 FindYourCareer
             </h1>
             <h5 className="text-center">
@@ -23,9 +23,9 @@ function Home() {
                 UNIVERSITY OF DELAWARE STUDENTS
             </h4>
         
-            <Container style = {{position: 'relative', top: '150px'}}>
-                <Row className='text-center'>
-                    <Col style = {{border: '2px solid black'}}>
+            <Container style = {{position: 'relative', top: '70px', padding: 'none'}}>
+                <Row className='text-center' style={{columnGap: '20px'}}>
+                    <Col style = {{border: '10px solid Background', backgroundColor: 'burlywood', borderStyle: 'ridge'}}>
                         <h3>
                             Basic Questions
                         </h3>
@@ -39,7 +39,7 @@ function Home() {
                         for those seeking a quick overview of their career options.
                         </h6>
                     </Col>
-                    <Col style = {{border: '2px solid black'}}>
+                    <Col style = {{border: '10px solid black', backgroundColor: 'burlywood', borderStyle: 'groove'}}>
                         <h3>
                             Detailed Questions
                         </h3>
@@ -80,31 +80,31 @@ function Home() {
 
   return (
     <div>
-      <div className="page-container">
+      <Container className="page-container">
         <Row>
         <Col className="page-navigation" style={{borderBottom: '2px solid black', textAlign: 'left'}}>
-        <span style = {{padding: '10px', fontSize: '35px', verticalAlign: 'center'}}>
+        <span style = {{padding: '10px', fontSize: '30px', verticalAlign: 'center', fontWeight: 'bold'}}>
           FindYourCareer
         </span>
         </Col>
         <Col className="page-navigation" style={{borderBottom: '2px solid black', textAlign: 'right'}}>
         <button className="button btn1" style={{ verticalAlign: 'middle', alignSelf: 'right' }} onClick={() => setCurrentPage('HomePage')}>
-            <span>HomePage</span>
+            <span>Home Page</span>
           </button>
           <button className="button btn1" style={{ verticalAlign: 'middle' }}onClick={() => setCurrentPage('BasicPage')}>
-            <span>Basic Page</span>
+            <span>Basic Quiz</span>
             </button>
           <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('DetailPage')}>
-            <span>Detailed Page</span>
+            <span>Detailed Quiz</span>
             </button>
         </Col>
         </Row>
-        <div className="page-content">
+        <div className="page-content" style={{textAlign: 'center'}}>
           {currentPage === 'HomePage' && <HomePageContent />}
           {currentPage === 'BasicPage' && <BasicPageContent />}
           {currentPage === 'DetailPage' && <DetailedPageContent />}
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

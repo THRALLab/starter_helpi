@@ -1,33 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Form } from "react-bootstrap";
-
-const saveInfo = "BasicUserInputQ4";
+import { AnswerContext } from "../AnswerContext";
 
 export function Q4(): JSX.Element {
-    const [data, setData] = useState<string>(() => {
-        const savedData = localStorage.getItem(saveInfo);
-        return savedData ? JSON.parse(savedData) : "";
+  const [ethnic, setEthnic] = useState<string>("NA");
+  const { userAnswers, setUserAnswers } = useContext(AnswerContext);
+
+  function updateEthnic(event: React.ChangeEvent<HTMLSelectElement>) {
+    setEthnic(event.target.value);
+    setUserAnswers((prevAnswers: string[]) => {
+      const answer = event.target.value;
+      const updatedAnswers = [...prevAnswers];
+      updatedAnswers[3] = answer;
+      return updatedAnswers;
     });
+    console.log(userAnswers);
+  }
 
-    function updateData(event: React.ChangeEvent<HTMLSelectElement>) {
-        setData(event.target.value);
-    }
-
-    useEffect(() => {
-        localStorage.setItem(saveInfo, JSON.stringify(data));
-    }, [data]);
-
-    return (
-        <div>
-            <Form.Group controlId="userData">
-                <Form.Label>I find myself frequently setting priorities and creating schedules to effectively manage my time and tasks, ensuring that important deadlines are met.</Form.Label>
-                <br></br>
-                <Form.Select value={data} onChange={updateData}>
-                    <option value="--">--</option>
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </Form.Select>
-            </Form.Group>
-        </div>
-    );
+  return (
+    <div>
+      <Form.Group controlId="userEthnicities">
+        <Form.Label>What is your race/ethnicity?</Form.Label>
+        <br></br>
+        <Form.Select value={ethnic} onChange={updateEthnic}>
+          <option value="NA">Select an option</option>
+          <option value="AmericanIndianOrAlaskaNative">
+            American Indian or Alaska Native
+          </option>
+          <option value="Black">Black</option>
+          <option value="NativeHawaiian">Native Hawaiian</option>
+          <option value="Latino">Hispanic or Latino</option>
+          <option value="White">White</option>
+          <option value="TwoOrMore">Two or More</option>
+        </Form.Select>
+      </Form.Group>
+    </div>
+  );
 }

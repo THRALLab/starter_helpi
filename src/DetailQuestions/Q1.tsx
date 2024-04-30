@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
 const reasons = [
-    "Salary",
-    "Work-life balance",
-    "Helping others",
-    "Others Reasons",
+  "Salary",
+  "Work-life balance",
+  "Helping others",
+  "Others Reasons",
 ];
 const saveInfoS = "DetailUserInputQ1_select";
 const saveInfoT = "DetailUserInputQ1_type";
