@@ -1,0 +1,55 @@
+.basicQ-img {
+  height: 55vh;
+  width: 700px;
+}
+
+.question-p {
+  width: 750px;
+  font-size: 23px;
+  padding: 10px 0;
+  color: #fff;
+}
+.quiz-box {
+  width: 800px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  background-color: #1c768f;
+  border-radius: 30px;
+  padding: 10px 30px 30px 30px;
+}
+.answerForm {
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  width: 700px;
+}
+
+.answerForm .radiobutton {
+  padding: 4px 0 4px 8px;
+  background-color: #264653;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: 10px;
+  transition: background-color 0.1s ease-in;
+}
+
+.answerForm .radiobutton:hover {
+  background-color: #2a9d8f;
+}
+.answerForm .radiobutton.selected {
+  /* New class for selected state */
+  background-color: #d49c2b; /* Change this to the color you desire */
+}
+
+.form-check-label {
+  color: #fff;
+  padding-left: 10px;
+}
+
+.form-check-input {
+  background-color: #1c768f;
+}
