@@ -146,15 +146,16 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
 
             ${mapQuestionsToAnswers(questionAns.questionsAns)}\n
             
-            Your goal now is to narrow down potential careers and specific roles by asking follow-up questions that delve deeper into the user's preferences, skills, and career aspirations.\n
+            Your goal now is to narrow down potential careers and specific roles by asking follow-up questions that delve deeper into the user's preferences, skills, and career aspirations.\n` + 
 
-            Your questions should aim to:\n
-            1. **Clarify and expand on interests**: Tailor each question to probe deeper based on the user’s previous answers to uncover specific preferences that align with particular career paths and roles.\n
-            2. **Assess personality and work style fit**: Include questions that help determine the suitability of the user for specific job roles, considering factors such as teamwork versus independence, leadership tendencies, and preferred work environments.\n
-            3. **Encourage thoughtful responses**: Frame questions that require more than yes/no answers, prompting users to think about what truly motivates and interests them in their professional life.\n
-            4. **Use hypothetical scenarios**: These can be effective in revealing how a user might react to common situations in different job roles, helping to assess fit and satisfaction with those roles.\n
-            5. **Prioritize clarity and openness**: Ensure questions are open-ended where possible, allowing a broad range of responses that can provide clearer guidance on the most fitting career paths and roles.\n
-            ` +
+            `Your questions should aim to:\n` +
+            `1. Explore the reasons behind their previous job roles or internships: Ask whether these positions were chosen out of interest, necessity, or convenience.\n` +
+            `2. Identify patterns or recurring themes in their work or academic experiences that align with their stated interests.\n` +
+            `3. Assess the level of enthusiasm and personal satisfaction with their past roles and educational choices.\n` +
+            `4. Encourage the user to discuss what aspects of their past experiences they found most and least fulfilling to understand their true passion.\n` +
+            `5. Delve into hypothetical scenarios where they could choose any career without constraints, to uncover deep-seated interests that might not be evident from their resume.\n\n` +
+            
+            `Your goal is to generate a series of questions that help the user articulate a clear distinction between their past experiences shaped by circumstances and their genuine career aspirations. This distinction will guide them towards a fulfilling career path that aligns with their true interests.\n` +
             
             `You should structure the questions in the following JSON format:\n` +
                 `{\n` +

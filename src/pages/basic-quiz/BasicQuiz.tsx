@@ -15,6 +15,7 @@ export const BasicQuiz = () => {
     return(
     <div className="App-quiz">
         <Container>
+            <br></br>
             <Row>
                 <ProgressBar
                     value={questionsAnswered}
