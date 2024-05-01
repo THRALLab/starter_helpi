@@ -40,6 +40,20 @@
   color: var(--dawn-dish-blue); /* Optional: Changes color on hover or focus for better user experience */
 }
 
+.App-footer {
+  width: 100%;
+  height: 50px;
+  background-color: var(--british-khaki);
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  z-index: 10;
+}
+
+.App-misc-text {
+  color: var(--dark-royal-blue)
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -47,6 +61,62 @@
 .App-quiz {
   text-align: center;
   background-color: var(--off-tan);
+}
+
+.quiz-tooltip{
+  cursor: pointer;
+  color: var(--dawn-dish-blue);
+  margin-left: 5px
+}
+
+/*Styling for the different nav buttons in the app */
+.btn-nav-disabled {
+  color: var(--dark-royal-blue);
+  outline-color: var(--dark-royal-blue);
+  outline-width: 3px;
+  outline-style: auto;
+}
+
+.btn-nav {
+  color: var(--off-white);
+  background-color: var(--dark-royal-blue);
+}
+
+.btn-nav:hover{
+  background-color: var(--diamond-blue);
+  color: var(white)
+}
+
+/*Styling for the quiz related buttons */
+.btn-selected {
+  background-color: var(--gift-wrap-purple);
+  color: var(--off-white);
+}
+
+.btn-selected:hover {
+  background-color: var(--dark-royal-blue);
+}
+
+.btn-selected-outlined {
+  color: var(--gift-wrap-purple);
+  outline-color: var(--gift-wrap-purple);
+  background-color: var(--off-white);
+  outline-width: 2px;
+  outline-style: solid;
+}
+
+.btn-selected-outlined:hover {
+  background-color: var(--gift-wrap-purple);
+  color: var(--off-white);
+}
+
+.btn-single-selected {
+  background-color: var(--off-white);
+  color: var(--diamond-blue);
+  outline-color: var(--diamond-blue);
+  outline-width: 2px;
+  outline-style: solid;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {

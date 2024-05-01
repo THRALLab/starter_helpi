@@ -57,11 +57,10 @@ export function SliderResponse({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle
+                <FaQuestionCircle className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
-                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (
@@ -90,10 +89,10 @@ export function SliderResponse({
                     size={25}
                 />
                 <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(localAnswer, false)}>Back</Button>
-                <Button onClick={() => onNext(localAnswer, true)}>Next</Button>
+                <Button variant="nav" onClick={() => onNext(localAnswer, true)}>Next</Button>
             </Form.Group>
         </div>
     )

@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from 'react-bootstrap';
-import { FaQuestionCircle } from "react-icons/fa";
+import { FaQuestionCircle, FaGripLines  } from "react-icons/fa";
+
+
+
+
+
+
 
 export function UserRanking({
     question,
@@ -18,43 +24,31 @@ export function UserRanking({
     prevAnswer: string;
 }): JSX.Element {
     const [tooltip, setTooltip] = useState<string>("");
-    const [categories, setCategories] = useState<string[]>(prevAnswer.split(","));
+    const [categories, setCategories] = useState<string[]>(prevAnswer ? prevAnswer.split(",").filter((item:string) => (!item.toLowerCase().includes("other"))) : options.filter((item:string) => (!item.toLowerCase().includes("other"))));
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
-    
-    /**
-    const updatePriorities = (priority: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.target.checked
-            ? setCategories([...categories, priority])
-            : setCategories(
-                [...categories].filter((chosenMember: string): boolean => chosenMember !== priority)
-            )
-    }
-     */
 
     function compressAnswer(): string {
         return categories.reduce((combined: string, selected: string) => combined ? combined + ", " + selected : selected, "");
     }
-    const pushUp = (priority: string) => {
-        const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
-        if (currIndex > 0) {
-            // Swap with the previous item
-            const newPriorities = [...categories];
-            [newPriorities[currIndex - 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex - 1]];
-            setCategories(newPriorities);
-        }
-    }
 
-    const pushDown = (priority: string) => {
-        const currCount = categories.reduce((count: number, chosenMember: string) => count += 1, 0);
-        const currIndex = categories.findIndex((chosenMember: string): boolean => chosenMember === priority);
-        if (currIndex < (currCount - 1)) {
-            // Swap with the previous item
-            const newPriorities = [...categories];
-            [newPriorities[currIndex + 1], newPriorities[currIndex]] = [newPriorities[currIndex], newPriorities[currIndex + 1]];
-            setCategories(newPriorities);
+    const handleDragStart = (index: number) => (event: React.DragEvent<HTMLLIElement>) => {
+        event.dataTransfer.setData("text/plain", index.toString());
+    };
+
+    const handleDragOver = (event: React.DragEvent<HTMLLIElement>) => {
+        event.preventDefault();  // Necessary for allowing drop
+    };
+
+    const handleDrop = (index: number) => (event: React.DragEvent<HTMLLIElement>) => {
+        const draggedIndex = parseInt(event.dataTransfer.getData("text/plain"), 10);
+        if (draggedIndex !== index) {
+            const newCategories = [...categories];
+            const item = newCategories.splice(draggedIndex, 1)[0];
+            newCategories.splice(index, 0, item);
+            setCategories(newCategories);
         }
-    }
+    };
 
     useEffect(() => {
         /**
@@ -82,11 +76,10 @@ export function UserRanking({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle
+                <FaQuestionCircle className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
-                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (
@@ -108,33 +101,23 @@ export function UserRanking({
                 </div>
             )}
             <ol style={{textAlign: "left"}}>
-                {categories.map((category) => (
-                    <li key={category}>
-                        <Button
-                            className="App-quiz"
-                            key={`${category}⬆️`}
-                            variant="outline-success"
-                            size="sm"
-                            onClick={() => pushUp(category)}
-                        >⬆</Button>
-                        {' '}
-                        <Button
-                            className="App-quiz"
-                            key={`${category}⬇️`}
-                            variant="outline-danger"
-                            size="sm"
-                            onClick={() => pushDown(category)}
-                        >⬇</Button>
-                        {' '}
-                        {category}
-                    </li>
+                {categories.map((category, index) =>  (
+                    <li 
+                    key={category}
+                    draggable={true}
+                    onDragStart={handleDragStart(index)}
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop(index)}
+                    style={{ cursor: 'move', marginBottom: '10px', listStyle: "none", margin: "0px", padding: "0px" }}>
+                    <FaGripLines></FaGripLines>{category}
+                </li>
                 ))}
             </ol>
             <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(compressAnswer(), false)}>Back</Button>
-            <Button onClick={() => onNext(compressAnswer(), true)}>Next</Button>  
+            <Button variant="nav" onClick={() => onNext(compressAnswer(), true)}>Next</Button>  
         </div>
     )
 }

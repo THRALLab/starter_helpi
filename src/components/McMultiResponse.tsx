@@ -90,7 +90,7 @@ export function McMultiResponse({
             <li key="Other">
                 <ToggleButton
                     className="App-quiz response-question"
-                    variant={localAnswer.includes(otherOption) ? "primary" : "outline-primary"}
+                    variant={localAnswer.includes(otherOption) ? "selected" : "selected-outlined"}
                     type="checkbox"
                     id="other"
                     value="Other"
@@ -108,11 +108,10 @@ export function McMultiResponse({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle
+                <FaQuestionCircle className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
-                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (
@@ -169,10 +168,10 @@ export function McMultiResponse({
                     ))}
                 </ul>
                 <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(compressAnswer(), false)}>Back</Button>
-                <Button onClick={() => onNext(compressAnswer(), true)}>Next</Button>
+                <Button variant="nav" onClick={() => onNext(compressAnswer(), true)}>Next</Button>
             </Form>
         </div>
     );

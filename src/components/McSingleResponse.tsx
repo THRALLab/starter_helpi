@@ -50,7 +50,7 @@ export function McSingleResponse({
             return(
                 <ToggleButton
                     className="App-quiz"
-                    variant={localAnswer === thisKey ? "primary" : "outline-secondary"}
+                    variant={localAnswer === thisKey ? "selected" : "outline-secondary"}
                     type="radio"
                     id="other"
                     value="Other"
@@ -66,11 +66,10 @@ export function McSingleResponse({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle
+                <FaQuestionCircle className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
-                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (
@@ -116,7 +115,7 @@ export function McSingleResponse({
                                 id={choice}
                                 value={choice}
                                 checked={localAnswer === choice}
-                                variant={localAnswer === choice ? "primary" : "outline-secondary"}
+                                variant={localAnswer === choice ? "selected" : "single-selected"}
                                 onChange={() => setLocalAnswer(choice)}
                                     > {choice}
                             </ToggleButton>
@@ -125,11 +124,11 @@ export function McSingleResponse({
                     ))}
                 </div>
                 <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(localAnswer, false)}>Back</Button>
                 <Button
-                    variant={localAnswer === "" ? "outline-primary" : "primary"}
+                    variant={localAnswer === "" ? "nav-disabled" : "nav"}
                     disabled={localAnswer === ""}
                     onClick={() => onNext(localAnswer, true)}> Next</Button>
             </Form>

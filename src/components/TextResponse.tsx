@@ -49,11 +49,10 @@ export function TextResponse({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle
+                <FaQuestionCircle className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
-                    style={{ cursor: 'pointer',  color: "red", marginLeft: '5px'}}
                 />
             </div>
             {tooltip && (
@@ -82,11 +81,11 @@ export function TextResponse({
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
                 />
                 <Button
-                    variant={isFirst ? "outline-primary" : "primary"}
+                    variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
                     onClick={() => onNext(localAnswer, false)}>Back</Button>
                 <Button 
-                    variant={localAnswer === "" ? "outline-primary" : "primary"}
+                    variant={localAnswer === "" ? "nav-disabled" : "nav"}
                     disabled={localAnswer === ""}
                     onClick={() => onNext(localAnswer, true)}
                 >Next</Button>

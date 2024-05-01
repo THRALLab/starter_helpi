@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { SelectQuiz } from "./pages/SelectQuiz";
 // Import any other components or pages you have
+import { ApiKeyInput } from "./pages/Home";
 import './css/App.css';
 import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
 import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
 import { ChatGBTPage } from "./pages/chat-gbt-page/ChatGBTPage";
+import { Col, Row } from "react-bootstrap";
 
 function App(): JSX.Element {
-  return (
+  return ( <>
     <Router>
       <div className="App">
         <header className="App-header">
@@ -36,6 +38,18 @@ function App(): JSX.Element {
         </Routes>
       </div>
     </Router>
+
+    <div className="App-footer"> 
+    <Row>
+      <Col>
+      <ApiKeyInput></ApiKeyInput>
+      </Col>
+      <Col style={{textAlign: "center"}}>
+      Isaac, Dylan, Barry
+      </Col>
+    </Row>
+   </div>
+   </>
   );
 }
 
