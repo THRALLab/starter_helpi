@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Form, Button, ToggleButton, FormControl } from 'react-bootstrap';
-import { FaQuestionCircle } from 'react-icons/fa'; // This line imports a question circle icon from Font Awesome
+import { BsFillInfoCircleFill } from 'react-icons/bs'; // This line imports a question circle icon from Font Awesome
 
 
 export function McSingleResponse({
@@ -66,7 +66,7 @@ export function McSingleResponse({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle className="quiz-tooltip"
+                <BsFillInfoCircleFill className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
