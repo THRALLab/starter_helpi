@@ -6,6 +6,7 @@ import AppFooter from './Components/AppFooter/AppFooter';
 import { BasicPage } from './Components/BasicPage/BasicPage';
 import { DetailedPage } from './Components/DetailedPage/DetailedPage';
 import { AboutPage } from './Components/AboutPage/AboutPage'
+import { ResultsPage } from './Components/ResultsPage/ResultsPage';
 
 
 let pageData = "Home";
@@ -50,6 +51,7 @@ function App() {
       {page === "Basic" && <BasicPage/>}
       {page === "Detailed" && <DetailedPage/>}
       {page === "About" && <AboutPage/>}
+      {page === "Results" && <ResultsPage/>}
       <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
     </div>
   );
