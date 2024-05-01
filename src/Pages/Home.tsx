@@ -51,7 +51,7 @@ function Home() {
         <Container>
           <Row>
             <Col className="Basic-Side">
-              <p className="Text-basic">
+              <div className="Text-basic">
                 <p className="Button-format">
                   <LinkButton
                     to="simplequestions"
@@ -61,10 +61,10 @@ function Home() {
                 This is a basic quiz with 15 questions. <br></br> It will take
                 around 5 to 10 minutes to complete. <br></br> The questions are
                 simple and multiple choice.
-              </p>
+              </div>
             </Col>
             <Col className="Detailed-Side">
-              <p className="Text-detailed">
+              <div className="Text-detailed">
                 <p className="Button-format">
                   <LinkButton
                     to="detailedquestions"
@@ -74,7 +74,7 @@ function Home() {
                 This is a detailed quiz with 30 questions. <br></br> It will
                 take around 10 to 15 minutes to complete. <br></br> The
                 questions are answered on a scale.
-              </p>
+              </div>
             </Col>
           </Row>
         </Container>

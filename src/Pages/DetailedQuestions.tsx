@@ -143,7 +143,7 @@ function DetailedQuestions() {
         <Container>
           <Row>
             <Col className="DetailedQuestions-questions">
-              <div id="sliderQuestion">
+              <div className="Slider-whole" id="sliderQuestion">
                 <SliderQuestion
                   value={currSliderValue}
                   onChange={setCurrSliderValue}
