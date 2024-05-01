@@ -44,7 +44,7 @@ function App(): JSX.Element {
           <Col>
           <ApiKeyInput></ApiKeyInput>
           </Col>
-          <Col style={{textAlign: "right"}}>
+          <Col style={{position: "fixed", textAlign: "right"}}>
           Isaac, Dylan, Barry
           </Col>
         </Row>
