@@ -18,12 +18,16 @@ export function McSingleResponse({
     isFirst: boolean;
     prevAnswer: string;
 }): JSX.Element {
+    const otherOption = "other"; // Define the text for the "Other" option
     const [tooltip, setTooltip] = useState<string>("");
-    const [localAnswer, setLocalAnswer] = useState<string>(prevAnswer);
+    const initialOtherValue = prevAnswer && prevAnswer.startsWith(otherOption + ": ") ? prevAnswer : "";
+    const [localAnswer, setLocalAnswer] = useState<string>(
+        prevAnswer && !prevAnswer.startsWith(otherOption + ": ") ? prevAnswer : otherOption
+    );
+    const [customAnswer, setCustomAnswer] = useState<string>(initialOtherValue);
+
     const questionRef = useRef<HTMLHeadingElement>(null);
     const [questionWidth, setQuestionWidth] = useState<number>(0);
-    const [customAnswer, setCustomAnswer] = useState<string>("");
-
     useEffect(() => {
         /**
         * Positioning for dynamic tooltip that appears when the user hovers over
@@ -45,22 +49,19 @@ export function McSingleResponse({
         return () => window.removeEventListener('resize', updateTooltipPosition);
     }, [question]);
 
-    const DisplayOther = ({thisKey}:{thisKey : string}): JSX.Element => {
-        if (!localAnswer.includes("other")) {
-            return(
-                <ToggleButton
-                    className="App-quiz"
-                    variant={localAnswer === thisKey ? "selected" : "outline-secondary"}
-                    type="radio"
-                    id="other"
-                    value="Other"
-                    onChange={() => setLocalAnswer("Other")}
-                >
-                    Other
-                </ToggleButton>
-            )
-        } else return <></>
-    }
+    const handleOptionChange = (option: string) => {
+        console.log(option);
+        if (option === otherOption) {
+            setLocalAnswer(option);
+            // Optionally reset customAnswer if needed when "Other" is selected
+        } else {
+            setLocalAnswer(option);
+            if (localAnswer === otherOption) {
+                setCustomAnswer("");  // Clear custom answer if moving away from "Other"
+            }
+        }
+    };
+
     
     return (
         <div style={{ position: 'relative' }}>
@@ -91,46 +92,42 @@ export function McSingleResponse({
                 </div>
             )}
             <Form>
-                <div>
-                    {options.map((choice) => (
-                        choice.toLowerCase().includes("other")
-                        ? (
-                            <>
-                            <DisplayOther thisKey={choice}/>
-                            {(localAnswer === "Other") && (
-                                <FormControl
-                                    style={{ marginTop: '10px' }}
-                                    placeholder="Type your custom answer here"
-                                    value={customAnswer}
-                                    onChange={(event) => setCustomAnswer(event.target.value)}
-                                />
-                            )}
-                        </>
-                        ) :
-                        <>
-                            <ToggleButton  
+            <ul style={{ listStyleType: 'none', padding: 0 }}>
+                    {options.map((option, idx) => (
+                        <li key={idx}>
+                            <ToggleButton
                                 className="App-quiz"
-                                key={`${choice}Select`}
+                                id={`option-${idx}`}
                                 type="radio"
-                                id={choice}
-                                value={choice}
-                                checked={localAnswer === choice}
-                                variant={localAnswer === choice ? "selected" : "single-selected"}
-                                onChange={() => setLocalAnswer(choice)}
-                                    > {choice}
+                                variant={localAnswer === option ? "outline-secondary" : "outline-primary"}
+                                name="options"
+                                checked={localAnswer === option}
+                                value={option}
+                                onChange={() => handleOptionChange(option)}
+                            >
+                                {option}
                             </ToggleButton>
-                            <br></br>
-                        </>
+                        </li>
                     ))}
-                </div>
+                    {localAnswer.toLowerCase().includes(otherOption) && (
+                        <li>
+                            <FormControl
+                            style={{ marginTop: '10px' }}
+                            placeholder="Type your custom answer here"
+                            value={customAnswer}
+                            onChange={(e) => setCustomAnswer(e.target.value)}
+                            />
+                        </li>
+                    )}
+                </ul>
                 <Button
                     variant={isFirst ? "nav-disabled" : "nav"}
                     disabled={isFirst}
-                    onClick={() => onNext(localAnswer, false)}>Back</Button>
+                    onClick={() => onNext(localAnswer.toLocaleLowerCase().includes(otherOption) ? customAnswer : localAnswer, false)}>Back</Button>
                 <Button
                     variant={localAnswer === "" ? "nav-disabled" : "nav"}
                     disabled={localAnswer === ""}
-                    onClick={() => onNext(localAnswer, true)}> Next</Button>
+                    onClick={() => onNext(localAnswer.toLocaleLowerCase().includes(otherOption) ? customAnswer : localAnswer, true)}> Next</Button>
             </Form>
         </div>
     );

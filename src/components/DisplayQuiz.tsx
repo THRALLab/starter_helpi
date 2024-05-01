@@ -11,6 +11,7 @@ import OpenAI from "openai";
 import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
+import { Container } from "react-bootstrap";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -244,20 +245,26 @@ export function DisplayQuiz(
         prevAnswer: foundAnswer ? foundAnswer.answer : ""
     };
 
+    const renderQuestionComponent = () => {
+        switch (currentQuestion.type) {
+            case "MC_SINGLE_RESPONSE":
+                return <McSingleResponse {...questionComponentProps} />;
+            case "MC_MULTI_RESPONSE":
+                return <McMultiResponse {...questionComponentProps} />;
+            case "USER_RANKING":
+                return <UserRanking {...questionComponentProps} />;
+            case "TEXT_RESPONSE":
+                return <TextResponse {...questionComponentProps} />;
+            case "SLIDER_RESPONSE":
+                return <SliderResponse {...questionComponentProps} />;
+            default:
+                return <h1>Unknown question type</h1>;
+        }
+    };
 
-    //displays the curent question type
-    switch (currentQuestion.type) {
-        case "MC_SINGLE_RESPONSE":
-            return <McSingleResponse {...questionComponentProps} />;
-        case "MC_MULTI_RESPONSE":
-            return <McMultiResponse {...questionComponentProps} />;
-        case "USER_RANKING":
-            return <UserRanking {...questionComponentProps} />;
-        case "TEXT_RESPONSE":
-            return <TextResponse {...questionComponentProps} />;
-        case "SLIDER_RESPONSE":
-            return <SliderResponse {...questionComponentProps} />;
-        default:
-            return <h1>Unknown question type</h1>;
-    }
+    return (
+        <Container className="quiz-container">
+            {renderQuestionComponent()}
+        </Container>
+    );
 }

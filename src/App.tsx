@@ -36,19 +36,19 @@ function App(): JSX.Element {
         />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
+
       </div>
     </Router>
-
     <div className="App-footer"> 
-    <Row>
-      <Col>
-      <ApiKeyInput></ApiKeyInput>
-      </Col>
-      <Col style={{textAlign: "center"}}>
-      Isaac, Dylan, Barry
-      </Col>
-    </Row>
-   </div>
+        <Row>
+          <Col>
+          <ApiKeyInput></ApiKeyInput>
+          </Col>
+          <Col style={{textAlign: "right"}}>
+          Isaac, Dylan, Barry
+          </Col>
+        </Row>
+      </div>
    </>
   );
 }
