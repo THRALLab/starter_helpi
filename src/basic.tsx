@@ -1,26 +1,27 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import questions from "./basicQuestions.json";
 import { QuestionFormatProps } from "./interfaces/questionFormat"
-import './ProgressBar';
+//import ProgressBar from './ProgressBar';
 
+//component used for formatting of radio buttons and questions
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
+	//selected options for each question
 	const [selected, setSelected] = useState<string | null>(null);
 	const optionSelect = (option: string) => {
 		setSelected(option);
 	};
-	/*useEffect(()=>{
-		setSelected(basicQuestions);
-	},[]);*/
+	
+	//mapping of each question's option
 	return (
 		<div>
 			<p>Select an option:</p>
-			{options.map(option => (
+			{options.map((option) => (
 				<label key={option}>
 					<input
 						type="radio"
-						value={option}
+						value={options}
 						checked={selected === option}
 						onChange={() => optionSelect(option)}
 					/>
@@ -39,7 +40,7 @@ function Basic() {
 			{questions.map((question: QuestionFormatProps, question_number) => (
 				<div key={question_number}>
 					<h2>{question.question}</h2>
-					<QuestionFormatComponent options={question.options} question={""}/>
+					<QuestionFormatComponent question_number = {question.question_number} question={question.question} options={question.options} type={question.type}/>
 				</div>
 			))}
 		</div>
