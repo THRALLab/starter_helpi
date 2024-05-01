@@ -727,7 +727,7 @@ const DetailedPage = () => {
 			catch(e){ //catches any errors that may occur with an invalid API key
 				//console.log(e);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
-				window.location.href = "/"; //If the API key is invalid, it'll redirect the user to the home page
+				window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
 			}  
 		}
 
