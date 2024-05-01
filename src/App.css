@@ -109,6 +109,14 @@ h2 {
   text-decoration: solid; 
 };
 
+.detailed-questions h2 {
+  /* font-weight: bold; */
+  font-size: 2em;
+  text-shadow: 2px 2px 4px black;
+  height: 50px;
+  text-decoration: solid; 
+};
+
 
 .options-container {
   margin-left: 20px;

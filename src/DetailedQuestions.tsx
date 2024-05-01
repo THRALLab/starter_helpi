@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ProgressBar, Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import './App.css';
+// import './DetailedQuestions.css'
 
 const DetailedQuestions: React.FC = () => {
   const [questions] = useState([
@@ -78,15 +80,27 @@ const DetailedQuestions: React.FC = () => {
   ]);
 
   const [selectedOptions, setSelectedOptions] = useState<Record<number, string>>({});
+  const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
+  const navigate = useNavigate();
+
 
   const handleOptionSelect = (questionId: number, option: string) => {
     setSelectedOptions(prevOptions => ({
       ...prevOptions,
       [questionId]: option
     }));
+
+    //checks to make sure all questions were answered.
+    const answeredQuestions = Object.keys(selectedOptions).length + 1;
+    setAllQuestionsAnswered(answeredQuestions === questions.length);
   };
 
+
+
   const handleGetResults = () => {
+    if(allQuestionsAnswered){
+      navigate('/report');
+    }
     console.log("Results will be displayed in the future.");
   };
 
@@ -102,14 +116,15 @@ const DetailedQuestions: React.FC = () => {
       <div style={{ paddingTop: '50px' }}>
         <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
       </div>
-      <div style={{ paddingTop: '50px' }}>
-        <h2>Detailed Questions</h2>
+      <div className = "questions.container">
+        <h2 className = "detailed-questions-title">Detailed Questions</h2>
         {questions.map(question => (
-          <div key={question.id} style={{ backgroundColor: 'rgba(139, 0, 0, 0.8)', padding: '10px', borderRadius: '10px', border: '2px solid #8b0000', margin: '0 200px 20px 200px' }}>
-            <h3 style={{ color: 'white' }}>{question.question}</h3>
+          //style={{ backgroundColor: 'rgba(139, 0, 0, 0.8)', padding: '10px', borderRadius: '10px', border: '2px solid #8b0000', margin: '0 200px 20px 200px' }}
+          <div key={question.id} className = "question-container">
+            <h3>{question.question}</h3>
             <Form>
               {question.options.map(option => (
-                <div key={option} style={{ marginBottom: '5px' }}>
+                <div key={option} className = "option-container">
                   <Form.Check
                     type="radio"
                     id={`${question.id}-${option}`}
@@ -118,7 +133,7 @@ const DetailedQuestions: React.FC = () => {
                     onChange={() => handleOptionSelect(question.id, option)}
                     style={{ display: 'none' }} // Hide the radio button
                   />
-                  <label htmlFor={`${question.id}-${option}`} style={{ cursor: 'pointer', backgroundColor: selectedOptions[question.id] === option ? '#420303' : 'transparent', padding: '5px', borderRadius: '5px' }}>{option}</label>
+                  <label htmlFor={`${question.id}-${option}`} style={{ cursor: 'pointer', backgroundColor: selectedOptions[question.id] === option ? 'rgba(0, 0, 0, 0.4)' : 'transparent', padding: '5px', borderRadius: '5px' }}>{option}</label>
                 </div>
               ))}
             </Form>

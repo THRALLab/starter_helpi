@@ -6,11 +6,20 @@ HomePage.css
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     min-height: 100vh;
   }
   
+  .quizzes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    float: left;
+  }
+
   .HomePage h1 {
     font-weight: bold;
     margin-bottom: 100px;
@@ -24,6 +33,7 @@ HomePage.css
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 45%;
   }
   
   .question {
@@ -33,7 +43,7 @@ HomePage.css
     padding: 30px;
     border-radius: 50px;
     box-shadow: 0, 4px, 6px, black;
-    width: 1000px;
+    width: 100%;
   }
 
   .question h2 {
@@ -43,6 +53,28 @@ HomePage.css
   .question p {
     line-height: 1.6;
   }
+
+  /* Add more styles as needed for the login section */
+  .login-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    float: right;
+  }
+
+.login-form {
+  width: 100%;
+  max-width: 300px; /* Adjust max-width as needed */
+}
+
+.create-account-button {
+  margin-top: 20px;
+}
 
   .api-key-input {
     display: flex;
