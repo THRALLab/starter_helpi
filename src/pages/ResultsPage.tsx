@@ -1,11 +1,12 @@
 import './resultsPage.css';
 
-function parseAnswers(answers: string): string[] {
+/*function parseAnswers(answers: string): string[] {
     let array = answers.substring(1,answers.length-1).split(",");
     array = array.map((answer) => answer.substring(1,answer.length-1));
     return array;
-}
+}*/
 
+//commented out the function until it is being used so we can build on GIT without errors
 //get the string-array from the question pages and pass through here.
 
 const ResultsPage = () => {
