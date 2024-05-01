@@ -46,77 +46,15 @@ export function BasicQuestionsPage(): JSX.Element {
     `}
   `;
 
-    const questions = [
-		{
-			id: 1,
-            answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-		},
-		{
-			id: 2,
-            answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-			
-		},
-		{
-			id: 3,
-            answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-			
-		},
-		{
-			id: 4,
-            answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-			
-		},
-        {
-			id: 5,
-            answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-			
-		},
-        {
-			id: 6,
-            answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-			
-		},
-        {
-			id: 7,
-            answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-			
-		}
-	];    
+  const questions = [
+    { id: 1, question: "How do you prefer to spend your spare time?" },
+    { id: 2, question: "Choose a school subject you excelled in or enjoyed the most." },
+    { id: 3, question: "What kind of problems do you enjoy solving?" },
+    { id: 4, question: "Which type of work environment do you prefer?" },
+    { id: 5, question: "How do you prefer to contribute to a team?" },
+    { id: 6, question: "What motivates you the most in a job?" },
+    { id: 7, question: "What role do you naturally find yourself taking in group settings?" }
+]; 
 
    
     const [goToHomePage, setGoToHomePage] = React.useState(false);
