@@ -138,7 +138,9 @@ const BasicPage = () => {
 				console.log(response.choices[0].message.content); //GPT Response to the user's input
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
-				console.log(e);
+				//console.log(e);
+				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
+				window.location.href = "/"; 
 			}  
 		}
 
@@ -146,7 +148,8 @@ const BasicPage = () => {
 	
 	}
 
-  const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
+
+	  const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
 
   function doReset(): void{ //clears all the choices by setting all elements in array to -1
 	const resetResponse: number[] = Array(response.length).fill(-1);
