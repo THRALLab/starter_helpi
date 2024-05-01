@@ -50,38 +50,30 @@ function Home() {
         </p>
         <Container>
           <Row>
-            <Col>
-              <p className="Button-format">
-                <LinkButton
-                  to="simplequestions"
-                  label="Basic Quiz"
-                ></LinkButton>
-              </p>
+            <Col className="Basic-Side">
               <p className="Text-basic">
-                This is a basic quiz with 15 questions.
-              </p>
-              <p className="Text-basic">
-                It will take around 5 to 10 minutes to complete.
-              </p>
-              <p className="Text-basic">
-                The questions are simple and multiple choice.
+                <p className="Button-format">
+                  <LinkButton
+                    to="simplequestions"
+                    label="Basic Quiz"
+                  ></LinkButton>
+                </p>
+                This is a basic quiz with 15 questions. <br></br> It will take
+                around 5 to 10 minutes to complete. <br></br> The questions are
+                simple and multiple choice.
               </p>
             </Col>
-            <Col>
-              <p className="Button-format">
-                <LinkButton
-                  to="detailedquestions"
-                  label="Detailed Quiz"
-                ></LinkButton>
-              </p>
+            <Col className="Detailed-Side">
               <p className="Text-detailed">
-                This is a detailed quiz with 30 questions.
-              </p>
-              <p className="Text-detailed">
-                It will take around 10 to 15 minutes to complete.
-              </p>
-              <p className="Text-detailed">
-                The questions are answered on a scale.
+                <p className="Button-format">
+                  <LinkButton
+                    to="detailedquestions"
+                    label="Detailed Quiz"
+                  ></LinkButton>
+                </p>
+                This is a detailed quiz with 30 questions. <br></br> It will
+                take around 10 to 15 minutes to complete. <br></br> The
+                questions are answered on a scale.
               </p>
             </Col>
           </Row>

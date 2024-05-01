@@ -3,19 +3,30 @@
   margin-bottom: 5vh;
   margin-left: 15%;
   margin-right: 15%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--color-body-TextBackground);
 }
 
 .Text-basic {
   text-align: left;
   margin-left: 10%;
+  right: 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
 }
 
 .Text-detailed {
   text-align: left;
-  margin-left: 10%;
+  left: 0;
+  margin-right: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
 }
 
 .Button-format {
   color: var(--color-body-text);
-  background-color: var(--color-body-background);
+  text-align: center;
 }

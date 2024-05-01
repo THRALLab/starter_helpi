@@ -11,6 +11,7 @@
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: orange;
   --color-body-BarColor: green;
+  --color-body-TextBackground: white;
 }
 
 .body-theme2 {
@@ -121,7 +122,6 @@
   justify-content: center;
   margin-left: 2%;
   left: 0;
-  margin-bottom: 1vh;
   font-size: calc(7px + 1vw);
   color: var(--color-body-Headertext);
 }
