@@ -18,6 +18,7 @@ function App() {
     <><Router>
       <Navbar />
       <Routes>
+        <Route path="/starter_helpi/" element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/detailedPage" element={<DetailedPage />} />
         <Route path="/BasicPage" element={<BasicPage/>}/>
