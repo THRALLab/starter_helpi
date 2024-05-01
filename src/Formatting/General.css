@@ -12,6 +12,9 @@
   --color-body-BarGradient: orange;
   --color-body-BarColor: green;
   --color-body-TextBackground: white;
+  --color-body-SliderBottom: green;
+  --color-body-SliderTop: black;
+  --color-body-SliderThumb: purple;
 }
 
 .body-theme2 {
