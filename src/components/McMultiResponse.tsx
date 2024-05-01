@@ -89,7 +89,7 @@ export function McMultiResponse({
             return(
             <li key="Other">
                 <ToggleButton
-                    className="App-quiz"
+                    className="App-quiz response-question"
                     variant={localAnswer.includes(otherOption) ? "primary" : "outline-primary"}
                     type="checkbox"
                     id="other"
@@ -150,9 +150,10 @@ export function McMultiResponse({
                             </>
                          )
                         : (
-                            <li key={choice}>
+                            <li 
+                            key={choice}>
                                 <ToggleButton
-                                    className="App-quiz"
+                                    className="App-quiz response-question"
                                     variant={localAnswer.includes(choice) ? "primary" : "outline-primary"}
                                     key={`${choice}Select`}
                                     type="checkbox"
