@@ -24,7 +24,7 @@ const currData = sessionStorage.getItem(saveDetailedDataKey);
 if (currData !== null) {
     pageData = JSON.parse(currData) as QuestionData[];
 }
-export function DetailedPage() {
+export function DetailedPage({ page, setPage }: Readonly<{ page: string; setPage: (newPage: string) => void }>) {
     let questionKey = 0;
     const maxAnswerLength = 500;
     const [questionNumber, setQuestionNumber] = React.useState(0);
@@ -90,7 +90,7 @@ export function DetailedPage() {
                             )
                             )}
                         </Carousel>
-                        <SubmitButton isFinished={isFinished} />
+                        <SubmitButton page={page} setPage={setPage} isFinished={isFinished} />
                     </Form>
                 </Card.Body>
             </Card>

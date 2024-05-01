@@ -56,7 +56,7 @@ const reverseMap: Record<string, string>= {
 }
 
 
-export function BasicPage() {
+export function BasicPage({ page, setPage }: Readonly<{ page: string; setPage: (newPage: string) => void }>) {
 
     const [questionData, setQuestionData] = React.useState(pageData);
     const [isFinished, setIsFinished] = React.useState(questionData.every((question) => question.answer.length > 0));
@@ -106,7 +106,7 @@ export function BasicPage() {
                     )
                     )}
                 </Accordion>
-                <SubmitButton isFinished={isFinished} />
+                <SubmitButton page={page} setPage={setPage} isFinished={isFinished} />
             </div>
         </div>
     )

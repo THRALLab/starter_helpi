@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button, Overlay, Tooltip } from 'react-bootstrap';
 import './SubmitButton.css';
 
-const SubmitButton = ({ isFinished }: { isFinished: boolean }) => {
+const SubmitButton = ({ isFinished, page, setPage }: { isFinished: boolean; page: string; setPage: (newPage: string) => void; }) => {
     const [showPopup, setShowPopup] = useState(false);
     const target = useRef(null);
 
@@ -17,7 +17,7 @@ const SubmitButton = ({ isFinished }: { isFinished: boolean }) => {
 
     return (
         <>
-            <Button ref={target} style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }} disabled={!isFinished}>Submit</Button>
+            <Button ref={target} style={{ backgroundColor: '#6923ff', borderColor: '#6923ff' }} onClick={() => setPage("Results")} disabled={!isFinished}>Submit</Button>
             <Overlay target={target.current} show={showPopup} placement="bottom" onEntered={hideTooltip}>
                 {({
                     ...props
