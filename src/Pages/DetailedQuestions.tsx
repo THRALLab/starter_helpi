@@ -129,15 +129,15 @@ function DetailedQuestions() {
 
   return (
     <div className={themeState} id="bigBody">
-      <header className="General-header">
+      <div className="General-header">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>
-        <span>The Career Lab</span>
+        <span className="Header-text">The Career Lab</span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
-        </span>{" "}
-      </header>
+        </span>
+      </div>
 
       <div className="Page-body">
         <Container>

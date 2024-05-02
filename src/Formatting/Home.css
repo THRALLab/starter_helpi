@@ -6,24 +6,25 @@
   padding: 10px;
   border-radius: 10px;
   background-color: var(--color-body-TextBackground);
+  text-justify: auto;
 }
 
 .Text-basic {
-  text-align: left;
-  margin-left: 10%;
   right: 0;
+  margin-left: 10%;
+  margin-right: 5%;
   padding: 10px;
   border-radius: 10px;
-  background-color: white;
+  background-color: var(--color-body-TextBackground);
 }
 
 .Text-detailed {
-  text-align: left;
   left: 0;
   margin-right: 10%;
+  margin-left: 5%;
   padding: 10px;
   border-radius: 10px;
-  background-color: white;
+  background-color: var(--color-body-TextBackground);
 }
 
 .Button-format {

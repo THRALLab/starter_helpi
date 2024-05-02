@@ -48,7 +48,7 @@ function Home() {
           project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory
           Jordan.
         </p>
-        <Container>
+        <Container className="Page-questionsection">
           <Row>
             <Col className="Basic-Side">
               <div className="Text-basic">

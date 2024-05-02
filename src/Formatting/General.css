@@ -12,9 +12,7 @@
   --color-body-BarGradient: orange;
   --color-body-BarColor: green;
   --color-body-TextBackground: white;
-  --color-body-SliderBottom: green;
-  --color-body-SliderTop: black;
-  --color-body-SliderThumb: purple;
+  --color-body-SliderThumb: blue;
 }
 
 .body-theme2 {
@@ -30,6 +28,8 @@
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #af73ca;
   --color-body-BarColor: #67b1c8;
+  --color-body-TextBackground: rgb(0, 0, 0);
+  --color-body-SliderThumb: blue;
 }
 
 
@@ -46,6 +46,8 @@
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #50623A;
   --color-body-BarColor: #789461;
+  --color-body-TextBackground: rgb(0, 0, 0);
+  --color-body-SliderThumb: blue;
 }
 
 
@@ -62,6 +64,8 @@
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #6b6b6b;
   --color-body-BarColor: #9b870c;
+  --color-body-TextBackground: rgb(38, 29, 29);
+  --color-body-SliderThumb: blue;
 }
 
 .body-theme5 {
@@ -77,6 +81,8 @@
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #6c0e4e;
   --color-body-BarColor: #2b13a4;
+  --color-body-TextBackground: rgb(33, 25, 25);
+  --color-body-SliderThumb: blue;
 }
 
 .body-theme6 {
@@ -92,6 +98,8 @@
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #6b6b6b;
   --color-body-BarColor: rgb(47, 145, 101);
+  --color-body-TextBackground: rgb(35, 28, 28);
+  --color-body-SliderThumb: blue;
 }
 
 .body-theme7 {
@@ -107,6 +115,8 @@
   --color-body-ProgressBackground: #000000;
   --color-body-BarGradient: #4fffaa;
   --color-body-BarColor: red;
+  --color-body-TextBackground: #ffffff;
+  --color-body-SliderThumb: blue;
 }
 
 .General-header {
@@ -116,9 +126,8 @@
   justify-content: center;
   flex-flow: row nowrap;
   min-height: 10vh;
-  font-size: calc(15px + 3vmin);
-  color: var(--color-body-Headertext);
   background-color: var(--color-body-Headerbackground);
+  font-family: Arial;
 }
 
 .Header-toggle {
@@ -139,6 +148,13 @@
   right: 0;
   font-size: calc(10px + 2vw);
   color: var(--color-body-Headertext);
+  margin-bottom: 4px;
+}
+
+.Header-text {
+  font-size: calc(15px + 3vmin);
+  color: var(--color-body-Headertext);
+  font-family: stencil;
 }
 
 .Page-body {
@@ -152,6 +168,7 @@
   font-size: calc(6px + 2vmin);
   color: var(--color-body-text);
   background-color: var(--color-body-background);
+  font-family: Arial;
 }
 
 .Button-link {
@@ -173,6 +190,7 @@
   padding-bottom: 1vh;
   padding-left: 1vw;
   padding-right: 1vw;
+  font-family: Arial;
 }
 
 /*

@@ -122,15 +122,15 @@ function SimpleQuestions() {
 
   return (
     <div className={themeState} id="bigBody">
-      <header className="General-header">
+      <div className="General-header">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>
-        <span>The Career Lab</span>
+        <span className="Header-text">The Career Lab</span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
-        </span>{" "}
-      </header>
+        </span>
+      </div>
 
       <div className="Simple-body">
         <span className="Simple-back-top">
@@ -174,35 +174,37 @@ function SimpleQuestions() {
             </div>
           </div>
         </div>
-        <div className="Simple-question">
-          <div className="Simple-question-body">{questionBody}</div>
-        </div>
-        <div className="Simple-buttons">
-          <span className="Button-visible-true" id="nextButton">
-            <span className="Simple-option-1">
-              <Button
-                className="Button-next"
-                onClick={() => nextQuestion(option1)}
-              >
-                {option1}
-              </Button>
+        <div className="Simple-textSpace">
+          <div className="Simple-question">
+            <div className="Simple-question-body">{questionBody}</div>
+          </div>
+          <div className="Simple-buttons">
+            <span className="Button-visible-true" id="nextButton">
+              <span className="Simple-option-1">
+                <Button
+                  className="Button-next"
+                  onClick={() => nextQuestion(option1)}
+                >
+                  {option1}
+                </Button>
+              </span>
+              <span className="Simple-option-2">
+                <Button
+                  className="Button-next-2"
+                  onClick={() => nextQuestion(option2)}
+                >
+                  {option2}
+                </Button>
+              </span>
             </span>
-            <span className="Simple-option-2">
-              <Button
-                className="Button-next-2"
-                onClick={() => nextQuestion(option2)}
-              >
-                {option2}
-              </Button>
+            <span className="Button-visible-false" id="reportButton">
+              <span>
+                <p className="Button-report" style={{ paddingTop: "40px" }}>
+                  <LinkButton to="/simplereport" label="Report"></LinkButton>
+                </p>
+              </span>
             </span>
-          </span>
-          <span className="Button-visible-false" id="reportButton">
-            <span>
-              <p className="Button-report" style={{ paddingTop: "40px" }}>
-                <LinkButton to="/simplereport" label="Report"></LinkButton>
-              </p>
-            </span>
-          </span>
+          </div>
         </div>
       </div>
 
