@@ -23,8 +23,20 @@ export const ThemeSelect = () => {
   }
 
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <Form.Label htmlFor="userThemes" style={{ marginRight: "10px" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Form.Label
+        htmlFor="userThemes"
+        style={{
+          marginRight: "10px",
+          marginTop: "8px",
+        }}
+      >
         Theme:
       </Form.Label>
       <Form.Select

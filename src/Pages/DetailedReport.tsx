@@ -89,48 +89,50 @@ function DetailedReport() {
 
   return (
     <div className={themeState} id="bigBody">
-      <header className="General-header">
+      <div className="General-header">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>
-        <span>The Career Lab</span>
+        <span className="Header-text">The Career Lab</span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
-        </span>{" "}
-      </header>
+        </span>
+      </div>
 
       <div className="Page-body">
-        <div className="Report-header">View your Detailed Quiz Results!</div>
-        <Form className="Report-body">
-          <Button className="Button-chatGPT" onClick={ChatGPT}>
-            Generate Report
-          </Button>
-        </Form>
-        {loading && (
-          <div>
-            <Spinner animation="border" role="status">
-              <span className="sr-only"></span>
-            </Spinner>
-            <p>Generating Your Results...</p>
-          </div>
-        )}
-        {!loading && careerList.length >= 3 && (
-          <div className="Report-results">
-            Based on your results:
+        <div className="Report-space">
+          <div className="Report-header">View your Detailed Quiz Results!</div>
+          <Form className="Report-body">
+            <Button className="Button-chatGPT" onClick={ChatGPT}>
+              Generate Report
+            </Button>
+          </Form>
+          {loading && (
             <div>
-              <br />
-              <span className="Report-results-header">Career 1:</span>
-              <li>{careerList[1]}</li>
-              <br />
-              <span className="Report-results-header">Career 2:</span>
-              <li>{careerList[2]}</li>
-              <br />
-              <span className="Report-results-header">Career 3:</span>
-              <li>{careerList[3]}</li>
+              <Spinner animation="border" role="status">
+                <span className="sr-only"></span>
+              </Spinner>
+              <p>Generating Your Results...</p>
             </div>
-          </div>
-        )}
-        {!loading && careerList.length < 3 && <div>{responseData}</div>}
+          )}
+          {!loading && careerList.length >= 3 && (
+            <div className="Report-results">
+              Based on your results:
+              <div>
+                <br />
+                <span className="Report-results-header">Career 1:</span>
+                <li>{careerList[1]}</li>
+                <br />
+                <span className="Report-results-header">Career 2:</span>
+                <li>{careerList[2]}</li>
+                <br />
+                <span className="Report-results-header">Career 3:</span>
+                <li>{careerList[3]}</li>
+              </div>
+            </div>
+          )}
+          {!loading && careerList.length < 3 && <div>{responseData}</div>}
+        </div>
       </div>
 
       <div className="API-Footer">

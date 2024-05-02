@@ -8,6 +8,7 @@
   font-size: calc(5px + 2vmin);
   background-color: var(--color-body-background);
   color: var(--color-body-text);
+  font-family: Arial;
 }
 
 .Simple-progress {
@@ -41,14 +42,16 @@
   align-self: right;
 }
 
-.Simple-question {
-  color: var(--color-body-questionText);
-  padding: 10px;
+.Simple-textSpace {
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10px;
+  color: var(--color-body-text);
+  background-color: var(--color-body-TextBackground);
 }
 
 .Simple-question-body {
   padding: 10px;
-  background-color: var(--color-body-BarColor);
 }
 
 .Simple-buttons {
@@ -62,7 +65,7 @@
   position: absolute;
   left: 1;
   right: 0;
-  padding-right: 55vw;
+  padding-right: 49vw;
 }
 
 .Simple-option-2 {
@@ -71,7 +74,7 @@
   right: 1;
   padding-right: 0;
   margin-right: 0;
-  padding-left: 7.5vw;
+  padding-left: 12vw;
 }
 
 .Simple-back-bottom {

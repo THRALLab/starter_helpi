@@ -2,6 +2,16 @@
   font-size: x-large;
 }
 
+.Report-space {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--color-body-TextBackground);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
+
 .Report-body {
   margin-top: 2vh;
   margin-bottom: 3vh;
