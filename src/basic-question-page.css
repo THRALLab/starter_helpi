@@ -1,0 +1,159 @@
+.progress-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Ensure it's above other elements */
+  }
+
+.progress {
+    width: 60%;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    height: 20px;
+    margin-bottom: 20px;
+    margin: 0 auto 20px;
+  }
+  
+  .progress-bar {
+    background-color: #007bff;
+    height: 100%;
+    border-radius: 5px;
+  }
+  .strong_agree{
+    background-color: #003d21d4;
+    border: 2px solid rgb(17, 21, 16); 
+    color: white; 
+    text-align: center;
+    font-size: 12px;
+    padding: 5 10px; 
+    margin: 10px; 
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  .agree{
+    background-color: #2f8000d4;
+    border: 2px solid rgb(17, 21, 16); 
+    color: white; 
+    text-align: center;
+    font-size: 12px;
+    padding: 5 10px; 
+    margin: 10px; 
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  .neutral{
+    background-color: #737500d4;
+    border: 2px solid rgb(17, 21, 16); 
+    color: white; 
+    text-align: center;
+    font-size: 12px;
+    padding: 5 10px; 
+    margin: 10px; 
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  .disagree{
+    background-color: #7a3b00d4;
+    border: 2px solid rgb(17, 21, 16); 
+    color: white; 
+    text-align: center;
+    font-size: 12px;
+    padding: 5 10px; 
+    margin: 10px; 
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  .strong_disagree{
+    background-color: #4b0200d4;
+    border: 2px solid rgb(17, 21, 16); 
+    color: white; 
+    text-align: center;
+    font-size: 12px;
+    padding: 5 10px; 
+    margin: 10px; 
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  .current_answer{
+    background-color: rgba(128, 128, 128, 0.61);
+    border: 3px solid rgb(17, 21, 16); 
+    color: white; 
+    text-align: center;
+    font-size: 12px;
+    padding: 5 10px; 
+    margin: 10px; 
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  .strong_agree:hover{
+    background-color: grey;
+  }  
+  .strong_agree:active{
+    background-color: grey;
+  } 
+  .agree:hover{
+    background-color: grey;
+  }  
+  .agree:active{
+    background-color: grey;
+  } 
+  .neutral:hover{
+    background-color: grey;
+  }  
+  .neutral:active{
+    background-color: grey;
+  } 
+  .disagree:hover{
+    background-color: grey;
+  }  
+  .disagree:active{
+    background-color: grey;
+  } 
+  .strong_disagree:hover{
+    background-color: grey;
+  }  
+  .strong_disagree:active{
+    background-color: grey;
+  } 
+
+
+
+  .b{
+    background-color: #00dd8cd4;
+    border: 2px solid rgb(17, 21, 16); 
+    color: white; 
+    text-align: center;
+    font-size: 12px;
+    padding: 5 10px; 
+    margin: 10px; 
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  .b:hover{
+    background-color: grey;
+  }  
+  .b:active{
+    background-color: grey;
+  } 
+
+.lines{
+  border: none;
+  border-top: 5px dotted #000000; 
+  width: 50%; 
+  margin: 0 auto; 
+}
+
+.CareerMatchText {
+  margin-bottom: 15vh;
+  margin-top: 2vh;
+}
+ 
+ 
