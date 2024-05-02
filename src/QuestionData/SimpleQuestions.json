@@ -2,90 +2,105 @@
   "SIMPLE_QUESTIONS": [
     {
       "num": 1,
+      "image": "https://i0.wp.com/moguldom.com/wp-content/uploads/2022/04/915Why-Some-People-Dont-Like-The-Term-Hard-Worker-5-Things-To-Know-About-The-Myth-https-_www.google.com_sea.jpg?fit=915%2C540&ssl=1",
       "question": "I am a hard worker.",
       "option1": "True",
       "option2": "False"
     },
     {
       "num": 2,
+      "image": "https://media.dev.to/cdn-cgi/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fd10yuqxe8zbpl060v2g3.jpg",
       "question": "I like to sit at a desk and get done work.",
       "option1": "True",
       "option2": "False"
     },
     {
       "num": 3,
+      "image": "https://nycbrightest.com/wp-content/uploads/2023/05/The-Best-Rooftop-Bars-of-New-York.jpg",
       "question": "When you are at a party, do you...",
       "option1": "Meet new people",
       "option2": "Stay with a group of friends"
     },
     {
       "num": 4,
+      "image": "https://www.insidehighered.com/sites/default/files/styles/max_650x650/public/media/job%20researcher.jpg?itok=BGoENHtA",
       "question": "Do you like learning new things or exploring new things physically?",
       "option1": "New Things",
       "option2": "Exploring Physically"
     },
     {
       "num": 5,
+      "image": "https://www.insperity.com/wp-content/uploads/decision_making_process_1200x630-1.png",
       "question": "How do you make decisions?",
       "option1": "Logically",
       "option2": "How you feel about things"
     },
     {
       "num": 6,
+      "image": "https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2020/02/29113959/hobby-money.png",
       "question": "Do you prefer…",
       "option1": "Trying new activities",
       "option2": "relaxing"
     },
     {
       "num": 7,
+      "image": "https://study.com/cimages/multimages/16/adobestock_105654276.png",
       "question": "How do you approach assignment due dates?",
       "option1": "Planning ahead",
       "option2": "Procrastinating"
     },
     {
       "num": 8,
+      "image": "https://smartway2.com/wp-content/uploads/2021/01/conference-room-setup-blog.jpg",
       "question": "Do you like working...",
       "option1": "Alone",
       "option2": "With a group"
     },
     {
       "num": 9,
+      "image": "https://media.licdn.com/dms/image/C5112AQEwzVlpl4YUHg/article-cover_image-shrink_600_2000/0/1547118479536?e=2147483647&v=beta&t=TswpsDC2AIdF5VY6OGnRJIjwOuBw80XldiOEO1sm_tM",
       "question": "Do you like working...",
       "option1": "With straightforward instructions",
       "option2": "With a flexible enviornment"
     },
     {
       "num": 10,
+      "image": "https://www.theladders.com/wp-content/uploads/sales-meeting-191002.jpg",
       "question": "How do you feel about meeting someone new?",
       "option1": "Comfortable",
       "option2": "Nervous/shy"
     },
     {
       "num": 11,
+      "image": "https://info.tuw.edu/wp-content/uploads/Communication-Skills-in-the-Workplace.jpg",
       "question": "How do you communicate with others?",
       "option1": "Being direct",
       "option2": "Considering other's feelings"
     },
     {
       "num": 12,
+      "image": "https://blog.smu.edu.sg/wp-content/uploads/2018/06/DaqXiESA18U-1200x800.jpg",
       "question": "How do you handle unexpected situations?",
       "option1": "Adapt/backup plan",
       "option2": "Get frustrated"
     },
     {
       "num": 13,
+      "image": "https://dianegottsman.com/wp-content/uploads/2017/05/Professional-Punctuality.jpg",
       "question": "When meeting with someone, do you prefer...",
       "option1": "Punctuality",
       "option2": "Flexibility with being a couple of minutes late"
     },
     {
       "num": 14,
+      "image": "https://i.guim.co.uk/img/media/e81a807a0d15847121b87010e052e8459bc12e22/0_0_5700_3420/master/5700.jpg?width=465&dpr=1&s=none",
       "question": "Weekend plans:",
       "option1": "Going out with friends",
       "option2": "Relaxing at home"
     },
     {
       "num": 15,
+      "image": "https://mcjanitorial.com/wp-content/uploads/2019/09/messy-office.jpg",
       "question": "Which statement describes you better?",
       "option1": "I'm Organized",
       "option2": "I'm Disorganized"

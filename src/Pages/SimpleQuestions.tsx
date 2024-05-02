@@ -40,6 +40,7 @@ function SimpleQuestions() {
   const [numberOfQuestions, setNumberOfQuestions] = useState(15);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
+  const [questionImage, setQuestionImage] = useState("");
   const [questionBody, setQuestionBody] = useState("Question...");
   const [option1, setOption1] = useState("Option 1...");
   const [option2, setOption2] = useState("Option 2...");
@@ -52,6 +53,7 @@ function SimpleQuestions() {
       setQuestions(simpleQuestions);
       setNumberOfQuestions(simpleQuestions.length);
       setQuestionNumber(questionNumber);
+      setQuestionImage(simpleQuestions[questionNumber].image);
       setQuestionBody(simpleQuestions[questionNumber].question);
       setOption1(simpleQuestions[questionNumber].option1);
       setOption2(simpleQuestions[questionNumber].option2);
@@ -67,6 +69,7 @@ function SimpleQuestions() {
       setBackButtonDisabled(false);
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
+      setQuestionImage(questions[nextQuestion].image);
       setQuestionBody(questions[nextQuestion].question);
       setOption1(questions[nextQuestion].option1);
       setOption2(questions[nextQuestion].option2);
@@ -102,12 +105,14 @@ function SimpleQuestions() {
           reportButton.classList.remove("Button-visible-true");
           reportButton.classList.add("Button-visible-false");
         }
+        setQuestionImage(questions[questionNumber].image);
         setQuestionBody(questions[questionNumber].question);
         setOption1(questions[questionNumber].option1);
         setOption2(questions[questionNumber].option2);
       } else {
         const previousQuestion = questionNumber - 1;
         setQuestionNumber(previousQuestion);
+        setQuestionImage(questions[previousQuestion].image);
         setQuestionBody(questions[previousQuestion].question);
         setOption1(questions[previousQuestion].option1);
         setOption2(questions[previousQuestion].option2);
@@ -165,6 +170,7 @@ function SimpleQuestions() {
           </div>
         </div>
         <div className="Simple-textSpace">
+          <img src={questionImage} alt="Not Available..." width="600" height="354"/>
           <div className="Simple-question-body">{questionBody}</div>
           <div className="Simple-buttons">
             <span className="Button-visible-true" id="nextButton">
