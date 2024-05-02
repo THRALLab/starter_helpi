@@ -2,6 +2,7 @@ import { ProgressBarProps } from "./interfaces/progressFunction";
 import './ProgressBar.css';
 import React, { useState } from 'react';
 
+//basic progress bar
 const ProgressBar: React.FC<ProgressBarProps> = ({ progressVal = 0}) => {
   const [progress, setProgress] = useState<number>(progressVal);
   const updateProgress = () => {
@@ -16,4 +17,4 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progressVal = 0}) => {
   );
 };
   
-  export default ProgressBar;
+export default ProgressBar;
