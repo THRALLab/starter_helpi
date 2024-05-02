@@ -153,7 +153,7 @@ export function McMultiResponse({
                             key={choice}>
                                 <ToggleButton
                                     className="App-quiz response-question"
-                                    variant={localAnswer.includes(choice) ? "primary" : "outline-primary"}
+                                    variant={localAnswer.includes(choice) ? "selected" : "selected-outlined"}
                                     key={`${choice}Select`}
                                     type="checkbox"
                                     id={choice}

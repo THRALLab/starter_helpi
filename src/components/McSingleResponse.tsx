@@ -99,7 +99,7 @@ export function McSingleResponse({
                                 className="App-quiz"
                                 id={`option-${idx}`}
                                 type="radio"
-                                variant={localAnswer === option ? "outline-secondary" : "outline-primary"}
+                                variant={localAnswer === option ? "selected" : "single-selected"}
                                 name="options"
                                 checked={localAnswer === option}
                                 value={option}
