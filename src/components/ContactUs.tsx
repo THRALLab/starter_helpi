@@ -1,7 +1,12 @@
-import ProgressBar from 'react-bootstrap/ProgressBar';
+// ContactUs.tsx
+import React from 'react';
+import { Buttons } from './Buttons';
 
-function BarOfProgress() {
-  return <ProgressBar animated now={45} />;
-}
+export function ContactUs(): JSX.Element {
 
-export default BarOfProgress;
+return (
+      <div>
+            <Buttons></Buttons>
+    </div>
+  );
+};
