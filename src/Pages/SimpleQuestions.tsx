@@ -172,6 +172,13 @@ function SimpleQuestions() {
                 <Button
                   className="Button-next"
                   onClick={() => nextQuestion(option1)}
+                  style={{
+                    position: "absolute",
+                    width: "calc(50% - 5px)",
+                    left: "0",
+                    margin: "0",
+                    padding: "10px",
+                  }}
                 >
                   {option1}
                 </Button>
@@ -180,6 +187,13 @@ function SimpleQuestions() {
                 <Button
                   className="Button-next-2"
                   onClick={() => nextQuestion(option2)}
+                  style={{
+                    position: "absolute",
+                    width: "calc(50% - 5px)",
+                    margin: "0",
+                    padding: "10px",
+                    left: "calc(50% + 5px)",
+                  }}
                 >
                   {option2}
                 </Button>

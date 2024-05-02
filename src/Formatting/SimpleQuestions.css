@@ -71,25 +71,8 @@
   margin-bottom: 10px;
 }
 
-.Button-visible-true {
-  display: flex;
-}
-
 .Simple-question-body {
   position: relative;
-}
-
-.Button-next,
-.Button-next-2 {
-  position: absolute;
-  width: calc(50% - 5px);
-  left: 0;
-  margin: 0;
-  padding: 10px;
-}
-
-.Button-next-2 {
-  left: calc(50% + 5px);
 }
 
 .Simple-back-bottom {
