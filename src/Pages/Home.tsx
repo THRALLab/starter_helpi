@@ -41,17 +41,21 @@ function Home() {
       </div>
 
       <div className="Page-body">
-        <p className="Home-text">
-          Welcome to the Career Lab! We have two quizzes you can take to help
-          find your ideal career. Your answers will be reviewed by ChatGPT to
-          generate a custom report of what caeer paths suit you the best. This
-          project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory
-          Jordan.
-        </p>
+        <div className="About-body">
+          <img src="https://img.freepik.com/free-vector/flat-laboratory-room-with-microscope_23-2148885022.jpg?w=1480&t=st=1714680547~exp=1714681147~hmac=d379d0ea435a9f15edcacf0bca29ae324baaec7273b9e4545a3906992e2115be" alt="Complicated Math" width="628px" height="417px" style={{ padding: "10px" }}/>
+          <p>
+            Welcome to the Career Lab! We have two quizzes you can take to help
+            find your ideal career. Your answers will be reviewed by ChatGPT to
+            generate a custom report of what caeer paths suit you the best. This
+            project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory
+            Jordan.
+          </p>
+        </div>
         <Container className="Home-questionsection">
           <Row>
             <Col className="Home-basic-side">
               <div className="Home-text-basic">
+                <img src="https://img.freepik.com/premium-vector/vector-illustration-teacher-kids-performing-experiments-school-science-lab_830469-1997.jpg" alt="Simple Science Experiment" width="400px" height="287px" style={{ padding: "10px" }} />
                 <p className="Home-button">
                   <LinkButton
                     to="simplequestions"
@@ -65,6 +69,7 @@ function Home() {
             </Col>
             <Col className="Home-basic-side">
               <div className="Home-text-detailed">
+                <img src="https://www.techspot.com/images2/news/bigimage/2021/02/2021-02-10-image-18.jpg" alt="Science Labratory" width="400px" height="287px" style={{ padding: "10px" }} />
                 <p className="Home-button">
                   <LinkButton
                     to="detailedquestions"
