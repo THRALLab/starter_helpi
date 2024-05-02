@@ -27,6 +27,7 @@
   padding: 10px;
   margin-left: 10%;
   margin-right: 10%;
+  border-radius: 10px;
   background-color: var(--color-body-ProgressBackground);
 }
 
@@ -35,6 +36,7 @@
   top: 0;
   left: 0;
   height: 100%;
+  border-radius: 10px;
   background: linear-gradient(
     to right,
     var(--color-body-BarGradient),
@@ -66,8 +68,28 @@
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 10px;
   margin-bottom: 10px;
+}
+
+.Button-visible-true {
+  display: flex;
+}
+
+.Simple-question-body {
+  position: relative;
+}
+
+.Button-next,
+.Button-next-2 {
+  position: absolute;
+  width: calc(50% - 5px);
+  left: 0;
+  margin: 0;
+  padding: 10px;
+}
+
+.Button-next-2 {
+  left: calc(50% + 5px);
 }
 
 .Simple-back-bottom {

@@ -8,10 +8,10 @@
   --color-body-ButtonHover: #c490d1;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
-  --color-body-ProgressBackground: #000000;
+  --color-body-ProgressBackground: #85aab6;
   --color-body-BarGradient: orange;
   --color-body-BarColor: green;
-  --color-body-TextBackground: white;
+  --color-body-TextBackground: #85aab6;
   --color-body-SliderThumb: blue;
 }
 
@@ -25,10 +25,10 @@
   --color-body-ButtonHover: #008080;
   --color-body-ButtonBorder: #faf9f6;
   --color-body-questionText: #faf9f6;
-  --color-body-ProgressBackground: #000000;
+  --color-body-ProgressBackground: #9e8fb2;
   --color-body-BarGradient: #af73ca;
   --color-body-BarColor: #67b1c8;
-  --color-body-TextBackground: rgb(0, 0, 0);
+  --color-body-TextBackground: #9e8fb2;
   --color-body-SliderThumb: blue;
 }
 
@@ -43,10 +43,10 @@
   --color-body-ButtonHover: #DBE7C9;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
-  --color-body-ProgressBackground: #000000;
+  --color-body-ProgressBackground: #04280b;
   --color-body-BarGradient: #50623A;
   --color-body-BarColor: #789461;
-  --color-body-TextBackground: rgb(0, 0, 0);
+  --color-body-TextBackground: #04280b;
   --color-body-SliderThumb: blue;
 }
 
@@ -61,10 +61,10 @@
   --color-body-ButtonHover: #9b870c;
   --color-body-ButtonBorder: #faf9f6;
   --color-body-questionText: #faf9f6;
-  --color-body-ProgressBackground: #000000;
+  --color-body-ProgressBackground: #095265;
   --color-body-BarGradient: #6b6b6b;
   --color-body-BarColor: #9b870c;
-  --color-body-TextBackground: rgb(38, 29, 29);
+  --color-body-TextBackground: #095265;
   --color-body-SliderThumb: blue;
 }
 
@@ -78,10 +78,10 @@
   --color-body-ButtonHover: #5e43f3;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
-  --color-body-ProgressBackground: #000000;
+  --color-body-ProgressBackground: #1a1625;
   --color-body-BarGradient: #6c0e4e;
   --color-body-BarColor: #2b13a4;
-  --color-body-TextBackground: rgb(33, 25, 25);
+  --color-body-TextBackground: #1a1625;
   --color-body-SliderThumb: blue;
 }
 
@@ -95,10 +95,10 @@
   --color-body-ButtonHover: #4f6678;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #1eeb36;
-  --color-body-ProgressBackground: #000000;
+  --color-body-ProgressBackground: #173848;
   --color-body-BarGradient: #6b6b6b;
   --color-body-BarColor: rgb(47, 145, 101);
-  --color-body-TextBackground: rgb(35, 28, 28);
+  --color-body-TextBackground: #173848;
   --color-body-SliderThumb: blue;
 }
 
@@ -112,10 +112,10 @@
   --color-body-ButtonHover: #c5696f;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #ffffff;
-  --color-body-ProgressBackground: #000000;
+  --color-body-ProgressBackground: #56e39f;
   --color-body-BarGradient: #4fffaa;
   --color-body-BarColor: red;
-  --color-body-TextBackground: #ffffff;
+  --color-body-TextBackground: #56e39f;
   --color-body-SliderThumb: blue;
 }
 

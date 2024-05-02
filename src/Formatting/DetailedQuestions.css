@@ -60,6 +60,7 @@
   display: flex;
   margin-top: 5vh;
   margin-left: 20vh;
+  border-radius: 10px;
   width: 200px;
   height: 500px;
   transform: rotate(180deg);
@@ -67,6 +68,7 @@
 }
 
 .DetailedQuestions-progress-bar-foreground {
+  border-radius: 10px;
   background: linear-gradient(
     to bottom,
     var(--color-body-BarGradient),
