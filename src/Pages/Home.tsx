@@ -46,10 +46,10 @@ function Home() {
             <div className="Home-body">
               <img
                 src="https://img.freepik.com/free-vector/flat-laboratory-room-with-microscope_23-2148885022.jpg?w=1480&t=st=1714680547~exp=1714681147~hmac=d379d0ea435a9f15edcacf0bca29ae324baaec7273b9e4545a3906992e2115be"
-                alt="Complicated Math"
+                alt="Science Laboratory"
                 width="628px"
                 height="417px"
-                style={{ padding: "10px" }}
+                style={{ padding: "10px", borderRadius: "20px" }}
               />
               <p>
                 Welcome to the Career Lab! We have two quizzes you can take to
@@ -68,7 +68,7 @@ function Home() {
                   alt="Simple Science Experiment"
                   width="400px"
                   height="287px"
-                  style={{ padding: "10px" }}
+                  style={{ padding: "10px", borderRadius: "20px" }}
                 />
                 <p className="Home-button">
                   <LinkButton
@@ -85,10 +85,10 @@ function Home() {
               <div>
                 <img
                   src="https://www.techspot.com/images2/news/bigimage/2021/02/2021-02-10-image-18.jpg"
-                  alt="Science Labratory"
+                  alt="Complex Science Experiment"
                   width="400px"
                   height="287px"
-                  style={{ padding: "10px" }}
+                  style={{ padding: "10px", borderRadius: "20px" }}
                 />
                 <p className="Home-button">
                   <LinkButton

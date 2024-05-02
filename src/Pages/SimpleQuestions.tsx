@@ -176,6 +176,7 @@ function SimpleQuestions() {
               alt="Not Available..."
               width="600"
               height="354"
+              style={{ borderRadius: "10px" }}
             />
           )}
           <div className="Simple-question-body">{questionBody}</div>
