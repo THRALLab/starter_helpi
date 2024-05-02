@@ -184,6 +184,13 @@ function SimpleQuestions() {
                 <Button
                   className="Button-next"
                   onClick={() => nextQuestion(option1)}
+                  style={{
+                    position: "absolute",
+                    left: "1",
+                    right: "0",
+                    marginRight: "50vw",
+                    marginLeft: "0",
+                  }}
                 >
                   {option1}
                 </Button>
@@ -192,6 +199,12 @@ function SimpleQuestions() {
                 <Button
                   className="Button-next-2"
                   onClick={() => nextQuestion(option2)}
+                  style={{
+                    position: "absolute",
+                    left: "0",
+                    right: "0",
+                    marginLeft: "50vw",
+                  }}
                 >
                   {option2}
                 </Button>
@@ -199,7 +212,7 @@ function SimpleQuestions() {
             </span>
             <span className="Button-visible-false" id="reportButton">
               <span>
-                <p className="Button-report" style={{ paddingTop: "40px" }}>
+                <p className="Button-report">
                   <LinkButton to="/simplereport" label="Report"></LinkButton>
                 </p>
               </span>
