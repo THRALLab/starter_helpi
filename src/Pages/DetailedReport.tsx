@@ -53,6 +53,23 @@ function DetailedReport() {
   const exampleFormat =
     "~Sample Career: 2-3 sentences of why this is a good fit~Another Sample Career: 2-3 sentences of why this is a good fit~Final Sample Career: 2-3 sentences of why this is a good fit";
 
+  let UserRolePrompt = "What should my career be? " + userData;
+  let GPTRole =
+    "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a list of 3 careers, with '~' as the bulletpoint. Here is the example format" +
+    exampleFormat +
+    "Include the tilda (~) in the report string, it is important.";
+
+  function setPrompt(newPrompt: string) {
+    UserRolePrompt = newPrompt;
+  }
+
+  function optionOne() {
+    setPrompt(
+      "The user would like to explore the first career option you gave. Please provide more details."
+    );
+    ChatGPT();
+  }
+
   const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
   //Queries ChatGPT to generate report
   async function ChatGPT() {
@@ -67,12 +84,9 @@ function DetailedReport() {
       messages: [
         {
           role: "system",
-          content:
-            "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a list of 3 careers, with '~' as the bulletpoint. Here is the example format" +
-            exampleFormat +
-            "Include the tilda (~) in the report string, it is important",
+          content: GPTRole,
         },
-        { role: "user", content: "What should my career be? " + userData },
+        { role: "user", content: UserRolePrompt },
       ],
       model: "gpt-3.5-turbo",
     });
@@ -132,6 +146,9 @@ function DetailedReport() {
             </div>
           )}
           {!loading && careerList.length < 3 && <div>{responseData}</div>}
+          <Button className="Report-button-explore" onClick={optionOne}>
+            Explore Career 1
+          </Button>
         </div>
       </div>
 
