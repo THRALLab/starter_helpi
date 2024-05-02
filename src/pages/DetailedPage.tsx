@@ -1,8 +1,9 @@
 
 import "./detailedPage.css";
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert, /*FormLabel*/ } from "react-bootstrap";
-import Button from "react-bootstrap/esm/Button";
+import { Form, ProgressBar, Alert, Button, /*FormLabel*/ 
+Offcanvas, OffcanvasHeader,
+OffcanvasTitle} from "react-bootstrap";
 //import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 import OpenAI from "openai";
 import { key } from "./homePage"
@@ -97,6 +98,9 @@ const DetailedPage = () => {
 				break;
 		}
 	}
+	const [progressShow, setProgressShow] = useState<boolean>(false);
+	const handleShow = () => setProgressShow(true);
+	const handleClose = () => setProgressShow(false);
 //checks which questions are answered
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
 		Response6: (boolean| string)[], Response7: (boolean| string)[]): number { 
@@ -132,7 +136,7 @@ const DetailedPage = () => {
        setAllow(answered === 7); //checks the amount of questions answered
 	   setAlert(answered === 7)
     }, [answered]);
-
+	
 	return (<>
 		<style>{`
         .question-box {
@@ -174,6 +178,18 @@ const DetailedPage = () => {
 				allow you to see the results of you future career.
 			</p>
 		</div>
+		<div style={{textAlign:"center"	}}>
+		<Button onClick={handleShow}>Track Progress</Button>
+		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={false}>
+			<OffcanvasHeader closeButton>
+				<OffcanvasTitle>Progress</OffcanvasTitle>
+			</OffcanvasHeader>
+			<Offcanvas.Body>
+			<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"10px", marginBottom:"10px"}}></ProgressBar>
+			</Offcanvas.Body>
+		</Offcanvas>
+	
+		</div>	
 		<h3>Question 1.</h3>
 		<span className="questionPrompt">You slept through your alarm and barely missed the train to work. The next train isn’t for another 30 minutes, so you’ll definitely be late now. What do you do?</span> 
 		<div id="q1" className="question-box">
@@ -654,7 +670,6 @@ const DetailedPage = () => {
 			</div>
 		<div style={{textAlign:"center", marginBottom:"10px"}}>
 		<Button size="lg" onClick={sendRespone} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
-		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"10px", marginBottom:"10px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}} >
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
@@ -694,7 +709,7 @@ const DetailedPage = () => {
 			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
 			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
 		});
-		  
+		
 		async function runGPT() { //Creates conversation with the GPT-4 model
 			console.log("API Key: " + key); //for testing purposes
 			try{
