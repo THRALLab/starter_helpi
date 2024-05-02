@@ -30,7 +30,7 @@ function Home() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="General-header">
+      <div className="Header-general">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>
@@ -43,7 +43,7 @@ function Home() {
       <div className="Page-body">
         <Container>
           <Row>
-            <div className="About-body">
+            <div className="Home-body">
               <img
                 src="https://img.freepik.com/free-vector/flat-laboratory-room-with-microscope_23-2148885022.jpg?w=1480&t=st=1714680547~exp=1714681147~hmac=d379d0ea435a9f15edcacf0bca29ae324baaec7273b9e4545a3906992e2115be"
                 alt="Complicated Math"

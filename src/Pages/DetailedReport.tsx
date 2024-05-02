@@ -103,7 +103,7 @@ function DetailedReport() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="General-header">
+      <div className="Header-general">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>

@@ -117,7 +117,7 @@
   --color-body-SliderThumb: blue;
 }
 
-.General-header {
+.Header-general {
   position: relative;
   display: flex;
   align-items: center;

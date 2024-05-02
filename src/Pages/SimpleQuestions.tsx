@@ -125,7 +125,7 @@ function SimpleQuestions() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="General-header">
+      <div className="Header-general">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>
@@ -171,7 +171,12 @@ function SimpleQuestions() {
         </div>
         <div className="Simple-textSpace">
           {currentQuestionNumber < 16 && (
-            <img src={questionImage} alt="Not Available..." width="600" height="354"/>
+            <img
+              src={questionImage}
+              alt="Not Available..."
+              width="600"
+              height="354"
+            />
           )}
           <div className="Simple-question-body">{questionBody}</div>
           <div className="Simple-buttons">
