@@ -32,12 +32,7 @@ const questions: string[] =
     "7. I am more creative than analytical:"
     ]
 
-let pageData = Array.from(questions, (question: string) => ({ question: question, answer: "" })) as QuestionData[];
-const saveDetailedDataKey = "BASIC_DATA";
-const currData = sessionStorage.getItem(saveDetailedDataKey);
-if (currData !== null) {
-    pageData = JSON.parse(currData) as QuestionData[];
-}
+
 
 const rangeValues: Record<string, string> = {
     1: "Disagree",
@@ -56,9 +51,9 @@ const reverseMap: Record<string, string>= {
 }
 
 
-export function BasicPage({ page, setPage }: Readonly<{ page: string; setPage: (newPage: string) => void }>) {
+export function BasicPage({ setBasicDataKey, basicQuestionData, setBasicQuestionData, page, setPage }: Readonly<{ setBasicDataKey: string, basicQuestionData: QuestionData[], setBasicQuestionData: (basicQuestionData: QuestionData[]) => void, page: string; setPage: (newPage: string) => void }>) {
 
-    const [questionData, setQuestionData] = React.useState(pageData);
+    const [questionData, setQuestionData] = React.useState(basicQuestionData);
     const [isFinished, setIsFinished] = React.useState(questionData.every((question) => question.answer.length > 0));
 
     const handleSliderChange = (question: string, resp: string) => {
@@ -69,7 +64,7 @@ export function BasicPage({ page, setPage }: Readonly<{ page: string; setPage: (
         // Check if all questions have been answered
         setIsFinished(data.every((question) => question.answer.length > 0));
             // Save data to local storage
-        sessionStorage.setItem(saveDetailedDataKey, JSON.stringify(data));
+        sessionStorage.setItem(setBasicDataKey, JSON.stringify(data));
         console.log(data)
     };
 
