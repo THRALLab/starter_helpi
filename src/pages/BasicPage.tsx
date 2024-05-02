@@ -108,7 +108,7 @@ const BasicPage = () => {
 		return description;
 	}
 
-	function sendRespone(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
 		const openai = new OpenAI({
 			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
 			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
@@ -138,7 +138,9 @@ const BasicPage = () => {
 				console.log(response.choices[0].message.content); //GPT Response to the user's input
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
-				console.log(e);
+				//console.log(e);
+				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
+				window.location.href = "./starter_helpi/"; 
 			}  
 		}
 
@@ -146,7 +148,8 @@ const BasicPage = () => {
 	
 	}
 
-  const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
+
+	  const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
 
   function doReset(): void{ //clears all the choices by setting all elements in array to -1
 	const resetResponse: number[] = Array(response.length).fill(-1);
@@ -191,7 +194,7 @@ const BasicPage = () => {
 
 		<div style={{textAlign: "center"}}>
       
-			<Button size="lg" disabled={!allow} onClick={sendRespone}>Get Answer</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
+			<Button size="lg" disabled={!allow} onClick={sendResponse}>Get Answer</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
 
 			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>

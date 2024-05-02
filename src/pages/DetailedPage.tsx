@@ -7,6 +7,12 @@ import Button from "react-bootstrap/esm/Button";
 import OpenAI from "openai";
 import { key } from "./homePage"
 
+function parseAnswers(answers: string|null): string[] {
+	if (answers === null) return [];
+    let array = answers.substring(2,answers.length-2).split("\", \"");
+    return array;
+}
+
 const QUESTIONSTARTS = [" If I slept through my alarm, I would ", 
 						" If I was assigned to create a presentation for a conference, I would ",
 						" If a coworker tells me to redo my part of the presentation, I would ", 
@@ -183,7 +189,7 @@ const DetailedPage = () => {
 		</div>
 		<div style={{textAlign:"center"}}>
 
-		<Button size="lg" onClick={sendRespone} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<Button size="lg" onClick={sendResponse} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
@@ -246,7 +252,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q1-Option5"
 					label="Other:"
-					value= "Other (not figured out yet)"
+					value= "Other"
 					name="question1"
 					onChange={() => handleRadio("Other:",1,  4, 0)}
 					checked={otherSelected[0] === true}/>
@@ -314,7 +320,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q2-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question2"
 					onChange={() => handleRadio("Other:",2, 4, 1)}
 					checked={otherSelected[1] === true}/>	
@@ -382,7 +388,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q3-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question3"
 					onChange={() => handleRadio("Other:",3, 4 , 2)}
 					checked={otherSelected[2] === true}/>
@@ -450,7 +456,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q4-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question4"
 					onChange={() => handleRadio("Other:", 4, 4, 3)}
 					checked={otherSelected[3] === true}/>
@@ -518,7 +524,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q5-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question5"
 					onChange={() => handleRadio("Other:", 5, 4, 4)}
 					checked={otherSelected[4] === true}	/>
@@ -587,7 +593,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q6-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question6"
 					onChange={() => handleRadio("Other:", 6, 4, 5)}
 					checked={otherSelected[5] === true}	/>
@@ -655,7 +661,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q7-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question7"
 					onChange={() => handleRadio("Other:", 7, 4, 6)}	
 					checked={otherSelected[6] ===true}/>
@@ -684,7 +690,36 @@ const DetailedPage = () => {
 			if (container) {
 				const mini = container.querySelector('input[type="radio"]:checked');
 				//console.log("Container: " + mini?.getAttribute("value"));
-				if(mini?.getAttribute("value")) {answers = answers + QUESTIONSTARTS[i] + mini?.getAttribute("value");}			
+				if(mini?.getAttribute("value")) {
+					if(mini?.getAttribute("value") === "Other") {
+						switch(i){ //checks which question it is
+							case 0:
+								answers = answers + QUESTIONSTARTS[i] + Response1[4];
+								break;
+							case 1:
+								answers = answers + QUESTIONSTARTS[i] + Response2[4];
+								break;
+							case 2:
+								answers = answers + QUESTIONSTARTS[i] + Response3[4];
+								break;
+							case 3:
+								answers = answers + QUESTIONSTARTS[i] + Response4[4];
+								break;
+							case 4:
+								answers = answers + QUESTIONSTARTS[i] + Response5[4];
+								break;
+							case 5:
+								answers = answers + QUESTIONSTARTS[i] + Response6[4];
+								break;
+							case 6:
+								answers = answers + QUESTIONSTARTS[i] + Response7[4];
+								break
+						}
+					}
+					else{
+						answers = answers + QUESTIONSTARTS[i] + mini?.getAttribute("value");
+					}
+				}			
 			}
 			else {
 				console.log("Container is null");
@@ -696,7 +731,7 @@ const DetailedPage = () => {
 		return answers;
 	}
 
-	function sendRespone(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
 		const openai = new OpenAI({
 			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
 			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
@@ -718,14 +753,15 @@ const DetailedPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 64,//should be 512
+				max_tokens: 512,//should be 512
 				top_p: 1,
 				});
-	
-				console.log(response.choices[0].message.content); //GPT Response to the user's input
+				console.log(parseAnswers(response.choices[0].message.content)); //GPT Response to the user's input
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
-				console.log(e);
+				//console.log(e);
+				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
+				window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
 			}  
 		}
 
