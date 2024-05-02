@@ -7,6 +7,8 @@ import Button from "react-bootstrap/esm/Button";
 import OpenAI from "openai";
 import { key } from "./homePage"
 
+export let GPTresponse: string[];
+
 function parseAnswers(answers: string|null): string[] {
 	if (answers === null) return [];
     let array = answers.substring(2,answers.length-2).split("\", \"");
@@ -727,7 +729,10 @@ const DetailedPage = () => {
 				max_tokens: 512,//should be 512
 				top_p: 1,
 				});
-				console.log(parseAnswers(response.choices[0].message.content)); //GPT Response to the user's input
+				GPTresponse = parseAnswers(response.choices[0].message.content); //GPT Response to the user's input
+				console.log(GPTresponse);
+				window.location.href = "./ResultsPage/"; //redirects the user to the results page
+
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				//console.log(e);

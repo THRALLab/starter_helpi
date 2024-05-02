@@ -1,4 +1,7 @@
+import { GPTresponse } from './DetailedPage';
 import './resultsPage.css';
+
+
 
 function parseAnswers(answers: string|null): string[] {
 	  if (answers === null) return [];
@@ -17,20 +20,20 @@ const ResultsPage = () => {
         <div className="mainCareer">
                 <h6>Your ideal career is...</h6>
                 <h5>{GPTresponse[0]}</h5>
-                <p>You can tell it's an aspen because of the way it is.</p>
+                <p>{GPTresponse[1]}</p>
         </div>
         <div className="subCareers">
             <div className="career-desc">
-                        <h3>Option 2</h3>
-                        <p>This is the description of career option 2</p>
+                        <h3>{GPTresponse[2]}</h3>
+                        <p>{GPTresponse[3]}</p>
             </div>
             <div className="career-desc">
-                        <h3>Option 3</h3>
-                        <p>This is the description of career option 3</p>
+                        <h3>{GPTresponse[4]}</h3>
+                        <p>{GPTresponse[5]}</p>
             </div>
             <div className="career-desc">
-                        <h3>Option 4</h3>
-                        <p>This is the description of career option 4</p>
+                        <h3>{GPTresponse[6]}</h3>
+                        <p>{GPTresponse[7]}</p>
             </div>
         </div>
         </>
