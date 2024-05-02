@@ -170,7 +170,9 @@ function SimpleQuestions() {
           </div>
         </div>
         <div className="Simple-textSpace">
-          <img src={questionImage} alt="Not Available..." width="600" height="354"/>
+          {currentQuestionNumber < 16 && (
+            <img src={questionImage} alt="Not Available..." width="600" height="354"/>
+          )}
           <div className="Simple-question-body">{questionBody}</div>
           <div className="Simple-buttons">
             <span className="Button-visible-true" id="nextButton">
