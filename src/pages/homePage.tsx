@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import splash from "../images/businessman.png"
 import pie from "../images/piechart.png"
 import './homePage.css';
+import { HomeLink } from "../components/NavbarElements"
 //import OpenAI from "openai";
 
 
@@ -75,16 +76,16 @@ import './homePage.css';
         <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
             <div className="quiz-desc">
-                <a href="./BasicPage">
+                <HomeLink to="/BasicPage">
                     <h3>Basic Quiz</h3>
                     <p>Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
-                </a>
+                </HomeLink>
             </div>
             <div className="quiz-desc">
-                <a href="./DetailedPage">
+                <HomeLink to="/DetailedPage">
                     <h3>Detailed Quiz</h3>
                     <p>If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
-                </a>
+                </HomeLink>
             </div>
         </div>
         <div className="quiz-data-container">

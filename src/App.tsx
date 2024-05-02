@@ -3,7 +3,7 @@ import './App.css';
 //import { Button, Form } from 'react-bootstrap';
 import Navbar from "./components/Navbar";
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Routes,
     Route,
 } from "react-router-dom";
