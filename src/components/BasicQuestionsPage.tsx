@@ -191,7 +191,7 @@ export function BasicQuestionsPage(): JSX.Element {
                         </ProgressBar>}
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
          
-                        <p>{questions[currentQuestion].id}</p>
+                        <p>{questions[currentQuestion].question}</p>
                         
                         <div style={{paddingBottom: '1vh', display: 'flex',
                             justifyContent: 'center',
