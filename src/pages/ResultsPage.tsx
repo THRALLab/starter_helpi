@@ -16,7 +16,7 @@ const ResultsPage = () => {
         <>
         <div className="mainCareer">
                 <h6>Your ideal career is...</h6>
-                <h5>UD Parking Attendant</h5>
+                <h5>{GPTresponse[0]}</h5>
                 <p>You can tell it's an aspen because of the way it is.</p>
         </div>
         <div className="subCareers">
