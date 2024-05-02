@@ -69,6 +69,34 @@
   margin-left: 5px
 }
 
+.quiz-drag-drop{
+  border: 3;
+  border-color: var(--dark-royal-blue);
+  border-width: 2px;
+  border-style: solid;
+  color: var(--dawn-dish-blue);
+  background-color: var(--off-white);
+  cursor: 'move';
+  margin-bottom: '10px';
+  list-style-type: '';
+  margin: "0px";
+  padding: "0px"
+}
+
+.quiz-drag-drop:hover{
+  border: 3;
+  border-color: var(--dark-royal-blue);
+  border-width: 2px;
+  border-style: solid;
+  color: var(--dawn-dish-blue);
+  background-color: var(--diamond-blue);
+  cursor: 'move';
+  margin-bottom: '10px';
+  list-style-type: '';
+  margin: "0px";
+  padding: "0px"
+}
+
 /*Styling for the different nav buttons in the app */
 .btn-nav-disabled {
   color: var(--dark-royal-blue);

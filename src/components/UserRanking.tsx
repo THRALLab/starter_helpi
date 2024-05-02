@@ -102,13 +102,12 @@ export function UserRanking({
             )}
             <ol style={{textAlign: "left"}}>
                 {categories.map((category, index) =>  (
-                    <li 
+                    <li className="quiz-drag-drop"
                     key={category}
                     draggable={true}
                     onDragStart={handleDragStart(index)}
                     onDragOver={handleDragOver}
-                    onDrop={handleDrop(index)}
-                    style={{ cursor: 'move', marginBottom: '10px', listStyle: "none", margin: "0px", padding: "0px" }}>
+                    onDrop={handleDrop(index)}>
                     <FaGripLines></FaGripLines>{category}
                 </li>
                 ))}
