@@ -17,8 +17,7 @@ export function DetailedPage({ savaDetailDataKey, detailQuestionData, setDetailQ
     const [questionNumber, setQuestionNumber] = React.useState(0);
 
     // Array of objects to store question and answer data
-    const [questionData, setQuestionData] = React.useState(detailQuestionData);
-    const [isFinished, setIsFinished] = React.useState(questionData.every((question) => question.answer.length > 0));
+    const [isFinished, setIsFinished] = React.useState(detailQuestionData.every((question) => question.answer.length > 0));
 
     const handleSelect = (selectedIndex: number) => {
         setQuestionNumber(selectedIndex);
@@ -27,9 +26,9 @@ export function DetailedPage({ savaDetailDataKey, detailQuestionData, setDetailQ
 
     const handleAnswerChange = (e: React.ChangeEvent<HTMLInputElement>, question: string) => {
         if (e.target.value.length < maxAnswerLength) {
-            let data = [...questionData];
+            let data = [...detailQuestionData];
             data[questionNumber] = { question: question, answer: e.target.value };
-            setQuestionData(data);
+            setDetailQuestionData(data);
             // Check if all questions have been answered
             setIsFinished(data.every((question) => question.answer.length > 0));
             // Save data to session storage
@@ -41,8 +40,8 @@ export function DetailedPage({ savaDetailDataKey, detailQuestionData, setDetailQ
         return data.filter(question => question.answer.trim() !== '').length;
     }
 
-    const filledAnswers = calculateFilledAnswers(questionData);
-    const totalQuestions = questionData.length;
+    const filledAnswers = calculateFilledAnswers(detailQuestionData);
+    const totalQuestions = detailQuestionData.length;
     const progressPercentage = (filledAnswers / totalQuestions) * 100;
 
     return (
@@ -58,7 +57,7 @@ export function DetailedPage({ savaDetailDataKey, detailQuestionData, setDetailQ
                 <Card.Body>
                     <Form>
                         <Carousel activeIndex={questionNumber} onSelect={handleSelect} interval={null}>
-                            {questionData.map(({ question, answer }) => (
+                            {detailQuestionData.map(({ question, answer }) => (
                                 <Carousel.Item key={questionKey++} style={{ height: '20rem' }}>
                                     <h1 style={{ color: 'white', fontSize: '1.4rem', marginBottom: '3.5rem', marginTop: '0.5rem' }}>
                                         {question}
