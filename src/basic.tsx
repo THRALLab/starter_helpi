@@ -1,27 +1,76 @@
 import React, { useState } from "react";
-import questions from "./basicQuestions.json";
-import { QuestionFormatProps } from "./interfaces/questionFormat"
-//import ProgressBar from './ProgressBar';
-
-//component used for formatting of radio buttons and questions
+function Basic() {
+	const basicQuestions: { question: string; options: string[] }[] = [
+		{
+			question: "1. What is your ideal environment to live in?",
+			options: ["City", "Suburb", "Rural", "Town"]
+		},
+		{
+			question: "2. What personal skill do you most value?",
+			options: ["time management", "resourceful", "organization", "leadership"]
+		},
+		{
+			question: "3. What level of your academic career are you at?",
+			options: [
+				"some high school",
+				"high school degree/GED",
+				"college",
+				"graduate school"
+			]
+		},
+		{
+			question:
+				"4. Besides career interests, what other activites interest you?",
+			options: ["relaxing", "art", "exercise", "volunteering"]
+		},
+		{
+			question: "5. How many hours would you like to work per week?",
+			options: ["20 or less", "20-30", "30-35", "35+"]
+		},
+		{
+			question: "6. What topics or ideas spark your interest?",
+			options: [
+				"physical sciences",
+				"mathematics/engineering",
+				"history/social sciences",
+				"art"
+			]
+		},
+		{
+			question: "7. Would you like to work in-person, hybrid, or virtual?",
+			options: ["in-person", "hybrid", "virtual", "no-preference"]
+		}
+	];
+	return (
+		<div>
+			<h1>This is the Basic Quiz.</h1>
+			{basicQuestions.map((question, index) => (
+				<div key={index}>
+					<h2>{question.question}</h2>
+					<QuestionFormatComponent options={question.options} />
+				</div>
+			))}
+		</div>
+	);
+}
+interface QuestionFormatProps {
+	options: string[];
+}
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
-	//selected options for each question
 	const [selected, setSelected] = useState<string | null>(null);
 	const optionSelect = (option: string) => {
 		setSelected(option);
 	};
-	
-	//mapping of each question's option
 	return (
 		<div>
 			<p>Select an option:</p>
-			{options.map((option) => (
+			{options.map(option => (
 				<label key={option}>
 					<input
 						type="radio"
-						value={options}
+						value={option}
 						checked={selected === option}
 						onChange={() => optionSelect(option)}
 					/>
@@ -32,18 +81,4 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 		</div>
 	);
 };
-
-function Basic() {
-	return (
-		<div>
-			<h1>This is the Basic Quiz.</h1>
-			{questions.map((question: QuestionFormatProps, question_number) => (
-				<div key={question_number}>
-					<h2>{question.question}</h2>
-					<QuestionFormatComponent question_number = {question.question_number} question={question.question} options={question.options} type={question.type}/>
-				</div>
-			))}
-		</div>
-	);
-}
 export default Basic;
