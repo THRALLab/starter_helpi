@@ -67,7 +67,6 @@ function SimpleQuestions() {
       setBackButtonDisabled(false);
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
-      //setColor(colors[Math.floor(Math.random() * colors.length)])
       setQuestionBody(questions[nextQuestion].question);
       setOption1(questions[nextQuestion].option1);
       setOption2(questions[nextQuestion].option2);
@@ -109,7 +108,6 @@ function SimpleQuestions() {
       } else {
         const previousQuestion = questionNumber - 1;
         setQuestionNumber(previousQuestion);
-        //setColor(colors[Math.floor(Math.random() * colors.length)])
         setQuestionBody(questions[previousQuestion].question);
         setOption1(questions[previousQuestion].option1);
         setOption2(questions[previousQuestion].option2);
@@ -152,21 +150,13 @@ function SimpleQuestions() {
                 }%`,
               }}
             ></div>
-            <div
-              className="Simple-question-number"
-              style={{
-                position: "absolute",
-              }}
-            >
+            <div className="Simple-question-number">
               {currentQuestionNumber === 16
                 ? "Quiz Complete!"
                 : "Question " + currentQuestionNumber}
               {currentQuestionNumber === 16 ? "" : "/" + numberOfQuestions}
             </div>
-            <div
-              className="Simple-progress-percentage"
-              style={{ position: "relative" }}
-            >
+            <div className="Simple-progress-percentage">
               {Math.round(
                 100 * ((currentQuestionNumber - 1) / numberOfQuestions)
               )}
@@ -175,9 +165,7 @@ function SimpleQuestions() {
           </div>
         </div>
         <div className="Simple-textSpace">
-          <div className="Simple-question">
-            <div className="Simple-question-body">{questionBody}</div>
-          </div>
+          <div className="Simple-question-body">{questionBody}</div>
           <div className="Simple-buttons">
             <span className="Button-visible-true" id="nextButton">
               <span className="Simple-option-1">
@@ -211,10 +199,8 @@ function SimpleQuestions() {
               </span>
             </span>
             <span className="Button-visible-false" id="reportButton">
-              <span>
-                <p className="Button-report">
-                  <LinkButton to="/simplereport" label="Report"></LinkButton>
-                </p>
+              <span className="Button-report">
+                <LinkButton to="/simplereport" label="Report"></LinkButton>
               </span>
             </span>
           </div>
