@@ -1,15 +1,23 @@
 import React, { useState } from "react";
-import { Button, Form, Row, Col } from "react-bootstrap";
+import { Button, Form, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export function ApiKeyInput(): JSX.Element {
+export function ApiKeyInput(
+  {
+    submitted,
+    setSubmit
+  }: {
+    submitted: boolean;
+    setSubmit: (submitted: boolean) => void;
+  }
+): JSX.Element {
   const [apiKey, setApiKey] = useState<string>("");
-  const [isSubmit, setSubmit] = useState<boolean>(false)
 
   const changeKey = (event: React.ChangeEvent<HTMLInputElement>) => {
     setApiKey(event.target.value);
   };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     console.log("apiKey->", apiKey);
     localStorage.setItem("GBTKEY", apiKey);
     setSubmit(true);
@@ -18,6 +26,7 @@ export function ApiKeyInput(): JSX.Element {
   return <div>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formApiKey">
+              <Container>
             <Row>
               <Col>
               <Form.Control
@@ -29,9 +38,10 @@ export function ApiKeyInput(): JSX.Element {
               </Col>
               <Col style={{textAlign: "left"}}>
               <Button variant="nav" type="submit">Submit</Button>
-              {!isSubmit ? "✗" : "✓"}
+              {!submitted ? "✗" : "✓"}
               </Col>
             </Row>
+            </Container>
             </Form.Group>
           </Form>
           </div>
@@ -40,7 +50,9 @@ export function ApiKeyInput(): JSX.Element {
 export const Home = () => {
   return(
     <>
+    <br></br>
     <h2 className="App-misc-text">Select Your Quiz</h2>
+    <br></br>
     <Row>
       <Col className="quiz-select">
         <div className="quiz-link-select-container">

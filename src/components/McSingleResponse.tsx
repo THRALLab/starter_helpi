@@ -22,7 +22,7 @@ export function McSingleResponse({
     const [tooltip, setTooltip] = useState<string>("");
     const initialOtherValue = prevAnswer && prevAnswer.startsWith(otherOption + ": ") ? prevAnswer : "";
     const [localAnswer, setLocalAnswer] = useState<string>(
-        prevAnswer && !prevAnswer.startsWith(otherOption + ": ") ? prevAnswer : otherOption
+        prevAnswer.startsWith(otherOption + ": ") ? otherOption : (prevAnswer ? prevAnswer : "")
     );
     const [customAnswer, setCustomAnswer] = useState<string>(initialOtherValue);
 
