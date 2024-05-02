@@ -108,7 +108,7 @@ const BasicPage = () => {
 		return description;
 	}
 
-	function sendRespone(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
 		const openai = new OpenAI({
 			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
 			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
@@ -194,7 +194,7 @@ const BasicPage = () => {
 
 		<div style={{textAlign: "center"}}>
       
-			<Button size="lg" disabled={!allow} onClick={sendRespone}>Get Answer</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
+			<Button size="lg" disabled={!allow} onClick={sendResponse}>Get Answer</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
 
 			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
