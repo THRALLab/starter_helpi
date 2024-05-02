@@ -8,6 +8,11 @@ import { DetailedPage } from './Components/DetailedPage/DetailedPage';
 import { AboutPage } from './Components/AboutPage/AboutPage'
 import { ResultsPage } from './Components/ResultsPage/ResultsPage';
 
+interface QuestionData {
+  question: string;
+  answer: string;
+}
+
 
 let pageData = "Home";
 const savePageKey = "MYPAGE";
@@ -24,9 +29,27 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+const detailQuestions = [
+  'What subjects or activites were you most interested in during your school years?',
+  'Describe an accomplishment or project that you are particularly proud of. What did it involve?',
+  'What are the top three tasks you enjoy doing the most in your current or past jobs?',
+  'What work environment do you thrive in? For example, fast-paced, structured, autonomous, etc.',
+  'If you had unlimited resources, what kind of work would you want to do?',
+  'Can you identify any industries r careers that you have always found intriguing? Why?',
+  'What are your long-term career goals? Where do you see yourself in five to ten years?'
+];
+
+let detailData = Array.from(detailQuestions, (question: string) => ({ question: question, answer: '' })) as QuestionData[];
+const saveDetailedDataKey = "DETAILED_DATA";
+const currData = sessionStorage.getItem(saveDetailedDataKey);
+if (currData !== null) {
+    detailData = JSON.parse(currData) as QuestionData[];
+}
+
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [page, setPage] = useState<string>(pageData); //for page navigation
+  const [detailQuestionData, setDetailQuestionData] = React.useState(detailData);
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -48,10 +71,10 @@ function App() {
     <div className="App">
       <Navbar2 page={page} setPage={changePage}></Navbar2>
       {page === "Home" && <HomeScreen page={page} setPage={changePage}/>}
-      {page === "Basic" && <BasicPage page={page} setPage={changePage}/>}
-      {page === "Detailed" && <DetailedPage page={page} setPage={changePage}/>}
+      {page === "Basic" && <BasicPage setQuestionData={setQuestionData} page={page} setPage={changePage}/>}
+      {page === "Detailed" && <DetailedPage savaDetailDataKey={saveDetailedDataKey} detailQuestionData={detailQuestionData} setDetailQuestionData={setDetailQuestionData} page={page} setPage={changePage}/>}
       {page === "About" && <AboutPage/>}
-      {page === "Results" && <ResultsPage/>}
+      {page === "Results" && <ResultsPage detailQuestionData={detailQuestionData}/>}
       <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
     </div>
   );
