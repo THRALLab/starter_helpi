@@ -126,6 +126,7 @@
   min-height: 10vh;
   background-color: var(--color-body-Headerbackground);
   font-family: Arial;
+  --font-Header: stencil;
 }
 
 .Header-toggle {
@@ -152,7 +153,7 @@
 .Header-text {
   font-size: calc(15px + 3vmin);
   color: var(--color-body-Headertext);
-  font-family: stencil;
+  font-family: var(--font-Header);
 }
 
 .Page-body {
