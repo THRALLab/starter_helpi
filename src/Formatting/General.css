@@ -32,24 +32,22 @@
   --color-body-SliderThumb: blue;
 }
 
-
 .body-theme3 {
-  --color-body-background: #294B29;
+  --color-body-background: #294b29;
   --color-body-text: #ffffffd8;
   --color-body-Headerbackground: #04280b;
   --color-body-Headertext: #ffffffda;
   --color-body-Button: #789461;
-  --color-body-ButtonDisabled: #50623A;
-  --color-body-ButtonHover: #DBE7C9;
+  --color-body-ButtonDisabled: #50623a;
+  --color-body-ButtonHover: #dbe7c9;
   --color-body-ButtonBorder: #000000;
   --color-body-questionText: #faf9f6;
   --color-body-ProgressBackground: #04280b;
-  --color-body-BarGradient: #50623A;
+  --color-body-BarGradient: #50623a;
   --color-body-BarColor: #789461;
   --color-body-TextBackground: #04280b;
   --color-body-SliderThumb: blue;
 }
-
 
 .body-theme4 {
   --color-body-background: #087d8c;
@@ -192,15 +190,3 @@
   padding-right: 1vw;
   font-family: Arial;
 }
-
-/*
-  purple
-  brown
-  #0E666C
-  #2B13A4
-  #6C0E4E
-  #5AAA95
-  #86A873
-  #668586
-  #82AEB1
-*/

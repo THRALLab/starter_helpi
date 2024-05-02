@@ -159,13 +159,18 @@ function DetailedQuestions() {
                   <Button
                     className="Button-next"
                     onClick={() => nextQuestion()}
-                    style={{ marginLeft: "90px", marginRight: "30px" }}
+                    style={{
+                      marginLeft: "50px",
+                    }}
                   >
                     Next
                   </Button>
                 </span>
                 <span className="Button-visible-false" id="reportButton">
-                  <span className="Button-report">
+                  <span
+                    className="Button-report"
+                    style={{ marginLeft: "50px" }}
+                  >
                     <LinkButton
                       to="/detailedreport"
                       label="Report"
