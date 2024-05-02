@@ -18,6 +18,7 @@ export function LinkButton(props: LinkButtonProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   //Link button component, all formatted using the general css file
   return (
     <Button
