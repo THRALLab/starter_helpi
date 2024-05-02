@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "../Formatting/General.css";
+import { useEffect } from "react";
 
 interface LinkButtonProps {
   to: string;
@@ -13,6 +14,10 @@ export function LinkButton(props: LinkButtonProps) {
   const handleButtonClick = (whereTo: string) => {
     navigate(whereTo);
   };
+  //Scrolls to the top of the page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   //Link button component, all formatted using the general css file
   return (
     <Button
