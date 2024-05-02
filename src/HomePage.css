@@ -16,8 +16,8 @@ HomePage.css
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 45%;
-    float: left;
+    width: 100%;
+    /* float: left; */
   }
 
   .HomePage h1 {
@@ -33,7 +33,7 @@ HomePage.css
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 45%;
+    width: 100%;
   }
   
   .question {
@@ -64,7 +64,7 @@ HomePage.css
     border: 2px solid #ffffff;
     padding: 20px;
     border-radius: 20px;
-    float: right;
+    /* float: right; */
   }
 
 .login-form {
