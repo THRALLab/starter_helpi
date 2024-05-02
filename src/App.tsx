@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { SelectQuiz } from "./pages/SelectQuiz";
@@ -10,7 +10,9 @@ import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
 import { ChatGBTPage } from "./pages/chat-gbt-page/ChatGBTPage";
 import { Col, Row } from "react-bootstrap";
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
+  const [submitted, setSubmit] = useState<boolean>(false);
+
   return ( <>
     <Router>
       <div className="App">
@@ -39,18 +41,21 @@ function App(): JSX.Element {
 
       </div>
     </Router>
+    <div style={{backgroundColor: "#eadbc8"}}>
     <div className="App-footer"> 
         <Row>
           <Col>
-          <ApiKeyInput></ApiKeyInput>
+          <ApiKeyInput
+            submitted={submitted}
+            setSubmit={setSubmit}
+          ></ApiKeyInput>
           </Col>
-          <Col style={{position: "fixed", textAlign: "right"}}>
-          Isaac, Dylan, Barry
+          <Col style={{ textAlign: "right"}}>
+            Developers: Isaac, Dylan, Barry
           </Col>
         </Row>
+      </div>
       </div>
    </>
   );
 }
-
-export default App;

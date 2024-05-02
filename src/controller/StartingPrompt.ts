@@ -164,7 +164,14 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
                 `    type: "MC_SINGLE_RESPONSE",\n` +
                 `    prompt: "What is your highest level of education?",\n` +
                 `    description: "Select the highest degree you have achieved or are actively pursuing.",\n` +
-                `    options: ["High School or equivalent", "Some College", "Associate's Degree", "Bachelor's Degree", "Master's Degree", "Doctoral or Professional Degree", "Other (please specify)"]\n` +
+                `    options: [
+                    "High School or equivalent",
+                    "Some College",
+                    "Associate's Degree",
+                    "Bachelor's Degree",
+                    "Master's Degree",
+                    "Doctoral or Professional Degree",
+                    "Other (please specify)"]\n` +
                 `  },\n` +
                 `  // Additional questions will be generated based on the user's responses and needs.\n` +
                 `};\n\n` +
@@ -175,54 +182,13 @@ export const CreateStartingPrompt = (questionAns : PromptQuestionsSetup): string
                 `This types is a single response multiple choice question.\n` +
                 `You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
                 `All Multiple Choice types also have a special feature, unique to this question type:\n` +
-                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
+                `   If you add the keywork 'specify' to and questoin option, the user will have the ability to select this option and type a custom answer added on to the option.\n\n` +
 
                 `MC_MULTI_RESPONSE:\n` +
                 `This type is a multiple response multiple choice question.\n` +
                 `You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
                 `All Multiple Choice types also have a special feature, unique to this question type:\n` +
-                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
-
-                `TEXT_RESPONSE:\n` +
-                `This type is a text response question, similar to short/long answer question types.\n` +
-                `You should use the TEXT_RESPONSE type when you want the user to type a custom answer to the given prompt.\n` +
-                `The options field a TEXT_RESPONSE question should be an empty list since the type does not require options.\n\n` +
-
-                `SLIDER_RESPONSE:\n` +
-                `This type is a slider question where the user will be instructed to choose a value between 1 and 100.\n` +
-                `You should use the SLIDER_RESPONSE type when you want to gauge how strongly the user feels about something.\n` +
-                `The options field a SLIDER_RESPONSE question should be an empty list since the type does not require options.\n\n` +
-
-                `USER_RANKING:\n` +
-                `This type is a custom ranking question where the user will be asked to rank the question options in order of preference.\n` +
-                `Specify in the question prompt the order in which you would like the user to consider the options, such as from most to least preferred.\n` +
-                `Use the USER_RANKING type when you want to understand the user's comparative preferences among a list of options.\n` +
-                `This can help in determining priorities or preferences without the constraints of other types of questions that limit the responses to single or multiple choices.\n\n\n` + 
-                `You should structure the questions in the following JSON format:\n` +
-                `{\n` +
-                `  question1: {\n` +
-                `    id: "question1",\n` +
-                `    type: "MC_SINGLE_RESPONSE",\n` +
-                `    prompt: "What is your highest level of education?",\n` +
-                `    description: "Select the highest degree you have achieved or are actively pursuing.",\n` +
-                `    options: ["High School or equivalent", "Some College", "Associate's Degree", "Bachelor's Degree", "Master's Degree", "Doctoral or Professional Degree", "Other (please specify)"]\n` +
-                `  },\n` +
-                `  // Additional questions will be generated based on the user's responses and needs.\n` +
-                `};\n\n` +
-
-                `Here are the instructions for how to utilize each of the five question types:\n` +
-
-                `MC_SINGLE_RESPONSE:\n` +
-                `This types is a single response multiple choice question.\n` +
-                `You should use the MC_SINGLE_RESPONSE type when you want the user to choose only one of the given options.\n\n` +
-                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
-                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
-
-                `MC_MULTI_RESPONSE:\n` +
-                `This type is a multiple response multiple choice question.\n` +
-                `You should use the MC_MULTI_RESPONSE type when you want to gather all applicable user preferences.\n` +
-                `All Multiple Choice types also have a special feature, unique to this question type:\n` +
-                `   If you list 'Other' as one of the options in the question, the user will have the ability to select this option and type a custom answer choice.\n\n` +
+                `   If you add the keywork 'specify' to and questoin option, the user will have the ability to select this option and type a custom answer added on to the option.\n\n` +
 
                 `TEXT_RESPONSE:\n` +
                 `This type is a text response question, similar to short/long answer question types.\n` +
