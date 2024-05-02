@@ -738,7 +738,7 @@ const DetailedPage = () => {
 		});
 		  
 		async function runGPT() { //Creates conversation with the GPT-4 model
-			console.log("API Key: " + key); //for testing purposes
+			//console.log("API Key: " + key); //for testing purposes
 			try{
 				const response = await openai.chat.completions.create({
 				model: "gpt-4-turbo",
