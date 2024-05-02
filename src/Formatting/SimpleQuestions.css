@@ -13,7 +13,7 @@
 
 .Simple-progress {
   color: var(--color-body-questionText);
-  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .Simple-question-number {
