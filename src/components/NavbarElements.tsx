@@ -29,6 +29,15 @@ export const NavLink = styled(Link)`
     }
 `;
 
+export const HomeLink = styled(Link)`
+    color: black;
+    text-decoration: none;
+    transition: color 0.75s ease;
+    &:hover {
+        color: white;
+    }
+`;
+
 export const Bars = styled(FaBars)`
     display: none;
     color: #808080;
