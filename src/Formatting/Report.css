@@ -17,13 +17,6 @@
   margin-bottom: 3vh;
 }
 
-.Button-chatGPT {
-  font-weight: bold;
-  color: var(--color-body-text);
-  border: var(--color-body-ButtonBorder);
-  background-color: var(--color-body-Button);
-}
-
 .Report-results-header {
   font-weight: bold;
   font-size: 26px;
@@ -34,4 +27,11 @@
   margin-left: 10vw;
   margin-right: 10vw;
   margin-bottom: 2vh;
+}
+
+.Button-chatGPT {
+  font-weight: bold;
+  color: var(--color-body-text);
+  border: var(--color-body-ButtonBorder);
+  background-color: var(--color-body-Button);
 }

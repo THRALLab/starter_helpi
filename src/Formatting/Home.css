@@ -1,4 +1,4 @@
-.Page-text {
+.Home-text {
   text-align: left;
   margin-bottom: 5vh;
   margin-left: 15%;
@@ -9,7 +9,7 @@
   text-justify: auto;
 }
 
-.Text-basic {
+.Home-text-basic {
   right: 0;
   margin-left: 10%;
   margin-right: 5%;
@@ -18,7 +18,7 @@
   background-color: var(--color-body-TextBackground);
 }
 
-.Text-detailed {
+.Home-text-detailed {
   left: 0;
   margin-right: 10%;
   margin-left: 5%;
@@ -27,7 +27,7 @@
   background-color: var(--color-body-TextBackground);
 }
 
-.Button-format {
+.Home-button {
   color: var(--color-body-text);
   text-align: center;
 }
