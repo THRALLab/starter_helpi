@@ -65,7 +65,6 @@ function DetailedQuestions() {
       setQuestionBody(questions[questionNumber + 1].question);
       setQuestionNumber(questionNumber + 1);
       setBackButtonDisabled(false);
-      //setColor(colors[Math.floor(Math.random() * colors.length)]); People didn't like it
     } else {
       // End of quiz...
       window.alert(
@@ -100,13 +99,10 @@ function DetailedQuestions() {
       setCurrSliderValue(sliderValues[questionNumber - 1]);
       const previousQuestionIndex = questionNumber - 1;
       setQuestionBody(questions[previousQuestionIndex].question);
-      //setColor(colors[Math.floor(Math.random() * colors.length)]); People didn't like it
       setQuestionNumber(previousQuestionIndex);
-
       if (previousQuestionIndex === 0) {
         setBackButtonDisabled(true);
       }
-
       if (questionNumber === numberOfQuestions) {
         let nextButton = document.getElementById("nextButton");
         if (nextButton != null) {
@@ -186,19 +182,13 @@ function DetailedQuestions() {
                     height: `${100 * (questionNumber / numberOfQuestions)}%`,
                   }}
                 ></div>
-                <span
-                  className="DetailedQuestions-question-number"
-                  style={{ position: "absolute" }}
-                >
+                <span className="DetailedQuestions-question-number">
                   {questionNumber === 30
                     ? "Quiz Complete!"
                     : "Question " + (questionNumber + 1)}
                   {questionNumber === 30 ? "" : "/" + numberOfQuestions}
                 </span>
-                <span
-                  className="DetailedQuestions-progress-bar-percentage"
-                  style={{ position: "absolute" }}
-                >
+                <span className="DetailedQuestions-progress-bar-percentage">
                   {Math.trunc(100 * (questionNumber / numberOfQuestions))}%
                   completed
                 </span>
