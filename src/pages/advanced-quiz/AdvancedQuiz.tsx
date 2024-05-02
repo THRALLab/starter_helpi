@@ -4,15 +4,18 @@ import { advancedQuiz } from "src/assets/quizzes/AdvancedQuiz"
 import { DisplayQuiz } from "src/components/DisplayQuiz"
 import { Loading } from "src/components/Loading"
 import { ProgressBar } from "src/components/ProgressBar"
+import { QuizProps } from "src/components/DisplayQuiz"
+
 
 
 
 
 export const AdvancedQuiz = () => {
     const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
-    const [currTotQuestions, setCurrTotQuestions] = useState<number>(3);
-    const totalQuestions = 20;
-    const initialMax = 7
+    const [currTotQuestions, setCurrTotQuestions] = useState<number>(4);
+    const quiz: QuizProps = advancedQuiz;
+    const totalMax = 20;
+    const experienceMax = 10;
     return(
         <div className="App-quiz">
         <Container>
@@ -26,10 +29,10 @@ export const AdvancedQuiz = () => {
             <Row>
                 <Suspense fallback={<Loading type="Advanced Quiz"/>}>
                     <DisplayQuiz
-                        quiz={advancedQuiz}
+                        parentQuiz={quiz}
                         title="Advanced Quiz"
-                        initialMax={initialMax}
-                        totalQuestions={totalQuestions}
+                        experienceMax={experienceMax}
+                        totalMax={totalMax}
                         questionsAnswerd={questionsAnswered}
                         currTotQuestions={currTotQuestions}
                         setQuestionsAnswerd={setQuestionsAnswered}
