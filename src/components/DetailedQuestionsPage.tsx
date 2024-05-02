@@ -50,71 +50,15 @@ export function DetailedQuestionsPage(): JSX.Element {
     `}
   `;
 
-    const questions = React.useMemo(() => [
-		{
-			id: 1,
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-		},
-		{
-			id: 2,
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-		{
-			id: 3,
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-		{
-			id: 4,
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			id: 5,
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			id: 6,
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			id: 7,
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		}
-	], []);    
+  const questions = [
+    { id: 1, question: "What are you particularly good at?" },
+    { id: 2, question: "What are you most passionate about?" },
+    { id: 3, question: "What would make my life feel the most meaningful?" },
+    { id: 4, question: "What kind of impact would I want to have on the world with my work?" },
+    { id: 5, question: "What do I enjoy most in life? What do I enjoy so much that I lose track of time?" },
+    { id: 6, question: "What fields am I most interested in?" },
+    { id: 7, question: "How can I add value to the marketplace? With what skills?" }
+];    
 
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
@@ -257,7 +201,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                             >
                         </ProgressBar>}
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
-                        <p>{questions[currentQuestion].id}</p>
+                        <p>{questions[currentQuestion].question}</p>
                         <div style={{paddingBottom: '1vh', display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center'}}>
