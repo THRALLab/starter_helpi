@@ -54,7 +54,7 @@
   align-items: center;
   padding-top: relative;
   bottom: 0%;
-  position: fixed;
+  justify-content: space-between;
 }
 
 .App-misc-text {

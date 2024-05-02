@@ -75,7 +75,8 @@ export function TextResponse({
             )}
             <Form.Group>
                 <Form.Control
-                    as="textarea" rows={3}
+                    as="textarea"
+                    rows={3}
                     placeholder="Enter answer here"
                     value={localAnswer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}
