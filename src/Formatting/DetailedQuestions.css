@@ -12,6 +12,7 @@
 
 .Slider-questions {
   justify-content: left;
+  text-align: center;
 }
 
 .Slider-text {
@@ -62,7 +63,7 @@
   margin-left: 20vh;
   border-radius: 10px;
   width: 200px;
-  height: 500px;
+  height: 55vh;
   transform: rotate(180deg);
   background-color: var(--color-body-ProgressBackground);
 }

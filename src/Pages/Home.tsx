@@ -51,10 +51,10 @@ function Home() {
             Jordan.
           </p>
         </div>
-        <Container className="Home-questionsection">
+        <Container>
           <Row>
-            <Col className="Home-basic-side">
-              <div className="Home-text-basic">
+            <Col className="Home-text-basic">
+              <div>
                 <img src="https://img.freepik.com/premium-vector/vector-illustration-teacher-kids-performing-experiments-school-science-lab_830469-1997.jpg" alt="Simple Science Experiment" width="400px" height="287px" style={{ padding: "10px" }} />
                 <p className="Home-button">
                   <LinkButton
@@ -67,8 +67,8 @@ function Home() {
                 simple and multiple choice.
               </div>
             </Col>
-            <Col className="Home-basic-side">
-              <div className="Home-text-detailed">
+            <Col className="Home-text-detailed">
+              <div>
                 <img src="https://www.techspot.com/images2/news/bigimage/2021/02/2021-02-10-image-18.jpg" alt="Science Labratory" width="400px" height="287px" style={{ padding: "10px" }} />
                 <p className="Home-button">
                   <LinkButton
