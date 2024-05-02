@@ -83,8 +83,8 @@
         },
         {
 			"question_number": 13,
-            "question":"13. How many hours would you like to work per week?",
-            "options":[">25","25-30","30-35","35+"],
+            "question":"13. What is your biggest weakness?",
+            "options":["communication","time management","organization","motivation"],
             "type": "multiple choice"
         },
         {
