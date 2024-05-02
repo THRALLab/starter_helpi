@@ -1,7 +1,15 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 
-export function ResultsPage({ page, setPage }: Readonly<{ page: string; setPage: (newPage: string) => void }>) {
+interface QuestionData {
+    question: string;
+    answer: string;
+  }  
+
+export function ResultsPage({basicQuestionData, detailQuestionData} : {basicQuestionData: QuestionData[], detailQuestionData: QuestionData[]}) {
+    console.log(basicQuestionData);
+    console.log(detailQuestionData);
+    
     return (
         <>
             <div className='main-component'>
