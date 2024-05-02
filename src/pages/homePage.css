@@ -81,7 +81,7 @@ div .quiz-desc-container {
    margin-right: 35px;
 }
 
-.quiz-desc a {
+.quiz-desc Link {
     color:black;
     text-decoration: none;
     transition: color 0.75s ease;
