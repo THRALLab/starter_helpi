@@ -132,6 +132,7 @@ const DetailedPage = () => {
        setAllow(answered === 7); //checks the amount of questions answered
 	   setAlert(answered === 7)
     }, [answered]);
+
 	return (<>
 		<style>{`
         .question-box {
@@ -172,14 +173,6 @@ const DetailedPage = () => {
 				 below! You will be able to click the "Answer" which will 
 				allow you to see the results of you future career.
 			</p>
-		</div>
-		<div style={{textAlign:"center"}}>
-
-		<Button size="lg" onClick={sendRespone} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
-		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
-		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
-				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-			</Alert>
 		</div>
 		<h3>Question 1.</h3>
 		<span className="questionPrompt">You slept through your alarm and barely missed the train to work. The next train isn’t for another 30 minutes, so you’ll definitely be late now. What do you do?</span> 
@@ -659,6 +652,13 @@ const DetailedPage = () => {
 					disabled={!otherSelected[6]}/>
 				</div>
 			</div>
+		<div style={{textAlign:"center", marginBottom:"10px"}}>
+		<Button size="lg" onClick={sendRespone} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"10px", marginBottom:"10px"}}></ProgressBar>
+		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}} >
+				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
+			</Alert>
+		</div>
 	</>
 	);
 
