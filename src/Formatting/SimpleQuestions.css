@@ -65,9 +65,9 @@
 }
 
 .Simple-buttons {
-  position: relative; /* Establish positioning context */
+  position: relative;
   display: flex;
-  justify-content: center; /* Center the buttons horizontally */
+  justify-content: center;
   margin-bottom: 10px;
 }
 
