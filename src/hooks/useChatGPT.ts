@@ -26,7 +26,7 @@ export default function useChatGPT(): Tools {
 				messages: [
 					{
 						role: "user",
-						content: `I am looking to generate a detailed and lengthy report catered towards helping a user find a list of 4 careers by name that would closely match with what they've answered given a set of questions. When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest. If any of the questions receive gibberish answers, ignore them. These questions and answers are as follows: \n ${formattedQ_A}`
+						content: `I am looking to generate a detailed and lengthy report catered towards helping a user find a list of 4 careers by name that would closely match with what they've answered given a set of questions. When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest to the user. If any of the questions receive gibberish answers or don't make sense, ignore them. These questions and answers are as follows: \n ${formattedQ_A}`
 					}
 				],
 				stream: true
