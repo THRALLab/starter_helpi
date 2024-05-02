@@ -3,7 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
-import herbert from "../audio/Big-Chungus.jpg";
+//import piggy from "../src/audio/Piggyback.ogg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Home.css";
@@ -76,10 +76,11 @@ function Home() {
                 take around 10 to 15 minutes to complete. <br></br> The
                 questions are answered on a scale.
               </div>
-              <audio controls>
-                <source src={herbert} type="audio/mpeg" />
+                <audio controls>
+                  <source src="/audio/123.mp3" type="audio/mpeg" />
+                     Your browser does not support the audio element.
                 </audio>
-            </Col>
+              </Col>
           </Row>
         </Container>
       </div>
