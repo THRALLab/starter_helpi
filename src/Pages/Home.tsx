@@ -41,18 +41,18 @@ function Home() {
       </div>
 
       <div className="Page-body">
-        <p className="Page-text">
+        <p className="Home-text">
           Welcome to the Career Lab! We have two quizzes you can take to help
           find your ideal career. Your answers will be reviewed by ChatGPT to
           generate a custom report of what caeer paths suit you the best. This
           project created by: Alex Hoy, Connor Jackson, Ryan Jones, and Rory
           Jordan.
         </p>
-        <Container className="Page-questionsection">
+        <Container className="Home-questionsection">
           <Row>
-            <Col className="Basic-Side">
-              <div className="Text-basic">
-                <p className="Button-format">
+            <Col className="Home-basic-side">
+              <div className="Home-text-basic">
+                <p className="Home-button">
                   <LinkButton
                     to="simplequestions"
                     label="Basic Quiz"
@@ -63,9 +63,9 @@ function Home() {
                 simple and multiple choice.
               </div>
             </Col>
-            <Col className="Detailed-Side">
-              <div className="Text-detailed">
-                <p className="Button-format">
+            <Col className="Home-basic-side">
+              <div className="Home-text-detailed">
+                <p className="Home-button">
                   <LinkButton
                     to="detailedquestions"
                     label="Detailed Quiz"
