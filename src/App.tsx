@@ -38,15 +38,6 @@ const HomePage: React.FC = () => {
           </Link>
         </div>
       </div>
-      <div className="login-section">
-        <h2>Login</h2>
-        <form className="login-form">
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button type="submit">Login</button>
-        </form>
-        <button className="create-account-button">Create Account</button>
-      </div>
     </div>
   );
 }
