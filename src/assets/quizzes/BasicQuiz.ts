@@ -1,8 +1,5 @@
 import { Question } from "../../interfaces/QuestionTypes";
 
-
-
-
 export const basicQuiz: Record<string, Question> = {
   question1: {
     id: "question1",
