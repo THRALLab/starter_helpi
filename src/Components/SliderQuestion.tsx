@@ -17,7 +17,6 @@ export function SliderQuestion(props: DetailedQuestionProps) {
   //Slider formatted using the detailed questions css
   return (
     <div className="DetailedQuestions-slider" role="form">
-      <label>{props.label}</label>
       <p className="Slider-questions">{props.question}</p>
       <p className="Slider-text">Strongly Agree</p>
       <Form.Range
