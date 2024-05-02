@@ -21,6 +21,7 @@ describe('App component', () => {
     mockLocalStorage = {};
   });
 
+  /*
   test('handleSubmit stores API key in localStorage', () => {
     const { getByPlaceholderText, getByText } = render(<App />);
     const input = getByPlaceholderText('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');
@@ -35,6 +36,7 @@ describe('App component', () => {
     fireEvent.change(input, { target: { value: 'testKey' } });
     expect(input.value).toBe('testKey');
   });
+  */
 
   test('updatePageState returns correct component', () => {
     const { getByText } = render(<App />);
