@@ -16,11 +16,17 @@
   padding: 10px;
 }
 
+.Simple-question-number {
+  position: absolute;
+}
+
 .Simple-progress-outer {
   color: var(--color-body-questionText);
   position: relative;
   display: flex;
   padding: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
   background-color: var(--color-body-ProgressBackground);
 }
 
@@ -38,6 +44,7 @@
 }
 
 .Simple-progress-percentage {
+  position: relative;
   margin-left: auto;
   align-self: right;
 }
@@ -46,6 +53,7 @@
   margin-left: 10%;
   margin-right: 10%;
   border-radius: 10px;
+  padding: 10px;
   color: var(--color-body-text);
   background-color: var(--color-body-TextBackground);
 }
@@ -59,22 +67,7 @@
   display: flex;
   justify-content: center;
   padding: 10px;
-}
-
-.Simple-option-1 {
-  position: absolute;
-  left: 1;
-  right: 0;
-  padding-right: 49vw;
-}
-
-.Simple-option-2 {
-  position: absolute;
-  left: 1;
-  right: 1;
-  padding-right: 0;
-  margin-right: 0;
-  padding-left: 12vw;
+  margin-bottom: 10px;
 }
 
 .Simple-back-bottom {
