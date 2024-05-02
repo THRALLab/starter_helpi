@@ -7,6 +7,12 @@ import Button from "react-bootstrap/esm/Button";
 import OpenAI from "openai";
 import { key } from "./homePage"
 
+function parseAnswers(answers: string|null): string[] {
+	if (answers === null) return [];
+    let array = answers.substring(2,answers.length-2).split("\", \"");
+    return array;
+}
+
 const QUESTIONSTARTS = [" If I slept through my alarm, I would ", 
 						" If I was assigned to create a presentation for a conference, I would ",
 						" If a coworker tells me to redo my part of the presentation, I would ", 
@@ -718,11 +724,10 @@ const DetailedPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 64,//should be 512
+				max_tokens: 512,//should be 512
 				top_p: 1,
 				});
-	
-				console.log(response.choices[0].message.content); //GPT Response to the user's input
+				console.log(parseAnswers(response.choices[0].message.content)); //GPT Response to the user's input
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				console.log(e);
