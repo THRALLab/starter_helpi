@@ -27,6 +27,7 @@
   padding: 10px;
   margin-left: 10%;
   margin-right: 10%;
+  border-radius: 10px;
   background-color: var(--color-body-ProgressBackground);
 }
 
@@ -35,6 +36,7 @@
   top: 0;
   left: 0;
   height: 100%;
+  border-radius: 10px;
   background: linear-gradient(
     to right,
     var(--color-body-BarGradient),
