@@ -56,18 +56,22 @@ div .quiz-desc-container {
 
 .quiz-desc {
     height: 360px;
-    width: 35%;
     border: solid 1px grey;
     text-align: center;
-    transition: background-color 0.75s ease, margin-top 0.75s ease;
+    transition: background-color 0.75s ease, margin-top 0.75s ease, color 0.75s ease;
     border-radius: 5px;
     overflow: overlay;
     box-shadow: 10px 5px 5px rgb(86, 86, 86);
    
     &:hover {
-        /* background-color: #e8ebed; */
         margin-top: -9px;
         background-color: rgb(33, 72, 197);
+    }
+    &:hover h3 {
+        color: white;
+    }
+    &:hover p {
+        color: white;
     }
     cursor: pointer;
 }
