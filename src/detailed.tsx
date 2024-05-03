@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./detailed.css";
 import questions from "./detailedQuestions.json";
 import Modal from "./Modal";
-import Confetti from "react-confetti";
+import Confetti from 'react-confetti';
 
 // TODO - [ ] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
 // TODO - [x] add confetti effect when the user clicks the 'submit responses' button
