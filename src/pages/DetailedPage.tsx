@@ -113,7 +113,13 @@ const DetailedPage = () => {
 		}
 	}
 	const [progressShow, setProgressShow] = useState<boolean>(false);
-	const handleShow = () => setProgressShow(true);
+	const [clickCount, setClickCount] = useState<number>(1);
+	function HandleShow() {
+		setClickCount(clickCount +1)
+		if(clickCount % 2 === 0 && clickCount !== 0){
+			setProgressShow(true);
+		}
+	}
 	const handleClose = () => setProgressShow(false);
 //checks which questions are answered
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
@@ -150,7 +156,7 @@ const DetailedPage = () => {
        setAllow(answered === 7); //checks the amount of questions answered
 	   setAlert(answered === 7)
     }, [answered]);
-	
+	console.log(clickCount)
 	return (<>
 		<style>{`
         .question-box {
@@ -192,17 +198,15 @@ const DetailedPage = () => {
 				allow you to see the results of you future career.
 			</p>
 		</div>
-		<div style={{textAlign:"center"	}}>
-		<Button onClick={handleShow}>Track Progress</Button>
+		<div style={{textAlign:"center", marginTop:"25px"}}>
+		<Button size="lg" onClick={HandleShow}>Track Progress</Button>
 		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={false}>
 			<OffcanvasHeader closeButton>
 				<OffcanvasTitle>Progress</OffcanvasTitle>
 			</OffcanvasHeader>
 			<Offcanvas.Body>
-			<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"10px", marginBottom:"10px"}}></ProgressBar>
 			</Offcanvas.Body>
 		</Offcanvas>
-	
 		</div>	
 
 		<h3>Question 1.</h3>
@@ -684,7 +688,7 @@ const DetailedPage = () => {
 				</div>
 			</div>
 		<div style={{textAlign:"center", marginBottom:"10px"}}>
-		<Button size="lg" onClick={sendRespone} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<Button size="lg" onClick={sendResponse} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}} >
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
