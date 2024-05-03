@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form} from "react-bootstrap";
 import { Link } from "react-router-dom";
-import OpenAI from "openai";
 import { openaiToken } from "src/controller/openaiToken";
 
-const verifyAPIKey = async() => {
-  const up = "";
-  const p = ""
+const verifyAPIKey = async(apiKey: string) => {
   try {
-    const res = await openaiToken.chat.completions.create({
+    await openaiToken.chat.completions.create({
       messages: [
         { role: 'user', content: "please return yes" },
         ],
@@ -17,6 +14,7 @@ const verifyAPIKey = async() => {
   } catch (error) {
     return false;
   }
+  // valid key
   return true;
 }
 
@@ -27,11 +25,13 @@ export function ApiKeyInput(): JSX.Element {
 
   useEffect(() => {
     async function getVaildation() {
-      setValidKey(await verifyAPIKey());
-    }
 
-    if (isSubmit && !validKey) getVaildation();
-}, [validKey, isSubmit]);
+      setValidKey(await verifyAPIKey(apiKey));
+    }
+    // this only checks for validation once the form has been submitted
+    if (isSubmit) getVaildation();
+    setSubmit(false);
+}, [isSubmit, apiKey, validKey]);
 
   const changeKey = (event: React.ChangeEvent<HTMLInputElement>) => {
     setApiKey(event.target.value);
@@ -39,11 +39,13 @@ export function ApiKeyInput(): JSX.Element {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
     // Logic to handle the API key, such as saving to local storage or state management
-    console.log("apiKey->", apiKey); // Example: output to console or replace with storage logic
+    setSubmit(true);
+    
     localStorage.removeItem("GBTKEY");
     localStorage.setItem("GBTKEY", apiKey);
-    verifyAPIKey();
-    setSubmit(true);
+    openaiToken.apiKey = apiKey;
+    console.log("apiKey->", apiKey); // Example: output to console or replace with storage logic
+    console.log("actualKey->", openaiToken.apiKey);
   };
 
   return <div>
