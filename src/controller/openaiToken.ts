@@ -1,19 +1,8 @@
 import OpenAI from "openai";
 
-export const getApiKey = (): string => {
-    const localKey = localStorage.getItem("GBTKEY");
-    if (localKey) {
-        console.log("API Key retrieved successfully.");
-        return localKey;
-    } else {
-        console.error("API Key is not found in localStorage.");
-        return ""; // Consider how you handle cases where the API key is missing
-    }
-}
-
 // Create an instance of the OpenAI client
 export const openaiToken = new OpenAI({
-    apiKey: getApiKey(),
+    apiKey: localStorage.getItem("GBTKEY") || "",
     dangerouslyAllowBrowser: true // Be cautious with this setting in production
 });
 

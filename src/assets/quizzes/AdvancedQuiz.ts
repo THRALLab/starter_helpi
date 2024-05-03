@@ -43,7 +43,7 @@ export const advancedQuiz: Record<string, Question> =
   "question4": {
     "id": "question4",
     "type": "TEXT_RESPONSE",
-    "prompt": "Within your field of interest, are there specific areas or topics that particularly excite you? Please describe.",
+    "prompt": "How do you feel about your current path? Within your field of interest, are there specific areas or topics that particularly excite you? Please describe.",
     "description": "This question aims to uncover more detailed aspects of your interests within your broader industry field.",
     "options": []
   }

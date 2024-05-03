@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 const envKeyData = localStorage.getItem("GBTKEY");
 
 if (envKeyData != null) {
-  localStorage.setItem("GBTKEY", JSON.stringify(envKeyData));
+  localStorage.setItem("GBTKEY", envKeyData);
 } else {
   localStorage.setItem("GBTKEY", "Not Entered");
 }

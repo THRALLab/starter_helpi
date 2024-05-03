@@ -4,7 +4,8 @@ import { advancedQuiz } from "src/assets/quizzes/AdvancedQuiz"
 import { DisplayQuiz } from "src/components/DisplayQuiz"
 import { Loading } from "src/components/Loading"
 import { ProgressBar } from "src/components/ProgressBar"
-import { QuizProps } from "src/components/DisplayQuiz"
+import { QuizItems } from "src/components/DisplayQuiz"
+import { ParentConstants } from "../basic-quiz/BasicQuiz"
 
 
 
@@ -13,9 +14,15 @@ import { QuizProps } from "src/components/DisplayQuiz"
 export const AdvancedQuiz = () => {
     const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
     const [currTotQuestions, setCurrTotQuestions] = useState<number>(4);
-    const quiz: QuizProps = advancedQuiz;
+    const quiz: QuizItems = advancedQuiz;
     const totalMax = 20;
     const experienceMax = 10;
+    const advancedConstants: ParentConstants = {
+        parentQuiz: quiz,
+        title: "AdvancedQuiz",
+        experienceMax: experienceMax,
+        totalMax: totalMax
+    }
     return(
         <div className="App-quiz">
         <Container>
@@ -29,14 +36,11 @@ export const AdvancedQuiz = () => {
             <Row>
                 <Suspense fallback={<Loading type="Advanced Quiz"/>}>
                     <DisplayQuiz
-                        parentQuiz={quiz}
-                        title="Advanced Quiz"
-                        experienceMax={experienceMax}
-                        totalMax={totalMax}
-                        questionsAnswerd={questionsAnswered}
-                        currTotQuestions={currTotQuestions}
-                        setQuestionsAnswerd={setQuestionsAnswered}
-                        setCurrTotQuestions={setCurrTotQuestions}
+                        parentConstants={advancedConstants}
+                        parentQuestionsAnswerd={questionsAnswered}
+                        parentTotQuestions={currTotQuestions}
+                        parentSetAnswerd={setQuestionsAnswered}
+                        parentSetTot={setCurrTotQuestions}
                     />
                 </Suspense>
             </Row>

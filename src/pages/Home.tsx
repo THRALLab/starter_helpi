@@ -14,7 +14,7 @@ export function ApiKeyInput(
   const [apiKey, setApiKey] = useState<string>("");
 
   const changeKey = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setApiKey(event.target.value);
+    setApiKey(event.target.value.trim());
   };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

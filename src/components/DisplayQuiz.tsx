@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
@@ -6,15 +6,17 @@ import { TextResponse } from "./TextResponse"
 import { UserRanking } from "./UserRanking"
 import { SliderResponse } from "./SliderResponse";
 import { addResponseGBT, callGBT } from "src/controller/CallChat";
-import OpenAI from "openai";
 import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
 import { Button, Container } from "react-bootstrap";
 import { ExperienceReport } from "src/controller/StartingPrompt";
+import { ParentConstants } from "src/pages/basic-quiz/BasicQuiz";
+
+export type QuizItems = Record<string, Question>;
 
 interface QuizState { // state types for useReducer
-    curQuiz: QuizProps;
+    curQuiz: QuizItems;
     currentQuestionId: string;
     isQuizComplete: boolean;
     answers: QuestionAns[];
@@ -24,13 +26,14 @@ interface QuizState { // state types for useReducer
     loadingType: string;
     followUp: boolean;
     experienceReport: ExperienceReport;
+    finalReport: FinalReport;
     displayExperience: boolean;
     currStatus: string;
 };
 
 type QuizAction = // possible actions for useReducer
     | { type: 'ADD_ANSWERS'; payload: QuestionAns }
-    | { type: 'SET_QUIZ'; payload: QuizProps }
+    | { type: 'SET_QUIZ'; payload: QuizItems }
     | { type: 'SET_CURRENT_QUESTION'; payload: string }
     | { type: 'TOGGLE_LOADING'; payload: boolean }
     | { type: 'SET_LOADING_TYPE'; payload: string }
@@ -38,8 +41,8 @@ type QuizAction = // possible actions for useReducer
     | { type: 'COMPLETE_QUIZ' }
     | { type: 'SET_STATUS'; payload: string }
     | { type: 'GENERATE_EXPERIENCE_REPORT' }
-    | { type: 'GENERATE_FINAL_REPORT' }
-    | { type: 'FINISH_EXPERIENCE_REPORT' }
+    | { type: 'SET_FINAL_REPORT'; payload: FinalReport }
+    | { type: 'FINISH_EXPERIENCE_REPORT'};
 
 
 const quizReducer = (state: QuizState, action: QuizAction): QuizState => { //used for useReducer state setters
@@ -53,6 +56,7 @@ const quizReducer = (state: QuizState, action: QuizAction): QuizState => { //use
                     : [...state.answers, action.payload]
                 };
         case 'SET_QUIZ': //Current question bank
+            console.log('Updating curQuiz with new data', action.payload);
             return { ...state, curQuiz: action.payload };
         case 'SET_CURRENT_QUESTION': //Current question being displayed
             return { ...state, currentQuestionId: action.payload };
@@ -72,10 +76,10 @@ const quizReducer = (state: QuizState, action: QuizAction): QuizState => { //use
                 displayExperience: true,
                 followUp: true
             };
-        case 'GENERATE_FINAL_REPORT':
+        case 'SET_FINAL_REPORT':
             return {
                 ...state,
-                isQuizComplete: true
+                finalReport: action.payload
             };
         case 'FINISH_EXPERIENCE_REPORT':
             return {
@@ -87,14 +91,12 @@ const quizReducer = (state: QuizState, action: QuizAction): QuizState => { //use
     }
 };
 
-export type QuizProps = Record<string, Question>;
-
 type QuestionAns = { //How questions are passed to the AI
     questionId: string,
     answer: string
 }
 
-type AnswerResponse = { // Report format for final reponse
+type FinalReport = { // Report format for final reponse
     summary: string,
     advice: string,
     interactiveElements: string,
@@ -103,26 +105,20 @@ type AnswerResponse = { // Report format for final reponse
 }
 
 export function DisplayQuiz({ //contains most of the logic for displaying the quiz, if you can still even call this a quiz lol
-        parentQuiz,
-        title,
-        questionsAnswerd,
-        experienceMax,
-        totalMax,
-        currTotQuestions,
-        setQuestionsAnswerd,
-        setCurrTotQuestions
+        parentConstants,
+        parentTotQuestions,
+        parentQuestionsAnswerd,
+        parentSetAnswerd,
+        parentSetTot
     } : {
-        title: string,
-        parentQuiz : QuizProps,
-        questionsAnswerd : number,
-        experienceMax: number,
-        totalMax: number,
-        currTotQuestions: number,
-        setQuestionsAnswerd : (questionsAnswerd: number) => void 
-        setCurrTotQuestions: (currTotQuestions: number) => void
+        parentConstants: ParentConstants,
+        parentTotQuestions: number,
+        parentQuestionsAnswerd : number,
+        parentSetAnswerd : (questionsAnswerd: number) => void 
+        parentSetTot: (parentTotQuestions: number) => void
     }): JSX.Element {
     const initialState: QuizState = { //used for initializing useReducer states
-        curQuiz: parentQuiz,
+        curQuiz: parentConstants.parentQuiz,
         currentQuestionId: 'question1',
         isQuizComplete: false,
         answers: [],
@@ -132,6 +128,7 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
         loadingType: "",
         followUp: false,
         experienceReport: { academic: [], work: [], interests: [] },
+        finalReport: { summary: "", advice: "", interactiveElements: "", recommendations: "", reasoning: ""},
         displayExperience: false,
         currStatus: ''
     };
@@ -148,50 +145,61 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
 
     async function createNextQuestion(questionsNeeded: number) {
         dispatch({ type: 'SET_LOADING_TYPE', payload: "generatingQuestions" });
-        const compiledAnswers = state.answers.map(ans => ({
+        const compiledAnswers: QuestionAnswer[] = state.answers.map(ans => ({
             question: state.curQuiz[ans.questionId],
             answer: ans.answer
         }));
+        console.log(`Compiled Answers: ${compiledAnswers}`);
+        console.log(`At question ${state.currentQuestionId} with ${parentTotQuestions} total`)
+
+        console.log(`Creating ${questionsNeeded} questions stating at ${parentQuestionsAnswerd}`)
 
         const response = await connectToGBT(CreateStartingPrompt({
             questionsAns: compiledAnswers,
             status: state.followUp ? "followUp" : "",
-            quiz: title
-        }), CreateBasicStartingPrompt(questionsNeeded, questionsAnswerd));
+            quiz: parentConstants.title
+        }), CreateBasicStartingPrompt(questionsNeeded, parentQuestionsAnswerd));
     
         if (response && response.choices && response.choices.length > 0) {
             const lastChoice = response.choices[response.choices.length - 1];
 
             if (lastChoice.message && lastChoice.message.content) {
-                const newQuestions = JSON.parse(lastChoice.message.content);
-                dispatch({ type: 'SET_QUIZ', payload: { ...state.curQuiz, ...newQuestions } });
-                console.log("GBT response", response);
+                console.log("GBT Response: ", lastChoice.message.content);
+                const newQuestions: QuizItems = JSON.parse(lastChoice.message.content);
+                console.log("GBT Questions: ", newQuestions);
+                const newQuiz: QuizItems = {...state.curQuiz, ...newQuestions};
+                dispatch({ type: 'SET_QUIZ', payload: { ...newQuiz } });
+                parentSetTot(parentTotQuestions + questionsNeeded);
+                const nextQ = `question${parseInt(state.currentQuestionId.replace("question", "")) + 1}`;
+                console.log(`In createNext, nextQuestionId(${nextQ}) in targetQuiz: ${nextQ in newQuiz}`);
             } else {
                 console.log("No valid response content received");
             }
+        } else {
+            console.log("No valid response content received");
         }
     }
 
     // used to determine next question
-    const determineNextQuestionId = async (currentQuestionId: string, curQuiz: QuizProps): Promise<string> => {
-        const questionNumber = parseInt(currentQuestionId.replace("question", ""));
+    const determineNextQuestionId = async (currId: string): Promise<string> => {
+        const questionNumber = parseInt(currId.replace("question", ""));
         const nextQuestionId = `question${questionNumber + 1}`;
 
         // Check if the next question already exists in the quiz
-        if (nextQuestionId in curQuiz) {
+        if (nextQuestionId in state.curQuiz) {
             return nextQuestionId;
         }
 
-        if (currTotQuestions < totalMax) {
-            if (currTotQuestions < experienceMax) {
-                await createNextQuestion(experienceMax - currTotQuestions);
-            } else if (currTotQuestions > experienceMax){
-                await createNextQuestion(totalMax - experienceMax);
+        if (parentTotQuestions < parentConstants.totalMax) {
+            if (parentTotQuestions < parentConstants.experienceMax) {
+                await createNextQuestion(parentConstants.experienceMax - parentTotQuestions);
+            } else if (parentTotQuestions > parentConstants.experienceMax){
+                await createNextQuestion(parentConstants.totalMax - parentConstants.experienceMax);
             }
             // After attempting to create new questions, check if the desired next question now exists
-            if (nextQuestionId in curQuiz) {
-                return nextQuestionId;
-            }
+            console.log(`nextQuestionId(${nextQuestionId}) in targetQuiz: ${nextQuestionId in state.curQuiz}`)
+            console.log(`prevQuestion(question${questionNumber}) in targetQuiz: ${nextQuestionId in state.curQuiz}`)
+            return nextQuestionId;
         }
         
         return ""
@@ -211,14 +219,14 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
             }
         });
     
-        const currentNumber = parseInt(currentQuestionId.replace("question", "").trim());
+        const currentNumber = parseInt(state.currentQuestionId.replace("question", "").trim());
 
         if (forewards) {
-            if (currTotQuestions < totalMax) {
-                if ((currTotQuestions !== experienceMax) || ((currTotQuestions > experienceMax) && !state.followUp)) {//If currTotQuestions >== experienceMax and not asking followUp questions
-                    const nextQuestionId = await determineNextQuestionId(state.currentQuestionId, state.curQuiz);
+            if (parentTotQuestions < parentConstants.totalMax) {
+                if ((parentTotQuestions !== parentConstants.experienceMax) || ((parentTotQuestions > parentConstants.experienceMax) && !state.followUp)) {//If parentTotQuestions >== parentConstants.experienceMax and not asking followUp questions
+                    const nextQuestionId = await determineNextQuestionId(state.currentQuestionId);
                     if (nextQuestionId) {
-                        setQuestionsAnswerd(currTotQuestions + 1);
+                        parentSetAnswerd(parseInt(state.currentQuestionId.replace("question", "")) + 1);
                         dispatch({type: 'SET_CURRENT_QUESTION', payload: nextQuestionId });
                     }
                     else dispatch({ type: 'COMPLETE_QUIZ'})
@@ -227,37 +235,16 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
                 }
             }
         } else {//backwards
-            setQuestionsAnswerd(currentNumber - 1);
+            parentSetAnswerd(parseInt(state.currentQuestionId.replace("question", "")) - 1);
             const prevId = `question${currentNumber - 1}`;
             if (prevId in state.curQuiz) {
-                setQuestionsAnswerd(currTotQuestions - 1);
+                parentSetAnswerd(parentTotQuestions - 1);
                 dispatch({type: 'SET_CURRENT_QUESTION', payload: prevId})
             }
             else dispatch({type: 'COMPLETE_QUIZ'})
         }
         dispatch({type: 'TOGGLE_LOADING', payload: false})
     }
-
-
-
-
-
-
-
-    //Will eventually be replaced by useReducer thing
-    const [curQuiz, setCurQuiz] = useState<QuizProps>(parentQuiz);
-    const [currentQuestionId, setCurrentQuestionId] = useState<string>("question1"); // Starting question ID
-    const [isQuizComplete, setIsQuizComplete] = useState<boolean>(false); // Used to determine when curQuiz is complete
-    const [answers, setAnswers] = useState<QuestionAns[]>([]); // Array of all question answers
-    const [lastQuestionArray, setQuestionArray] = useState<number>(0) // Keeps track of lastmost question answered to determine when to append answers
-    const [gbtConversation, setGBTConversation] = useState<OpenAI.ChatCompletion.Choice[]>();
-    const [isLoading, setIsLoading] = useState(false);
-    const [type, setType ] = useState("");
-    const [followUp, setFollowUp] = useState<boolean>(false);
-    const [experienceReport, setExperienceReport] = useState({ academic: [], work: [], interests: [] });
-    const [displayExperience, setDisplayExperience] = useState<boolean>(false);
-
-    // const [nextPrompt, setNextPrompt] = useState<string>("");
 
     const ExpReport = () => {
         console.log("creating experience report")
@@ -368,47 +355,111 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
     // }
 
     const DisplayResults = () => {
-        const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
-        const [response, setResponse] = useState<OpenAI.ChatCompletion>();
-        const [loaded, setLoaded] = useState(false);
-    
         useEffect(() => {
-            async function getFinalResponse() {
-                const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns, "finalReport")});
-                setResponse(response);
-                setLoaded(true);
+            if (state.isQuizComplete) {
+                const fetchFinalResults = async () => {
+                    dispatch({ type: 'TOGGLE_LOADING', payload: true });
+                    const questionAns: QuestionAnswer[] = state.answers.map(q => ({
+                        question: state.curQuiz[q.questionId],
+                        answer: q.answer
+                    }));
+    
+                    const response = await addResponseGBT({
+                        choices: state.gbtConversation,
+                        newMessage: createFinalResponse(questionAns, "finalReport")
+                    });
+    
+                    if (response && response.choices.length > 0) {
+                        const finalAns = response.choices[response.choices.length - 1].message.content;
+                        if (finalAns) {
+                            const finalResponse: FinalReport = JSON.parse(finalAns);
+                            dispatch({ type: 'SET_FINAL_REPORT', payload: finalResponse });
+                        } else {
+                            console.error("Error: No valid response content received");
+                        }
+                    } else {
+                        console.error("Error: No response or choices available");
+                    }
+                    dispatch({ type: 'TOGGLE_LOADING', payload: false });
+                };
+    
+                fetchFinalResults();
             }
-    
-            if (!response) getFinalResponse();
-        }, [questionAns, response]);
-    
-        if (!loaded) return <Loading type="finalReport"/>;
-    
-        if (!response || !response.choices.length) return <p>Error Occurred</p>;
+        }, []); 
 
-        const finalAns = response.choices[response.choices.length-1].message.content;
-        if(finalAns == null) return<>Error Occured</>
-        const finalResponse: AnswerResponse = JSON.parse(finalAns);
-    
+
+        if (state.isLoading) {
+            return <Loading type="finalReport"/>;
+        }
+
         return (
             <>
-
                 <h2>Career Report Summary</h2>
-                <p>{finalResponse.summary}</p>
+                <p>{state.finalReport.summary}</p>
                 <h3>Detailed Advice</h3>
-                <p>{finalResponse.advice}</p>
+                <p>{state.finalReport.advice}</p>
                 <h3>Explore Further</h3>
-                <p>{finalResponse.interactiveElements}</p>
+                <p>{state.finalReport.interactiveElements}</p>
                 <h3>Recommended Career Paths</h3>
-                <p>{finalResponse.recommendations}</p>
+                <p>{state.finalReport.recommendations}</p>
                 <h3>Why These Paths?</h3>
-                <p>{finalResponse.reasoning}</p>
+                <p>{state.finalReport.reasoning}</p>
             </>
         );
     }
+    
 
 
-    if (displayExperience) {
+
+
+
+
+
+
+
+
+
+    //     const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
+    //     const [response, setResponse] = useState<OpenAI.ChatCompletion>();
+    //     const [loaded, setLoaded] = useState(false);
+    
+    //     useEffect(() => {
+    //         async function getFinalResponse() {
+    //             const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns, "finalReport")});
+    //             setResponse(response);
+    //             setLoaded(true);
+    //         }
+    
+    //         if (!response) getFinalResponse();
+    //     }, [questionAns, response]);
+    
+    //     if (!loaded) return <Loading type="finalReport"/>;
+    
+    //     if (!response || !response.choices.length) return <p>Error Occurred</p>;
+
+    //     const finalAns = response.choices[response.choices.length-1].message.content;
+    //     if(finalAns == null) return<>Error Occured</>
+    //     const finalResponse: FinalReport = JSON.parse(finalAns);
+    
+    //     return (
+    //         <>
+
+    //             <h2>Career Report Summary</h2>
+    //             <p>{finalResponse.summary}</p>
+    //             <h3>Detailed Advice</h3>
+    //             <p>{finalResponse.advice}</p>
+    //             <h3>Explore Further</h3>
+    //             <p>{finalResponse.interactiveElements}</p>
+    //             <h3>Recommended Career Paths</h3>
+    //             <p>{finalResponse.recommendations}</p>
+    //             <h3>Why These Paths?</h3>
+    //             <p>{finalResponse.reasoning}</p>
+    //         </>
+    //     );
+    // }
+
+
+    if (state.displayExperience) {
         console.log("displaying experience report")
         return(
             <>
@@ -417,11 +468,11 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
         )
     }
 
-    if (isLoading) {
-        return <Loading type={type}/>;
+    if (state.isLoading) {
+        return <Loading type={state.loadingType}/>;
     }    
 
-    if (isQuizComplete) {
+    if (state.isQuizComplete) {
         return (
         <>
             <h2>Your results</h2>
@@ -429,15 +480,15 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
         </>)
     }
 
-    const currentQuestion = curQuiz[currentQuestionId];
+    const currentQuestion = state.curQuiz[state.currentQuestionId];
 
-    const foundAnswer = answers.find((targetAnswer) => (targetAnswer.questionId === currentQuestion.id))
+    const foundAnswer = state.answers.find((targetAnswer) => (targetAnswer.questionId === currentQuestion.id))
     
     const questionComponentProps: QuestionComponentProps = {
         question: currentQuestion.prompt,
         options: currentQuestion.options,
         onNext: handleAnswerSubmit,
-        isFirst: currentQuestionId === "question1",
+        isFirst: currentQuestion.id === "question1",
         description: currentQuestion.description,
         prevAnswer: foundAnswer ? foundAnswer.answer : ""
     };
@@ -465,4 +516,3 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
         </Container>
     );
 }
-
