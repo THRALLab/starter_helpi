@@ -59,26 +59,35 @@ function DetailedReport() {
     exampleFormat +
     "Include the tilda (~) in the report string, it is important.";
 
-  function setPrompt(newPrompt: string) {
-    UserRolePrompt = newPrompt;
+  function setPrompt(newUserPrompt: string, newGPTPrompt: string) {
+    UserRolePrompt = newUserPrompt;
+    GPTRole = newGPTPrompt;
   }
 
-  function optionOne() {
+
+  function optionOne(career: string) {
     setPrompt(
-      "The user would like to explore the first career option you gave. Please provide more details."
+      "Expand on this career option you gave me: " + career,
+      "The user would like to explore the first career option you gave. Please provide more details (2 paragraphs) on a single career the user provides"
     );
     ChatGPT();
   }
-
-  const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
-  //Queries ChatGPT to generate report
-  async function ChatGPT() {
-    setLoading(true);
-    //Creates ChatGPT
+//Creates ChatGPT
     const openai = new OpenAIAPi({
       apiKey: keyData,
       dangerouslyAllowBrowser: true,
     });
+  const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
+  const [careerList, setCareerList] = useState<Array<string>>(responseData.split("~")); //splits the careers for easy formatting
+  
+  const changeResponseData = (data: string) => {
+    setResponseData(data);
+  }
+
+  //Queries ChatGPT to generate report
+  async function ChatGPT() {
+    setLoading(true);
+    
     //Queries ChatGPT
     const completion = await openai.chat.completions.create({
       messages: [
@@ -92,14 +101,26 @@ function DetailedReport() {
     });
     //Stores response data
     if (completion.choices[0].message.content !== null) {
-      setResponseData(completion.choices[0].message.content);
+      changeResponseData(completion.choices[0].message.content);
+      
+      setCareerList(completion.choices[0].message.content.split("~"));
+      
     } else {
       setResponseData("Error! Maybe you forgot to input the API key?");
     }
     setLoading(false);
+    //console.log("responseData: "+ responseData);
+    //console.log("careerList: "+ careerList);
   }
 
-  const careerList = responseData.split("~");
+  
+  //const [careerList, setCareerList] = useState<Array<string>>(responseData.split("~"));
+
+  const generateReport = async() => {
+    await ChatGPT();
+    //setCareerList(responseData.split("~"));
+  }
+  
 
   return (
     <div className={themeState} id="bigBody">
@@ -117,7 +138,7 @@ function DetailedReport() {
         <div className="Report-space">
           <div className="Report-header">View your Detailed Quiz Results!</div>
           <Form className="Report-body">
-            <Button className="Button-chatGPT" onClick={ChatGPT}>
+            <Button className="Button-chatGPT" onClick={generateReport}>
               Generate Report
             </Button>
           </Form>
@@ -146,7 +167,7 @@ function DetailedReport() {
             </div>
           )}
           {!loading && careerList.length < 3 && <div>{responseData}</div>}
-          <Button className="Report-button-explore" onClick={optionOne}>
+          <Button className="Report-button-explore" onClick={() => optionOne(careerList[1])}>
             Explore Career 1
           </Button>
         </div>
