@@ -8,6 +8,20 @@ OffcanvasTitle} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 
+function parseAnswers(answers: string|null): string[] {
+	if (answers === null) return [];
+    let array = answers.substring(2,answers.length-2).split("\", \"");
+    return array;
+}
+
+const QUESTIONSTARTS = [" If I slept through my alarm, I would ", 
+						" If I was assigned to create a presentation for a conference, I would ",
+						" If a coworker tells me to redo my part of the presentation, I would ", 
+						" If I was in charge of scheduling the meetings for my presentation group, we would meet ", 
+						" If I felt that I deserved a higher salary, I would ", 
+						" If I saw a stressed coworker with a pile of paperwork on their desk, I would ", 
+						" To relax on the weekend, I would "];
+
 const DetailedPage = () => {
 	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
 	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""])
@@ -190,6 +204,7 @@ const DetailedPage = () => {
 		</Offcanvas>
 	
 		</div>	
+
 		<h3>Question 1.</h3>
 		<span className="questionPrompt">You slept through your alarm and barely missed the train to work. The next train isn’t for another 30 minutes, so you’ll definitely be late now. What do you do?</span> 
 		<div id="q1" className="question-box">
@@ -200,7 +215,7 @@ const DetailedPage = () => {
 				id="q1-Option1"
 				role="radio-1"
 				label="I’ll call my boss and let them know I’ll be late."
-				value="I’ll call my boss and let them know I’ll be late."
+				value="call my boss and let them know I’ll be late."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 0, 0)}
@@ -211,8 +226,8 @@ const DetailedPage = () => {
 				inline
 				type="radio"
 				id="q1-Option2"
-				label="Call my friend to see if they can pick me up."
-				value = "Call my friend to see if they can pick me up."
+				label="I'll call my friend to see if they can pick me up."
+				value = "call my friend to see if they can pick me up."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1,1, 0)}/>
@@ -223,8 +238,8 @@ const DetailedPage = () => {
 				inline
 				type="radio"
 				id="q1-Option3"
-				value="I’ll call in sick and take the day off."
-				label = "I’ll call in sick and take the day off."
+				value="call in sick and take the day off."
+				label = "I'll call in sick and take the day off."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder",1, 2, 0)}
@@ -236,7 +251,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q1-Option4"
 				label="I’ll take a taxi to work."
-				value="I’ll take a taxi to work."
+				value="take a taxi to work."
 				name="question1"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 3, 0)}
@@ -247,7 +262,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q1-Option5"
 					label="Other:"
-					value= "Other (not figured out yet)"
+					value= "Other"
 					name="question1"
 					onChange={() => handleRadio("Other:",1,  4, 0)}
 					checked={otherSelected[0] === true}/>
@@ -268,7 +283,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q2-Option1"
 				label="I would try to meet shareholders to find out what think about our company."
-				value={"I would try to meet shareholders to find out what think about our company."}
+				value={"try to meet shareholders to find out what think about our company."}
 				name="question2"
 				style={{width:"200px"}}
 				onChange={() => handleRadio("holder",2,  0, 1)}
@@ -280,7 +295,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q2-Option2"
 				label="I would assign tasks to our group members to organize our workflow."
-				value={"I would assign tasks to our group members to organize our workflow."}
+				value={"assign tasks to our group members to organize our workflow."}
 				name="question2"
 				style={{width:"230px"}}
 				onChange={() => handleRadio("holder",2,  1, 1)}
@@ -292,7 +307,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q2-Option3"
 				label="I would start researching the topic and create a rough outline of the presentation."
-				value={"I would start researching the topic and create a rough outline of the presentation."}
+				value={"start researching the topic and create a rough outline of the presentation."}
 				name="question2"
 				style={{width:"275px"}}
 				onChange={() => handleRadio("holder",2,  2, 1)}
@@ -304,7 +319,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q2-Option4"
 				label="I would begin designing the slides and decide what topics should be included."
-				value={"I would begin designing the slides and decide what topics should be included."}
+				value={"begin designing the slides and decide what topics should be included."}
 				name="question2"
 				style={{width:"300px"}}
 				onChange={() => handleRadio("holder",2,  3, 1)}
@@ -315,7 +330,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q2-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question2"
 					onChange={() => handleRadio("Other:",2, 4, 1)}
 					checked={otherSelected[1] === true}/>	
@@ -336,7 +351,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q3-Option1"
 				label="I would ask my coworker to explain what they think the topic is about."
-				value={"I would ask my coworker to explain what they think the topic is about."}
+				value={"ask my coworker to explain what they think the topic is about."}
 				name="question3"
 				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 3, 0, 2)}
@@ -348,7 +363,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q3-Option2"
 				label="I would ask my boss what they think about my part of the presentation."
-				value={"I would ask my boss what they think about my part of the presentation."}
+				value={"ask my boss what they think about my part of the presentation."}
 				name="question3"
 				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 3, 1, 2)}
@@ -360,7 +375,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q3-Option3"
 				label="I wouldn't change it because I know I'm right."
-				value={"I wouldn't change it because I know I'm right."}
+				value={"not change it because I know I'm right."}
 				name="question3"
 				style={{width:"250px"}}
 				onChange={() => handleRadio("holder",3, 2, 2)}
@@ -372,7 +387,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q3-Option4"
 				label="I would review the topic and see if I can make my part clearer."
-				value={"I would review the topic and see if I can make my part clearer."}
+				value={"review the topic and see if I can make my part clearer."}
 				name="question3"
 				style={{width:"200px"}}
 				onChange={() => handleRadio("holder",3,3, 2)}
@@ -383,7 +398,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q3-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question3"
 					onChange={() => handleRadio("Other:",3, 4 , 2)}
 					checked={otherSelected[2] === true}/>
@@ -404,7 +419,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q4-Option1"
 				label="We should check in every day for 15 minutes."
-				value={"We should check in every day for 15 minutes."}
+				value={"every day for 15 minutes."}
 				name="question4"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 0, 3)}
@@ -416,7 +431,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q4-Option2"
 				label="We should only meet once a week for an hour."
-				value={"We should only meet once a week for an hour."}
+				value={"once a week for an hour."}
 				name="question4"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 1, 3)}
@@ -428,7 +443,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q4-Option3"
 				label="We should meet a few times a week."
-				value={"We should meet a few times a week."}
+				value={"a few times a week."}
 				name="question4"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 2, 3)}
@@ -440,7 +455,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q4-Option4"
 				label="I don't think we need to meet at all, email is fine."
-				value={"I don't think we need to meet at all, email is fine."}
+				value={"never. Email is fine."}
 				name="question4"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 3, 3)}
@@ -451,7 +466,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q4-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question4"
 					onChange={() => handleRadio("Other:", 4, 4, 3)}
 					checked={otherSelected[3] === true}/>
@@ -472,7 +487,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q5-Option1"
 				label="I would ask for a raise during my next performance review."
-				value={"I would ask for a raise during my next performance review."}
+				value={"ask for a raise during my next performance review."}
 				name="question5"
 				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 0, 4)}
@@ -484,7 +499,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q5-Option2"
 				label="I’ll just keep quiet until my boss notices my hard work."
-				value={"I’ll just keep quiet until my boss notices my hard work."}
+				value={"keep quiet until my boss notices my hard work."}
 				name="question5"
 				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 1, 4)}
@@ -496,7 +511,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q5-Option3"
 				label="I'll talk to my coworker about how to ask for a raise."
-				value={"I'll talk to my coworker about how to ask for a raise."}
+				value={"ask my coworker about how to ask for a raise."}
 				name="question5"
 				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 2, 4)}
@@ -508,7 +523,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q5-Option4"
 				label="I need to research how much I should ask for first."
-				value={"I need to research how much I should ask for first."}
+				value={"research how much I should ask for first."}
 				name="question5"
 				style={{width:"235px"}}
 				onChange={() => handleRadio("holder", 5, 3, 4)}
@@ -519,7 +534,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q5-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question5"
 					onChange={() => handleRadio("Other:", 5, 4, 4)}
 					checked={otherSelected[4] === true}	/>
@@ -541,7 +556,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q6-Option1"
 				label="I would offer to help them finish their work."
-				value={"I would offer to help them finish their work."}
+				value={"offer to help them with it."}
 				name="question6"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 0, 5)}
@@ -553,7 +568,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q6-Option2"
 				label="I'm going home. I have my own work to do."
-				value={"I'm going home. I have my own work to do."}
+				value={"go home. I have my own work to do."}
 				name="question6"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 1, 5)}
@@ -565,7 +580,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q6-Option3"
 				label="I would wait until tommorow to ask if they need help."
-				value={"I would wait until tommorow to ask if they need help."}
+				value={"wait until tommorow to ask if they need help."}
 				name="question6"
 				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 6, 2, 5)}
@@ -577,7 +592,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q6-Option4"
 				label="I would let my boss know that they need help."
-				value={"I would let my boss know that they need help."}
+				value={"let my boss know that they need help."}
 				name="question6"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 3, 5)}
@@ -588,7 +603,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q6-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question6"
 					onChange={() => handleRadio("Other:", 6, 4, 5)}
 					checked={otherSelected[5] === true}	/>
@@ -609,7 +624,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q7-Option1"
 				label="I would go out with friends to relax."
-				value={"I would go out with friends to relax."}
+				value={"go out with friends to relax."}
 				name="question7"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 0, 6)}
@@ -621,7 +636,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q7-Option2"
 				label="I would stay home and watch TV to relax."
-				value={"I would stay home and watch TV to relax."}
+				value={"stay home and watch TV to relax."}
 				name="question7"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 1, 6)}
@@ -633,7 +648,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q7-Option3"
 				label="I would go to the gym to relax."
-				value={"I would go to the gym to relax."}
+				value={"go to the gym to relax."}
 				name="question7"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 2, 6)}
@@ -645,7 +660,7 @@ const DetailedPage = () => {
 				type="radio"
 				id="q7-Option4"
 				label="I would go to the beach to relax."
-				value={"I would go to the beach to relax."}
+				value={"go to the beach to relax."}
 				name="question7"
 				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 3, 6)}
@@ -656,7 +671,7 @@ const DetailedPage = () => {
 					type="radio"
 					id="q7-Option5"
 					label="Other:"
-					value={"Other (not figured out yet)"}
+					value={"Other"}
 					name="question7"
 					onChange={() => handleRadio("Other:", 7, 4, 6)}	
 					checked={otherSelected[6] ===true}/>
@@ -691,8 +706,36 @@ const DetailedPage = () => {
 			if (container) {
 				const mini = container.querySelector('input[type="radio"]:checked');
 				//console.log("Container: " + mini?.getAttribute("value"));
-				answers = answers + (mini?.getAttribute("value") || "");
-				
+				if(mini?.getAttribute("value")) {
+					if(mini?.getAttribute("value") === "Other") {
+						switch(i){ //checks which question it is
+							case 0:
+								answers = answers + QUESTIONSTARTS[i] + Response1[4];
+								break;
+							case 1:
+								answers = answers + QUESTIONSTARTS[i] + Response2[4];
+								break;
+							case 2:
+								answers = answers + QUESTIONSTARTS[i] + Response3[4];
+								break;
+							case 3:
+								answers = answers + QUESTIONSTARTS[i] + Response4[4];
+								break;
+							case 4:
+								answers = answers + QUESTIONSTARTS[i] + Response5[4];
+								break;
+							case 5:
+								answers = answers + QUESTIONSTARTS[i] + Response6[4];
+								break;
+							case 6:
+								answers = answers + QUESTIONSTARTS[i] + Response7[4];
+								break
+						}
+					}
+					else{
+						answers = answers + QUESTIONSTARTS[i] + mini?.getAttribute("value");
+					}
+				}			
 			}
 			else {
 				console.log("Container is null");
@@ -704,21 +747,21 @@ const DetailedPage = () => {
 		return answers;
 	}
 
-	function sendRespone(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
 		const openai = new OpenAI({
 			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
 			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
 		});
 		
 		async function runGPT() { //Creates conversation with the GPT-4 model
-			console.log("API Key: " + key); //for testing purposes
+			//console.log("API Key: " + key); //for testing purposes
 			try{
 				const response = await openai.chat.completions.create({
 				model: "gpt-4-turbo",
 				messages: [
 					{
 					"role": "system",
-					"content": "You will tell me what career I should pursue based on my interests." //What we want GPT to do
+					"content": "You are a helpful assistant that will generate a potential career path for the user based on a few hypothetical situations. You will also generate three other career paths the user may like.Please complete this in this format, with each field contained in quotes and separated by commas:[ Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3 ]" //What we want GPT to do
 					},
 					{
 					"role": "user",
@@ -726,14 +769,15 @@ const DetailedPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 64,
+				max_tokens: 512,//should be 512
 				top_p: 1,
 				});
-	
-				console.log(response.choices[0].message.content); //GPT Response to the user's input
+				console.log(parseAnswers(response.choices[0].message.content)); //GPT Response to the user's input
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
-				console.log(e);
+				//console.log(e);
+				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
+				window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
 			}  
 		}
 
