@@ -63,7 +63,7 @@
   margin-left: 20vh;
   border-radius: 10px;
   width: 200px;
-  height: 55vh;
+  height: 500px;
   transform: rotate(180deg);
   background-color: var(--color-body-ProgressBackground);
 }
