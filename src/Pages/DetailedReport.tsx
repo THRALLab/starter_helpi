@@ -64,7 +64,6 @@ function DetailedReport() {
     GPTRole = newGPTPrompt;
   }
 
-
   function optionOne(career: string) {
     setPrompt(
       "Expand on this career option you gave me: " + career,
@@ -72,22 +71,24 @@ function DetailedReport() {
     );
     ChatGPT();
   }
-//Creates ChatGPT
-    const openai = new OpenAIAPi({
-      apiKey: keyData,
-      dangerouslyAllowBrowser: true,
-    });
+  //Creates ChatGPT
+  const openai = new OpenAIAPi({
+    apiKey: keyData,
+    dangerouslyAllowBrowser: true,
+  });
   const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
-  const [careerList, setCareerList] = useState<Array<string>>(responseData.split("~")); //splits the careers for easy formatting
-  
+  const [careerList, setCareerList] = useState<Array<string>>(
+    responseData.split("~")
+  ); //splits the careers for easy formatting
+
   const changeResponseData = (data: string) => {
     setResponseData(data);
-  }
+  };
 
   //Queries ChatGPT to generate report
   async function ChatGPT() {
     setLoading(true);
-    
+
     //Queries ChatGPT
     const completion = await openai.chat.completions.create({
       messages: [
@@ -102,9 +103,8 @@ function DetailedReport() {
     //Stores response data
     if (completion.choices[0].message.content !== null) {
       changeResponseData(completion.choices[0].message.content);
-      
+
       setCareerList(completion.choices[0].message.content.split("~"));
-      
     } else {
       setResponseData("Error! Maybe you forgot to input the API key?");
     }
@@ -113,18 +113,16 @@ function DetailedReport() {
     //console.log("careerList: "+ careerList);
   }
 
-  
   //const [careerList, setCareerList] = useState<Array<string>>(responseData.split("~"));
 
-  const generateReport = async() => {
+  const generateReport = async () => {
     await ChatGPT();
     //setCareerList(responseData.split("~"));
-  }
-  
+  };
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="Header-general">
+      <div className="Header-general" id="Header-Full">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>
@@ -167,7 +165,10 @@ function DetailedReport() {
             </div>
           )}
           {!loading && careerList.length < 3 && <div>{responseData}</div>}
-          <Button className="Report-button-explore" onClick={() => optionOne(careerList[1])}>
+          <Button
+            className="Report-button-explore"
+            onClick={() => optionOne(careerList[1])}
+          >
             Explore Career 1
           </Button>
         </div>
