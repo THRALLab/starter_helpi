@@ -101,13 +101,13 @@ function Home() {
                 take around 10 to 15 minutes to complete. <br></br> The
                 questions are answered on a scale.
               </div>
-              <audio controls>
-                <source src="../Audio/123.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
             </Col>
           </Row>
         </Container>
+        <audio controls>
+          <source src="../Audio/123.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
       </div>
 
       <div className="API-Footer">
