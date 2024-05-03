@@ -7,7 +7,7 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
 	const [selected, setSelected] = useState<string | null>(null);
-	const optionSelect = (option: string) => {
+	const optionSelect = option => {
 		setSelected(option);
 	};
 	/*useEffect(()=>{
@@ -16,7 +16,7 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	return (
 		<div>
 			<p>Select an option:</p>
-			{options.map((option: string) => (
+			{options.map(option => (
 				<label key={option}>
 					<input
 						type="radio"
