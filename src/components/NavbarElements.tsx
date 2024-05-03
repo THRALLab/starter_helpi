@@ -32,10 +32,7 @@ export const NavLink = styled(Link)`
 export const HomeLink = styled(Link)`
     color: black;
     text-decoration: none;
-    transition: color 0.75s ease;
-    &:hover {
-        color: white;
-    }
+    width: 35%;
 `;
 
 export const Bars = styled(FaBars)`
