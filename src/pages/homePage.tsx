@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import splash from "../images/businessman.png"
-import pie from "../images/piechart.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
 import { Link } from "react-router-dom";
