@@ -196,13 +196,6 @@ function DetailedQuestions() {
                   completed
                 </span>
               </div>
-              <span className="DetailedQuestions-answers-display">
-                {sliderValues.map((x, i) => (
-                  <p key={i}>
-                    Q{i + 1}: {x}
-                  </p>
-                ))}
-              </span>
             </Col>
           </Row>
         </Container>
