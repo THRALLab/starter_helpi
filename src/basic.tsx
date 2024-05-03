@@ -1,7 +1,7 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import questions from "./basicQuestions.json";
-import { QuestionFormatProps } from "./interfaces/questionFormat"
-import './ProgressBar';
+import { QuestionFormatProps } from "./interfaces/questionFormat";
+import "./ProgressBar";
 
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
@@ -39,7 +39,12 @@ function Basic() {
 			{questions.map((question: QuestionFormatProps, question_number) => (
 				<div key={question_number}>
 					<h2>{question.question}</h2>
-					<QuestionFormatComponent options={question.options} question={question.question} type={question.type} question_number={question.question_number}/>
+					<QuestionFormatComponent
+						options={question.options}
+						question={question.question}
+						type={question.type}
+						question_number={question.question_number}
+					/>
 				</div>
 			))}
 		</div>
