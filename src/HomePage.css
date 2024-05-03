@@ -54,27 +54,49 @@ HomePage.css
     line-height: 1.6;
   }
 
-  /* Add more styles as needed for the login section */
   .login-section {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top: 5px;
+    right: 100px;
+    width: 300px; /* Adjust the width as needed */
+    height: 120px;
     border: 2px solid #ffffff;
     padding: 20px;
-    border-radius: 20px;
-    /* float: right; */
+    border-radius: 10px;
+    font-size: 12px;
   }
 
-.login-form {
-  width: 100%;
-  max-width: 300px; /* Adjust max-width as needed */
-}
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
+    width: 150px;
+    margin-top: 0px;
+  }
+  
+  .login-form {
+    width: 100%;
+  }
 
-.create-account-button {
-  margin-top: 20px;
-}
+  .button-container{
+    display: flex;
+  }
+  
+  .create-account-button {
+    margin-top: 10px;
+    height: 35px;
+    width: 200px;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 5px;
+  }
+  
+  .login-button {
+    margin-top: 10px;
+    height: 35px;
+    width: 200px;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 5px;
+  }
 
   .api-key-input {
     display: flex;

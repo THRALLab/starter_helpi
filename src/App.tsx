@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link} from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 import './App.css';
 import './HomePage.css';
@@ -81,13 +81,14 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       {/* <div className="login-section">
-        <h2>Login</h2>
         <form className="login-form">
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button type="submit">Login</button>
+          <div className="button-container">
+            <button className="create-account-button">New Account</button>
+            <button className="login-button" type="submit">Login</button>
+          </div>
         </form>
-        <button className="create-account-button">Create Account</button>
       </div> */}
     </div>
   );
