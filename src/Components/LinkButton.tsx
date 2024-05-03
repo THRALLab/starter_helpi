@@ -19,7 +19,7 @@ export function LinkButton(props: LinkButtonProps) {
   //Scrolls to top on page route
   function scrollToTop() {
     //Gets header for smooth scrolling
-    let element = document.getElementById("bgBody");
+    let element = document.getElementById("bigBody");
     //Scrolls to the top of the page
     if (element != null) {
       element.scrollIntoView({
