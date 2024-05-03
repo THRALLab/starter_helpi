@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert, Stack } from "react-bootstrap";
-import Button from "react-bootstrap/esm/Button";
+import { Form, ProgressBar, Alert, Stack, Button } from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 
@@ -194,9 +193,10 @@ const BasicPage = () => {
 
 		<div style={{textAlign: "center"}}>
       
-			<Button size="lg" disabled={!allow} onClick={sendResponse}>Get Answer</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
 
-			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
+			<Button size="lg" disabled={!allow} onClick={sendRespone}>Get Answer!</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
+			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}}>
+
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
 
