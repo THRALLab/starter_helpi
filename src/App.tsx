@@ -8,20 +8,21 @@ import './css/App.css';
 import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
 import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
 import { ChatGBTPage } from "./pages/chat-gbt-page/ChatGBTPage";
-import { Col, Row } from "react-bootstrap";
-
 function App(): JSX.Element {
-  return ( <>
+  return ( 
+  <>
+    
     <Router>
+      <header className="App-header">
+        <nav>
+          <Link to="starter_helpi/">Home</Link>
+        </nav>
+        <nav>
+          <Link to="/select-quiz">Select Quiz</Link>
+        </nav>
+      </header>
       <div className="App">
-        <header className="App-header">
-          <nav>
-            <Link to="starter_helpi/">Home</Link>
-          </nav>
-          <nav>
-            <Link to="/select-quiz">Select Quiz</Link>
-          </nav>
-        </header>
+        
         <Routes>
           <Route path="starter_helpi/*" element={<Home />} />
           <Route path="/select-quiz" element={<SelectQuiz />}/>
@@ -37,18 +38,17 @@ function App(): JSX.Element {
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </div>
+      <footer> 
+          <ApiKeyInput></ApiKeyInput>
+          <div className="github-name-links">
+            <p>Isaac</p>
+            <p>Dylan</p>
+            <p>Barry</p>
+          </div>
+      </footer>
     </Router>
-
-    <div className="App-footer"> 
-    <Row>
-      <Col>
-      <ApiKeyInput></ApiKeyInput>
-      </Col>
-      <Col style={{textAlign: "center"}}>
-      Isaac, Dylan, Barry
-      </Col>
-    </Row>
-   </div>
+    
+    
    </>
   );
 }
