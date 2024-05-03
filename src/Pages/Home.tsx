@@ -3,7 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
-//import piggy from "../src/audio/Piggyback.ogg";
+//import 123 from "../Audio/123.mp3";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Home.css";
@@ -31,7 +31,7 @@ function Home() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="Header-general">
+      <div className="Header-general" id="Header-Full">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>
@@ -101,11 +101,11 @@ function Home() {
                 take around 10 to 15 minutes to complete. <br></br> The
                 questions are answered on a scale.
               </div>
-                <audio controls>
-                  <source src="/audio/123.mp3" type="audio/mpeg" />
-                     Your browser does not support the audio element.
-                </audio>
-              </Col>
+              <audio controls>
+                <source src="../Audio/123.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+            </Col>
           </Row>
         </Container>
       </div>

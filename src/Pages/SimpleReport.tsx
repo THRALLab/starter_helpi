@@ -81,7 +81,7 @@ function SimpleReport() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="Header-general">
+      <div className="Header-general" id="Header-Full">
         <span className="Header-toggle">
           <ThemeSelect></ThemeSelect>
         </span>
