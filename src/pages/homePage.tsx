@@ -4,6 +4,7 @@ import splash from "../images/businessman.png"
 import pie from "../images/piechart.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
+import { Link } from "react-router-dom";
 //import OpenAI from "openai";
 
 
@@ -71,7 +72,7 @@ import { HomeLink } from "../components/NavbarElements"
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
-            <Button>Find your quiz!</Button>
+            <Link to="/#quiz-desc-container">Find your quiz!</Link>
         </div>
         <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
@@ -93,7 +94,8 @@ import { HomeLink } from "../components/NavbarElements"
                 <p>Career quizzes are proven to help the masses achieve thier goals and secure professional success. Money can buy happiness, but only purpose can bring fulfillment.</p>
             </div>
             <div className="quiz-data-graph">
-                <img src={pie} alt="graph"></img>
+                {/* <img src={pie} alt="graph"></img> */}
+                <div className="piechart"></div>
                 <p>Satisfaction rates from other users!</p>
             </div>
         </div>
