@@ -1,4 +1,4 @@
-import { useEffect, useReducer, } from "react";
+import { useEffect, useReducer } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
@@ -134,8 +134,6 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
     };
     const [state, dispatch] = useReducer(quizReducer, initialState); //state holds all states, makes state management much easier
 
-
-
     async function connectToGBT(startingPrompt: string, prompt: string)  {
         const response = await callGBT({startingPrompt: startingPrompt, userPrompt: prompt});
         // will parse the response so the messages are added
@@ -164,14 +162,14 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
             const lastChoice = response.choices[response.choices.length - 1];
 
             if (lastChoice.message && lastChoice.message.content) {
-                console.log("GBT Response: ", lastChoice.message.content);
+                //console.log("GBT Response: ", lastChoice.message.content);
                 const newQuestions: QuizItems = JSON.parse(lastChoice.message.content);
                 console.log("GBT Questions: ", newQuestions);
                 const newQuiz: QuizItems = {...state.curQuiz, ...newQuestions};
                 dispatch({ type: 'SET_QUIZ', payload: { ...newQuiz } });
                 parentSetTot(parentTotQuestions + questionsNeeded);
-                const nextQ = `question${parseInt(state.currentQuestionId.replace("question", "")) + 1}`;
-                console.log(`In createNext, nextQuestionId(${nextQ}) in targetQuiz: ${nextQ in newQuiz}`);
+                //const nextQ = `question${parseInt(state.currentQuestionId.replace("question", "")) + 1}`;
+                //console.log(`In createNext, nextQuestionId(${nextQ}) in targetQuiz: ${nextQ in newQuiz}`);
             } else {
                 console.log("No valid response content received");
             }
@@ -183,7 +181,7 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
     // used to determine next question
     const determineNextQuestionId = async (currId: string): Promise<string> => {
         const questionNumber = parseInt(currId.replace("question", ""));
-        const nextQuestionId = `question${questionNumber + 1}`;
+        const nextQuestionId: string = `question${questionNumber + 1}`;
 
         // Check if the next question already exists in the quiz
         if (nextQuestionId in state.curQuiz) {
@@ -199,7 +197,7 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
             // After attempting to create new questions, check if the desired next question now exists
             console.log(`nextQuestionId(${nextQuestionId}) in targetQuiz: ${nextQuestionId in state.curQuiz}`)
             console.log(`prevQuestion(question${questionNumber}) in targetQuiz: ${nextQuestionId in state.curQuiz}`)
-            return nextQuestionId;
+            return ((nextQuestionId in state.curQuiz) ? nextQuestionId : "");
         }
         
         return ""
@@ -222,43 +220,41 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
         const currentNumber = parseInt(state.currentQuestionId.replace("question", "").trim());
 
         if (forewards) {
-            if (parentTotQuestions < parentConstants.totalMax) {
-                if ((parentTotQuestions !== parentConstants.experienceMax) || ((parentTotQuestions > parentConstants.experienceMax) && !state.followUp)) {//If parentTotQuestions >== parentConstants.experienceMax and not asking followUp questions
+            if ((!state.followUp && (parentQuestionsAnswerd < parentConstants.experienceMax)) || (state.followUp)) {
+                if ((currentNumber < parentTotQuestions) || (parentTotQuestions < parentConstants.totalMax)) {//If parentTotQuestions >== parentConstants.experienceMax and not asking followUp questions
                     const nextQuestionId = await determineNextQuestionId(state.currentQuestionId);
                     if (nextQuestionId) {
                         parentSetAnswerd(parseInt(state.currentQuestionId.replace("question", "")) + 1);
                         dispatch({type: 'SET_CURRENT_QUESTION', payload: nextQuestionId });
                     }
-                    else dispatch({ type: 'COMPLETE_QUIZ'})
-                } else { //exp report
-                    dispatch({ type: 'GENERATE_EXPERIENCE_REPORT'})
-                }
-            }
+                    else dispatch({ type: 'COMPLETE_QUIZ'});
+                } else dispatch({ type: 'COMPLETE_QUIZ'});
+            } else dispatch({ type: 'GENERATE_EXPERIENCE_REPORT'});
         } else {//backwards
             parentSetAnswerd(parseInt(state.currentQuestionId.replace("question", "")) - 1);
             const prevId = `question${currentNumber - 1}`;
             if (prevId in state.curQuiz) {
                 parentSetAnswerd(parentTotQuestions - 1);
-                dispatch({type: 'SET_CURRENT_QUESTION', payload: prevId})
+                dispatch({type: 'SET_CURRENT_QUESTION', payload: prevId});
             }
-            else dispatch({type: 'COMPLETE_QUIZ'})
+            else dispatch({type: 'COMPLETE_QUIZ'});
         }
-        dispatch({type: 'TOGGLE_LOADING', payload: false})
+        dispatch({type: 'TOGGLE_LOADING', payload: false});
     }
 
     const ExpReport = () => {
         console.log("creating experience report")
+        const compiledAnswers: QuestionAnswer[] = state.answers.map((q: QuestionAns) => ({
+            question: state.curQuiz[q.questionId],
+            answer: q.answer
+        }));
 
         useEffect(() => {
             const fetchExperienceReport = async () => {
                 dispatch({ type: 'TOGGLE_LOADING', payload: true });
-                const compiledAnswers: QuestionAnswer[] = state.answers.map((q: QuestionAns) => ({
-                    question: state.curQuiz[q.questionId],
-                    answer: q.answer
-                }));
                 const response = await addResponseGBT({
                     choices: state.gbtConversation,
-                    newMessage: createFinalResponse(compiledAnswers, "experience")
+                    newMessage: createFinalResponse(compiledAnswers, "expereince")
                 });
                 if (response && response.choices.length > 0) {
                     const finalAns = response.choices[response.choices.length - 1].message.content;
@@ -267,19 +263,19 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
                         dispatch({ type: 'SET_EXPERIENCE_REPORT', payload: experienceReport });
                     } else {
                         console.log("Error: No valid response content received");
-                    }
+                    };
                 } else {
                     console.log("Error: No response or choices available");
-                }
+                };
                 dispatch({ type: 'TOGGLE_LOADING', payload: false });
             };
     
             fetchExperienceReport();
-        }, []);
+        }, [compiledAnswers]);
 
         if (state.isLoading && state.loadingType === 'experienceReport') {
             return <Loading type="experienceReport"/>;
-        }
+        };
 
         return (
             <>
@@ -355,14 +351,15 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
     // }
 
     const DisplayResults = () => {
+        const questionAns: QuestionAnswer[] = state.answers.map(q => ({
+            question: state.curQuiz[q.questionId],
+            answer: q.answer
+        }));
+
         useEffect(() => {
             if (state.isQuizComplete) {
                 const fetchFinalResults = async () => {
                     dispatch({ type: 'TOGGLE_LOADING', payload: true });
-                    const questionAns: QuestionAnswer[] = state.answers.map(q => ({
-                        question: state.curQuiz[q.questionId],
-                        answer: q.answer
-                    }));
     
                     const response = await addResponseGBT({
                         choices: state.gbtConversation,
@@ -382,10 +379,9 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
                     }
                     dispatch({ type: 'TOGGLE_LOADING', payload: false });
                 };
-    
                 fetchFinalResults();
             }
-        }, []); 
+        }, [questionAns]); 
 
 
         if (state.isLoading) {

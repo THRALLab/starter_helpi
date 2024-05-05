@@ -222,9 +222,9 @@ export const createNewQuestions = () => {
 export const createFinalResponse = (questionAns: QuestionAnswer[], stage: string) => {
     if (stage === "expereince") {
         return (
-            `You are now tasked with analyzing the user's answers to compile an Experience Report. This report should categorize the responses into academic experiences, work experiences, and personal interests. Below are the user's responses:\n\n` +
+            `You are an advanced AI system designed to assist in career exploration. At this step, you are tasked with analyzing the user's answers to compile an Experience Report. This report should categorize the responses into academic experiences, work experiences, and personal interests. Below are the user's responses:\n\n` +
             mapQuestionsToAnswers(questionAns) +
-            `\nUse this information to generate an experience report structured as follows:\n` +
+            `You should structure the experience report in the following JSON format:\n` +
             `{\n` +
             `    "academic": [Include answers related to educational background, qualifications, or studies.],\n` +
             `    "work": [Include answers related to employment history, job roles, and professional experiences.],\n` +
