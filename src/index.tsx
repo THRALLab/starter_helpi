@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 const envKeyData = localStorage.getItem("GBTKEY");
 
+// prev key is null, but is defined in .env
 if (envKeyData != null) {
   localStorage.setItem("GBTKEY", envKeyData);
 } else {
