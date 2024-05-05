@@ -112,15 +112,6 @@ const DetailedPage = () => {
 				break;
 		}
 	}
-	const [progressShow, setProgressShow] = useState<boolean>(false);
-	const [clickCount, setClickCount] = useState<number>(1);
-	function HandleShow() {
-		setClickCount(clickCount +1)
-		if(clickCount % 2 === 0 && clickCount !== 0){
-			setProgressShow(true);
-		}
-	}
-	const handleClose = () => setProgressShow(false);
 //checks which questions are answered
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
 		Response6: (boolean| string)[], Response7: (boolean| string)[]): number { 
@@ -155,8 +146,23 @@ const DetailedPage = () => {
 	useEffect(() => {
        setAllow(answered === 7); //checks the amount of questions answered
 	   setAlert(answered === 7)
-    }, [answered]);
-	console.log(clickCount)
+    }, [answered]);	
+
+	const [progressShow, setProgressShow] = useState<boolean>(false);
+	const handleShow = () => setProgressShow(!progressShow);
+	const handleClose = () => setProgressShow(false);
+	
+	const handleKeyDown = (event: KeyboardEvent) => { //used chatGPT on clarification on how to enable a keyboard shortcut for the offCanvas dropdown; enables when "ctr" + "o" are pressed
+        if (event.ctrlKey && event.key === 'o') {
+            handleShow();
+        }
+    };
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    });
 	return (<>
 		<style>{`
         .question-box {
@@ -199,12 +205,13 @@ const DetailedPage = () => {
 			</p>
 		</div>
 		<div style={{textAlign:"center", marginTop:"25px"}}>
-		<Button size="lg" onClick={HandleShow}>Track Progress</Button>
-		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={false}>
+		<Button size="lg" onClick={handleShow}>Track Progress</Button>
+		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={true}>
 			<OffcanvasHeader closeButton>
 				<OffcanvasTitle>Progress</OffcanvasTitle>
 			</OffcanvasHeader>
 			<Offcanvas.Body>
+			<ProgressBar variant="success" now={answered} animated max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"30px", marginBottom: "30px"}}/>
 			</Offcanvas.Body>
 		</Offcanvas>
 		</div>	
