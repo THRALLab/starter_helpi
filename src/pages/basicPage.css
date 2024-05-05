@@ -1,0 +1,30 @@
+.QuestionNum {
+    font-size: 50px;
+    margin-left: 35px;
+    display:flex;	
+    }
+hr{
+    width:max;
+    margin-top: 50px;
+}
+
+.question-container{
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+}
+
+.radio-container{
+    display:flex;
+    justify-content: space-between;
+}
+
+.last4{
+    margin-bottom: 30px;
+}
+
+
+.page-color{
+    background-color:#e8f1ff91; 
+}
+

@@ -163,7 +163,7 @@ const DetailedPage = () => {
         };
     });
 	return (<>
-	<body className="site-color">
+	<body className="page-color">
 		<div className="info-portion">
 			<h1>
 				Detailed Quiz
