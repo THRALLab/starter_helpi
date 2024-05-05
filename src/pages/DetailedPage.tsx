@@ -152,7 +152,7 @@ const DetailedPage = () => {
 	const handleClose = () => setProgressShow(false);
 	
 	const handleKeyDown = (event: KeyboardEvent) => { //used chatGPT on clarification on how to enable a keyboard shortcut for the offCanvas dropdown; enables when "ctr" + "o" are pressed
-        if (event.ctrlKey && event.key === 'o') {
+        if (event.ctrlKey && event.key === '0') {
             handleShow();
         }
     };
@@ -163,6 +163,7 @@ const DetailedPage = () => {
         };
     });
 	return (<>
+	<body className="site-color">
 		<div className="info-portion">
 			<h1>
 				Detailed Quiz
@@ -178,15 +179,16 @@ const DetailedPage = () => {
 		<Button size="lg" onClick={handleShow}>Track Progress</Button>
 		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={true}>
 			<OffcanvasHeader closeButton>
-				<OffcanvasTitle>Progress</OffcanvasTitle>
+				<OffcanvasTitle className="offCanvas-title">User Progress:</OffcanvasTitle>
 			</OffcanvasHeader>
-			<Offcanvas.Body>
-			<ProgressBar variant="success" now={answered} animated max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"30px", marginBottom: "30px"}}/>
+			<Offcanvas.Body style={{textAlign:"center", fontSize:"18px"}}>
+				Questions Answered: {answered} / 7
+				<ProgressBar variant="success" now={answered} animated max={7} style={{marginLeft:"100px", marginRight:"100px", marginBottom: "20px"}}/>
 			<Container>
      			<Row style={{justifyContent:"center"}}>
         			<Col xs={12} sm={10} md={8} lg={6} xl={6}>
           				<Alert show variant="primary" style={{ textAlign: 'center' }}>
-							You can also use the keyboard shortcut to see your progress: "ctrl" + "o"
+							You can also use the keyboard shortcut to see your progress: "Ctrl" + "0"
           				</Alert>
         			</Col>
       			</Row>
@@ -645,12 +647,15 @@ const DetailedPage = () => {
 					disabled={!otherSelected[6]}/>
 				</div>
 			</div>
-		<div style={{textAlign:"center", marginBottom:"10px"}}>
+		<div style={{textAlign:"center"}}>
 		<Button size="lg" onClick={sendResponse} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
-		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}} >
+		</div>
+		<div style={{display:"flex", marginTop:"10px", textAlign:"center",justifyContent:"center"}}>
+		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"0px"}} >
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
 		</div>
+	</body>
 	</>
 	);
 
