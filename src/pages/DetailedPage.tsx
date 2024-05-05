@@ -2,8 +2,7 @@
 import "./detailedPage.css";
 import React, { useEffect, useState } from "react";
 import { Form, ProgressBar, Alert, Button, /*FormLabel*/ 
-Offcanvas, OffcanvasHeader,
-OffcanvasTitle} from "react-bootstrap";
+Offcanvas, OffcanvasHeader,OffcanvasTitle, Row, Col, Container} from "react-bootstrap";
 //import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 import OpenAI from "openai";
 import { key } from "./homePage"
@@ -164,35 +163,6 @@ const DetailedPage = () => {
         };
     });
 	return (<>
-		<style>{`
-        .question-box {
-		display:flex;
-		gap:10px	
-        }
-		h3 {
-		margin-left: 25px
-		}
-		.answer-box{
-			flex-grow: 1;
-			margin-left: 10px
-			}
-		.questionPrompt{
-			font-weight:bold;
-			margin-left: 25px;
-		}
-		.reg-radio{
-			display: inline-block;
-   			border: 1px solid #ccc; /* Add a border around the radio button */
-   			border-radius: 5px; /* Rounded corners */
-    		padding: 5px; /* Add padding around the radio button */
-    		margin-right: 2px; /* Add space between radio buttons */
-			transition: background-color 0.75s ease; /* Makes the container blue and changes text to white */
-    		&:hover {
-        background-color: #0d6efd;
-		color: white;
-   			 }
-		}
-        `}</style>
 		<div className="info-portion">
 			<h1>
 				Detailed Quiz
@@ -212,6 +182,15 @@ const DetailedPage = () => {
 			</OffcanvasHeader>
 			<Offcanvas.Body>
 			<ProgressBar variant="success" now={answered} animated max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"30px", marginBottom: "30px"}}/>
+			<Container>
+     			<Row style={{justifyContent:"center"}}>
+        			<Col xs={12} sm={10} md={8} lg={6} xl={6}>
+          				<Alert show variant="primary" style={{ textAlign: 'center' }}>
+							You can also use the keyboard shortcut to see your progress: "ctrl" + "o"
+          				</Alert>
+        			</Col>
+      			</Row>
+   			 </Container>
 			</Offcanvas.Body>
 		</Offcanvas>
 		</div>	
