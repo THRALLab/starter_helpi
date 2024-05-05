@@ -207,7 +207,6 @@ const DetailedPage = () => {
 				label="I’ll call my boss and let them know I’ll be late."
 				value="call my boss and let them know I’ll be late."
 				name="question1"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 0, 0)}
 				checked={Response1[0] === true}/>
 				</div>
@@ -219,7 +218,6 @@ const DetailedPage = () => {
 				label="I'll call my friend to see if they can pick me up."
 				value = "call my friend to see if they can pick me up."
 				name="question1"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1,1, 0)}/>
 				{Response1[1] === true}
 				</div>
@@ -231,7 +229,6 @@ const DetailedPage = () => {
 				value="call in sick and take the day off."
 				label = "I'll call in sick and take the day off."
 				name="question1"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder",1, 2, 0)}
 				checked={Response1[2] === true}/>
 				</div>
@@ -243,7 +240,6 @@ const DetailedPage = () => {
 				label="I’ll take a taxi to work."
 				value="take a taxi to work."
 				name="question1"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 3, 0)}
 				checked={Response1[3] === true}/>
 			</div>
@@ -258,7 +254,7 @@ const DetailedPage = () => {
 					checked={otherSelected[0] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response1[4])}
 					onChange={(event) => handleOtherSelect(event,1, 4)}
 					disabled={!otherSelected[0]}	/>
@@ -275,7 +271,6 @@ const DetailedPage = () => {
 				label="I would try to meet shareholders to find out what think about our company."
 				value={"try to meet shareholders to find out what think about our company."}
 				name="question2"
-				style={{width:"200px"}}
 				onChange={() => handleRadio("holder",2,  0, 1)}
 				checked={Response2[0] === true}/>
 			</div>
@@ -287,7 +282,6 @@ const DetailedPage = () => {
 				label="I would assign tasks to our group members to organize our workflow."
 				value={"assign tasks to our group members to organize our workflow."}
 				name="question2"
-				style={{width:"230px"}}
 				onChange={() => handleRadio("holder",2,  1, 1)}
 				checked={Response2[1] === true}/>
 			</div>
@@ -299,7 +293,6 @@ const DetailedPage = () => {
 				label="I would start researching the topic and create a rough outline of the presentation."
 				value={"start researching the topic and create a rough outline of the presentation."}
 				name="question2"
-				style={{width:"275px"}}
 				onChange={() => handleRadio("holder",2,  2, 1)}
 				checked={Response2[2] === true}/>
 			</div>
@@ -311,7 +304,6 @@ const DetailedPage = () => {
 				label="I would begin designing the slides and decide what topics should be included."
 				value={"begin designing the slides and decide what topics should be included."}
 				name="question2"
-				style={{width:"300px"}}
 				onChange={() => handleRadio("holder",2,  3, 1)}
 				checked={Response2[3] === true}/>
 			</div>
@@ -326,7 +318,7 @@ const DetailedPage = () => {
 					checked={otherSelected[1] === true}/>	
 				<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response2[4])}
 					onChange={(event) => handleOtherSelect(event,2, 4)}
 					disabled={!otherSelected[1]}/>
@@ -343,7 +335,6 @@ const DetailedPage = () => {
 				label="I would ask my coworker to explain what they think the topic is about."
 				value={"ask my coworker to explain what they think the topic is about."}
 				name="question3"
-				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 3, 0, 2)}
 				checked={Response3[0] === true}/>
 			</div>
@@ -355,7 +346,6 @@ const DetailedPage = () => {
 				label="I would ask my boss what they think about my part of the presentation."
 				value={"ask my boss what they think about my part of the presentation."}
 				name="question3"
-				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 3, 1, 2)}
 				checked={Response3[1] === true}/>
 			</div>
@@ -367,7 +357,6 @@ const DetailedPage = () => {
 				label="I wouldn't change it because I know I'm right."
 				value={"not change it because I know I'm right."}
 				name="question3"
-				style={{width:"250px"}}
 				onChange={() => handleRadio("holder",3, 2, 2)}
 				checked={Response3[2] === true}/>
 			</div>
@@ -379,7 +368,6 @@ const DetailedPage = () => {
 				label="I would review the topic and see if I can make my part clearer."
 				value={"review the topic and see if I can make my part clearer."}
 				name="question3"
-				style={{width:"200px"}}
 				onChange={() => handleRadio("holder",3,3, 2)}
 				checked={Response3[3] === true}/>
 			</div>
@@ -394,7 +382,7 @@ const DetailedPage = () => {
 					checked={otherSelected[2] === true}/>
 				<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response3[4])}
 					onChange={(event) => handleOtherSelect(event,3, 4)}
 					disabled={!otherSelected[2]}/>
@@ -411,7 +399,6 @@ const DetailedPage = () => {
 				label="We should check in every day for 15 minutes."
 				value={"every day for 15 minutes."}
 				name="question4"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 0, 3)}
 				checked={Response4[0] === true}/>
 			</div>
@@ -423,7 +410,6 @@ const DetailedPage = () => {
 				label="We should only meet once a week for an hour."
 				value={"once a week for an hour."}
 				name="question4"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 1, 3)}
 				checked={Response4[1] === true}/>
 			</div>
@@ -435,7 +421,6 @@ const DetailedPage = () => {
 				label="We should meet a few times a week."
 				value={"a few times a week."}
 				name="question4"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 2, 3)}
 				checked={Response4[2] === true}/>
 			</div>
@@ -447,7 +432,6 @@ const DetailedPage = () => {
 				label="I don't think we need to meet at all, email is fine."
 				value={"never. Email is fine."}
 				name="question4"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 3, 3)}
 				checked={Response4[3] === true}/>
 			</div>
@@ -462,7 +446,7 @@ const DetailedPage = () => {
 					checked={otherSelected[3] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response4[4])}
 					onChange={(event) => handleOtherSelect(event,4, 4)}
 					disabled={!otherSelected[3]}/>
@@ -479,7 +463,6 @@ const DetailedPage = () => {
 				label="I would ask for a raise during my next performance review."
 				value={"ask for a raise during my next performance review."}
 				name="question5"
-				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 0, 4)}
 				checked={Response5[0] === true}/>
 			</div>
@@ -491,7 +474,6 @@ const DetailedPage = () => {
 				label="I’ll just keep quiet until my boss notices my hard work."
 				value={"keep quiet until my boss notices my hard work."}
 				name="question5"
-				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 1, 4)}
 				checked={Response5[1] === true}/>
 			</div>
@@ -503,7 +485,6 @@ const DetailedPage = () => {
 				label="I'll talk to my coworker about how to ask for a raise."
 				value={"ask my coworker about how to ask for a raise."}
 				name="question5"
-				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 2, 4)}
 				checked={Response5[2] === true}/>
 			</div>
@@ -515,7 +496,6 @@ const DetailedPage = () => {
 				label="I need to research how much I should ask for first."
 				value={"research how much I should ask for first."}
 				name="question5"
-				style={{width:"235px"}}
 				onChange={() => handleRadio("holder", 5, 3, 4)}
 				checked={Response5[3] === true}/>
 			</div>
@@ -531,7 +511,7 @@ const DetailedPage = () => {
 			<div className="answer-box">
 				<Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response5[4])}
 					onChange={(event) => handleOtherSelect(event,5, 4)}
 					disabled={!otherSelected[4]}/>
@@ -548,7 +528,6 @@ const DetailedPage = () => {
 				label="I would offer to help them finish their work."
 				value={"offer to help them with it."}
 				name="question6"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 0, 5)}
 				checked={Response6[0] === true}/>
 			</div>
@@ -560,7 +539,6 @@ const DetailedPage = () => {
 				label="I'm going home. I have my own work to do."
 				value={"go home. I have my own work to do."}
 				name="question6"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 1, 5)}
 				checked={Response6[1] === true}/>
 			</div>
@@ -572,7 +550,6 @@ const DetailedPage = () => {
 				label="I would wait until tommorow to ask if they need help."
 				value={"wait until tommorow to ask if they need help."}
 				name="question6"
-				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 6, 2, 5)}
 				checked={Response6[2] === true}/>
 			</div>
@@ -584,7 +561,6 @@ const DetailedPage = () => {
 				label="I would let my boss know that they need help."
 				value={"let my boss know that they need help."}
 				name="question6"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 3, 5)}
 				checked={Response6[3] === true}/>
 			</div>
@@ -599,7 +575,7 @@ const DetailedPage = () => {
 					checked={otherSelected[5] === true}	/>
 			<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response6[4])}
 					onChange={(event) => handleOtherSelect(event,6, 4)}
 					disabled={!otherSelected[5]}/>
@@ -616,7 +592,6 @@ const DetailedPage = () => {
 				label="I would go out with friends to relax."
 				value={"go out with friends to relax."}
 				name="question7"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 0, 6)}
 				checked={Response7[0] === true}/>
 			</div>
@@ -628,7 +603,6 @@ const DetailedPage = () => {
 				label="I would stay home and watch TV to relax."
 				value={"stay home and watch TV to relax."}
 				name="question7"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 1, 6)}
 				checked={Response7[1] === true}/>
 			</div>
@@ -640,7 +614,6 @@ const DetailedPage = () => {
 				label="I would go to the gym to relax."
 				value={"go to the gym to relax."}
 				name="question7"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 2, 6)}
 				checked={Response7[2] === true}/>
 			</div>
@@ -652,7 +625,6 @@ const DetailedPage = () => {
 				label="I would go to the beach to relax."
 				value={"go to the beach to relax."}
 				name="question7"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 3, 6)}
 				checked={Response7[3] === true}/>
 			</div>
@@ -667,7 +639,7 @@ const DetailedPage = () => {
 					checked={otherSelected[6] ===true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response7[4])}
 					onChange={(event) => handleOtherSelect(event,7, 4)}
 					disabled={!otherSelected[6]}/>

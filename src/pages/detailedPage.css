@@ -7,17 +7,19 @@
     margin-left: 25px
     }
     .answer-box{
-        flex-grow: 1;
-        margin-left: 10px
+        display:flexbox;
+        height:fit-content;
+        margin-left: -10px;
         }
     .questionPrompt{
         font-weight:bold;
         margin-left: 25px;
     }
     .reg-radio{
-        display: inline-block;
-           border: 1px solid #ccc; /* Add a border around the radio button */
-           border-radius: 5px; /* Rounded corners */
+        display: inline-flexbox;
+        max-width:20%;
+        border: 1px solid #ccc; /* Add a border around the radio button */
+        border-radius: 5px; /* Rounded corners */
         padding: 5px; /* Add padding around the radio button */
         margin-right: 2px; /* Add space between radio buttons */
         transition: background-color 0.75s ease; /* Makes the container blue and changes text to white */
