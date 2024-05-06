@@ -29,7 +29,7 @@ interface QuizState { // state types for useReducer
     experienceReport: ExperienceReport;
     finalReport: FinalReport;
     displayExperience: boolean;
-    currStatus: string;
+    needUpdate: boolean;
 };
 
 type QuizAction = // possible actions for useReducer
@@ -40,10 +40,10 @@ type QuizAction = // possible actions for useReducer
     | { type: 'SET_LOADING_TYPE'; payload: string }
     | { type: 'SET_EXPERIENCE_REPORT'; payload: ExperienceReport }
     | { type: 'COMPLETE_QUIZ' }
-    | { type: 'SET_STATUS'; payload: string }
     | { type: 'GENERATE_EXPERIENCE_REPORT' }
     | { type: 'SET_FINAL_REPORT'; payload: FinalReport }
-    | { type: 'FINISH_EXPERIENCE_REPORT'};
+    | { type: 'FINISH_EXPERIENCE_REPORT'}
+    | { type: 'RESET_UPDATED'};
 
 
 const quizReducer = (state: QuizState, action: QuizAction): QuizState => { //used for useReducer state setters
@@ -58,7 +58,7 @@ const quizReducer = (state: QuizState, action: QuizAction): QuizState => { //use
                 };
         case 'SET_QUIZ': //Current question bank
             console.log('Updating curQuiz with new data', action.payload);
-            return { ...state, curQuiz: action.payload };
+            return { ...state, curQuiz: action.payload, needUpdate: true };
         case 'SET_CURRENT_QUESTION': //Current question being displayed
             return { ...state, currentQuestionId: action.payload };
         case 'TOGGLE_LOADING': // sets whether to display loading
@@ -69,8 +69,8 @@ const quizReducer = (state: QuizState, action: QuizAction): QuizState => { //use
             return { ...state, experienceReport: action.payload, displayExperience: true };
         case 'COMPLETE_QUIZ': // Triggers final report
             return { ...state, isQuizComplete: true };
-        case 'SET_STATUS':
-            return { ...state, currStatus: action.payload };
+        case 'RESET_UPDATED':
+            return { ...state, needUpdate: false};
         case 'GENERATE_EXPERIENCE_REPORT': //causes expReport to be displayed, reset to false within expReport component
             return {
                 ...state,
@@ -133,7 +133,7 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
         experienceReport: { academic: [], work: [], interests: [] },
         finalReport: [{ role: "", description: "", benefits: [],challenges: [], links: [] }],
         displayExperience: false,
-        currStatus: ''
+        needUpdate: false
     };
     const [state, dispatch] = useReducer(quizReducer, initialState); //state holds all states, makes state management much easier
 
@@ -169,6 +169,7 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
                 const newQuestions: QuizItems = JSON.parse(lastChoice.message.content);
                 console.log("GBT Questions: ", newQuestions);
                 const newQuiz: QuizItems = {...state.curQuiz, ...newQuestions};
+                if (!(`question${parentQuestionsAnswerd + 1}` in newQuiz)) return "";
                 dispatch({ type: 'SET_QUIZ', payload: { ...newQuiz } });
                 parentSetTot(parentTotQuestions + questionsNeeded);
                 //const nextQ = `question${parseInt(state.currentQuestionId.replace("question", "")) + 1}`;
@@ -197,10 +198,21 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
             } else if (parentTotQuestions > parentConstants.experienceMax){
                 await createNextQuestion(parentConstants.totalMax - parentConstants.experienceMax);
             }
+
+            // await new Promise<void>(resolve => {
+            //     const interval = setInterval(() => {
+            //         if (state.questionsUpdated) {
+            //             clearInterval(interval);
+            //             resolve();
+            //         }
+            //     }, 100); // Check every 100ms
+            // });
+    
+
             // After attempting to create new questions, check if the desired next question now exists
             console.log(`nextQuestionId(${nextQuestionId}) in targetQuiz: ${nextQuestionId in state.curQuiz}`)
             console.log(`prevQuestion(question${questionNumber}) in targetQuiz: ${nextQuestionId in state.curQuiz}`)
-            return ((nextQuestionId in state.curQuiz) ? nextQuestionId : "");
+            return nextQuestionId
         }
         
         return ""
@@ -230,9 +242,15 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
                         parentSetAnswerd(parseInt(state.currentQuestionId.replace("question", "")) + 1);
                         dispatch({type: 'SET_CURRENT_QUESTION', payload: nextQuestionId });
                     }
-                    else dispatch({ type: 'COMPLETE_QUIZ'});
-                } else dispatch({ type: 'COMPLETE_QUIZ'});
-            } else dispatch({ type: 'GENERATE_EXPERIENCE_REPORT'});
+                    else {
+                        dispatch({ type: 'COMPLETE_QUIZ'});
+                    }
+                } else {
+                    dispatch({ type: 'COMPLETE_QUIZ'});
+                }
+            } else {
+                dispatch({ type: 'GENERATE_EXPERIENCE_REPORT'});
+            }
         } else {//backwards
             parentSetAnswerd(parseInt(state.currentQuestionId.replace("question", "")) - 1);
             const prevId = `question${currentNumber - 1}`;
@@ -240,7 +258,9 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
                 parentSetAnswerd(parentTotQuestions - 1);
                 dispatch({type: 'SET_CURRENT_QUESTION', payload: prevId});
             }
-            else dispatch({type: 'COMPLETE_QUIZ'});
+            else {
+                dispatch({type: 'COMPLETE_QUIZ'});
+            }
         }
         dispatch({type: 'TOGGLE_LOADING', payload: false});
     }
@@ -389,6 +409,18 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
         );
     }
 
+    function ForceUpdate ():JSX.Element {
+        if (state.needUpdate) {
+            dispatch({type: 'RESET_UPDATED'})
+            return <Loading type="Returning"/>
+        } else {
+            return <Loading type="Setting Questions"/>
+        }
+    }
+
+    if (state.needUpdate) {
+        return <ForceUpdate/>
+    }
 
     if (state.displayExperience) {
         console.log("displaying experience report")
