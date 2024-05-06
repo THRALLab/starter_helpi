@@ -3,6 +3,9 @@ import { Button, Form } from "react-bootstrap";
 import splash from "../images/businessman.png"
 import pie from "../images/piechart.png"
 import './homePage.css';
+import { GPTcontext } from "../App";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 //import OpenAI from "openai";
 
 
@@ -62,6 +65,8 @@ import './homePage.css';
             console.log(e);
         }  
     }*/
+    const {GPTresponse, setGPTresponse} = useContext(GPTcontext);
+    console.log(GPTresponse);    
 
     return (
         <>
@@ -96,7 +101,7 @@ import './homePage.css';
                 <p>Satisfaction rates from other users!</p>
             </div>
         </div>
-        <Button href="./ResultsPage">Temporary Results Link</Button>
+        <Link to="./ResultsPage">Temporary Results Link</Link>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>

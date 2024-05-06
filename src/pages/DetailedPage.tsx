@@ -6,8 +6,10 @@ import Button from "react-bootstrap/esm/Button";
 //import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 import OpenAI from "openai";
 import { key } from "./homePage"
+import { useContext } from "react";
+import { GPTcontext } from "../App";
 
-export let GPTresponse: string[];
+
 
 function parseAnswers(answers: string|null): string[] {
 	if (answers === null) return [];
@@ -32,7 +34,9 @@ const DetailedPage = () => {
 	const [Response6, setResponse6] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response7, setResponse7] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false, false, false]); //correlates to the the "other" text inputs will be true if the "other" option is selected
-	
+
+	const {GPTresponse, setGPTresponse} = useContext(GPTcontext);
+
 	function handleRadio(option:string, questionNum:number, index:number, otherIndex:number) {  //handles regular radio buttons
 		const newOtherStatus = [...otherSelected];
 		const responseState = questionNum === 1 ? Response1 : //chooses which array to use based on the hardcoded question num
@@ -143,11 +147,15 @@ const DetailedPage = () => {
 	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
     const [allow, setAllow] = useState<boolean>(false);
 	const [alert, setAlert] = useState<boolean>(false);
-   
+	
+	//setGPTresponse(["it","works","here","","","","",""]);
+	
 	useEffect(() => {
        setAllow(answered === 7); //checks the amount of questions answered
 	   setAlert(answered === 7)
     }, [answered]);
+
+	console.log(GPTresponse);
 	return (<>
 		<style>{`
         .question-box {
@@ -729,10 +737,9 @@ const DetailedPage = () => {
 				max_tokens: 512,//should be 512
 				top_p: 1,
 				});
-				GPTresponse = parseAnswers(response.choices[0].message.content); //GPT Response to the user's input
-				console.log(GPTresponse);
-				window.location.href = "./ResultsPage/"; //redirects the user to the results page
-
+				
+				setGPTresponse(parseAnswers(response.choices[0].message.content)); //GPT Response to the user's input
+				//setGPTresponse("[\"It\", \"is working\", \"yay\", \"\", \"\", \"\", \"\", \"\"]"); 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				//console.log(e);
