@@ -8,8 +8,6 @@ interface Tools {
 	chat_gptResponse: string;
 }
 
-// TODO - [ ] will need to add markdown support since ChatGPT occasionally returns a response with markdown
-
 export default function useChatGPT(): Tools {
 	const API_KEY: string | null = localStorage.getItem("MYKEY");
 	const [chat_gptResponse, setChat_gptResponse] = useState("");
