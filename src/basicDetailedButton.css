@@ -4,45 +4,41 @@
     display : flex;
     justify-content : center;
     align-items : center;
-    /* margin-top : 90px; */
 }
 
-.basic-button, .detailed-button{
-    color : rgb(251, 187, 244);
-    background-color : rgb(195, 26, 26);
+.basic-button, 
+.detailed-button{
+    background-color : rgb(251, 187, 244);
+    color : rgb(195, 26, 26);
     font-size : 30px;
-    border-radius : 20px;
+    border-radius : 40px;
     padding : 20px 40px;
     border : none;
-    margin : 30px;
+    margin : 15px;
     font-family: "Anybody", sans-serif;
 	font-weight: 700;
 }
 
-
-.basic-button:hover{
-    color: rgb(195, 26, 26);
-    background-color : rgb(251, 187, 244);
-    transition: 0.5s ease;
-}
-
+.basic-button:hover,
 .detailed-button:hover{
-    color: rgb(195, 26, 26);
-    background-color : rgb(251, 187, 244);
+    /*added hover to help users navigate through buttons*/
+    background-color: rgb(195, 26, 26);
+    color : rgb(251, 187, 244);
     transition: 0.5s ease;
 }
 
 .par-container{
     display : flex;
     justify-content : center;
-    margin-top : 120px;
+    font-family: "Anybody", sans-serif;
+    margin-top : 5px;
 }
 
-.par-basic{
-    color :rgb(195, 26, 26);
-}
-
+.par-basic,
 .par-detailed{
+    /*descriptions remain visible while buttons are to provide info to user*/
     color :rgb(195, 26, 26);
+    margin : 20px;
+    line-height : 1.5
 }
 

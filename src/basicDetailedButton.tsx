@@ -1,4 +1,3 @@
-/*import { Button, Form } from "react-bootstrap";*/
 import { Link, useLocation } from "react-router-dom";
 import "./basicDetailedButton.css"
 import {useState, useEffect} from "react";
@@ -41,7 +40,7 @@ function BasicDetailedButtons() {
         <div className="par-container">{isHome && !clicked && (
             <p className="par-basic">
                 This is a 10 - 15 minute quiz aimed to gauge<br></br>
-                interests and skills in order to provide suggestions<br></br>
+                interests and skills to provide suggestions<br></br>
                 and information on potential careers.
             </p>)}
             {isHome && !clicked && (

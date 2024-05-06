@@ -23,6 +23,7 @@ function App() {
 				<Routes>
 					<Route path="/basic" Component={Basic} />
 					<Route path="/detailed" Component={Detailed} />
+					<Route path="/basicDetailedButton" Component={BasicDetailedButtons} />
 				</Routes>
 				<Footer />
 			</>
