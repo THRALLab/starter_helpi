@@ -1,0 +1,174 @@
+.App {
+  text-align: center;
+  background-color: var(--off-tan);
+  height: 100vh
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--british-khaki);
+  min-height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(10px + 2vmin);
+  color: var(--dark-royal-blue);
+}
+
+.App-header a,
+.App-header a:visited { /* This targets both unvisited and visited links */
+  color: var(--dark-royal-blue); /* Set your desired color here */
+  text-decoration: none; /* Removes the underline from links */
+  border: solid 2px;
+  padding: 10px;
+}
+
+.App-header a:hover,
+.App-header a:focus {
+  text-decoration: underline; /* Adds an underline when hovering or focusing on the link */
+  color: var(--dawn-dish-blue); /* Optional: Changes color on hover or focus for better user experience */
+}
+
+.App-api-container {
+  display: grid;
+  grid-template: "myArea myArea . .";
+}
+
+.App-footer {
+  width: 100%;
+  height: 50px;
+  background-color: var(--british-khaki);
+  display: flex;
+  flex-direction: relative;
+  align-items: center;
+  padding-top: relative;
+  bottom: 0%;
+  justify-content: space-between;
+}
+
+.App-misc-text {
+  color: var(--dark-royal-blue)
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App-quiz {
+  text-align: center;
+  background-color: var(--off-tan);
+}
+
+.quiz-tooltip{
+  cursor: pointer;
+  color: var(--dawn-dish-blue);
+  margin-left: 5px
+}
+
+.quiz-drag-drop{
+  border: 3px;
+  border-color: var(--dark-royal-blue);
+  border-width: 2px;
+  border-style: none none none solid;
+  color: var(--gift-wrap-purple);
+  background-color: var(--off-white);
+  cursor: move;
+  list-style-type: '';
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.quiz-drag-drop:hover{
+  border: 3px;
+  border-color: var(--dark-royal-blue);
+  border-width: 2px;
+  border-style: solid;
+  color: var(--off-white);
+  background-color: var(--ocean-eyes);
+  cursor: move;
+  list-style-type: '';
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+
+/*Styling for the different nav buttons in the app */
+.btn-nav-disabled {
+  color: var(--dark-royal-blue);
+  outline-color: var(--dark-royal-blue);
+  outline-width: 2px;
+  outline-style: solid;
+  margin: 2px
+}
+
+.btn-nav {
+  color: var(--off-white);
+  background-color: var(--dark-royal-blue);
+}
+
+.btn-nav:hover{
+  background-color: var(--almost-teal);
+  color: var(white)
+}
+
+/*Styling for the quiz related buttons */
+.btn-selected {
+  background-color: var(--gift-wrap-purple);
+  color: white;
+}
+
+.btn-selected:hover {
+  background-color: var(--dark-royal-blue);
+}
+
+.btn-selected-outlined {
+  color: var(--gift-wrap-purple);
+  outline-color: var(--gift-wrap-purple);
+  background-color: var(--off-white);
+  outline-width: 2px;
+  outline-style: solid;
+}
+
+.btn-selected-outlined:hover {
+  background-color: var(--gift-wrap-purple);
+  color: var(--off-white);
+}
+
+.btn-single-selected {
+  background-color: var(--off-white);
+  color: var(--diamond-blue);
+  outline-color: var(--diamond-blue);
+  outline-width: 2px;
+  outline-style: solid;
+  font-weight: bold;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.quiz-container {
+  background: var(--diamond-blue); /* Blue background */
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  width: 75%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 5%;
+  margin-bottom: 10%;
+}

@@ -1,0 +1,18 @@
+{
+    "id": "first-quiz",
+    "name": "Test Quiz",
+    "questions": [
+        {
+            "type": "MC_SINGLE_RESPONSE",
+            "question": "I am _____ years old.",
+            "order": 1,
+            "options": ["1","2","3","4","5"]
+        },
+        {
+            "type": "MC_MULTI_RESPONSE",
+            "question": "I enjoy learning about _____.",
+            "order": 2,
+            "options": ["Math","History","Science","Writing","Arts"]
+        }
+    ]
+}

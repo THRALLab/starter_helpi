@@ -1,8 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './css/global.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import { openGBTStream } from './controller/OpenChatStream';
+
+//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
+const envKeyData = localStorage.getItem("GBTKEY");
+
+// prev key is null, but is defined in .env
+if (envKeyData != null) {
+  localStorage.setItem("GBTKEY", envKeyData);
+} else {
+  localStorage.setItem("GBTKEY", "Not Entered");
+}
+
+//openGBTStream({startingPrompt: "give me a few pointers of what I should do with my day"});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
