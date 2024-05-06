@@ -1,15 +1,18 @@
 import OpenAI from "openai";
 import detailedQuestions from "../detailedQuestions.json";
 import { Answer } from "../detailed";
+import { useState } from "react";
 
 interface Tools {
 	checkConnection: () => void;
+	chat_gptResponse: string;
 }
 
 // TODO - [ ] will need to add markdown support since ChatGPT occasionally returns a response with markdown
 
 export default function useChatGPT(): Tools {
 	const API_KEY: string | null = localStorage.getItem("MYKEY");
+	const [chat_gptResponse, setChat_gptResponse] = useState("");
 
 	async function callAPI(openai: OpenAI, users_responses: Answer[]) {
 		let formattedQ_A = "";
@@ -36,7 +39,8 @@ export default function useChatGPT(): Tools {
 					response += part.choices[0].delta.content;
 				}
 			}
-			console.log(response);
+
+			setChat_gptResponse(response);
 		} catch (error) {
 			console.log(error);
 		}
@@ -61,5 +65,5 @@ export default function useChatGPT(): Tools {
 		}
 	}
 
-	return { checkConnection };
+	return { checkConnection, chat_gptResponse };
 }
