@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
@@ -12,6 +12,7 @@ import { Loading } from "./Loading";
 import { Button, Container } from "react-bootstrap";
 import { ExperienceReport } from "src/controller/StartingPrompt";
 import { ParentConstants } from "src/pages/basic-quiz/BasicQuiz";
+import OpenAI from "openai";
 
 export type QuizItems = Record<string, Question>;
 
@@ -96,13 +97,15 @@ type QuestionAns = { //How questions are passed to the AI
     answer: string
 }
 
-type FinalReport = { // Report format for final reponse
-    summary: string,
-    advice: string,
-    interactiveElements: string,
-    recommendations: string,
-    reasoning: string
+type Role = {
+    role: string, 
+    description: string,
+    benefits: string[]
+    challenges: string[]
+    links: string[]
 }
+
+type FinalReport = Role[];
 
 export function DisplayQuiz({ //contains most of the logic for displaying the quiz, if you can still even call this a quiz lol
         parentConstants,
@@ -128,7 +131,7 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
         loadingType: "",
         followUp: false,
         experienceReport: { academic: [], work: [], interests: [] },
-        finalReport: { summary: "", advice: "", interactiveElements: "", recommendations: "", reasoning: ""},
+        finalReport: [{ role: "", description: "", benefits: [],challenges: [], links: [] }],
         displayExperience: false,
         currStatus: ''
     };
@@ -244,34 +247,36 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
 
     const ExpReport = () => {
         console.log("creating experience report")
-        const compiledAnswers: QuestionAnswer[] = state.answers.map((q: QuestionAns) => ({
+        const [response, setResponse] = useState<OpenAI.ChatCompletion>();
+        const questionAns: QuestionAnswer[] = state.answers.map(q => ({
             question: state.curQuiz[q.questionId],
             answer: q.answer
         }));
 
         useEffect(() => {
+            dispatch({ type: 'TOGGLE_LOADING', payload: true });
             const fetchExperienceReport = async () => {
-                dispatch({ type: 'TOGGLE_LOADING', payload: true });
                 const response = await addResponseGBT({
                     choices: state.gbtConversation,
-                    newMessage: createFinalResponse(compiledAnswers, "expereince", state.experienceReport)
+                    newMessage: createFinalResponse(questionAns, "expereince", state.experienceReport)
                 });
-                if (response && response.choices.length > 0) {
-                    const finalAns = response.choices[response.choices.length - 1].message.content;
-                    if (finalAns) {
-                        const experienceReport: ExperienceReport = JSON.parse(finalAns);
-                        dispatch({ type: 'SET_EXPERIENCE_REPORT', payload: experienceReport });
-                    } else {
-                        console.log("Error: No valid response content received");
-                    };
-                } else {
-                    console.log("Error: No response or choices available");
-                };
-                dispatch({ type: 'TOGGLE_LOADING', payload: false });
+                setResponse(response);
             };
-    
-            fetchExperienceReport();
-        }, [compiledAnswers]);
+            if (!response) fetchExperienceReport();
+
+            if (response && response.choices.length > 0) {
+                const finalAns = response.choices[response.choices.length - 1].message.content;
+                if (finalAns) {
+                    const experienceReport: ExperienceReport = JSON.parse(finalAns);
+                    dispatch({ type: 'SET_EXPERIENCE_REPORT', payload: experienceReport });
+                } else {
+                    console.log("Error: No valid response content received");
+                };
+            } else {
+                console.log("Error: No response or choices available");
+            };
+            dispatch({ type: 'TOGGLE_LOADING', payload: false });
+        }, [questionAns, response]);
 
         if (state.isLoading && state.loadingType === 'experienceReport') {
             return <Loading type="experienceReport"/>;
@@ -297,162 +302,92 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
             </>
         );
     };
-    
 
-
-
-
-
-
-    //     useEffect(() => {
-    //         async function getFinalResponse() {
-    //             const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns, "expereince")});
-    //             setResponse(response);
-    //             setLoaded(true);
-    //         }
-    //         if (!response) getFinalResponse();
-    //     }, [questionAns, response]);
-
-    //     if (!loaded) return <Loading type="experienceReport"/>;
-    
-    //     if (!response || !response.choices.length) return <p>Error Occurred</p>;
-
-    //     const finalAns = response.choices[response.choices.length-1].message.content;
-    //     if(finalAns == null) return<>Error Occured</>
-    //     const currReport: ExperienceReport = JSON.parse(finalAns);
-    //     setExperienceReport(experienceReport);
-    //     setDisplayExperience(true);
-
-    //     return (
-    //         <>
-    //         <h2>Academic Experience</h2>
-    //         <ul>
-    //             {currReport.academic.map((academicExp: string) => (
-    //                 <li>{academicExp}</li>
-    //             ))}
-    //         </ul>
-    //         <br></br>
-    //         <h2>Work Experience</h2>
-    //         <ul>
-    //             {currReport.work.map((workExp: string) => (
-    //                 <li>{workExp}</li>
-    //             ))}
-    //         </ul>
-    //         <br></br>
-    //         <h2>Personal Interests</h2>
-    //         <ul>
-    //             {currReport.interests.map((interest: string) => (
-    //                 <li>{interest}</li>
-    //             ))}
-    //         </ul>
-    //         </>
-    //     )
-
-    // }
-
-    const DisplayResults = () => {
+    const DisplayResults = ():JSX.Element => {
+        const [response, setResponse] = useState<OpenAI.ChatCompletion>();
+        const [currRoles, setRoles] = useState<string[]>([]);
         const questionAns: QuestionAnswer[] = state.answers.map(q => ({
             question: state.curQuiz[q.questionId],
             answer: q.answer
         }));
 
         useEffect(() => {
-            if (state.isQuizComplete) {
-                const fetchFinalResults = async () => {
-                    dispatch({ type: 'TOGGLE_LOADING', payload: true });
-    
-                    const response = await addResponseGBT({
-                        choices: state.gbtConversation,
-                        newMessage: createFinalResponse(questionAns, "finalReport", state.experienceReport)
-                    });
-    
-                    if (response && response.choices.length > 0) {
-                        const finalAns = response.choices[response.choices.length - 1].message.content;
-                        if (finalAns) {
-                            const finalResponse: FinalReport = JSON.parse(finalAns);
-                            dispatch({ type: 'SET_FINAL_REPORT', payload: finalResponse });
-                        } else {
-                            console.error("Error: No valid response content received");
-                        }
-                    } else {
-                        console.error("Error: No response or choices available");
-                    }
-                    dispatch({ type: 'TOGGLE_LOADING', payload: false });
-                };
-                fetchFinalResults();
+            dispatch({ type: 'TOGGLE_LOADING', payload: true });
+            const fetchFinalResults = async () => {
+                const response = await addResponseGBT({
+                    choices: state.gbtConversation,
+                    newMessage: createFinalResponse(questionAns, "finalReport", state.experienceReport)
+                });
+                setResponse(response);
+            };
+            if (!response) fetchFinalResults();
+
+            if (response && response.choices.length > 0) {
+                const finalAns = response.choices[response.choices.length - 1].message.content;
+                if (finalAns) {
+                    const finalResponse: FinalReport = JSON.parse(finalAns);
+                    dispatch({ type: 'SET_FINAL_REPORT', payload: finalResponse });
+                } else {
+                    console.error("Error: No valid response content received");
+                }
+            } else {
+                console.error("Error: No response or choices available");
             }
-        }, [questionAns]); 
+            dispatch({ type: 'TOGGLE_LOADING', payload: false });
+        }, [questionAns, response]); 
 
 
         if (state.isLoading) {
             return <Loading type="finalReport"/>;
         }
+        
+        function updateRoles (newRole: string) {
+            const newRoles: string[] = currRoles.includes(newRole) 
+                ? [...currRoles, newRole] 
+                : [...currRoles].filter((currRole: string) => (currRole !== newRole));
+            setRoles(newRoles)
+        }
 
         return (
             <>
-                <h2>Career Report Summary</h2>
-                <p>{state.finalReport.summary}</p>
-                <h3>Detailed Advice</h3>
-                <p>{state.finalReport.advice}</p>
-                <h3>Explore Further</h3>
-                <p>{state.finalReport.interactiveElements}</p>
-                <h3>Recommended Career Paths</h3>
-                <p>{state.finalReport.recommendations}</p>
-                <h3>Why These Paths?</h3>
-                <p>{state.finalReport.reasoning}</p>
+            {state.finalReport.map((role:Role) => (
+                currRoles.includes(role.role)
+                    ? <Button
+                        onClick={() => updateRoles(role.role)}
+                    >{`View ${role.role}  ⌄`}</Button>
+                    : <>
+                    <ul>
+                        <li>{`${<strong>role.role</strong>}: ${role.description}`}</li>
+                        <li>
+                        {role.benefits.map((benefit: string) => (
+                            <ul>
+                                <li>{benefit}</li>
+                            </ul>
+                        ))}
+                        </li>
+                        <li>
+                        {role.challenges.map((challenge: string) => (
+                            <ul>
+                                <li>{challenge}</li>
+                            </ul>
+                        ))}
+                        </li>
+                        <li>
+                        {role.links.map((link: string) => (
+                            <ul>
+                                <li><a href={link}>{link}</a></li>
+                            </ul>
+                        ))}
+                        </li>
+                    </ul>
+                    <Button
+                        onClick={() => updateRoles(role.role)}
+                    >{`Hide ${role.role}  ^`}</Button>
+                    </>
+            ))}
             </>
         );
     }
-    
-
-
-
-
-
-
-
-
-
-
-
-    //     const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
-    //     const [response, setResponse] = useState<OpenAI.ChatCompletion>();
-    //     const [loaded, setLoaded] = useState(false);
-    
-    //     useEffect(() => {
-    //         async function getFinalResponse() {
-    //             const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns, "finalReport")});
-    //             setResponse(response);
-    //             setLoaded(true);
-    //         }
-    
-    //         if (!response) getFinalResponse();
-    //     }, [questionAns, response]);
-    
-    //     if (!loaded) return <Loading type="finalReport"/>;
-    
-    //     if (!response || !response.choices.length) return <p>Error Occurred</p>;
-
-    //     const finalAns = response.choices[response.choices.length-1].message.content;
-    //     if(finalAns == null) return<>Error Occured</>
-    //     const finalResponse: FinalReport = JSON.parse(finalAns);
-    
-    //     return (
-    //         <>
-
-    //             <h2>Career Report Summary</h2>
-    //             <p>{finalResponse.summary}</p>
-    //             <h3>Detailed Advice</h3>
-    //             <p>{finalResponse.advice}</p>
-    //             <h3>Explore Further</h3>
-    //             <p>{finalResponse.interactiveElements}</p>
-    //             <h3>Recommended Career Paths</h3>
-    //             <p>{finalResponse.recommendations}</p>
-    //             <h3>Why These Paths?</h3>
-    //             <p>{finalResponse.reasoning}</p>
-    //         </>
-    //     );
-    // }
 
 
     if (state.displayExperience) {

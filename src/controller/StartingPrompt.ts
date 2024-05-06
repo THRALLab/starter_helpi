@@ -246,7 +246,7 @@ export const createFinalResponse = (questionAns: QuestionAnswer[], stage: string
             `    "description": "Give a thorough description of the career giving the user an idea of what it would be like.",\n` +
             `    "benefits": ["List of possible benefits of having this career.", "If possible relate this to goals or interests the user has told you."],\n` +
             `    "challenges": ["List of possible benefits of having this career.", "If possible relate this to information the user has told you such as challenges."],\n` +
-            `    "reasoning": ["list of relevant links for this career.", "links could include anything from additional information, work opportunities, or relavant academic information"],\n` +
+            `    "links": ["list of relevant links for this career.", "links could include anything from additional information, work opportunities, or relavant academic information"],\n` +
             `  },\n` +
                `//additional roles go here` +
         `}\n\n`
