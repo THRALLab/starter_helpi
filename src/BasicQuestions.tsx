@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { Form, ProgressBar } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-
+import { HashRouter as Router, Link } from 'react-router-dom';
+import './App.css';
 //Radio Button options
 const OPTIONS = [
   "Disagree",
