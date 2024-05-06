@@ -169,22 +169,19 @@ const BasicPage = () => {
 	//console.log(response)
 	return (<>
 	<body className="page-color">
-		<div>
-			<h1>
-				Basic Quiz
-			</h1>
-			<p style={{ textAlign: "center" }}>
-				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
-				The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-				 With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
-			</p>
-			
-		</div>
-
+		<h1 className="page-title">
+			Basic Quiz
+		</h1>			<p style={{ textAlign: "center" }}>
+			Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
+			The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+			 With only 8 questions, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.			</p>
+		<hr style={{color:"black", marginTop:"10px", height:"2px"}}></hr>
+		
 		<div style={{textAlign: "center"}}>
-			<Button size="lg" disabled={!allow} onClick={sendResponse}>Get Answer!</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
-			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}}>
-
+			<Button size="lg" disabled={!allow} onClick={sendResponse} style={{marginRight:"20px"}}>Get Answer!</Button>  <Button size="lg" onClick={doReset} > Clear All</Button>
+		</div>
+		<div style={{display: "flex", justifyContent:"center"}}>
+		<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
 		</div>
@@ -248,7 +245,7 @@ const BasicPage = () => {
 			</span>
 			<span className="QuestionNum">#4</span> 
 			<span className="radio-container">
-				<Stack gap={3} style={{marginTop: "30px"}}> 
+				<Stack gap={3} style={{marginTop: "20px"}}> 
 				<Form.Check 
 					type="radio"
 					id="q4-Option1"
@@ -266,9 +263,8 @@ const BasicPage = () => {
 				</Stack>
 			</span>	
 			</div>
-		<hr></hr>
-
-		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "25px"}}>
+		<hr style={{color:"black", marginTop:"78px", marginBottom:"80px", height:"4px"}}></hr>
+		<div className="question-container">
 			<span className="QuestionNum">#5</span> <span>
 			<Stack className="last4" gap={3} style={{marginTop: "30px"}}>
 			<Form.Check 
@@ -342,7 +338,9 @@ const BasicPage = () => {
 			</Stack>
 			</span>		
 		</div>
-		<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"30px", marginBottom: "30px"}}/>
+		<div style={{marginLeft:"200px", marginRight:"200px", marginBottom:"10px"}}>
+		<ProgressBar variant="success" now={answered} animated max={8} />
+		</div>
 		</body>
 		</>
 	);

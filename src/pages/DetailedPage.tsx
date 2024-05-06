@@ -175,6 +175,8 @@ const DetailedPage = () => {
 				allow you to see the results of you future career.
 			</p>
 		</div>
+		<hr style={{color:"black", marginTop:"10px", height:"2px"}}></hr>
+		
 		<div style={{textAlign:"center", marginTop:"25px"}}>
 		<Button size="lg" onClick={handleShow}>Track Progress</Button>
 		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={true}>
@@ -651,7 +653,7 @@ const DetailedPage = () => {
 		<Button size="lg" onClick={sendResponse} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		</div>
 		<div style={{display:"flex", marginTop:"10px", textAlign:"center",justifyContent:"center"}}>
-		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"0px"}} >
+		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"10px"}} >
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 			</Alert>
 		</div>

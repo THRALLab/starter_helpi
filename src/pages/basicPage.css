@@ -3,15 +3,13 @@
     margin-left: 35px;
     display:flex;	
     }
-hr{
-    width:max;
-    margin-top: 50px;
-}
+
 
 .question-container{
     display:flex;
     align-items:center;
     flex-direction: row;
+    margin-top:35px
 }
 
 .radio-container{
@@ -23,6 +21,10 @@ hr{
     margin-bottom: 30px;
 }
 
+.page-title{
+    font-family: Georgia, serif;
+    margin-left: 20px
+}
 
 .page-color{
     background-color:#e8f1ff91; 
