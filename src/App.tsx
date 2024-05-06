@@ -10,8 +10,11 @@ import DetailedPage from './pages/DetailedPage';
 import HomePage from './pages/homePage';
 import BasicPage from './pages/BasicPage';
 import ResultsPage from './pages/ResultsPage';
+import { darkMode } from './components/darkMode';
 
 function App() {
+
+  darkMode ? document.body.style.backgroundColor = "black" : document.body.style.backgroundColor = "white";
    
   return (
     <><Router>

@@ -4,11 +4,11 @@ let darkMode = false;
 
 export const DarkModeToggle = () => {
   const [isDark, setIsDark] = useState(false);
-  const [Label, setLabel] = useState("Light Mode" || "Dark Mode");
+  const [Label, setLabel] = useState("Dark Mode" || "Light Mode");
 
   const handleToggle = () => {
     setIsDark(!isDark);
-    setLabel(isDark ? "Light Mode" : "Dark Mode");
+    setLabel(isDark ? "Dark Mode" : "Light Mode");
     darkMode = isDark;
     console.log("Mode: " + (darkMode? "Dark" : "Light"));
   };

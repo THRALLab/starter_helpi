@@ -221,7 +221,7 @@ const BasicPage = () => {
 				}
                 `}</style>
 
-		<div className="Page-Container" data-theme = {darkMode? "light" : "dark"}>
+		<div className="Page-Container" data-theme = {darkMode? "dark" : "light"}>
 			<div className="quiz-desc">
 				<h1>
 					Basic Quiz
