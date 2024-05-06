@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Form, ProgressBar } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import './App.css';
+
 //Radio Button options
 const OPTIONS = [
   "Disagree",
@@ -32,7 +32,11 @@ const BasicQuestions: React.FC = () => {
     newOptions[index] = event.target.value;
     setChosenOption(newOptions);
   }
+  
   const progress = (chosenOption.filter(option => option !== null).length / QUESTIONS.length) * 100;
+  const allQuestionsAnswered = chosenOption.every(option => option != null);
+
+  
   return (
       <div>
       <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
@@ -72,8 +76,8 @@ const BasicQuestions: React.FC = () => {
             </div>
           ))}
         </div>
-      <p>Thank you for taking the time to answer the above questions! Press the below button to see results</p>
-
+      {allQuestionsAnswered ? <p>Thank you for taking the time to answer the above questions! Press the below button to see results</p>: <p></p>}
+          <button disabled={!allQuestionsAnswered}>See Results</button>
       </div>
   );
 }
