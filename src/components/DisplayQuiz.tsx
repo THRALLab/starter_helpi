@@ -254,7 +254,7 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
                 dispatch({ type: 'TOGGLE_LOADING', payload: true });
                 const response = await addResponseGBT({
                     choices: state.gbtConversation,
-                    newMessage: createFinalResponse(compiledAnswers, "expereince")
+                    newMessage: createFinalResponse(compiledAnswers, "expereince", state.experienceReport)
                 });
                 if (response && response.choices.length > 0) {
                     const finalAns = response.choices[response.choices.length - 1].message.content;
@@ -363,7 +363,7 @@ export function DisplayQuiz({ //contains most of the logic for displaying the qu
     
                     const response = await addResponseGBT({
                         choices: state.gbtConversation,
-                        newMessage: createFinalResponse(questionAns, "finalReport")
+                        newMessage: createFinalResponse(questionAns, "finalReport", state.experienceReport)
                     });
     
                     if (response && response.choices.length > 0) {
