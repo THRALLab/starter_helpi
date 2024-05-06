@@ -93,7 +93,7 @@ function App() {
       {page === "Basic" && <BasicPage setBasicDataKey={saveBasicDataKey} basicQuestionData={basicQuestionData} setBasicQuestionData={setBasicQuestionData} page={page} setPage={changePage}/>}
       {page === "Detailed" && <DetailedPage savaDetailDataKey={saveDetailedDataKey} detailQuestionData={detailQuestionData} setDetailQuestionData={setDetailQuestionData} page={page} setPage={changePage}/>}
       {page === "About" && <AboutPage/>}
-      {page === "Results" && <ResultsPage basicQuestionData={basicQuestionData} detailQuestionData={detailQuestionData}/>}
+      {page === "Results" && <ResultsPage APIKey={key} basicQuestionData={basicQuestionData} detailQuestionData={detailQuestionData}/>}
       <AppFooter changeKey={changeKey} handleSubmit={handleSubmit}/>
     </div>
   );
