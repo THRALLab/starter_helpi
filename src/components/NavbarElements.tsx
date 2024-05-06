@@ -9,7 +9,7 @@ let HomeLink = styled(Link)``
 let Bars = styled(FaBars)``
 let NavMenu = styled.div``
 
-if(darkMode){
+if(!darkMode){
     Nav = styled.nav`
     background: white;
     height: 85px;

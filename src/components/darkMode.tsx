@@ -3,8 +3,8 @@ import { useState } from "react";
 let darkMode = false;
 
 export const DarkModeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
-  const [Label, setLabel] = useState("Dark Mode" || "Light Mode");
+  const [isDark, setIsDark] = useState(true);
+  const [Label, setLabel] = useState("Light Mode" || "Dark Mode");
 
   const handleToggle = () => {
     setIsDark(!isDark);

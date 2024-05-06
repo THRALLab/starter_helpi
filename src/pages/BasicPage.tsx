@@ -168,7 +168,17 @@ const BasicPage = () => {
         }
     }, [answered]);
 
+	console.log("darkmode: " + darkMode);
+
+	// Effect to update dark mode in local storage and apply it on mount
+	useEffect(() => {
+		// Apply dark mode to the body
+		darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
+		darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
+	  }, [darkMode]); // Run effect when darkMode state changes
+
 	darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
+	darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
 
 	return (<>
 	<style>{`
