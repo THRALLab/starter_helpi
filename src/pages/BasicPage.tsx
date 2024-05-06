@@ -175,7 +175,7 @@ const BasicPage = () => {
 		// Apply dark mode to the body
 		darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
 		darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
-	  }, [darkMode]); // Run effect when darkMode state changes
+	  }, []); // Run effect when darkMode state changes
 
 	darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
 	darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
