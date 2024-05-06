@@ -1,17 +1,20 @@
 import { useState } from "react";
 
+let darkMode = false;
+
 export const DarkModeToggle = () => {
-  const [isDark, setIsDark] = useState(true);
-  const [Label, setLabel] = useState("Dark Mode" || "Light Mode");
+  const [isDark, setIsDark] = useState(false);
+  const [Label, setLabel] = useState("Light Mode" || "Dark Mode");
 
   const handleToggle = () => {
     setIsDark(!isDark);
     setLabel(isDark ? "Light Mode" : "Dark Mode");
-    
+    darkMode = isDark;
+    console.log("Mode: " + (darkMode? "Dark" : "Light"));
   };
 
   return (
-    <button
+    <button className="darkModeToggle"
       onClick={handleToggle}
       style={{
         height: "30px",
@@ -22,4 +25,7 @@ export const DarkModeToggle = () => {
       }}
     >{Label}</button>
   );
+
 };
+
+export { darkMode };

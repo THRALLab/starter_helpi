@@ -1,7 +1,6 @@
-//import React, { useState } from 'react';
 import './App.css';
-//import { Button, Form } from 'react-bootstrap';
 import Navbar from "./components/Navbar";
+
 import {
     HashRouter as Router,
     Routes,
@@ -24,9 +23,8 @@ function App() {
         <Route path="/BasicPage" element={<BasicPage/>}/>
         <Route path="/ResultsPage" element={<ResultsPage/>}/>
       </Routes>
-    </Router><div className="App">
-        
-      </div>
+    </Router>
+    <div className="App"></div>
       <div className='app-footer'>
         <p>Jobnav.com©</p>
         <p>Developed by Saini, Le, Torres, and Walsh</p>

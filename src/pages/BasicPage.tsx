@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert, Stack, Button } from "react-bootstrap";
+import { Form, ProgressBar, Alert, Stack} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
-
+import { darkMode } from "../components/darkMode";
 
 const BasicPage = () => {
 	const [response, setResponse] = useState<(number)[]>
 	([-1, -1, -1, -1, -1, -1, -1, -1]) //initializes the responses to -1 so no radio button is checked
+
 	function updateChoice(index:number){
 		setResponse(prevResponse => {
 			const updatedResponse = [...prevResponse];
@@ -146,14 +147,14 @@ const BasicPage = () => {
 		runGPT(); //run the function at the end
 	
 	}
+	
+	const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
 
+	function doReset(): void{ //clears all the choices by setting all elements in array to -1
+		const resetResponse: number[] = Array(response.length).fill(-1);
+		setResponse(resetResponse)
+	}
 
-	  const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
-
-  function doReset(): void{ //clears all the choices by setting all elements in array to -1
-	const resetResponse: number[] = Array(response.length).fill(-1);
-	setResponse(resetResponse)
-  }
 	const [allow, setAllow] = useState<boolean>(false);
 	const [alert, setAlert] = useState<boolean>(false);
 	
@@ -166,7 +167,9 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
-	//console.log(response)
+
+	darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
+
 	return (<>
 	<style>{`
                 .QuestionNum {
@@ -188,21 +191,38 @@ const BasicPage = () => {
 					color: var(--primary-text-color);
 				}
 
+				.button{
+					background-color: var(--foreground-color);
+					color: var(--background-color);
+					border: none;
+					padding: 10px 20px;
+					margin: 10px;
+					border-radius: 16px;
+				}
+
+				.quiz-desc {
+					color: var(--primary-text-color);
+					margin: 20px;
+					height: 100%;
+					width: 95%;
+					padding: 20px;
+				}
+
 				:root {
 					--background-color: white;
 					--foreground-color: black;
-					--primary-text-color: red;
+					--primary-text-color: black;
 				}
 
 				[data-theme="dark"] {
 					--background-color: #7a7a7a;
 					--foreground-color: white;
-					--primary-text-color: blue;
+					--primary-text-color: white;
 				}
-
                 `}</style>
-		<div className="Page-Container" data-theme="">
-			<div>
+
+		<div className="Page-Container" data-theme = {darkMode? "light" : "dark"}>
+			<div className="quiz-desc">
 				<h1>
 					Basic Quiz
 				</h1>
@@ -217,7 +237,8 @@ const BasicPage = () => {
 			<div style={{textAlign: "center"}}>
 		
 
-				<Button size="lg" disabled={!allow} onClick={sendResponse}>Get Answer!</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
+				<button className="button" disabled={!allow} onClick={sendResponse}>Get Answer!</button>
+				<button className="button" onClick={doReset} > Clear All</button>
 				<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}}>
 
 					<p>You've completed all the questions, you can now click the answer button to get your results!</p>
