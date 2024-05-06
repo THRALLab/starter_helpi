@@ -39,6 +39,7 @@ export default function useChatGPT(): Tools {
 			}
 
 			setChat_gptResponse(response);
+			console.log(setChat_gptResponse);
 		} catch (error) {
 			console.log(error);
 		}
