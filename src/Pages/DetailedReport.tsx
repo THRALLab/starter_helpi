@@ -134,7 +134,7 @@ function DetailedReport() {
 
       <div className="Page-body">
         <div className="Report-space">
-          <div className="Report-header">View your Detailed Quiz Results!</div>
+          {!loading && careerList.length < 3 && <div className="Report-header">View your Detailed Quiz Results!</div>}
           <Form className="Report-body">
             <Button className="Button-chatGPT" onClick={generateReport}>
               Generate Report
@@ -150,7 +150,7 @@ function DetailedReport() {
           )}
           {!loading && careerList.length >= 3 && (
             <div className="Report-results">
-              Based on your results:
+              <span className="Report-results-header">Based on your answers:</span>
               <div>
                 <br />
                 <span className="Report-results-header">Career 1:</span>
