@@ -4,7 +4,7 @@ import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
-import { playButtonClick } from "../Components/AudioPlayer";
+import { AudioPlayer, playButtonClick } from "../Components/AudioPlayer";
 import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
@@ -101,7 +101,7 @@ function SimpleQuestions() {
     loadQuestions();
   }, [questionNumber]);
 
-  // Function that is called to advance to the next question by iterating forward though the 
+  // Function that is called to advance to the next question by iterating forward though the
   // question array and updating all properties.
   const nextQuestion = (selectedOption: string) => {
     // currentQuestionNumber displays current question. questionNumber is iteration in array.
@@ -134,7 +134,7 @@ function SimpleQuestions() {
     }
   };
 
-  // Function that is called to backtrack to the previous question by iterating backwards though the 
+  // Function that is called to backtrack to the previous question by iterating backwards though the
   // question array and updating all properties.
   const previousQuestion = () => {
     // Check if you are not on the first question.
@@ -180,6 +180,9 @@ function SimpleQuestions() {
           <ThemeSelect></ThemeSelect>
         </span>
         <span className="Header-text">The Career Lab</span>
+        <span className="Header-Audio">
+          <AudioPlayer></AudioPlayer>
+        </span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
         </span>

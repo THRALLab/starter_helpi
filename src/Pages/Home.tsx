@@ -9,7 +9,7 @@ import "../Formatting/Home.css";
 import HomePageTop from "../Images/Home-Page-Top.jpg";
 import HomePageBasic from "../Images/Home-Page-Basic.jpg";
 import HomePageDetailed from "../Images/Home-Page-Detailed.jpg";
-import BackgroundMusic from "../Audio/Mii-Channel.mp3";
+import { AudioPlayer } from "../Components/AudioPlayer";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -39,6 +39,9 @@ function Home() {
           <ThemeSelect></ThemeSelect>
         </span>
         <span className="Header-text">The Career Lab</span>
+        <span className="Header-Audio">
+          <AudioPlayer></AudioPlayer>
+        </span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
         </span>
@@ -107,10 +110,6 @@ function Home() {
             </Col>
           </Row>
         </Container>
-        <audio controls>
-          <source src={BackgroundMusic} type="audio/mp3" />
-          Your browser does not support the audio element.
-        </audio>
       </div>
 
       <div className="API-Footer">
