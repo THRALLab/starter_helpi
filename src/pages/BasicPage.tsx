@@ -179,12 +179,13 @@ const BasicPage = () => {
 		<hr style={{marginTop:"10px", opacity:"1"}}></hr>
 		
 		<div style={{textAlign: "center"}}>
+
 			<Button size="lg" disabled={!allow} onClick={sendResponse} style={{marginRight:"20px"}}>Get Answer!</Button>  <Button size="lg" onClick={doReset} > Clear All</Button>
 		</div>
 		<div style={{display: "flex", justifyContent:"center"}}>
-		<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
-				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-			</Alert>
+		  <Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
+		    <p>You've completed all the questions, you can now click the answer button to get your results!</p>
+		   </Alert>
 		</div>
 		<div className="question-container">
 		<span className="QuestionNum">#1</span> 

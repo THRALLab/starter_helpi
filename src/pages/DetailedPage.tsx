@@ -647,13 +647,14 @@ const DetailedPage = () => {
 					disabled={!otherSelected[6]}/>
 				</div>
 			</div>
+    
 		<div style={{textAlign:"center"}}>
 		<Button size="lg" onClick={sendResponse} disabled={!allow} style={{marginRight:"10px"}}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		</div>
 		<div style={{display:"flex", marginTop:"10px", textAlign:"center",justifyContent:"center"}}>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"10px"}} >
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-			</Alert>
+		</Alert>
 		</div>
 	</body>
 	</>
