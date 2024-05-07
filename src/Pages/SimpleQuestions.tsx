@@ -8,7 +8,6 @@ import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/SimpleQuestions.css";
-
 import Image1 from "../Images/Simple-Question-1.jpg";
 import Image2 from "../Images/Simple-Question-2.jpg";
 import Image3 from "../Images/Simple-Question-3.jpg";
@@ -25,6 +24,7 @@ import Image13 from "../Images/Simple-Question-13.jpg";
 import Image14 from "../Images/Simple-Question-14.jpg";
 import Image15 from "../Images/Simple-Question-15.jpg";
 import EndOfQuizImage from "../Images/End-Quiz.jpg";
+
 const questionImages = [
   Image1,
   Image2,
@@ -41,7 +41,7 @@ const questionImages = [
   Image13,
   Image14,
   Image15,
-  EndOfQuizImage
+  EndOfQuizImage,
 ];
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -199,13 +199,13 @@ function SimpleQuestions() {
           </div>
         </div>
         <div className="Simple-textSpace">
-        <img
+          <img
             src={questionImages[currentQuestionNumber - 1]}
             alt="Not Available..."
             width="600"
             height="354"
             style={{ borderRadius: "10px" }}
-          />  
+          />
           <div className="Simple-question-body">{questionBody}</div>
           <div className="Simple-buttons">
             <span className="Button-visible-true" id="nextButton">
