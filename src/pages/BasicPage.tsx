@@ -175,7 +175,6 @@ const BasicPage = () => {
 
 	darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
 	darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
-
 	return (<>
 		<body className="page-color">
 		<div className="Page-Container" data-theme = {darkMode? "dark" : "light"}>
