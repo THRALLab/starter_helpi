@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Alert, Stack, ProgressBar} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
+import { parseAnswers } from "./DetailedPage";
 import { darkMode } from "../components/darkMode";
 import "./basicPage.css"
 
@@ -133,11 +134,13 @@ const BasicPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 64, //should be 512
+				max_tokens: 512, //should be 512
 				top_p: 1,
 				});
-	
-				console.log(response.choices[0].message.content); //GPT Response to the user's input
+				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
+				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
+				
+				window.location.href = "/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				//console.log(e);

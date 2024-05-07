@@ -11,7 +11,9 @@ import HomePage from './pages/homePage';
 import BasicPage from './pages/BasicPage';
 import ResultsPage from './pages/ResultsPage';
 
+
 function App() {
+
   
   return (
     <><Router>
@@ -23,6 +25,7 @@ function App() {
         <Route path="/BasicPage" element={<BasicPage/>}/>
         <Route path="/ResultsPage" element={<ResultsPage/>}/>
       </Routes>
+
     </Router>
     <div className="App"></div>
       <div className='app-footer'>
