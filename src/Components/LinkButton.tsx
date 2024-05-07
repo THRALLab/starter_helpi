@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { playButtonClick } from "../Components/AudioPlayer";
 import "../Formatting/General.css";
 
 interface LinkButtonProps {
@@ -11,6 +12,8 @@ interface LinkButtonProps {
 export function LinkButton(props: LinkButtonProps) {
   const navigate = useNavigate();
   const handleButtonClick = (whereTo: string) => {
+    //Plays button click
+    playButtonClick();
     //Moves to new page
     navigate(whereTo);
     scrollToTop();

@@ -1,7 +1,13 @@
 import React from "react";
 import ButtonClick from "../Audio/Button-Click.mp3";
 
-export function ButtonAudio() {
+const buttonSoundEffect = new Audio(ButtonClick);
+
+export function playButtonClick() {
+  buttonSoundEffect.play();
+}
+
+export function AudioPlayer() {
   return (
     <div className="General-Button-Audio">
       <audio controls>
