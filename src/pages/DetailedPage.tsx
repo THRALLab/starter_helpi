@@ -1,12 +1,10 @@
-
-import "./detailedPage.css";
 import React, { useEffect, useState } from "react";
 import { Form, ProgressBar, Alert, Button, /*FormLabel*/ 
-Offcanvas, OffcanvasHeader,
-OffcanvasTitle} from "react-bootstrap";
+Offcanvas, OffcanvasHeader,OffcanvasTitle, Row, Col, Container} from "react-bootstrap";
 //import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 import OpenAI from "openai";
 import { key } from "./homePage"
+import "./detailedPage.css";
 
 function parseAnswers(answers: string|null): string[] {
 	if (answers === null) return [];
@@ -112,9 +110,6 @@ const DetailedPage = () => {
 				break;
 		}
 	}
-	const [progressShow, setProgressShow] = useState<boolean>(false);
-	const handleShow = () => setProgressShow(true);
-	const handleClose = () => setProgressShow(false);
 //checks which questions are answered
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
 		Response6: (boolean| string)[], Response7: (boolean| string)[]): number { 
@@ -149,60 +144,57 @@ const DetailedPage = () => {
 	useEffect(() => {
        setAllow(answered === 7); //checks the amount of questions answered
 	   setAlert(answered === 7)
-    }, [answered]);
+    }, [answered]);	
+
+	const [progressShow, setProgressShow] = useState<boolean>(false);
+	const handleShow = () => setProgressShow(!progressShow);
+	const handleClose = () => setProgressShow(false);
 	
-	return (<>
-		<style>{`
-        .question-box {
-		display:flex;
-		gap:10px	
+	const handleKeyDown = (event: KeyboardEvent) => { //used chatGPT on clarification on how to enable a keyboard shortcut for the offCanvas dropdown; enables when "ctr" + "o" are pressed
+        if (event.ctrlKey && event.key === '0') {
+            handleShow();
         }
-		h3 {
-		margin-left: 25px
-		}
-		.answer-box{
-			flex-grow: 1;
-			margin-left: 10px
-			}
-		.questionPrompt{
-			font-weight:bold;
-			margin-left: 25px;
-		}
-		.reg-radio{
-			display: inline-block;
-   			border: 1px solid #ccc; /* Add a border around the radio button */
-   			border-radius: 5px; /* Rounded corners */
-    		padding: 5px; /* Add padding around the radio button */
-    		margin-right: 2px; /* Add space between radio buttons */
-			transition: background-color 0.75s ease; /* Makes the container blue and changes text to white */
-    		&:hover {
-        background-color: #0d6efd;
-		color: white;
-   			 }
-		}
-        `}</style>
-		<div className="info-portion">
-			<h1>
+    };
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    });
+	return (<>
+	<body className="page-color">
+			<h1 className="detailed-title">
 				Detailed Quiz
 			</h1>
-			<p style={{textAlign:"center", marginLeft: "25px", marginRight: "25px"}}>
-				Welcome! For this quiz, you will answer the statements by 
+			<div className="detailed-info">
+				Welcome! For the detailed quiz, you will answer the statements by 
 				choosing one of the corresponding multiple choice options
-				 below! You will be able to click the "Answer" which will 
+				below or writing your own response! After answering all of the questions you will be able to click the "Get Answer!" button which will 
 				allow you to see the results of you future career.
-			</p>
-		</div>
-		<div style={{textAlign:"center"	}}>
-		<Button onClick={handleShow}>Track Progress</Button>
-		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={false}>
+			</div>
+			
+		<hr style={{marginTop:"10px", opacity:".9"}}></hr>
+		
+		<div style={{textAlign:"center", marginTop:"25px"}}>
+		<Button size="lg" onClick={handleShow}>Track Progress</Button>
+		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={true}>
 			<OffcanvasHeader closeButton>
-				<OffcanvasTitle>Progress</OffcanvasTitle>
+				<OffcanvasTitle className="offCanvas-title">User Progress:</OffcanvasTitle>
 			</OffcanvasHeader>
-			<Offcanvas.Body>
-			<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"10px", marginBottom:"10px"}}></ProgressBar>
+			<Offcanvas.Body style={{textAlign:"center", fontSize:"18px"}}>
+				Questions Answered: {answered} / 7
+				<ProgressBar className="detailed-progress" variant="success" now={answered} animated max={7} />
+			<Container>
+     			<Row style={{justifyContent:"center"}}>
+        			<Col xs={12} sm={10} md={8} lg={6} xl={6}>
+          				<Alert show variant="primary" style={{ textAlign: 'center' }}>
+							You can also use the keyboard shortcut to see your progress: "Ctrl" + "0"
+          				</Alert>
+        			</Col>
+      			</Row>
+   			 </Container>
 			</Offcanvas.Body>
 		</Offcanvas>
-	
 		</div>	
 
 		<h3>Question 1.</h3>
@@ -217,7 +209,6 @@ const DetailedPage = () => {
 				label="I’ll call my boss and let them know I’ll be late."
 				value="call my boss and let them know I’ll be late."
 				name="question1"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 0, 0)}
 				checked={Response1[0] === true}/>
 				</div>
@@ -229,7 +220,6 @@ const DetailedPage = () => {
 				label="I'll call my friend to see if they can pick me up."
 				value = "call my friend to see if they can pick me up."
 				name="question1"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1,1, 0)}/>
 				{Response1[1] === true}
 				</div>
@@ -241,7 +231,6 @@ const DetailedPage = () => {
 				value="call in sick and take the day off."
 				label = "I'll call in sick and take the day off."
 				name="question1"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder",1, 2, 0)}
 				checked={Response1[2] === true}/>
 				</div>
@@ -253,7 +242,6 @@ const DetailedPage = () => {
 				label="I’ll take a taxi to work."
 				value="take a taxi to work."
 				name="question1"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 1, 3, 0)}
 				checked={Response1[3] === true}/>
 			</div>
@@ -268,7 +256,7 @@ const DetailedPage = () => {
 					checked={otherSelected[0] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response1[4])}
 					onChange={(event) => handleOtherSelect(event,1, 4)}
 					disabled={!otherSelected[0]}	/>
@@ -285,7 +273,6 @@ const DetailedPage = () => {
 				label="I would try to meet shareholders to find out what think about our company."
 				value={"try to meet shareholders to find out what think about our company."}
 				name="question2"
-				style={{width:"200px"}}
 				onChange={() => handleRadio("holder",2,  0, 1)}
 				checked={Response2[0] === true}/>
 			</div>
@@ -297,7 +284,6 @@ const DetailedPage = () => {
 				label="I would assign tasks to our group members to organize our workflow."
 				value={"assign tasks to our group members to organize our workflow."}
 				name="question2"
-				style={{width:"230px"}}
 				onChange={() => handleRadio("holder",2,  1, 1)}
 				checked={Response2[1] === true}/>
 			</div>
@@ -309,7 +295,6 @@ const DetailedPage = () => {
 				label="I would start researching the topic and create a rough outline of the presentation."
 				value={"start researching the topic and create a rough outline of the presentation."}
 				name="question2"
-				style={{width:"275px"}}
 				onChange={() => handleRadio("holder",2,  2, 1)}
 				checked={Response2[2] === true}/>
 			</div>
@@ -321,7 +306,6 @@ const DetailedPage = () => {
 				label="I would begin designing the slides and decide what topics should be included."
 				value={"begin designing the slides and decide what topics should be included."}
 				name="question2"
-				style={{width:"300px"}}
 				onChange={() => handleRadio("holder",2,  3, 1)}
 				checked={Response2[3] === true}/>
 			</div>
@@ -336,7 +320,7 @@ const DetailedPage = () => {
 					checked={otherSelected[1] === true}/>	
 				<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response2[4])}
 					onChange={(event) => handleOtherSelect(event,2, 4)}
 					disabled={!otherSelected[1]}/>
@@ -353,7 +337,6 @@ const DetailedPage = () => {
 				label="I would ask my coworker to explain what they think the topic is about."
 				value={"ask my coworker to explain what they think the topic is about."}
 				name="question3"
-				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 3, 0, 2)}
 				checked={Response3[0] === true}/>
 			</div>
@@ -365,7 +348,6 @@ const DetailedPage = () => {
 				label="I would ask my boss what they think about my part of the presentation."
 				value={"ask my boss what they think about my part of the presentation."}
 				name="question3"
-				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 3, 1, 2)}
 				checked={Response3[1] === true}/>
 			</div>
@@ -377,7 +359,6 @@ const DetailedPage = () => {
 				label="I wouldn't change it because I know I'm right."
 				value={"not change it because I know I'm right."}
 				name="question3"
-				style={{width:"250px"}}
 				onChange={() => handleRadio("holder",3, 2, 2)}
 				checked={Response3[2] === true}/>
 			</div>
@@ -389,7 +370,6 @@ const DetailedPage = () => {
 				label="I would review the topic and see if I can make my part clearer."
 				value={"review the topic and see if I can make my part clearer."}
 				name="question3"
-				style={{width:"200px"}}
 				onChange={() => handleRadio("holder",3,3, 2)}
 				checked={Response3[3] === true}/>
 			</div>
@@ -404,7 +384,7 @@ const DetailedPage = () => {
 					checked={otherSelected[2] === true}/>
 				<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response3[4])}
 					onChange={(event) => handleOtherSelect(event,3, 4)}
 					disabled={!otherSelected[2]}/>
@@ -421,7 +401,6 @@ const DetailedPage = () => {
 				label="We should check in every day for 15 minutes."
 				value={"every day for 15 minutes."}
 				name="question4"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 0, 3)}
 				checked={Response4[0] === true}/>
 			</div>
@@ -433,7 +412,6 @@ const DetailedPage = () => {
 				label="We should only meet once a week for an hour."
 				value={"once a week for an hour."}
 				name="question4"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 1, 3)}
 				checked={Response4[1] === true}/>
 			</div>
@@ -445,7 +423,6 @@ const DetailedPage = () => {
 				label="We should meet a few times a week."
 				value={"a few times a week."}
 				name="question4"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 2, 3)}
 				checked={Response4[2] === true}/>
 			</div>
@@ -457,7 +434,6 @@ const DetailedPage = () => {
 				label="I don't think we need to meet at all, email is fine."
 				value={"never. Email is fine."}
 				name="question4"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 4, 3, 3)}
 				checked={Response4[3] === true}/>
 			</div>
@@ -472,7 +448,7 @@ const DetailedPage = () => {
 					checked={otherSelected[3] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response4[4])}
 					onChange={(event) => handleOtherSelect(event,4, 4)}
 					disabled={!otherSelected[3]}/>
@@ -489,7 +465,6 @@ const DetailedPage = () => {
 				label="I would ask for a raise during my next performance review."
 				value={"ask for a raise during my next performance review."}
 				name="question5"
-				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 0, 4)}
 				checked={Response5[0] === true}/>
 			</div>
@@ -501,7 +476,6 @@ const DetailedPage = () => {
 				label="I’ll just keep quiet until my boss notices my hard work."
 				value={"keep quiet until my boss notices my hard work."}
 				name="question5"
-				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 1, 4)}
 				checked={Response5[1] === true}/>
 			</div>
@@ -513,7 +487,6 @@ const DetailedPage = () => {
 				label="I'll talk to my coworker about how to ask for a raise."
 				value={"ask my coworker about how to ask for a raise."}
 				name="question5"
-				style={{width:"265px"}}
 				onChange={() => handleRadio("holder", 5, 2, 4)}
 				checked={Response5[2] === true}/>
 			</div>
@@ -525,7 +498,6 @@ const DetailedPage = () => {
 				label="I need to research how much I should ask for first."
 				value={"research how much I should ask for first."}
 				name="question5"
-				style={{width:"235px"}}
 				onChange={() => handleRadio("holder", 5, 3, 4)}
 				checked={Response5[3] === true}/>
 			</div>
@@ -541,7 +513,7 @@ const DetailedPage = () => {
 			<div className="answer-box">
 				<Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response5[4])}
 					onChange={(event) => handleOtherSelect(event,5, 4)}
 					disabled={!otherSelected[4]}/>
@@ -558,7 +530,6 @@ const DetailedPage = () => {
 				label="I would offer to help them finish their work."
 				value={"offer to help them with it."}
 				name="question6"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 0, 5)}
 				checked={Response6[0] === true}/>
 			</div>
@@ -570,7 +541,6 @@ const DetailedPage = () => {
 				label="I'm going home. I have my own work to do."
 				value={"go home. I have my own work to do."}
 				name="question6"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 1, 5)}
 				checked={Response6[1] === true}/>
 			</div>
@@ -582,7 +552,6 @@ const DetailedPage = () => {
 				label="I would wait until tommorow to ask if they need help."
 				value={"wait until tommorow to ask if they need help."}
 				name="question6"
-				style={{width:"275px"}}
 				onChange={() => handleRadio("holder", 6, 2, 5)}
 				checked={Response6[2] === true}/>
 			</div>
@@ -594,7 +563,6 @@ const DetailedPage = () => {
 				label="I would let my boss know that they need help."
 				value={"let my boss know that they need help."}
 				name="question6"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 6, 3, 5)}
 				checked={Response6[3] === true}/>
 			</div>
@@ -609,7 +577,7 @@ const DetailedPage = () => {
 					checked={otherSelected[5] === true}	/>
 			<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response6[4])}
 					onChange={(event) => handleOtherSelect(event,6, 4)}
 					disabled={!otherSelected[5]}/>
@@ -626,7 +594,6 @@ const DetailedPage = () => {
 				label="I would go out with friends to relax."
 				value={"go out with friends to relax."}
 				name="question7"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 0, 6)}
 				checked={Response7[0] === true}/>
 			</div>
@@ -638,7 +605,6 @@ const DetailedPage = () => {
 				label="I would stay home and watch TV to relax."
 				value={"stay home and watch TV to relax."}
 				name="question7"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 1, 6)}
 				checked={Response7[1] === true}/>
 			</div>
@@ -650,7 +616,6 @@ const DetailedPage = () => {
 				label="I would go to the gym to relax."
 				value={"go to the gym to relax."}
 				name="question7"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 2, 6)}
 				checked={Response7[2] === true}/>
 			</div>
@@ -662,7 +627,6 @@ const DetailedPage = () => {
 				label="I would go to the beach to relax."
 				value={"go to the beach to relax."}
 				name="question7"
-				style={{width:"auto"}}
 				onChange={() => handleRadio("holder", 7, 3, 6)}
 				checked={Response7[3] === true}/>
 			</div>
@@ -677,18 +641,22 @@ const DetailedPage = () => {
 					checked={otherSelected[6] ===true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
-					placeholder="Enter your answer"
+					placeholder="Type your answer"
 					value={String(Response7[4])}
 					onChange={(event) => handleOtherSelect(event,7, 4)}
 					disabled={!otherSelected[6]}/>
 				</div>
 			</div>
-		<div style={{textAlign:"center", marginBottom:"10px"}}>
-		<Button size="lg" onClick={sendResponse} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
-		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}} >
-				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-			</Alert>
+    
+		<div style={{textAlign:"center"}}>
+		<Button size="lg" onClick={sendResponse} disabled={!allow} style={{marginRight:"10px"}}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		</div>
+		<div style={{display:"flex", marginTop:"10px", textAlign:"center",justifyContent:"center"}}>
+		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"10px"}} >
+				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
+		</Alert>
+		</div>
+	</body>
 	</>
 	);
 
