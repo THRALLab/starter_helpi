@@ -177,55 +177,7 @@ const BasicPage = () => {
 	darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
 
 	return (<>
-	<style>{`
-                .QuestionNum {
-                	font-size: 50px;
-					margin-left: 35px;
-					display:flex;	
-                }
-
-				hr{
-					width:max;
-					margin-top: 50px;
-				}
-
-				.Page-Container {
-					background-color: var(--background-color);
-				}
-
-				.questions {
-					color: var(--primary-text-color);
-				}
-
-				.button{
-					background-color: var(--foreground-color);
-					color: var(--background-color);
-					border: none;
-					padding: 10px 20px;
-					margin: 10px;
-					border-radius: 16px;
-				}
-
-				.quiz-desc {
-					color: var(--primary-text-color);
-					margin: 20px;
-					height: 100%;
-					width: 95%;
-					padding: 20px;
-				}
-
-				:root {
-					--background-color: white;
-					--foreground-color: black;
-					--primary-text-color: black;
-				}
-
-				[data-theme="dark"] {
-					--background-color: #7a7a7a;
-					--foreground-color: white;
-					--primary-text-color: white;
-				}
-                `}</style>
+		<body className="page-color">
 		<div className="Page-Container" data-theme = {darkMode? "dark" : "light"}>
 			<div className="quiz-desc">
 				<h1>
@@ -411,6 +363,7 @@ const BasicPage = () => {
 		<div style={{marginLeft:"200px", marginRight:"200px", marginBottom:"10px"}}>
 		<ProgressBar variant="success" now={answered} animated max={8} />
 		</div>
+		</body>
 	</>
 	);
 };
