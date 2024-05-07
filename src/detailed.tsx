@@ -3,6 +3,8 @@ import "./detailed.css";
 import questions from "./detailedQuestions.json";
 import Modal from "./Modal";
 import Confetti from "react-confetti";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 export interface Answer {
 	question: string;
@@ -118,7 +120,12 @@ function Detailed() {
 			{modalVisibility ? <Modal modalFunction={updateModalVisibility} /> : null}
 			<div className="quizContainer">
 				<div className="questionContainer">
-					<img src={questions[currentIndex].image} alt="Visual question aid" />
+					<Zoom>
+						<img
+							src={questions[currentIndex].image}
+							alt="Visual question aid"
+						/>
+					</Zoom>
 					<h3>
 						({questions[currentIndex].question_number}/{questions.length})
 						&nbsp;
