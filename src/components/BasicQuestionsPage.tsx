@@ -8,9 +8,14 @@ import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
-
+import FormControl from '@mui/joy/FormControl';
+import Grow from '@mui/material/Grow';
 
 export function BasicQuestionsPage(): JSX.Element {
+    interface Responses {
+        [key: number]: string
+    }
+
     const StyledButton = styled(Button)`
     ${({ theme }) => `
     cursor: pointer;
@@ -27,108 +32,67 @@ export function BasicQuestionsPage(): JSX.Element {
   `;
 
   const StyledButton2 = styled(Button)`
-  ${({ theme }) => `
-  cursor: pointer;
-  background-color: #51bc51;
-  color: #FFF;
-  transition: ${theme.transitions.create(['background-color', 'transform'], {
-    duration: theme.transitions.duration.standard,
-  })};
-  &:hover {
-    background-color: #1f7a1f;
-    transform: scale(1.3);
-  }
-  `}
-`;
+    ${({ theme }) => `
+    cursor: pointer;
+    background-color: #51bc51;
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #1f7a1f;
+      transform: scale(1.3);
+    }
+    `}
+  `;
 
-    const questions = [
-		{
-			questionText: 'Question 1',
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-		},
-		{
-			questionText: 'Question 2',
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-		{
-			questionText: 'Question 3',
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-		{
-			questionText: 'Question 4',
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			questionText: 'Question 5',
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			questionText: 'Question 6',
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			questionText: 'Question 7',
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		}
-	];    
+  const questions = [
+    { id: 1, question: "How do you prefer to spend your spare time?" },
+    { id: 2, question: "Choose a school subject you excelled in or enjoyed the most." },
+    { id: 3, question: "What kind of problems do you enjoy solving?" },
+    { id: 4, question: "Which type of work environment do you prefer?" },
+    { id: 5, question: "How do you prefer to contribute to a team?" },
+    { id: 6, question: "What motivates you the most in a job?" },
+    { id: 7, question: "What role do you naturally find yourself taking in group settings?" }
+]; 
 
+   
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [inputText, setInputText] = React.useState("");
-    const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
+    const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
     const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
-
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
+    const [responses, setResponses] = React.useState<Responses>({});
+    const [checked, setChecked] = React.useState(false)
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputText(e.target.value);
+      const { value } = e.target;
+      setResponses({ ...responses, [questions[currentQuestion].id]: value });
+    };
+      
+    const handlePreviousAnswerDisplay = () => {
+        
+        setInputText(responses[questions[currentQuestion].id])
+    }
 
     const handleCurrentQuestion = () => {
+        setInputText("");
         const currentQuestionIndex = currentQuestion + 1;
-        
-        if (currentQuestionIndex < questions.length) {
-            setCurrentQuestion(currentQuestionIndex)
-        }
 
-        if (currentQuestionIndex === questions.length - 1) {
-            setDisplayFinishButton(true);
-        }
+            if (currentQuestionIndex < questions.length) {
+                setCurrentQuestion(currentQuestionIndex)
+            }
+    
+            if (currentQuestionIndex === questions.length - 1) {
+                setDisplayFinishButton(true);
+            }
     
     }
-    
+
     const handlePreviousQuestion = () => {
+        setInputText("");
         const previousQuestionIndex = currentQuestion - 1;
     
         if (previousQuestionIndex >= 0) {
@@ -140,26 +104,34 @@ export function BasicQuestionsPage(): JSX.Element {
         }
     };
 
-    const handleGoToHomePage = () => {
-        setGoToHomePage(true);
+    const handleDisplayFinalResults = () => {
+        setChecked(true);
+        setDisplayFinalResults(true);
+        setDisplayFinishButton(false);
+    }
+
+    const handleRetakeTest = () => {
+        setCurrentQuestion(0); // Reset current question to start from the beginning
+        setDisplayFinalResults(false); // Hide final results
+        setInputText(""); // Clear input text if any
+        // Reset any other state variables as needed
+        setResponses({});
     };
 
     const handleClearText = () => {
         setInputText("");
+        setResponses({...responses, [questions[currentQuestion].id]: ""})
+    };
+
+    const handleGoToHomePage = () => {
+        setGoToHomePage(true);
     };
 
     if (goToHomePage) {
         return <Navigate to="/" />;
     }
 
-    const handleDisplayFinalResults = () => {
-        setDisplayFinalResults(true);
-        setDisplayFinishButton(false);
-    }
-   
-    //const [goToHomePage, setGoToHomePage] = React.useState(false);
-
-    if (goToDetailedQuestionsPage) {
+    if (goToBasicQuestionsPage) {
         return <Navigate to="/DetailedQuestionsPage"/>
     }
 
@@ -172,7 +144,7 @@ export function BasicQuestionsPage(): JSX.Element {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                 <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
-                <Nav.Link onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Nav.Link>
+                <Nav.Link onClick={() => {setGoToBasicQuestionsPage(true)}}>Detailed Questions Page</Nav.Link>
                      <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -200,6 +172,7 @@ export function BasicQuestionsPage(): JSX.Element {
                 height: '40vh', // Adjust this value according to your layout
                 padding: '30vh'
             }}>
+                
                 <Card variant="plain" sx={{ width: 1000, height: 400}}// Adjust this value according to your layout
                 >
                     <CardContent>
@@ -217,7 +190,9 @@ export function BasicQuestionsPage(): JSX.Element {
                             >
                         </ProgressBar>}
                         <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
-                        <p>{questions[currentQuestion].questionText}</p>
+         
+                        <p>{questions[currentQuestion].question}</p>
+                        
                         <div style={{paddingBottom: '1vh', display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center'}}>
@@ -226,6 +201,7 @@ export function BasicQuestionsPage(): JSX.Element {
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                         />*/}
+                            <FormControl>
                             <Input sx={{width: '500px', height: '75px', display: 'flex',
                                     justifyContent: 'center',
 
@@ -240,16 +216,25 @@ export function BasicQuestionsPage(): JSX.Element {
                                       borderColor: '#86b7fe',
                                     }}} 
                                     variant="outlined" placeholder="Type in here…" value={inputText} 
-                                    required
-                                    onChange={(e) => {
-                                    setInputText(e.target.value);
+                                    onClick={handlePreviousAnswerDisplay}
+                                    onChange={handleInputChange}
+
+                                    //Show error when input is empty
+                                  
+
+                                    />
                                     
-                        }} />
+                                </FormControl>
+                                {/*<p>{questions[currentQuestion].id}</p>
+                                <p>:</p>
+                                <p>{responses[questions[currentQuestion].id]}</p>*/}
+                                {/*<p>{inputText}</p>*/}
+                                
                         </div>
                         <div style={{paddingTop: '1vh'}}><StyledButton onClick={handleClearText}>Reset</StyledButton></div>
                         
                         </div>}
-                        
+
                         {/* Next and Previous buttons */}
                         {!displayFinishButton && !displayFinalResults && (
                             <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
@@ -258,7 +243,19 @@ export function BasicQuestionsPage(): JSX.Element {
                             </div>
                         )}
 
-                        {displayFinalResults && <div>Final Results!</div>}
+                        <Grow in={checked}
+                        {...(checked ? { timeout: 1500 } : {})}>
+                            <div>{displayFinalResults && <div>Final Results!</div>}</div>
+                        </Grow>
+
+                        {displayFinalResults && (
+                            <div style={{ paddingTop: '15.5rem', textAlign: 'center' }}> {/* Adjust paddingTop to lower the button */}
+                            <div style={{ marginBottom: '15vh' }}><StyledButton onClick={handleRetakeTest}
+                             // Adjust marginBottom to lower the button
+                            >Retake Test
+                            </StyledButton></div>
+                            </div>
+                        )}
 
                         {/* Finish and Previous buttons */}
                         {displayFinishButton && !displayFinalResults && (
@@ -267,8 +264,10 @@ export function BasicQuestionsPage(): JSX.Element {
                             <StyledButton2 color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</StyledButton2>
                             </div>
                         )}
+
                         <p></p>
                         </Typography>
+                        
                     </CardContent>
                 </Card>
                 <p></p>
