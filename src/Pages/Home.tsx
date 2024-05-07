@@ -6,9 +6,9 @@ import { ThemeSelect } from "../Components/ThemeSelect";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Home.css";
-//import HomePageTop from "../Images/Home-Page-Top.jpg";
-//import HomePageBasic from "../Images/Home-Page-Basic.jpg";
-//import HomePageDetailed from "../Images/Home-Page-Detailed.jpg";
+import HomePageTop from "../Images/Home-Page-Top.jpg";
+import HomePageBasic from "../Images/Home-Page-Basic.jpg";
+import HomePageDetailed from "../Images/Home-Page-Detailed.jpg";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -48,7 +48,7 @@ function Home() {
           <Row>
             <div className="Home-body">
               <img
-                src={process.env.PUBLIC_URL + "/Images/Home-Page-Top.jpg"}
+                src={HomePageTop}
                 alt="Science Laboratory"
                 width="628px"
                 height="417px"
@@ -67,7 +67,7 @@ function Home() {
             <Col className="Home-text-basic">
               <div>
                 <img
-                  src={process.env.PUBLIC_URL + "/Images/Home-Page-Basic.jpg"}
+                  src={HomePageBasic}
                   alt="Simple Science Experiment"
                   width="400px"
                   height="287px"
@@ -87,9 +87,7 @@ function Home() {
             <Col className="Home-text-detailed">
               <div>
                 <img
-                  src={
-                    process.env.PUBLIC_URL + "/Images/Home-Page-Detailed.jpg"
-                  }
+                  src={HomePageDetailed}
                   alt="Complex Science Experiment"
                   width="400px"
                   height="287px"
