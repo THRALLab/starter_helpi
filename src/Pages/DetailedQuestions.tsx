@@ -164,19 +164,32 @@ function DetailedQuestions() {
                 ></SliderQuestion>
               </div>
               <span className="DetailedQuestions-buttons">
-                <Button
-                  className="Button-back"
-                  onClick={previousQuestion}
-                  disabled={backButtonDisabled}
-                >
-                  Back
-                </Button>
+                <span className="BackButtonSpan">
+                  <Button
+                    className="Button-back"
+                    onClick={previousQuestion}
+                    disabled={backButtonDisabled}
+                    style={{
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      left: "0",
+                      margin: "0",
+                      padding: "10px",
+                    }}
+                  >
+                    Back
+                  </Button>
+                </span>
                 <span className="Button-visible-true" id="nextButton">
                   <Button
                     className="Button-next"
                     onClick={() => nextQuestion()}
                     style={{
-                      marginLeft: "50px",
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      margin: "0",
+                      padding: "10px",
+                      left: "calc(50% + 5px)",
                     }}
                   >
                     Next
@@ -185,7 +198,13 @@ function DetailedQuestions() {
                 <span className="Button-visible-false" id="reportButton">
                   <span
                     className="Button-report"
-                    style={{ marginLeft: "50px" }}
+                    style={{
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      margin: "0",
+                      padding: "10px",
+                      left: "calc(50% + 5px)",
+                    }}
                   >
                     <LinkButton
                       to="/detailedreport"
