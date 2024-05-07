@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import "../src/detailed.css";
+import "./detailed.css";
 import questions from "./detailedQuestions.json";
+import Modal from "./Modal";
+import Confetti from "react-confetti";
 
-// TODO - [] add functionality to allow users to hit enter to move to the next question (or left + right arrow keys)
+export interface Answer {
+	question: string;
+	questionNo: number;
+	choice: string;
+}
+
+// There is a minor bug where if you get to the free response section and enter your response in the first input, it populates in the second input also too
 
 function Detailed() {
-	interface Answer {
-		questionNo: number;
-		choice: string;
-	}
-
 	const [choice, setChoice] = useState<string>();
 
+	// responsible for keeping the index a valid number that won't be undefined when trying to access an element
 	const saved_index: number =
 		Number(localStorage.getItem("current_question")) || 0;
 	const last_saved: number = saved_index < 0 ? 0 : saved_index;
@@ -19,6 +23,7 @@ function Detailed() {
 	const [currentIndex, setCurrentIndex] = useState(last_saved);
 	localStorage.setItem("current_question", currentIndex.toString());
 
+	// another bit of validation to check if there's any saved answers (the array is populated); if there isn't, add an empty array
 	const savedAnswersString = localStorage.getItem("answered_questions");
 	const savedAnswers: Answer[] = savedAnswersString
 		? JSON.parse(savedAnswersString)
@@ -26,18 +31,28 @@ function Detailed() {
 	const [answeredQuestions, setAnsweredQuestions] =
 		useState<Answer[]>(savedAnswers);
 
+	// responsible for handling the logic of displaying the current question's user-selected choice depending on the current index (that increments/decrements) as the user moves forward/back whilst taking the quiz
 	const [userInput, setUserInput] = useState<string>(
 		answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
 	);
 
+	const [modalVisibility, setModalVisibility] = useState(false);
+	const [showConfetti, setShowConfetti] = useState(false);
+
+	function updateModalVisibility() {
+		setModalVisibility(!modalVisibility);
+		setShowConfetti(false);
+	}
+
 	function saveAnswers(
 		choice: string,
 		question_num: number,
-		question_type: string
+		question_type: string,
+		question: string
 	) {
-		if (question_type === "free_response" && !choice.trim()) {
-			setChoice("");
-		}
+		// if (question_type === "free_response" && !choice.trim()) {
+		// 	setChoice("");
+		// }
 
 		if (answeredQuestions.length !== 0) {
 			// 1. check if the question number exists
@@ -77,12 +92,12 @@ function Detailed() {
 				// the object does not contain the question; add it to the object
 				setAnsweredQuestions([
 					...answeredQuestions,
-					{ questionNo: question_num, choice }
+					{ question, questionNo: question_num, choice }
 				]);
 			}
 		} else {
 			// if it is empty, add the question number and choice to the array object
-			setAnsweredQuestions([{ questionNo: question_num, choice }]);
+			setAnsweredQuestions([{ question, questionNo: question_num, choice }]);
 		}
 	}
 
@@ -99,6 +114,8 @@ function Detailed() {
 
 	return (
 		<>
+			{showConfetti && <Confetti />}
+			{modalVisibility ? <Modal modalFunction={updateModalVisibility} /> : null}
 			<div className="quizContainer">
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
@@ -119,7 +136,8 @@ function Detailed() {
 											saveAnswers(
 												choice,
 												questions[currentIndex].question_number,
-												questions[currentIndex].type
+												questions[currentIndex].type,
+												questions[currentIndex].question
 											);
 										}}
 										style={{
@@ -145,22 +163,29 @@ function Detailed() {
 								)
 						  )
 						: questions[currentIndex].type === "free_response" && (
-								<textarea
-									placeholder="Enter your response..."
-									value={
-										answeredQuestions[currentIndex] &&
-										answeredQuestions[currentIndex].choice
-									}
-									onChange={e => {
-										setChoice(e.target.value);
-										setUserInput(e.target.value);
-										saveAnswers(
-											e.target.value,
-											questions[currentIndex].question_number,
-											questions[currentIndex].type
-										);
-									}}
-								></textarea>
+								<>
+									<textarea
+										placeholder="Enter your response..."
+										maxLength={500}
+										value={
+											answeredQuestions[currentIndex] &&
+											answeredQuestions[currentIndex].choice
+										}
+										onChange={e => {
+											setChoice(e.target.value);
+											setUserInput(e.target.value);
+											saveAnswers(
+												e.target.value,
+												questions[currentIndex].question_number,
+												questions[currentIndex].type,
+												questions[currentIndex].question
+											);
+										}}
+									></textarea>
+									<p className="characterLimitText">
+										{!choice ? 0 : choice.length}/500 characters remaining
+									</p>
+								</>
 						  )}
 				</div>
 				<div className="containerFooter">
@@ -177,20 +202,30 @@ function Detailed() {
 						{currentIndex === 0 ? "END" : "PREV."}
 					</button>
 					<button
-						disabled={currentIndex === questions.length - 1 || !choice}
+						disabled={!choice || choice.length > 500}
 						onClick={() => {
-							setCurrentIndex(index => (index += 1 % questions.length));
-							setChoice(
-								answeredQuestions[currentIndex + 1] &&
-									answeredQuestions[currentIndex + 1].choice
-							);
+							if (currentIndex === questions.length - 1) {
+								setModalVisibility(!modalVisibility);
+								setShowConfetti(true);
+
+								setTimeout(() => {
+									setShowConfetti(false);
+								}, 8000);
+							} else {
+								setCurrentIndex(index => (index += 1 % questions.length));
+								setChoice(
+									answeredQuestions[currentIndex + 1] &&
+										answeredQuestions[currentIndex + 1].choice
+								);
+							}
 						}}
 					>
-						{currentIndex === questions.length - 1 ? "END" : "NEXT"}
+						{currentIndex === questions.length - 1
+							? "SUBMIT RESPONSES"
+							: "NEXT"}
 					</button>
 				</div>
 			</div>
-			;
 		</>
 	);
 }
