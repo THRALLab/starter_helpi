@@ -1,9 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+.backdrop {
+	width: 100%;
+	box-sizing: border-box;
+	height: 200px;
+	padding: 10px;
+	background-color: rgb(114, 49, 104);
+	position: relative;
+}
+
+.backdrop h1 {
+	text-align: center;
+	color: white;
+	margin-top: 5%;
+	font-size: 40px;
+	font-family: "Merriweather Sans", sans-serif;
+	font-weight: 500;
+	word-spacing: 10px;
+}
+
 .report {
 	width: 70%;
-	margin: 0 auto;
+	margin: 50px auto 50px;
 	box-sizing: border-box;
 	padding: 10px;
 	border: 2px solid black;
 	min-height: 100vh;
 	max-height: inherit;
+	font-family: "Rubik", sans-serif;
+	font-weight: 400;
+}
+
+.report h3,
+.report h4 {
+	font-family: "Merriweather Sans", sans-serif;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+.NotFoundContainer {
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid red;
+	text-align: center;
 }
