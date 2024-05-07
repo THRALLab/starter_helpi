@@ -42,7 +42,7 @@ const questionImages = [
   Image13,
   Image14,
   Image15,
-  EndOfQuizImage
+  EndOfQuizImage,
 ];
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -218,13 +218,13 @@ function SimpleQuestions() {
           </div>
         </div>
         <div className="Simple-textSpace">
-        <img
+          <img
             src={questionImages[currentQuestionNumber - 1]}
             alt="Not Available..."
             width="600"
             height="354"
             style={{ borderRadius: "10px" }}
-          />  
+          />
           <div className="Simple-question-body">{questionBody}</div>
           <div className="Simple-buttons">
             <span className="Button-visible-true" id="nextButton">
