@@ -80,6 +80,7 @@ const DetailedQuestions: React.FC = () => {
   ]);
 
   const [selectedOptions, setSelectedOptions] = useState<Record<number, string>>({});
+  const [detailedAnswers, setDetailedAnswers] = useState<string[]>([]); // State to store detailed answers
   const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
   const navigate = useNavigate();
 
@@ -90,18 +91,26 @@ const DetailedQuestions: React.FC = () => {
       [questionId]: option
     }));
 
-    //checks to make sure all questions were answered.
+    // Store the selected option in the detailedAnswers array
+    setDetailedAnswers(prevAnswers => {
+      const updatedAnswers = [...prevAnswers];
+      updatedAnswers[questionId - 1] = option; // Question IDs start from 1, arrays start from 0
+      return updatedAnswers;
+    });
+
+    // Check if all questions are answered
     const answeredQuestions = Object.keys(selectedOptions).length + 1;
     setAllQuestionsAnswered(answeredQuestions === questions.length);
   };
 
-
-
   const handleGetResults = () => {
-    if(allQuestionsAnswered){
+    if (allQuestionsAnswered) {
+      // Pass detailedAnswers to the parent component or navigate to the results page
+      console.log("Detailed Answers:", detailedAnswers);
       navigate('/report');
+    } else {
+      console.log("Please answer all questions before getting results.");
     }
-    console.log("Results will be displayed in the future.");
   };
 
   const progress = (Object.keys(selectedOptions).length / questions.length) * 100;
