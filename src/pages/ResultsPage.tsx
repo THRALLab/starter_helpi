@@ -1,9 +1,6 @@
 import './resultsPage.css';
 
 
-
-
-
 //commented out the function until it is being used so we can build on GIT without errors
 //get the string-array from the question pages and pass through here.
 
