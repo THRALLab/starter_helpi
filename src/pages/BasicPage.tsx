@@ -131,7 +131,7 @@ const BasicPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 64, //should be 512
+				max_tokens: 512, //should be 512
 				top_p: 1,
 				});
 				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
