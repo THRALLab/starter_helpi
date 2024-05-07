@@ -55,6 +55,8 @@ export function ResultsPage({APIKey, basicQuestionData, detailQuestionData} : {A
       main();
       
     return (
-        <LoadingAnimation></LoadingAnimation>
+        <>  
+            <LoadingAnimation></LoadingAnimation>
+        </>
     )
 }
