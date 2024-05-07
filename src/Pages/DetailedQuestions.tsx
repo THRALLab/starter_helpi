@@ -5,6 +5,7 @@ import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import { SliderQuestion } from "../Components/SliderQuestion";
+import { playButtonClick } from "../Components/AudioPlayer";
 import jsonData from "../QuestionData/DetailedQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
@@ -42,6 +43,7 @@ function DetailedQuestions() {
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
   useEffect(() => {
+    playButtonClick();
     const loadQuestions = () => {
       const parsedData = JSON.parse(JSON.stringify(jsonData));
       const detailedQuestions: DetailedQuestion[] =

@@ -4,6 +4,7 @@ import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
+import { playButtonClick } from "../Components/AudioPlayer";
 import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
@@ -81,6 +82,7 @@ function SimpleQuestions() {
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
   useEffect(() => {
+    playButtonClick();
     const loadQuestions = () => {
       const parsedData = JSON.parse(JSON.stringify(jsonData));
       const simpleQuestions: SimpleQuestion[] = parsedData.SIMPLE_QUESTIONS;
