@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import ButtonClick from "../Audio/Button-Click.mp3";
 import BackgroundSound from "../Audio/Mii-Channel.mp3";
-import { Button } from "react-bootstrap";
 
 const buttonSoundEffect = new Audio(ButtonClick);
 const sliderSoundEffect = new Audio(ButtonClick);
