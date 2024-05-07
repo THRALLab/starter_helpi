@@ -1,0 +1,39 @@
+.QuestionNum {
+    font-size: 50px;
+    margin-left: 35px;
+    display:flex;	
+    }
+
+
+.question-container{
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+    margin-top:35px
+}
+
+.radio-container{
+    display:flex;
+    justify-content: space-between;
+}
+
+.last4{
+    margin-bottom: 30px;
+}
+
+.basic-title{
+    font-family: Georgia, serif;
+    margin-left: 20px;
+}
+.basic-info{
+    font-size: 20px;
+    display:flex;
+    text-align:center;
+    padding-left:125px;
+    padding-right:125px;
+}
+
+.page-color{
+    background-color:#e8f1ff91; 
+}
+
