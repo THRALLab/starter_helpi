@@ -35,7 +35,7 @@ export function AudioPlayer() {
   }
 
   return (
-    <div className="General-Audio-Background">
+    <div className="Header-audio-top">
       <Button className="Header-audio-button" onClick={backgroundMusicPlayer}>
         🎧
       </Button>
