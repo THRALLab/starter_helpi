@@ -1,0 +1,9 @@
+.report {
+	width: 70%;
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding: 10px;
+	border: 2px solid black;
+	min-height: 100vh;
+	max-height: inherit;
+}
