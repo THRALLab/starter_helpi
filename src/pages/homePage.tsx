@@ -71,7 +71,7 @@ import { Link } from "react-router-dom";
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
-            <Link to="/#quiz-desc-container">Find your quiz!</Link>
+            <Link to="../#quiz-descs">Find your quiz!</Link>
         </div>
         <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
