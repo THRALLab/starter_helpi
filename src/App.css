@@ -14,7 +14,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #a8c0c9;
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,3 +37,86 @@
     transform: rotate(360deg);
   }
 }
+
+.Back-button{
+  background-color: #282c34;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display:flex;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+.Basic-button {
+  display: inline-block;
+  width: 130px;
+  margin-left: 10px;
+  padding: 1px 20px 1px 23px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  border-style:hidden;
+  background-color: #007bff; /* Blue background */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Shadow */
+  transition: background-color 0.3s, transform 0.3s;
+}
+.Detailed-button {
+  display: inline-block;
+  width: 130px;
+  height: 43px;
+  margin-left: 10px;
+  padding: 1px 20px 1px 23px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  border-style:hidden;
+  background-color: #007bff; /* Blue background */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Shadow */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+h1{
+  position: absolute;
+  top: 75px;
+  text-align: center;
+}
+h2{
+  position: relative;
+  top: 20%;
+  text-align: left;
+}
+/*result page Back home Button*/
+.container{ 
+  text-align: center;
+  width: 100px;
+  height: 50px;
+  padding-top: 100px;
+  }
+
+  progress{
+    max-width: 100%;
+  }
+
+  .submit-button{
+    margin-left: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background-color: #007bff;
+    color: #fff; 
+    border-radius: 5px; 
+    padding: 9px 27px 12px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    text-decoration: none;
+  }
