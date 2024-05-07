@@ -10,9 +10,12 @@ export interface Answer {
 	choice: string;
 }
 
+// There is a minor bug where if you get to the free response section and enter your response in the first input, it populates in the second input also too
+
 function Detailed() {
 	const [choice, setChoice] = useState<string>();
 
+	// responsible for keeping the index a valid number that won't be undefined when trying to access an element
 	const saved_index: number =
 		Number(localStorage.getItem("current_question")) || 0;
 	const last_saved: number = saved_index < 0 ? 0 : saved_index;
@@ -20,6 +23,7 @@ function Detailed() {
 	const [currentIndex, setCurrentIndex] = useState(last_saved);
 	localStorage.setItem("current_question", currentIndex.toString());
 
+	// another bit of validation to check if there's any saved answers (the array is populated); if there isn't, add an empty array
 	const savedAnswersString = localStorage.getItem("answered_questions");
 	const savedAnswers: Answer[] = savedAnswersString
 		? JSON.parse(savedAnswersString)
@@ -27,6 +31,7 @@ function Detailed() {
 	const [answeredQuestions, setAnsweredQuestions] =
 		useState<Answer[]>(savedAnswers);
 
+	// responsible for handling the logic of displaying the current question's user-selected choice depending on the current index (that increments/decrements) as the user moves forward/back whilst taking the quiz
 	const [userInput, setUserInput] = useState<string>(
 		answeredQuestions[currentIndex] && answeredQuestions[currentIndex].choice
 	);
@@ -45,9 +50,9 @@ function Detailed() {
 		question_type: string,
 		question: string
 	) {
-		if (question_type === "free_response" && !choice.trim()) {
-			setChoice("");
-		}
+		// if (question_type === "free_response" && !choice.trim()) {
+		// 	setChoice("");
+		// }
 
 		if (answeredQuestions.length !== 0) {
 			// 1. check if the question number exists
