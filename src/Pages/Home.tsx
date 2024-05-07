@@ -65,7 +65,7 @@ function Home() {
             <Col className="Home-text-basic">
               <div>
                 <img
-                  src="https://img.freepik.com/premium-vector/vector-illustration-teacher-kids-performing-experiments-school-science-lab_830469-1997.jpg"
+                  src="/Images/Home-Page-Basic-Quiz-Picture.jpg"
                   alt="Simple Science Experiment"
                   width="400px"
                   height="287px"
@@ -85,7 +85,7 @@ function Home() {
             <Col className="Home-text-detailed">
               <div>
                 <img
-                  src="https://www.techspot.com/images2/news/bigimage/2021/02/2021-02-10-image-18.jpg"
+                  src="/Images/Home-Page-Detailed-Quiz-Picture.jpg"
                   alt="Complex Science Experiment"
                   width="400px"
                   height="287px"
