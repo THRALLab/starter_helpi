@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useEffect } from "react";
 import { playButtonClick } from "../Components/AudioPlayer";
 import "../Formatting/General.css";
 
@@ -16,8 +17,15 @@ export function LinkButton(props: LinkButtonProps) {
     playButtonClick();
     //Moves to new page
     navigate(whereTo);
+    //Scrolls to top of page
+    window.scrollTo(0, 0);
     scrollToTop();
   };
+
+  //Scrolls to top on page route
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   //Scrolls to top on page route
   function scrollToTop() {
