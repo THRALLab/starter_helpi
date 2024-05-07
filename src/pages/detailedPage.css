@@ -4,9 +4,28 @@
     padding: 16px 24px;
     margin-bottom:50px
     }
-    h3 {
+    h3 { /* Question headers*/
     margin-left: 25px;
     }
+    .detailed-title{
+        font-family: Georgia, serif;
+        margin-left:20px
+    }
+
+    .detailed-info{
+        display:flex;
+        text-align:center;
+        font-size:20px;
+        padding-left: 125px;
+        padding-right: 125px;
+    }
+
+    .detailed-progress{
+        margin-left:100px;
+        margin-right: 100;
+        margin-bottom:20px;
+    }
+
     .answer-box{
         display:flexbox;
         height:fit-content;
@@ -32,6 +51,7 @@
     color: white;
             }
     }
+    
     .offCanvas-title{
         font-size:35px
     }

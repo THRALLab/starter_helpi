@@ -21,13 +21,16 @@
     margin-bottom: 30px;
 }
 
-.page-title{
+.basic-title{
     font-family: Georgia, serif;
-    margin-left: 20px
+    margin-left: 20px;
 }
-
-.info{
-    font-size: 20px
+.basic-info{
+    font-size: 20px;
+    display:flex;
+    text-align:center;
+    padding-left:125px;
+    padding-right:125px;
 }
 
 .page-color{

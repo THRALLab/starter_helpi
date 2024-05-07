@@ -166,18 +166,17 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
-	//console.log(response)
 	return (<>
 	<body className="page-color">
-		<h1 className="page-title">
+		<h1 className="basic-title">
 			Basic Quiz
 		</h1>
-		<div className="info" style={{ display:"flex", textAlign: "center", paddingLeft:"125px", paddingRight:"125px"}}>
+		<div className="basic-info">
 		Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
 		The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-		With only 8 questions, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
+		With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
 		</div>
-		<hr style={{color:"black", marginTop:"10px", height:"2px"}}></hr>
+		<hr style={{marginTop:"10px", opacity:"1"}}></hr>
 		
 		<div style={{textAlign: "center"}}>
 			<Button size="lg" disabled={!allow} onClick={sendResponse} style={{marginRight:"20px"}}>Get Answer!</Button>  <Button size="lg" onClick={doReset} > Clear All</Button>
@@ -265,7 +264,7 @@ const BasicPage = () => {
 				</Stack>
 			</span>	
 			</div>
-		<hr style={{color:"black", marginTop:"78px", marginBottom:"80px", height:"4px"}}></hr>
+		<hr style={{marginTop:"78px", marginBottom:"80px", opacity:1}}></hr>
 		<div className="question-container">
 			<span className="QuestionNum">#5</span> <span>
 			<Stack className="last4" gap={3} style={{marginTop: "30px"}}>

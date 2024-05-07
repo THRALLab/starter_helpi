@@ -1,11 +1,10 @@
-
-import "./detailedPage.css";
 import React, { useEffect, useState } from "react";
 import { Form, ProgressBar, Alert, Button, /*FormLabel*/ 
 Offcanvas, OffcanvasHeader,OffcanvasTitle, Row, Col, Container} from "react-bootstrap";
 //import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 import OpenAI from "openai";
 import { key } from "./homePage"
+import "./detailedPage.css";
 
 function parseAnswers(answers: string|null): string[] {
 	if (answers === null) return [];
@@ -164,18 +163,17 @@ const DetailedPage = () => {
     });
 	return (<>
 	<body className="page-color">
-		<div className="info-portion">
-			<h1>
+			<h1 className="detailed-title">
 				Detailed Quiz
 			</h1>
-			<p style={{textAlign:"center", marginLeft: "25px", marginRight: "25px"}}>
-				Welcome! For this quiz, you will answer the statements by 
+			<div className="detailed-info">
+				Welcome! For the detailed quiz, you will answer the statements by 
 				choosing one of the corresponding multiple choice options
-				 below! You will be able to click the "Answer" which will 
+				below or writing your own response! After answering all of the questions you will be able to click the "Get Answer!" button which will 
 				allow you to see the results of you future career.
-			</p>
-		</div>
-		<hr style={{color:"black", marginTop:"10px", height:"2px"}}></hr>
+			</div>
+			
+		<hr style={{marginTop:"10px", opacity:".9"}}></hr>
 		
 		<div style={{textAlign:"center", marginTop:"25px"}}>
 		<Button size="lg" onClick={handleShow}>Track Progress</Button>
@@ -185,7 +183,7 @@ const DetailedPage = () => {
 			</OffcanvasHeader>
 			<Offcanvas.Body style={{textAlign:"center", fontSize:"18px"}}>
 				Questions Answered: {answered} / 7
-				<ProgressBar variant="success" now={answered} animated max={7} style={{marginLeft:"100px", marginRight:"100px", marginBottom: "20px"}}/>
+				<ProgressBar className="detailed-progress" variant="success" now={answered} animated max={7} />
 			<Container>
      			<Row style={{justifyContent:"center"}}>
         			<Col xs={12} sm={10} md={8} lg={6} xl={6}>
@@ -650,7 +648,7 @@ const DetailedPage = () => {
 				</div>
 			</div>
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" onClick={sendResponse} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<Button size="lg" onClick={sendResponse} disabled={!allow} style={{marginRight:"10px"}}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
 		</div>
 		<div style={{display:"flex", marginTop:"10px", textAlign:"center",justifyContent:"center"}}>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"10px"}} >
