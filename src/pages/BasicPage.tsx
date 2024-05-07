@@ -232,9 +232,9 @@ const BasicPage = () => {
 					Basic Quiz
 				</h1>
 				<p style={{ textAlign: "center" }}>
-					Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
-					The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-					With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
+				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
+		The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+		With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
 				</p>
 				
 			</div>
@@ -242,10 +242,11 @@ const BasicPage = () => {
 	
 				<button className="button" disabled={!allow} onClick={sendResponse}>Get Answer!</button>
 				<button className="button" onClick={doReset} > Clear All</button>
-				<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}}>
-
-					<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-				</Alert>
+				<div style={{display: "flex", justifyContent:"center"}}>
+		  			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
+		   				 <p>You've completed all the questions, you can now click the "Get Answer!" button to get your results!</p>
+		  			 </Alert>
+				</div>
 		</div>
 		<div className="question-container">
 		<span className="QuestionNum">#1</span> 
@@ -391,7 +392,7 @@ const BasicPage = () => {
 						type="radio"
 						id="q8-Option1"
 						label="I enjoy a job that challenges me."
-						name="question4"
+						name="question8"
 						onChange={() => updateChoice(14)}
 						checked={response[7] === 1}
 						/>
@@ -401,8 +402,7 @@ const BasicPage = () => {
 						label="I want a job that is easy."
 						name="question8"
 						onChange={() => updateChoice(15)}
-						checked={response[7] === 0}
-						/>
+						checked={response[7] === 0}/>
 					</Stack>
 				</span>	
 			</div>
