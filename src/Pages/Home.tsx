@@ -3,10 +3,13 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
-//import 123 from "../Audio/123.mp3";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Home.css";
+import HomePageTop from "../Images/Home-Page-Top.jpg";
+import HomePageBasic from "../Images/Home-Page-Basic.jpg";
+import HomePageDetailed from "../Images/Home-Page-Detailed.jpg";
+import BackgroundMusic from "../Audio/Button-Click.mp3";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -46,7 +49,7 @@ function Home() {
           <Row>
             <div className="Home-body">
               <img
-                src="https://img.freepik.com/free-vector/flat-laboratory-room-with-microscope_23-2148885022.jpg?w=1480&t=st=1714680547~exp=1714681147~hmac=d379d0ea435a9f15edcacf0bca29ae324baaec7273b9e4545a3906992e2115be"
+                src={HomePageTop}
                 alt="Science Laboratory"
                 width="628px"
                 height="417px"
@@ -65,7 +68,7 @@ function Home() {
             <Col className="Home-text-basic">
               <div>
                 <img
-                  src="https://img.freepik.com/premium-vector/vector-illustration-teacher-kids-performing-experiments-school-science-lab_830469-1997.jpg"
+                  src={HomePageBasic}
                   alt="Simple Science Experiment"
                   width="400px"
                   height="287px"
@@ -85,7 +88,7 @@ function Home() {
             <Col className="Home-text-detailed">
               <div>
                 <img
-                  src="https://www.techspot.com/images2/news/bigimage/2021/02/2021-02-10-image-18.jpg"
+                  src={HomePageDetailed}
                   alt="Complex Science Experiment"
                   width="400px"
                   height="287px"
@@ -105,7 +108,7 @@ function Home() {
           </Row>
         </Container>
         <audio controls>
-          <source src="../Audio/123.mp3" type="audio/mpeg" />
+          <source src={BackgroundMusic} type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
       </div>

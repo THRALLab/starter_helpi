@@ -8,6 +8,41 @@ import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/SimpleQuestions.css";
+import Image1 from "../Images/Simple-Question-1.jpg";
+import Image2 from "../Images/Simple-Question-2.jpg";
+import Image3 from "../Images/Simple-Question-3.jpg";
+import Image4 from "../Images/Simple-Question-4.jpg";
+import Image5 from "../Images/Simple-Question-5.jpg";
+import Image6 from "../Images/Simple-Question-6.jpg";
+import Image7 from "../Images/Simple-Question-7.jpg";
+import Image8 from "../Images/Simple-Question-8.jpg";
+import Image9 from "../Images/Simple-Question-9.jpg";
+import Image10 from "../Images/Simple-Question-10.jpg";
+import Image11 from "../Images/Simple-Question-11.jpg";
+import Image12 from "../Images/Simple-Question-12.jpg";
+import Image13 from "../Images/Simple-Question-13.jpg";
+import Image14 from "../Images/Simple-Question-14.jpg";
+import Image15 from "../Images/Simple-Question-15.jpg";
+import EndOfQuizImage from "../Images/End-Quiz.jpg";
+
+const questionImages = [
+  Image1,
+  Image2,
+  Image3,
+  Image4,
+  Image5,
+  Image6,
+  Image7,
+  Image8,
+  Image9,
+  Image10,
+  Image11,
+  Image12,
+  Image13,
+  Image14,
+  Image15,
+  EndOfQuizImage,
+];
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -40,7 +75,6 @@ function SimpleQuestions() {
   const [numberOfQuestions, setNumberOfQuestions] = useState(15);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
-  const [questionImage, setQuestionImage] = useState("");
   const [questionBody, setQuestionBody] = useState("Question...");
   const [option1, setOption1] = useState("Option 1...");
   const [option2, setOption2] = useState("Option 2...");
@@ -53,7 +87,6 @@ function SimpleQuestions() {
       setQuestions(simpleQuestions);
       setNumberOfQuestions(simpleQuestions.length);
       setQuestionNumber(questionNumber);
-      setQuestionImage(simpleQuestions[questionNumber].image);
       setQuestionBody(simpleQuestions[questionNumber].question);
       setOption1(simpleQuestions[questionNumber].option1);
       setOption2(simpleQuestions[questionNumber].option2);
@@ -69,13 +102,11 @@ function SimpleQuestions() {
       setBackButtonDisabled(false);
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
-      setQuestionImage(questions[nextQuestion].image);
       setQuestionBody(questions[nextQuestion].question);
       setOption1(questions[nextQuestion].option1);
       setOption2(questions[nextQuestion].option2);
     } else {
       // End of quiz...
-      //window.alert("You've completed the Simple Quiz!"); Don't need this anymore!
       setQuestionBody("You have completed the quiz!");
       simpleQuestionQuizCompleted = questions;
       let nextButton = document.getElementById("nextButton");
@@ -105,14 +136,12 @@ function SimpleQuestions() {
           reportButton.classList.remove("Button-visible-true");
           reportButton.classList.add("Button-visible-false");
         }
-        setQuestionImage(questions[questionNumber].image);
         setQuestionBody(questions[questionNumber].question);
         setOption1(questions[questionNumber].option1);
         setOption2(questions[questionNumber].option2);
       } else {
         const previousQuestion = questionNumber - 1;
         setQuestionNumber(previousQuestion);
-        setQuestionImage(questions[previousQuestion].image);
         setQuestionBody(questions[previousQuestion].question);
         setOption1(questions[previousQuestion].option1);
         setOption2(questions[previousQuestion].option2);
@@ -170,15 +199,13 @@ function SimpleQuestions() {
           </div>
         </div>
         <div className="Simple-textSpace">
-          {currentQuestionNumber < 16 && (
-            <img
-              src={questionImage}
-              alt="Not Available..."
-              width="600"
-              height="354"
-              style={{ borderRadius: "10px" }}
-            />
-          )}
+          <img
+            src={questionImages[currentQuestionNumber - 1]}
+            alt="Not Available..."
+            width="600"
+            height="354"
+            style={{ borderRadius: "10px" }}
+          />
           <div className="Simple-question-body">{questionBody}</div>
           <div className="Simple-buttons">
             <span className="Button-visible-true" id="nextButton">

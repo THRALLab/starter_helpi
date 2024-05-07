@@ -67,7 +67,6 @@ function DetailedQuestions() {
       setBackButtonDisabled(false);
     } else {
       // End of quiz...
-      //window.alert("You've completed the Detailed Quiz! Press the Report button to view your results!"); Don't need this anymore!
       setQuestionBody("You have completed the quiz!");
       setQuestionNumber(30);
       slidenums = [...sliderValues];
