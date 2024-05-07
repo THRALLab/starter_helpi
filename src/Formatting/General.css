@@ -150,6 +150,11 @@
   margin-bottom: 4px;
 }
 
+.Header-audio-top {
+  justify-content: center;
+  align-items: center;
+}
+
 .Header-audio-button {
   justify-content: center;
   align-items: center;
