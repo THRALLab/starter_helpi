@@ -18,7 +18,9 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+// Function to generate the Report from ChatGPT based on how the user answered the questions.
 function SimpleReport() {
+  // State variables for the Report page
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
