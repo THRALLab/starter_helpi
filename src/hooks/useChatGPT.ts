@@ -6,13 +6,19 @@ import { useState } from "react";
 interface Tools {
 	checkConnection: () => void;
 	chat_gptResponse: string;
+	graphData: string;
 }
 
 export default function useChatGPT(): Tools {
 	const API_KEY: string | null = localStorage.getItem("MYKEY");
 	const [chat_gptResponse, setChat_gptResponse] = useState("");
+	const [graphData, setGraphData] = useState("");
 
-	async function callAPI(openai: OpenAI, users_responses: Answer[]) {
+	async function callAPI(
+		openai: OpenAI,
+		users_responses: Answer[],
+		api_request: string
+	) {
 		let formattedQ_A = "";
 		users_responses.map((a: Answer) => {
 			return (formattedQ_A += `(${a.questionNo}) ${a.question} \n ${a.choice} \n`);
@@ -27,7 +33,11 @@ export default function useChatGPT(): Tools {
 				messages: [
 					{
 						role: "user",
-						content: `I am looking to generate a detailed and lengthy report catered towards helping a user find a list of 4 careers by name that would closely match with what they've answered given a set of questions. When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest to the user. If any of the questions receive gibberish or inappropriate answers or just don't make sense, ignore them. These questions and answers are as follows: \n ${formattedQ_A}`
+						content: `I am looking to generate a detailed and lengthy report catered towards helping a user find a list of 4 careers by name that would closely match with what they've answered given a set of questions. ${
+							api_request === "user_report"
+								? "When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest to the user."
+								: "Please only list the 4 careers by name and the percentage (that totals up to 100) of how likely the user fits for that specific career as well and nothing else."
+						} If any of the questions receive gibberish or inappropriate answers or just don't make sense, ignore them. These questions and answers are as follows: \n ${formattedQ_A}`
 					}
 				],
 				stream: true
@@ -38,8 +48,10 @@ export default function useChatGPT(): Tools {
 				}
 			}
 
-			setChat_gptResponse(response);
-			console.log(setChat_gptResponse);
+			if (api_request === "user_report") setChat_gptResponse(response);
+			else setGraphData(response);
+
+			console.log(response);
 		} catch (error) {
 			console.log(error);
 		}
@@ -58,11 +70,12 @@ export default function useChatGPT(): Tools {
 				apiKey: JSON.parse(API_KEY), // converts the string literal to a string without the double quotes
 				dangerouslyAllowBrowser: true
 			});
-			callAPI(openai, JSON.parse(users_responses));
+			callAPI(openai, JSON.parse(users_responses), "user_report");
+			callAPI(openai, JSON.parse(users_responses), "graph_data");
 		} else {
 			console.log("Please make sure you've entered your API key");
 		}
 	}
 
-	return { checkConnection, chat_gptResponse };
+	return { checkConnection, chat_gptResponse, graphData };
 }
