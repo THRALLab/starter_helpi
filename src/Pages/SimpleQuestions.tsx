@@ -4,7 +4,7 @@ import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
-import { playButtonClick } from "../Components/AudioPlayer";
+import { AudioPlayer, playButtonClick } from "../Components/AudioPlayer";
 import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
@@ -180,6 +180,9 @@ function SimpleQuestions() {
           <ThemeSelect></ThemeSelect>
         </span>
         <span className="Header-text">The Career Lab</span>
+        <span className="Header-Audio">
+          <AudioPlayer></AudioPlayer>
+        </span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
         </span>

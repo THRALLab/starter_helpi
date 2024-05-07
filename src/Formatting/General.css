@@ -150,6 +150,18 @@
   margin-bottom: 4px;
 }
 
+.Header-audio-button {
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  margin-left: 100%;
+  margin-bottom: 4px;
+  color: var(--color-body-text);
+  border: var(--color-body-ButtonBorder);
+  background-color: var(--color-body-Button);
+}
+
 .Header-text {
   font-size: calc(15px + 3vmin);
   color: var(--color-body-Headertext);

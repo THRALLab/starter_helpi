@@ -10,6 +10,7 @@ import jsonData from "../QuestionData/DetailedQuestions.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
+import { AudioPlayer } from "../Components/AudioPlayer";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -127,6 +128,9 @@ function DetailedReport() {
           <ThemeSelect></ThemeSelect>
         </span>
         <span className="Header-text">The Career Lab</span>
+        <span className="Header-Audio">
+          <AudioPlayer></AudioPlayer>
+        </span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
         </span>
@@ -183,7 +187,6 @@ function DetailedReport() {
             </div>
           )}
           {!loading && careerList.length < 3 && <div>{responseData}</div>}
-        
         </div>
       </div>
 
