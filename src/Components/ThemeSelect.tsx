@@ -40,6 +40,7 @@ export const ThemeSelect = () => {
         Theme:
       </Form.Label>
       <Form.Select
+        className="Header-theme-select"
         id="userThemes"
         value={theme}
         onChange={updateTheme}

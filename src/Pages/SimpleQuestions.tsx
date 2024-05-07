@@ -75,7 +75,6 @@ function SimpleQuestions() {
       setOption2(questions[nextQuestion].option2);
     } else {
       // End of quiz...
-      //window.alert("You've completed the Simple Quiz!"); Don't need this anymore!
       setQuestionBody("You have completed the quiz!");
       simpleQuestionQuizCompleted = questions;
       let nextButton = document.getElementById("nextButton");
