@@ -5,14 +5,7 @@ import Detailed from "./detailed";
 import Navigation from "./navbar";
 import Footer from "./Footer";
 import BasicDetailedButtons from "./basicDetailedButton";
-
-//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
-if (prevKey !== null) {
-	keyData = JSON.parse(prevKey);
-}
+import Results from "./Results";
 
 function App() {
 	return (
@@ -24,6 +17,7 @@ function App() {
 					<Route path="/basic" Component={Basic} />
 					<Route path="/detailed" Component={Detailed} />
 					<Route path="/basicDetailedButton" Component={BasicDetailedButtons} />
+					<Route path="/results" Component={Results} />
 				</Routes>
 				<Footer />
 			</>

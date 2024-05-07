@@ -1,10 +1,13 @@
 import "./modal.css";
+import useChatGPT from "./hooks/useChatGPT";
 
 interface Props {
 	modalFunction: () => void;
 }
 
 export default function Modal({ modalFunction }: Props) {
+	const { checkConnection } = useChatGPT();
+
 	return (
 		<div className="modal" onClick={modalFunction}>
 			<div className="modal-content">
@@ -19,7 +22,7 @@ export default function Modal({ modalFunction }: Props) {
 					<button
 						onClick={e => {
 							e.stopPropagation();
-							alert("GET RESULTS");
+							checkConnection();
 						}}
 					>
 						GET RESULTS!
