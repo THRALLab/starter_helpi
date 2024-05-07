@@ -1,13 +1,552 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 20px;
+  width: 200px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  background-color: #357ed7;
+  color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.button:hover {
+  background-color: #357ed7;
+}
+
+/*Navigation Bar and updating Nav Buttons*/
+.nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #134265;
+  padding: 10px 0;
+}
+
+.nav .button {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.nav .button:hover {
+  background-color: #b4d8fd;
+  color: #0a0a23;
+}
+
+/*Adding an Arrow to the Button on Hover*/
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.3s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*Pages and App Styling*/
+.basic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.App {
+  background-color: #99cff8;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Home Page CSS */
+.home {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-rows: auto;
+}
+
+.websiteTitle {
+  grid-row: 1;
+  height: auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.title {
+  text-align: center;
+}
+
+.slogan {
+  text-align: center;
+}
+
+.sloganContainer {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.sloganText {
+  transform: translateX(50px);
+}
+
+.listTerm {
+  font-style: normal;
+  font-weight: 700;
+  opacity: 0;
+  text-transform: uppercase;
+  width: 600px;
+  animation: rotate;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+}
+
+.main {
+  position: relative;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #009de0;
+}
+
+.main img {
+  position: relative;
+  max-height: 100vh;
+  max-width: 100vh;
+  height: auto;
+  width: auto;
+  clip-path: ellipse(20% 70% at top);
+  transform: translate(-12%, -30%);
+}
+
+.trail {
+  width: 0;
+  height: 0;
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-top: 100vh solid white;
+}
+
+.cloud {
+  margin-top: 70px;
+  width: 350px;
+  height: 120px;
+  background: #eceff1;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 100px;
+  border-color: transparent;
+  z-index: 2;
+}
+.cloud::after,
+.cloud::before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  background: inherit;
+  border-radius: inherit;
+}
+.cloud::after {
+  width: 100px;
+  height: 100px;
+  top: -220px;
+  left: -80px;
+}
+.cloud::before {
+  width: 180px;
+  height: 180px;
+  top: -70px;
+  left: 110px;
+}
+
+.cloudText {
+  position: relative;
+  z-index: 1;
+  top: -120%;
+  left: -30%;
+  text-align: center;
+  color: black;
+}
+
+.cloud:hover {
+  border-color: transparent;
+  background-color: rgb(245, 226, 152);
+}
+
+.cloud:hover ~ .sun {
+  border-color: transparent;
+  animation: sunRise 5s linear infinite;
+}
+
+.sun {
+  position: relative;
+  left: -280px;
+  top: 20px;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  width: 150px;
+  height: 150px;
+  background: yellow;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 255, 8, 0.2);
+}
+
+@keyframes sunRise {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-50px);
+  }
+
+  100% {
+    transform: translateY(-50px);
+  }
+}
+/* Testing Text animations */
+
+@keyframes rotate {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  20%,
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+}
+
+/* End testing */
+
+.main .prevButton {
+  position: relative;
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.main .nextButton {
+  float: right;
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.basicHomePage {
+  position: right;
+}
+
+.features {
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
+  grid-row: 3;
+  display: flex; /* come back to this */
+  /* justify-content: center;
+  align-items: center; */
+  height: 0vh;
+  background-color: #009de0;
+}
+.featureCloud {
+  width: 100%;
+  height: 800px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  margin-top: -30px;
+  margin-left: 30px;
+  width: 500px;
+  height: 200px;
+  background: #eceff1;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 100px;
+  transform: translateX(-50px);
+}
+.featureCloud::after,
+.featureCloud::before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  background: inherit;
+  border-radius: inherit;
+}
+.featureCloud::after {
+  width: 200px;
+  height: 200px;
+  top: -320px;
+  left: 250px;
+}
+.featureCloud::before {
+  width: 180px;
+  height: 180px;
+  top: -70px;
+  left: 110px;
+}
+.featureCloudTitle {
+  position: relative;
+  z-index: 1;
+  top: -80%;
+  text-align: center;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.featureCloudText {
+  position: relative;
+  width: 50%;
+  height: 5%;
+  z-index: 1;
+  top: -60%;
+  left: 25%;
+  text-align: center;
+  color: black;
+}
+
+.about {
+  grid-row: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  background-color: #009de0;
+}
+
+/* Detailed Page CSS */
+.detailed {
+  /* background-color: #f8f9fa; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+/* Detailed Page CSS */
+.report {
+  /* background-color: #f8f9fa; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+.carousel {
+  display: "block";
+  width: 700;
+  padding: 30;
+}
+
+.quiz {
+  display: block;
+  text-align: center;
+  width: 75%;
+}
+
+/* Previous Button and Next Button Designs */
+.prevButton .nextButton {
+  color: #fff;
+}
+
+/* Previous Button Hover Effect*/
+.prevButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+}
+
+.prevButton span:after {
+  content: "\00ab";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.3s;
+}
+
+.prevButton:hover span {
+  padding-left: 25px;
+}
+
+.prevButton:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
+/* Next Button Hover Effect*/
+.nextButton {
+  color: #fff;
+}
+.nextButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nextButton span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.3s;
+}
+
+.nextButton:hover span {
+  padding-right: 25px;
+}
+
+.nextButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* Testing Popovers */
+
+/*
+.popover-custom {
+  max-width: 300px !important;
+  background-color: #f8f9fa !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 10px !important;
+}
+
+
+.popover-header-custom {
+  background-color: #007bff !important;
+  color: #fff !important; 
+  border-bottom: none !important;
+  border-radius: 10px 10px 0 0 !important;
+}
+.popover-body-custom {
+  color: #343a40 !important;
+  padding: 15px !important;
+}
+.popover-custom .arrow::before {
+  border-top-color: #ced4da !important;
+}
+
+
+
+/*
+.popover {
+  font-size: 1.2rem;
+  background-color: #faeece;
+}
+
+.popover[x-placement^=top] > .popover-arrow::after,
+.popover[x-placement^=bottom] > .popover-arrow::after,
+.popover[x-placement^=right] > .popover-arrow::after,
+.popover[x-placement^=left] > .popover-arrow::after {
+  border-color: transparent;
+}
+
+.popover[x-placement^=top]>.popover-arrow:after {
+  border-top-color: teal;
+}
+
+.popover[x-placement^=bottom]>.popover-arrow:after {
+  border-bottom-color: teal;
+  border-top-color: teal;
+}
+
+.popover[x-placement^=right]>.popover-arrow:after {
+  border-right-color: teal;
+}
+
+.popover[x-placement^=left]>.popover-arrow:after {
+  border-left-color: teal;
+}
+
+.popover {
+  animation-name: rainbow-gradient;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-color: #faeece;
+  border-color: #000000;
+}
+
+.popover .arrow {
+  color: #faeece;
+}
+.popover .arrow:after {
+  border-bottom-color: tomato;
+}
+
+@keyframes rainbow-gradient {
+  0%{
+    border-bottom: red;
+    }
+  20%{
+    border-bottom: orange;
+    }
+  40%{
+    border-bottom: yellow;
+  }
+  100%{
+    border-bottom: yellow;
+    }
+}
+*/
+/* Testing Popovers */
+
+
+
+.survey-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.button-submit{
+  font-size: 25px;
 }
