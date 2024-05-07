@@ -5,6 +5,10 @@ import Markdown from "react-markdown";
 export default function Results() {
 	const { chat_gptResponse } = useChatGPT();
 
+	// TODO [ ] - implement a loading feature when the user presses the "get results" button on the modal
+	// TODO [ ] - implement the 404 logic when the user attempts to access this page without completing the quiz
+	// TODO [ ] - consider creating a second function that will also call the ChatGPT API but will return data about how much of a close fit a user is (in percentages) to a specific career/how likely it matches them so that you can use this data and implement it for graphs + get more data to add to the results page
+
 	const testMarkdown = `Based on the detailed responses you provided, here are four career paths that might align well with your interests, values, and preferences, along with why they could be suitable choices. Additionally, alternative paths will be suggested if these options aren't appealing or sufficient.
 
 ### Career Suggestions
