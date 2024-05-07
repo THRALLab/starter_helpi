@@ -25,15 +25,41 @@
     font-family: Georgia, serif;
     margin-left: 20px;
 }
-.basic-info{
-    font-size: 20px;
-    display:flex;
-    text-align:center;
-    padding-left:125px;
-    padding-right:125px;
-}
 
 .page-color{
     background-color:#e8f1ff91; 
 }
 
+.button{
+    background-color: var(--foreground-color);
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 16px;
+}
+
+.quiz-desc {
+    color: var(--primary-text-color);
+    margin: 20px;
+    height: 100%;
+    width: 95%;
+    padding: 20px;
+}
+
+:root {
+    --foreground-color: black;
+    --primary-text-color: black;
+}
+
+[data-theme="dark"] {
+    --background-color: #7a7a7a;
+    --foreground-color: white;
+    --primary-text-color: white;
+}
+.Page-Container {
+    background-color: var(--background-color);
+}
+.questions {
+    color: var(--primary-text-color);
+}
