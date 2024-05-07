@@ -8,6 +8,23 @@ import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/SimpleQuestions.css";
+/*
+import Image1 from "../Images/Simple-Question-1.jpg";
+import Image2 from "../Images/Simple-Question-2.jpg";
+import Image3 from "../Images/Simple-Question-3.jpg";
+import Image4 from "../Images/Simple-Question-4.jpg";
+import Image5 from "../Images/Simple-Question-5.jpg";
+import Image6 from "../Images/Simple-Question-6.jpg";
+import Image7 from "../Images/Simple-Question-7.jpg";
+import Image8 from "../Images/Simple-Question-8.jpg";
+import Image9 from "../Images/Simple-Question-9.jpg";
+import Image10 from "../Images/Simple-Question-10.jpg";
+import Image11 from "../Images/Simple-Question-11.jpg";
+import Image12 from "../Images/Simple-Question-12.jpg";
+import Image13 from "../Images/Simple-Question-13.jpg";
+import Image14 from "../Images/Simple-Question-14.jpg";
+import Image15 from "../Images/Simple-Question-15.jpg";
+*/
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";

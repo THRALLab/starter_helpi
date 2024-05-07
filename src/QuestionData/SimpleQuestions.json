@@ -2,7 +2,7 @@
   "SIMPLE_QUESTIONS": [
     {
       "num": 1,
-      "image": "/Images/Simple-Question-1.jpg",
+      "image": "../Images/Simple-Question-1.jpg",
       "question": "I am a hard worker.",
       "option1": "True",
       "option2": "False"
