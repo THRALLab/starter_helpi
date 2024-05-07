@@ -27,7 +27,7 @@ export default function useChatGPT(): Tools {
 				messages: [
 					{
 						role: "user",
-						content: `I am looking to generate a detailed report catered towards helping a user find a list of 4 careers by name that would closely match with what they've answered given a set of questions. When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest to the user. If any of the questions receive gibberish answers, vulgar nonsense, or don't make sense, ignore them. Please also list a number (representing the percentage) of how likely the user would be a good fit for, for each of the 4 careers. Make sure the percentages equal 100%. These questions and answers are as follows: \n ${formattedQ_A}`
+						content: `I am looking to generate a detailed and lengthy report catered towards helping a user find a list of 4 careers by name that would closely match with what they've answered given a set of questions. When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest to the user. If any of the questions receive gibberish or inappropriate answers or just don't make sense, ignore them. These questions and answers are as follows: \n ${formattedQ_A}`
 					}
 				],
 				stream: true
@@ -39,7 +39,7 @@ export default function useChatGPT(): Tools {
 			}
 
 			setChat_gptResponse(response);
-			console.log(response);
+			console.log(setChat_gptResponse);
 		} catch (error) {
 			console.log(error);
 		}
