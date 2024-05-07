@@ -1,0 +1,22 @@
+.response-text{
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+
+
+}
+/*
+.divider {
+    border: none;
+    border-top: 5vh dotted #000000; 
+    width: 80%; 
+    margin: 0 auto;
+}
+*/
+
+.box {
+    border: 2px solid rgb(11, 10, 16);
+    background-color: rgb(186, 182, 182);
+    padding: 10px;
+    margin: 10px;
+}
