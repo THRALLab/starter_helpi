@@ -60,7 +60,15 @@
 	flex: 1 1 45%;
 	margin: 5px;
 	border: 2px solid red;
+	color: rgb(146, 8, 8);
 	padding: 5px;
+	border-radius: 5px;
+	background-color: rgb(238, 181, 190);
+}
+
+.report .cardContainer .card:hover {
+	color: rgb(180, 6, 6);
+	transition: 0.5s ease;
 }
 
 .report .cardContainer .card p {
