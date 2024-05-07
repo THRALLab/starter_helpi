@@ -5,28 +5,31 @@ import { openaiToken } from "src/controller/openaiToken";
 
 const verifyAPIKey = async(apiKey: string) => {
   try {
-    await openaiToken.chat.completions.create({
+    var res = await openaiToken.chat.completions.create({
       messages: [
-        { role: 'user', content: "please return yes" },
+        { role: 'user', content: "please say 'validated'" },
         ],
       model: 'gpt-4-turbo'
     });
+    // error for 401 access denied will be thrown
   } catch (error) {
+    // invaild
     return false;
   }
   // valid key
+  console.log(res.choices[0].message.content);
   return true;
 }
 
 export function ApiKeyInput(): JSX.Element {
   const [apiKey, setApiKey] = useState<string>("");
-  const [isSubmit, setSubmit] = useState<boolean>(false)
+  const [isSubmit, setSubmit] = useState<boolean>(true)
   const [validKey, setValidKey] = useState<boolean>(false);
 
   useEffect(() => {
     async function getVaildation() {
 
-      setValidKey(await verifyAPIKey(apiKey));
+      // setValidKey(await verifyAPIKey(apiKey));
     }
     // this only checks for validation once the form has been submitted
     if (isSubmit) getVaildation();
@@ -92,5 +95,5 @@ export const Home = () => {
 }
 
 const ValidKey = ({valid} : {valid: boolean}) => {
-  return valid ? <>Valid Key</> : <>invalidKey</>
+  return <div className={valid ? "valid-key" : "invalid-key"}></div>
 }

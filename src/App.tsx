@@ -8,9 +8,10 @@ import './css/App.css';
 import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
 import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
 import { ChatGBTPage } from "./pages/chat-gbt-page/ChatGBTPage";
+import gitLogo from "src/public/github-mark-white.svg";
 function App(): JSX.Element {
   return ( 
-  <>
+  <div className="main-container">
     
     <Router>
       <header className="App-header">
@@ -41,15 +42,18 @@ function App(): JSX.Element {
       <footer> 
           <ApiKeyInput></ApiKeyInput>
           <div className="github-name-links">
-            <p>Isaac</p>
-            <p>Dylan</p>
-            <p>Barry</p>
+            <div className="github-logo-container">
+              <img className="github-logo" src={gitLogo} alt="Git-logo"></img>
+            </div>
+            <a className="github-links" href="https://github.com/barrypreal">Barry</a>
+            <a className="github-links" href="https://github.com/DylanMinchhoff">Dylan</a>
+            <a className="github-links" href="https://github.com/IsaacWeber1">Issac</a>
           </div>
       </footer>
     </Router>
     
     
-   </>
+   </div>
   );
 }
 

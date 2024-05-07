@@ -20,10 +20,6 @@
   --gift-wrap-purple : #352369;
 }
 
-html {
-  /* overflow-y: hidden; */
-}
-
 body html{
   margin: 0;
   padding: 0;
@@ -44,4 +40,9 @@ ul {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.main-container {
+  height: 100vh;
+  max-height: 100vh;
 }
