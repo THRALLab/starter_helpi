@@ -65,7 +65,7 @@ function Home() {
             <Col className="Home-text-basic">
               <div>
                 <img
-                  src="/Images/Home-Page-Basic-Quiz-Picture.jpg"
+                  src="/Home-Page-Basic-Quiz-Picture.jpg"
                   alt="Simple Science Experiment"
                   width="400px"
                   height="287px"
