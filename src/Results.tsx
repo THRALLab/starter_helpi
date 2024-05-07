@@ -9,49 +9,53 @@ export default function Results() {
 	// TODO [ ] - implement the 404 logic when the user attempts to access this page without completing the quiz
 	// TODO [ ] - consider creating a second function that will also call the ChatGPT API but will return data about how much of a close fit a user is (in percentages) to a specific career/how likely it matches them so that you can use this data and implement it for graphs + get more data to add to the results page
 
-	const testMarkdown = `Based on the detailed responses you provided, here are four career paths that might align well with your interests, values, and preferences, along with why they could be suitable choices. Additionally, alternative paths will be suggested if these options aren't appealing or sufficient.
+	const markdownText = `
+	**Career Recommendation Report**
+	
+	**Introduction:**
+	Based on your responses to the survey, we have identified four potential career paths that align closely with your interests, values, capabilities, and aspirations. The selected careers reflect your preference for technology, your willingness to face challenges and competition, your passion for coding and problem-solving, and your desire for recognition and a good work-life balance. Below, each recommended career is discussed in detail, explaining why it might be a suitable choice for you.
+	
+	**Recommended Careers:**
+	
+	**1. Software Developer (Specific Focus: Health & Wellness Applications)**
+	Given your interest in software development and health and wellness promotion, a career in creating applications focused on health and wellness could be highly rewarding. This career would utilize your coding skills, particularly your experience with the MERN stack, and enable you to contribute to areas you care about, such as wellness and preventive healthcare technologies. Your problem-solving and analytical skills would be central to developing innovative solutions that promote better health outcomes. This pathway also offers great potential for recognition within tech and health communities, aligning with your aspiration for appreciation of your contributions.
+	
+	**2. Data Analyst in Public Health Sector**
+	This role involves analyzing data to derive insights that can improve public health policies and practices, which indirectly contributes to tackling broader issues like world hunger by promoting better health standards and resource allocations. Given your analytical skills and interest in making meaningful contributions to societal issues, this career could be fulfilling. The position usually comes with flexible working options and has significant growth potential as data-driven decision-making becomes more integral to public health.
+	
+	**3. Health Tech Product Manager**
+	Transitioning into a product management role within a health tech company could be an excellent fit. It allows you to oversee the development and deployment of technology products that enhance health outcomes. This position would leverage your technical background and interest in health and wellness, offering opportunities for leadership and recognition. Moreover, it aligns with your preference for a good work-life balance and contributes meaningfully to a cause you care about.
+	
+	**4. Compliance Analyst in Cybersecurity for Healthcare Organizations**
+	Given your interest in cybersecurity, a role as a compliance analyst focusing on healthcare organizations could be highly relevant. This career involves ensuring that health data systems comply with laws and regulations, which is crucial for protecting patient information and the integrity of healthcare systems. This role would use your analytical capabilities and also offer stable career prospects with the rise of digital health services.
+	
+	**Alternative Paths:**
+	If the above careers do not fully resonate with you or if you seek different experiences before settling into a long-term career path, consider the following alternatives:
+	- **Further Education**: Pursuing a master’s degree or certifications in fields like data science, cybersecurity, or health informatics could expand your knowledge and make you more competitive in the job market.
+	- **Freelance Tech Consulting**: Given your coding skills and problem-solving abilities, freelance consulting might provide diverse projects without committing to a single corporate path, also enhancing work-life balance.
+	- **Start-up Environment**: Engaging with startups, particularly in the health tech space, can be dynamic and offer rapid growth opportunities, though it might challenge your preference for a structured work-life balance.
+	- **Volunteer or Part-time Roles in Non-profits**: Engaging with non-profit organizations that focus on health and wellness or global issues like hunger can be fulfilling and might offer flexible working conditions.
+	
+	**Conclusion:**
+	The recommended careers have been chosen based on your interest in technology, particularly software development and cybersecurity, and your desire to contribute to health and wellness. These paths not only align with your technical skills and values but also offer opportunities for personal satisfaction and professional growth. Alternative paths are suggested to provide flexibility and additional opportunities to find the career that best fits your evolving aspirations and lifestyle needs.
+	`;
 
-### Career Suggestions
+	const careerRegex = /\*\*(\d+)\. (.+?)\*\*\n([\s\S]*?)(?=\*\*|$)/g;
+	let careers = [];
+	let match;
 
-#### 1. **Software Developer**
-   - **Why:** You mentioned a passion for coding and are currently engaged in a personal coding project using the MERN stack, which indicates a strong interest and skill in software development. This field often offers flexible work arrangements, which align with your need for work-life balance and flexible scheduling. Many tech companies also emphasize growth opportunities and are keen on providing mentorship, addressing your need for career growth and guidance.
-   - **Alternative Paths:** If traditional software development roles seem too mainstream, consider niche areas like developing software for non-profits or social enterprises focused on social justice or equality, aligning with your causes.
-
-#### 2. **Data Analyst**
-   - **Why:** Your interest in technology and analytical aspects could make data analysis a satisfying field. This role can leverage your coding skills and satisfy your inclination towards detailed analysis and problem-solving. Companies that focus on social justice or have corporate social responsibility programs could align with your interests in societal causes.
-   - **Alternative Paths:** Beyond typical business data analysis, you might explore roles in data journalism or in organizations that use data to influence policy changes or advocate for social issues.
-
-#### 3. **Cybersecurity Specialist**
-   - **Why:** Given your interest in technology, particularly in areas that require constant learning and problem-solving, cybersecurity offers dynamic and challenging career opportunities. This field is crucial for protecting information and advocating for ethical standards, which might satisfy your desire to combat 'injustice' in digital spaces. It also offers good income potential and growth opportunities, which are important to you.
-   - **Alternative Paths:** If direct roles in cybersecurity seem too daunting or technical initially, consider starting in risk assessment or compliance roles within IT departments that also focus on security measures.
-
-#### 4. **Tech Startup Founder or Early Team Member**
-   - **Why:** You've shown an interest in potentially starting a small business or an entrepreneurial venture. Working in a startup environment can greatly utilize your broad interests in software development, allows for creative freedom, and often addresses your desired work culture and values such as respect, religious accommodations, and decent work-life balance.
-   - **Alternative Paths:** Consider roles in innovation hubs, tech incubators, or as a freelance consultant to gain varied experiences and network, which can later help you launch or efficiently contribute to a startup.
-
-### Final Thoughts
-Each recommended career path provides opportunities to address both your personal values and professional interests while offering potential for growth, fulfillment, and a positive work environment. If these paths don't seem perfect, the alternatives could provide a better fit or serve as stepping stones to your ideal position.
-
-### Concerns
-The job market in tech can be competitive, making job hunting stressful. Focus on honing unique skills and maybe consider advanced certifications in niche areas of interest. Networking, attending industry conferences, and participating in relevant workshops can also improve visibility and connections in the field.
-
-### Miscellaneous Advice
-Continue to develop a compelling portfolio, especially projects like your personal MERN stack project, as these can be critical in demonstrating your abilities to potential employers or investors. In all cases, ensure that whatever path you choose allows for alignment with your core values and personal growth ambitions.`;
-
-	const four_careers: string[] = [];
-	// loop that will basically iterate over the dummy data and extract the 4 careers by splitting them at "####" which creates an array
-	for (let i = 1; i <= 4; i++) {
-		four_careers.push(
-			testMarkdown
-				.split("####") // the replace methods remove the '1., 2., 3., 4.' list
-				[i].replace("1.", "")
-				.replace("2.", "")
-				.replace("3.", "")
-				.replace("4.", "")
-		);
+	interface Career {
+		title: string;
+		description: string;
 	}
 
-	four_careers[3] = four_careers[3].split("Final Thoughts")[0]; // removes the extra data that's irrelevant attached to the last career and isolates it
+	while ((match = careerRegex.exec(markdownText)) !== null) {
+		const career: Career = {
+			title: match[2],
+			description: match[3].trim()
+		};
+		careers.push(career);
+	}
 
 	return (
 		<>
@@ -61,10 +65,15 @@ Continue to develop a compelling portfolio, especially projects like your person
 			<div className="report">
 				<h1>YOUR TOP 4 CAREER CHOICES:</h1>
 				<div className="cardContainer">
-					{four_careers.map((career: string) => {
+					{careers.map((career: Career, index: number) => {
 						return (
-							<div className="card">
-								<Markdown>{career}</Markdown>
+							<div className="card" key={index}>
+								<h3>
+									<Markdown>{career.title}</Markdown>
+								</h3>
+								<p>
+									<Markdown>{career.description}</Markdown>
+								</p>
 							</div>
 						);
 					})}
