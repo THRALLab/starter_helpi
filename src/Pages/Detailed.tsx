@@ -6,6 +6,7 @@ import Confetti from 'react-dom-confetti';
 import smileIcon from './smile.svg';
 import mehIcon from './meh.svg';
 import sadIcon from './sad.svg';
+import brainIcon from './modifiedBrainIcon.svg';
 
 const config = { /* Configuration for confetti */
     angle: 90,
@@ -127,8 +128,10 @@ const questions: QuestionOption[] = [
             )}
         <header/>
         <div className="progressBarContainer">
-                <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
-            </div><Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button><div className="column">
+    <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+    <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${progressPercentage + 0.5}%` }} />
+</div>
+<Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button><div className="column">
                 {questions.map((q, idx) => (
                     <div key={idx}>
                         <h3 className="question">{q.question}</h3>
