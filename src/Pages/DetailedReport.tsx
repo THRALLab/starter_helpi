@@ -21,7 +21,7 @@ if (prevKey !== null) {
 
 function DetailedReport() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); //Sets whether the page is loading or not
 
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -40,6 +40,7 @@ function DetailedReport() {
     return detailedQuestions.map((x) => x.question);
   };
 
+  //Takes the questions and concatenates them with their corresponding answers
   const joinQuestionsToAnswers = () => {
     return getQuestions().map((x, i) => {
       return x + ": " + slidenums[i] + " ";
@@ -59,11 +60,13 @@ function DetailedReport() {
     exampleFormat +
     "Include the tilda (~) in the report string, it is important.";
 
+  //Sets the user and system prompt
   function setPrompt(newUserPrompt: string, newGPTPrompt: string) {
     UserRolePrompt = newUserPrompt;
     GPTRole = newGPTPrompt;
   }
 
+  //Function that sets the prompts to have GPT expand on one career
   function optionOne(career: string) {
     setPrompt(
       "Expand on this career option you gave me: " + career,
@@ -81,6 +84,7 @@ function DetailedReport() {
     responseData.split("~")
   ); //splits the careers for easy formatting
 
+  //Changes the response data string for formatting
   const changeResponseData = (data: string) => {
     setResponseData(data);
   };
@@ -109,12 +113,9 @@ function DetailedReport() {
       setResponseData("Error! Maybe you forgot to input the API key?");
     }
     setLoading(false);
-    //console.log("responseData: "+ responseData);
-    //console.log("careerList: "+ careerList);
   }
 
-  //const [careerList, setCareerList] = useState<Array<string>>(responseData.split("~"));
-
+  //Ansync function that queries GPT
   const generateReport = async () => {
     await ChatGPT();
     //setCareerList(responseData.split("~"));
