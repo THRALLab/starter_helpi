@@ -223,7 +223,6 @@ const BasicPage = () => {
 					--primary-text-color: white;
 				}
                 `}</style>
-
 		<div className="Page-Container" data-theme = {darkMode? "dark" : "light"}>
 			<div className="quiz-desc">
 				<h1>
@@ -236,73 +235,15 @@ const BasicPage = () => {
 				</p>
 				
 			</div>
-
 			<div style={{textAlign: "center"}}>
-		
-
+	
 				<button className="button" disabled={!allow} onClick={sendResponse}>Get Answer!</button>
 				<button className="button" onClick={doReset} > Clear All</button>
 				<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}}>
 
 					<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 				</Alert>
-
 			</div>
-			<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
-			<span className="QuestionNum">#1</span> <span>
-				<Stack gap={3} style={{marginTop: "30px"}}>
-				<Form.Check 
-						type="radio"
-						id="q1-Option1"
-						label="I prefer working in a group."
-						name="question1"
-						onChange={() => updateChoice(0)}
-						checked={response[0] === 1 }
-			
-						/>
-					<Form.Check
-						type="radio"
-						id="q-1Option2"
-						label="I prefer working on my own."
-						name="question1"
-						onChange={() => updateChoice(1)}
-						checked={response[0] === 0}
-						style={{width:"200px"}}
-						/>
-				</Stack>
-			</span>
-				<span className="QuestionNum">#2</span> <span>
-				<Stack gap={3} style={{marginTop: "30px"}}> 
-				<Form.Check 
-						type="radio"
-						id="q2-Option1"
-						label="I prefer having my schedule made for me."
-						name="question2"
-						onChange={() => updateChoice(2)}
-						checked={response[1] === 1}
-
-						/>
-	return (<>
-	<body className="page-color">
-		<h1 className="basic-title">
-			Basic Quiz
-		</h1>
-		<div className="basic-info">
-		Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
-		The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-		With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
-		</div>
-		<hr style={{marginTop:"10px", opacity:"1"}}></hr>
-		
-		<div style={{textAlign: "center"}}>
-
-			<Button size="lg" disabled={!allow} onClick={sendResponse} style={{marginRight:"20px"}}>Get Answer!</Button>  <Button size="lg" onClick={doReset} > Clear All</Button>
-		</div>
-		<div style={{display: "flex", justifyContent:"center"}}>
-		  <Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
-		    <p>You've completed all the questions, you can now click the answer button to get your results!</p>
-		   </Alert>
-		</div>
 		<div className="question-container">
 		<span className="QuestionNum">#1</span> 
 		<span className="radio-container">
@@ -566,20 +507,12 @@ const BasicPage = () => {
 							style={{marginBottom:"30px"}}/>
 				</Stack>
 				</span>			
-			</div>
-						id="q8-Option2"
-						label="I don't like to travel."
-						name="question8"
-						onChange={() => updateChoice(15)}
-						checked={response[7] === 0}/>
-			</Stack>
-			</span>		
+			</div>	
 		</div>
 		<div style={{marginLeft:"200px", marginRight:"200px", marginBottom:"10px"}}>
 		<ProgressBar variant="success" now={answered} animated max={8} />
 		</div>
-		</body>
-		</>
+	</>
 	);
 };
 export default BasicPage;
