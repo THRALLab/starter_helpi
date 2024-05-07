@@ -9,6 +9,7 @@ import "../Formatting/Home.css";
 import HomePageTop from "../Images/Home-Page-Top.jpg";
 import HomePageBasic from "../Images/Home-Page-Basic.jpg";
 import HomePageDetailed from "../Images/Home-Page-Detailed.jpg";
+import audioTest from "../Audio/Button-Click.mp3";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -107,7 +108,7 @@ function Home() {
           </Row>
         </Container>
         <audio controls>
-          <source src="../Audio/Piggyback.ogg" type="audio/ogg" />
+          <source src={audioTest} type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
       </div>
