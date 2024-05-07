@@ -11,6 +11,79 @@ import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
 
+// Image imports
+
+// Images 1-10
+import Image1 from "../Images/Detailed-Question-1.jpg";
+import Image2 from "../Images/Detailed-Question-2.jpg";
+import Image3 from "../Images/Detailed-Question-3.jpg";
+import Image4 from "../Images/Detailed-Question-4.jpg";
+import Image5 from "../Images/Detailed-Question-5.jpg";
+import Image6 from "../Images/Detailed-Question-6.jpg";
+import Image7 from "../Images/Detailed-Question-7.jpg";
+import Image8 from "../Images/Detailed-Question-8.jpg";
+import Image9 from "../Images/Detailed-Question-9.jpg";
+import Image10 from "../Images/Detailed-Question-10.jpg";
+// Images 11-20
+import Image11 from "../Images/Detailed-Question-11.jpg";
+import Image12 from "../Images/Detailed-Question-12.jpg";
+import Image13 from "../Images/Detailed-Question-13.jpg";
+import Image14 from "../Images/Detailed-Question-14.jpg";
+import Image15 from "../Images/Detailed-Question-15.jpg";
+import Image16 from "../Images/Detailed-Question-16.jpg";
+import Image17 from "../Images/Detailed-Question-17.jpg";
+import Image18 from "../Images/Detailed-Question-18.jpg";
+import Image19 from "../Images/Detailed-Question-19.jpg";
+import Image20 from "../Images/Detailed-Question-20.jpg";
+// Images 21-30
+import Image21 from "../Images/Detailed-Question-21.jpg";
+import Image22 from "../Images/Detailed-Question-22.jpg";
+import Image23 from "../Images/Detailed-Question-23.jpg";
+import Image24 from "../Images/Detailed-Question-24.jpg";
+import Image25 from "../Images/Detailed-Question-25.jpg";
+import Image26 from "../Images/Detailed-Question-26.jpg";
+import Image27 from "../Images/Detailed-Question-27.jpg";
+import Image28 from "../Images/Detailed-Question-28.jpg";
+import Image29 from "../Images/Detailed-Question-29.jpg";
+import Image30 from "../Images/Detailed-Question-30.jpg";
+// End of Quiz
+import EndOfQuizImage from "../Images/End-Quiz.jpg";
+
+
+const questionImages = [
+  Image1,
+  Image2,
+  Image3,
+  Image4,
+  Image5,
+  Image6,
+  Image7,
+  Image8,
+  Image9,
+  Image10,
+  Image11,
+  Image12,
+  Image13,
+  Image14,
+  Image15,
+  Image16,
+  Image17,
+  Image18,
+  Image19,
+  Image20,
+  Image21,
+  Image22,
+  Image23,
+  Image24,
+  Image25,
+  Image26,
+  Image27,
+  Image28,
+  Image29,
+  Image30,
+  EndOfQuizImage,
+];
+
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
