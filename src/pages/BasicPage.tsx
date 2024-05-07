@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Alert, Stack} from "react-bootstrap";
+import { Form, Alert, Stack, ProgressBar} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import { darkMode } from "../components/darkMode";
@@ -223,7 +223,6 @@ const BasicPage = () => {
 					--primary-text-color: white;
 				}
                 `}</style>
-
 		<div className="Page-Container" data-theme = {darkMode? "dark" : "light"}>
 			<div className="quiz-desc">
 				<h1>
@@ -236,10 +235,8 @@ const BasicPage = () => {
 				</p>
 				
 			</div>
-
 			<div style={{textAlign: "center"}}>
-		
-
+	
 				<button className="button" disabled={!allow} onClick={sendResponse}>Get Answer!</button>
 				<button className="button" onClick={doReset} > Clear All</button>
 				<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}}>
@@ -357,38 +354,7 @@ const BasicPage = () => {
 				
 						/>
 				</Stack>
-				</span>
-				<span className="QuestionNum">#3</span> <span>
-					<Stack gap={3} style={{marginTop: "30px"}}> 
-					<Form.Check 
-						type="radio"
-
-						id="q3-Option1"
-						label="I like having detailed instructions when doing a task."
-						name="question3"
-						onChange={() => updateChoice(4)}
-						checked={response[2] === 1}
-						/>
-					<Form.Check 
-						type="radio"
-						id="q3-Option2"
-						label="I prefer having creative freedom when doing a task."
-						name="question3"
-						onChange={() => updateChoice(5)}
-						checked={response[2] === 0}
-						/>
-					</Stack>
-				</span>
-				<span className="QuestionNum">#4</span> <span>
-					<Stack gap={3} style={{marginTop: "30px"}}> 
-					<Form.Check 
-						id="q6-Option2"
-						label="I would only ever work a job I like."
-						name="question6"
-						onChange={() => updateChoice(11)}
-						checked={response[5] === 0}/>
-			</Stack>
-			</span>		
+			</span>
 			<span className="QuestionNum">#7</span> <span>
 			<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
 			<Form.Check 
@@ -429,90 +395,12 @@ const BasicPage = () => {
 					</Stack>
 				</span>	
 			</div>
-			<hr></hr>
-			<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "25px"}}>
-				<span className="QuestionNum">#5</span> <span>
-				<Stack gap={3} style={{marginTop: "30px"}}>
-				<Form.Check 
-							type="radio"
-							id="q5-Option1"
-							label="I enjoy working with my hands."
-							name="question5"
-							onChange={() => updateChoice(8)}
-							checked={response[4] === 1}
-							/>
-						<Form.Check  
-							type="radio"
-							id="q5-Option2"
-							label="I don't like working with my hands."
-							name="question5"
-							onChange={() => updateChoice(9)}
-							checked={response[4] === 0}
-							style={{marginBottom:"30px"}}
-
-						/>
-				</Stack>
-				</span>				
-				<span className="QuestionNum">#6</span> <span>
-				<Stack gap={3} style={{marginTop: "30px"}}> 
-						<Form.Check 
-							type="radio"
-							id="q6-Option1"
-							label="I would work a job I dislike for the money."
-							name="question6"
-							onChange={() => updateChoice(10)}
-							checked={response[5] === 1}/>
-						<Form.Check 
-							type="radio"
-							id="q6-Option2"
-							label="I would only ever work a job I like."
-							name="question6"
-							onChange={() => updateChoice(11)}
-							checked={response[5] === 0}
-							style={{marginBottom:"30px"}}/>
-				</Stack>
-				</span>		
-				<span className="QuestionNum">#7</span> <span>
-				<Stack gap={3} style={{marginTop: "30px"}}> 
-				<Form.Check 
-							type="radio"
-							id="q7-Option1"
-							label="I want to make a difference in the world."
-							name="question7"
-							onChange={() => updateChoice(12)}
-							checked={response[6] === 1}/>
-						<Form.Check 
-							type="radio"
-							id="q7-Option2"
-							label="I just want a job."
-							name="question7"
-							onChange={() => updateChoice(13)}
-							checked={response[6] === 0}
-							style={{marginBottom:"30px"}}/>
-				</Stack>
-				</span>	
-				<span className="QuestionNum">#8</span> <span>
-				<Stack gap={3} style={{marginTop: "30px"}}> 
-				<Form.Check 
-							type="radio"
-							id="q8-Option1"
-							label="I love to travel."
-							name="question8"
-							onChange={() => updateChoice(14)}
-							checked={response[7] === 1}/>
-						<Form.Check 
-							type="radio"
-							id="q8-Option2"
-							label="I don't like to travel."
-							name="question8"
-							onChange={() => updateChoice(15)}
-							checked={response[7] === 0}
-							style={{marginBottom:"30px"}}/>
-				</Stack>
-				</span>			
-			</div>	
+			
 		</div>
-		</>
+		<div style={{marginLeft:"200px", marginRight:"200px", marginBottom:"10px"}}>
+		<ProgressBar variant="success" now={answered} animated max={8} />
+		</div>
+	</>
 	);
 };
 export default BasicPage;
