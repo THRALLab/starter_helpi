@@ -9,7 +9,7 @@ import "../Formatting/Home.css";
 import HomePageTop from "../Images/Home-Page-Top.jpg";
 import HomePageBasic from "../Images/Home-Page-Basic.jpg";
 import HomePageDetailed from "../Images/Home-Page-Detailed.jpg";
-import BackgroundMusic from "../Audio/Button-Click.mp3";
+import BackgroundMusic from "../Audio/Mii-Channel.mp3";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -107,7 +107,7 @@ function Home() {
             </Col>
           </Row>
         </Container>
-        <audio controls>
+        <audio controls hidden>
           <source src={BackgroundMusic} type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
