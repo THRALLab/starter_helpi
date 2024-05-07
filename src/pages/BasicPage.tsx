@@ -348,18 +348,18 @@ const BasicPage = () => {
 						type="radio"
 						id="q6-Option1"
 						label="I want to be able to work whenever I want."
-						name="question2"
+						name="question6"
 						onChange={() => updateChoice(10)}
-						checked={response[1] === 0}
+						checked={response[5] === 1}
 				
 						/>
 					<Form.Check 
 						type="radio"
 						id="q6-Option2"
 						label="I want to be able to work whenever I want."
-						name="question2"
+						name="question6"
 						onChange={() => updateChoice(11)}
-						checked={response[1] === 0}
+						checked={response[5] === 0}
 				
 					/>
 				</Stack>
