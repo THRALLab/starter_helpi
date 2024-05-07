@@ -6,12 +6,9 @@ import Button from "react-bootstrap/esm/Button";
 //import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 import OpenAI from "openai";
 import { key } from "./homePage"
-import { useContext } from "react";
-import { GPTcontext } from "../App";
 
 
-
-function parseAnswers(answers: string|null): string[] {
+export function parseAnswers(answers: string|null): string[] {
 	if (answers === null) return [];
     let array = answers.substring(2,answers.length-2).split("\", \"");
     return array;
@@ -34,8 +31,6 @@ const DetailedPage = () => {
 	const [Response6, setResponse6] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response7, setResponse7] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false, false, false]); //correlates to the the "other" text inputs will be true if the "other" option is selected
-
-	const {GPTresponse, setGPTresponse} = useContext(GPTcontext);
 
 	function handleRadio(option:string, questionNum:number, index:number, otherIndex:number) {  //handles regular radio buttons
 		const newOtherStatus = [...otherSelected];
@@ -155,7 +150,6 @@ const DetailedPage = () => {
 	   setAlert(answered === 7)
     }, [answered]);
 
-	console.log(GPTresponse);
 	return (<>
 		<style>{`
         .question-box {
@@ -198,8 +192,9 @@ const DetailedPage = () => {
 			</p>
 		</div>
 		<div style={{textAlign:"center"}}>
-
-		<Button size="lg" onClick={sendRespone} disabled={!allow}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		
+		<Button size="lg" onClick={sendRespone} disabled={!allow}> Get Answer! </Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		
 		<ProgressBar animated variant="success" now={answered} max={7} style={{marginLeft:"100px", marginRight:"100px", marginTop:"25px"}}></ProgressBar>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible>
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
@@ -738,8 +733,10 @@ const DetailedPage = () => {
 				top_p: 1,
 				});
 				
-				setGPTresponse(parseAnswers(response.choices[0].message.content)); //GPT Response to the user's input
-				//setGPTresponse("[\"It\", \"is working\", \"yay\", \"\", \"\", \"\", \"\", \"\"]"); 
+				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
+				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
+
+				window.location.href = "/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				//console.log(e);

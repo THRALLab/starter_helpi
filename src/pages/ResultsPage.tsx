@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import './resultsPage.css';
-import { GPTcontext } from '../App';
 
 
 
@@ -11,7 +9,16 @@ import { GPTcontext } from '../App';
 
 const ResultsPage = () => {
 
-    const {GPTresponse} = useContext(GPTcontext);
+    //get gptresponse from local storage
+    const response:string | null = localStorage.getItem("GPTresponse");
+    let GPTresponse:string[];
+    if (response === null) {
+        GPTresponse = ["Career not found", "Please try again", "", "", "", "", "", ""]
+    }
+    else {
+        GPTresponse = JSON.parse(response || "[]");
+    }
+
     return(
         <>
         <div className="mainCareer">

@@ -3,8 +3,6 @@ import { Button, Form } from "react-bootstrap";
 import splash from "../images/businessman.png"
 import pie from "../images/piechart.png"
 import './homePage.css';
-import { GPTcontext } from "../App";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 //import OpenAI from "openai";
 
@@ -65,8 +63,6 @@ import { Link } from "react-router-dom";
             console.log(e);
         }  
     }*/
-    const {GPTresponse, setGPTresponse} = useContext(GPTcontext);
-    console.log(GPTresponse);    
 
     return (
         <>

@@ -11,17 +11,11 @@ import DetailedPage from './pages/DetailedPage';
 import HomePage from './pages/homePage';
 import BasicPage from './pages/BasicPage';
 import ResultsPage from './pages/ResultsPage';
-import { createContext, useState } from 'react';
-
-export const GPTcontext = createContext<{ GPTresponse: string[], setGPTresponse: React.Dispatch<React.SetStateAction<string[]>> }>({ GPTresponse: [], setGPTresponse: () => {} });
 
 
 function App() {
-
-  const [GPTresponse, setGPTresponse] = useState<string[]>(["Career 1", "Career 1 Description", "Career 2", "Career 2 Description", "Career 3", "Career 3 Description", "Career 4", "Career 4 Description"]);
 return(
     <>    
-    <GPTcontext.Provider value={{GPTresponse, setGPTresponse}}>
     <Router>
       <Navbar />
       <Routes>
@@ -41,7 +35,6 @@ return(
         <p>Developed by Saini, Le, Torres, and Walsh</p>
         <p>For more information, email jassaini@udel.edu</p>
       </div>
-      </GPTcontext.Provider>
     </>
   );
 }

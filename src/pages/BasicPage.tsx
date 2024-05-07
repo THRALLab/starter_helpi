@@ -3,7 +3,7 @@ import { Form, ProgressBar, Alert, Stack } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 import OpenAI from "openai";
 import { key } from "./homePage"
-
+import { parseAnswers } from "./DetailedPage";
 
 const BasicPage = () => {
 	const [response, setResponse] = useState<(number)[]>
@@ -134,8 +134,10 @@ const BasicPage = () => {
 				max_tokens: 64, //should be 512
 				top_p: 1,
 				});
-	
-				console.log(response.choices[0].message.content); //GPT Response to the user's input
+				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
+				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
+				
+				window.location.href = "/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				//console.log(e);
