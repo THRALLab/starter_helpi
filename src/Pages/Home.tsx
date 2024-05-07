@@ -3,10 +3,12 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
-//import 123 from "../Audio/123.mp3";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Home.css";
+//import HomePageTop from "../Images/Home-Page-Top.jpg";
+//import HomePageBasic from "../Images/Home-Page-Basic.jpg";
+//import HomePageDetailed from "../Images/Home-Page-Detailed.jpg";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -46,7 +48,7 @@ function Home() {
           <Row>
             <div className="Home-body">
               <img
-                src="https://img.freepik.com/free-vector/flat-laboratory-room-with-microscope_23-2148885022.jpg?w=1480&t=st=1714680547~exp=1714681147~hmac=d379d0ea435a9f15edcacf0bca29ae324baaec7273b9e4545a3906992e2115be"
+                src={process.env.PUBLIC_URL + "/Images/Home-Page-Top.jpg"}
                 alt="Science Laboratory"
                 width="628px"
                 height="417px"
@@ -65,7 +67,7 @@ function Home() {
             <Col className="Home-text-basic">
               <div>
                 <img
-                  src="/Home-Page-Basic-Quiz-Picture.jpg"
+                  src={process.env.PUBLIC_URL + "/Images/Home-Page-Basic.jpg"}
                   alt="Simple Science Experiment"
                   width="400px"
                   height="287px"
@@ -85,7 +87,9 @@ function Home() {
             <Col className="Home-text-detailed">
               <div>
                 <img
-                  src="/Images/Home-Page-Detailed-Quiz-Picture.jpg"
+                  src={
+                    process.env.PUBLIC_URL + "/Images/Home-Page-Detailed.jpg"
+                  }
                   alt="Complex Science Experiment"
                   width="400px"
                   height="287px"
@@ -105,7 +109,7 @@ function Home() {
           </Row>
         </Container>
         <audio controls>
-          <source src="/Audio/Piggyback.ogg" type="audio/ogg" />
+          <source src="../Audio/Piggyback.ogg" type="audio/ogg" />
           Your browser does not support the audio element.
         </audio>
       </div>
