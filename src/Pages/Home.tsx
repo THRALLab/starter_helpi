@@ -108,7 +108,7 @@ function Home() {
           </Row>
         </Container>
         <audio controls>
-          <source src={audioTest} type="audio/ogg" />
+          <source src={audioTest} type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
       </div>
