@@ -101,7 +101,7 @@ function SimpleQuestions() {
     loadQuestions();
   }, [questionNumber]);
 
-  // Function that is called to advance to the next question by iterating forward though the 
+  // Function that is called to advance to the next question by iterating forward though the
   // question array and updating all properties.
   const nextQuestion = (selectedOption: string) => {
     // currentQuestionNumber displays current question. questionNumber is iteration in array.
@@ -134,7 +134,7 @@ function SimpleQuestions() {
     }
   };
 
-  // Function that is called to backtrack to the previous question by iterating backwards though the 
+  // Function that is called to backtrack to the previous question by iterating backwards though the
   // question array and updating all properties.
   const previousQuestion = () => {
     // Check if you are not on the first question.
