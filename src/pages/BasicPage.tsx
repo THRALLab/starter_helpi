@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert, Stack} from "react-bootstrap";
+import { Form, Alert, Stack} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import { darkMode } from "../components/darkMode";
