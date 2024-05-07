@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import { Form, ProgressBar } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { HashRouter as Router, Link, useNavigate } from 'react-router-dom';
 import './App.css';
+
 //Radio Button options
 const OPTIONS = [
   "Disagree",
@@ -33,9 +34,26 @@ const BasicQuestions: React.FC = () => {
     setChosenOption(newOptions);
   }
   
+  //used to find how much the progress bar should be filled based on # of questions answered
   const progress = (chosenOption.filter(option => option !== null).length / QUESTIONS.length) * 100;
-  const allQuestionsAnswered = chosenOption.every(option => option != null);
-
+  //See if all questions are answered
+  const allQuestionsAnswered = chosenOption.every(option => option !== null);
+  const navigate = useNavigate();
+  
+  //Saves answers and questions into json file using local storage
+  function saveToLocalStorage() {
+      const storedItem = localStorage.getItem('BasicQuestionAnswers');
+      if(storedItem !== null) {
+        const answers = JSON.parse(storedItem) || {  BasicQuestions: QUESTIONS, BasicAnswers: []};
+        answers.BasicAnswers.push({ chosenOption });
+        localStorage.setItem('BasicQuestionAnswers', JSON.stringify(answers));
+      }
+  }
+  //saves changes to localstorage and navigates to results page
+  function handleResults() {
+    saveToLocalStorage();
+    navigate('/report')
+  }
   
   return (
       <div>
@@ -77,7 +95,7 @@ const BasicQuestions: React.FC = () => {
           ))}
         </div>
       {allQuestionsAnswered ? <p>Thank you for taking the time to answer the above questions! Press the below button to see results</p>: <p></p>}
-          <button disabled={!allQuestionsAnswered}>See Results</button>
+          <button onClick={ handleResults } disabled={!allQuestionsAnswered}>See Results</button>
       </div>
   );
 }

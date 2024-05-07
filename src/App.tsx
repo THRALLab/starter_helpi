@@ -9,6 +9,7 @@ import { Button, Form } from 'react-bootstrap';
 import BasicQuestions from './BasicQuestions';
 import DetailedQuestions from './DetailedQuestions';
 import Report from './Report';
+import BasicResults from './basicResults';
 
 
 // Local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -138,6 +139,7 @@ function App() {
           <Route path="/basic-questions" element={<BasicQuestions />} />
           <Route path="/detailed-questions" element={<DetailedQuestions />} />
           <Route path="/report" element={<Report />} />
+          <Route path="/basicResults" element={<BasicResults />} />
         </Routes>
       </div>
       <div className="api-key-section">
