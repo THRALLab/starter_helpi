@@ -1,0 +1,16 @@
+@keyframes wave {
+    0% {
+      transform: translateY(0) scaleY(0.8);
+    }
+    50% {
+      transform: translateY(-10px) scaleY(1.2);
+    }
+    100% {
+      transform: translateY(0) scaleY(0.8);
+    }
+  }
+  .element {
+    animation: wave 2s linear infinite;
+  }
+  
+  
