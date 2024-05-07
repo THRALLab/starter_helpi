@@ -7,14 +7,16 @@
 	box-sizing: border-box;
 	height: 200px;
 	padding: 10px;
-	background-color: rgb(114, 49, 104);
+	background-color: rgb(137, 69, 127);
 	position: relative;
+	border: 2px solid fuchsia;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .backdrop h1 {
-	text-align: center;
 	color: white;
-	margin-top: 5%;
 	font-size: 40px;
 	font-family: "Merriweather Sans", sans-serif;
 	font-weight: 500;
