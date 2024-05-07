@@ -107,7 +107,7 @@ function Home() {
             </Col>
           </Row>
         </Container>
-        <audio controls hidden>
+        <audio controls>
           <source src={BackgroundMusic} type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
