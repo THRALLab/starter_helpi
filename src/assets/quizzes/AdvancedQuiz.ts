@@ -1,40 +1,50 @@
 import { Question } from "../../interfaces/QuestionTypes";
 
 export const advancedQuiz: Record<string, Question> = {
-  question3: {
-    id: "question3",
-    type: "MC_SINGLE_RESPONSE",
-    prompt: "What is your current level of education?",
-    description: "If currently in school, select your current level",
-    options: ["High School (or earlier)", "College (BA/BS)", "Master's Degree", "PhD", "No formal education"]
+  question1: {
+    "id": "question1",
+    "type": "MC_SINGLE_RESPONSE",
+    "prompt": "What is your highest level of education?",
+    "description": "Select the highest degree you have achieved or are actively pursuing.",
+    "options": [
+      "High School or equivalent",
+      "Some College",
+      "Associate's Degree",
+      "Bachelor's Degree",
+      "Master's Degree",
+      "Doctoral or Professional Degree",
+      "Other (please specify)"
+    ]
   },
   question2: {
-    id: "question2",
-    type: "MC_SINGLE_RESPONSE",
-    prompt: "Which describes you best?",
-    description: "It is ok to be unsure",
-    options: [
-        "Unsure about what Career I want",
-        "Know the general field I would like to pursue",
-        "Know the specific field I would like to specialize in",
-        "Already have a lot of exprience and am looking to take the next step to further my career",
-        "Have a lot of expeience in my current career, but am looking to make a career change",
-        "None of these apply"
-      ],
+    "id": "question2",
+    "type": "TEXT_RESPONSE",
+    "prompt": "Please describe your most recent job or professional experience, including your role and main responsibilities.",
+    "description": "This will help us understand your current professional capabilities and experience.",
+    "options": []
   },
-  question1: {
-    id: "question1",
-    type: "USER_RANKING",
-    prompt: "Rank your preference:",
-    description: "",
-    options: ["Science", "Arts", "Business", "Technology", "Other(click to specify)"],
+  question3: {
+    "id": "question3",
+    "type": "MC_MULTI_RESPONSE",
+    "prompt": "Which industries have you worked in or are particularly interested in?",
+    "description": "Select all that apply to give a clearer view of your industry preferences.",
+    "options": [
+      "Technology",
+      "Education",
+      "Healthcare",
+      "Finance",
+      "Engineering",
+      "Art and Design",
+      "Marketing",
+      "Other (please specify)"
+    ]
   },
   question4: {
-    id: "question4",
-    type: "TEXT_RESPONSE",
-    prompt: "Do you have any relavant work or academic experience you would like to mention?",
-    description: "Include anything from past jobs to courses you have taken",
-    options: []
+    "id": "question4",
+    "type": "TEXT_RESPONSE",
+    "prompt": "How do you feel about your current path? Within your field of interest, are there specific areas or topics that particularly excite you? Please describe.",
+    "description": "This question aims to uncover more detailed aspects of your interests within your broader industry field.",
+    "options": []
   },
   question5: {
     id: "question5",

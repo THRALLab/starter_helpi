@@ -1,5 +1,5 @@
 // Import necessary hooks and components
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
@@ -11,6 +11,7 @@ import OpenAI from "openai";
 import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
+import { Button } from "react-bootstrap";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -19,13 +20,15 @@ type QuestionAns = {
     answer: string
 }
 
-type AnswerResponse = {
-    summary: string,
-    advice: string,
-    interactiveElements: string,
-    recommendations: string,
-    reasoning: string
+type Career = {
+    role: string, 
+    description: string,
+    benefits: string[]
+    challenges: string[]
+    links: string[]
 }
+
+type FinalReport = Career[];
 
 export function DisplayQuiz(
     { 
@@ -179,40 +182,113 @@ export function DisplayQuiz(
     // if(Object.keys(quiz).length === 0) createQuiz();
     
     const DisplayResults = () => {
-        const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
-        const [response, setResponse] = useState<OpenAI.ChatCompletion>();
-        const [loaded, setLoaded] = useState(false);
+        // const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
+        // const [response, setResponse] = useState<OpenAI.ChatCompletion>();
+        // const [loaded, setLoaded] = useState(false);
+        // const [currRoles, setRoles] = useState<string[]>([]);
     
-        useEffect(() => {
-            async function getFinalResponse() {
-                const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
-                setResponse(response);
-                setLoaded(true);
-            }
+        // useEffect(() => {
+        //     async function getFinalResponse() {
+        //         const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
+        //         setResponse(response);
+        //         setLoaded(true);
+        //     }
     
-            if (!response) getFinalResponse();
-        }, [questionAns, response]);
+        //     if (!response) getFinalResponse();
+        // }, [questionAns, response]);
     
-        if (!loaded) return <Loading type="finalReport"/>;
+        // if (!loaded) return <Loading type="finalReport"/>;
     
-        if (!response || !response.choices.length) return <p>Error Occurred</p>;
+        // if (!response || !response.choices.length) return <p>Error Occurred</p>;
 
-        const finalAns = response.choices[response.choices.length-1].message.content;
-        if(finalAns == null) return<>Error Occured</>
-        const finalResponse: AnswerResponse = JSON.parse(finalAns);
+        // const finalAns = response.choices[response.choices.length-1].message.content;
+        // if(finalAns == null) return<>Error Occured</>
+        // const finalResponse: FinalReport = JSON.parse(finalAns);
+        const finalResponse: FinalReport = [{
+            "role": "Data Scientist",
+            "description": "Data scientists analyze and interpret complex digital data to assist in decision-making. This role involves statistical analysis, machine learning, and the use of advanced analytical techniques to create actionable insights from big data.",
+            "benefits": [
+              "High demand in tech-driven industries, ensuring job security.",
+              "Opportunities for working with cutting-edge technologies in diverse fields."
+            ],
+            "challenges": [
+              "Requires continuous learning to keep up with rapidly evolving technologies.",
+              "Often involves sorting through ambiguous and unstructured data, which can be time-consuming and complex."
+            ],
+            "links": [
+              "https://www.indeed.com/q-Data-Scientist-jobs.html",
+              "https://www.coursera.org/courses?query=data%20science"
+            ]
+          },
+          {
+            "role": "Renewable Energy Engineer",
+            "description": "Renewable energy engineers work on the development and implementation of alternative energy sources such as solar and wind power. They design, test, and oversee the deployment of technologies aimed at improving energy efficiency and reducing environmental impact.",
+            "benefits": [
+              "Contributes to environmental sustainability.",
+              "Growing sector with government and private sector investment."
+            ],
+            "challenges": [
+              "Work can be subject to the political climate and shifting regulatory frameworks.",
+              "Involves coordination with many stakeholders, which can slow project timelines."
+            ],
+            "links": [
+              "https://www.greenjobs.co.uk/renewable-energy-jobs",
+              "https://www.edx.org/learn/renewable-energy"
+            ]
+          }];
+          const [currRoles, setCurrRoles] = useState<string[]>([]); 
+
+        function updateRoles (newRole: string) {
+            // const newRoles: string[] = currRoles.includes(newRole) 
+            //     ? [...currRoles].filter((currRole: string) => (currRole !== newRole))
+            //     : [...currRoles, newRole];
+            //     setCurrRoles(newRoles);
+            setCurrRoles(prevRoles => 
+                prevRoles.includes(newRole)
+                ? prevRoles.filter(role => role !== newRole)
+                : [...prevRoles, newRole]
+            );
+    
+        }
     
         return (
             <>
-                <h2>Career Report Summary</h2>
-                <p>{finalResponse.summary}</p>
-                <h3>Detailed Advice</h3>
-                <p>{finalResponse.advice}</p>
-                <h3>Explore Further</h3>
-                <p>{finalResponse.interactiveElements}</p>
-                <h3>Recommended Career Paths</h3>
-                <p>{finalResponse.recommendations}</p>
-                <h3>Why These Paths?</h3>
-                <p>{finalResponse.reasoning}</p>
+                <h2>Final Results:</h2>
+                {finalResponse.map((career: Career) => (
+                    <>
+                        <Button
+                            onClick={() => updateRoles(career.role)}
+                        >{currRoles.includes(career.role) ? `Hide ${career.role}  ^` : `View ${career.role}  ⌄`}</Button>
+                        {currRoles.includes(career.role) && (
+                            <>
+                                <ul>
+                                    <li><strong>{career.role}</strong>: {career.description}</li>
+                                    <li>
+                                        {career.benefits.map((benefit: string) => (
+                                            <ul key={benefit}>
+                                                <li>{benefit}</li>
+                                            </ul>
+                                        ))}
+                                    </li>
+                                    <li>
+                                        {career.challenges.map((challenge: string) => (
+                                            <ul key={challenge}>
+                                                <li>{challenge}</li>
+                                            </ul>
+                                        ))}
+                                    </li>
+                                    <li>
+                                        {career.links.map((link: string) => (
+                                            <ul key={link}>
+                                                <li><a href={link}>{link}</a></li>
+                                            </ul>
+                                        ))}
+                                    </li>
+                                </ul>
+                            </>
+                        )}
+                    </>
+                ))}
             </>
         );
     }
