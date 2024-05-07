@@ -34,13 +34,36 @@ The job market in tech can be competitive, making job hunting stressful. Focus o
 ### Miscellaneous Advice
 Continue to develop a compelling portfolio, especially projects like your personal MERN stack project, as these can be critical in demonstrating your abilities to potential employers or investors. In all cases, ensure that whatever path you choose allows for alignment with your core values and personal growth ambitions.`;
 
+	const four_careers: string[] = [];
+	for (let i = 1; i <= 4; i++) {
+		four_careers.push(
+			testMarkdown
+				.split("####")
+				[i].replace("1.", "")
+				.replace("2.", "")
+				.replace("3.", "")
+				.replace("4.", "")
+		);
+	}
+
+	four_careers[3] = four_careers[3].split("Final Thoughts")[0];
+
 	return (
 		<>
 			<div className="backdrop">
 				<h1>WELCOME TO YOUR RESULTS!</h1>
 			</div>
 			<div className="report">
-				<Markdown>{testMarkdown}</Markdown>
+				<h1>YOUR TOP 4 CAREER CHOICES:</h1>
+				<div className="cardContainer">
+					{four_careers.map((career: string) => {
+						return (
+							<div className="card">
+								<Markdown>{career}</Markdown>
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		</>
 	);

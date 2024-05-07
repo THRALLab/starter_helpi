@@ -28,18 +28,46 @@
 	margin: 50px auto 50px;
 	box-sizing: border-box;
 	padding: 10px;
-	border: 2px solid black;
+	/* border: 2px solid black; */
 	min-height: 100vh;
 	max-height: inherit;
 	font-family: "Rubik", sans-serif;
 	font-weight: 400;
 }
 
-.report h3,
-.report h4 {
+.report h1 {
 	font-family: "Merriweather Sans", sans-serif;
-	font-weight: 500;
-	text-decoration: underline;
+	text-align: center;
+	margin-top: -10px;
+	color: rgb(192, 9, 9);
+}
+
+.report .cardContainer {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.report .cardContainer .card ul,
+.report .cardContainer .card ol {
+	margin: 25px;
+	padding: 5px;
+}
+
+.report .cardContainer .card {
+	flex: 1 1 45%;
+	margin: 5px;
+	border: 2px solid red;
+	padding: 5px;
+}
+
+.report .cardContainer .card p {
+	/* margin: 10px 20px -15px 20px; */
+	margin-bottom: -15px;
+	text-align: center;
+	font-size: 20px;
 }
 
 .NotFoundContainer {
