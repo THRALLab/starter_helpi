@@ -346,13 +346,22 @@ const BasicPage = () => {
 			<Stack  className="last4" gap={3} style={{marginTop: "30px"}}> 
 					<Form.Check 
 						type="radio"
-						id="q2-Option2"
+						id="q6-Option1"
 						label="I want to be able to work whenever I want."
 						name="question2"
-						onChange={() => updateChoice(3)}
+						onChange={() => updateChoice(10)}
 						checked={response[1] === 0}
 				
 						/>
+					<Form.Check 
+						type="radio"
+						id="q6-Option2"
+						label="I want to be able to work whenever I want."
+						name="question2"
+						onChange={() => updateChoice(11)}
+						checked={response[1] === 0}
+				
+					/>
 				</Stack>
 			</span>
 			<span className="QuestionNum">#7</span> <span>
@@ -377,20 +386,19 @@ const BasicPage = () => {
 			<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
 			<Form.Check 
 						type="radio"
-						id="q4-Option1"
+						id="q8-Option1"
 						label="I enjoy a job that challenges me."
 						name="question4"
-						onChange={() => updateChoice(6)}
-						checked={response[3] === 1}
+						onChange={() => updateChoice(14)}
+						checked={response[7] === 1}
 						/>
 					<Form.Check 
 						type="radio"
-
-						id="q4-Option2"
+						id="q8-Option2"
 						label="I want a job that is easy."
-						name="question4"
-						onChange={() => updateChoice(7)}
-						checked={response[3] === 0}
+						name="question8"
+						onChange={() => updateChoice(15)}
+						checked={response[7] === 0}
 						/>
 					</Stack>
 				</span>	
