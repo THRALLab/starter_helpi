@@ -126,7 +126,7 @@
   min-height: 10vh;
   background-color: var(--color-body-Headerbackground);
   font-family: Arial;
-  --font-Header: stencil;
+  --font-Header: Helvetica;
 }
 
 .Header-toggle {
