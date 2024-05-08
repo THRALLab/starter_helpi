@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState} from "react";
 import questions from "./basicQuestions.json";
 import { QuestionFormatProps } from "./interfaces/questionFormat";
 import { BasicOptions } from "./interfaces/basicOption";
 import "./Basic.css";
-
+import Modal from "./Modal";
+import Confetti from 'react-confetti';
+//component used for basic question format
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
