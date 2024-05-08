@@ -11,6 +11,10 @@ export const DarkModeToggle = () => {
     setLabel(isDark ? "Dark Mode" : "Light Mode");
     darkMode = isDark;
     console.log("Mode: " + (darkMode? "Dark" : "Light"));
+
+    document.body.style.backgroundColor = isDark ? "black" : "white";
+    document.body.style.color = isDark ? "red" : "blue";
+    document.body.style.transition = "all 0.5s";
   };
 
   return (

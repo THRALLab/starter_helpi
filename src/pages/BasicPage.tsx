@@ -3,7 +3,6 @@ import { Form, Alert, Stack, ProgressBar} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import { parseAnswers } from "./DetailedPage";
-import { darkMode } from "../components/darkMode";
 import "./basicPage.css"
 
 
@@ -106,7 +105,7 @@ const BasicPage = () => {
 		}
 
 		//console.log(answers + '/n')
-		console.log(description);
+		//console.log(description);
 
 		return description;
 	}
@@ -146,6 +145,7 @@ const BasicPage = () => {
 				//console.log(e);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
 				window.location.href = "./starter_helpi/"; 
+				window.scrollTo(0, 0);
 			}  
 		}
 
@@ -172,12 +172,9 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
-
-	darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
-	darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
 	return (<>
 		<body className="page-color">
-		<div className="Page-Container" data-theme = {darkMode? "dark" : "light"}>
+		<div className="Page-Container">
 			<div className="quiz-desc">
 				<h1>
 					Basic Quiz

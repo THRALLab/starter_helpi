@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert, Button, /*FormLabel*/ 
+import { Form, ProgressBar, Alert, Button,
 Offcanvas, OffcanvasHeader,OffcanvasTitle, Row, Col, Container} from "react-bootstrap";
-//import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import "./detailedPage.css";
