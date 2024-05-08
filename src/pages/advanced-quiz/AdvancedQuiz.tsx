@@ -11,9 +11,15 @@ export const AdvancedQuiz = () => {
     const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
     const [currTotQuestions, setCurrTotQuestions] = useState<number>(5);
     const totalQuestions = 20;
-    const initialMax = 7
+    const initialMax = 9
     return(
-    <div className="basicQuiz-container">
+    <div
+        style={{
+            padding: 'vh',
+            paddingBottom: '100px'
+        }}
+    >
+        <>
         <ProgressBar
             value={questionsAnswered}
             max={currTotQuestions}
@@ -30,5 +36,6 @@ export const AdvancedQuiz = () => {
                 setCurrTotQuestions={setCurrTotQuestions}
             />
         </Suspense>
+        </>
     </div>)
 }
