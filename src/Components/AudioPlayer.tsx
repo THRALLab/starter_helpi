@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import {
+  isPlayingAudio,
+  updatePlayingAudio,
+  audioIcon,
+  updateAudioIcon,
+} from "./StateParent";
 import ButtonClick from "../Audio/Button-Click2-Trimmed.mp3";
 import BackgroundSound from "../Audio/Burgers.mp3";
 import SliderClick from "../Audio/Slider-Click.mp3";
-import { isPlayingAudio } from "./StateParent";
-import { updatePlayingAudio } from "./StateParent";
 
 const buttonSoundEffect = new Audio(ButtonClick);
 const sliderSoundEffect = new Audio(SliderClick);
 const backgroundMusic = new Audio(BackgroundSound);
-type emojiList = "🔊" | "🔇";
-const emojis: Record<emojiList, emojiList> = {
-  "🔊": "🔇",
-  "🔇": "🔊",
-};
 
 //Sound effect played when buttons clicked
 export function playButtonClick() {
@@ -28,7 +27,7 @@ export function playSliderSet() {
 export function AudioPlayer() {
   //Audio States
   const [, setAudioState] = useState<boolean>(isPlayingAudio);
-  const [display, setDisplay] = useState<emojiList>("🔊");
+  const [display, setDisplay] = useState<string>(audioIcon);
   //Plays / Pauses the music
   function backgroundMusicPlayer() {
     buttonSoundEffect.play();
@@ -41,7 +40,8 @@ export function AudioPlayer() {
     } else {
       backgroundMusic.pause();
     }
-    setDisplay(emojis[display]);
+    updateAudioIcon();
+    setDisplay(audioIcon);
   }
   //Music Button for Header
   return (

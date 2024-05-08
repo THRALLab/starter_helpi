@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import OpenAIAPi from "openai";
 import { Button, Form, Spinner } from "react-bootstrap";
-import { LinkButton } from "../Components/LinkButton";
+import { Header } from "../Components/Header";
 import { themeState } from "../Components/StateParent";
-import { ThemeSelect } from "../Components/ThemeSelect";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
 import { getQuestions } from "../Pages/SimpleQuestions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
-import { AudioPlayer } from "../Components/AudioPlayer";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -84,22 +82,7 @@ function SimpleReport() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="Header-general" id="Header-Full">
-        <span className="Header-toggle">
-          <ThemeSelect></ThemeSelect>
-        </span>
-        <span className="Header-text">The Career Lab</span>
-        <span className="Header-Audio">
-          <AudioPlayer></AudioPlayer>
-        </span>
-        <span className="Header-button">
-          <LinkButton
-            to="/"
-            label="Home"
-            classNameGive="Button-link"
-          ></LinkButton>
-        </span>
-      </div>
+      <Header></Header>
 
       <div className="Page-body">
         <div className="Report-space">

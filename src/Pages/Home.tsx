@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Header } from "../Components/Header";
 import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/StateParent";
-import { ThemeSelect } from "../Components/ThemeSelect";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Home.css";
 import HomePageTop from "../Images/Home-Page-Top.jpg";
 import HomePageBasic from "../Images/Home-Page-Basic.jpg";
 import HomePageDetailed from "../Images/Home-Page-Detailed.jpg";
-import { AudioPlayer } from "../Components/AudioPlayer";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -34,22 +33,7 @@ function Home() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="Header-general" id="Header-Full">
-        <span className="Header-toggle">
-          <ThemeSelect></ThemeSelect>
-        </span>
-        <span className="Header-text">The Career Lab</span>
-        <span className="Header-Audio">
-          <AudioPlayer></AudioPlayer>
-        </span>
-        <span className="Header-button">
-          <LinkButton
-            to="/"
-            label="Home"
-            classNameGive="Button-link"
-          ></LinkButton>
-        </span>
-      </div>
+      <Header></Header>
 
       <div className="Page-body">
         <Container>
