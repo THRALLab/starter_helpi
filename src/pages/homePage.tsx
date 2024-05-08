@@ -102,16 +102,20 @@ import { reviews } from "./ResultsPage"
                 <p>Career quizzes are proven to help the masses achieve thier goals and secure professional success. Money can buy happiness, but only purpose can bring fulfillment.</p>
             </div>
             <div className="quiz-data-graph">
-                <div className="piechart"></div>
-                <div>{reviews}</div>
-                <div style={{
-                    width: "200px",
-                    height: "200px",
-                    borderRadius: "50%",
-                    background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)' 
-                }}></div>
-                <p>total reviws: {totalReviews}</p>
-                <p>Satisfaction rates from other users!</p>
+                <div className="piechart">
+                    <div style={{
+                        width: "300px",
+                        height: "300px",
+                        borderRadius: "50%",
+                        background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)'
+                    }}></div>
+                    <div className="legend">
+                        <p style={{color: "#386e2d"}}>"I Loved It!" {fixedReviews[0]}</p>
+                        <p style={{color: "#dbd52c"}}>"It was alright."{fixedReviews[1]}</p>
+                        <p style={{color: "#b32b2b"}}>"I'm not so impressed."{fixedReviews[2]}</p>
+                    </div>
+                </div>
+                <p>~All real data collected on our site~</p>
             </div>
         </div>
         <Form>
