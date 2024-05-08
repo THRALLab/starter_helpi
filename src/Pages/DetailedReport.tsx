@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import OpenAIAPi from "openai";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
-import { themeState } from "../Components/ThemeParent";
+import { themeState } from "../Components/StateParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import { slidenums } from "./DetailedQuestions";
