@@ -44,7 +44,7 @@ const DetailedPage = () => {
 			newOtherStatus[otherIndex] = true; //changes the otherSelected index to true
 			setOtherSelected(newOtherStatus);	
 			newResponse.fill(false, 0, 4); // Reset all options for this question to false
-			} else {
+		} else {
 			newOtherStatus[otherIndex] = false;
 			setOtherSelected(newOtherStatus);
 			newResponse.fill(false,0,4);
@@ -79,7 +79,7 @@ const DetailedPage = () => {
             questionNum === 2 ? Response2 :
             questionNum === 3 ? Response3 :
             questionNum === 4 ? Response4 :
-            questionNum === 5? Response5 :
+            questionNum === 5 ? Response5 :
             questionNum === 6 ? Response6 :
             questionNum === 7 ? Response7 : [];
     const newResponse = [...responseState];
@@ -228,7 +228,7 @@ const DetailedPage = () => {
 				name="question1"
 				onChange={() => handleRadio("holder", 1,1, 0)}/>
 				{Response1[1] === true}
-				</div>
+			</div>
 			<div className="reg-radio">
 			<Form.Check
 				inline

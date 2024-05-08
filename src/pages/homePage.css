@@ -120,17 +120,6 @@
     height: 90%;
 }
 
-.piechart { 
-    width: 200px;
-                height: 200px;
-                border-radius: 50%;
-                background-image: conic-gradient(
-                    pink 70deg,
-                    lightblue 0 235deg,
-                    orange 0
-                );
-}
-
 .quiz-data-graph {
     border: solid 1px grey;
 }

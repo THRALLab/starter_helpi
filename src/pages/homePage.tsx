@@ -4,6 +4,8 @@ import splash from "../images/businessman.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
 import { Link } from "react-router-dom";
+import { reviews } from "./ResultsPage"
+// import { PieChartObject } from "./ResultsPage";
 //import OpenAI from "openai";
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -63,6 +65,14 @@ import { Link } from "react-router-dom";
         }  
     }*/
 
+    const fixedReviews: number[] = JSON.parse(reviews);
+
+    const totalReviews = fixedReviews[0] + fixedReviews[1] + fixedReviews[2];
+    const goodDegs = (fixedReviews[0] / totalReviews) * 360 
+    const medDegs = (fixedReviews[1] / totalReviews) * 360 + goodDegs;
+    const badDegs = (fixedReviews[2] / totalReviews) * 360 + medDegs;
+
+
     return (
         <>
         <div className="splash-container">
@@ -70,7 +80,7 @@ import { Link } from "react-router-dom";
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
-            <Link to="/#quiz-desc-container">Find your quiz!</Link>
+            <Link to="../#quiz-descs">Find your quiz!</Link>
         </div>
         <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
@@ -92,8 +102,15 @@ import { Link } from "react-router-dom";
                 <p>Career quizzes are proven to help the masses achieve thier goals and secure professional success. Money can buy happiness, but only purpose can bring fulfillment.</p>
             </div>
             <div className="quiz-data-graph">
-                {/* <img src={pie} alt="graph"></img> */}
                 <div className="piechart"></div>
+                <div>{reviews}</div>
+                <div style={{
+                    width: "200px",
+                    height: "200px",
+                    borderRadius: "50%",
+                    background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)' 
+                }}></div>
+                <p>total reviws: {totalReviews}</p>
                 <p>Satisfaction rates from other users!</p>
             </div>
         </div>
