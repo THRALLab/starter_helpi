@@ -9,53 +9,89 @@ export default function Results() {
 	// TODO [ ] - implement the 404 logic when the user attempts to access this page without completing the quiz
 	// TODO [ ] - consider creating a second function that will also call the ChatGPT API but will return data about how much of a close fit a user is (in percentages) to a specific career/how likely it matches them so that you can use this data and implement it for graphs + get more data to add to the results page
 
-	const markdownText = `
-	**Career Recommendation Report**
-	
-	**Introduction:**
-	Based on your responses to the survey, we have identified four potential career paths that align closely with your interests, values, capabilities, and aspirations. The selected careers reflect your preference for technology, your willingness to face challenges and competition, your passion for coding and problem-solving, and your desire for recognition and a good work-life balance. Below, each recommended career is discussed in detail, explaining why it might be a suitable choice for you.
-	
-	**Recommended Careers:**
-	
-	**1. Software Developer (Specific Focus: Health & Wellness Applications)**
-	Given your interest in software development and health and wellness promotion, a career in creating applications focused on health and wellness could be highly rewarding. This career would utilize your coding skills, particularly your experience with the MERN stack, and enable you to contribute to areas you care about, such as wellness and preventive healthcare technologies. Your problem-solving and analytical skills would be central to developing innovative solutions that promote better health outcomes. This pathway also offers great potential for recognition within tech and health communities, aligning with your aspiration for appreciation of your contributions.
-	
-	**2. Data Analyst in Public Health Sector**
-	This role involves analyzing data to derive insights that can improve public health policies and practices, which indirectly contributes to tackling broader issues like world hunger by promoting better health standards and resource allocations. Given your analytical skills and interest in making meaningful contributions to societal issues, this career could be fulfilling. The position usually comes with flexible working options and has significant growth potential as data-driven decision-making becomes more integral to public health.
-	
-	**3. Health Tech Product Manager**
-	Transitioning into a product management role within a health tech company could be an excellent fit. It allows you to oversee the development and deployment of technology products that enhance health outcomes. This position would leverage your technical background and interest in health and wellness, offering opportunities for leadership and recognition. Moreover, it aligns with your preference for a good work-life balance and contributes meaningfully to a cause you care about.
-	
-	**4. Compliance Analyst in Cybersecurity for Healthcare Organizations**
-	Given your interest in cybersecurity, a role as a compliance analyst focusing on healthcare organizations could be highly relevant. This career involves ensuring that health data systems comply with laws and regulations, which is crucial for protecting patient information and the integrity of healthcare systems. This role would use your analytical capabilities and also offer stable career prospects with the rise of digital health services.
-	
-	**Alternative Paths:**
-	If the above careers do not fully resonate with you or if you seek different experiences before settling into a long-term career path, consider the following alternatives:
-	- **Further Education**: Pursuing a master’s degree or certifications in fields like data science, cybersecurity, or health informatics could expand your knowledge and make you more competitive in the job market.
-	- **Freelance Tech Consulting**: Given your coding skills and problem-solving abilities, freelance consulting might provide diverse projects without committing to a single corporate path, also enhancing work-life balance.
-	- **Start-up Environment**: Engaging with startups, particularly in the health tech space, can be dynamic and offer rapid growth opportunities, though it might challenge your preference for a structured work-life balance.
-	- **Volunteer or Part-time Roles in Non-profits**: Engaging with non-profit organizations that focus on health and wellness or global issues like hunger can be fulfilling and might offer flexible working conditions.
-	
-	**Conclusion:**
-	The recommended careers have been chosen based on your interest in technology, particularly software development and cybersecurity, and your desire to contribute to health and wellness. These paths not only align with your technical skills and values but also offer opportunities for personal satisfaction and professional growth. Alternative paths are suggested to provide flexibility and additional opportunities to find the career that best fits your evolving aspirations and lifestyle needs.
-	`;
+	const markdown = `detailed.tsx:221 No.
+detailed.tsx:221 No.
+useChatGPT.ts:27 Loading ChatGPT's response...
+useChatGPT.ts:27 Loading ChatGPT's response...
+useChatGPT.ts:54 1. Software Developer - 40%
+2. Data Analyst - 30%
+3. Health Promotion Specialist - 20%
+4. Cybersecurity Analyst - 10%
+detailed.tsx:221 No.
+detailed.tsx:221 No.
+useChatGPT.ts:54 Based on the answers provided, here are four career recommendations that might be suitable, along with detailed explanations for why they could be good fits:
 
-	const careerRegex = /\*\*(\d+)\. (.+?)\*\*\n([\s\S]*?)(?=\*\*|$)/g;
-	let careers = [];
+1. **Health Informatics Specialist**:
+   - **Integration of Interests**:
+     - Your interest in health and wellness promotion can be seamlessly integrated into this role, which involves managing health information systems to improve patient care and public health outcomes.
+   - **Utilization of Skills**:
+     - This career requires strong problem-solving and analytical skills, addressing your need to utilize these capabilities more fully.
+   - **Career Development**:
+     - There are abundant opportunities for training and certification within health informatics, aligning with your desire for personal growth and development in new skills.
+   - **Aligns with Values**:
+     - Most roles in health informatics offer good work-life balance and flexibility, resonating with your stated values.
+
+2. **Data Analyst for Wellness and Health Services**:
+   - **Mission-driven Work**:
+     - You can work directly with data related to health and wellness promotion, fulfilling your desire to participate in missions that resonate with you.
+   - **Skills and Growth**:
+     - As a data analyst, your high level of analytical and problem-solving skills will be crucial, providing ample opportunity for skill utilization and career growth.
+   - **Work Benefits**:
+     - Roles in this field often come with flexible work hours and the potential for remote work, which aligns with your preferences for job perks.
+
+3. **Software Developer in HealthTech Companies**:
+   - **Sector and Interest Alignment**:
+     - Working in a software role within HealthTech companies allows you to blend your coding skills with your interest in health and wellness.
+   - **Project Engagement**:
+     - Similar to your MERN coding project, HealthTech development projects can be engaging and align with your appreciation for coding and project work.
+   - **Recognition and Contribution**:
+     - There is significant potential for recognition in innovative tech environments, especially when contributing to impactful health technologies.
+
+4. **User Experience (UX) Designer for Fitness and Health Apps**:
+   - **Creative and Analytical Use**:
+     - This role leverages your problem-solving skills in a creative context, focusing on user-centered design in the health and wellness sector.
+   - **Supporting Causes**:
+     - Directly impact user engagement and promote health and fitness through effective app design, aligning with your mission-driven career goals.
+   - **Career Satisfaction**:
+     - UX roles often provide significant appreciation and recognition for contributions to product development and user satisfaction.
+
+**Alternative Paths**:
+- **Further Education or Specialization**: Considering further education in fields like Public Health, Healthcare Data Analytics, or Health Informatics can open new opportunities and could dynamically shift your career trajectory.
+- **Health and Wellness Coaching**: If direct engagement with individuals sounds appealing, becoming a certified wellness coach might be fulfilling.
+- **Non-profit or Community-based Roles**: Engaging directly in community work, especially related to food security or health services, could connect your coding skills and interest in social causes such as world hunger.
+  
+**Consideration for Sensibilities**:
+- While exploring these options, maintain a strong focus on jobs that emphasize a good work-life balance and offer stable growth potential, as these are crucial to your long-term career satisfaction and personal well-being.`;
+
+	const careerRegex =
+		/\d+\.\s+\*\*(.*?)\*\*:[\s\S]*?(?=\d+\.|\*\*Alternative Paths\*\*|$)/g;
+	const careerMatches = [];
 	let match;
 
-	interface Career {
-		title: string;
-		description: string;
+	while ((match = careerRegex.exec(markdown)) !== null) {
+		careerMatches.push(
+			match[0]
+				.replace("1.", "")
+				.replace("2.", "")
+				.replace("3.", "")
+				.replace("4.", "")
+		);
 	}
 
-	while ((match = careerRegex.exec(markdownText)) !== null) {
-		const career: Career = {
-			title: match[2],
-			description: match[3].trim()
-		};
-		careers.push(career);
+	const alternativePaths_regex =
+		/\*\*Alternative Paths\*\*:(.*?)(?=\*\*Consideration for Sensibilities\*\*|$)/s;
+	const alternativePathsMatch = markdown.match(alternativePaths_regex);
+
+	// Split the matched content into individual paths
+	let alternativePathsArray: string[] = [];
+	if (alternativePathsMatch) {
+		alternativePathsArray = alternativePathsMatch[1]
+			.trim()
+			.split("\n")
+			.map(path => path.trim());
 	}
+
+	console.log(alternativePathsArray);
 
 	return (
 		<>
@@ -65,15 +101,10 @@ export default function Results() {
 			<div className="report">
 				<h1>YOUR TOP 4 CAREER CHOICES:</h1>
 				<div className="cardContainer">
-					{careers.map((career: Career, index: number) => {
+					{careerMatches.map((career, index: number) => {
 						return (
 							<div className="card" key={index}>
-								<h3>
-									<Markdown>{career.title}</Markdown>
-								</h3>
-								<p>
-									<Markdown>{career.description}</Markdown>
-								</p>
+								<Markdown>{career}</Markdown>
 							</div>
 						);
 					})}
@@ -81,14 +112,4 @@ export default function Results() {
 			</div>
 		</>
 	);
-
-	// return chat_gptResponse !== "" ? (
-	// 	<div className="report">
-	// 		<Markdown>{testMarkdown}</Markdown>
-	// 	</div>
-	// ) : (
-	// 	<div className="NotFoundContainer">
-	// 		<h1>404</h1>
-	// 	</div>
-	// );
 }
