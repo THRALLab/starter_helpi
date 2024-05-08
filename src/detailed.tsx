@@ -3,6 +3,7 @@ import "./detailed.css";
 import questions from "./detailedQuestions.json";
 import Modal from "./Modal";
 import Confetti from "react-confetti";
+import ProgressBar from "./ProgressBar";
 
 export interface Answer {
 	question: string;
@@ -117,6 +118,7 @@ function Detailed() {
 			{showConfetti && <Confetti />}
 			{modalVisibility ? <Modal modalFunction={updateModalVisibility} /> : null}
 			<div className="quizContainer">
+			<ProgressBar currentIndex={currentIndex} totalQuestions={questions.length} />
 				<div className="questionContainer">
 					<img src={questions[currentIndex].image} alt="Visual question aid" />
 					<h3>
