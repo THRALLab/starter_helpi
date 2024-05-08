@@ -175,30 +175,36 @@ function DetailedReport() {
                 <br />
                 <span className="Report-results-header">Career 1:</span>
                 <li>{careerList[1]}</li>
-                <Button
-                  className="Report-button-explore"
-                  onClick={() => optionOne(careerList[1])}
-                >
-                  Explore Career 1
-                </Button>
+                <div>
+                  <Button
+                   className="Button-chatGPT"
+                   onClick={() => optionOne(careerList[1])}
+                  >
+                    Explore Career 1
+                 </Button>
+                </div>
                 <br />
                 <span className="Report-results-header">Career 2:</span>
                 <li>{careerList[2]}</li>
-                <Button
-                  className="Report-button-explore"
-                  onClick={() => optionOne(careerList[2])}
-                >
-                  Explore Career 2
-                </Button>
+                <div>
+                  <Button
+                    className="Button-chatGPT"
+                    onClick={() => optionOne(careerList[2])}
+                  >
+                    Explore Career 2
+                  </Button>
+                </div>
                 <br />
                 <span className="Report-results-header">Career 3:</span>
                 <li>{careerList[3]}</li>
-                <Button
-                  className="Report-button-explore"
-                  onClick={() => optionOne(careerList[3])}
-                >
-                  Explore Career 3
-                </Button>
+                <div>
+                  <Button
+                    className="Button-chatGPT"
+                    onClick={() => optionOne(careerList[3])}
+                  >
+                    Explore Career 3
+                  </Button>
+                </div>
               </div>
             </div>
           )}

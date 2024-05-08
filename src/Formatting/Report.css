@@ -36,6 +36,16 @@
   background-color: var(--color-body-Button);
 }
 
+.Button-chatGPT:disabled{
+  color: var(--color-body-text);
+  background-color: var(--color-body-ButtonDisabled);
+}
+
+.Button-chatGPT:hover{
+  color: var(--color-body-text);
+  background-color: var(--color-body-ButtonHover);
+}
+
 .Report-button-explore {
   font-weight: bold;
   color: var(--color-body-text);
