@@ -6,13 +6,14 @@ import {
   audioIcon,
   updateAudioIcon,
 } from "./StateParent";
+import BackgroundSound from "../Audio/BackgroundMusic.mp3";
 import ButtonClick from "../Audio/Button-Click2-Trimmed.mp3";
-import BackgroundSound from "../Audio/Burgers.mp3";
 import SliderClick from "../Audio/Slider-Click.mp3";
 
+// Audio players for SFX and background music
+const backgroundMusic = new Audio(BackgroundSound);
 const buttonSoundEffect = new Audio(ButtonClick);
 const sliderSoundEffect = new Audio(SliderClick);
-const backgroundMusic = new Audio(BackgroundSound);
 
 //Sound effect played when buttons clicked
 export function playButtonClick() {
@@ -22,7 +23,6 @@ export function playButtonClick() {
 export function playSliderSet() {
   sliderSoundEffect.play();
 }
-
 //Base music player
 export function AudioPlayer() {
   //Audio States
