@@ -30,6 +30,9 @@ export function Navbar2({ page, setPage }: { page: string; setPage: (newPage: st
             <Nav.Link onClick={() => handleNavClick("Detailed")}>
               {(page === "Detailed" && (<div className='navbar-selected'>Detailed</div>)) || (page !== "Detailed" && (<div>Detailed</div>))}
             </Nav.Link>
+            <Nav.Link onClick={() => handleNavClick("Results")}>
+              {(page === "Results" && (<div className='navbar-selected'>Detailed</div>)) || (page !== "Results" && (<div>Results</div>))}
+            </Nav.Link>
           </Nav>
           <div className='ms-auto algin-items'>
             <AboutButton page={page} setPage={setPage}></AboutButton>
