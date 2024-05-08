@@ -4,7 +4,6 @@
     display:flex;	
     }
 
-
 .question-container{
     display:flex;
     align-items:center;
@@ -35,9 +34,14 @@
     border-radius: 16px;
 }
 
-.quiz-desc {
+.quiz-desc-header {
     margin: 20px;
-    height: 100%;
     width: 95%;
+    height: auto;
     padding: 20px;
+    border: solid 1px grey;
+    text-align: center;
+    border-radius: 5px;
+    overflow: overlay;
+    box-shadow: 10px 5px 5px rgb(86, 86, 86);
 }
