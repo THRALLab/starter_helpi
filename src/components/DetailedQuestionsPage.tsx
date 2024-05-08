@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import Button from '@mui/joy/Button';
@@ -6,194 +6,98 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import { styled } from '@mui/material/styles';
-import FormControl from '@mui/joy/FormControl';
-
-import FormHelperText from '@mui/joy/FormHelperText';
-import InfoOutlined from '@mui/icons-material/InfoOutlined';
-import { Grow } from '@mui/material';
-
+import axios from 'axios';
 
 export function DetailedQuestionsPage(): JSX.Element {
-    interface Responses {
-        [key: number]: string
-    }
-
     const StyledButton = styled(Button)`
     ${({ theme }) => `
-    cursor: pointer;
-    background-color: #ce93d8;
-    color: #FFF;
-    transition: ${theme.transitions.create(['background-color', 'transform'], {
-      duration: theme.transitions.duration.standard,
-    })};
-    &:hover {
-      background-color: #ab47bc;
-      transform: scale(1.3);
-    }
+        cursor: pointer;
+        background-color: #ce93d8;
+        color: #FFF;
+        transition: ${theme.transitions.create(['background-color', 'transform'], {
+          duration: theme.transitions.duration.standard,
+        })};
+        &:hover {
+          background-color: #ab47bc;
+          transform: scale(1.3);
+        }
     `}
-  `;
+    `;
 
-  const StyledButton2 = styled(Button)`
-    ${({ theme }) => `
-    cursor: pointer;
-    background-color: #51bc51;
-    color: #FFF;
-    transition: ${theme.transitions.create(['background-color', 'transform'], {
-      duration: theme.transitions.duration.standard,
-    })};
-    &:hover {
-      background-color: #1f7a1f;
-      transform: scale(1.3);
-    }
-    `}
-  `;
+    const questions = [
+        "What are you particularly good at?",
+        "What are you most passionate about?",
+        "What would make my life feel the most meaningful?",
+        "What kind of impact would I want to have on the world with my work?",
+        "What do I enjoy most in life? What do I enjoy so much that I lose track of time?",
+        "What fields am I most interested in?",
+        "How can I add value to the marketplace? With what skills?"
+    ];
 
-    const questions = React.useMemo(() => [
-		{
-			id: 1,
-            question:"What are you particularly good at?",
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3'},
-				{ answerText: 'Option 4'},
-			],
-		},
-		{
-			id: 2,
-            question:"What are you most passionate about?",
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-		{
-			id: 3,
-            question:"What would make my life feel the most meaningful?",
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-		{
-			id: 4,
-            question:"What kind of impact would I want to have on the world with my work?",
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			id: 5,
-            question:"What do I enjoy most in life? What do I enjoy so much that I lose track of time?",
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			id: 6,
-            question:"What fields am I most interested in?",
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		},
-        {
-			id: 7,
-            question:"How can I add value to the marketplace? With what skills?",
-			answerOptions: [
-				{ answerText: 'Option 1' },
-				{ answerText: 'Option 2' },
-				{ answerText: 'Option 3' },
-				{ answerText: 'Option 4' },
-			],
-		}
-	], []);    
-
-    const [goToHomePage, setGoToHomePage] = React.useState(false);
-    const [inputText, setInputText] = React.useState("");
-    const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
-    const [displayFinishButton, setDisplayFinishButton] = React.useState(false);
-    const [displayFinalResults, setDisplayFinalResults] = React.useState(false);
-    const [currentQuestion, setCurrentQuestion] = React.useState(0);
-    const [responses, setResponses] = React.useState<Responses>({});
-    const [checked, setChecked] = React.useState(false);
-    
-    const [inputClicked, setInputClicked] = React.useState(false);
-    const [inputFocused, setInputFocused] = React.useState(false);
-
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [answers, setAnswers] = useState<Array<string>>(Array(questions.length).fill(''));
+    const [response, setResponse] = useState<React.ReactNode | string>('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [goToHomePage, setGoToHomePage] = useState(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInputText(e.target.value);
-      const { value } = e.target;
-      setResponses({ ...responses, [questions[currentQuestion].id]: value });
+        const newAnswers = [...answers];
+        newAnswers[currentQuestion] = e.target.value;
+        setAnswers(newAnswers);
     };
 
-    React.useEffect(() => {
-        setInputText(responses[questions[currentQuestion]?.id] || ""); // Set input text based on previous response or an empty string
-    }, [currentQuestion, questions, responses]);
-      
+    const handleSubmitAnswers = async () => {
+        if (answers.some(answer => answer.trim() === "")) {
+            setError("Please answer all questions before submitting.");
+            return;
+        }
+        setLoading(true);
+        setError("");
 
-    const handleCurrentQuestion = () => {
-        setInputText("");
-        setInputClicked(false); 
-        setInputFocused(false);
-        const currentQuestionIndex = currentQuestion + 1;
+        try {
+            const messages = questions.map((question, index) => ({
+                role: "system",
+                content: question
+            })).concat(answers.map(answer => ({
+                role: "user",
+                content: answer
+            })));
 
-            if (currentQuestionIndex < questions.length) {
-                setCurrentQuestion(currentQuestionIndex)
-            }
-    
-            if (currentQuestionIndex === questions.length - 1) {
-                setDisplayFinishButton(true);
-            }
-    
-    }
+            const prompt = "Based on the answers provided, suggest five suitable career options and explain why each would be a good fit.";
+
+            const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+                model: "gpt-3.5-turbo",
+                messages: [...messages, { role: "system", content: prompt }]
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const formattedResponse = response.data.choices[0].message.content.split('\n').map((item: string, index: number) => (<p key={index}>{item}</p>));
+            setResponse(formattedResponse);
+        } catch (error) {
+            console.error('Error fetching GPT-3 response:', error);
+            setError("Failed to fetch response from OpenAI");
+        }
+        setLoading(false);
+    };
+
+    const handleNextQuestion = () => {
+        if (currentQuestion < questions.length - 1) {
+            setCurrentQuestion(currentQuestion + 1);
+        } else {
+            handleSubmitAnswers();
+        }
+    };
 
     const handlePreviousQuestion = () => {
-        setInputText("");
-        const previousQuestionIndex = currentQuestion - 1;
-    
-        if (previousQuestionIndex >= 0) {
-            setCurrentQuestion(previousQuestionIndex);
+        if (currentQuestion > 0) {
+            setCurrentQuestion(currentQuestion - 1);
         }
-    
-        if (previousQuestionIndex !== questions.length - 1) {
-            setDisplayFinishButton(false);
-        }
-    };
-
-    const handleDisplayFinalResults = () => {
-        setChecked(true);
-        setDisplayFinalResults(true);
-        setDisplayFinishButton(false);
-    }
-
-    const handleRetakeTest = () => {
-        setCurrentQuestion(0); // Reset current question to start from the beginning
-        setDisplayFinalResults(false); // Hide final results
-        setInputText(""); // Clear input text if any
-        // Reset any other state variables as needed
-        setResponses({});
-        setChecked(false);
-    };
-
-    const handleClearText = () => {
-        setInputText("");
-        setResponses({...responses, [questions[currentQuestion].id]: ""})
     };
 
     const handleGoToHomePage = () => {
@@ -204,10 +108,6 @@ export function DetailedQuestionsPage(): JSX.Element {
         return <Navigate to="/" />;
     }
 
-    if (goToBasicQuestionsPage) {
-        return <Navigate to="/BasicQuestionsPage"/>
-    }
-
     return (
         <div>
             <Navbar expand="lg" className="bg-body-tertiary">
@@ -216,142 +116,32 @@ export function DetailedQuestionsPage(): JSX.Element {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
-                <Nav.Link onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Nav.Link>
-                     <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                    Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                </NavDropdown.Item>
-                                </NavDropdown>
-                            </Nav>
+                            <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
+                        </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <p></p>
-            <h1 className='padding3'>Detailed Questions Page</h1>
-            <p className="text-muted">The detailed career assessment goes in depth to plan out your professional preferences, skills, and motivators. Completing this assessment will provide you with a complex overview of career paths that align with your detailed profile. Coming soon.  </p>
-            
-            <main className="padding2">
-            <div
-                style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '40vh', // Adjust this value according to your layout
-                padding: '30vh'
-            }}>
-                
-                <Card variant="plain" sx={{ width: 1000, height: 400}}// Adjust this value according to your layout
-                >
-                    <CardContent>
-                        {!displayFinalResults && <Typography level="title-md">Question {currentQuestion+1}/{questions.length}</Typography>}
-                        {!displayFinalResults && <ProgressBar
-                            min={0} // Minimum value progress can begin from
-                            now={(currentQuestion + 1) * (100 / questions.length)} // Current value of progress
-                            max={100} // Maximum value progress can reach
-                            label={`${Math.round(((currentQuestion + 1) * (100 / questions.length)))}%`} // Show label that represents visual percentage
-                            visuallyHidden={true} // Show the label visually
-                            striped={currentQuestion >= 0} // Uses a gradient to create a striped effect when the progress is at least 0%
-                            animated={currentQuestion >= 0} // Animate the stripes from right to left when the progress is at least 0%
-                            variant="info" // Sets the background class of the progress bar to red
-                            style={{ width: '100%'}}
-                            >
-                        </ProgressBar>}
-                        <Typography style={{alignItems: 'center', padding: '5vh'}}>{!displayFinalResults && <div>
-                        <p>{questions[currentQuestion].question}</p>
-                        <div style={{paddingBottom: '1vh', display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'}}>
-                            {/*<input
-                            type="text"
-                            value={inputText}
-                            onChange={(e) => setInputText(e.target.value)}
-                        />*/}
-                            <FormControl error={inputText==='' && inputClicked && !inputFocused}>
-                            <Input sx={{width: '500px', height: '75px', display: 'flex',
-                                    justifyContent: 'center',
-
-                                    alignItems: 'center',
-                                    '--Input-focusedInset': 'var(--any, )',
-                                    '--Input-focusedThickness': '0.25rem',
-                                    '--Input-focusedHighlight': 'rgba(13,110,253,.25)',
-                                    '&::before': {
-                                      transition: 'box-shadow .15s ease-in-out',
-                                    },
-                                    '&:focus-within': {
-                                      borderColor: '#86b7fe',
-                                    }}} 
-                                    variant="outlined" placeholder="Type in here…" value={inputText} 
-                                    onClick={() => setInputClicked(true)}
-                                    onFocus={() => setInputFocused(true)}
-                                    onBlur={() => setInputFocused(false)}
-                                    onChange={handleInputChange}
-                                    
-
-                                    //error
-                                    error={inputText==='' && inputClicked && !inputFocused}
-                                    
-                                    
-                                    />
-                                    {inputText === '' && inputClicked && !inputFocused && (
-                                        <FormHelperText>
-                                            <InfoOutlined/>
-                                            Please enter an answer.
-                                        </FormHelperText>
-                                    )}
-                                   
-                                </FormControl>
-                                {/*<p>{questions[currentQuestion].id}</p>
-                                <p>:</p>
-                                <p>{responses[questions[currentQuestion].id]}</p>*/}
-                                {/*<p>{inputText}</p>*/}
-                                
-                        </div>
-                        <div style={{paddingTop: '1vh'}}><StyledButton onClick={handleClearText}>Reset</StyledButton></div>
-                        
-                        </div>}
-
-                        {/* Next and Previous buttons */}
-                        {!displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '6vh', display: 'flex', justifyContent: 'center' }}>
-                            {currentQuestion > 0 && (<StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>)}
-                            <StyledButton onClick={handleCurrentQuestion} style={{ margin: '0 auto' }} disabled={inputText === ''}>Next Question</StyledButton>
-                            </div>
-                        )}
-
-                        <Grow in={checked}
-                            {...(checked ? { timeout: 1500 } : {})}>
-                            <div>{displayFinalResults && <div>Final Results!</div>}</div>
-                        </Grow>
-
-                        {displayFinalResults && (
-                            <div style={{ paddingTop: '15.5rem', textAlign: 'center' }}> {/* Adjust paddingTop to lower the button */}
-                            <div style={{ marginBottom: '15vh' }}><StyledButton onClick={handleRetakeTest}
-                             // Adjust marginBottom to lower the button
-                            >Retake Test
-                            </StyledButton></div>
-                            </div>
-                        )}
-
-                        {/* Finish and Previous buttons */}
-                        {displayFinishButton && !displayFinalResults && (
-                            <div style={{ padding: '8vh', display: 'flex', justifyContent: 'center' }}>
-                            <StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>Previous Question</StyledButton>
-                            <StyledButton2 color='success' onClick={handleDisplayFinalResults} style={{ margin: '0 auto' }}>Finish & Get Results</StyledButton2>
-                            </div>
-                        )}
-                        </Typography>
-                    </CardContent>
-                </Card>
-                <p></p>
-            </div>  
-            </main>
+            <Card variant="outlined" sx={{ maxWidth: 800, margin: "auto", mt: 5 }}>
+                <CardContent>
+                    <Typography level="h4">Question {currentQuestion + 1}/{questions.length}</Typography>
+                    <Typography>{questions[currentQuestion]}</Typography>
+                    <Input
+                        value={answers[currentQuestion]}
+                        onChange={handleInputChange}
+                        placeholder="Type your answer here..."
+                        sx={{ width: '100%', mb: 2 }}
+                    />
+                    <div>
+                        {currentQuestion > 0 && <StyledButton onClick={handlePreviousQuestion}>Previous Question</StyledButton>}
+                        <StyledButton onClick={handleNextQuestion}>
+                            {currentQuestion === questions.length - 1 ? 'Submit Answers' : 'Next Question'}
+                        </StyledButton>
+                    </div>
+                    {loading && <Typography>Loading...</Typography>}
+                    {error && <Typography style={{ color: 'red' }}>{error}</Typography>}
+                    {!loading && response && Array.isArray(response) && response.map(line => line)}
+                </CardContent>
+            </Card>
         </div>
     );
 }
