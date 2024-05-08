@@ -23,15 +23,7 @@ const verifyAPIKey = async(apiKey: string) => {
   return true;
 }
 
-export function ApiKeyInput(
-  {
-    submitted,
-    setSubmit
-  }: {
-    submitted: boolean;
-    setSubmit: (submitted: boolean) => void;
-  }
-): JSX.Element {
+export function ApiKeyInput(): JSX.Element {
   const [apiKey, setApiKey] = useState<string>("");
   const [isSubmit, setSubmit] = useState<boolean>(true)
   const [validKey, setValidKey] = useState<boolean>(false);
