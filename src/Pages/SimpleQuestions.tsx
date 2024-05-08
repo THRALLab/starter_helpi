@@ -4,10 +4,12 @@ import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
+import { AudioPlayer, playButtonClick } from "../Components/AudioPlayer";
 import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/SimpleQuestions.css";
+// Imports for images
 import Image1 from "../Images/Simple-Question-1.jpg";
 import Image2 from "../Images/Simple-Question-2.jpg";
 import Image3 from "../Images/Simple-Question-3.jpg";
@@ -24,7 +26,7 @@ import Image13 from "../Images/Simple-Question-13.jpg";
 import Image14 from "../Images/Simple-Question-14.jpg";
 import Image15 from "../Images/Simple-Question-15.jpg";
 import EndOfQuizImage from "../Images/End-Quiz.jpg";
-
+// Store images in an array to cycle through
 const questionImages = [
   Image1,
   Image2,
@@ -53,7 +55,7 @@ if (prevKey !== null) {
 }
 
 let simpleQuestionQuizCompleted: SimpleQuestion[] = [];
-
+// Function used to export question data so it can be used on the SimpleReport page
 export function getQuestions(): SimpleQuestion[] {
   return simpleQuestionQuizCompleted;
 }
@@ -71,6 +73,7 @@ function SimpleQuestions() {
     setKey(event.target.value);
   }
 
+  // State variables for question data
   const [questions, setQuestions] = useState<SimpleQuestion[]>([]);
   const [numberOfQuestions, setNumberOfQuestions] = useState(15);
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -80,7 +83,10 @@ function SimpleQuestions() {
   const [option2, setOption2] = useState("Option 2...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
+  // useEffect is called when page loads.
+  // Initialize everything with appropriate question data to start the quiz.
   useEffect(() => {
+    playButtonClick();
     const loadQuestions = () => {
       const parsedData = JSON.parse(JSON.stringify(jsonData));
       const simpleQuestions: SimpleQuestion[] = parsedData.SIMPLE_QUESTIONS;
@@ -95,9 +101,13 @@ function SimpleQuestions() {
     loadQuestions();
   }, [questionNumber]);
 
+  // Function that is called to advance to the next question by iterating forward though the
+  // question array and updating all properties.
   const nextQuestion = (selectedOption: string) => {
+    // currentQuestionNumber displays current question. questionNumber is iteration in array.
     setCurrentQuestionNumber(currentQuestionNumber + 1);
     if (questionNumber < numberOfQuestions - 1) {
+      // Not the end of the quiz so iterate.
       questions[questionNumber].answer = selectedOption;
       setBackButtonDisabled(false);
       const nextQuestion = questionNumber + 1;
@@ -109,11 +119,13 @@ function SimpleQuestions() {
       // End of quiz...
       setQuestionBody("You have completed the quiz!");
       simpleQuestionQuizCompleted = questions;
+      // Hide option buttons
       let nextButton = document.getElementById("nextButton");
       if (nextButton != null) {
         nextButton.classList.remove("Button-visible-true");
         nextButton.classList.add("Button-visible-false");
       }
+      // Show "Report" button
       let reportButton = document.getElementById("reportButton");
       if (reportButton != null) {
         reportButton.classList.remove("Button-visible-false");
@@ -122,30 +134,39 @@ function SimpleQuestions() {
     }
   };
 
+  // Function that is called to backtrack to the previous question by iterating backwards though the
+  // question array and updating all properties.
   const previousQuestion = () => {
+    // Check if you are not on the first question.
     if (questionNumber >= 0) {
+      // currentQuestionNumber displays current question. questionNumber is iteration in array.
       setCurrentQuestionNumber(currentQuestionNumber - 1);
       if (questionBody === "You have completed the quiz!") {
+        // Show the option buttons
         let nextButton = document.getElementById("nextButton");
         if (nextButton != null) {
           nextButton.classList.remove("Button-visible-false");
           nextButton.classList.add("Button-visible-true");
         }
+        // Hide the "Report" button
         let reportButton = document.getElementById("reportButton");
         if (reportButton != null) {
           reportButton.classList.remove("Button-visible-true");
           reportButton.classList.add("Button-visible-false");
         }
+        // Update properties displayed
         setQuestionBody(questions[questionNumber].question);
         setOption1(questions[questionNumber].option1);
         setOption2(questions[questionNumber].option2);
       } else {
+        // Not on last question, so simply iterate.
         const previousQuestion = questionNumber - 1;
         setQuestionNumber(previousQuestion);
         setQuestionBody(questions[previousQuestion].question);
         setOption1(questions[previousQuestion].option1);
         setOption2(questions[previousQuestion].option2);
         if (questionNumber === 1) {
+          // On the first question, so you can't go back anymore.
           setBackButtonDisabled(true);
         }
       }
@@ -159,6 +180,9 @@ function SimpleQuestions() {
           <ThemeSelect></ThemeSelect>
         </span>
         <span className="Header-text">The Career Lab</span>
+        <span className="Header-Audio">
+          <AudioPlayer></AudioPlayer>
+        </span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
         </span>

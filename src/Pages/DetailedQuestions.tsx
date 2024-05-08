@@ -5,10 +5,84 @@ import { themeState } from "../Components/ThemeParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import { SliderQuestion } from "../Components/SliderQuestion";
+import { AudioPlayer, playButtonClick } from "../Components/AudioPlayer";
 import jsonData from "../QuestionData/DetailedQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
+
+// Image imports
+
+// Images 1-10
+import Image1 from "../Images/Detailed-Question-1.jpg";
+import Image2 from "../Images/Detailed-Question-2.jpg";
+import Image3 from "../Images/Detailed-Question-3.jpg";
+import Image4 from "../Images/Detailed-Question-4.jpg";
+import Image5 from "../Images/Detailed-Question-5.jpg";
+import Image6 from "../Images/Detailed-Question-6.jpg";
+import Image7 from "../Images/Detailed-Question-7.jpg";
+import Image8 from "../Images/Detailed-Question-8.jpg";
+import Image9 from "../Images/Detailed-Question-9.jpg";
+import Image10 from "../Images/Detailed-Question-10.jpg";
+// Images 11-20
+import Image11 from "../Images/Detailed-Question-11.jpg";
+import Image12 from "../Images/Detailed-Question-12.jpg";
+import Image13 from "../Images/Detailed-Question-13.jpg";
+import Image14 from "../Images/Detailed-Question-14.jpg";
+import Image15 from "../Images/Detailed-Question-15.jpg";
+import Image16 from "../Images/Detailed-Question-16.jpg";
+import Image17 from "../Images/Detailed-Question-17.jpg";
+import Image18 from "../Images/Detailed-Question-18.jpg";
+import Image19 from "../Images/Detailed-Question-19.jpg";
+import Image20 from "../Images/Detailed-Question-20.jpg";
+// Images 21-30
+import Image21 from "../Images/Detailed-Question-21.jpg";
+import Image22 from "../Images/Detailed-Question-22.jpg";
+import Image23 from "../Images/Detailed-Question-23.jpg";
+import Image24 from "../Images/Detailed-Question-24.jpg";
+import Image25 from "../Images/Detailed-Question-25.jpg";
+import Image26 from "../Images/Detailed-Question-26.jpg";
+import Image27 from "../Images/Detailed-Question-27.jpg";
+import Image28 from "../Images/Detailed-Question-28.jpg";
+import Image29 from "../Images/Detailed-Question-29.jpg";
+import Image30 from "../Images/Detailed-Question-30.jpg";
+// End of Quiz
+import EndOfQuizImage from "../Images/End-Quiz.jpg";
+
+
+const questionImages = [
+  Image1,
+  Image2,
+  Image3,
+  Image4,
+  Image5,
+  Image6,
+  Image7,
+  Image8,
+  Image9,
+  Image10,
+  Image11,
+  Image12,
+  Image13,
+  Image14,
+  Image15,
+  Image16,
+  Image17,
+  Image18,
+  Image19,
+  Image20,
+  Image21,
+  Image22,
+  Image23,
+  Image24,
+  Image25,
+  Image26,
+  Image27,
+  Image28,
+  Image29,
+  Image30,
+  EndOfQuizImage,
+];
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -18,6 +92,7 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+//Exports question data
 export let slidenums = new Array<number>(30).fill(50);
 
 function DetailedQuestions() {
@@ -33,6 +108,7 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
 
+  //State variables for question data
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
@@ -41,7 +117,10 @@ function DetailedQuestions() {
   const [questionBody, setQuestionBody] = useState("Question...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
+  // useEffect is called when page loads.
+  // Initialize everything with appropriate question data to start the quiz.
   useEffect(() => {
+    playButtonClick();
     const loadQuestions = () => {
       const parsedData = JSON.parse(JSON.stringify(jsonData));
       const detailedQuestions: DetailedQuestion[] =
@@ -54,13 +133,16 @@ function DetailedQuestions() {
     loadQuestions();
   }, [questionNumber]);
 
-  //Function to handle moving on to the next question
+  // Function that is called to advance to the next question by iterating forward though the
+  // question array and updating all properties.
   const nextQuestion = () => {
+    // currentQuestionNumber displays current question. questionNumber is iteration in array.
     let tempSliderValues = [...sliderValues];
     tempSliderValues[questionNumber] = currSliderValue;
     questions[questionNumber].answer = currSliderValue.toString();
     setSliderValues(() => [...tempSliderValues]);
     if (questionNumber < numberOfQuestions - 1) {
+      // Not the end of the quiz so iterate.
       setCurrSliderValue(sliderValues[questionNumber + 1]);
       setQuestionBody(questions[questionNumber + 1].question);
       setQuestionNumber(questionNumber + 1);
@@ -71,6 +153,7 @@ function DetailedQuestions() {
       setQuestionNumber(30);
       slidenums = [...sliderValues];
       let nextButton = document.getElementById("nextButton");
+      // Hide option buttons
       if (nextButton != null) {
         nextButton.classList.remove("Button-visible-true");
         nextButton.classList.add("Button-visible-false");
@@ -80,6 +163,7 @@ function DetailedQuestions() {
         slider.classList.remove("Slider-visible-true");
         slider.classList.add("Slider-visible-false");
       }
+      // Show "Report" button
       let reportButton = document.getElementById("reportButton");
       if (reportButton != null) {
         reportButton.classList.remove("Button-visible-false");
@@ -88,11 +172,15 @@ function DetailedQuestions() {
     }
   };
 
+  // Function that is called to backtrack to the previous question by iterating backwards though the
+  // question array and updating all properties.
   const previousQuestion = () => {
     let tempSliderValues = [...sliderValues];
     tempSliderValues[questionNumber] = currSliderValue;
     setSliderValues(() => [...tempSliderValues]);
+    // Check if you are not on the first question.
     if (questionNumber > 0) {
+      // currentQuestionNumber displays current question. questionNumber is iteration in array.
       setCurrSliderValue(sliderValues[questionNumber - 1]);
       const previousQuestionIndex = questionNumber - 1;
       setQuestionBody(questions[previousQuestionIndex].question);
@@ -101,6 +189,7 @@ function DetailedQuestions() {
         setBackButtonDisabled(true);
       }
       if (questionNumber === numberOfQuestions) {
+        // Sets the visibility of the buttons
         let nextButton = document.getElementById("nextButton");
         if (nextButton != null) {
           nextButton.classList.remove("Button-visible-false");
@@ -127,6 +216,9 @@ function DetailedQuestions() {
           <ThemeSelect></ThemeSelect>
         </span>
         <span className="Header-text">The Career Lab</span>
+        <span className="Header-Audio">
+          <AudioPlayer></AudioPlayer>
+        </span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
         </span>
@@ -145,19 +237,32 @@ function DetailedQuestions() {
                 ></SliderQuestion>
               </div>
               <span className="DetailedQuestions-buttons">
-                <Button
-                  className="Button-back"
-                  onClick={previousQuestion}
-                  disabled={backButtonDisabled}
-                >
-                  Back
-                </Button>
+                <span className="BackButtonSpan">
+                  <Button
+                    className="Button-back"
+                    onClick={previousQuestion}
+                    disabled={backButtonDisabled}
+                    style={{
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      left: "0",
+                      margin: "0",
+                      padding: "10px",
+                    }}
+                  >
+                    Back
+                  </Button>
+                </span>
                 <span className="Button-visible-true" id="nextButton">
                   <Button
                     className="Button-next"
                     onClick={() => nextQuestion()}
                     style={{
-                      marginLeft: "50px",
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      margin: "0",
+                      padding: "10px",
+                      left: "calc(50% + 5px)",
                     }}
                   >
                     Next
@@ -166,7 +271,13 @@ function DetailedQuestions() {
                 <span className="Button-visible-false" id="reportButton">
                   <span
                     className="Button-report"
-                    style={{ marginLeft: "50px" }}
+                    style={{
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      margin: "0",
+                      padding: "10px",
+                      left: "calc(50% + 5px)",
+                    }}
                   >
                     <LinkButton
                       to="/detailedreport"

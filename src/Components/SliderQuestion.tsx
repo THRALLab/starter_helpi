@@ -1,5 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
+import { playSliderSet } from "../Components/AudioPlayer";
 import "../Formatting/General.css";
 import "../Formatting/DetailedQuestions.css";
 
@@ -12,6 +13,7 @@ interface DetailedQuestionProps {
 //Slider question component used on the detailed questions page
 export function SliderQuestion(props: DetailedQuestionProps) {
   function updateSliderValue(event: React.ChangeEvent<HTMLInputElement>) {
+    playSliderSet();
     props.onChange(parseInt(event.target.value));
   }
   //Slider formatted using the detailed questions css

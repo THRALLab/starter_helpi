@@ -9,6 +9,7 @@ import { getQuestions } from "../Pages/SimpleQuestions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
+import { AudioPlayer } from "../Components/AudioPlayer";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -18,7 +19,9 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+// Function to generate the Report from ChatGPT based on how the user answered the questions.
 function SimpleReport() {
+  // State variables for the Report page
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
@@ -86,6 +89,9 @@ function SimpleReport() {
           <ThemeSelect></ThemeSelect>
         </span>
         <span className="Header-text">The Career Lab</span>
+        <span className="Header-Audio">
+          <AudioPlayer></AudioPlayer>
+        </span>
         <span className="Header-button">
           <LinkButton to="/" label="Home"></LinkButton>
         </span>
