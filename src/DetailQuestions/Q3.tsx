@@ -1,39 +1,42 @@
-import React, { useEffect, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-
-const saveInfo = "DetailUserInputQ3";
+import { AnswerContext } from "../AnswerContext"; // Make sure the path is correct
 
 const places = [
-    "Corporate Office",
-    "Startup",
-    "Non-profit Organization",
-    "Government Agency",
-    "Bank"
+  "Corporate Office",
+  "Startup",
+  "Non-profit Organization",
+  "Government Agency",
+  "Bank",
 ];
 
 export function Q3(): JSX.Element {
-    const [selectPlace, setSelectPlace] = useState<string | null>(() => {
-        const savedSelectPlace = localStorage.getItem(saveInfo);
-        return savedSelectPlace ? JSON.parse(savedSelectPlace) : null;
-    });
+  const { userAnswers, setUserAnswers } = useContext(AnswerContext);
+  const [selectPlace, setSelectPlace] = useState<string>(userAnswers[3] || ""); // Adjusted to default to an empty string
 
-    useEffect(() => {
-        localStorage.setItem(saveInfo, JSON.stringify(selectPlace));
-    }, [selectPlace]);
+  useEffect(() => {
+    setUserAnswers([...userAnswers.slice(0, 3), selectPlace]);
+  }, [selectPlace, setUserAnswers, userAnswers]);
 
-    return (
-        <div>
-            <h3>Which of the following work environments would you thrive in the most?</h3>
-            {places.map((place) => (
-                <Form.Check
-                    key={place}
-                    type="radio"
-                    label={place}
-                    name="place-button"
-                    checked={selectPlace === place}
-                    onChange={() => setSelectPlace(place)}
-                />
-            ))}
-        </div>
-    );
+  function handlePlaceChange(place: string) {
+    setSelectPlace(place);
+  }
+
+  return (
+    <div>
+      <h3>
+        Which of the following work environments would you thrive in the most?
+      </h3>
+      {places.map((place) => (
+        <Form.Check
+          key={place}
+          type="radio"
+          label={place}
+          name="place-button"
+          checked={selectPlace === place}
+          onChange={() => handlePlaceChange(place)}
+        />
+      ))}
+    </div>
+  );
 }
