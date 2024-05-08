@@ -9,7 +9,7 @@ import './css/App.css';
 import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
 import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
 import { ChatGBTPage } from "./pages/chat-gbt-page/ChatGBTPage";
-import gitLogo from "@public/github-mark-white.svg";
+import gitLogo from "src/imgs/github-mark-white.svg";
 export default function App(): JSX.Element {
   return ( 
   <div className="main-container">

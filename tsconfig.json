@@ -21,6 +21,7 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
+      "@src/*": ["src/*"],
       "@pages/*": ["pages/*"],
       "@css/*": ["css/*"],
       "@public/*": ["public/*"],
@@ -29,7 +30,6 @@
     }
   },
   "include": [
-    "src",
-    "public"
+    "**/*.ts", "**/*.tsx"
   ]
 }
