@@ -154,27 +154,35 @@ export default function Results() {
 						);
 					})}
 				</div>
-				<h2 className="alternativesHeader">
-					YOUR TOP {alternativeCareers.length > 0 && alternativeCareers.length}
-					&nbsp;ALTERNATIVE CHOICES:
-				</h2>
-				<div className="cardContainer">
-					{alternativeCareers.length > 0 &&
-						alternativeCareers.map((alternativeCareer, index: number) => {
-							return (
-								<div className="alternativesCard" key={index}>
-									<Markdown>{`### ${alternativeCareer.title}`}</Markdown>
-									{alternativeCareer.description
-										.split("\n")
-										.map((altCareer: string, index: number) =>
-											altCareer.trim() ? (
-												<Markdown key={index}>{`- ${altCareer}`}</Markdown>
-											) : null
-										)}
-								</div>
-							);
-						})}
-				</div>
+				{alternativeCareers.length > 0 ? (
+					<>
+						<h2 className="alternativesHeader">
+							YOUR TOP {alternativeCareers.length}
+							&nbsp;
+							{alternativeCareers.length === 1
+								? "ALTERNATIVE CHOICE"
+								: "ALTERNATIVE CHOICES"}
+							:
+						</h2>
+						<div className="cardContainer">
+							{alternativeCareers.length > 0 &&
+								alternativeCareers.map((alternativeCareer, index: number) => {
+									return (
+										<div className="alternativesCard" key={index}>
+											<Markdown>{`### ${alternativeCareer.title}`}</Markdown>
+											{alternativeCareer.description
+												.split("\n")
+												.map((altCareer: string, index: number) =>
+													altCareer.trim() ? (
+														<Markdown key={index}>{`- ${altCareer}`}</Markdown>
+													) : null
+												)}
+										</div>
+									);
+								})}
+						</div>
+					</>
+				) : null}
 			</div>
 		</>
 	);
