@@ -6,7 +6,6 @@ import { HomeLink } from "../components/NavbarElements"
 import { Link } from "react-router-dom";
 //import OpenAI from "openai";
 
-
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
     let keyData = "";
     const saveKeyData = "MYKEY";
@@ -84,7 +83,7 @@ import { Link } from "react-router-dom";
             <HomeLink to="/DetailedPage">
                 <div className="quiz-desc">
                     <h3>Detailed Quiz</h3>
-                    <p>If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
+                    <p className="text">If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
                 </div>
             </HomeLink>
         </div>
@@ -98,7 +97,6 @@ import { Link } from "react-router-dom";
                 <p>Satisfaction rates from other users!</p>
             </div>
         </div>
-        <HomeLink to="/ResultsPage">Temporary Results Link</HomeLink>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
