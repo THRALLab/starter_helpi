@@ -37,7 +37,7 @@ export default function useChatGPT(): Tools {
 							api_request === "user_report"
 								? "When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please use bullet points when providing the detailed explanation. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest to the user."
 								: "Please only list the 4 careers by name and the percentage (that totals up to 100) of how likely the user fits for that specific career as well and nothing else."
-						} If any of the questions receive gibberish or inappropriate answers or just don't make sense, ignore them. These questions and answers are as follows: \n ${formattedQ_A}`
+						} If any of the questions receive gibberish, inappropriate, off-topic answers, or just don't make sense, ignore them. These questions and answers are as follows: \n ${formattedQ_A}`
 					}
 				],
 				stream: true
