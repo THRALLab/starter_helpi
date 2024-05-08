@@ -18,6 +18,7 @@ const verifyAPIKey = async(apiKey: string) => {
   }
   // valid key
   console.log(res.choices[0].message.content);
+  openaiToken.apiKey = apiKey;
   return true;
 }
 
@@ -29,7 +30,7 @@ export function ApiKeyInput(): JSX.Element {
   useEffect(() => {
     async function getVaildation() {
 
-      // setValidKey(await verifyAPIKey(apiKey));
+      setValidKey(await verifyAPIKey(apiKey));
     }
     // this only checks for validation once the form has been submitted
     if (isSubmit) getVaildation();
@@ -46,7 +47,6 @@ export function ApiKeyInput(): JSX.Element {
     
     localStorage.removeItem("GBTKEY");
     localStorage.setItem("GBTKEY", apiKey);
-    openaiToken.apiKey = apiKey;
     console.log("apiKey->", apiKey); // Example: output to console or replace with storage logic
     console.log("actualKey->", openaiToken.apiKey);
   };
