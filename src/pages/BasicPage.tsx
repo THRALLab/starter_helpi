@@ -175,7 +175,7 @@ const BasicPage = () => {
 	return (<>
 		<body className="page-color">
 		<div className="Page-Container">
-			<div className="quiz-desc">
+			<div className="quiz-desc-header">
 				<h1>
 					Basic Quiz
 				</h1>

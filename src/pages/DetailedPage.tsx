@@ -166,7 +166,7 @@ const DetailedPage = () => {
     });
 	return (<>
 	<body className="page-color">
-		<div className="quiz-desc">
+		<div className="quiz-desc-header">
 			<h1 className="detailed-title">
 				Detailed Quiz
 			</h1>
