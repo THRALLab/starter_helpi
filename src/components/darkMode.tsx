@@ -13,8 +13,8 @@ export const DarkModeToggle = () => {
     console.log("Mode: " + (darkMode? "Dark" : "Light"));
 
     document.body.style.backgroundColor = isDark ? "black" : "white";
-    document.body.style.color = isDark ? "red" : "blue";
-    document.body.style.transition = "all 0.5s";
+    document.body.style.color = isDark ? "white" : "black";
+    document.body.style.transition = "all 0.75s";
   };
 
   return (
