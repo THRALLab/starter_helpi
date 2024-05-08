@@ -8,7 +8,6 @@ import { reviews } from "./ResultsPage"
 // import { PieChartObject } from "./ResultsPage";
 //import OpenAI from "openai";
 
-
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
     let keyData = "";
     const saveKeyData = "MYKEY";
@@ -88,13 +87,13 @@ import { reviews } from "./ResultsPage"
             <HomeLink to="/BasicPage">
                 <div className="quiz-desc">
                     <h3>Basic Quiz</h3>
-                    <p>Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
+                    <p className="text">Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
                 </div>
             </HomeLink>
             <HomeLink to="/DetailedPage">
                 <div className="quiz-desc">
                     <h3>Detailed Quiz</h3>
-                    <p>If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
+                    <p className="text">If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
                 </div>
             </HomeLink>
         </div>
@@ -115,7 +114,6 @@ import { reviews } from "./ResultsPage"
                 <p>Satisfaction rates from other users!</p>
             </div>
         </div>
-        <HomeLink to="/ResultsPage">Temporary Results Link</HomeLink>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>

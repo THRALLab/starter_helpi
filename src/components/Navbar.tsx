@@ -1,7 +1,7 @@
 //import React from "react";
 import { Nav, NavLink, NavMenu } from "./NavbarElements";
 import './Navbar.css';
-
+import { DarkModeToggle } from "./darkMode";
  
 const Navbar = () => {
     return (
@@ -10,6 +10,7 @@ const Navbar = () => {
                 <div className="site-title">
                     <p>JobNav.com</p>
                 </div>
+                <DarkModeToggle />
                 <NavMenu>
                     <NavLink to="/">Home Page</NavLink>
                     <NavLink to="/BasicPage">Basic Page</NavLink>

@@ -2,20 +2,26 @@ import { FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Nav = styled.nav`
-    background: white;
-    height: 85px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    z-index: 12;
-    align-items: center;
-    position: sticky;
-    top: 0px;
-    border-bottom: solid 1px grey;
+let Nav = styled.nav``
+let NavLink = styled(Link)``
+let HomeLink = styled(Link)``
+let Bars = styled(FaBars)``
+let NavMenu = styled.div``
+
+Nav = styled.nav`
+background: white;
+height: 85px;
+width: 100%;
+display: flex;
+justify-content: space-between;
+z-index: 12;
+align-items: center;
+position: sticky;
+top: 0px;
+border-bottom: solid 1px grey;
 `;
- 
-export const NavLink = styled(Link)`
+
+NavLink = styled(Link)`
     color: black;
     display: flex;
     align-items: center;
@@ -29,13 +35,13 @@ export const NavLink = styled(Link)`
     }
 `;
 
-export const HomeLink = styled(Link)`
+HomeLink = styled(Link)`
     color: black;
     text-decoration: none;
     width: 35%;
 `;
 
-export const Bars = styled(FaBars)`
+Bars = styled(FaBars)`
     display: none;
     color: #808080;
     @media screen and (max-width: 768px) {
@@ -48,9 +54,8 @@ export const Bars = styled(FaBars)`
         cursor: pointer;
     }
 `;
- 
- 
-export const NavMenu = styled.div`
+
+NavMenu = styled.div`
     display: flex;
     align-items: center;
     margin-right: 20px;
@@ -58,8 +63,9 @@ export const NavMenu = styled.div`
     /* margin-right: 24px; */
     /* Third Nav */
     /* width: 100vw;
-white-space: nowrap; */
-    @media screen and (max-width: 768px) {
-        display: none;
-    }
-`;
+}`;
+
+
+
+
+export { Nav, NavLink, HomeLink, Bars, NavMenu };

@@ -1,0 +1,43 @@
+.QuestionNum {
+    font-size: 50px;
+    margin-left: 35px;
+    display:flex;	
+    }
+
+
+.question-container{
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+    margin-top:35px;
+}
+
+.radio-container{
+    display:flex;
+    justify-content: space-between;
+}
+
+.last4{
+    margin-bottom: 30px;
+}
+
+.basic-title{
+    font-family: Georgia, serif;
+    margin-left: 20px;
+}
+
+.button{
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 16px;
+}
+
+.quiz-desc {
+    margin: 20px;
+    height: 100%;
+    width: 95%;
+    padding: 20px;
+}

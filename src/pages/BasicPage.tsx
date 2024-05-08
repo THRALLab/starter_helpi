@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert, Stack } from "react-bootstrap";
-import Button from "react-bootstrap/esm/Button";
+import { Form, Alert, Stack, ProgressBar} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
+import { parseAnswers } from "./DetailedPage";
+import "./basicPage.css"
 
 
 const BasicPage = () => {
 	const [response, setResponse] = useState<(number)[]>
 	([-1, -1, -1, -1, -1, -1, -1, -1]) //initializes the responses to -1 so no radio button is checked
+
 	function updateChoice(index:number){
 		setResponse(prevResponse => {
 			const updatedResponse = [...prevResponse];
@@ -103,7 +105,7 @@ const BasicPage = () => {
 		}
 
 		//console.log(answers + '/n')
-		console.log(description);
+		//console.log(description);
 
 		return description;
 	}
@@ -131,30 +133,33 @@ const BasicPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 64, //should be 512
+				max_tokens: 512, //should be 512
 				top_p: 1,
 				});
-	
-				console.log(response.choices[0].message.content); //GPT Response to the user's input
+				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
+				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
+				
+				window.location.href = "/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				//console.log(e);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
 				window.location.href = "./starter_helpi/"; 
+				window.scrollTo(0, 0);
 			}  
 		}
 
 		runGPT(); //run the function at the end
 	
 	}
+	
+	const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
 
+	function doReset(): void{ //clears all the choices by setting all elements in array to -1
+		const resetResponse: number[] = Array(response.length).fill(-1);
+		setResponse(resetResponse)
+	}
 
-	  const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
-
-  function doReset(): void{ //clears all the choices by setting all elements in array to -1
-	const resetResponse: number[] = Array(response.length).fill(-1);
-	setResponse(resetResponse)
-  }
 	const [allow, setAllow] = useState<boolean>(false);
 	const [alert, setAlert] = useState<boolean>(false);
 	
@@ -167,42 +172,33 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
-	//console.log(response)
 	return (<>
-	<style>{`
-                .QuestionNum {
-                	font-size: 50px;
-					margin-left: 35px;
-					display:flex;	
-                    }
-				hr{
-					width:max;
-					margin-top: 50px;
-				}
-                `}</style>
-		<div>
-			<h1>
-				Basic Quiz
-			</h1>
-			<p style={{ textAlign: "center" }}>
+		<body className="page-color">
+		<div className="Page-Container">
+			<div className="quiz-desc">
+				<h1>
+					Basic Quiz
+				</h1>
+				<p style={{ textAlign: "center" }}>
 				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
-				The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-				 With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
-			</p>
-			
+		The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+		With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
+				</p>
+				
+			</div>
+			<div style={{textAlign: "center"}}>
+	
+				<button className="button" disabled={!allow} onClick={sendResponse}>Get Answer!</button>
+				<button className="button" onClick={doReset} > Clear All</button>
+				<div style={{display: "flex", justifyContent:"center"}}>
+		  			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
+		   				 <p>You've completed all the questions, you can now click the "Get Answer!" button to get your results!</p>
+		  			 </Alert>
+				</div>
 		</div>
-
-		<div style={{textAlign: "center"}}>
-      
-			<Button size="lg" disabled={!allow} onClick={sendResponse}>Get Answer</Button> <Button size="lg" onClick={doReset} > Clear All</Button>
-
-			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px"}}>
-				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-			</Alert>
-
-		</div>
-		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center"}}>
-		<span className="QuestionNum">#1</span> <span>
+		<div className="question-container">
+		<span className="QuestionNum">#1</span> 
+		<span className="radio-container">
 			<Stack gap={3} style={{marginTop: "30px"}}>
 			<Form.Check 
 					type="radio"
@@ -210,21 +206,18 @@ const BasicPage = () => {
 					label="I prefer working in a group."
 					name="question1"
 					onChange={() => updateChoice(0)}
-					checked={response[0] === 1 }
-		
-					/>
+					checked={response[0] === 1 }/>
 				<Form.Check
 					type="radio"
 					id="q-1Option2"
 					label="I prefer working on my own."
 					name="question1"
 					onChange={() => updateChoice(1)}
-					checked={response[0] === 0}
-					style={{width:"200px"}}
-					/>
+					checked={response[0] === 0}/>
 			</Stack>
 		</span>
-			<span className="QuestionNum">#2</span> <span>
+			<span className="QuestionNum">#2</span> 
+			<span className="radio-container">
 			<Stack gap={3} style={{marginTop: "30px"}}> 
 			<Form.Check 
 					type="radio"
@@ -232,21 +225,18 @@ const BasicPage = () => {
 					label="I prefer having my schedule made for me."
 					name="question2"
 					onChange={() => updateChoice(2)}
-					checked={response[1] === 1}
-
-					/>
+					checked={response[1] === 1}/>
 				<Form.Check 
 					type="radio"
 					id="q2-Option2"
 					label="I want to be able to work whenever I want."
 					name="question2"
 					onChange={() => updateChoice(3)}
-					checked={response[1] === 0}
-			
-					/>
+					checked={response[1] === 0}/>
 			</Stack>
 			</span>
-			<span className="QuestionNum">#3</span> <span>
+			<span className="QuestionNum">#3</span> 
+			<span className="radio-container">
 				<Stack gap={3} style={{marginTop: "30px"}}> 
 				<Form.Check 
 					type="radio"
@@ -254,73 +244,67 @@ const BasicPage = () => {
 					label="I like having detailed instructions when doing a task."
 					name="question3"
 					onChange={() => updateChoice(4)}
-					checked={response[2] === 1}
-					/>
+					checked={response[2] === 1}/>
 				<Form.Check 
 					type="radio"
 					id="q3-Option2"
 					label="I prefer having creative freedom when doing a task."
 					name="question3"
 					onChange={() => updateChoice(5)}
-					checked={response[2] === 0}
-					/>
+					checked={response[2] === 0}/>
 				</Stack>
 			</span>
-			<span className="QuestionNum">#4</span> <span>
-				<Stack gap={3} style={{marginTop: "30px"}}> 
+			<span className="QuestionNum">#4</span> 
+			<span className="radio-container">
+				<Stack gap={3} style={{marginTop: "20px"}}> 
 				<Form.Check 
 					type="radio"
 					id="q4-Option1"
 					label="I enjoy a job that challenges me."
 					name="question4"
 					onChange={() => updateChoice(6)}
-					checked={response[3] === 1}
-					/>
+					checked={response[3] === 1}/>
 				<Form.Check 
 					type="radio"
 					id="q4-Option2"
 					label="I want a job that is easy."
 					name="question4"
 					onChange={() => updateChoice(7)}
-					checked={response[3] === 0}
-					/>
+					checked={response[3] === 0}/>
 				</Stack>
 			</span>	
-		</div>
-		<hr></hr>
-
-		<div className="questions" style={{display: "flex", justifyContent: "left", alignItems: "center", marginTop: "25px"}}>
+			</div>
+		<hr style={{marginTop:"78px", marginBottom:"80px", opacity:1}}></hr>
+		<div className="question-container">
 			<span className="QuestionNum">#5</span> <span>
-			<Stack gap={3} style={{marginTop: "30px"}}>
+			<Stack className="last4" gap={3} style={{marginTop: "30px"}}>
 			<Form.Check 
 						type="radio"
 						id="q5-Option1"
 						label="I enjoy working with my hands."
 						name="question5"
 						onChange={() => updateChoice(8)}
-						checked={response[4] === 1}
-						/>
+						checked={response[4] === 1}/>
 					<Form.Check  
 						type="radio"
 						id="q5-Option2"
 						label="I don't like working with my hands."
 						name="question5"
 						onChange={() => updateChoice(9)}
-						checked={response[4] === 0}
-						style={{marginBottom:"30px"}}
-
-					/>
+						checked={response[4] === 0}/>
 			</Stack>
 			</span>				
 			<span className="QuestionNum">#6</span> <span>
-			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Stack  className="last4" gap={3} style={{marginTop: "30px"}}> 
 					<Form.Check 
 						type="radio"
 						id="q6-Option1"
 						label="I would work a job I dislike for the money."
 						name="question6"
 						onChange={() => updateChoice(10)}
-						checked={response[5] === 1}/>
+						checked={response[5] === 1}
+				
+						/>
 					<Form.Check 
 						type="radio"
 						id="q6-Option2"
@@ -328,11 +312,12 @@ const BasicPage = () => {
 						name="question6"
 						onChange={() => updateChoice(11)}
 						checked={response[5] === 0}
-						style={{marginBottom:"30px"}}/>
-			</Stack>
-			</span>		
+				
+					/>
+				</Stack>
+			</span>
 			<span className="QuestionNum">#7</span> <span>
-			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
 			<Form.Check 
 						type="radio"
 						id="q7-Option1"
@@ -346,34 +331,36 @@ const BasicPage = () => {
 						label="I just want a job."
 						name="question7"
 						onChange={() => updateChoice(13)}
-						checked={response[6] === 0}
-						style={{marginBottom:"30px"}}/>
+						checked={response[6] === 0}/>
 			</Stack>
 			</span>	
 			<span className="QuestionNum">#8</span> <span>
-			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
 			<Form.Check 
 						type="radio"
 						id="q8-Option1"
 						label="I love to travel."
 						name="question8"
 						onChange={() => updateChoice(14)}
-						checked={response[7] === 1}/>
+						checked={response[7] === 1}
+						/>
 					<Form.Check 
 						type="radio"
 						id="q8-Option2"
-						label="I don't like to travel."
+						label="I don't love to travel."
 						name="question8"
 						onChange={() => updateChoice(15)}
-						checked={response[7] === 0}
-						style={{marginBottom:"30px"}}/>
-			</Stack>
-			</span>
-					
+						checked={response[7] === 0}/>
+					</Stack>
+				</span>	
+			</div>
+			
 		</div>
-		<ProgressBar variant="success" now={answered} animated max={8} style={{marginLeft:"100px", marginRight:"100px", marginTop:"30px", marginBottom: "30px"}}/>
-		</>
-		
+		<div style={{marginLeft:"200px", marginRight:"200px", marginBottom:"10px"}}>
+		<ProgressBar variant="success" now={answered} animated max={8} />
+		</div>
+		</body>
+	</>
 	);
 };
 export default BasicPage;

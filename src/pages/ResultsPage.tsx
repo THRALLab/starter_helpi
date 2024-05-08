@@ -2,11 +2,6 @@ import { useState } from 'react';
 import './resultsPage.css';
 import { Button, Form } from 'react-bootstrap';
 
-/*function parseAnswers(answers: string|null): string[] {
-	  if (answers === null) return [];
-    let array = answers.substring(2,answers.length-2).split("\", \"");
-    return array;
-}*/
 
 
 const reviewData: number[] = [0,0,0];
@@ -24,6 +19,7 @@ const ResultsPage = () => {
         return [0, 0, 0] 
     }
 
+
     function storeReviews() {
         const currReviews = [...reviews]
         currReviews[review] += 1;
@@ -38,27 +34,37 @@ const ResultsPage = () => {
         // const updatedReviewData = [...reviews];
         // updatedReviewData[newNumber] += 1;
         setReview(newNumber);
+
+    //get gptresponse from local storage
+    const response:string | null = localStorage.getItem("GPTresponse");
+    let GPTresponse:string[];
+    if (response === null) {
+        GPTresponse = ["Career not found", "Please try again", "", "", "", "", "", ""]
+    }
+    else {
+        GPTresponse = JSON.parse(response || "[]");
+
     }
 
     return(
         <>
         <div className="mainCareer">
                 <h6>Your ideal career is...</h6>
-                <h5>UD Parking Attendent</h5>
-                <p>You can tell it's an aspen because of the way it is.</p>
+                <h5>{GPTresponse[0]}</h5>
+                <p>{GPTresponse[1]}</p>
         </div>
         <div className="subCareers">
             <div className="career-desc">
-                        <h3>Option 2</h3>
-                        <p>This is the description of career option 2</p>
+                        <h3>{GPTresponse[2]}</h3>
+                        <p>{GPTresponse[3]}</p>
             </div>
             <div className="career-desc">
-                        <h3>Option 3</h3>
-                        <p>This is the description of career option 3</p>
+                        <h3>{GPTresponse[4]}</h3>
+                        <p>{GPTresponse[5]}</p>
             </div>
             <div className="career-desc">
-                        <h3>Option 4</h3>
-                        <p>This is the description of career option 4</p>
+                        <h3>{GPTresponse[6]}</h3>
+                        <p>{GPTresponse[7]}</p>
             </div>
         </div>
         <div className="review-system">
