@@ -23,6 +23,16 @@
 	word-spacing: 10px;
 }
 
+.pieChartContainer {
+	width: 80%;
+	box-sizing: border-box;
+	margin: 50px auto 50px;
+	border: 2px solid rgb(6, 52, 180);
+	padding: 10px;
+	background-color: rgb(214, 209, 252);
+	border-radius: 10px;
+}
+
 .report {
 	width: 70%;
 	margin: 50px auto 50px;

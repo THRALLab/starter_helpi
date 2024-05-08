@@ -9,6 +9,8 @@ export default function Results() {
 	// TODO [ ] - implement a loading feature when the user presses the "get results" button on the modal
 	// TODO [ ] - implement the 404 logic when the user attempts to access this page without completing the quiz
 	// TODO [ ] - consider creating a second function that will also call the ChatGPT API but will return data about how much of a close fit a user is (in percentages) to a specific career/how likely it matches them so that you can use this data and implement it for graphs + get more data to add to the results page
+	// TODO [ ] - add a feature for users to print out a PDF of their results
+	// TODO [ ] - add a feature to have their report emailed to them or someone else
 
 	/*
 	
@@ -217,41 +219,41 @@ export default function Results() {
 						</div>
 					</>
 				) : null}
-				{chart_data.length > 0 ? (
-					<div>
-						<PieChart
-							series={[
-								{
-									data: [
-										{
-											id: 0,
-											value: parseInt(chart_data[0].percent),
-											label: chart_data[0].career
-										},
-										{
-											id: 1,
-											value: parseInt(chart_data[1].percent),
-											label: chart_data[1].career
-										},
-										{
-											id: 2,
-											value: parseInt(chart_data[2].percent),
-											label: chart_data[2].career
-										},
-										{
-											id: 3,
-											value: parseInt(chart_data[3].percent),
-											label: chart_data[3].career
-										}
-									]
-								}
-							]}
-							width={1000}
-							height={400}
-						/>
-					</div>
-				) : null}
 			</div>
+			{chart_data.length > 0 ? (
+				<div className="pieChartContainer">
+					<PieChart
+						series={[
+							{
+								data: [
+									{
+										id: 0,
+										value: parseInt(chart_data[0].percent),
+										label: chart_data[0].career
+									},
+									{
+										id: 1,
+										value: parseInt(chart_data[1].percent),
+										label: chart_data[1].career
+									},
+									{
+										id: 2,
+										value: parseInt(chart_data[2].percent),
+										label: chart_data[2].career
+									},
+									{
+										id: 3,
+										value: parseInt(chart_data[3].percent),
+										label: chart_data[3].career
+									}
+								]
+							}
+						]}
+						width={900}
+						height={350}
+					/>
+				</div>
+			) : null}
 		</>
 	);
 }
