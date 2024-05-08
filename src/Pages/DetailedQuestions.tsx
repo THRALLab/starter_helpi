@@ -287,7 +287,7 @@ function DetailedQuestions() {
                 </span>
               </span>
             </Col>
-            <Col>
+            <Col className="Detailed-Questions-Progress-Bar">
               <div className="DetailedQuestions-progress-bar">
                 <div
                   className="DetailedQuestions-progress-bar-foreground"

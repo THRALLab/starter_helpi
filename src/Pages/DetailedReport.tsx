@@ -122,7 +122,6 @@ function DetailedReport() {
 
   //Ansync function that queries GPT
   const generateReport = async () => {
-    
     await ChatGPT();
     //setCareerList(responseData.split("~"));
   };
@@ -148,17 +147,28 @@ function DetailedReport() {
 
       <div className="Page-body">
         <div className="Report-space">
-          {!loading && careerList.length < 3 && !responseData ? <div><div className="Report-header">View your Detailed Quiz Results!</div>
-          <Form className="Report-body">
-            <Button className="Button-chatGPT" onClick={generateReport}>
-              Generate Report
-            </Button>
-          </Form></div> : 
-          <Form className="Report-body">
-            <Button className="Button-chatGPT" onClick={getPrevReport} disabled={careerList.length >= 3}>
-              Back To Report
-            </Button>
-          </Form>}
+          {!loading && careerList.length < 3 && !responseData ? (
+            <div>
+              <div className="Report-header">
+                View your Detailed Quiz Results!
+              </div>
+              <Form className="Report-body">
+                <Button className="Button-chatGPT" onClick={generateReport}>
+                  Generate Report
+                </Button>
+              </Form>
+            </div>
+          ) : (
+            <Form className="Report-body">
+              <Button
+                className="Button-chatGPT"
+                onClick={getPrevReport}
+                disabled={careerList.length >= 3}
+              >
+                Back To Report
+              </Button>
+            </Form>
+          )}
           {loading && (
             <div>
               <Spinner animation="border" role="status">
@@ -169,7 +179,9 @@ function DetailedReport() {
           )}
           {!loading && careerList.length >= 3 && (
             <div className="Report-results">
-              <span className="Report-results-header">Based on your answers:</span>
+              <span className="Report-results-header">
+                Based on your answers:
+              </span>
               <div>
                 <br />
                 <span className="Report-results-header">Career 1:</span>
