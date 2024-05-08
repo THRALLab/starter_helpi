@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Form } from 'react-bootstrap';
-import { FaQuestionCircle } from "react-icons/fa";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
 export function TextResponse({
     question,
@@ -49,7 +49,7 @@ export function TextResponse({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle className="quiz-tooltip"
+                <BsFillInfoCircleFill className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
@@ -75,7 +75,8 @@ export function TextResponse({
             )}
             <Form.Group>
                 <Form.Control
-                    as="textarea" rows={3}
+                    as="textarea"
+                    rows={3}
                     placeholder="Enter answer here"
                     value={localAnswer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLocalAnswer(event.target.value)}

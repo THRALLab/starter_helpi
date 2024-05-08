@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { SelectQuiz } from "./pages/SelectQuiz";
+import { Results } from "./pages/Results";
 // Import any other components or pages you have
 import { ApiKeyInput } from "./pages/Home";
 import './css/App.css';
@@ -12,7 +13,6 @@ import gitLogo from "src/public/github-mark-white.svg";
 function App(): JSX.Element {
   return ( 
   <div className="main-container">
-    
     <Router>
       <header className="App-header">
         <nav>
@@ -23,11 +23,21 @@ function App(): JSX.Element {
         </nav>
       </header>
       <div className="App">
-        
+        <header className="App-header">
+          <nav>
+            <Link to="starter_helpi/">Home</Link>
+          </nav>
+          <nav>
+            <Link to="/select-quiz">Select Quiz</Link>
+          </nav>
+          <nav> 
+            <Link to="/results">Results</Link></nav>
+        </header>
         <Routes>
           <Route path="starter_helpi/*" element={<Home />} />
           <Route path="/select-quiz" element={<SelectQuiz />}/>
           <Route path="/chat-gbt-page" element={<ChatGBTPage />}/>
+          <Route path="/results" element={<Results />}/>
           <Route 
           path="/basic-quiz"
           element={<BasicQuiz/>}
@@ -38,6 +48,7 @@ function App(): JSX.Element {
         />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
+
       </div>
       <footer> 
           <ApiKeyInput></ApiKeyInput>
@@ -51,10 +62,6 @@ function App(): JSX.Element {
           </div>
       </footer>
     </Router>
-    
-    
    </div>
   );
 }
-
-export default App;

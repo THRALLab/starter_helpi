@@ -29,13 +29,21 @@
   color: var(--dawn-dish-blue); /* Optional: Changes color on hover or focus for better user experience */
 }
 
+.App-api-container {
+  display: grid;
+  grid-template: "myArea myArea . .";
+}
+
 .App-footer {
   width: 100%;
   height: 50px;
   background-color: var(--british-khaki);
-  bottom: 0; 
-  left: 0; 
-  z-index: 10;
+  display: flex;
+  flex-direction: relative;
+  align-items: center;
+  padding-top: relative;
+  bottom: 0%;
+  justify-content: space-between;
 }
 
 .App-misc-text {
@@ -59,12 +67,39 @@
   margin-left: 5px
 }
 
+.quiz-drag-drop{
+  border: 3px;
+  border-color: var(--dark-royal-blue);
+  border-width: 2px;
+  border-style: none none none solid;
+  color: var(--gift-wrap-purple);
+  background-color: var(--off-white);
+  cursor: move;
+  list-style-type: '';
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.quiz-drag-drop:hover{
+  border: 3px;
+  border-color: var(--dark-royal-blue);
+  border-width: 2px;
+  border-style: solid;
+  color: var(--off-white);
+  background-color: var(--ocean-eyes);
+  cursor: move;
+  list-style-type: '';
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+
 /*Styling for the different nav buttons in the app */
 .btn-nav-disabled {
   color: var(--dark-royal-blue);
   outline-color: var(--dark-royal-blue);
-  outline-width: 3px;
-  outline-style: auto;
+  outline-width: 2px;
+  outline-style: solid;
+  margin: 2px
 }
 
 .btn-nav {
@@ -73,14 +108,14 @@
 }
 
 .btn-nav:hover{
-  background-color: var(--diamond-blue);
+  background-color: var(--almost-teal);
   color: var(white)
 }
 
 /*Styling for the quiz related buttons */
 .btn-selected {
   background-color: var(--gift-wrap-purple);
-  color: var(--off-white);
+  color: white;
 }
 
 .btn-selected:hover {
@@ -118,7 +153,6 @@
   }
 }
 
-
 .valid-key {
   background-color: rgb(61, 175, 43);
 }
@@ -147,4 +181,15 @@
 
 .github-links:hover {
   background-color: var(--dark-royal-blue);
+}
+
+.quiz-container {
+  background: var(--diamond-blue); /* Blue background */
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  width: 75%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 5%;
+  margin-bottom: 10%;
 }

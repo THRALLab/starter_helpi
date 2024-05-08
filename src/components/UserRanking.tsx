@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from 'react-bootstrap';
-import { FaQuestionCircle, FaGripLines  } from "react-icons/fa";
-
+import { BsFillInfoCircleFill } from "react-icons/bs";
+import { FaGripLines } from "react-icons/fa";
 
 
 
@@ -76,7 +76,7 @@ export function UserRanking({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle className="quiz-tooltip"
+                <BsFillInfoCircleFill className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
@@ -102,13 +102,12 @@ export function UserRanking({
             )}
             <ol style={{textAlign: "left"}}>
                 {categories.map((category, index) =>  (
-                    <li 
+                    <li className="quiz-drag-drop"
                     key={category}
                     draggable={true}
                     onDragStart={handleDragStart(index)}
                     onDragOver={handleDragOver}
-                    onDrop={handleDrop(index)}
-                    style={{ cursor: 'move', marginBottom: '10px', listStyle: "none", margin: "0px", padding: "0px" }}>
+                    onDrop={handleDrop(index)}>
                     <FaGripLines></FaGripLines>{category}
                 </li>
                 ))}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form} from "react-bootstrap";
+
 import { Link } from "react-router-dom";
 import { openaiToken } from "src/controller/openaiToken";
 
@@ -22,7 +23,15 @@ const verifyAPIKey = async(apiKey: string) => {
   return true;
 }
 
-export function ApiKeyInput(): JSX.Element {
+export function ApiKeyInput(
+  {
+    submitted,
+    setSubmit
+  }: {
+    submitted: boolean;
+    setSubmit: (submitted: boolean) => void;
+  }
+): JSX.Element {
   const [apiKey, setApiKey] = useState<string>("");
   const [isSubmit, setSubmit] = useState<boolean>(true)
   const [validKey, setValidKey] = useState<boolean>(false);
@@ -50,7 +59,6 @@ export function ApiKeyInput(): JSX.Element {
     console.log("apiKey->", apiKey); // Example: output to console or replace with storage logic
     console.log("actualKey->", openaiToken.apiKey);
   };
-
   return <div>
           <Form 
             onSubmit={handleSubmit}
