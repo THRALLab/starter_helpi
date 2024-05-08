@@ -19,7 +19,6 @@ const verifyAPIKey = async(apiKey: string) => {
   }
   // valid key
   console.log(res.choices[0].message.content);
-  openaiToken.apiKey = apiKey;
   return true;
 }
 
@@ -45,11 +44,11 @@ export function ApiKeyInput(): JSX.Element {
     event.preventDefault(); // Prevent the default form submission behavior
     // Logic to handle the API key, such as saving to local storage or state management
     setSubmit(true);
-    
     localStorage.removeItem("GBTKEY");
     localStorage.setItem("GBTKEY", apiKey);
     console.log("apiKey->", apiKey); // Example: output to console or replace with storage logic
     console.log("actualKey->", openaiToken.apiKey);
+    openaiToken.apiKey = apiKey;
   };
   return <div>
           <Form 
