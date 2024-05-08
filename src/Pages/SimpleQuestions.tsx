@@ -184,7 +184,11 @@ function SimpleQuestions() {
           <AudioPlayer></AudioPlayer>
         </span>
         <span className="Header-button">
-          <LinkButton to="/" label="Home"></LinkButton>
+          <LinkButton
+            to="/"
+            label="Home"
+            classNameGive="Button-link"
+          ></LinkButton>
         </span>
       </div>
 
@@ -266,7 +270,11 @@ function SimpleQuestions() {
             </span>
             <span className="Button-visible-false" id="reportButton">
               <span className="Button-report">
-                <LinkButton to="/simplereport" label="Report"></LinkButton>
+                <LinkButton
+                  to="/simplereport"
+                  label="Report"
+                  classNameGive="Simple-report"
+                ></LinkButton>
               </span>
             </span>
           </div>

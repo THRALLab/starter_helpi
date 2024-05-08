@@ -48,7 +48,11 @@ describe("Link Button Tests", () => {
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
-        <LinkButton to="/" label="Home"></LinkButton>
+        <LinkButton
+          to="/"
+          label="Home"
+          classNameGive="Button-link"
+        ></LinkButton>
       </HashRouter>
     );
     const testLinkButton: HTMLElement[] = screen.getAllByRole("Button-link");

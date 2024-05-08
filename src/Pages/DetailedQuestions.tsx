@@ -220,7 +220,11 @@ function DetailedQuestions() {
           <AudioPlayer></AudioPlayer>
         </span>
         <span className="Header-button">
-          <LinkButton to="/" label="Home"></LinkButton>
+          <LinkButton
+            to="/"
+            label="Home"
+            classNameGive="Button-link"
+          ></LinkButton>
         </span>
       </div>
 
@@ -269,19 +273,11 @@ function DetailedQuestions() {
                   </Button>
                 </span>
                 <span className="Button-visible-false" id="reportButton">
-                  <span
-                    className="Button-report"
-                    style={{
-                      position: "absolute",
-                      width: "calc(50% - 5px)",
-                      margin: "0",
-                      padding: "10px",
-                      left: "calc(50% + 5px)",
-                    }}
-                  >
+                  <span className="Button-report">
                     <LinkButton
                       to="/detailedreport"
                       label="Report"
+                      classNameGive="DetailedQuestions-report"
                     ></LinkButton>
                   </span>
                 </span>

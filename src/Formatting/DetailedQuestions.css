@@ -43,8 +43,6 @@
   padding-left: 0px;
   margin-left: 0px;
   margin-top: 5vh;
-  margin-bottom: 0px;
-  height: 43vh;
   padding: 10px;
   border-radius: 10px;
   background-color: var(--color-body-TextBackground);
@@ -54,12 +52,20 @@
   position: relative;
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
-  /*
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.DetailedQuestions-report {
+  font-weight: bold;
+  color: var(--color-body-text);
+  border: var(--color-body-ButtonBorder);
+  background-color: var(--color-body-Button);
   position: absolute;
-  top: 0;
-  margin-top: 45vh;
-  */
+  width: calc(50% - 5px);
+  left: calc(50% + 5px);
+  margin: 0;
+  padding: 10px;
 }
 
 .DetailedQuestions-progress-bar {
