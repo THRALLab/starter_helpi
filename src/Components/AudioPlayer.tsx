@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import ButtonClick from "../Audio/Button-Click.mp3";
-import BackgroundSound from "../Audio/Mii-Channel.mp3";
+import ButtonClick from "../Audio/Button-Click2-Trimmed.mp3";
+import BackgroundSound from "../Audio/Burgers.mp3";
+import SliderClick from "../Audio/Slider-Click.mp3";
 import { isPlayingAudio } from "./StateParent";
 import { updatePlayingAudio } from "./StateParent";
 
 const buttonSoundEffect = new Audio(ButtonClick);
-const sliderSoundEffect = new Audio(ButtonClick);
+const sliderSoundEffect = new Audio(SliderClick);
 const backgroundMusic = new Audio(BackgroundSound);
 
 //Sound effect played when buttons clicked
