@@ -21,10 +21,11 @@ if (prevKey !== null) {
 function SimpleReport() {
   // State variables for the Report page
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const [prompt, setPrompt] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // Sets whether the page is loading or not
+  const [loadingText, setLoadingText] = useState("Generating Your Results..."); // Text that goes with loading icon
+  const [onMoreDetailedPage, setOnMoreDetailedPage] = useState(false);
 
-  //sets the local storage item to the api key the user inputed
+  // Sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
@@ -34,51 +35,93 @@ function SimpleReport() {
     setKey(event.target.value);
   }
 
-  const [responseData, setResponseData] = useState<string>(""); //Stores ChatGPTs response
-  //Queries ChatGPT to get response
+  // Create message for ChatGPT based on Simple Questions Responses
+  const questions = getQuestions();
+  const simpleQuestionQuizResults = questions
+    .map(
+      (question: SimpleQuestion) => `${question.question}: ${question.answer}`
+    )
+    .join(", \n");
+
+  const exampleFormat =
+    "~Sample Career: 2-3 sentences of why this is a good fit~Another Sample Career: 2-3 sentences of why this is a good fit~Final Sample Career: 2-3 sentences of why this is a good fit";
+  let UserRolePrompt = `Based on my quiz results, what job suits me best? Here are my results: ${simpleQuestionQuizResults}`
+  let GPTRole =
+    "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a list of 3 careers, with '~' as the bulletpoint. Here is the example format" +
+    exampleFormat +
+    "Include the tilda (~) in the report string, it is important.";
+  
+  // Sets the user and system prompt
+  function setPrompt(newUserPrompt: string, newGPTPrompt: string) {
+    UserRolePrompt = newUserPrompt;
+    GPTRole = newGPTPrompt;
+  }
+
+  // Function that sets the prompts to have GPT expand on one career
+  function optionOne(career: string) {
+    setOnMoreDetailedPage(true);
+    setLoadingText("Loading more details...");
+    setPrompt(
+      "Expand on this career option you gave me: " + career,
+      "The user would like to explore the first career option you gave. Please provide more details (2 paragraphs) on a single career the user provides"
+    );
+    setPrevCareerList([...careerList]);
+    ChatGPT();
+  }
+
+  // Creates ChatGPT
+  const openai = new OpenAIAPi({
+    apiKey: keyData,
+    dangerouslyAllowBrowser: true,
+  });
+  const [responseData, setResponseData] = useState<string>(""); // Stores ChatGPTs response
+  const [careerList, setCareerList] = useState<Array<string>>(
+    responseData.split("~")
+  ); // Splits the careers for easy formatting
+  const [prevCareerList, setPrevCareerList] = useState<Array<string>>(
+    responseData.split("~")
+  );
+
+  //Changes the response data string for formatting
+  const changeResponseData = (data: string) => {
+    setResponseData(data);
+  };
+
+  //Queries ChatGPT to generate report
   async function ChatGPT() {
     setLoading(true);
-    //Create message for ChatGPT based on Simple Questions Responses
-    const questions = getQuestions();
-    const simpleQuestionQuizResults = questions
-      .map(
-        (question: SimpleQuestion) => `${question.question}: ${question.answer}`
-      )
-      .join(", \n");
-    setPrompt(
-      `Based on my quiz results, what job suits me best? Here are my results: ${simpleQuestionQuizResults}`
-    );
-    const exampleFormat =
-      "~Sample Career: 2-3 sentences of why this is a good fit~Another Sample Career: 2-3 sentences of why this is a good fit~Final Sample Career: 2-3 sentences of why this is a good fit";
-    //Creates ChatGPT
-    const openai = new OpenAIAPi({
-      apiKey: keyData,
-      dangerouslyAllowBrowser: true,
-    });
+
     //Queries ChatGPT
     const completion = await openai.chat.completions.create({
       messages: [
         {
           role: "system",
-          content:
-            "You are a helpful career advisor. You will be provided a students result to a career quiz. Provide a list of 3 careers, with '~' as the bulletpoint. Here is the example format" +
-            exampleFormat +
-            "Include the tilda (~) in the report string, it is important",
+          content: GPTRole,
         },
-        { role: "user", content: prompt },
+        { role: "user", content: UserRolePrompt },
       ],
       model: "gpt-3.5-turbo",
     });
     //Stores response data
     if (completion.choices[0].message.content !== null) {
-      setResponseData(completion.choices[0].message.content);
+      changeResponseData(completion.choices[0].message.content);
+      setCareerList(completion.choices[0].message.content.split("~"));
     } else {
       setResponseData("Error! Maybe you forgot to input the API key?");
     }
     setLoading(false);
   }
 
-  const careerList = responseData.split("~");
+  // Ansync function that queries GPT
+  const generateReport = async () => {
+    await ChatGPT();
+  };
+
+  const getPrevReport = () => {
+    setOnMoreDetailedPage(false);
+    setLoadingText("Loading Report...")
+    setCareerList([...prevCareerList]);
+  };
 
   return (
     <div className={themeState} id="bigBody">
@@ -86,40 +129,70 @@ function SimpleReport() {
 
       <div className="Page-body">
         <div className="Report-space">
-          <div className="Report-header">View your Simple Quiz Results!</div>
+          {!loading && careerList.length < 3 && !responseData ? <div><div className="Report-header">View your Simple Quiz Results!</div>
           <Form className="Report-body">
-            <Button
-              className="Button-chatGPT"
-              onClick={ChatGPT}
-              disabled={loading}
-            >
+            <Button className="Button-chatGPT" onClick={generateReport}>
               Generate Report
             </Button>
-          </Form>
+          </Form></div> : 
+          !loading && <Form className="Report-body">
+            {onMoreDetailedPage && (
+              <Button className="Button-chatGPT" onClick={getPrevReport} disabled={careerList.length >= 3}>
+                Back To Report
+              </Button>
+            )}
+          </Form>}
           {loading && (
-            <div>
+            <div className="Loading-body">
               <Spinner animation="border" role="status">
                 <span className="sr-only"></span>
               </Spinner>
-              <p>Generating Your Results...</p>
+              <p>{loadingText}</p>
             </div>
           )}
           {!loading && careerList.length >= 3 && (
             <div className="Report-results">
-              Based on your results:
+              <span className="Report-results-header">
+                Based on your answers:
+              </span>
               <div>
-                <br />
+                <hr />
                 <span className="Report-results-header">Career 1:</span>
                 <li>{careerList[1]}</li>
-                <br />
+                <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+                  <Button
+                    className="Report-button-explore"
+                    onClick={() => optionOne(careerList[1])}
+                  >
+                    Explore Career 1
+                  </Button>
+                </div>
+                <hr />
                 <span className="Report-results-header">Career 2:</span>
                 <li>{careerList[2]}</li>
-                <br />
+                <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+                  <Button
+                    className="Report-button-explore"
+                    onClick={() => optionOne(careerList[2])}
+                  >
+                    Explore Career 2
+                  </Button>
+                </div>
+                <hr />
                 <span className="Report-results-header">Career 3:</span>
                 <li>{careerList[3]}</li>
+                <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+                  <Button
+                    className="Report-button-explore"
+                    onClick={() => optionOne(careerList[3])}
+                  >
+                    Explore Career 3
+                  </Button>
+                </div>
               </div>
             </div>
           )}
+          {!loading && careerList.length < 3 && <div className="Detailed-response-text">{responseData}</div>}
         </div>
       </div>
 
