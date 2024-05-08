@@ -4,6 +4,8 @@ import splash from "../images/businessman.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
 import { Link } from "react-router-dom";
+import { reviews } from "./ResultsPage"
+// import { PieChartObject } from "./ResultsPage";
 //import OpenAI from "openai";
 
 
@@ -64,6 +66,14 @@ import { Link } from "react-router-dom";
         }  
     }*/
 
+    const fixedReviews: number[] = JSON.parse(reviews);
+
+    const totalReviews = fixedReviews[0] + fixedReviews[1] + fixedReviews[2];
+    const goodDegs = (fixedReviews[0] / totalReviews) * 360 
+    const medDegs = (fixedReviews[1] / totalReviews) * 360 + goodDegs;
+    const badDegs = (fixedReviews[2] / totalReviews) * 360 + medDegs;
+
+
     return (
         <>
         <div className="splash-container">
@@ -93,8 +103,15 @@ import { Link } from "react-router-dom";
                 <p>Career quizzes are proven to help the masses achieve thier goals and secure professional success. Money can buy happiness, but only purpose can bring fulfillment.</p>
             </div>
             <div className="quiz-data-graph">
-                {/* <img src={pie} alt="graph"></img> */}
                 <div className="piechart"></div>
+                <div>{reviews}</div>
+                <div style={{
+                    width: "200px",
+                    height: "200px",
+                    borderRadius: "50%",
+                    background: 'conic-gradient(green ' + goodDegs + 'deg, yellow ' + goodDegs + 'deg ' + medDegs + 'deg, red ' + medDegs + 'deg ' + badDegs + 'deg)' 
+                }}></div>
+                <p>total reviws: {totalReviews}</p>
                 <p>Satisfaction rates from other users!</p>
             </div>
         </div>

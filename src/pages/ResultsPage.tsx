@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './resultsPage.css';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 /*function parseAnswers(answers: string|null): string[] {
 	  if (answers === null) return [];
@@ -11,8 +11,56 @@ import { Form } from 'react-bootstrap';
 //commented out the function until it is being used so we can build on GIT without errors
 //get the string-array from the question pages and pass through here.
 
+// interface updatingPie {
+//     setReviewAnswer: (newAnswer: number) => void;
+//     reviewAnswer: number
+// }
+
+// export function PieChartObject({reviewAnswer}: updatingPie): JSX.Element {
+//     let positive = reviewAnswer === 1 ? 360 : 0;
+//     let neutral = reviewAnswer === 2 ? 360 : 0;
+//     let negative = reviewAnswer === 3 ? 360 : 0;
+
+//     const pieStyle = {
+//         width: "100px",
+//         height: "200ox",
+//        // backgroundcolor: 'conic-gradient(green' + positive + 'deg, yellow 0' +  neutral + 'deg, orange 0' + negative + 'deg)'
+//     }
+
+//     return <div>
+//         <div className="piechart" style={pieStyle}></div>
+//         <p>{reviewAnswer}</p>
+//         <h3>Filler</h3>
+//     </div>
+// }
+
+const reviewData: number[] = [0,0,0];
+const saveReviewData = "MYPIE";
+
 const ResultsPage = () => {
-    const [review, setReview] = useState<number>(0); //create state for all of the questions
+
+    const [reviews, setReviews] = useState<number[]>(reviewData); //create state for all of the questions
+
+    function pullReviews() {
+        if(localStorage.getItem("MYPIE")){
+            const newLocal = localStorage.getItem("MYPIE") || "";
+            setReviews(JSON.parse(newLocal));
+        } 
+    }
+
+    function storeReviews() {
+        const currReviews = [...reviews]
+        localStorage.setItem(saveReviewData, JSON.stringify(currReviews));
+        pullReviews();
+        window.location.reload(); 
+        
+    }
+
+    function changeReview(newNumber: number) {
+        const updatedReviewData = [...reviews];
+        updatedReviewData[newNumber] += 1;
+        setReviews(updatedReviewData);
+    }
 
     return(
         <>
@@ -45,8 +93,8 @@ const ResultsPage = () => {
 				value={"1"}
 				name="review-question"
 				style={{width:"auto"}}
-                onChange={() => setReview(1)}
-				checked={review === 1}/>
+                onChange={() => changeReview(0)}
+				/>
             <Form.Check
                 inline
                 type="radio"
@@ -55,8 +103,8 @@ const ResultsPage = () => {
                 value={"2"}
                 name="review-question"
                 style={{width:"auto"}}
-                onChange={() => setReview(2)}
-                checked={review === 2}/>
+                onChange={() => changeReview(1)}
+                />
             <Form.Check
                 inline
                 type="radio"
@@ -65,10 +113,14 @@ const ResultsPage = () => {
                 value={"3"}
                 name="review-question"
                 style={{width:"auto"}}
-                onChange={() => setReview(3)}
-                checked={review === 3}/>
+                onChange={() => changeReview(2)}
+                />
+                <div>The magic array is {reviews}</div>
+                <Button className="Submit-Button" onClick={storeReviews}>Submit</Button>
 		</div>
         </>
     )
+
 };
 export default ResultsPage;
+export const reviews = localStorage.getItem("MYPIE") || ""; //this is to get the api key from the local storage

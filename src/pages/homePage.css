@@ -119,7 +119,7 @@ div .quiz-data-container {
     height: 90%;
 }
 
-.piechart { 
+/* .piechart { 
     width: 200px;
                 height: 200px;
                 border-radius: 50%;
@@ -128,7 +128,7 @@ div .quiz-data-container {
                     lightblue 0 235deg,
                     orange 0
                 );
-}
+} */
 
 .quiz-data-graph {
     border: solid 1px grey;
