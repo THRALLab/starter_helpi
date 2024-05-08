@@ -299,7 +299,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q6-Option1"
-						label="I want to be able to work whenever I want."
+						label="I would work a job I dislike for the money."
 						name="question6"
 						onChange={() => updateChoice(10)}
 						checked={response[5] === 1}
@@ -308,7 +308,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q6-Option2"
-						label="I want to be able to work whenever I want."
+						label="I would only ever work a job I like."
 						name="question6"
 						onChange={() => updateChoice(11)}
 						checked={response[5] === 0}
@@ -339,7 +339,7 @@ const BasicPage = () => {
 			<Form.Check 
 						type="radio"
 						id="q8-Option1"
-						label="I enjoy a job that challenges me."
+						label="I love to travel."
 						name="question8"
 						onChange={() => updateChoice(14)}
 						checked={response[7] === 1}
@@ -347,7 +347,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q8-Option2"
-						label="I want a job that is easy."
+						label="I don't love to travel."
 						name="question8"
 						onChange={() => updateChoice(15)}
 						checked={response[7] === 0}/>
