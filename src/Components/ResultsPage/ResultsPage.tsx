@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import OpenAI from "openai";
+import './ResultsPage.css'
+import { LoadingAnimation } from '../LoadingAnimation/LoadingAnimation'
 
 interface QuestionData {
     question: string;
@@ -60,7 +62,7 @@ export function ResultsPage({APIKey, basicQuestionData, detailQuestionData} : {A
           ],
           model: "gpt-4-turbo",
         });
-      
+
         console.log(completion.choices[0].message.content);
         return completion.choices[0].message.content;
       }
@@ -69,6 +71,7 @@ export function ResultsPage({APIKey, basicQuestionData, detailQuestionData} : {A
     return (
       <div className = "resultsContainer">
         <h1>ResultsPage</h1>
+        <div> {loading && <LoadingAnimation/>} </div>
         <p> {!(loading) && content} </p>
         </div>
     )
