@@ -12,7 +12,7 @@ import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse } 
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
 import { Container } from "react-bootstrap";
-import { HiChevronDown, HiChevronDoubleUp } from "react-icons/hi2";
+import { HiChevronDown, } from "react-icons/hi2";
 
 type DisplayQuizProps = Record<string, Question>;
 
