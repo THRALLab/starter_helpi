@@ -62,11 +62,11 @@
 }
 
 .App-career-container {
-  margin-bottom: 20px; /* Adds space between each career block */
+  margin-bottom: 20px;
   padding: 10px;
-  border: 1px solid var(--gift-wrap-purple); /* Adds a border around the container */
-  border-radius: 5px; /* Rounds the corners of the border */
-  background-color: var(--ocean-eyes); /* Light background for the container */
+  border: 1px solid var(--gift-wrap-purple);
+  border-radius: 5px; 
+  background-color: var(--ocean-eyes);
 }
 
 .quiz-tooltip{

@@ -232,6 +232,7 @@ export function DisplayQuiz(
                         <HiChevronDown 
                             onClick={() => updateRoles(career.role)}
                             size={20}
+                            style={{position: "fixed"}}
                         ><strong>{career.role}</strong></HiChevronDown>
                         {currRoles.includes(career.role) && (
                             <ul>
