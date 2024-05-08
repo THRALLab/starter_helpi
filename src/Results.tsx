@@ -103,11 +103,25 @@ useChatGPT.ts:54 Based on the answers provided, here are four career recommendat
 				<div className="cardContainer">
 					{careerMatches.map((career, index: number) => {
 						return (
-							<div className="card" key={index}>
+							<div className="careersCard" key={index}>
 								<Markdown>{career}</Markdown>
 							</div>
 						);
 					})}
+				</div>
+				<h2>
+					YOUR TOP {alternativePathsArray && alternativePathsArray.length}{" "}
+					ALTERNATIVE CHOICES:
+				</h2>
+				<div className="cardContainer">
+					{alternativePathsArray &&
+						alternativePathsArray.map((alternativeCareer, index: number) => {
+							return (
+								<div className="alternativesCard" key={index}>
+									<Markdown>{alternativeCareer}</Markdown>
+								</div>
+							);
+						})}
 				</div>
 			</div>
 		</>

@@ -35,11 +35,17 @@
 	font-weight: 400;
 }
 
-.report h1 {
+.report h1,
+.report h2 {
 	font-family: "Merriweather Sans", sans-serif;
 	text-align: center;
 	margin-top: -10px;
 	color: rgb(192, 9, 9);
+}
+
+.report h2 {
+	margin-top: 30px;
+	color: rgb(9, 82, 192);
 }
 
 .report .cardContainer {
@@ -50,13 +56,14 @@
 	flex-wrap: wrap;
 }
 
-.report .cardContainer .card ul,
-.report .cardContainer .card ol {
+.report .cardContainer .careersCard ul,
+.report .cardContainer .careersCard ol {
 	margin: 25px;
 	padding: 5px;
 }
 
-.report .cardContainer .card {
+.report .cardContainer .careersCard,
+.report .cardContainer .alternativesCard {
 	flex: 1 1 45%;
 	margin: 5px;
 	border: 2px solid red;
@@ -71,13 +78,24 @@
 	text-align: center;
 }
 
-.report .cardContainer .card ul {
+.report .cardContainer .careersCard ul {
 	margin: 10px;
 }
 
-.report .cardContainer .card:hover {
+.report .cardContainer .careersCard:hover {
 	color: rgb(180, 6, 6);
 	transition: 0.5s ease;
+}
+
+.report .cardContainer .alternativesCard:hover {
+	color: rgb(6, 52, 180);
+	transition: 0.5s ease;
+}
+
+.report .cardContainer .alternativesCard {
+	background-color: rgb(181, 217, 238);
+	border: 2px solid rgb(0, 60, 255);
+	color: rgb(8, 93, 146);
 }
 
 .NotFoundContainer {
