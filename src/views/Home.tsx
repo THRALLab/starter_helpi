@@ -26,9 +26,9 @@ function Home() {
             <Container style = {{position: 'relative', top: '70px', padding: 'none'}}>
                 <Row className='text-center' style={{columnGap: '20px'}}>
                     <Col style = {{border: '10px solid Background', backgroundColor: 'burlywood', borderStyle: 'ridge'}}>
-                        <h3>
-                            Basic Questions
-                        </h3>
+                    <button style={{ verticalAlign: 'middle', background: 'none', border: 'none', lineHeight: '1.2', fontWeight: '500', color: 'var(--bs-heading-color)', marginTop: '0', marginBottom: '10px', fontSize: '30px'}}onClick={() => setCurrentPage('BasicPage')}>
+                      <span>Basic Questions</span>
+                      </button>
                         <h5 style = {{padding: '10px'}}>
                         Discover Your Career Fit with Ease
                         </h5>
@@ -40,9 +40,9 @@ function Home() {
                         </h6>
                     </Col>
                     <Col style = {{border: '10px solid black', backgroundColor: 'burlywood', borderStyle: 'groove'}}>
-                        <h3>
-                            Detailed Questions
-                        </h3>
+                      <button style={{ verticalAlign: 'middle', background: 'none', border: 'none', lineHeight: '1.2', fontWeight: '500', color: 'var(--bs-heading-color)', marginTop: '0', marginBottom: '10px', fontSize: '30px'}}onClick={() => setCurrentPage('DetailPage')}>
+                        <span>Detailed Questions</span>
+                        </button>
                         <h5 style = {{padding: '10px'}}>
                         Dive Deep Into Your Career Potential
                         </h5>
@@ -64,7 +64,7 @@ function Home() {
 
   function BasicPageContent() {
     return (
-      <div>
+      <div >
         <Basic/>
       </div>
     );
@@ -80,7 +80,7 @@ function Home() {
 
   return (
     <div>
-      <Container className="page-container">
+      <Container className="page-container" style={{maxWidth: '100%'}}>
         <Row>
         <Col className="page-navigation" style={{borderBottom: '2px solid black', textAlign: 'left'}}>
         <span style = {{padding: '10px', fontSize: '30px', verticalAlign: 'center', fontWeight: 'bold'}}>

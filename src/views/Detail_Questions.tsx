@@ -7,7 +7,6 @@ import { Q4 } from "../DetailQuestions/Q4";
 import { Q5 } from "../DetailQuestions/Q5";
 import { Q6 } from "../DetailQuestions/Q6";
 import { Q7 } from "../DetailQuestions/Q7";
-import { Footer } from "../components/Footer";
 
 function Detail_Questions(): JSX.Element {
   const [currentQuestion, setCurrentQuestion] = useState(() => {
