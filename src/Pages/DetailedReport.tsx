@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import OpenAIAPi from "openai";
 import { Button, Form, Spinner } from "react-bootstrap";
-import { LinkButton } from "../Components/LinkButton";
+import { Header } from "../Components/Header";
 import { themeState } from "../Components/StateParent";
-import { ThemeSelect } from "../Components/ThemeSelect";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import { slidenums } from "./DetailedQuestions";
 import jsonData from "../QuestionData/DetailedQuestions.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";
 import "../Formatting/Report.css";
-import { AudioPlayer } from "../Components/AudioPlayer";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -132,22 +130,7 @@ function DetailedReport() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="Header-general" id="Header-Full">
-        <span className="Header-toggle">
-          <ThemeSelect></ThemeSelect>
-        </span>
-        <span className="Header-text">The Career Lab</span>
-        <span className="Header-Audio">
-          <AudioPlayer></AudioPlayer>
-        </span>
-        <span className="Header-button">
-          <LinkButton
-            to="/"
-            label="Home"
-            classNameGive="Button-link"
-          ></LinkButton>
-        </span>
-      </div>
+      <Header></Header>
 
       <div className="Page-body">
         <div className="Report-space">
@@ -194,11 +177,11 @@ function DetailedReport() {
                 <li>{careerList[1]}</li>
                 <div>
                   <Button
-                   className="Button-chatGPT"
-                   onClick={() => optionOne(careerList[1])}
+                    className="Button-chatGPT"
+                    onClick={() => optionOne(careerList[1])}
                   >
                     Explore Career 1
-                 </Button>
+                  </Button>
                 </div>
                 <br />
                 <span className="Report-results-header">Career 2:</span>

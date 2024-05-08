@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
+import { Header } from "../Components/Header";
 import { LinkButton } from "../Components/LinkButton";
 import { themeState } from "../Components/StateParent";
-import { ThemeSelect } from "../Components/ThemeSelect";
 import { SimpleQuestion } from "../QuestionData/SimpleQuestion";
-import { AudioPlayer, playButtonClick } from "../Components/AudioPlayer";
+import { playButtonClick } from "../Components/AudioPlayer";
 import jsonData from "../QuestionData/SimpleQuestions.json";
 import "../Formatting/General.css";
 import "../Formatting/Questions.css";
@@ -175,22 +175,7 @@ function SimpleQuestions() {
 
   return (
     <div className={themeState} id="bigBody">
-      <div className="Header-general" id="Header-Full">
-        <span className="Header-toggle">
-          <ThemeSelect></ThemeSelect>
-        </span>
-        <span className="Header-text">The Career Lab</span>
-        <span className="Header-Audio">
-          <AudioPlayer></AudioPlayer>
-        </span>
-        <span className="Header-button">
-          <LinkButton
-            to="/"
-            label="Home"
-            classNameGive="Button-link"
-          ></LinkButton>
-        </span>
-      </div>
+      <Header></Header>
 
       <div className="Simple-body">
         <span className="Simple-back-top">

@@ -3,7 +3,7 @@
   --color-body-text: #231123;
   --color-body-Headerbackground: #85aab6;
   --color-body-Headertext: #231123;
-  --color-body-Button: #6c567a;
+  --color-body-Button: #9575a9;
   --color-body-ButtonDisabled: #6c567a;
   --color-body-ButtonHover: #c490d1;
   --color-body-ButtonBorder: #000000;
@@ -165,6 +165,11 @@
   color: var(--color-body-text);
   border: var(--color-body-ButtonBorder);
   background-color: var(--color-body-Button);
+}
+
+.Header-audio-button:hover {
+  color: var(--color-body-text);
+  background-color: var(--color-body-ButtonHover);
 }
 
 .Header-text {
