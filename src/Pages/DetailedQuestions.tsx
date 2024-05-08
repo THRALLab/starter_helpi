@@ -19,6 +19,7 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+//Exports question data
 export let slidenums = new Array<number>(30).fill(50);
 
 function DetailedQuestions() {
@@ -34,6 +35,7 @@ function DetailedQuestions() {
     setKey(event.target.value);
   }
 
+  //State variables for question data
   const [sliderValues, setSliderValues] = useState<number[]>(slidenums);
   const [currSliderValue, setCurrSliderValue] = useState<number>(50);
   const [questions, setQuestions] = useState<DetailedQuestion[]>([]);
@@ -42,6 +44,8 @@ function DetailedQuestions() {
   const [questionBody, setQuestionBody] = useState("Question...");
   const [backButtonDisabled, setBackButtonDisabled] = useState(true);
 
+  // useEffect is called when page loads.
+  // Initialize everything with appropriate question data to start the quiz.
   useEffect(() => {
     playButtonClick();
     const loadQuestions = () => {
@@ -56,13 +60,16 @@ function DetailedQuestions() {
     loadQuestions();
   }, [questionNumber]);
 
-  //Function to handle moving on to the next question
+  // Function that is called to advance to the next question by iterating forward though the
+  // question array and updating all properties.
   const nextQuestion = () => {
+    // currentQuestionNumber displays current question. questionNumber is iteration in array.
     let tempSliderValues = [...sliderValues];
     tempSliderValues[questionNumber] = currSliderValue;
     questions[questionNumber].answer = currSliderValue.toString();
     setSliderValues(() => [...tempSliderValues]);
     if (questionNumber < numberOfQuestions - 1) {
+      // Not the end of the quiz so iterate.
       setCurrSliderValue(sliderValues[questionNumber + 1]);
       setQuestionBody(questions[questionNumber + 1].question);
       setQuestionNumber(questionNumber + 1);
@@ -73,6 +80,7 @@ function DetailedQuestions() {
       setQuestionNumber(30);
       slidenums = [...sliderValues];
       let nextButton = document.getElementById("nextButton");
+      // Hide option buttons
       if (nextButton != null) {
         nextButton.classList.remove("Button-visible-true");
         nextButton.classList.add("Button-visible-false");
@@ -82,6 +90,7 @@ function DetailedQuestions() {
         slider.classList.remove("Slider-visible-true");
         slider.classList.add("Slider-visible-false");
       }
+      // Show "Report" button
       let reportButton = document.getElementById("reportButton");
       if (reportButton != null) {
         reportButton.classList.remove("Button-visible-false");
@@ -90,11 +99,15 @@ function DetailedQuestions() {
     }
   };
 
+  // Function that is called to backtrack to the previous question by iterating backwards though the
+  // question array and updating all properties.
   const previousQuestion = () => {
     let tempSliderValues = [...sliderValues];
     tempSliderValues[questionNumber] = currSliderValue;
     setSliderValues(() => [...tempSliderValues]);
+    // Check if you are not on the first question.
     if (questionNumber > 0) {
+      // currentQuestionNumber displays current question. questionNumber is iteration in array.
       setCurrSliderValue(sliderValues[questionNumber - 1]);
       const previousQuestionIndex = questionNumber - 1;
       setQuestionBody(questions[previousQuestionIndex].question);
@@ -103,6 +116,7 @@ function DetailedQuestions() {
         setBackButtonDisabled(true);
       }
       if (questionNumber === numberOfQuestions) {
+        // Sets the visibility of the buttons
         let nextButton = document.getElementById("nextButton");
         if (nextButton != null) {
           nextButton.classList.remove("Button-visible-false");
@@ -150,19 +164,32 @@ function DetailedQuestions() {
                 ></SliderQuestion>
               </div>
               <span className="DetailedQuestions-buttons">
-                <Button
-                  className="Button-back"
-                  onClick={previousQuestion}
-                  disabled={backButtonDisabled}
-                >
-                  Back
-                </Button>
+                <span className="BackButtonSpan">
+                  <Button
+                    className="Button-back"
+                    onClick={previousQuestion}
+                    disabled={backButtonDisabled}
+                    style={{
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      left: "0",
+                      margin: "0",
+                      padding: "10px",
+                    }}
+                  >
+                    Back
+                  </Button>
+                </span>
                 <span className="Button-visible-true" id="nextButton">
                   <Button
                     className="Button-next"
                     onClick={() => nextQuestion()}
                     style={{
-                      marginLeft: "50px",
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      margin: "0",
+                      padding: "10px",
+                      left: "calc(50% + 5px)",
                     }}
                   >
                     Next
@@ -171,7 +198,13 @@ function DetailedQuestions() {
                 <span className="Button-visible-false" id="reportButton">
                   <span
                     className="Button-report"
-                    style={{ marginLeft: "50px" }}
+                    style={{
+                      position: "absolute",
+                      width: "calc(50% - 5px)",
+                      margin: "0",
+                      padding: "10px",
+                      left: "calc(50% + 5px)",
+                    }}
                   >
                     <LinkButton
                       to="/detailedreport"
