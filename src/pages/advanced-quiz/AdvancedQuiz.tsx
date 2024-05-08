@@ -14,8 +14,9 @@ export const AdvancedQuiz = () => {
     const totalQuestions = 1;
     const initialMax = 7
     return(
-    <div className="basicQuiz-container">
+        <div className="App-quiz">
         <Container>
+            <br></br>
             <Row>
                 <ProgressBar
                     value={questionsAnswered}
@@ -24,7 +25,7 @@ export const AdvancedQuiz = () => {
             </Row>
             <Row>
                 <Suspense fallback={<Loading type="Advanced Quiz"/>}>
-                    <DisplayQuiz 
+                    <DisplayQuiz
                         quiz={advancedQuiz}
                         title="Advanced Quiz"
                         initialMax={initialMax}

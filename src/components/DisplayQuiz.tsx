@@ -1,5 +1,5 @@
 // Import necessary hooks and components
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Question, QuestionComponentProps } from "../interfaces/QuestionTypes";
 import { McSingleResponse } from "./McSingleResponse";
 import { McMultiResponse } from "./McMultiResponse";
@@ -11,7 +11,8 @@ import OpenAI from "openai";
 import { CreateBasicStartingPrompt, CreateStartingPrompt, createFinalResponse } from "src/controller/StartingPrompt";
 import { QuestionAnswer } from "src/interfaces/PromptQuestionsSetup";
 import { Loading } from "./Loading";
-import { Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { HiChevronDown, HiChevronDoubleUp } from "react-icons/hi2";
 
 type DisplayQuizProps = Record<string, Question>;
 
@@ -28,7 +29,7 @@ type Career = {
     links: string[]
 }
 
-type FinalReport = Career[];
+type FinalReport = {careers: Career[]};
 
 export function DisplayQuiz(
     { 
@@ -182,61 +183,28 @@ export function DisplayQuiz(
     // if(Object.keys(quiz).length === 0) createQuiz();
     
     const DisplayResults = () => {
-        // const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
-        // const [response, setResponse] = useState<OpenAI.ChatCompletion>();
-        // const [loaded, setLoaded] = useState(false);
-        // const [currRoles, setRoles] = useState<string[]>([]);
-    
-        // useEffect(() => {
-        //     async function getFinalResponse() {
-        //         const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
-        //         setResponse(response);
-        //         setLoaded(true);
-        //     }
-    
-        //     if (!response) getFinalResponse();
-        // }, [questionAns, response]);
-    
-        // if (!loaded) return <Loading type="finalReport"/>;
-    
-        // if (!response || !response.choices.length) return <p>Error Occurred</p>;
+        const questionAns: QuestionAnswer[] = answers.map((q: QuestionAns) => ({question: curQuiz[q.questionId], answer: q.answer}));
+        const [response, setResponse] = useState<OpenAI.ChatCompletion>();
+        const [loaded, setLoaded] = useState(false);
+        const [currRoles, setCurrRoles] = useState<string[]>([]); 
 
-        // const finalAns = response.choices[response.choices.length-1].message.content;
-        // if(finalAns == null) return<>Error Occured</>
-        // const finalResponse: FinalReport = JSON.parse(finalAns);
-        const finalResponse: FinalReport = [{
-            "role": "Data Scientist",
-            "description": "Data scientists analyze and interpret complex digital data to assist in decision-making. This role involves statistical analysis, machine learning, and the use of advanced analytical techniques to create actionable insights from big data.",
-            "benefits": [
-              "High demand in tech-driven industries, ensuring job security.",
-              "Opportunities for working with cutting-edge technologies in diverse fields."
-            ],
-            "challenges": [
-              "Requires continuous learning to keep up with rapidly evolving technologies.",
-              "Often involves sorting through ambiguous and unstructured data, which can be time-consuming and complex."
-            ],
-            "links": [
-              "https://www.indeed.com/q-Data-Scientist-jobs.html",
-              "https://www.coursera.org/courses?query=data%20science"
-            ]
-          },
-          {
-            "role": "Renewable Energy Engineer",
-            "description": "Renewable energy engineers work on the development and implementation of alternative energy sources such as solar and wind power. They design, test, and oversee the deployment of technologies aimed at improving energy efficiency and reducing environmental impact.",
-            "benefits": [
-              "Contributes to environmental sustainability.",
-              "Growing sector with government and private sector investment."
-            ],
-            "challenges": [
-              "Work can be subject to the political climate and shifting regulatory frameworks.",
-              "Involves coordination with many stakeholders, which can slow project timelines."
-            ],
-            "links": [
-              "https://www.greenjobs.co.uk/renewable-energy-jobs",
-              "https://www.edx.org/learn/renewable-energy"
-            ]
-          }];
-          const [currRoles, setCurrRoles] = useState<string[]>([]); 
+        useEffect(() => {
+            async function getFinalResponse() {
+                const response = await addResponseGBT({choices: gbtConversation, newMessage: createFinalResponse(questionAns)});
+                setResponse(response);
+                setLoaded(true);
+            }
+    
+            if (!response) getFinalResponse();
+        }, [questionAns, response]);
+    
+        if (!loaded) return <Loading type="finalReport"/>;
+    
+        if (!response || !response.choices.length) return <p>Error Occurred</p>;
+
+        const finalAns = response.choices[response.choices.length-1].message.content;
+        if(finalAns == null) return<>Error Occured</>
+        const finalResponse:FinalReport = JSON.parse(finalAns.replace("carears", "careers"));
 
         function updateRoles (newRole: string) {
             // const newRoles: string[] = currRoles.includes(newRole) 
@@ -250,45 +218,44 @@ export function DisplayQuiz(
             );
     
         }
+        //maybe try using HiChevronDoubleUp when dropdown is down
     
         return (
             <>
                 <h2>Final Results:</h2>
-                {finalResponse.map((career: Career) => (
-                    <>
-                        <Button
+                {finalResponse.careers.map((career: Career) => (
+                    <div 
+                        className="App-career-container"
+                        key={career.role}
+                    > {/* Assuming role is unique */}
+                        <h3>{career.role}</h3>
+                        <HiChevronDown 
                             onClick={() => updateRoles(career.role)}
-                        >{currRoles.includes(career.role) ? `Hide ${career.role}  ^` : `View ${career.role}  ⌄`}</Button>
+                            size={20}
+                        ><strong>{career.role}</strong></HiChevronDown>
                         {currRoles.includes(career.role) && (
-                            <>
-                                <ul>
-                                    <li><strong>{career.role}</strong>: {career.description}</li>
-                                    <li>
-                                        {career.benefits.map((benefit: string) => (
-                                            <ul key={benefit}>
-                                                <li>{benefit}</li>
-                                            </ul>
-                                        ))}
-                                    </li>
-                                    <li>
-                                        {career.challenges.map((challenge: string) => (
-                                            <ul key={challenge}>
-                                                <li>{challenge}</li>
-                                            </ul>
-                                        ))}
-                                    </li>
-                                    <li>
-                                        {career.links.map((link: string) => (
-                                            <ul key={link}>
-                                                <li><a href={link}>{link}</a></li>
-                                            </ul>
-                                        ))}
-                                    </li>
-                                </ul>
-                            </>
+                            <ul>
+                                <li><strong>Role:</strong> {career.description}</li>
+                                <li>
+                                    {career.benefits.map((benefit, index) => (
+                                        <li key={index}>{benefit}</li> // Not ideal if benefits can change
+                                    ))}
+                                </li>
+                                <li>
+                                    {career.challenges.map((challenge, index) => (
+                                        <li key={index}>{challenge}</li> // Not ideal if challenges can change
+                                    ))}
+                                </li>
+                                <li>
+                                    {career.links.map((link, index) => (
+                                        <a href={link} key={index}>{link}</a> // Not ideal if links can change
+                                    ))}
+                                </li>
+                            </ul>
                         )}
-                    </>
+                </div>
                 ))}
+
             </>
         );
     }
@@ -320,20 +287,26 @@ export function DisplayQuiz(
         prevAnswer: foundAnswer ? foundAnswer.answer : ""
     };
 
+    const renderQuestionComponent = () => {
+        switch (currentQuestion.type) {
+            case "MC_SINGLE_RESPONSE":
+                return <McSingleResponse {...questionComponentProps} />;
+            case "MC_MULTI_RESPONSE":
+                return <McMultiResponse {...questionComponentProps} />;
+            case "USER_RANKING":
+                return <UserRanking {...questionComponentProps} />;
+            case "TEXT_RESPONSE":
+                return <TextResponse {...questionComponentProps} />;
+            case "SLIDER_RESPONSE":
+                return <SliderResponse {...questionComponentProps} />;
+            default:
+                return <h1>Unknown question type</h1>;
+        }
+    };
 
-    //displays the curent question type
-    switch (currentQuestion.type) {
-        case "MC_SINGLE_RESPONSE":
-            return <McSingleResponse {...questionComponentProps} />;
-        case "MC_MULTI_RESPONSE":
-            return <McMultiResponse {...questionComponentProps} />;
-        case "USER_RANKING":
-            return <UserRanking {...questionComponentProps} />;
-        case "TEXT_RESPONSE":
-            return <TextResponse {...questionComponentProps} />;
-        case "SLIDER_RESPONSE":
-            return <SliderResponse {...questionComponentProps} />;
-        default:
-            return <h1>Unknown question type</h1>;
-    }
+    return (
+        <Container className="quiz-container">
+            {renderQuestionComponent()}
+        </Container>
+    );
 }

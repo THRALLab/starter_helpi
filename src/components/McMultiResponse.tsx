@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Form, Button, ToggleButton, FormControl } from 'react-bootstrap';
-import { FaQuestionCircle } from 'react-icons/fa';
+import { BsFillInfoCircleFill } from 'react-icons/bs';
 
 export function McMultiResponse({
     question,
@@ -89,7 +89,7 @@ export function McMultiResponse({
             return(
             <li key="Other">
                 <ToggleButton
-                    className="App-quiz"
+                    className="App-quiz response-question"
                     variant={localAnswer.includes(otherOption) ? "selected" : "selected-outlined"}
                     type="checkbox"
                     id="other"
@@ -108,7 +108,7 @@ export function McMultiResponse({
         <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <h4 ref={questionRef} style={{maxWidth: "60%"}}>{question}</h4>
-                <FaQuestionCircle className="quiz-tooltip"
+                <BsFillInfoCircleFill className="quiz-tooltip"
                     onMouseEnter={() => setTooltip(description)}
                     onMouseLeave={() => setTooltip('')}
                     size={35}
@@ -149,9 +149,10 @@ export function McMultiResponse({
                             </>
                          )
                         : (
-                            <li key={choice}>
+                            <li 
+                            key={choice}>
                                 <ToggleButton
-                                    className="App-quiz"
+                                    className="App-quiz response-question"
                                     variant={localAnswer.includes(choice) ? "selected" : "selected-outlined"}
                                     key={`${choice}Select`}
                                     type="checkbox"
