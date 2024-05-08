@@ -73,13 +73,17 @@
 	background-color: rgb(238, 181, 190);
 }
 
-.report .cardContainer .card p:first-child {
+.report .cardContainer .careersCard p:first-child {
 	font-size: 20px;
 	text-align: center;
 }
 
 .report .cardContainer .careersCard ul {
-	margin: 10px;
+	margin: 10px 5px 0 25px;
+}
+
+.report .cardContainer .alternativesCard ul {
+	margin: 5px;
 }
 
 .report .cardContainer .careersCard:hover {
