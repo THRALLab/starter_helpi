@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { SelectQuiz } from "./pages/SelectQuiz";
@@ -9,19 +9,11 @@ import './css/App.css';
 import { BasicQuiz } from "./pages/basic-quiz/BasicQuiz";
 import { AdvancedQuiz } from "./pages/advanced-quiz/AdvancedQuiz";
 import { ChatGBTPage } from "./pages/chat-gbt-page/ChatGBTPage";
-import gitLogo from "src/public/github-mark-white.svg";
-function App(): JSX.Element {
+import gitLogo from "src/imgs/github-mark-white.svg";
+export default function App(): JSX.Element {
   return ( 
   <div className="main-container">
     <Router>
-      <header className="App-header">
-        <nav>
-          <Link to="starter_helpi/">Home</Link>
-        </nav>
-        <nav>
-          <Link to="/select-quiz">Select Quiz</Link>
-        </nav>
-      </header>
       <div className="App">
         <header className="App-header">
           <nav>
