@@ -43,7 +43,7 @@
 	color: rgb(192, 9, 9);
 }
 
-.report h2 {
+.report .alternativesHeader {
 	margin-top: 30px;
 	color: rgb(9, 82, 192);
 }

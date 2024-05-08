@@ -154,7 +154,7 @@ export default function Results() {
 						);
 					})}
 				</div>
-				<h2>
+				<h2 className="alternativesHeader">
 					YOUR TOP {alternativeCareers.length > 0 && alternativeCareers.length}
 					&nbsp;ALTERNATIVE CHOICES:
 				</h2>
