@@ -1,6 +1,7 @@
 import useChatGPT from "./hooks/useChatGPT";
 import "./results.css";
 import Markdown from "react-markdown";
+import { PieChart } from "@mui/x-charts/PieChart";
 
 export default function Results() {
 	const { chat_gptResponse } = useChatGPT();
@@ -125,7 +126,40 @@ export default function Results() {
 		});
 	}
 
-	console.log(alternativeCareers[2].description.split("\n"));
+	const data = `
+	1. Software Developer: 40%
+	2. Data Analyst: 30%
+	3. Health and Wellness Coordinator: 20%
+	4. Corporate Trainer: 10%`;
+
+	const lines = data.split("\n").filter(line => line.trim() !== "");
+
+	interface ChartData {
+		career: string;
+		percent: string;
+		color: string;
+	}
+
+	const colors = ["lime", "pink", "yellow", "orange"];
+	const chart_data: ChartData[] = [];
+	// Map each line to an object containing career and percent
+	const careerPercentages = lines.map((line: string, index: number) => {
+		// Split the line by colon and trim spaces
+		const [career, percent] = line
+			.split(":")
+			.map((item: string) =>
+				item
+					.replace("1.", "")
+					.replace("2.", "")
+					.replace("3.", "")
+					.replace("4.", "")
+					.replace("%", "")
+					.trim()
+			);
+		chart_data.push({ career, percent, color: colors[index] });
+	});
+
+	// The code above was provided by ChatGPT, but I made some minor tweaks to it
 
 	return (
 		<>
@@ -182,6 +216,40 @@ export default function Results() {
 								})}
 						</div>
 					</>
+				) : null}
+				{chart_data.length > 0 ? (
+					<div>
+						<PieChart
+							series={[
+								{
+									data: [
+										{
+											id: 0,
+											value: parseInt(chart_data[0].percent),
+											label: chart_data[0].career
+										},
+										{
+											id: 1,
+											value: parseInt(chart_data[1].percent),
+											label: chart_data[1].career
+										},
+										{
+											id: 2,
+											value: parseInt(chart_data[2].percent),
+											label: chart_data[2].career
+										},
+										{
+											id: 3,
+											value: parseInt(chart_data[3].percent),
+											label: chart_data[3].career
+										}
+									]
+								}
+							]}
+							width={1000}
+							height={400}
+						/>
+					</div>
 				) : null}
 			</div>
 		</>
