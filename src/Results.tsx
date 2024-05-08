@@ -229,27 +229,27 @@ export default function Results() {
 									{
 										id: 0,
 										value: parseInt(chart_data[0].percent),
-										label: chart_data[0].career
+										label: `${chart_data[0].career} (${chart_data[0].percent}%)`
 									},
 									{
 										id: 1,
 										value: parseInt(chart_data[1].percent),
-										label: chart_data[1].career
+										label: `${chart_data[1].career} (${chart_data[1].percent}%)`
 									},
 									{
 										id: 2,
 										value: parseInt(chart_data[2].percent),
-										label: chart_data[2].career
+										label: `${chart_data[2].career} (${chart_data[2].percent}%)`
 									},
 									{
 										id: 3,
 										value: parseInt(chart_data[3].percent),
-										label: chart_data[3].career
+										label: `${chart_data[3].career} (${chart_data[3].percent}%)`
 									}
 								]
 							}
 						]}
-						width={900}
+						width={960}
 						height={350}
 					/>
 				</div>
