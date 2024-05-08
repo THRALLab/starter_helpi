@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import OpenAI from "openai";
 import './ResultsPage.css'
 import { LoadingAnimation } from '../LoadingAnimation/LoadingAnimation'
@@ -9,6 +9,20 @@ interface QuestionData {
   }  
 
 export function ResultsPage({APIKey, basicQuestionData, detailQuestionData} : {APIKey: string,basicQuestionData: QuestionData[], detailQuestionData: QuestionData[]}) {
+  const [loading, setLoading] = React.useState(false);
+  const [content, setContent] = React.useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const responseContent = await main();
+      setContent(JSON.stringify(responseContent));
+      setLoading(false)
+    };
+
+    fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
     const client = new OpenAI({
         apiKey: APIKey,
         dangerouslyAllowBrowser: true
@@ -50,14 +64,15 @@ export function ResultsPage({APIKey, basicQuestionData, detailQuestionData} : {A
         });
 
         console.log(completion.choices[0].message.content);
-
+        return completion.choices[0].message.content;
       }
 
-      main();
-      
+
     return (
-        <>  
-            <LoadingAnimation></LoadingAnimation>
-        </>
+      <div className = "resultsContainer">
+        <h1>ResultsPage</h1>
+        <div> {loading && <LoadingAnimation/>} </div>
+        <p> {!(loading) && content} </p>
+        </div>
     )
 }
