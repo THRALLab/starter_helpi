@@ -172,7 +172,7 @@ function SimpleReport() {
                 <hr />
                 <span className="Report-results-header">Career 1:</span>
                 <li>{careerList[1]}</li>
-                <div style={{ padding: "10px" }}>
+                <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
                   <Button
                     className="Report-button-explore"
                     onClick={() => optionOne(careerList[1])}
@@ -183,7 +183,7 @@ function SimpleReport() {
                 <hr />
                 <span className="Report-results-header">Career 2:</span>
                 <li>{careerList[2]}</li>
-                <div style={{ padding: "10px" }}>
+                <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
                   <Button
                     className="Report-button-explore"
                     onClick={() => optionOne(careerList[2])}
@@ -194,7 +194,7 @@ function SimpleReport() {
                 <hr />
                 <span className="Report-results-header">Career 3:</span>
                 <li>{careerList[3]}</li>
-                <div style={{ padding: "10px" }}>
+                <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
                   <Button
                     className="Report-button-explore"
                     onClick={() => optionOne(careerList[3])}
@@ -205,7 +205,7 @@ function SimpleReport() {
               </div>
             </div>
           )}
-          {!loading && careerList.length < 3 && <div>{responseData}</div>}
+          {!loading && careerList.length < 3 && <div className="Detailed-response-text">{responseData}</div>}
         </div>
       </div>
 

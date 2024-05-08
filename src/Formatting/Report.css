@@ -1,15 +1,18 @@
 .Report-header {
   font-size: x-large;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .Report-space {
   padding: 10px;
   border-radius: 10px;
   background-color: var(--color-body-TextBackground);
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 2.5%;
-  margin-top: 1%;
+  margin-left: 7.75%;
+  margin-right: 7.75%;
+  margin-bottom: 1.7%;
+  margin-top: 0.1%;
 }
 
 .Report-body {
@@ -48,4 +51,11 @@
   color: var(--color-body-text);
   border: var(--color-body-ButtonBorder);
   background-color: var(--color-body-Button);
+}
+
+.Detailed-response-text {
+  text-align: left;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  margin-bottom: 2vh;
 }
