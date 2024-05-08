@@ -19,18 +19,11 @@ const verifyAPIKey = async(apiKey: string) => {
   }
   // valid key
   console.log(res.choices[0].message.content);
+  openaiToken.apiKey = apiKey;
   return true;
 }
 
-export function ApiKeyInput(
-  {
-    submitted,
-    setSubmit
-  }: {
-    submitted: boolean;
-    setSubmit: (submitted: boolean) => void;
-  }
-): JSX.Element {
+export function ApiKeyInput(): JSX.Element {
   const [apiKey, setApiKey] = useState<string>("");
   const [isSubmit, setSubmit] = useState<boolean>(true)
   const [validKey, setValidKey] = useState<boolean>(false);
@@ -55,7 +48,6 @@ export function ApiKeyInput(
     
     localStorage.removeItem("GBTKEY");
     localStorage.setItem("GBTKEY", apiKey);
-    openaiToken.apiKey = apiKey;
     console.log("apiKey->", apiKey); // Example: output to console or replace with storage logic
     console.log("actualKey->", openaiToken.apiKey);
   };
