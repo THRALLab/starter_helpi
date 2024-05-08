@@ -9,8 +9,6 @@
     
 }
 
-
-
 .splash-container div{
     position: absolute;
     left: 50%;
@@ -92,7 +90,7 @@
     color: var(--primary-color);
 }
 
-.quiz-desc p {
+.text {
    margin-left: 35px;
    margin-right: 35px;
    color: var(--primary-color);
@@ -145,14 +143,5 @@
 
 
 :root {
-    --primary-color: #558ABB;
-    --secondary-color: #E8EBED;
-    --tertiary-color: #F8F9FA;
-    --quaternary-color: #343A40;
-    --quinary-color: #6C757D;
-    --senary-color: #ADB5BD;
-    --septenary-color: #CED4DA;
-    --octonary-color: #DEE2E6;
-    --nonary-color: #E9ECEF;
-    --denary-color: #F1F3F5;
+    --primary-color: blue
 }

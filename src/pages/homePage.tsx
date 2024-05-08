@@ -77,7 +77,7 @@ import { Link } from "react-router-dom";
             <HomeLink to="/BasicPage">
                 <div className="quiz-desc">
                     <h3>Basic Quiz</h3>
-                    <p>Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
+                    <p className="text">Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
                 </div>
             </HomeLink>
             <HomeLink to="/DetailedPage">

@@ -166,6 +166,7 @@ const DetailedPage = () => {
     });
 	return (<>
 	<body className="page-color">
+		<div className="quiz-desc">
 			<h1 className="detailed-title">
 				Detailed Quiz
 			</h1>
@@ -176,6 +177,7 @@ const DetailedPage = () => {
 				allow you to see the results of you future career.
 
 			</div>
+		</div>
 			
 		<hr style={{marginTop:"10px", opacity:".9"}}></hr>
 		
