@@ -1,13 +1,14 @@
 import React, { useState} from "react";
 import questions from "./basicQuestions.json";
-import { QuestionFormatProps } from "./interfaces/questionFormat"
-import { BasicOptions } from "./interfaces/basicOption"
+import { QuestionFormatProps } from "./interfaces/questionFormat";
+import { BasicOptions } from "./interfaces/basicOption";
+import "./Basic.css";
 
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
-	const [selected, setSelected] = useState<string | null>(null);
-	const optionSelect = (option: string) => {
+	const [selected, setSelected] = useState<BasicOptions | null>(null);
+	const optionSelect = (option: BasicOptions) => {
 		setSelected(option);
 	};
 	/*useEffect(()=>{
@@ -22,12 +23,13 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 						type="radio"
 						value={option.text}
 						checked={selected === option.text}
-						onChange={() => optionSelect(option.text)}
+						onChange={() => optionSelect(option)}
 					/>
 					<span>{option.text}</span>
+					<img src={option.image} alt="selected"></img>
 				</label>
 			))}
-			<p>You selected: {selected}</p>
+			<p>You selected: {selected?.text}</p>
 		</div>
 	);
 };
@@ -39,10 +41,10 @@ function Basic() {
 			{questions.map((question, question_number) => (
 				<div key={question_number}>
 					<h2>{question.question}</h2>
-					<QuestionFormatComponent question_number={question.question_number} question={question.question} options={question.options} type={question.type}/>
+					<QuestionFormatComponent question_number={question.question_number} question={question.question} options={question.options as BasicOptions[]} type={question.type}/>
 				</div>
 			))}
-		</div>
+	/</div>
 	);
 }
 export default Basic;
