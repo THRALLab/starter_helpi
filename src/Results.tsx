@@ -9,80 +9,70 @@ export default function Results() {
 	// TODO [ ] - implement the 404 logic when the user attempts to access this page without completing the quiz
 	// TODO [ ] - consider creating a second function that will also call the ChatGPT API but will return data about how much of a close fit a user is (in percentages) to a specific career/how likely it matches them so that you can use this data and implement it for graphs + get more data to add to the results page
 
-	const markdown = `
-Based on the answers provided, here are four career recommendations that might be suitable, along with detailed explanations for why they could be good fits:
+	/*
+	
+	1. Software Developer: 40%
+	2. Data Analyst: 30%
+	3. Health and Wellness Coordinator: 20%
+	4. Corporate Trainer: 10%
+	
+	*/
 
-1. **Health Informatics Specialist**:
-   - **Integration of Interests**:
-     - Your interest in health and wellness promotion can be seamlessly integrated into this role, which involves managing health information systems to improve patient care and public health outcomes.
-   - **Utilization of Skills**:
-     - This career requires strong problem-solving and analytical skills, addressing your need to utilize these capabilities more fully.
-   - **Career Development**:
-     - There are abundant opportunities for training and certification within health informatics, aligning with your desire for personal growth and development in new skills.
-   - **Aligns with Values**:
-     - Most roles in health informatics offer good work-life balance and flexibility, resonating with your stated values.
+	const markdown = `Based on the thoughtful responses you provided across various dimensions of career interest and preference, I have identified four potential careers that might closely align with your interests and values. Each suggestion is accompanied by detailed explanations considering your answers across different parameters.
 
-2. **Data Analyst for Wellness and Health Services**:
-   - **Mission-driven Work**:
-     - You can work directly with data related to health and wellness promotion, fulfilling your desire to participate in missions that resonate with you.
-   - **Skills and Growth**:
-     - As a data analyst, your high level of analytical and problem-solving skills will be crucial, providing ample opportunity for skill utilization and career growth.
-   - **Work Benefits**:
-     - Roles in this field often come with flexible work hours and the potential for remote work, which aligns with your preferences for job perks.
+	### Career Recommendations and Explanations
+	
+	1. **Software Developer** (specifically focusing on Health and Wellness Applications)
+	   - **Interest Alignment**: Your interest peaks with coding activities, as evident from your engagement in your MERN coding blog project.
+	   - **Skill Utilization**: Leverages your problem-solving and analytical capabilities that you feel are underutilized in your current role.
+	   - **Cause Alignment**: Opportunities in health tech can allow you to contribute directly to health and wellness promotion, a cause you're passionate about.
+	   - **Growth and Recognition**: Offers good growth potential and fosters an environment where contributions in software can be recognized and appreciated.
+	
+	2. **Healthcare Data Analyst**
+	   - **Skill and Interest Utilization**: Merges your interest in data analysis with the health and wellness sector.
+	   - **Cause Alignment**: Data-driven insights generated can significantly impact health outcomes and wellness promotion.
+	   - **Work-Life Balance and Flexibility**: Typically offers flexible working conditions which align with your value of a good work-life balance.
+	   - **Engagement**: Directly involves engaging tasks requiring analytical proficiency, promoting continuous learning and utilization of your skills.
+	
+	3. **Health Informatics Specialist**
+	   - **Sector Relevance**: Situates directly at the intersection of healthcare and IT, areas you are interested in.
+	   - **Job Climate and Opportunities**: The growing emphasis on digital health records and data use in healthcare provides robust career opportunities.
+	   - **Professional Development**: Often requires further education or certification, aligning with your Plan B.
+	   - **Contribution Recognition**: Roles are crucial in improving healthcare efficiency and effectiveness, offering recognition for contributions.
+	
+	4. **Program Manager in a Health-Oriented NGO**
+	   - **Mission and Values Alignment**: This role allows you to work directly in health promotion, aligning with missions you care about.
+	   - **Recognition and Development**: Non-profits often operate with a tight-knit team, offering significant recognition for individual contributions and numerous opportunities for skill development.
+	   - **Balance and Engagement**: These roles often encourage community engagement, perfect for those valuing work-life balance and personal fulfillment.
+	
+	### Alternative Paths
+	
+	Should these career suggestions not resonate fully with you, here are a few alternative paths to explore:
+	
+	- **Remote Software Developer**: Prioritizing flexible work hours and remote work options, catering to your work-life balance importance.
+	- **Technical Writer for Health and Wellness Publications**: Merges your coding and technology interest with writing, suitable if you are looking into less demanding but skill-utilizing roles.
+	- **Biostatistician or Epidemiologist**: Focuses more intensively on data, which could be a good fit if deeper analytical roles appeal to you. 
+	- **Certification and Training Roles**: Looking into becoming a trainer or educator in tech, especially focusing on emerging health technologies, could align well with your interest in continuous learning and skill development.
+	
+	Each of these careers and alternative paths offers unique opportunities to utilize your skills, meet your personal and professional values, and contribute to causes important to you. Always ensure to explore each potential area thoroughly to find the best personal fit.`;
 
-3. **Software Developer in HealthTech Companies**:
-   - **Sector and Interest Alignment**:
-     - Working in a software role within HealthTech companies allows you to blend your coding skills with your interest in health and wellness.
-   - **Project Engagement**:
-     - Similar to your MERN coding project, HealthTech development projects can be engaging and align with your appreciation for coding and project work.
-   - **Recognition and Contribution**:
-     - There is significant potential for recognition in innovative tech environments, especially when contributing to impactful health technologies.
-
-4. **User Experience (UX) Designer for Fitness and Health Apps**:
-   - **Creative and Analytical Use**:
-     - This role leverages your problem-solving skills in a creative context, focusing on user-centered design in the health and wellness sector.
-   - **Supporting Causes**:
-     - Directly impact user engagement and promote health and fitness through effective app design, aligning with your mission-driven career goals.
-   - **Career Satisfaction**:
-     - UX roles often provide significant appreciation and recognition for contributions to product development and user satisfaction.
-
-**Alternative Paths**:
-- **Further Education or Specialization**: Considering further education in fields like Public Health, Healthcare Data Analytics, or Health Informatics can open new opportunities and could dynamically shift your career trajectory.
-- **Health and Wellness Coaching**: If direct engagement with individuals sounds appealing, becoming a certified wellness coach might be fulfilling.
-- **Non-profit or Community-based Roles**: Engaging directly in community work, especially related to food security or health services, could connect your coding skills and interest in social causes such as world hunger.
-  
-**Consideration for Sensibilities**:
-- While exploring these options, maintain a strong focus on jobs that emphasize a good work-life balance and offer stable growth potential, as these are crucial to your long-term career satisfaction and personal well-being.`;
+	interface Career {
+		career: string;
+		description: string;
+	}
 
 	const careerRegex =
-		/\d+\.\s+\*\*(.*?)\*\*:[\s\S]*?(?=\d+\.|\*\*Alternative Paths\*\*|$)/g;
-	const careerMatches = [];
+		/\d+\.\s+\*\*(.*?)\*\*([\s\S]*?)(?=\d+\.|\*\*Alternative Paths\*\*|$)/g;
+
+	const careerMatches: Career[] = [];
 	let match;
 
 	while ((match = careerRegex.exec(markdown)) !== null) {
-		careerMatches.push(
-			match[0]
-				.replace("1.", "")
-				.replace("2.", "")
-				.replace("3.", "")
-				.replace("4.", "")
-		);
+		careerMatches.push({
+			career: match[1].trim(),
+			description: match[2].trim()
+		});
 	}
-
-	const alternativePaths_regex =
-		/\*\*Alternative Paths\*\*:(.*?)(?=\*\*Consideration for Sensibilities\*\*|$)/s;
-	const alternativePathsMatch = markdown.match(alternativePaths_regex);
-
-	// Split the matched content into individual paths
-	let alternativePathsArray: string[] = [];
-	if (alternativePathsMatch) {
-		alternativePathsArray = alternativePathsMatch[1]
-			.trim()
-			.split("\n")
-			.map(path => path.trim());
-	}
-
-	console.log(alternativePathsArray);
 
 	return (
 		<>
@@ -92,15 +82,18 @@ Based on the answers provided, here are four career recommendations that might b
 			<div className="report">
 				<h1>YOUR TOP 4 CAREER CHOICES:</h1>
 				<div className="cardContainer">
-					{careerMatches.map((career, index: number) => {
+					{careerMatches.map((c, index: number) => {
 						return (
 							<div className="careersCard" key={index}>
-								<Markdown>{career}</Markdown>
+								<h2>
+									<Markdown>{c.career}</Markdown>
+								</h2>
+								<Markdown>{c.description}</Markdown>
 							</div>
 						);
 					})}
 				</div>
-				<h2>
+				{/* <h2>
 					YOUR TOP {alternativePathsArray && alternativePathsArray.length}{" "}
 					ALTERNATIVE CHOICES:
 				</h2>
@@ -113,7 +106,7 @@ Based on the answers provided, here are four career recommendations that might b
 								</div>
 							);
 						})}
-				</div>
+				</div> */}
 			</div>
 		</>
 	);
