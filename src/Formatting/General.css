@@ -171,6 +171,7 @@
   font-size: calc(15px + 3vmin);
   color: var(--color-body-Headertext);
   font-family: var(--font-Header);
+  font-weight: bold;
 }
 
 .Page-body {
