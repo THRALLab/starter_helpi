@@ -12,7 +12,7 @@ import "../Formatting/Questions.css";
 import "../Formatting/DetailedQuestions.css";
 
 // Image imports
-
+/*
 // Images 1-10
 import Image1 from "../Images/Detailed-Question-1.jpg";
 import Image2 from "../Images/Detailed-Question-2.jpg";
@@ -48,9 +48,9 @@ import Image29 from "../Images/Detailed-Question-29.jpg";
 import Image30 from "../Images/Detailed-Question-30.jpg";
 // End of Quiz
 import EndOfQuizImage from "../Images/End-Quiz.jpg";
+*/
 
-
-const questionImages = [
+/* const questionImages = [
   Image1,
   Image2,
   Image3,
@@ -82,7 +82,7 @@ const questionImages = [
   Image29,
   Image30,
   EndOfQuizImage,
-];
+]; */
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
