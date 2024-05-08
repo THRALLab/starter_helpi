@@ -19,10 +19,15 @@ const ResultsPage = () => {
         return [0, 0, 0] 
     }
 
+    function updateReviews(inputArray: number[]){
+        setReviews(inputArray);
+    }
+
 
     function storeReviews() {
         const currReviews = [...reviews]
         currReviews[review] += 1;
+        updateReviews(currReviews)
         const storedReviews = [...pullReviews()]
         const combinedReviews = [currReviews[0] + storedReviews[0], currReviews[1] + storedReviews[1], currReviews[2] + storedReviews[2]];
         localStorage.setItem(saveReviewData, JSON.stringify(combinedReviews));
