@@ -141,23 +141,40 @@ function DetailedReport() {
           <AudioPlayer></AudioPlayer>
         </span>
         <span className="Header-button">
-          <LinkButton to="/" label="Home"></LinkButton>
+          <LinkButton
+            to="/"
+            label="Home"
+            classNameGive="Button-link"
+          ></LinkButton>
         </span>
       </div>
 
       <div className="Page-body">
         <div className="Report-space">
-          {!loading && careerList.length < 3 && !responseData ? <div><div className="Report-header">View your Detailed Quiz Results!</div>
-          <Form className="Report-body">
-            <Button className="Button-chatGPT" onClick={generateReport}>
-              Generate Report
-            </Button>
-          </Form></div> : 
-          !loading && <Form className="Report-body">
-            <Button className="Button-chatGPT" onClick={getPrevReport} disabled={careerList.length >= 3}>
-              Back To Report
-            </Button>
-          </Form>}
+          {!loading && careerList.length < 3 && !responseData ? (
+            <div>
+              <div className="Report-header">
+                View your Detailed Quiz Results!
+              </div>
+              <Form className="Report-body">
+                <Button className="Button-chatGPT" onClick={generateReport}>
+                  Generate Report
+                </Button>
+              </Form>
+            </div>
+          ) : (
+            !loading && (
+              <Form className="Report-body">
+                <Button
+                  className="Button-chatGPT"
+                  onClick={getPrevReport}
+                  disabled={careerList.length >= 3}
+                >
+                  Back To Report
+                </Button>
+              </Form>
+            )
+          )}
           {loading && (
             <div>
               <Spinner animation="border" role="status">

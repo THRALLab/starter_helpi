@@ -93,7 +93,11 @@ function SimpleReport() {
           <AudioPlayer></AudioPlayer>
         </span>
         <span className="Header-button">
-          <LinkButton to="/" label="Home"></LinkButton>
+          <LinkButton
+            to="/"
+            label="Home"
+            classNameGive="Button-link"
+          ></LinkButton>
         </span>
       </div>
 

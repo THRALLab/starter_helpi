@@ -43,7 +43,11 @@ function Home() {
           <AudioPlayer></AudioPlayer>
         </span>
         <span className="Header-button">
-          <LinkButton to="/" label="Home"></LinkButton>
+          <LinkButton
+            to="/"
+            label="Home"
+            classNameGive="Button-link"
+          ></LinkButton>
         </span>
       </div>
 
@@ -81,6 +85,7 @@ function Home() {
                   <LinkButton
                     to="simplequestions"
                     label="Basic Quiz"
+                    classNameGive="Button-link"
                   ></LinkButton>
                 </p>
                 This is a basic quiz with 15 questions. <br></br> It will take
@@ -101,6 +106,7 @@ function Home() {
                   <LinkButton
                     to="detailedquestions"
                     label="Detailed Quiz"
+                    classNameGive="Button-link"
                   ></LinkButton>
                 </p>
                 This is a detailed quiz with 30 questions. <br></br> It will

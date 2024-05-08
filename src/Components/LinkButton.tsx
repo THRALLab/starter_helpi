@@ -7,6 +7,7 @@ import "../Formatting/General.css";
 interface LinkButtonProps {
   to: string;
   label: string;
+  classNameGive: string;
 }
 
 //Special button made for navigating our webpages
@@ -43,7 +44,7 @@ export function LinkButton(props: LinkButtonProps) {
   //Link button component, all formatted using the general css file
   return (
     <Button
-      className="Button-link"
+      className={props.classNameGive}
       role="Button-link"
       onClick={() => handleButtonClick(props.to)}
     >
