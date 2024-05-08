@@ -34,6 +34,7 @@ const ResultsPage = () => {
         // const updatedReviewData = [...reviews];
         // updatedReviewData[newNumber] += 1;
         setReview(newNumber);
+    }
 
     //get gptresponse from local storage
     const response:string | null = localStorage.getItem("GPTresponse");
