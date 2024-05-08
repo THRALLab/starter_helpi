@@ -154,7 +154,7 @@ function DetailedReport() {
               Generate Report
             </Button>
           </Form></div> : 
-          <Form className="Report-body">
+          !loading && <Form className="Report-body">
             <Button className="Button-chatGPT" onClick={getPrevReport} disabled={careerList.length >= 3}>
               Back To Report
             </Button>
