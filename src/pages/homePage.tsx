@@ -109,7 +109,7 @@ import { reviews } from "./ResultsPage"
                     width: "200px",
                     height: "200px",
                     borderRadius: "50%",
-                    background: 'conic-gradient(green ' + goodDegs + 'deg, yellow ' + goodDegs + 'deg ' + medDegs + 'deg, red ' + medDegs + 'deg ' + badDegs + 'deg)' 
+                    background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)' 
                 }}></div>
                 <p>total reviws: {totalReviews}</p>
                 <p>Satisfaction rates from other users!</p>

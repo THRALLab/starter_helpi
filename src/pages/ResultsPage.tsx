@@ -13,28 +13,31 @@ const reviewData: number[] = [0,0,0];
 const saveReviewData = "MYPIE";
 
 const ResultsPage = () => {
-
+    const [review, setReview] = useState<number>(0); //individiual review to be submitted by store function
     const [reviews, setReviews] = useState<number[]>(reviewData); //create state for all of the questions
 
-    function pullReviews() {
+    function pullReviews(): number[] {
         if(localStorage.getItem("MYPIE")){
             const newLocal = localStorage.getItem("MYPIE") || "";
-            setReviews(JSON.parse(newLocal));
-        } 
+            return JSON.parse(newLocal);
+        }
+        return [0, 0, 0] 
     }
 
     function storeReviews() {
         const currReviews = [...reviews]
-        localStorage.setItem(saveReviewData, JSON.stringify(currReviews));
-        pullReviews();
+        currReviews[review] += 1;
+        const storedReviews = [...pullReviews()]
+        const combinedReviews = [currReviews[0] + storedReviews[0], currReviews[1] + storedReviews[1], currReviews[2] + storedReviews[2]];
+        localStorage.setItem(saveReviewData, JSON.stringify(combinedReviews));
         window.location.reload(); 
         
     }
 
     function changeReview(newNumber: number) {
-        const updatedReviewData = [...reviews];
-        updatedReviewData[newNumber] += 1;
-        setReviews(updatedReviewData);
+        // const updatedReviewData = [...reviews];
+        // updatedReviewData[newNumber] += 1;
+        setReview(newNumber);
     }
 
     return(
