@@ -25,6 +25,7 @@ export function AudioPlayer() {
   const [, setAudioState] = useState<boolean>(isPlayingAudio);
   //Plays / Pauses the music
   function backgroundMusicPlayer() {
+    buttonSoundEffect.play();
     //Updates parent status
     updatePlayingAudio();
     //Updates the current page state
