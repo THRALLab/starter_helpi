@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import questions from "./basicQuestions.json";
 import { QuestionFormatProps } from "./interfaces/questionFormat"
-import './ProgressBar';
+import { BasicOptions } from "./interfaces/basicOption"
 
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
@@ -16,15 +16,15 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	return (
 		<div>
 			<p>Select an option:</p>
-			{options.map(option => (
-				<label key={option}>
+			{options.map((option: BasicOptions) => (
+				<label key={option.text}>
 					<input
 						type="radio"
-						value={option}
-						checked={selected === option}
-						onChange={() => optionSelect(option)}
+						value={option.text}
+						checked={selected === option.text}
+						onChange={() => optionSelect(option.text)}
 					/>
-					{option}
+					<span>{option.text}</span>
 				</label>
 			))}
 			<p>You selected: {selected}</p>
@@ -36,10 +36,10 @@ function Basic() {
 	return (
 		<div>
 			<h1>This is the Basic Quiz.</h1>
-			{questions.map((question: QuestionFormatProps, question_number) => (
+			{questions.map((question, question_number) => (
 				<div key={question_number}>
 					<h2>{question.question}</h2>
-					<QuestionFormatComponent options={question.options} question={question.question} type={question.type} question_number={question.question_number}/>
+					<QuestionFormatComponent question_number={question.question_number} question={question.question} options={question.options} type={question.type}/>
 				</div>
 			))}
 		</div>
