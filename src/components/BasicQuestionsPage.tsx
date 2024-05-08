@@ -9,20 +9,35 @@ import Typography from '@mui/joy/Typography';
 import { styled } from '@mui/material/styles';
 
 export function BasicQuestionsPage(): JSX.Element {
-  const StyledButton = styled(Button)`
-  ${({ theme }) => `
-      cursor: pointer;
-      background-color: #ce93d8;
-      color: #FFF;
-      transition: ${theme.transitions.create(['background-color', 'transform'], {
-          duration: theme.transitions.duration.standard,
-      })};
-      &:hover {
-          background-color: #ab47bc;
-          transform: scale(1.1);
-      }
-  `}
+    const StyledButton = styled(Button)`
+    ${({ theme }) => `
+    cursor: pointer;
+    background-color: #ce93d8;
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #ab47bc;
+      transform: scale(1.3);
+    }
+    `}
   `;
+
+  const StyledButton2 = styled(Button)`
+  ${({ theme }) => `
+  cursor: pointer;
+  background-color: #51bc51;
+  color: #FFF;
+  transition: ${theme.transitions.create(['background-color', 'transform'], {
+    duration: theme.transitions.duration.standard,
+  })};
+  &:hover {
+    background-color: #1f7a1f;
+    transform: scale(1.3);
+  }
+  `}
+`;
 
   const questions = [
     {
