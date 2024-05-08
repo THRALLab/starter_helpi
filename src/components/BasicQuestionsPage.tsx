@@ -24,21 +24,6 @@ export function BasicQuestionsPage(): JSX.Element {
     `}
   `;
 
-  const StyledButton2 = styled(Button)`
-  ${({ theme }) => `
-  cursor: pointer;
-  background-color: #51bc51;
-  color: #FFF;
-  transition: ${theme.transitions.create(['background-color', 'transform'], {
-    duration: theme.transitions.duration.standard,
-  })};
-  &:hover {
-    background-color: #1f7a1f;
-    transform: scale(1.3);
-  }
-  `}
-`;
-
   const questions = [
     {
         questionText: 'How do you prefer to spend your spare time??',
@@ -115,6 +100,7 @@ export function BasicQuestionsPage(): JSX.Element {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [goToHomePage, setGoToHomePage] = useState(false);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>(new Array(questions.length).fill(''));
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [displayFinishButton, setDisplayFinishButton] = useState(false);
   const [displayFinalResults, setDisplayFinalResults] = useState(false);
   const [gptResponse, setGptResponse] = useState<string>('');
@@ -143,6 +129,7 @@ export function BasicQuestionsPage(): JSX.Element {
     setGoToHomePage(true);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleDisplayFinalResults = () => {
     setDisplayFinalResults(true);
     setDisplayFinishButton(false);
