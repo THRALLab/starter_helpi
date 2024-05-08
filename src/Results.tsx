@@ -18,59 +18,91 @@ export default function Results() {
 	
 	*/
 
-	const markdown = `Based on the thoughtful responses you provided across various dimensions of career interest and preference, I have identified four potential careers that might closely align with your interests and values. Each suggestion is accompanied by detailed explanations considering your answers across different parameters.
+	const markdown = `### Detailed Career Report for User
 
-	### Career Recommendations and Explanations
+	Considering the answers provided, it is clear that you have varied interests and priorities which coalesce around technology, personal growth, and work-life balance. Based on your responses, I’ve tailored a list of four potential careers that might align with your aspirations, skills, and values. For each career, there is a comprehensive explanation of why it could be a good match. Additionally, alternative paths have been suggested in case these options are not feasible or appealing.
 	
-	1. **Software Developer** (specifically focusing on Health and Wellness Applications)
-	   - **Interest Alignment**: Your interest peaks with coding activities, as evident from your engagement in your MERN coding blog project.
-	   - **Skill Utilization**: Leverages your problem-solving and analytical capabilities that you feel are underutilized in your current role.
-	   - **Cause Alignment**: Opportunities in health tech can allow you to contribute directly to health and wellness promotion, a cause you're passionate about.
-	   - **Growth and Recognition**: Offers good growth potential and fosters an environment where contributions in software can be recognized and appreciated.
+	#### Suggested Careers:
 	
-	2. **Healthcare Data Analyst**
-	   - **Skill and Interest Utilization**: Merges your interest in data analysis with the health and wellness sector.
-	   - **Cause Alignment**: Data-driven insights generated can significantly impact health outcomes and wellness promotion.
-	   - **Work-Life Balance and Flexibility**: Typically offers flexible working conditions which align with your value of a good work-life balance.
-	   - **Engagement**: Directly involves engaging tasks requiring analytical proficiency, promoting continuous learning and utilization of your skills.
+	1. **Software Developer (Focus on Health and Wellness)**  
+	   **Why It's a Good Fit:**
+	   - Interest in coding and previous projects, especially your engagement with the MERN coding project.
+	   - Desire to support causes like health and wellness; you could work on software that supports these sectors, such as fitness tracking apps, medical appointment systems, or wellness platforms.
+	   - Looking for recognition and appreciation, which is common in roles where your direct input creates visible outcomes.
+	   - Prefer a balance between work and private life; many tech companies offer flexible schedules and remote work options.
 	
-	3. **Health Informatics Specialist**
-	   - **Sector Relevance**: Situates directly at the intersection of healthcare and IT, areas you are interested in.
-	   - **Job Climate and Opportunities**: The growing emphasis on digital health records and data use in healthcare provides robust career opportunities.
-	   - **Professional Development**: Often requires further education or certification, aligning with your Plan B.
-	   - **Contribution Recognition**: Roles are crucial in improving healthcare efficiency and effectiveness, offering recognition for contributions.
+	   **Alternative Path:**
+	   - Technology Consultant in Healthcare, advising on best practices and implementing key health-tech solutions.
 	
-	4. **Program Manager in a Health-Oriented NGO**
-	   - **Mission and Values Alignment**: This role allows you to work directly in health promotion, aligning with missions you care about.
-	   - **Recognition and Development**: Non-profits often operate with a tight-knit team, offering significant recognition for individual contributions and numerous opportunities for skill development.
-	   - **Balance and Engagement**: These roles often encourage community engagement, perfect for those valuing work-life balance and personal fulfillment.
+	2. **Data Analyst in Public Health Sector**  
+	   **Why It's a Good Fit:**
+	   - Strong analytical and problem-solving skills that are underutilized in your current job could be significantly leveraged here.
+	   - Passion for health and wellness aligns with data-driven decision making in public health initiatives.
+	   - Potential for growth and the necessity for ongoing learning and training which you felt lacking in your current role.
 	
-	### Alternative Paths
+	   **Alternative Path:**
+	   - Epidemiologist, combining data analysis with more hands-on research into health patterns and disease prevention.
 	
-	Should these career suggestions not resonate fully with you, here are a few alternative paths to explore:
+	3. **Project Manager for Wellness Programs**  
+	   **Why It's a Good Fit:**
+	   - Suitability for leadership roles by managing those software development skills toward health-related projects.
+	   - Emphasis on personal interest in health and wellness alongside your need for work that recognizes your contributions.
+	   - Opportunity to cultivate training and development programs for teams, addressing your concern for better on-the-job growth and learning.
 	
-	- **Remote Software Developer**: Prioritizing flexible work hours and remote work options, catering to your work-life balance importance.
-	- **Technical Writer for Health and Wellness Publications**: Merges your coding and technology interest with writing, suitable if you are looking into less demanding but skill-utilizing roles.
-	- **Biostatistician or Epidemiologist**: Focuses more intensively on data, which could be a good fit if deeper analytical roles appeal to you. 
-	- **Certification and Training Roles**: Looking into becoming a trainer or educator in tech, especially focusing on emerging health technologies, could align well with your interest in continuous learning and skill development.
+	   **Alternative Path:**
+	   - Wellness Coordinator, focusing more directly on implementing and leading wellness activities within organizations.
 	
-	Each of these careers and alternative paths offers unique opportunities to utilize your skills, meet your personal and professional values, and contribute to causes important to you. Always ensure to explore each potential area thoroughly to find the best personal fit.`;
+	4. **User Experience (UX) Designer for Health Apps**  
+	   **Why It's a Good Fit:**
+	   - Combines your coding skills and interest in contributing to wellness with the creative aspect of designing engaging user interfaces.
+	   - Flexible working conditions are often available in such roles, accommodating your need for a good work-life balance.
+	   - The role is inherently oriented towards gaining appreciation from users and stakeholders through direct feedback on the product.
+	
+	   **Alternative Path:**
+	   - Graphic Designer in a health-focused advertising agency, crafting visually engaging content to promote health awareness and wellness.
+	
+	#### General Recommendations for Alternative Paths:
+	
+	- **Further Education:** Considering your openness to further education or certification, pursuing a master’s degree in Health Informatics or a related field could open additional doors and provide a deeper entry into specialized roles where technology and health intersect.
+	  
+	- **Freelance or Contract Work:** If flexibility and diversity of projects are appealing, and in alignment with your skills in coding and development, freelance or contract work can provide a varied exposure to different projects without being tied to a single employer.
+	
+	- **Start-Up Opportunities:** Especially within the tech and health sectors, startups often appreciate the agility and broad skill set that you could offer. These environments also typically value innovative thinking, which can satisfy your craving for training and utilizing new skills.
+	
+	Your overall profile suggests a strong alignment with technology roles that have a social impact, specifically in health and wellness, where you can both grow personally and professionally while feeling appreciated for your contributions.
+	
+	Your feedback and any further reflections on these suggestions would be valuable for refining the list or exploring additional options.`;
 
 	interface Career {
-		career: string;
+		careerNo: string;
+		title: string;
 		description: string;
 	}
 
-	const careerRegex =
-		/\d+\.\s+\*\*(.*?)\*\*([\s\S]*?)(?=\d+\.|\*\*Alternative Paths\*\*|$)/g;
+	// Array to hold the extracted career options
+	// Regular expression pattern to match each career option
+	const pattern =
+		/(\d+)\. \*\*(.+?)\*\*[\s\S]+?Why It's a Good Fit:\*\*([\s\S]+?)\*\*Alternative Path:/g;
 
-	const careerMatches: Career[] = [];
+	// Array to hold the extracted career options
+	const careers: Career[] = [];
+
+	// Match each career option using the regular expression pattern
 	let match;
+	while ((match = pattern.exec(markdown)) !== null) {
+		// Extract relevant information
+		const careerNumber = match[1];
+		const careerTitle = match[2];
+		let careerDescription = match[3].trim();
 
-	while ((match = careerRegex.exec(markdown)) !== null) {
-		careerMatches.push({
-			career: match[1].trim(),
-			description: match[2].trim()
+		// Replace line breaks with appropriate markdown syntax
+		careerDescription = careerDescription.replace(/(?:\r\n|\r|\n)/g, "\n   ");
+
+		// Push the extracted information into the array
+		careers.push({
+			careerNo: careerNumber,
+			title: careerTitle,
+			description: careerDescription
 		});
 	}
 
@@ -82,13 +114,21 @@ export default function Results() {
 			<div className="report">
 				<h1>YOUR TOP 4 CAREER CHOICES:</h1>
 				<div className="cardContainer">
-					{careerMatches.map((c, index: number) => {
+					{careers.map((career: Career) => {
 						return (
-							<div className="careersCard" key={index}>
+							<div className="careersCard" key={career.careerNo}>
 								<h2>
-									<Markdown>{c.career}</Markdown>
+									<Markdown>{career.title}</Markdown>
 								</h2>
-								<Markdown>{c.description}</Markdown>
+								{career.description.split(" - ").map((desc: string) => {
+									return desc !== "" ? (
+										desc.includes("- ") ? (
+											<Markdown>{`- ${desc.replace("- ", "")}`}</Markdown>
+										) : (
+											<Markdown>{`- ${desc}`}</Markdown>
+										)
+									) : null;
+								})}
 							</div>
 						);
 					})}
