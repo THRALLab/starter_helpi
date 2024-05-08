@@ -64,13 +64,23 @@ import { reviews } from "./ResultsPage"
             console.log(e);
         }  
     }*/
+    let goodDegs = 360;
+    let medDegs = 0;
+    let badDegs = 0;
+    let fixedReviews: number[] = [0,0,0];
 
-    const fixedReviews: number[] = JSON.parse(reviews);
+    if(!(localStorage.getItem("MYPIE"))){
+        goodDegs = 360;
+        medDegs = 0;
+        badDegs = 0;
+    } else {
+        fixedReviews = JSON.parse(reviews);
 
-    const totalReviews = fixedReviews[0] + fixedReviews[1] + fixedReviews[2];
-    const goodDegs = (fixedReviews[0] / totalReviews) * 360 
-    const medDegs = (fixedReviews[1] / totalReviews) * 360 + goodDegs;
-    const badDegs = (fixedReviews[2] / totalReviews) * 360 + medDegs;
+        const totalReviews = fixedReviews[0] + fixedReviews[1] + fixedReviews[2];
+        goodDegs = (fixedReviews[0] / totalReviews) * 360 
+        medDegs = (fixedReviews[1] / totalReviews) * 360 + goodDegs;
+        badDegs = (fixedReviews[2] / totalReviews) * 360 + medDegs;
+    }
 
 
     return (
