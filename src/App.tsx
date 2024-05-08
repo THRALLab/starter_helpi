@@ -14,14 +14,6 @@ export default function App(): JSX.Element {
   return ( 
   <div className="main-container">
     <Router>
-      <header className="App-header">
-        <nav>
-          <Link to="starter_helpi/">Home</Link>
-        </nav>
-        <nav>
-          <Link to="/select-quiz">Select Quiz</Link>
-        </nav>
-      </header>
       <div className="App">
         <header className="App-header">
           <nav>
