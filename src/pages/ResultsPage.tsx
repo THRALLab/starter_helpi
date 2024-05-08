@@ -8,31 +8,6 @@ import { Button, Form } from 'react-bootstrap';
     return array;
 }*/
 
-//commented out the function until it is being used so we can build on GIT without errors
-//get the string-array from the question pages and pass through here.
-
-// interface updatingPie {
-//     setReviewAnswer: (newAnswer: number) => void;
-//     reviewAnswer: number
-// }
-
-// export function PieChartObject({reviewAnswer}: updatingPie): JSX.Element {
-//     let positive = reviewAnswer === 1 ? 360 : 0;
-//     let neutral = reviewAnswer === 2 ? 360 : 0;
-//     let negative = reviewAnswer === 3 ? 360 : 0;
-
-//     const pieStyle = {
-//         width: "100px",
-//         height: "200ox",
-//        // backgroundcolor: 'conic-gradient(green' + positive + 'deg, yellow 0' +  neutral + 'deg, orange 0' + negative + 'deg)'
-//     }
-
-//     return <div>
-//         <div className="piechart" style={pieStyle}></div>
-//         <p>{reviewAnswer}</p>
-//         <h3>Filler</h3>
-//     </div>
-// }
 
 const reviewData: number[] = [0,0,0];
 const saveReviewData = "MYPIE";
