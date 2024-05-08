@@ -49,8 +49,6 @@ export function ResultsPage({APIKey, basicQuestionData, detailQuestionData} : {A
           model: "gpt-4-turbo",
         });
 
-        const completion_results = "";
-
         console.log(completion.choices[0].message.content);
 
       }
