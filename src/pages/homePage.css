@@ -6,7 +6,7 @@
 .splash-container {
     position: relative;
     text-align: center;
-    color: white;
+    
 }
 
 .splash-container div{
@@ -17,6 +17,7 @@
     font-weight: bold;
     font-family: "Ivar Headline";
     text-shadow: 5px 5px #558ABB;
+    color: white;
 }
 
 .splash-container div.one {
@@ -54,9 +55,8 @@
     scroll-margin-block-end: 110px;
 }
 
-div .quiz-desc-container {
+.quiz-desc-container {
     height: 450px;
-    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -87,15 +87,16 @@ div .quiz-desc-container {
 
 .quiz-desc h3 {
     margin-top: 20px;
+    color: var(--primary-color);
 }
 
-.quiz-desc p {
+.text {
    margin-left: 35px;
    margin-right: 35px;
+   color: var(--primary-color);
 }
 
 .quiz-desc Link {
-    color:black;
     text-decoration: none;
     transition: color 0.75s ease;
     &:hover {
@@ -103,12 +104,12 @@ div .quiz-desc-container {
     }
 }
 
-div .quiz-data-container {
-    height: 450px;
-    background-color: #e8ebed;
+.quiz-data-container {
+    height: 450px;;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    border: #CED4DA solid 1px;
 }
 
 .quiz-data-text {
@@ -138,4 +139,9 @@ div .quiz-data-container {
     font-size: 18px;
     text-align: center;
     margin-top: 12px;
+}
+
+
+:root {
+    --primary-color: blue
 }

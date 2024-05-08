@@ -3,7 +3,6 @@ import { Form, Alert, Stack, ProgressBar} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import { parseAnswers } from "./DetailedPage";
-import { darkMode } from "../components/darkMode";
 import "./basicPage.css"
 
 
@@ -106,7 +105,7 @@ const BasicPage = () => {
 		}
 
 		//console.log(answers + '/n')
-		console.log(description);
+		//console.log(description);
 
 		return description;
 	}
@@ -146,6 +145,7 @@ const BasicPage = () => {
 				//console.log(e);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
 				window.location.href = "./starter_helpi/"; 
+				window.scrollTo(0, 0);
 			}  
 		}
 
@@ -172,12 +172,9 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
-
-	darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
-	darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
 	return (<>
 		<body className="page-color">
-		<div className="Page-Container" data-theme = {darkMode? "dark" : "light"}>
+		<div className="Page-Container">
 			<div className="quiz-desc">
 				<h1>
 					Basic Quiz
@@ -302,7 +299,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q6-Option1"
-						label="I want to be able to work whenever I want."
+						label="I would work a job I dislike for the money."
 						name="question6"
 						onChange={() => updateChoice(10)}
 						checked={response[5] === 1}
@@ -311,7 +308,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q6-Option2"
-						label="I want to be able to work whenever I want."
+						label="I would only ever work a job I like."
 						name="question6"
 						onChange={() => updateChoice(11)}
 						checked={response[5] === 0}
@@ -342,7 +339,7 @@ const BasicPage = () => {
 			<Form.Check 
 						type="radio"
 						id="q8-Option1"
-						label="I enjoy a job that challenges me."
+						label="I love to travel."
 						name="question8"
 						onChange={() => updateChoice(14)}
 						checked={response[7] === 1}
@@ -350,7 +347,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q8-Option2"
-						label="I want a job that is easy."
+						label="I don't love to travel."
 						name="question8"
 						onChange={() => updateChoice(15)}
 						checked={response[7] === 0}/>

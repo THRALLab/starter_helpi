@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Form, ProgressBar, Alert, Button, /*FormLabel*/ 
+import { Form, ProgressBar, Alert, Button,
 Offcanvas, OffcanvasHeader,OffcanvasTitle, Row, Col, Container} from "react-bootstrap";
-//import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import "./detailedPage.css";
@@ -167,6 +166,7 @@ const DetailedPage = () => {
     });
 	return (<>
 	<body className="page-color">
+		<div className="quiz-desc">
 			<h1 className="detailed-title">
 				Detailed Quiz
 			</h1>
@@ -177,6 +177,7 @@ const DetailedPage = () => {
 				allow you to see the results of you future career.
 
 			</div>
+		</div>
 			
 		<hr style={{marginTop:"10px", opacity:".9"}}></hr>
 		
