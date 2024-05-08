@@ -1,0 +1,15 @@
+{ 
+    "CareerChoice1": {
+        "type": "string",
+        "description": "A description of a career that would be a good fit for the user based on their responses to the questions"
+    },
+    "CareerChoice2": {
+        "type": "string",
+        "description": "A description of a career that would be a good fit for the user based on their responses to the questions"
+    },
+    "CareerChoice3": {
+        "type": "string",
+        "description": "A description of a career that would be a good fit for the user based on their responses to the questions"
+    }
+
+}
