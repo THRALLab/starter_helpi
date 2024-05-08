@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import { ProgressBarProps } from "./interfaces/progressFunction";
 import './ProgressBar.css';
 import React, { useState } from 'react';

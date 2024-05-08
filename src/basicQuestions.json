@@ -69,9 +69,9 @@
 		{
 			"question_number": 8,
             "question":"8. What time of day are you most productive?",
-            "options": [{"text": "early morning (5am-7am)", "image":""},
-			{"text": "mid-morning (8am-11am)", "image":""},
-			{"text": "afternoon (12pm-5pm)", "image":""},
+            "options": [{"text": "early morning (5am-7am)", "image":"https://i.ibb.co/NStmBp0/sunrise.jpg"},
+			{"text": "mid-morning (8am-11am)", "image":"https://i.ibb.co/JqhtTYj/mid-morning.jpg"},
+			{"text": "afternoon (12pm-5pm)", "image":"https://i.ibb.co/23hz7cj/afternoon.jpg"},
 			{"text": "night (after 6pm)", "image":"https://i.ibb.co/WgHyssy/Gegjfcu-E2-OYku-KUe-C6-Qkm2-S.jpg"}],
             "type": "multiple choice"
         },
@@ -85,7 +85,7 @@
         {
 			"question_number": 10,
             "question":"10. What is the highest level of education that you would like to complete?",
-            "options": [{"text": "high school/GED"},
+            "options": [{"text": "high school/GED","image": "https://i.ibb.co/QmD3LW9/high-school-students.jpg"},
 			{"text": "college", "image":"https://i.ibb.co/C1D4jK3/4d-Pfks-WLskk-QMIE4-KYq-Yko-G.jpg"},
 			{"text": "Masters or PhD", "image":"https://i.ibb.co/VT9B1xF/10o-PVv-HYRw-Ykcs2q-AK04.jpg"},
 			{"text": "trade school", "image": "https://i.ibb.co/2KbhPcp/qbk8w-Wm-LNQms-Es-Qys-MKk-MM.jpg"}],
@@ -94,7 +94,7 @@
         {
 			"question_number": 11,
             "question":"11. On a scale from 1 to 10, how much do you value a larger salary?",
-            "options": [{"images": "https://i.ibb.co/hFGYgbg/3-RROq-QPWTu-Wi-Gg-IKSe.jpg"}],
+            "options": [{"images": "https://i.ibb.co/xGzgVf0/money.jpg"}],
             "type": "slider range"
         },
         {
@@ -107,8 +107,8 @@
 			"question_number": 13,
             "question":"13. What is your biggest weakness?",
             "options":[{"text": "communication", "image": "https://i.ibb.co/dL0xJqM/4d-Pf-U64-Oj-Cg-EO40-Iia-QSi-YA.jpg"},
-			{"text": "time management", "image":"ttps://i.ibb.co/DtMB4gW/4d-Pf"},
-			{"text": "organization", "image":""},
+			{"text": "time management", "image":"https://i.ibb.co/DtMB4gW/4d-Pf.jpg"},
+			{"text": "organization", "image":"https://i.ibb.co/D8hgVry/organized.jpg"},
 			{"text": "motivation", "image":"https://i.ibb.co/c8JDBVC/2-Ck-Cz-NCi7-WGMc-So-Iik6y-Qy.jpg"}],
             "type": "multiple choice"
         },
@@ -116,15 +116,15 @@
 			"question_number": 14,
             "question":"14. Do you enjoy learning on a constant basis?",
             "options":[{"text": "yes", "image": "https://i.ibb.co/y4c82wV/4d-Pgf-JGN8-Qg-Y8-CAKE80-UIk6.jpg"},
-			{"text": "no", "image":""}],
+			{"text": "no", "image":"https://i.ibb.co/FmkTg09/not-approved.jpg"}],
             "type": "multiple choice"
         },
         {
 			"question_number": 15,
             "question":"15. Do you enjoy working on a team?",
             "options":[{"text": "yes", "image": "https://i.ibb.co/y4c82wV/4d-Pgf-JGN8-Qg-Y8-CAKE80-UIk6.jpg"},
-			{"text": "no", "image":""},
-			{"text": "sometimes", "image":""}],
+			{"text": "no", "image":"https://i.ibb.co/FmkTg09/not-approved.jpg"},
+			{"text": "sometimes", "image":"https://i.ibb.co/wC7Qds2/sometimes.jpg"}],
             "type": "multiple choice"
         }
 ]

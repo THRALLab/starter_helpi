@@ -18,8 +18,7 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 		setSelected(basicQuestions);
 	},[]);*/
 	return (
-		<div>
-			<p>Select an option:</p>
+		<div className="quizContainer">
 			{options.map((option: BasicOptions) => (
 				<label key={option.text}>
 					<input
@@ -28,8 +27,8 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 						checked={selected === option.text}
 						onChange={() => optionSelect(option)}
 					/>
-					<span>{option.text}</span>
-					<img src={option.image} alt="selected"></img>
+					<div className="optionsContainer">{option.text}</div>
+					<img src={option.image} alt="selected" className="selected-image"/>
 				</label>
 			))}
 			<p>You selected: {selected?.text}</p>
@@ -40,10 +39,9 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 function Basic() {
 	return (
 		<div>
-			<h1>This is the Basic Quiz.</h1>
 			{questions.map((question, question_number) => (
 				<div key={question_number}>
-					<h2>{question.question}</h2>
+					<div className="questionContainer">{question.question}</div>
 					<QuestionFormatComponent question_number={question.question_number} question={question.question} options={question.options as BasicOptions[]} type={question.type}/>
 				</div>
 			))}

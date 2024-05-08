@@ -1,4 +1,4 @@
 export interface BasicOptions {
-    text: string;
-    image: string;
+    text?: string;
+    image?: string;
 }
