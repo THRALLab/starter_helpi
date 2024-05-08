@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { themeState, updateThemeState } from "./ThemeParent";
+import { themeState, updateThemeState } from "./StateParent";
 
 export const ThemeSelect = () => {
   //Theme States

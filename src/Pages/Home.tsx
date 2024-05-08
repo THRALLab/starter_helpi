@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
-import { themeState } from "../Components/ThemeParent";
+import { themeState } from "../Components/StateParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Formatting/General.css";

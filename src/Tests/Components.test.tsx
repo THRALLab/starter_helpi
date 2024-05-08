@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { HashRouter } from "react-router-dom";
-import { themeState, updateThemeState } from "../Components/ThemeParent";
+import { themeState, updateThemeState } from "../Components/StateParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import Home from "../Pages/Home";
 import { LinkButton } from "../Components/LinkButton";

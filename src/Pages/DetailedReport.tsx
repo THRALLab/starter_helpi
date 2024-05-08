@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import OpenAIAPi from "openai";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { LinkButton } from "../Components/LinkButton";
-import { themeState } from "../Components/ThemeParent";
+import { themeState } from "../Components/StateParent";
 import { ThemeSelect } from "../Components/ThemeSelect";
 import { DetailedQuestion } from "../QuestionData/DetailedQuestion";
 import { slidenums } from "./DetailedQuestions";
@@ -122,7 +122,6 @@ function DetailedReport() {
 
   //Ansync function that queries GPT
   const generateReport = async () => {
-    
     await ChatGPT();
     //setCareerList(responseData.split("~"));
   };
@@ -169,7 +168,9 @@ function DetailedReport() {
           )}
           {!loading && careerList.length >= 3 && (
             <div className="Report-results">
-              <span className="Report-results-header">Based on your answers:</span>
+              <span className="Report-results-header">
+                Based on your answers:
+              </span>
               <div>
                 <br />
                 <span className="Report-results-header">Career 1:</span>
