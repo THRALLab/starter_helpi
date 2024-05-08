@@ -9,17 +9,8 @@ export default function Results() {
 	// TODO [ ] - implement the 404 logic when the user attempts to access this page without completing the quiz
 	// TODO [ ] - consider creating a second function that will also call the ChatGPT API but will return data about how much of a close fit a user is (in percentages) to a specific career/how likely it matches them so that you can use this data and implement it for graphs + get more data to add to the results page
 
-	const markdown = `detailed.tsx:221 No.
-detailed.tsx:221 No.
-useChatGPT.ts:27 Loading ChatGPT's response...
-useChatGPT.ts:27 Loading ChatGPT's response...
-useChatGPT.ts:54 1. Software Developer - 40%
-2. Data Analyst - 30%
-3. Health Promotion Specialist - 20%
-4. Cybersecurity Analyst - 10%
-detailed.tsx:221 No.
-detailed.tsx:221 No.
-useChatGPT.ts:54 Based on the answers provided, here are four career recommendations that might be suitable, along with detailed explanations for why they could be good fits:
+	const markdown = `
+Based on the answers provided, here are four career recommendations that might be suitable, along with detailed explanations for why they could be good fits:
 
 1. **Health Informatics Specialist**:
    - **Integration of Interests**:
