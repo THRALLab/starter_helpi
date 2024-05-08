@@ -74,7 +74,7 @@ export default function Results() {
 	Your feedback and any further reflections on these suggestions would be valuable for refining the list or exploring additional options.`;
 
 	interface Career {
-		careerNo: string;
+		careerNo?: string;
 		title: string;
 		description: string;
 	}
@@ -106,6 +106,27 @@ export default function Results() {
 		});
 	}
 
+	// Regular expression pattern to match the recommendations
+	const recommendationPattern = /- \*\*(.+?)\*\*([\s\S]+?)(?=- \*\*|$)/g;
+
+	// Array to hold the extracted recommendations
+	const alternativeCareers: Career[] = [];
+
+	// Match each recommendation using the regular expression pattern
+	while ((match = recommendationPattern.exec(markdown)) !== null) {
+		// Extract recommendation details
+		const recommendationTitle = match[1].trim();
+		const recommendationDescription = match[2].trim();
+
+		// Push the extracted recommendation into the array
+		alternativeCareers.push({
+			title: recommendationTitle,
+			description: recommendationDescription
+		});
+	}
+
+	console.log(alternativeCareers[2].description.split("\n"));
+
 	return (
 		<>
 			<div className="backdrop">
@@ -133,20 +154,27 @@ export default function Results() {
 						);
 					})}
 				</div>
-				{/* <h2>
-					YOUR TOP {alternativePathsArray && alternativePathsArray.length}{" "}
-					ALTERNATIVE CHOICES:
+				<h2>
+					YOUR TOP {alternativeCareers.length > 0 && alternativeCareers.length}
+					&nbsp;ALTERNATIVE CHOICES:
 				</h2>
 				<div className="cardContainer">
-					{alternativePathsArray &&
-						alternativePathsArray.map((alternativeCareer, index: number) => {
+					{alternativeCareers.length > 0 &&
+						alternativeCareers.map((alternativeCareer, index: number) => {
 							return (
 								<div className="alternativesCard" key={index}>
-									<Markdown>{alternativeCareer}</Markdown>
+									<Markdown>{`### ${alternativeCareer.title}`}</Markdown>
+									{alternativeCareer.description
+										.split("\n")
+										.map((altCareer: string, index: number) =>
+											altCareer.trim() ? (
+												<Markdown key={index}>{`- ${altCareer}`}</Markdown>
+											) : null
+										)}
 								</div>
 							);
 						})}
-				</div> */}
+				</div>
 			</div>
 		</>
 	);
