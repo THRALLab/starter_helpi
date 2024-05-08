@@ -7,12 +7,6 @@ let NavLink = styled(Link)``
 let HomeLink = styled(Link)``
 let Bars = styled(FaBars)``
 let NavMenu = styled.div``
-let DarkModeToggle = styled.div``
-
-DarkModeToggle = styled.div`
-    margin-left: 200px;
-    background: #808080;
-`;
 
 Nav = styled.nav`
 background: white;
@@ -74,4 +68,4 @@ NavMenu = styled.div`
 
 
 
-export { Nav, NavLink, HomeLink, Bars, NavMenu, DarkModeToggle};
+export { Nav, NavLink, HomeLink, Bars, NavMenu };
