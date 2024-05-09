@@ -116,7 +116,7 @@ const questions: QuestionOption[] = [
     }, [selectedOptions, confettiShown]);
 
     const totalQuestions = questions.length;
-    const answeredQuestions = Object.keys(selectedOptions).length;
+    const answeredQuestions = selectedOptions.filter(option => option !== '').length;
     const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
 
     return (
