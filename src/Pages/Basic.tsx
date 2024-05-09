@@ -105,6 +105,7 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
     const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
    
     useEffect(() => {
+        
         if (allQuestionsAnswered && !confettiShown) { /* Confetti effect when all questions are answered */
             setConfetti(true);
             setConfettiShown(true); 
@@ -116,36 +117,39 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
     }, [selectedOptions, confettiShown]);
 
     const totalQuestions = questions.length;
-    const answeredQuestions = Object.keys(selectedOptions).length;
+    const answeredQuestions = selectedOptions.filter(option => option !== '').length;
     const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
+
+
+    // dont base it on selected options length,, base it on actual length of questions
 
     return (
         <div>
-        <header className="header" /* Top of page */>
-        {allQuestionsAnswered && (
-      <div className="confetti-container">
-        <Confetti active={confetti} config={config} />
-      </div>
-            )} 
-        </header>
-        <div className="progressBarContainer">
-    <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
-    <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${progressPercentage + 0.5}%` }} />
-</div>
-        <Button className="detailed-switch" onClick={() => handlePage('Detailed')}>Detailed</Button>
-        <div className="column">
-                {questions.map((q, x) => (
-                    <div key={x}>
+            <header className="header">
+                {allQuestionsAnswered && (
+                    <div className="confetti-container">
+                        <Confetti active={confetti} config={config} />
+                    </div>
+                )}
+            </header>
+            <div className="progressBarContainer">
+                <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+                <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${Math.min(progressPercentage, 95)}%` }} />
+            </div>
+            <Button className="detailed-switch" onClick={() => handlePage('Detailed')}>Detailed</Button>
+            <div className="column">
+                {questions.map((q, index) => (
+                    <div key={index}>
                         <h3 className="question">{q.question}</h3>
                         <div className="questionContainer">
-                            {q.options.filter(option => option.label !== "").map((option, i) => (
+                            {q.options.map((option, i) => (
                                 <label key={i} className="option">
                                     <input
                                         type="radio"
-                                        name={`question_${x}`}
+                                        name={`question_${index}`}
                                         value={option.label}
-                                        checked={selectedOptions[x] === option.label}
-                                        onChange={() => handleOptionClick(option.label, x)} />
+                                        checked={selectedOptions[index] === option.label}
+                                        onChange={() => handleOptionClick(option.label, index)} />
                                     <img src={option.iconSrc} alt={`${option.label} Icon`} className="label-icon" />
                                     {option.label}
                                 </label>
@@ -154,12 +158,12 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
                     </div>
                 ))}
             </div>
-            {allQuestionsAnswered && ( /* Response displayed when all questions are answered */
-      <div className="response">
-        <h3>Thank you for completing the questionnaire!</h3>
-        <p>Your responses have been recorded.</p>
-        <Button onClick={() => handlePage('Results')} className="response-button">View Results</Button>
-      </div>
+            {allQuestionsAnswered && (
+                <div className="response">
+                    <h3>Thank you for completing the questionnaire!</h3>
+                    <p>Your responses have been recorded.</p>
+                    <Button onClick={() => handlePage('Results')} className="response-button">View Results</Button>
+                </div>
             )}
             <footer className="footer-space"></footer>
         </div>
