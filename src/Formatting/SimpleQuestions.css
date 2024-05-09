@@ -16,10 +16,6 @@
   margin-bottom: 10px;
 }
 
-.Simple-question-number {
-  position: absolute;
-}
-
 .Simple-progress-outer {
   color: var(--color-body-questionText);
   position: relative;
@@ -51,6 +47,10 @@
   align-self: right;
 }
 
+.Simple-question-number {
+  position: absolute;
+}
+
 .Simple-textSpace {
   margin-left: 10%;
   margin-right: 10%;
@@ -61,6 +61,7 @@
 }
 
 .Simple-question-body {
+  position: relative;
   padding: 10px;
 }
 
@@ -81,18 +82,6 @@
   left: 0;
   margin: 0;
   padding: 10px;
-}
-
-.Simple-question-body {
-  position: relative;
-}
-
-.Simple-back-bottom {
-  position: absolute;
-  align-items: right;
-  margin-right: 5%;
-  margin-top: 0px;
-  right: 0;
 }
 
 .Simple-back-top {

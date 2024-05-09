@@ -90,16 +90,6 @@
   transition: height 0.5s ease;
 }
 
-.DetailedQuestions-question-number {
-  position: absolute;
-  align-self: center;
-  left: 0;
-  right: 0;
-  margin-bottom: 450px;
-  transform: rotate(180deg);
-  color: var(--color-body-questionText);
-}
-
 .DetailedQuestions-progress-bar-percentage {
   position: absolute;
   align-self: center;
@@ -115,4 +105,14 @@
   position: relative;
   width: 200px;
   height: 500px;
+}
+
+.DetailedQuestions-question-number {
+  position: absolute;
+  align-self: center;
+  left: 0;
+  right: 0;
+  margin-bottom: 450px;
+  transform: rotate(180deg);
+  color: var(--color-body-questionText);
 }

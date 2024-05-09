@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react";
 import { HashRouter } from "react-router-dom";
 import SimpleReport from "../Pages/SimpleReport";
 
+window.HTMLElement.prototype.scrollIntoView = function () {};
+window.HTMLMediaElement.prototype.pause = function () {};
+
 describe("Simple Report Tests", () => {
   test("Has Header", () => {
     render(
