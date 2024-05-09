@@ -1,4 +1,4 @@
-import useChatGPT from "./hooks/useChatGPT";
+// import useChatGPT from "./hooks/useChatGPT";
 import "./results.css";
 import Markdown from "react-markdown";
 import { PieChart } from "@mui/x-charts/PieChart";
