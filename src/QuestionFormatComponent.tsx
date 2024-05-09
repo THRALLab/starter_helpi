@@ -1,28 +1,29 @@
 import { useState } from "react";
 import QuestionFormatProps from "./interfaces/questionFormat";
+import { BasicOptions } from "./interfaces/basicOption";
 
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
-	const [selected, setSelected] = useState<string | null>(null);
+	const [selected, setSelected] = useState<string | undefined>(undefined);
 
-	const optionSelect = (option: string) => {
+	const optionSelect = (option: string | undefined) => {
 		setSelected(option);
 	};
 
 	return (
 		<div>
 			<p>Select an option:</p>
-			{options.length > 0
-				? options.map(option => (
-						<label key={option}>
+			{options && options.length > 0
+				? options.map((option: BasicOptions, index: number) => (
+						<label key={index}>
 							<input
 								type="radio"
-								value={option}
+								value={option.text}
 								checked={selected === option}
-								onChange={() => optionSelect(option)}
+								onChange={() => optionSelect(option && option.text)}
 							/>
-							{option}
+							{option.text}
 						</label>
 				  ))
 				: null}
