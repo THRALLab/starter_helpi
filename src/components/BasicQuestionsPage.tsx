@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Nav, NavDropdown, Navbar, ProgressBar } from 'react-bootstrap';
+import { Container, Nav, Navbar, ProgressBar } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/joy/Button';
@@ -7,6 +7,7 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import { styled } from '@mui/material/styles';
+import CareerFinder from '../images/CareerFinder.png';
 
 export function BasicQuestionsPage(): JSX.Element {
     const StyledButton = styled(Button)`
@@ -104,6 +105,20 @@ export function BasicQuestionsPage(): JSX.Element {
   const [displayFinishButton, setDisplayFinishButton] = useState(false);
   const [displayFinalResults, setDisplayFinalResults] = useState(false);
   const [gptResponse, setGptResponse] = useState<string>('');
+  const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
+    //const [goToHomePage, setGoToHomePage] = React.useState(false);
+
+    if (goToDetailedQuestionsPage) {
+        return <Navigate to="/DetailedQuestionsPage"/>
+    }
+
+    const handleRetakeTest = () => {
+      setCurrentQuestion(0); // Reset current question to start from the beginning
+      setDisplayFinalResults(false); // Hide final results
+      setSelectedAnswers(new Array(questions.length).fill('')); // Reset selected answers array
+      setGptResponse(''); // Clear GPT response
+      // Reset any other state variables as needed
+  };
 
   const handleAnswerOptionClick = (answerText: string) => {
     const updatedAnswers = [...selectedAnswers];
@@ -181,14 +196,11 @@ export function BasicQuestionsPage(): JSX.Element {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-          </NavDropdown>
+          <Nav.Link onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Nav.Link>
         </Nav>
+        <Nav className="ms-auto"> {/* Use ms-auto to push items to the right */}
+                        <img src={CareerFinder} alt="CareerFinder4U Logo" style={{ height: 50, width: 50 }} />
+                    </Nav>
       </Navbar.Collapse>
     </Container>
   </Navbar>
@@ -229,6 +241,10 @@ export function BasicQuestionsPage(): JSX.Element {
             <Typography level="h4">AI Generated Summary:</Typography>
             <Typography>{gptResponse}</Typography>
             <StyledButton onClick={handleGoToHomePage}>Home</StyledButton>
+            <StyledButton onClick={handleRetakeTest}
+                           // Adjust marginBottom to lower the button
+                            >Retake Test
+                            </StyledButton>
           </>
         )}
       </CardContent>
