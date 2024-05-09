@@ -1,11 +1,37 @@
 import React, { useState } from "react";
 import questions from "./basicQuestions.json";
+import "./ProgressBar";
+import QuestionFormatProps from "./interfaces/questionFormat";
 import { QuestionFormatProps } from "./interfaces/questionFormat";
 import ProgressBar from "./ProgressBar";
 
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
   options,
 }) => {
+	const [selected, setSelected] = useState<string | null>(null);
+	const optionSelect = (option: string) => {
+		setSelected(option);
+	};
+	/*useEffect(()=>{
+		setSelected(basicQuestions);
+	},[]);*/
+	return (
+		<div>
+			<p>Select an option:</p>
+			{options.map((option: string) => (
+				<label key={option}>
+					<input
+						type="radio"
+						value={option}
+						checked={selected === option}
+						onChange={() => optionSelect(option)}
+					/>
+					{option}
+				</label>
+			))}
+			<p>You selected: {selected}</p>
+		</div>
+	);
   const [selected, setSelected] = useState<string | null>(null);
   const optionSelect = (option: string) => {
     setSelected(option);
