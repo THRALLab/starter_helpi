@@ -1,25 +1,16 @@
-font-face { /* Center box title font */
+@font-face { /* Center box title font */
   font-family: 'Playfair Display Black';
-  src: url('./PlayfairDisplay-Black.ttf') format('truetype');
+  src: url('./Pages/PlayfairDisplay-Black.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Poppins';
-  src: url('./Poppins-Bold.ttf') format('truetype');
-}
-
-body {
-  font-family: 'Playfair Display Black', serif;
-  src: url('./Poppins-Black.ttf') format('truetype');
-}
-
-h1 {
-  font-family: 'Poppins', sans-serif;
+  src: url('./Pages/Poppins-Bold.ttf') format('truetype');
 }
 
 @font-face { /* Descriptions font */
   font-family: 'Poppins Light';
-  src: url('./Poppins-Light.ttf') format('truetype');
+  src: url('./Pages/Poppins-Light.ttf') format('truetype');
 }
 
 .footer {
