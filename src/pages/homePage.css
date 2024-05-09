@@ -6,7 +6,7 @@
 .splash-container {
     position: relative;
     text-align: center;
-    color: white;
+    
 }
 
 .splash-container div{
@@ -17,6 +17,7 @@
     font-weight: bold;
     font-family: "Ivar Headline";
     text-shadow: 5px 5px #558ABB;
+    color: white;
 }
 
 .splash-container div.one {
@@ -54,9 +55,8 @@
     scroll-margin-block-end: 110px;
 }
 
-div .quiz-desc-container {
+.quiz-desc-container {
     height: 450px;
-    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -87,15 +87,16 @@ div .quiz-desc-container {
 
 .quiz-desc h3 {
     margin-top: 20px;
+    color: var(--primary-color);
 }
 
-.quiz-desc p {
+.text {
    margin-left: 35px;
    margin-right: 35px;
+   color: var(--primary-color);
 }
 
 .quiz-desc Link {
-    color:black;
     text-decoration: none;
     transition: color 0.75s ease;
     &:hover {
@@ -103,12 +104,12 @@ div .quiz-desc-container {
     }
 }
 
-div .quiz-data-container {
-    height: 450px;
-    background-color: #e8ebed;
+.quiz-data-container {
+    height: 480px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    border: #CED4DA solid 1px;
 }
 
 .quiz-data-text {
@@ -117,25 +118,43 @@ div .quiz-data-container {
     overflow: overlay;
     font-size: 26px;
     height: 90%;
-}
-
-.piechart { 
-    width: 200px;
-                height: 200px;
-                border-radius: 50%;
-                background-image: conic-gradient(
-                    pink 70deg,
-                    lightblue 0 235deg,
-                    orange 0
-                );
+    margin-top: 190px;
 }
 
 .quiz-data-graph {
+    width: 70%;
     border: solid 1px grey;
+    border-radius: 2%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 10px 5px 5px rgb(86, 86, 86);
+}
+
+.quiz-data-graph .piechart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.quiz-data-graph .piechart .legend {
+    margin-left: 40px;
+}
+
+.quiz-data-graph .piechart p {
+    padding-top: 30px;
+    font-size: 22px;
+    text-align: center;
 }
 
 .quiz-data-graph p {
-    font-size: 18px;
+    padding-top: 30px;
+    font-size: 12px;
     text-align: center;
-    margin-top: 12px;
+}
+
+
+:root {
+    --primary-color: blue
 }

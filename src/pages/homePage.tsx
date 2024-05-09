@@ -4,8 +4,9 @@ import splash from "../images/businessman.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
 import { Link } from "react-router-dom";
+import { reviews } from "./ResultsPage"
+// import { PieChartObject } from "./ResultsPage";
 //import OpenAI from "openai";
-
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
     let keyData = "";
@@ -63,11 +64,29 @@ import { Link } from "react-router-dom";
             console.log(e);
         }  
     }*/
+    let goodDegs = 360;
+    let medDegs = 0;
+    let badDegs = 0;
+    let fixedReviews: number[] = [0,0,0];
+
+    if(!(localStorage.getItem("MYPIE"))){
+        goodDegs = 360;
+        medDegs = 0;
+        badDegs = 0;
+    } else {
+        fixedReviews = JSON.parse(reviews);
+
+        const totalReviews = fixedReviews[0] + fixedReviews[1] + fixedReviews[2];
+        goodDegs = (fixedReviews[0] / totalReviews) * 360 
+        medDegs = (fixedReviews[1] / totalReviews) * 360 + goodDegs;
+        badDegs = (fixedReviews[2] / totalReviews) * 360 + medDegs;
+    }
+
 
     return (
         <>
         <div className="splash-container">
-            <img src={splash} alt="businessMountains" className="splashPage" />
+            <img src={splash} alt="businessMountains" className="splashPage"></img>
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
@@ -78,27 +97,37 @@ import { Link } from "react-router-dom";
             <HomeLink to="/BasicPage">
                 <div className="quiz-desc">
                     <h3>Basic Quiz</h3>
-                    <p>Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
+                    <p className="text">Want to take a peek into your career’s future, but don’t have time to take the full career assessment? The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment. With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you your future career.</p>
                 </div>
             </HomeLink>
             <HomeLink to="/DetailedPage">
                 <div className="quiz-desc">
                     <h3>Detailed Quiz</h3>
-                    <p>If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
+                    <p className="text">If you want to gain in-depth insight into your career path, this quiz is for you! Multiple-choice, personality-based questions will analyze your core values and identify your ideal career path, selecting from numerous high-profile industries.</p>
                 </div>
             </HomeLink>
         </div>
         <div className="quiz-data-container">
             <div className="quiz-data-text">
-                <p>Career quizzes are proven to help the masses achieve thier goals and secure professional success. Money can buy happiness, but only purpose can bring fulfillment.</p>
+                <p>See what other people are saying about their CareerNav.com results!</p>
             </div>
             <div className="quiz-data-graph">
-                {/* <img src={pie} alt="graph"></img> */}
-                <div className="piechart"></div>
-                <p>Satisfaction rates from other users!</p>
+                <div className="piechart">
+                    <div style={{
+                        width: "300px",
+                        height: "300px",
+                        borderRadius: "50%",
+                        background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)'
+                    }}></div>
+                    <div className="legend">
+                        <p style={{color: "#386e2d"}}>"I Loved It!"</p>
+                        <p style={{color: "#dbd52c"}}>"It was alright."</p>
+                        <p style={{color: "#b32b2b"}}>"I'm not so impressed."</p>
+                    </div>
+                </div>
+                <p>~All real data collected on our site~</p>
             </div>
         </div>
-        <HomeLink to="/ResultsPage">Temporary Results Link</HomeLink>
         <Form>
                 <Form.Label>API Key:</Form.Label>
                 <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>

@@ -3,7 +3,6 @@ import { Form, Alert, Stack, ProgressBar} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import { parseAnswers } from "./DetailedPage";
-import { darkMode } from "../components/darkMode";
 import "./basicPage.css"
 
 
@@ -106,7 +105,7 @@ const BasicPage = () => {
 		}
 
 		//console.log(answers + '/n')
-		console.log(description);
+		//console.log(description);
 
 		return description;
 	}
@@ -146,6 +145,7 @@ const BasicPage = () => {
 				//console.log(e);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
 				window.location.href = "./starter_helpi/"; 
+				window.scrollTo(0, 0);
 			}  
 		}
 
@@ -172,69 +172,17 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
-
-	darkMode ? document.body.style.backgroundColor = "#7a7a7a" : document.body.style.backgroundColor = "white";
-	darkMode ? document.body.style.color = "white" : document.body.style.color = "black";
-
 	return (<>
-	<style>{`
-                .QuestionNum {
-                	font-size: 50px;
-					margin-left: 35px;
-					display:flex;	
-                }
-
-				hr{
-					width:max;
-					margin-top: 50px;
-				}
-
-				.Page-Container {
-					background-color: var(--background-color);
-				}
-
-				.questions {
-					color: var(--primary-text-color);
-				}
-
-				.button{
-					background-color: var(--foreground-color);
-					color: var(--background-color);
-					border: none;
-					padding: 10px 20px;
-					margin: 10px;
-					border-radius: 16px;
-				}
-
-				.quiz-desc {
-					color: var(--primary-text-color);
-					margin: 20px;
-					height: 100%;
-					width: 95%;
-					padding: 20px;
-				}
-
-				:root {
-					--background-color: white;
-					--foreground-color: black;
-					--primary-text-color: black;
-				}
-
-				[data-theme="dark"] {
-					--background-color: #7a7a7a;
-					--foreground-color: white;
-					--primary-text-color: white;
-				}
-                `}</style>
-		<div className="Page-Container" data-theme = {darkMode? "dark" : "light"}>
-			<div className="quiz-desc">
+		<body className="page-color">
+		<div className="Page-Container">
+			<div className="quiz-desc-header">
 				<h1>
 					Basic Quiz
 				</h1>
 				<p style={{ textAlign: "center" }}>
-					Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
-					The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-					With only 8 true or false questions, this quiz should only take 5 minutes of your time to show you the future of your career.
+				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
+		The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+		With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
 				</p>
 				
 			</div>
@@ -242,10 +190,11 @@ const BasicPage = () => {
 	
 				<button className="button" disabled={!allow} onClick={sendResponse}>Get Answer!</button>
 				<button className="button" onClick={doReset} > Clear All</button>
-				<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{marginLeft:"400px", marginRight:"400px", marginTop:"10px"}}>
-
-					<p>You've completed all the questions, you can now click the answer button to get your results!</p>
-				</Alert>
+				<div style={{display: "flex", justifyContent:"center"}}>
+		  			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
+		   				 <p>You've completed all the questions, you can now click the "Get Answer!" button to get your results!</p>
+		  			 </Alert>
+				</div>
 		</div>
 		<div className="question-container">
 		<span className="QuestionNum">#1</span> 
@@ -350,7 +299,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q6-Option1"
-						label="I want to be able to work whenever I want."
+						label="I would work a job I dislike for the money."
 						name="question6"
 						onChange={() => updateChoice(10)}
 						checked={response[5] === 1}
@@ -359,7 +308,7 @@ const BasicPage = () => {
 					<Form.Check 
 						type="radio"
 						id="q6-Option2"
-						label="I want to be able to work whenever I want."
+						label="I would only ever work a job I like."
 						name="question6"
 						onChange={() => updateChoice(11)}
 						checked={response[5] === 0}
@@ -390,19 +339,18 @@ const BasicPage = () => {
 			<Form.Check 
 						type="radio"
 						id="q8-Option1"
-						label="I enjoy a job that challenges me."
-						name="question4"
+						label="I love to travel."
+						name="question8"
 						onChange={() => updateChoice(14)}
 						checked={response[7] === 1}
 						/>
 					<Form.Check 
 						type="radio"
 						id="q8-Option2"
-						label="I want a job that is easy."
+						label="I don't love to travel."
 						name="question8"
 						onChange={() => updateChoice(15)}
-						checked={response[7] === 0}
-						/>
+						checked={response[7] === 0}/>
 					</Stack>
 				</span>	
 			</div>
@@ -411,6 +359,7 @@ const BasicPage = () => {
 		<div style={{marginLeft:"200px", marginRight:"200px", marginBottom:"10px"}}>
 		<ProgressBar variant="success" now={answered} animated max={8} />
 		</div>
+		</body>
 	</>
 	);
 };
