@@ -122,9 +122,11 @@ const DetailedQuestions: React.FC = () => {
           <Button>Return to Home</Button>
         </Link>
       </div>
-      <div style={{ paddingTop: '50px' }}>
-        <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
-      </div>
+      <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} className="progress-bar" />
+
+
+
+
       <div className = "questions.container">
         <h2 className = "detailed-questions-title">Detailed Questions</h2>
         {questions.map(question => (

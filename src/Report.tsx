@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { generateDetailed, generateBasic } from './ChatGPT';
+import './Report.css'; // Import CSS for styling
+
+interface ReportItem {
+  title: string;
+  url: string;
+}
 
 const Report: React.FC = () => {
-  const [reportData, setReportData] = useState<string[]>([]);
+  const [reportData, setReportData] = useState<ReportItem[]>([]);
 
   useEffect(() => {
-    // Example of fetching report data (you may adjust this based on your actual implementation)
+    // Fetch report data when the component mounts
     const fetchReportData = async () => {
-      // Example of fetching detailed report data
-      const detailedAnswers = ["Answer 1", "Answer 2", "Answer 3"]; // Replace with actual answers
-      const detailedReport = await generateDetailed(detailedAnswers);
+      const detailedAnswers = ["Answer 1", "Answer 2", "Answer 3"]; // Example detailed answers
+      const basicAnswers = ["Answer A", "Answer B", "Answer C"]; // Example basic answers
 
-      // Example of fetching basic report data
-      const basicAnswers = ["Answer A", "Answer B", "Answer C"]; // Replace with actual answers
+      // Generate detailed report data
+      const detailedReport = await generateDetailed(detailedAnswers);
+      // Generate basic report data
       const basicReport = await generateBasic(basicAnswers);
 
-      // Combine both detailed and basic reports
+      // Combine detailed and basic reports
       const combinedReport = [...detailedReport, ...basicReport];
 
       // Set the combined report data in state
@@ -26,16 +32,19 @@ const Report: React.FC = () => {
   }, []); // Empty dependency array to ensure useEffect runs only once
 
   return (
-    <div>
-      <h1>ChatGPT API Report</h1>
+    <div className="report-container">
+      <h1 className="report-title">ChatGPT API Report</h1>
       {reportData.length > 0 ? (
-        <ul>
+        <ul className="report-list">
           {reportData.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index} className="report-item">
+              <div>{item.title}</div>
+              <div><a href={item.url} target="_blank" rel="noopener noreferrer">View Job</a></div>
+            </li>
           ))}
         </ul>
       ) : (
-        <p>Loading report...</p>
+        <p className="loading-text">Loading report...</p>
       )}
     </div>
   );
