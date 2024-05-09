@@ -1,0 +1,285 @@
+.BQPage {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fee4c3;
+  /* background-image: url("BKGBase.png"); */
+
+}
+
+.Bbody .text {
+  display: block;
+  position: absolute;
+  font-family: "Lilita One";
+  text-align: center;
+  top: 10vh;
+  font-size: 30px;
+  left: 11vw;
+}
+
+.BasicQuestions-List {
+  top: 15vw;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  list-style-type: none;
+  background-color: #3c2918;
+  left: -1vw;
+}
+
+label {
+  margin-left: 10px;
+}
+ul{
+  text-align: center;
+}
+
+.BQH {
+ 
+  position: absolute;
+  border-radius: 1.5em;
+
+  top: 15vh;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+  font-family: "Lilita One";
+  color: #3c2918;
+}
+
+.BQB {
+  position: absolute;
+  top: 18vh;
+  left: 28vw;
+}
+
+.BQ-SubmitButton {
+  position: absolute;
+  top: 60vh;
+  width: auto; /* Adjust the width as needed */
+  height: 68px;
+
+  background-color: #3c2918;
+  color: #fee4c3;
+  left: 52vw;
+}
+.BQ-SubmitButton:hover {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+
+.BQQuestionNum{
+  position: relative;
+  padding: 0px;
+  margin-bottom: 0px;
+  font-family: "Lilita One";
+  font-size: 25px;
+  color: #3c2918;
+  top: 30vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.BQQuestion{
+  position: absolute;
+  margin-top: 0vh;
+  font-size: 25px;
+  color: #3c2918;
+  top: 37vh;
+  left: auto;
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+}
+
+.NextButton {
+  height: 8vh;
+  bottom: 20px; /* Adjust the vertical position from the bottom */
+  width: 100px; /* Adjust the width as needed */
+  padding: 10px;
+  background-color: #3c2918;
+  color: #fee4c3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.NextButton:hover {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.NextButton:visted {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.NextButton:focus {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+
+.PrevButton {
+  height: 8vh;
+  bottom: 0px; /* Adjust the vertical position from the bottom */
+  width: 100px; /* Adjust the width as needed */
+  padding: 2px;
+  background-color: #3c2918;
+  color: #fee4c3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.PrevButton:hover {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.PrevButton:visited {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.PrevButton:focus {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+
+.PrevButton:disabled {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.ButtonContainer {
+  translate: 0vh;
+  background-color: #fee4c3;
+
+}
+
+/* NOT USED */
+/* .BasicSubmitButton {
+  height: 55px;
+  left: 15vh;
+  top:50vh;
+  position:relative;
+  bottom: 20px; 
+  width: 30vh; 
+  padding: 10px;
+  background-color: #3c2918;
+  color: #fee4c3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.BasicSubmitButton:hover {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.BasicSubmitButton:visted {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.BasicSubmitButton:focus {
+  background-color: #fee4c3;
+  color: #3c2918;
+} */
+
+.textboxclassBQ{
+  position: absolute;
+  margin-top: 10px;
+  top: 41vh;
+  height: 40px;
+  width: 60vh;
+  font-size: 20px;
+  font-family: "Josefin Sans";
+  left: 35vw;
+  background-color: #3c2918;
+  color: #fee4c3;
+  text-align: center;
+}
+
+.ProgressBarBQ {
+  position: absolute;
+  border-radius: 1.5em;
+
+  left: 5vw;
+  top: 26vh;
+  height: 6vh;
+  width: 90vw;
+  background-color: #3c2918;
+}
+
+.ActiveProgressBQ {
+  position: absolute;
+  align-self: center;
+  border-radius: 1.5em;
+  transition: width 0.3s ease-in-out; /* Adjust the duration and timing function as needed */
+  left: 0.6vw;
+  top: 1vh;
+  height: 4vh;
+  max-width: 98.5%;
+  min-width: 0.5%;
+  background-color: #fee4c3;
+}
+
+/*
+//putting in styalizing things and will edit later
+*/
+
+.Bbody {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fee4c3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.QuestionHeader {
+  position: absolute;
+  border-radius: 1.5em;
+
+  top: 20vh;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+  font-family: "Josefin Sans";
+  color: #3c2918;
+
+
+}
+
+.QuestionContainer {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Lilita One";
+  position: absolute;
+  top: 35vh; /* Adjust this value to move the container downward */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  width: 100vw;
+  background-color: #fee4c3;
+  height: 80vh;
+}
+
+.QuestionText {
+  font-size: 10px;
+
+}
+
+.AnswerInput {
+  width: 300px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.SubmittedAnswers{
+  background-color: #fee4c3;
+}
+
+.QuestionWrapper{
+  height: 100vh;
+  width: 100vw;
+  background-color: #fee4c3;
+}
