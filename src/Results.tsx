@@ -4,6 +4,8 @@ import Markdown from "react-markdown";
 import { PieChart } from "@mui/x-charts/PieChart";
 import emailjs from "@emailjs/browser";
 import { FormEvent, useRef, useState } from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Results() {
 	const { chat_gptResponse } = useChatGPT();
@@ -169,128 +171,162 @@ export default function Results() {
 	const [email, setEmail] = useState("");
 
 	const sendEmail = (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
+		if (!email) {
+			event.preventDefault();
+			alert("Please provide an email");
+		} else {
+			event.preventDefault();
 
-		if (!form.current) return; // Ensure form.current is not null
+			if (!form.current) return; // Ensure form.current is not null
 
-		const formData = new FormData(form.current);
+			const formData = new FormData(form.current);
 
-		formData.append("to_email", email.toLowerCase());
+			formData.append("to_email", email.toLowerCase());
 
-		emailjs
-			.sendForm("service_t261vsc", "template_a7tcjsa", form.current, {
-				publicKey: "Zj1lhdMNe9-VtmDkN"
-			})
-			.then(
-				() => {
-					console.log("SUCCESS!");
-				},
-				error => {
-					console.log("FAILED...", error.text);
-				}
-			);
+			emailjs
+				.sendForm("service_t261vsc", "template_a7tcjsa", form.current, {
+					publicKey: "Zj1lhdMNe9-VtmDkN"
+				})
+				.then(
+					() => {
+						console.log("SUCCESS!");
+					},
+					error => {
+						console.log("FAILED...", error.text);
+					}
+				);
+		}
 	};
+
+	// Code got from YouTube: https://youtu.be/QaZ2CoYFO60?si=eJWuV_Cp842JI748
+	// Modified a little with some help from ChatGPT:
+	const pdfRef = useRef<HTMLDivElement>(null);
+	function downloadPDFReport() {
+		const input = pdfRef.current;
+		if (input) {
+			html2canvas(input).then(canvas => {
+				const imgData = canvas.toDataURL("image/png");
+				const pdf = new jsPDF("p", "mm", "a4", true);
+				const pdfWidth = pdf.internal.pageSize.getWidth();
+				const pdfHeight = pdf.internal.pageSize.getHeight();
+				const imgWidth = canvas.width;
+				const imgHeight = canvas.height;
+				const desiredZoomFactor = 0.069;
+				const zoomedWidth = imgWidth * desiredZoomFactor;
+				const zoomedHeight = imgHeight * desiredZoomFactor;
+				const imgX = (pdfWidth - zoomedWidth) / 2;
+				const imgY = (pdfHeight - zoomedHeight) / 2;
+
+				pdf.addImage(imgData, "PNG", imgX, imgY, zoomedWidth, zoomedHeight);
+				pdf.save("Report.pdf");
+			});
+		}
+	}
 
 	return (
 		<>
-			<div className="backdrop">
-				<h1>WELCOME TO YOUR RESULTS!</h1>
-			</div>
-			<div className="report">
-				<h1>YOUR TOP 4 CAREER CHOICES:</h1>
-				<div className="cardContainer">
-					{careers.map((career: Career) => {
-						return (
-							<div className="careersCard" key={career.careerNo}>
-								<h2>
-									<Markdown>{career.title}</Markdown>
-								</h2>
-								{career.description.split(" - ").map((desc: string) => {
-									return desc !== "" ? (
-										desc.includes("- ") ? (
-											<Markdown>{`- ${desc.replace("- ", "")}`}</Markdown>
-										) : (
-											<Markdown>{`- ${desc}`}</Markdown>
-										)
-									) : null;
-								})}
-							</div>
-						);
-					})}
+			<div ref={pdfRef}>
+				<div className="backdrop">
+					<h1>HI, [YOUR NAME HERE]. WELCOME TO YOUR RESULTS!</h1>
 				</div>
-				{alternativeCareers.length > 0 ? (
+				<div className="report">
+					<h1>YOUR TOP 4 CAREER CHOICES:</h1>
+					<div className="cardContainer">
+						{careers.map((career: Career) => {
+							return (
+								<div className="careersCard" key={career.careerNo}>
+									<h2>
+										<Markdown>{career.title}</Markdown>
+									</h2>
+									{career.description.split(" - ").map((desc: string) => {
+										return desc !== "" ? (
+											desc.includes("- ") ? (
+												<Markdown>{`- ${desc.replace("- ", "")}`}</Markdown>
+											) : (
+												<Markdown>{`- ${desc}`}</Markdown>
+											)
+										) : null;
+									})}
+								</div>
+							);
+						})}
+					</div>
+					{alternativeCareers.length > 0 ? (
+						<>
+							<h2 className="alternativesHeader">
+								YOUR TOP {alternativeCareers.length}
+								&nbsp;
+								{alternativeCareers.length === 1
+									? "ALTERNATIVE CHOICE"
+									: "ALTERNATIVE CHOICES"}
+								:
+							</h2>
+							<div className="cardContainer">
+								{alternativeCareers.length > 0 &&
+									alternativeCareers.map((alternativeCareer, index: number) => {
+										return (
+											<div className="alternativesCard" key={index}>
+												<Markdown>{`### ${alternativeCareer.title}`}</Markdown>
+												{alternativeCareer.description
+													.split("\n")
+													.map((altCareer: string, index: number) =>
+														altCareer.trim() ? (
+															<Markdown
+																key={index}
+															>{`- ${altCareer}`}</Markdown>
+														) : null
+													)}
+											</div>
+										);
+									})}
+							</div>
+						</>
+					) : null}
+				</div>
+				{chart_data.length > 0 ? (
 					<>
-						<h2 className="alternativesHeader">
-							YOUR TOP {alternativeCareers.length}
-							&nbsp;
-							{alternativeCareers.length === 1
-								? "ALTERNATIVE CHOICE"
-								: "ALTERNATIVE CHOICES"}
-							:
+						<h2 className="pieChartHeader">
+							WHAT CAREER SHOULD YOU MOST LIKELY CONSIDER?
 						</h2>
-						<div className="cardContainer">
-							{alternativeCareers.length > 0 &&
-								alternativeCareers.map((alternativeCareer, index: number) => {
-									return (
-										<div className="alternativesCard" key={index}>
-											<Markdown>{`### ${alternativeCareer.title}`}</Markdown>
-											{alternativeCareer.description
-												.split("\n")
-												.map((altCareer: string, index: number) =>
-													altCareer.trim() ? (
-														<Markdown key={index}>{`- ${altCareer}`}</Markdown>
-													) : null
-												)}
-										</div>
-									);
-								})}
+						<div className="pieChartContainer">
+							<h3>
+								This pie chart visualizes and showcases which career you closely
+								align with (based on percentage):
+							</h3>
+							<PieChart
+								series={[
+									{
+										data: [
+											{
+												id: 0,
+												value: parseInt(chart_data[0].percent),
+												label: `${chart_data[0].career} (${chart_data[0].percent}%)`
+											},
+											{
+												id: 1,
+												value: parseInt(chart_data[1].percent),
+												label: `${chart_data[1].career} (${chart_data[1].percent}%)`
+											},
+											{
+												id: 2,
+												value: parseInt(chart_data[2].percent),
+												label: `${chart_data[2].career} (${chart_data[2].percent}%)`
+											},
+											{
+												id: 3,
+												value: parseInt(chart_data[3].percent),
+												label: `${chart_data[3].career} (${chart_data[3].percent}%)`
+											}
+										]
+									}
+								]}
+								width={960}
+								height={350}
+							/>
 						</div>
 					</>
 				) : null}
 			</div>
-			{chart_data.length > 0 ? (
-				<>
-					<h2 className="pieChartHeader">
-						WHAT CAREER SHOULD YOU MOST LIKELY CONSIDER?
-					</h2>
-					<div className="pieChartContainer">
-						<h3>
-							This pie chart visualizes and showcases which career you closely
-							align with (based on percentage):
-						</h3>
-						<PieChart
-							series={[
-								{
-									data: [
-										{
-											id: 0,
-											value: parseInt(chart_data[0].percent),
-											label: `${chart_data[0].career} (${chart_data[0].percent}%)`
-										},
-										{
-											id: 1,
-											value: parseInt(chart_data[1].percent),
-											label: `${chart_data[1].career} (${chart_data[1].percent}%)`
-										},
-										{
-											id: 2,
-											value: parseInt(chart_data[2].percent),
-											label: `${chart_data[2].career} (${chart_data[2].percent}%)`
-										},
-										{
-											id: 3,
-											value: parseInt(chart_data[3].percent),
-											label: `${chart_data[3].career} (${chart_data[3].percent}%)`
-										}
-									]
-								}
-							]}
-							width={960}
-							height={350}
-						/>
-					</div>
-				</>
-			) : null}
 			<div className="userOptionsContainer">
 				<p>
 					Please enter your email below if you would like to have this report
@@ -304,25 +340,25 @@ export default function Results() {
 						value={email}
 						onChange={e => setEmail(e.target.value)}
 					/>
+					<button type="submit">Send Report</button>
 					<input
 						type="text"
 						name="to_name"
-						value="TEST"
-						style={{ display: "hidden" }}
+						value="[YOUR NAME HERE]" // need to add option to have the user's name here
+						style={{ visibility: "hidden" }}
 					/>
 					<input
 						type="text"
 						name="quiz_type"
-						value="DETAILED"
-						style={{ display: "hidden" }}
+						value="detailed"
+						style={{ visibility: "hidden" }}
 					/>
-					<button type="submit">Send Report</button>
 				</form>
 				<p>
 					If you would like to save and print this report for your reference,
 					click the button below:
 				</p>
-				<button>Get PDF Report</button>
+				<button onClick={downloadPDFReport}>Get PDF Report</button>
 			</div>
 		</>
 	);
