@@ -125,7 +125,7 @@ const BasicPage = () => {
 				messages: [
 					{
 					"role": "system",
-					"content": "You are a helpful assistant that will generate a potential career path for the user based on their preferences. You will also generate three other career paths the user may like. Please complete this in this format, with each field contained in quotes and separated by commas: [ Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3 ]"
+					"content": "You are a helpful assistant that will generate a potential career path for the user based on their preferences. You will also generate three other career paths the user may like. Please complete this in this format, with each field contained in quotes and separated by commas: [Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]"
 					//What we want GPT to do
 					},
 					{
@@ -140,7 +140,7 @@ const BasicPage = () => {
 				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
 				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
 				
-				window.location.href = "/ResultsPage"; 
+				window.location.href = "/#/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				//console.log(e);

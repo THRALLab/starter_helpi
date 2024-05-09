@@ -71,7 +71,7 @@ import { Link } from "react-router-dom";
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
-            <div> <Button size="lg" style={{marginBottom: "350px", width: "200px", aspectRatio: 5/2, fontSize: "1.5vw" /*backgroudnColor: "whitesmoke*/}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
+            <div> <Button size="lg" style={{marginBottom: "350px", width: "200px", height:"80px", fontSize: "1.5vw" /*backgroudnColor: "whitesmoke*/}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
         </div>
         <div id="quiz-descs"></div>
         <div className="quiz-desc-container">

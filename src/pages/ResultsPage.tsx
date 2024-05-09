@@ -8,6 +8,7 @@ const ResultsPage = () => {
 
     //get gptresponse from local storage
     const response:string | null = localStorage.getItem("GPTresponse");
+
     let GPTresponse:string[];
     if (response === null) {
         GPTresponse = ["Career not found", "Please try again", "", "", "", "", "", ""]
