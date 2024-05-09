@@ -259,6 +259,19 @@ export default function Results() {
 					</div>
 				</>
 			) : null}
+			<div className="userOptionsContainer">
+				<p>
+					Please enter your email below if you would like to have this report
+					emailed to you for your reference:
+				</p>
+				<input type="email" placeholder="Enter email" />
+				<button>Send Report</button>
+				<p>
+					If you would like to save and print this report for your reference,
+					click the button below:
+				</p>
+				<button>Get PDF Report</button>
+			</div>
 		</>
 	);
 }
