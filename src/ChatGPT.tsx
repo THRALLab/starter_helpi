@@ -1,9 +1,8 @@
 import { OpenAI } from 'openai';
-const openai = new OpenAI({ apiKey: JSON.parse(localStorage.getItem("MYKEY") || '""') 
-, dangerouslyAllowBrowser: true });
+const openai = new OpenAI({ apiKey: JSON.parse(localStorage.getItem("MYKEY") || '""'), dangerouslyAllowBrowser: true });
 
 export async function generateDetailed(detailedAnswers: string[]) {
-  const questions = [ // Array of detailed questions to be asked
+  const questions = [
     "How do you approach solving complex problems?",
     "How would you describe your communication style in a professional setting?",
     "What type of work environment do you thrive in?",
@@ -13,11 +12,11 @@ export async function generateDetailed(detailedAnswers: string[]) {
     "What are your long-term career aspirations?"
   ];
 
-  const completion = await openai.chat.completions.create({ // Generate the completion for the detailed questions
+  const completion = await openai.chat.completions.create({
     model: "gpt-4-turbo",
     messages: [
-      { role: 'system', content: 'You are a Career Assessment quiz results generator. Always use title case.' },
-      { role: 'user', content: `Give me a list of careers using these answers: ${detailedAnswers} to these Questions: ${questions}. The first question uses the first answer, the second question uses the second answer and so on. Just give me the name of 3 options. No extra info is needed. Number them. Also put them in this form: job name: indeed.com/q-JOBLINK-jobs.html. The job name should be just the name of the job. JOBLINK should have separated words with hyphens not spaces and put it in the JOBNAMEHERE spot. Split up the jobs by a comma so that I can turn the string into an array. Please only say what the jobs are don't give any extra info or say anything else about the prompt. I want only the career and the link.` }
+      { role: 'system', content: 'You are generating a list of careers based on quiz results. Always use title case.' },
+      { role: 'user', content: `Provide a list of careers utilizing these responses: ${detailedAnswers} to these inquiries: ${questions}. Correspondingly match each question with its respective answer. Present three options, numbered, formatted as follows: job name: indeed.com/q-JOBLINK-jobs.html. Ensure that the job name consists solely of the job title, with hyphens separating words instead of spaces in the JOBLINK segment. Separate the jobs with commas for easy conversion into an array. Exclude any additional information beyond the job title and link.` }
     ],
     temperature: .75,
   });
@@ -32,42 +31,50 @@ export async function generateDetailed(detailedAnswers: string[]) {
   }
   const result1 = result[0].split(":");
   const result2 = result[1].split(":");
-  const result3= result[2].split(":");
+  const result3 = result[2].split(":");
 
-  return [result1[0], result1[1], result2[0], result2[1], result3[0], result3[1]];
-}
-export async function generateBasic(basicAnswers: string[]) {
-    let questions = [ // Array of basic questions to be asked
-      "What type of work environment do you prefer?",
-      "What skill are you most proud of?",
-      "How do you handle challenges or setbacks?",
-      "Which of the following activities do you enjoy the most?",
-      "What motivates you in your work?",
-      "How do you prefer to learn new skills or information?",
-      "What industry or field interests you the most?"
+  // Generate Indeed URLs based on job titles
+  const indeedUrls = result.map(title => `https://www.indeed.com/q-${title.replace(/\s+/g, '-')}-jobs.html`);
+
+  return [
+    { title: result1[1], url: indeedUrls[0] },
+    { title: result2[1], url: indeedUrls[1] },
+    { title: result3[1], url: indeedUrls[2] }
   ];
-  
-    const completion = await openai.chat.completions.create({ // Generate the completion for the basic questions
-      model: "gpt-4-turbo",
-      messages: [
-        { role: 'system', content: 'You are a Career Assessment quiz results generator. Always use title case.' },
-        { role: 'user', content: `Give me a list of careers using these answers: ${basicAnswers} to these Questions: ${questions}. The first question uses the first answer, the second question uses the second answer and so on. The last question and answer should be the style of jobs the person is looking for. Just give me the name of 3 options. No extra info is needed. Number them. Also put them in this form: job name: indeed.com/q-JOBLINK-jobs.html. The job name should be just the name of the job. JOBLINK should have separated words with hyphens not spaces and put it in the JOBNAMEHERE spot. Split up the jobs by a comma so that I can turn the string into an array. Please only say what the jobs are don't give any extra info or say anything else about the prompt. I want only the career and the link.` }
-      ],
-      temperature: .75,
-    });
-  
-    const result = completion.choices[0].message.content?.split(",") ?? [];
-    if (result === undefined) {
-      generateBasic(basicAnswers);
-    }
-    if (result[0].length > 200) {
-      console.log("Error");
-      generateBasic(basicAnswers);
-    }
-    const result1 = result[0].split(":");
-    const result2 = result[1].split(":");
-    const result3= result[2].split(":");
-  
-  
-    return [result1[0], result1[1], result2[0], result2[1], result3[0], result3[1]];
+}
+
+export async function generateBasic(basicAnswers: string[]) {
+  let questions = [
+    "enter our basic questions here"
+  ];
+
+  const completion = await openai.chat.completions.create({
+    model: "gpt-4-turbo",
+    messages: [
+      { role: 'system', content: 'You are a Career Assessment quiz results generator. Always use title case.' },
+      { role: 'user', content: `Provide a list of careers utilizing these responses: ${basicAnswers} to these inquiries: ${questions}. Correspondingly match each question with its respective answer. Present three options, numbered, formatted as follows: job name: indeed.com/q-JOBLINK-jobs.html. Ensure that the job name consists solely of the job title, with hyphens separating words instead of spaces in the JOBLINK segment. Separate the jobs with commas for easy conversion into an array. Exclude any additional information beyond the job title and link.` }
+    ],
+    temperature: .75,
+  });
+
+  const result = completion.choices[0].message.content?.split(",") ?? [];
+  if (result === undefined) {
+    generateBasic(basicAnswers);
   }
+  if (result[0].length > 200) {
+    console.log("Error");
+    generateBasic(basicAnswers);
+  }
+  const result1 = result[0].split(":");
+  const result2 = result[1].split(":");
+  const result3 = result[2].split(":");
+
+  // Generate Indeed URLs based on job titles
+  const indeedUrls = result.map(title => `https://www.indeed.com/q-${title.replace(/\s+/g, '-')}-jobs.html`);
+
+  return [
+    { title: result1[1], url: indeedUrls[0] },
+    { title: result2[1], url: indeedUrls[1] },
+    { title: result3[1], url: indeedUrls[2] }
+  ];
+}
