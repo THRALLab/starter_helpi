@@ -1,0 +1,169 @@
+/* Import alien fonts */
+@font-face { font-family: Minecraft; src: url('fonts/Minecraft.ttf') format('truetype'); } 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+  background-color: #F2EDDA;
+}
+.questionnaire-container {
+    padding-left: 9vw;
+    padding-top: 5vw;
+    padding-right: 9vw;
+  }
+.questionnaire-heading {
+    font-size: 35px;
+    margin-bottom: 20px;
+    font-family: "Minecraft";
+    font-weight: 700;
+    font-style: normal;
+    color:#000;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+  }
+.question {
+    text-align: left;
+    margin-bottom: 35px;
+  }
+.question-text {
+    font-size: 20px;
+    margin-bottom: 40px;
+    font-weight: 500;
+    color: #000;
+  }
+.answer-options {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.answer-option {
+    margin-bottom: 5px;
+  }
+  
+.radio-input {
+    margin-right: 10px;
+  }
+  
+.submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:#f7caf2;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 5vw;
+    position: center;
+    margin-left: 40%;
+  }
+.submit-button:hover {
+    background-color: #4f5152;
+  }
+.previous-button,
+.next-button{
+  cursor: pointer;
+  width: 80px;
+}
+.next-button{
+  content: url(images/cat-paw-button.png);
+  position: absolute;
+  right: 3%;
+  bottom: 10%;
+}
+
+.previous-button{
+  content: url(images/cat-paw-button.png);
+  position: absolute;
+  left: 3%;
+  bottom: 10%;
+}
+
+@media screen and (max-width: 800px) {
+  .next-button{
+    bottom: 0;
+  }
+
+  .previous-button{
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .next-button{
+    bottom: 3%;
+  }
+
+  .previous-button{
+    bottom: 3%;
+  }
+}
+
+.next-button:hover,
+.previous-button:hover {
+  color: black;
+  /*background-color: #1A1A1A;*/
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.answer-option{
+  display: inline-flex;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 15px;
+  box-sizing: border-box;
+  border: 2px solid #FFA3B1;
+  cursor: pointer;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 3;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+  box-shadow: none;
+}
+
+.answer-option:hover{
+  color: black;
+  /*background-color: #1A1A1A;*/
+  background-color: #f5afaf;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.answer-option.selected {
+  opacity: 0.9; 
+  background-color: #f5afaf; 
+  transition: background-color 0.5s ease;
+  outline: 3px solid -#f5afaf;
+  color: black; 
+}
+
+.cat-logo {
+  content: url('images/Lying_down_Calico_Cat_with_Red_Collar.webp');
+  max-width: 10%;
+  position: absolute;
+  align-items: center;
+  margin-left: 45% !important;  /* 50% of your logo width */
+  display: block;
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.cat-header-basic{
+  max-width: 40%;
+  display: block; 
+  margin: 0 auto; 
+}
+

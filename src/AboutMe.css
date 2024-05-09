@@ -1,0 +1,92 @@
+/* Import alien fonts */
+@font-face { font-family: Minecraft; src: url('/src/fonts/Minecraft.ttf'); } 
+@font-face { font-family: Minecraft2; src: url('/src/fonts/easvhs.ttf'); } 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.AboutMe-body{
+  background-color: #F2EDDA;
+}
+
+.AboutMe-container{
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.AboutMe-heading{
+  font-family: 'Minecraft';
+  color: #F4A2A2;
+  margin-left: 20px;
+}
+
+#kitty-header{
+  width:15%;
+  transform: rotate(-12deg);
+  position: absolute;
+  top: 10%;
+  left:22%;
+}
+
+.AboutMe-header{
+  display: flex;
+  flex-direction: row;
+}
+
+.AboutMe-text{
+  background-color: #FF914D;
+  border-radius: 20px;
+  padding: 15px;
+  margin-left: 5px;
+}
+
+/* Three columns side by side */
+.column {
+  float: left;
+  width: 23%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  margin-left: 20px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 910px) {
+  .column {
+    width: 75%;
+    display: block;
+    margin-left:15%;
+  }
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #FAC264;
+  color: black;
+}
+
+/* Some left and right padding inside the container */
+.container-card {
+  padding: 0 16px;
+}
+
+/* Clear floats */
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title-position {
+  color: rgb(255, 255, 255);
+  font-style: italic;
+}
+
+.linkin-logo{
+  width: 50px;
+  padding-bottom: 10px;
+}
+
+.contact-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
