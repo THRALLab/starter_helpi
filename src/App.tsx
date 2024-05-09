@@ -10,7 +10,7 @@ import Home from "./Home";
 
 function App() {
 	return (
-		<Router>
+		<Router basename="/starter_helpi">
 			<>
 				<Navigation />
 				<Routes>
