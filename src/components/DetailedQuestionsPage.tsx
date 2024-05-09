@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, ProgressBar } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
@@ -121,16 +121,58 @@ export function DetailedQuestionsPage(): JSX.Element {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Card variant="outlined" sx={{ maxWidth: 800, margin: "auto", mt: 5 }}>
+            <h1 className='padding3'>Detailed Questions Page</h1>
+            <main className="padding2">
+            <div
+                style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '40vh', // Adjust this value according to your layout
+                padding: '30vh'
+            }}>
+            <Card variant="plain" sx={{ width: 1000, height: 400}}>
                 <CardContent>
                     <Typography level="h4">Question {currentQuestion + 1}/{questions.length}</Typography>
-                    <Typography>{questions[currentQuestion]}</Typography>
-                    <Input
+                    {<ProgressBar
+                            min={0} // Minimum value progress can begin from
+                            now={(currentQuestion + 1) * (100 / questions.length)} // Current value of progress
+                            max={100} // Maximum value progress can reach
+                            label={`${Math.round(((currentQuestion + 1) * (100 / questions.length)))}%`} // Show label that represents visual percentage
+                            visuallyHidden={true} // Show the label visually
+                            striped={currentQuestion >= 0} // Uses a gradient to create a striped effect when the progress is at least 0%
+                            animated={currentQuestion >= 0} // Animate the stripes from right to left when the progress is at least 0%
+                            variant="info" // Sets the background class of the progress bar to red
+                            style={{ width: '100%'}}
+                            >
+                        </ProgressBar>}
+                    <Typography style={{alignItems: 'center', padding: '5vh'}}>{questions[currentQuestion]}</Typography>
+                    <div style={{paddingBottom: '1vh', display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'}}>
+                            {/*<input
+                            type="text"
+                            value={inputText}
+                            onChange={(e) => setInputText(e.target.value)}
+                        />*/}
+                    <Input sx={{width: '500px', height: '75px', display: 'flex',
+                                    justifyContent: 'center',
+
+                                    alignItems: 'center',
+                                    '--Input-focusedInset': 'var(--any, )',
+                                    '--Input-focusedThickness': '0.25rem',
+                                    '--Input-focusedHighlight': 'rgba(13,110,253,.25)',
+                                    '&::before': {
+                                      transition: 'box-shadow .15s ease-in-out',
+                                    },
+                                    '&:focus-within': {
+                                      borderColor: '#86b7fe',
+                                    }}} 
+                                    variant="outlined" placeholder="Type in here…"
                         value={answers[currentQuestion]}
                         onChange={handleInputChange}
-                        placeholder="Type your answer here..."
-                        sx={{ width: '100%', mb: 2 }}
                     />
+                    </div>
                     <div>
                         {currentQuestion > 0 && <StyledButton onClick={handlePreviousQuestion}>Previous Question</StyledButton>}
                         <StyledButton onClick={handleNextQuestion}>
@@ -142,6 +184,9 @@ export function DetailedQuestionsPage(): JSX.Element {
                     {!loading && response && Array.isArray(response) && response.map(line => line)}
                 </CardContent>
             </Card>
+            </div>
+            </main>
         </div>
+
     );
 }
