@@ -7,18 +7,21 @@ interface Tools {
 	checkConnection: () => void;
 	chat_gptResponse: string;
 	graphData: string;
+	loading: boolean;
 }
 
 export default function useChatGPT(): Tools {
 	const API_KEY: string | null = localStorage.getItem("MYKEY");
 	const [chat_gptResponse, setChat_gptResponse] = useState("");
 	const [graphData, setGraphData] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	async function callAPI(
 		openai: OpenAI,
 		users_responses: Answer[],
 		api_request: string
 	) {
+		setLoading(true);
 		let formattedQ_A = "";
 		users_responses.map((a: Answer) => {
 			return (formattedQ_A += `(${a.questionNo}) ${a.question} \n ${a.choice} \n`);
@@ -51,9 +54,11 @@ export default function useChatGPT(): Tools {
 			if (api_request === "user_report") setChat_gptResponse(response);
 			else setGraphData(response);
 
+			setLoading(false);
 			console.log(response);
 		} catch (error) {
 			console.log(error);
+			setLoading(false);
 		}
 	}
 
@@ -77,5 +82,5 @@ export default function useChatGPT(): Tools {
 		}
 	}
 
-	return { checkConnection, chat_gptResponse, graphData };
+	return { checkConnection, chat_gptResponse, graphData, loading };
 }
