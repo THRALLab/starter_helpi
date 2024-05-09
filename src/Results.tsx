@@ -226,6 +226,10 @@ export default function Results() {
 						WHAT CAREER SHOULD YOU MOST LIKELY CONSIDER?
 					</h2>
 					<div className="pieChartContainer">
+						<h3>
+							This pie chart visualizes and showcases which career you closely
+							align with (based on percentage):
+						</h3>
 						<PieChart
 							series={[
 								{
