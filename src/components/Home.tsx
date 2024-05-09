@@ -45,12 +45,12 @@ export function Home(): JSX.Element {
             <Buttons></Buttons>
         <p></p>
         <h1 className='padding3'>Home Page</h1>
-        <h1 className='text-3xl font-bold underline'>nnnn</h1>
+
         <p></p>
         <main className='padding2'>
         <div className="box">
             <p></p>
-            <h3>Basic Questions Page</h3>
+            <h3 className='h3-box'>Basic Questions Page</h3>
             <p></p>
             <p className='padding'>The basic questions page is designed to provide concise and straightforward answers
                 to common inquiries about your career. Dive in to find quick insights about your 
@@ -66,7 +66,7 @@ export function Home(): JSX.Element {
         </div>
         <div className="box">
             <p></p>
-            <h3>Detailed Questions Page</h3>
+            <h3 className='h3-box'>Detailed Questions Page</h3>
             <p></p>
             <p className='padding'>The detailed questions page offers in-depth explanations to questions
                 you have about your career pathway. Each response is  crafted to provide 
