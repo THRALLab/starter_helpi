@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import QuestionFormatProps from "./interfaces/questionFormat";
+import { useState } from "react";
 import ProgressBar from "./ProgressBar";
 import questions from "./basicQuestions.json";
 import QuestionFormatComponent from "./QuestionFormatComponent";
