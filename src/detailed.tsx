@@ -38,6 +38,10 @@ function Detailed() {
 		question_type: string,
 		question: string
 	) {
+		if (question_type === "free_response" && choice.trim() === "") {
+			setChoice("");
+		}
+
 		const updatedAnswers = answeredQuestions.map(answer =>
 			answer.questionNo === question_num ? { ...answer, choice } : answer
 		);
