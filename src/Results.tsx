@@ -8,7 +8,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 export default function Results() {
-	const { chat_gptResponse } = useChatGPT();
+	// const { chat_gptResponse } = useChatGPT();
 
 	// TODO [ ] - implement a loading feature when the user presses the "get results" button on the modal
 	// TODO [ ] - implement the 404 logic when the user attempts to access this page without completing the quiz
@@ -161,6 +161,7 @@ export default function Results() {
 					.trim()
 			);
 		chart_data.push({ career, percent, color: colors[index] });
+		return null;
 	});
 
 	// The code above was provided by ChatGPT, but I made some minor tweaks to it
