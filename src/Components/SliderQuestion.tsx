@@ -1,6 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import { playSliderSet } from "../Components/AudioPlayer";
+import { playSliderSetUp, playSliderSetDown } from "../Components/AudioPlayer";
 import "../Formatting/General.css";
 import "../Formatting/DetailedQuestions.css";
 
@@ -13,8 +13,14 @@ interface DetailedQuestionProps {
 //Slider question component used on the detailed questions page
 export function SliderQuestion(props: DetailedQuestionProps) {
   function updateSliderValue(event: React.ChangeEvent<HTMLInputElement>) {
-    playSliderSet();
-    props.onChange(parseInt(event.target.value));
+    var newValue = parseInt(event.target.value);
+    var oldValue = props.value;
+    if (newValue >= oldValue) {
+      playSliderSetUp();
+    } else {
+      playSliderSetDown();
+    }
+    props.onChange(newValue);
   }
   //Slider formatted using the detailed questions css
   return (
