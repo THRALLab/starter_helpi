@@ -39,9 +39,6 @@ function Basic_Questions(): JSX.Element {
     if (currentQuestion < totalQuestions - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
-    else {
-      setShowFireworks(true);
-    }
   };
 
   const handlePrevClick = () => {
@@ -92,6 +89,7 @@ function Basic_Questions(): JSX.Element {
           </button>
           <br></br>
 
+          <button onClick={Complete} disabled={currentQuestion < totalQuestions - 1}>Submit</button>
         </div>
 
         <br></br>
@@ -120,11 +118,9 @@ function Basic_Questions(): JSX.Element {
           currentQuestion={questionToEval}
           openAIKey={keyData}
         ></OpenAIOverlay>
+        
+        
 
-        <br></br>
-
-        <Button onClick={handleNextClick} disabled={currentQuestion < totalQuestions - 1}>Submit</Button>
-        {showFireworks && <Complete />}
       </div>
     </AnswerContext.Provider>
     
