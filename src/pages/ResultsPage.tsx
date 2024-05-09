@@ -89,7 +89,7 @@ const ResultsPage = () => {
                 inline
                 type="radio"
                 id="review-option2"
-                label="Eh"
+                label="They were alright"
                 value={"2"}
                 name="review-question"
                 style={{width:"auto"}}
@@ -99,7 +99,7 @@ const ResultsPage = () => {
                 inline
                 type="radio"
                 id="review-option3"
-                label="Nah f this"
+                label="I'm not so impressed"
                 value={"3"}
                 name="review-question"
                 style={{width:"auto"}}
