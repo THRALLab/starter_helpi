@@ -200,26 +200,36 @@ export default function Results() {
 
 	// Code got from YouTube: https://youtu.be/QaZ2CoYFO60?si=eJWuV_Cp842JI748
 	// Modified a little with some help from ChatGPT:
+	// The code below does work. If the report appears too skinny when opening up the PDF, re-download it but make sure you're on the full view of the website and not like in dev tools where its open on one side and the site is in mobile view on the other.
+	const [loading, setLoading] = useState(false);
 	const pdfRef = useRef<HTMLDivElement>(null);
+
 	function downloadPDFReport() {
+		setLoading(true);
 		const input = pdfRef.current;
 		if (input) {
-			html2canvas(input).then(canvas => {
-				const imgData = canvas.toDataURL("image/png");
-				const pdf = new jsPDF("p", "mm", "a4", true);
-				const pdfWidth = pdf.internal.pageSize.getWidth();
-				const pdfHeight = pdf.internal.pageSize.getHeight();
-				const imgWidth = canvas.width;
-				const imgHeight = canvas.height;
-				const desiredZoomFactor = 0.069;
-				const zoomedWidth = imgWidth * desiredZoomFactor;
-				const zoomedHeight = imgHeight * desiredZoomFactor;
-				const imgX = (pdfWidth - zoomedWidth) / 2;
-				const imgY = (pdfHeight - zoomedHeight) / 2;
+			try {
+				html2canvas(input).then(canvas => {
+					const imgData = canvas.toDataURL("image/png");
+					const pdf = new jsPDF("p", "mm", "a4", true);
+					const pdfWidth = pdf.internal.pageSize.getWidth();
+					const pdfHeight = pdf.internal.pageSize.getHeight();
+					const imgWidth = canvas.width;
+					const imgHeight = canvas.height;
+					const desiredZoomFactor = 0.069;
+					const zoomedWidth = imgWidth * desiredZoomFactor;
+					const zoomedHeight = imgHeight * desiredZoomFactor;
+					const imgX = (pdfWidth - zoomedWidth) / 2;
+					const imgY = (pdfHeight - zoomedHeight) / 2;
 
-				pdf.addImage(imgData, "PNG", imgX, imgY, zoomedWidth, zoomedHeight);
-				pdf.save("Report.pdf");
-			});
+					pdf.addImage(imgData, "PNG", imgX, imgY, zoomedWidth, zoomedHeight);
+					pdf.save("Report.pdf");
+					setLoading(false);
+				});
+			} catch (error) {
+				console.log(error);
+				setLoading(false);
+			}
 		}
 	}
 
@@ -358,7 +368,9 @@ export default function Results() {
 					If you would like to save and print this report for your reference,
 					click the button below:
 				</p>
-				<button onClick={downloadPDFReport}>Get PDF Report</button>
+				<button onClick={downloadPDFReport} disabled={loading}>
+					{loading ? "Downloading Report..." : "Get PDF Report"}
+				</button>
 			</div>
 		</>
 	);
