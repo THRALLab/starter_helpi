@@ -1,51 +1,39 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-import React, { useState, useContext } from "react";
+import { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import { AnswerContext } from "../AnswerContext";
 
-const seasons = [
-    "Spring",
-    "Summer",
-    "Autumn",
-    "Winter",
-];
+const seasons = ["Spring", "Summer", "Autumn", "Winter"];
 
-export function Q6():JSX.Element {
-    const [selectSeason, setSelectSeason] = useState<string | null>(null);
-    const { userAnswers, setUserAnswers } = useContext(AnswerContext);
+export function Q6(): JSX.Element {
+  const { userAnswers, setUserAnswers } = useContext(AnswerContext);
+  const [selectSeason, setSelectSeason] = useState<string | null>(
+    userAnswers[5] || null,
+  ); // Initialize from context
 
-    function updateSeason(event: React.ChangeEvent<HTMLInputElement>) {
-        setSelectSeason(event.target.value);
-    }
+  function updateSeason(season: string) {
+    setSelectSeason(season); // Update local state
+    setUserAnswers((prevAnswers: string[]) => {
+      // Update context
+      const updatedAnswers = [...prevAnswers];
+      updatedAnswers[5] = season; // Assume index 5 is correct for this answer
+      return updatedAnswers;
+    });
+  }
 
-    function updateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
-        setUserAnswers((prevAnswers: string[]) => {
-          const answer = event.target.value;
-          const updatedAnswers = [...prevAnswers];
-          updatedAnswers[5] = answer;
-          return updatedAnswers;
-        });
-        console.log(userAnswers);
-      }
-
-    return (
-        <div>
-            <br></br>
-            <br></br>
-            What is your favorite season?
-            <br></br>
-            <br></br>
-            <br></br>
-            {seasons.map((season) => (
-                <Form.Check
-                    inline
-                    type="radio"
-                    label={season}
-                    name="season-button"
-                    checked={selectSeason === season}
-                    onChange={()=>setSelectSeason(season)}
-                />
-            ))}
-        </div>
-    );
+  return (
+    <div>
+      <h3 className="py-5">What is your favorite season?</h3>
+      {seasons.map((season) => (
+        <Form.Check
+          key={season} // Ensure to add a unique key for each item
+          inline
+          type="radio"
+          label={season}
+          name="season-button"
+          checked={selectSeason === season}
+          onChange={() => updateSeason(season)} // Use the consolidated update function
+        />
+      ))}
+    </div>
+  );
 }
