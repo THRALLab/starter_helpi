@@ -1,5 +1,5 @@
 // Detailed.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./detailed.css";
 import questions from "./detailedQuestions.json";
 import Modal from "./Modal";
