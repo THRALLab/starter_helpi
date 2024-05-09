@@ -2,6 +2,8 @@ import useChatGPT from "./hooks/useChatGPT";
 import "./results.css";
 import Markdown from "react-markdown";
 import { PieChart } from "@mui/x-charts/PieChart";
+import emailjs from "@emailjs/browser";
+import { FormEvent, useRef, useState } from "react";
 
 export default function Results() {
 	const { chat_gptResponse } = useChatGPT();
@@ -145,7 +147,7 @@ export default function Results() {
 	const colors = ["lime", "pink", "yellow", "orange"];
 	const chart_data: ChartData[] = [];
 	// Map each line to an object containing career and percent
-	const careerPercentages = lines.map((line: string, index: number) => {
+	lines.map((line: string, index: number) => {
 		// Split the line by colon and trim spaces
 		const [career, percent] = line
 			.split(":")
@@ -162,6 +164,32 @@ export default function Results() {
 	});
 
 	// The code above was provided by ChatGPT, but I made some minor tweaks to it
+
+	const form = useRef<HTMLFormElement>(null);
+	const [email, setEmail] = useState("");
+
+	const sendEmail = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		if (!form.current) return; // Ensure form.current is not null
+
+		const formData = new FormData(form.current);
+
+		formData.append("to_email", email.toLowerCase());
+
+		emailjs
+			.sendForm("service_t261vsc", "template_a7tcjsa", form.current, {
+				publicKey: "Zj1lhdMNe9-VtmDkN"
+			})
+			.then(
+				() => {
+					console.log("SUCCESS!");
+				},
+				error => {
+					console.log("FAILED...", error.text);
+				}
+			);
+	};
 
 	return (
 		<>
@@ -268,8 +296,28 @@ export default function Results() {
 					Please enter your email below if you would like to have this report
 					emailed to you for your reference:
 				</p>
-				<input type="email" placeholder="Enter email" />
-				<button>Send Report</button>
+				<form ref={form} onSubmit={sendEmail}>
+					<input
+						type="email"
+						placeholder="Enter email"
+						name="user_email"
+						value={email}
+						onChange={e => setEmail(e.target.value)}
+					/>
+					<input
+						type="text"
+						name="to_name"
+						value="TEST"
+						style={{ display: "hidden" }}
+					/>
+					<input
+						type="text"
+						name="quiz_type"
+						value="DETAILED"
+						style={{ display: "hidden" }}
+					/>
+					<button type="submit">Send Report</button>
+				</form>
 				<p>
 					If you would like to save and print this report for your reference,
 					click the button below:
