@@ -1,7 +1,7 @@
 import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
 
-function Complete(){
-    return <Fireworks autorun={{ speed:3}} />;
+function Complete(): JSX.Element{
+    return <Fireworks autorun={{ speed:3, duration:100}} />;
 }
 
 export default Complete;

@@ -13,12 +13,14 @@ import { AnswerContext } from "../AnswerContext";
 import { useState } from 'react';
 import rightArrow from "../rightArrow.png";
 import leftArrow from "../leftArrow.png";
+import { Button } from 'react-bootstrap';
 
 
 function Detail_Questions(): JSX.Element {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questionToEval, setQuestionToEval] = useState("");
+  const [showFireworks, setShowFireworks] = useState(false);
   const questions = [
     <Q1 />,
     <Q2 />,
@@ -33,10 +35,13 @@ function Detail_Questions(): JSX.Element {
     Array(totalQuestions).fill(""),
   );
   const handleNextClick = () => {
+    Complete();
     setQuestionToEval(userAnswers[currentQuestion]);
     if (currentQuestion < totalQuestions - 1) {
       setCurrentQuestion(currentQuestion + 1);
-    }
+    }else {
+      setShowFireworks(true);
+  }
   };
 
   const handlePrevClick = () => {
@@ -83,12 +88,27 @@ function Detail_Questions(): JSX.Element {
             <img sizes='sm' src={rightArrow} alt="Next"/>
           </button>
           <br></br>
-
-          <button onClick={Complete} disabled={currentQuestion < totalQuestions - 1}>Submit</button>
         </div>
 
         <br></br>
-        <progress value={progress} max="100" style={{ width: "100%" }} />
+        <div style={{
+        width: '100%', 
+        backgroundColor: '#red', 
+        borderRadius: '10px', 
+        }}>
+        <progress 
+        value={progress} 
+        max="100" 
+        style={{
+            width: '100%', 
+            height: '20px', 
+            border: 'none', 
+            borderRadius: '10px', 
+            transition: 'width 0.3s ease' 
+        }} 
+        className="progress-bar" 
+        />
+        </div>
         <br></br>
 
         <OpenAIOverlay
@@ -96,8 +116,11 @@ function Detail_Questions(): JSX.Element {
           currentQuestion={questionToEval}
           openAIKey={keyData}
         ></OpenAIOverlay>
-        
-        
+
+        <br></br>
+
+        <Button  onClick={handleNextClick} disabled={currentQuestion < totalQuestions - 1}>Submit</Button>
+        {showFireworks && <Complete />}
 
       </div>
     </AnswerContext.Provider>
