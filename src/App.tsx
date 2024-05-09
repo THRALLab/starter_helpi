@@ -16,6 +16,7 @@ function App() {
 				<Routes>
 					<Route path="/basic" Component={Basic} />
 					<Route path="/detailed" Component={Detailed} />
+					<Route path="/basicDetailedButton" Component={BasicDetailedButtons} />
 					<Route path="/results" Component={Results} />
 				</Routes>
 				<Footer />
