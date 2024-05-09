@@ -7,7 +7,8 @@ import { BasicOptions } from "./interfaces/basicOption";
 import "./Basic.css";
 import Modal from "./Modal";
 import Confetti from 'react-confetti';
-//component used for basic question format
+//component used for basic question format, uses RangeSlider component too for alternative form of answering certain questions
+
 const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
@@ -40,7 +41,19 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	);
 };
 
+
 function Basic() {
+	//consts added for progress bar
+	const [currentIndex, setCurrentIndex] = useState(0);
+
+  	const handleNext = () => {
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  	};
+
+  	const handlePrev = () => {
+    setCurrentIndex((prevIndex) => prevIndex - 1);
+  	};
+	//main return used to show completed question component
 	return (
 		<div>
 			{questions.map((question, question_number) => (
