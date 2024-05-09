@@ -5,6 +5,7 @@ import "../App.css";
 import React, { useState } from 'react';
 import Basic from "../views/Basic_Questions"
 import Detail from "../views/Detail_Questions"
+import Result from "../views/Results"
 
 function Home() {
   const [currentPage, setCurrentPage] = useState<string>('HomePage');
@@ -12,14 +13,14 @@ function Home() {
 
   function HomePageContent() {
     return (
-        <div style = {{position: 'relative', top: '90px', padding: 'none'}} className="text-center">
-            <h1 className="text-center" style={{fontSize: '100px', color: 'black'}}>
+        <div style = {{position: 'relative', top: '70px', padding: 'none'}} className="text-center">
+            <h1 style={{fontSize: '80px', color: 'black'}}>
                 FindYourCareer
             </h1>
-            <h5 className="text-center">
+            <h5>
                 for
             </h5>
-            <h4 className="text-center">
+            <h4>
                 UNIVERSITY OF DELAWARE STUDENTS
             </h4>
         
@@ -56,7 +57,6 @@ function Home() {
                         </h6>
                     </Col>
                 </Row>
-                <Footer/>
             </Container>
         </div>
     )
@@ -78,33 +78,56 @@ function Home() {
     );
   }
 
+  function ResultPageContent() {
+    return (
+      <div>
+        <Result/>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <Container className="page-container" style={{maxWidth: '100%'}}>
+      <Container style={{maxWidth: '100%', height: '100%', maxHeight: '100%'}}>
         <Row>
-        <Col className="page-navigation" style={{borderBottom: '2px solid black', textAlign: 'left'}}>
-        <span style = {{padding: '10px', fontSize: '30px', verticalAlign: 'center', fontWeight: 'bold'}}>
+        <Col style={{maxWidth: '30%', textAlign: 'center', position: 'relative', top: '200px', paddingLeft:'100px', paddingRight:'100px'}}>
+        <Row style = {{borderBottom: '2px solid black'}}>
+        <span style = {{fontSize: '30px', verticalAlign: 'center', fontWeight: 'bold', padding: '10px'}}>
           FindYourCareer
-        </span>
-        </Col>
-        <Col className="page-navigation" style={{borderBottom: '2px solid black', textAlign: 'right'}}>
-        <button className="button btn1" style={{ verticalAlign: 'middle', alignSelf: 'right' }} onClick={() => setCurrentPage('HomePage')}>
+          </span>
+            </Row>
+        <Row>
+        <button className="button btn1" onClick={() => setCurrentPage('HomePage')}>
             <span>Home Page</span>
           </button>
-          <button className="button btn1" style={{ verticalAlign: 'middle' }}onClick={() => setCurrentPage('BasicPage')}>
+          </Row>
+        <Row>
+          <button className="button btn1" onClick={() => setCurrentPage('BasicPage')}>
             <span>Basic Quiz</span>
             </button>
-          <button className="button btn1" style={{ verticalAlign: 'middle' }} onClick={() => setCurrentPage('DetailPage')}>
+            </Row>
+        <Row>
+          <button className="button btn1" onClick={() => setCurrentPage('DetailPage')}>
             <span>Detailed Quiz</span>
             </button>
+            </Row>
+        <Row style = {{borderBottom: '2px solid black'}}>
+        <button className="button btn1" onClick={() => setCurrentPage('ResultPage')}>
+            <span>Result</span>
+            </button>
+            </Row>
         </Col>
-        </Row>
+        <Col style={{position: 'fixed', left: '30%', maxWidth: '70%'}}>
         <div className="page-content" style={{textAlign: 'center'}}>
           {currentPage === 'HomePage' && <HomePageContent />}
           {currentPage === 'BasicPage' && <BasicPageContent />}
           {currentPage === 'DetailPage' && <DetailedPageContent />}
+          {currentPage === 'ResultPage' && <ResultPageContent />}
         </div>
+        </Col>
+        </Row>
       </Container>
+      <Footer/>
     </div>
   );
 }
