@@ -6,10 +6,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Inter, sans-serif;
-  height: 100vh;
-  color: white;
-  background-color: #e9e9f0;
 }
 
 code {
