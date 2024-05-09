@@ -222,7 +222,9 @@ export default function Results() {
 			</div>
 			{chart_data.length > 0 ? (
 				<>
-					<h2>WHAT CAREER SHOULD YOU MOST LIKELY CONSIDER?</h2>
+					<h2 className="pieChartHeader">
+						WHAT CAREER SHOULD YOU MOST LIKELY CONSIDER?
+					</h2>
 					<div className="pieChartContainer">
 						<PieChart
 							series={[
