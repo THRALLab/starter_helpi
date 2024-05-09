@@ -19,6 +19,13 @@ function App() {
 					<Route path="/basicDetailedButton" Component={BasicDetailedButtons} />
 					<Route path="/results" Component={Results} />
 				</Routes>
+				<button
+					onClick={() => {
+						window.location.href = "/results";
+					}}
+				>
+					Go to results page (temporary button)
+				</button>
 				<Footer />
 			</>
 		</Router>
