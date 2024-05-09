@@ -1,0 +1,22 @@
+
+.report-page {
+padding-top: 61px;
+  color: var(--white-color);
+  background-color: var(--black-color);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* VVV Allows \n to actually create a newline */
+  white-space: pre-line;
+}
+
+.report-page .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

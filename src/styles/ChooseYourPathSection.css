@@ -1,0 +1,22 @@
+.path-section {
+    padding-top: 70px;
+    height: 90vh;
+    width: 100%;
+    background-color: var(--black-color);
+    z-index: 1;
+    color: var(--white-color);
+    text-align: center;
+}
+
+.path-title {
+    margin: 20px auto 80px auto;
+    font-size: 80px;
+}
+
+.path-options {
+    width: 80%;
+    display: grid;
+    margin: auto;
+    text-align: center;
+    padding: 0;
+}
