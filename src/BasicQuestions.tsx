@@ -52,7 +52,7 @@ const BasicQuestions: React.FC = () => {
   //saves changes to localstorage and navigates to results page
   function handleResults() {
     saveToLocalStorage();
-    navigate('/report')
+    navigate("/basicResults")
   }
   
   return (
