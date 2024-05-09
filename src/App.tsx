@@ -55,17 +55,13 @@ const LoginForm: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const [loginError, setLoginError] = useState<string>("");
 
   // Handle form submission
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
     // Perform login validation (dummy validation for demonstration)
-    if (email && password === "correctpassword") { // Replace "correctpassword" with the actual correct password
+    if (email && password) {
       setLoggedIn(true);
-      setLoginError(""); // Reset login error message
-    } else {
-      setLoginError("Wrong password. Please try again."); // Set login error message
     }
   };
 
@@ -102,13 +98,11 @@ const LoginForm: React.FC = () => {
             <button className="create-account-button">New Account</button>
             <button className="login-button" type="submit">Login</button>
           </div>
-          {loginError && <p className="error-message">{loginError}</p>} {/* Display login error message if present */}
         </form>
       )}
     </>
   );
 };
-
 
 function App() {
   const [key, setKey] = useState<string>(keyData);
