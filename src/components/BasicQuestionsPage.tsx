@@ -204,8 +204,10 @@ export function BasicQuestionsPage(): JSX.Element {
       </Navbar.Collapse>
     </Container>
   </Navbar>
-  <h1 className='padding3'>Basic Questions Page</h1>
+  <h1 className='padding4'>Basic Questions Page</h1>
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+    <main></main>
+    <div className='padding5'>
     <Card variant="plain" sx={{ width: 600, height: 'auto' }}>
       <CardContent>
         {!displayFinalResults ? (
@@ -249,6 +251,7 @@ export function BasicQuestionsPage(): JSX.Element {
         )}
       </CardContent>
     </Card>
+    </div>
   </div>
 </div>
   )

@@ -22,6 +22,9 @@ export function Home(): JSX.Element {
       background-color: #ab47bc;
       transform: scale(1.3);
     }
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     `}
   `;
 
@@ -44,15 +47,15 @@ export function Home(): JSX.Element {
         <div>
             <Buttons></Buttons>
         <p></p>
-        <h1 className='padding3'>Home Page</h1>
+        <h1 className='padding6'>Home Page</h1>
 
         <p></p>
-        <main className='padding2'>
-        <div className="box">
+        <main className='padding2' style={{ display: 'flex', justifyContent: 'center' }} >
+        <div className="box" style={{paddingTop: '50px'}}>
             <p></p>
             <h3 className='h3-box'>Basic Questions Page</h3>
             <p></p>
-            <p className='padding'>The basic questions page is designed to provide concise and straightforward answers
+            <p className='padding-text'>The basic questions page is designed to provide concise and straightforward answers
                 to common inquiries about your career. Dive in to find quick insights about your 
                 interests and career. 
             </p>
@@ -68,7 +71,7 @@ export function Home(): JSX.Element {
             <p></p>
             <h3 className='h3-box'>Detailed Questions Page</h3>
             <p></p>
-            <p className='padding'>The detailed questions page offers in-depth explanations to questions
+            <p className='padding-text'>The detailed questions page offers in-depth explanations to questions
                 you have about your career pathway. Each response is  crafted to provide 
                 thorough explanations. 
             </p>
