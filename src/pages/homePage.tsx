@@ -109,7 +109,7 @@ import { reviews } from "./ResultsPage"
         </div>
         <div className="quiz-data-container">
             <div className="quiz-data-text">
-                <p>Career quizzes are proven to help the masses achieve thier goals and secure professional success. Money can buy happiness, but only purpose can bring fulfillment.</p>
+                <p>See what other people are saying about their CareerNav.com results!</p>
             </div>
             <div className="quiz-data-graph">
                 <div className="piechart">
@@ -120,9 +120,9 @@ import { reviews } from "./ResultsPage"
                         background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)'
                     }}></div>
                     <div className="legend">
-                        <p style={{color: "#386e2d"}}>"I Loved It!" {fixedReviews[0]}</p>
-                        <p style={{color: "#dbd52c"}}>"It was alright."{fixedReviews[1]}</p>
-                        <p style={{color: "#b32b2b"}}>"I'm not so impressed."{fixedReviews[2]}</p>
+                        <p style={{color: "#386e2d"}}>"I Loved It!"</p>
+                        <p style={{color: "#dbd52c"}}>"It was alright."</p>
+                        <p style={{color: "#b32b2b"}}>"I'm not so impressed."</p>
                     </div>
                 </div>
                 <p>~All real data collected on our site~</p>
