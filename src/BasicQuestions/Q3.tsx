@@ -1,23 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form } from "react-bootstrap";
-
-const saveInfo = "BasicUserInputQ3";
+import { AnswerContext } from "../AnswerContext";
 
 export function Q3():JSX.Element {
     const [data, setData] = useState<string>("");
+    const { userAnswers, setUserAnswers } = useContext(AnswerContext);
 
     function updateData(event: React.ChangeEvent<HTMLSelectElement>) {
-        setData(event.target.value);
+      setData(event.target.value);
+      setUserAnswers((prevAnswers: string[]) => {
+        const answer = event.target.value;
+        const updatedAnswers = [...prevAnswers];
+        updatedAnswers[2] = answer;
+        return updatedAnswers;
+      });
+      console.log(userAnswers);
     }
-
-    useEffect(() => {
-        localStorage.setItem(saveInfo, JSON.stringify(data));
-      }, [data]);
 
     return (
         <div>
             <Form.Group controlId="userData">
+            <br></br>
+            <br></br>
                 <Form.Label>What is the highest education you have completed?</Form.Label>
+                <br></br>
+                <br></br>
                 <br></br>
                 <Form.Select value={data} onChange={updateData}>
                     <option value="--">--</option>

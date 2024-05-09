@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form } from "react-bootstrap";
-const saveInfo = "DetailUserInputQ7";
+import { AnswerContext } from "../AnswerContext";
 export function Q7():JSX.Element {
     const [userInfo, setUserInfo] = useState<string>("");
+    const { userAnswers, setUserAnswers } = useContext(AnswerContext);
     function updateUserInfo(event: React.ChangeEvent<HTMLTextAreaElement>) {
         setUserInfo(event.target.value);
+        setUserAnswers((prevAnswers: string[]) => {
+            const answer = event.target.value;
+            const updatedAnswers = [...prevAnswers];
+            updatedAnswers[15] = answer;
+            return updatedAnswers;
+          });
+          console.log(userAnswers);
     }
-    useEffect(() => {
-        localStorage.setItem(saveInfo, JSON.stringify(userInfo));
-      }, [userInfo]);
     return (
         <div>
             <Form.Group controlId="preferance">
+            <br></br>
             <Form.Label>How do you feel about traveling for work?</Form.Label>
+            <br></br>
+            <br></br>
             <Form.Control
             as="textarea"
             rows={3}

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form } from "react-bootstrap";
-
-const saveInfo = "DetailUserInputQ3";
+import { AnswerContext } from "../AnswerContext";
 
 const places = [
     "Corporate Office",
@@ -13,19 +12,28 @@ const places = [
 
 export function Q3():JSX.Element {
     const [selectPlace, setSelectPlace] = useState<string | null>(null);
-    useEffect(() => {
-        localStorage.setItem(saveInfo, JSON.stringify(selectPlace));
-      }, [selectPlace]);
+    const { userAnswers, setUserAnswers } = useContext(AnswerContext);
+    
+    function updatePlace(event: React.ChangeEvent<HTMLInputElement>){
+        setSelectPlace(event.target.value)
+        
+    }
     return (
         <div>
+            <br></br>
+            <br></br>
             Which of the following work environments would you thrive in the most?
+            <br></br>
+            <br></br>
+            <br></br>
             {places.map((place) => (
                 <Form.Check
-                    type="radio"
+                    inline
+                    type="checkbox"
                     label={place}
                     name="place-button"
                     checked={selectPlace === place}
-                    onChange={() => setSelectPlace(place)}
+                    onChange={()=>setSelectPlace(place)}
                 />
             ))}
         </div>
