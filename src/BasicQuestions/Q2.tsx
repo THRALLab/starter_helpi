@@ -23,8 +23,8 @@ export function Q2(): JSX.Element {
         <h3 className="py-5">Do you have any short-term or long-term goals?</h3>
         <Form.Select value={data} onChange={updateData}>
           <option value="--">--</option>
-          <option value="true">True</option>
-          <option value="false">False</option>
+          <option value="short-term">Short-Term</option>
+          <option value="long-term">Long-Term</option>
         </Form.Select>
       </Form.Group>
     </div>
