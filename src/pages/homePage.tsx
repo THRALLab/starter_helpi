@@ -3,7 +3,6 @@ import { Button, Form } from "react-bootstrap";
 import splash from "../images/businessman.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
-import { Link } from "react-router-dom";
 import { reviews } from "./ResultsPage"
 // import { PieChartObject } from "./ResultsPage";
 //import OpenAI from "openai";
