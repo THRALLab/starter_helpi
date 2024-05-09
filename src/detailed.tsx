@@ -1,4 +1,3 @@
-// Detailed.tsx
 import { useEffect, useState } from "react";
 import "./detailed.css";
 import questions from "./detailedQuestions.json";
