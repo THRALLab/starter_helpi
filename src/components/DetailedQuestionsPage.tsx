@@ -8,6 +8,7 @@ import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
+import CareerFinder from '../images/CareerFinder.png';
 
 export function DetailedQuestionsPage(): JSX.Element {
     const StyledButton = styled(Button)`
@@ -41,6 +42,11 @@ export function DetailedQuestionsPage(): JSX.Element {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [goToHomePage, setGoToHomePage] = useState(false);
+    const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
+
+    if (goToBasicQuestionsPage) {
+        return <Navigate to="/BasicQuestionsPage"/>
+    }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newAnswers = [...answers];
@@ -117,7 +123,11 @@ export function DetailedQuestionsPage(): JSX.Element {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
+                            <Nav.Link onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Nav.Link>
                         </Nav>
+                        <Nav className="ms-auto"> {/* Use ms-auto to push items to the right */}
+                        <img src={CareerFinder} alt="CareerFinder4U Logo" style={{ height: 50, width: 50 }} />
+                    </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
