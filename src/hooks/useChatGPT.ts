@@ -1,16 +1,16 @@
 import OpenAI from "openai";
 import detailedQuestions from "../detailedQuestions.json";
 import { Answer } from "../detailed";
+import { useState } from "react";
 
 interface Tools {
 	checkConnection: () => void;
+	chat_gptResponse: string;
 }
-
-// TODO - [ ] will need to change ChatGPT prompt from 1 report to 4
-// TODO - [ ] will need to add markdown support since ChatGPT occasionally returns a response with markdown
 
 export default function useChatGPT(): Tools {
 	const API_KEY: string | null = localStorage.getItem("MYKEY");
+	const [chat_gptResponse, setChat_gptResponse] = useState("");
 
 	async function callAPI(openai: OpenAI, users_responses: Answer[]) {
 		let formattedQ_A = "";
@@ -27,7 +27,7 @@ export default function useChatGPT(): Tools {
 				messages: [
 					{
 						role: "user",
-						content: `I am looking to generate 1 detailed and lengthy report catered towards helping a user find a list of careers by name that would closely match with what they've answered given a set of questions. When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest. These questions are as follows: \n ${formattedQ_A}`
+						content: `I am looking to generate a detailed and lengthy report catered towards helping a user find a list of 4 careers by name that would closely match with what they've answered given a set of questions. When generating this report, please give a detailed explanation why each career you list may be a good fit for the user. Please also provide alternative paths the user could look into if the given list of potential careers you provide may not be of interest to the user. If any of the questions receive gibberish answers or don't make sense, ignore them. These questions and answers are as follows: \n ${formattedQ_A}`
 					}
 				],
 				stream: true
@@ -37,7 +37,9 @@ export default function useChatGPT(): Tools {
 					response += part.choices[0].delta.content;
 				}
 			}
-			console.log(response);
+
+			setChat_gptResponse(response);
+			console.log(setChat_gptResponse);
 		} catch (error) {
 			console.log(error);
 		}
@@ -62,5 +64,5 @@ export default function useChatGPT(): Tools {
 		}
 	}
 
-	return { checkConnection };
+	return { checkConnection, chat_gptResponse };
 }

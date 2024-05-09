@@ -113,5 +113,6 @@ function Basic() {
 			</button>
 		</div>
 		);
-}
+};
+
 export default Basic;
