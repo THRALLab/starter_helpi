@@ -7,6 +7,7 @@ import Confetti from 'react-dom-confetti';
 import smileIcon from './smile.svg';
 import mehIcon from './meh.svg';
 import sadIcon from './sad.svg';
+import brainIcon from './modifiedBrainIcon.svg';
 
 const config = {
     angle: 90,
@@ -128,8 +129,9 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
             )} 
         </header>
         <div className="progressBarContainer">
-                <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
-            </div>
+    <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+    <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${progressPercentage + 0.5}%` }} />
+</div>
         <Button className="detailed-switch" onClick={() => handlePage('Detailed')}>Detailed</Button>
         <div className="column">
                 {questions.map((q, x) => (

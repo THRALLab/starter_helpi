@@ -184,14 +184,32 @@ h1 {
 }
 
 .progressBar {
+    position: relative;
     height: 1.4vw; 
     border-radius: 1vw; 
     background-color: #f0f0f0; 
 }
 
 .progressBar .progress-bar {
-    background-color: #4eca88; 
+    background-color: #1e8bff; 
     border-radius: 1vw; 
+}
+
+@keyframes rotate {
+    0% { transform: translate(-50%, -50%) rotate(-9deg); }
+    50% { transform: translate(-50%, -50%) rotate(9deg); }
+    100% { transform: translate(-50%, -50%) rotate(-9deg); }
+}
+
+.brain-progress-icon {
+    position: relative;
+    transform: translate(-50%, -50%);
+    width: 3vw; 
+    height: 3vw; 
+    z-index: 1; 
+    transition: left 0.45s ease-out;
+    animation: rotate 1s ease-in-out infinite;
+    top: -0.6vw;
 }
 
 .why-box {
