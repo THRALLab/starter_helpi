@@ -1,21 +1,23 @@
-/* eslint-disable no-template-curly-in-string */
-import { ProgressBarProps } from "./interfaces/progressFunction";
-import './ProgressBar.css';
-import React, { useState } from 'react';
+// ProgressBar.tsx
+import React from "react";
+import "./ProgressBar.css";
 
-//basic progress bar
-const ProgressBar: React.FC<ProgressBarProps> = ({ progressVal = 0}) => {
-  const [progress, setProgress] = useState<number>(progressVal);
-  const updateProgress = () => {
-    const newProgress = progress + (100/15);
-    setProgress(newProgress > 100 ? 100 : newProgress);
-  };
+interface ProgressBarProps {
+  currentIndex: number;
+  totalQuestions: number;
+}
+
+const ProgressBar: React.FC<ProgressBarProps> = ({
+  currentIndex,
+  totalQuestions,
+}) => {
+  const progress = ((currentIndex + 1) / totalQuestions) * 100;
+
   return (
-    <div className = "progress-bar-container">
-    <div className = "progress-bar" style={{ width:'${progress}%' }}> </div>
-    <button onClick={updateProgress}>Increase Progress</button>
+    <div className="progress-bar-container">
+      <div className="progress-bar" style={{ width: `${progress}%` }}></div>
     </div>
   );
 };
-  
+
 export default ProgressBar;

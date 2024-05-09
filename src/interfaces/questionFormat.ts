@@ -4,6 +4,6 @@ import { BasicOptions } from "./basicOption";
 export interface QuestionFormatProps {
 	question_number: number;
 	question: string;
-	options: BasicOptions[];
+	options?: BasicOptions[]; //only applicable for multipleChoice question
 	type: string;
 }

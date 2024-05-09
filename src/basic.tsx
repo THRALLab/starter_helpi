@@ -5,24 +5,23 @@ import questions from "./basicQuestions.json";
 import { QuestionFormatProps } from "./interfaces/questionFormat";
 import { BasicOptions } from "./interfaces/basicOption";
 import "./Basic.css";
+import ProgressBar from "./ProgressBar";
 import Modal from "./Modal";
 import Confetti from 'react-confetti';
-//component used for basic question format, uses RangeSlider component too for alternative form of answering certain questions
 
-const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
+//component used for multiple choice responses
+
+const MultipleChoiceComponent: React.FC<QuestionFormatProps> = ({
 	options
 }) => {
 	const [selected, setSelected] = useState<BasicOptions | null>(null);
 	const optionSelect = (option: BasicOptions) => {
 		setSelected(option);
 	};
-	/*useEffect(()=>{
-		setSelected(basicQuestions);
-	},[]);*/
 	return (
 		<div className="quizContainer">
 			<div className="questionContainer">
-				{options.map((option: BasicOptions) => (
+				{options?.map((option: BasicOptions) => (
 					<div className="questionContainer">
 					<label key={option.text}>
 						<input
@@ -37,6 +36,31 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 				))}
 				{/*<p>You selected: {selected?.text}</p>*/}
 			</div>
+		</div>
+	);
+};
+//component used for range slider answer choices
+const RangeComponent: React.FC<QuestionFormatProps> = ({
+	options
+}) => {
+	const [rangeVal, setRangeVal] = useState<number>(5);
+
+	const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setRangeVal(parseInt(event.target.value));
+	}
+	return (
+		<div className="questionContainer">
+			<label htmlFor="range">Select a value:</label>
+			<input
+				type="range"
+				id="range"
+				name="range"
+				min={1}
+				max={10}
+				value={rangeVal}
+				onChange={handleRangeChange}
+			/>
+			<p>Selected value: {rangeVal} </p>
 		</div>
 	);
 };
@@ -56,13 +80,38 @@ function Basic() {
 	//main return used to show completed question component
 	return (
 		<div>
-			{questions.map((question, question_number) => (
-				<div key={question_number}>
-					<div className="questionContainer">{question.question}</div>
-					<QuestionFormatComponent question_number={question.question_number} question={question.question} options={question.options as BasicOptions[]} type={question.type}/>
-				</div>
-			))}
-	/</div>
-	);
+			<ProgressBar
+			currentIndex={currentIndex}
+			totalQuestions={questions.length}
+			/>
+			<div key={currentIndex}>
+			<h2>{questions[currentIndex].question}</h2>
+			{questions[currentIndex].type === "multipleChoice" ? (
+				<MultipleChoiceComponent
+					options={questions[currentIndex].options as BasicOptions[]}
+					question={questions[currentIndex].question}
+					type={questions[currentIndex].type}
+					question_number={questions[currentIndex].question_number}
+				/>
+			) : (
+				<RangeComponent
+					options={questions[currentIndex].options as BasicOptions[]}
+					question={questions[currentIndex].question}
+					type={questions[currentIndex].type}
+					question_number={questions[currentIndex].question_number}
+				/>	
+			)}
+			</div>
+			<button onClick={handlePrev} disabled={currentIndex === 0}>
+			Previous
+			</button>
+			<button
+			onClick={handleNext}
+			disabled={currentIndex === questions.length - 1}
+			>
+			Next
+			</button>
+		</div>
+		);
 }
 export default Basic;
