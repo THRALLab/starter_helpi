@@ -13,15 +13,20 @@ import SliderClick from "../Audio/Slider-Click.mp3";
 // Audio players for SFX and background music
 const backgroundMusic = new Audio(BackgroundSound);
 const buttonSoundEffect = new Audio(ButtonClick);
-const sliderSoundEffect = new Audio(SliderClick);
+const sliderUpSoundEffect = new Audio(SliderClick);
+const sliderDownSoundEffect = new Audio(SliderClick);
 
 //Sound effect played when buttons clicked
 export function playButtonClick() {
   buttonSoundEffect.play();
 }
 //Sound effect played when slider placed
-export function playSliderSet() {
-  sliderSoundEffect.play();
+export function playSliderSetUp() {
+  sliderUpSoundEffect.play();
+}
+//Sound effect played when slider placed
+export function playSliderSetDown() {
+  sliderDownSoundEffect.play();
 }
 //Base music player
 export function AudioPlayer() {
