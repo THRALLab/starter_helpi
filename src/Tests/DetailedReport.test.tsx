@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react";
 import { HashRouter } from "react-router-dom";
 import DetailedReport from "../Pages/DetailedReport";
 
+window.HTMLElement.prototype.scrollIntoView = function () {};
+window.HTMLMediaElement.prototype.pause = function () {};
+
 describe("Detailed Report Tests", () => {
   test("Has Header", () => {
     render(

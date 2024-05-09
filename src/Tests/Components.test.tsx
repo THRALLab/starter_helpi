@@ -9,6 +9,9 @@ import { Route, Routes } from "react-router-dom";
 //import { SliderQuestion } from "../Components/SliderQuestion";
 //import React, { useState } from "react";
 
+window.HTMLElement.prototype.scrollIntoView = function () {};
+window.HTMLMediaElement.prototype.pause = function () {};
+
 describe("Theme Tests", () => {
   test("Theme Parent", () => {
     expect(themeState).toBe("body-theme1");
@@ -63,6 +66,7 @@ describe("Link Button Tests", () => {
     expect(linkElement).toBeInTheDocument();
   });
 });
+
 /*
 describe("Slider Question Tests", () => {
   test("Slider Question", () => {

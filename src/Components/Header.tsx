@@ -1,6 +1,7 @@
 import { AudioPlayer } from "./AudioPlayer";
 import { LinkButton } from "./LinkButton";
 import { ThemeSelect } from "./ThemeSelect";
+import "../Formatting/General.css";
 
 export function Header() {
   return (
