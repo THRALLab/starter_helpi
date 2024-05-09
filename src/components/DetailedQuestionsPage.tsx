@@ -23,6 +23,9 @@ export function DetailedQuestionsPage(): JSX.Element {
           background-color: #ab47bc;
           transform: scale(1.3);
         }
+        font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
     `}
     `;
 
@@ -143,7 +146,8 @@ export function DetailedQuestionsPage(): JSX.Element {
             }}>
             <Card variant="plain" sx={{ width: 1000, height: 400}}>
                 <CardContent>
-                    <Typography level="h4">Question {currentQuestion + 1}/{questions.length}</Typography>
+                    <Typography style={{paddingTop: '20px'}} level="h4">Question {currentQuestion + 1} of {questions.length}</Typography>
+                    <div style={{paddingTop: '15px'}}>
                     {<ProgressBar
                             min={0} // Minimum value progress can begin from
                             now={(currentQuestion + 1) * (100 / questions.length)} // Current value of progress
@@ -154,10 +158,11 @@ export function DetailedQuestionsPage(): JSX.Element {
                             animated={currentQuestion >= 0} // Animate the stripes from right to left when the progress is at least 0%
                             variant="info" // Sets the background class of the progress bar to red
                             style={{ width: '100%'}}
+                            
                             >
-                        </ProgressBar>}
-                    <Typography style={{alignItems: 'center', padding: '5vh'}}>{questions[currentQuestion]}</Typography>
-                    <div style={{paddingBottom: '1vh', display: 'flex',
+                        </ProgressBar>}</div>
+                    <Typography style={{alignItems: 'center', padding: '5vh'}}><div className='poppins-regular'>{questions[currentQuestion]}</div></Typography>
+                    <div style={{paddingBottom: '3vh', display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center'}}>
                             {/*<input
@@ -167,6 +172,7 @@ export function DetailedQuestionsPage(): JSX.Element {
                         />*/}
                     <Input sx={{width: '500px', height: '75px', display: 'flex',
                                     justifyContent: 'center',
+                                    
 
                                     alignItems: 'center',
                                     '--Input-focusedInset': 'var(--any, )',
@@ -174,19 +180,25 @@ export function DetailedQuestionsPage(): JSX.Element {
                                     '--Input-focusedHighlight': 'rgba(13,110,253,.25)',
                                     '&::before': {
                                       transition: 'box-shadow .15s ease-in-out',
+                                    }, '&::placeholder': {
+                                        fontFamily: "Poppins",
+                                        fontSize: 400,
+                                        
                                     },
                                     '&:focus-within': {
                                       borderColor: '#86b7fe',
-                                    }}} 
+                                    }}}
                                     variant="outlined" placeholder="Type in here…"
+                                    
+                                    
                         value={answers[currentQuestion]}
                         onChange={handleInputChange}
                     />
                     </div>
-                    <div>
-                        {currentQuestion > 0 && <StyledButton onClick={handlePreviousQuestion}>Previous Question</StyledButton>}
-                        <StyledButton onClick={handleNextQuestion}>
-                            {currentQuestion === questions.length - 1 ? 'Submit Answers' : 'Next Question'}
+                    <div style={{ padding: '4vh', display: 'flex', justifyContent: 'center' }}>
+                        {currentQuestion > 0 && <StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>PREVIOUS QUESTION</StyledButton>}
+                        <StyledButton onClick={handleNextQuestion} style={{ margin: '0 auto' }}>
+                            {currentQuestion === questions.length - 1 ? 'SUBMIT ANSWERS' : 'NEXT QUESTION'}
                         </StyledButton>
                     </div>
                     {loading && <Typography>Loading...</Typography>}
