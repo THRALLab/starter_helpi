@@ -21,6 +21,7 @@ function Detailed() {
 	const [userInput, setUserInput] = useState<string>(
 		answeredQuestions[currentIndex]?.choice || ""
 	);
+	console.log(userInput);
 	const [modalVisibility, setModalVisibility] = useState(false);
 	const [showConfetti, setShowConfetti] = useState(false);
 
