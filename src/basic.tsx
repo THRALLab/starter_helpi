@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState} from "react";
 import questions from "./basicQuestions.json";
@@ -19,19 +20,22 @@ const QuestionFormatComponent: React.FC<QuestionFormatProps> = ({
 	},[]);*/
 	return (
 		<div className="quizContainer">
-			{options.map((option: BasicOptions) => (
-				<label key={option.text}>
-					<input
-						type="radio"
-						value={option.text}
-						checked={selected === option.text}
-						onChange={() => optionSelect(option)}
-					/>
-					<div className="optionsContainer">{option.text}</div>
-					<img src={option.image} alt="selected" className="selected-image"/>
-				</label>
-			))}
-			<p>You selected: {selected?.text}</p>
+			<div className="questionContainer">
+				{options.map((option: BasicOptions) => (
+					<div className="questionContainer">
+					<label key={option.text}>
+						<input
+							value={option.text}
+							checked={selected === option.text}
+							onChange={() => optionSelect(option)}
+						/>
+						<div className="optionsContainer">{option.text}</div>
+						<img src={option.image} alt="selected" className="selected-image"/>
+					</label>
+					</div>
+				))}
+				{/*<p>You selected: {selected?.text}</p>*/}
+			</div>
 		</div>
 	);
 };

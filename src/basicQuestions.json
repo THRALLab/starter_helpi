@@ -42,8 +42,8 @@
 	"question": "5. How many hours would you like to work per week?",
 	"options": [{"text": "20 or less", "image":"https://i.ibb.co/pLnzCSB/20num.jpg"},
 	{"text": "20-30", "image": "https://i.ibb.co/QfFW2y6/30.jpg"}, 
-	{"text": "30-35", "image": ""}, 
-	{"text": "35+", "image": ""}],
+	{"text": "30-35", "image": "https://i.ibb.co/C6wC3gv/35num.png"}, 
+	{"text": "35+", "image": "https://i.ibb.co/vVVxfcN/40.jpg"}],
 	"type": "multiple choice"
 },
 {
