@@ -76,6 +76,11 @@ h3 { /* Question headers*/
     box-shadow: 10px 5px 5px rgb(86, 86, 86);
 }
 
+.custom-offcanvas{
+    background-color: rgb(33, 33, 56);
+    color: white;
+}
+
 /* .progress Button { 
     background-color: blue;
     color: white;
