@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Alert, Stack, ProgressBar} from "react-bootstrap";
+import { Form, Alert, Stack, ProgressBar, Offcanvas} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import { parseAnswers } from "./DetailedPage";
@@ -108,7 +108,7 @@ const BasicPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 10, //should be 512
+				max_tokens: 512, //should be 512
 				top_p: 1,
 				});
 				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
@@ -117,9 +117,9 @@ const BasicPage = () => {
 				window.location.href = "/#/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
+				setIsLoading(false);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
 				window.location.href = "./starter_helpi/"; 
-				window.scrollTo(0, 0);
 			}  
 		}
 
@@ -164,8 +164,16 @@ const BasicPage = () => {
 			</div>
 			<div style={{textAlign: "center"}}>
 	
-				<button className="button" hidden={!allow} onClick={sendResponse}>{!isLoading? 'Get Answer!' : LoaderComp() }</button>
+				<button className="button" hidden={!allow} onClick={sendResponse}>Get Answer!</button>
 				<button className="button" disabled={isLoading} onClick={doReset} > Clear All</button>
+				<Offcanvas show={isLoading} placement={"top"} scroll={false} backdrop={true}>
+					<Offcanvas.Body style={{margin:"50px", display:"flex", flexDirection: "row",  fontSize:"18px", justifyContent:"center"}}>
+						<div style={{display:"flex", flexDirection: "column", alignItems:"center"}}>
+							<p >Calculating your results...</p>
+							<p><LoaderComp/></p>
+						</div>
+					</Offcanvas.Body>
+				</Offcanvas>
 				<div style={{display: "flex", justifyContent:"center"}}>
 		  			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
 		   				 <p>You've completed all the questions, you can now click the "Get Answer!" button to get your results!</p>

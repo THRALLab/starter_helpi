@@ -659,7 +659,7 @@ const DetailedPage = () => {
 			</div>
     
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" onClick={sendResponse} disabled={!allow} style={{marginRight:"10px"}}>Get Answer!</Button>
+		<Button size="lg" onClick={sendResponse} hidden={!allow} style={{marginRight:"10px"}}>Get Answer!</Button>
 		<Offcanvas show={isLoading} placement={"top"} scroll={false} backdrop={true}>
 			<Offcanvas.Body style={{margin:"50px", display:"flex", flexDirection: "row",  fontSize:"18px", justifyContent:"center"}}>
 				<div style={{display:"flex", flexDirection: "column", alignItems:"center"}}>
