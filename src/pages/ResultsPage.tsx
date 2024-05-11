@@ -36,8 +36,6 @@ const ResultsPage = () => {
     }
 
     function changeReview(newNumber: number) {
-        // const updatedReviewData = [...reviews];
-        // updatedReviewData[newNumber] += 1;
         setReview(newNumber);
     }
 
@@ -74,11 +72,11 @@ const ResultsPage = () => {
                         <p>{GPTresponse[7]}</p>
             </div>
         </div>
-        <div style={{textAlign:"center", marginBottom: "10px", fontSize:"20px"}}> Consider Giving Us A Rating Below!</div>
+        <div className="reviewPrompt"style={{}}> Consider Giving Us A Rating Below!</div>
         <div className="review-system">
             <h4>Are you satisified with the job recommendations that you received?</h4>
-			<div className="review-radio">
-            <Form.Check
+            <div className="review-radio">
+			<Form.Check
 				inline
 				type="radio"
 				id="review-option1"
@@ -109,9 +107,9 @@ const ResultsPage = () => {
                 onChange={() => changeReview(2)}
                 />
             </div>
-                <div>The magic array is {reviews}</div>
                 <Button className="Submit-Button" onClick={storeReviews}>Submit</Button>
 		</div>
+        
         </>
     )
 

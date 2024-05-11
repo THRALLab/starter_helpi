@@ -4,7 +4,7 @@ Offcanvas, OffcanvasHeader,OffcanvasTitle, Row, Col, Container} from "react-boot
 import OpenAI from "openai";
 import { key } from "./homePage"
 import "./detailedPage.css";
-
+import LoaderComp from "../components/loader";
 
 export function parseAnswers(answers: string|null): string[] {
 	if (answers === null) return [];
@@ -21,6 +21,7 @@ const QUESTIONSTARTS = [" If I slept through my alarm, I would ",
 						" To relax on the weekend, I would "];
 
 const DetailedPage = () => {
+	
 	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
 	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response3, setResponse3] = useState<(boolean | string)[]> ([false, false, false, false, ""])
@@ -74,6 +75,7 @@ const DetailedPage = () => {
 				break;
 		}
 	}
+
 	function handleOtherSelect(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, questionNum: number, index:number){ //handles the "Other:" radio button and updates the text input box
 		const responseState = questionNum === 1 ? Response1 : //chooses which array to use based on questionNum
             questionNum === 2 ? Response2 :
@@ -110,6 +112,7 @@ const DetailedPage = () => {
 				break;
 		}
 	}
+
 //checks which questions are answered
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
 		Response6: (boolean| string)[], Response7: (boolean| string)[]): number { 
@@ -124,6 +127,7 @@ const DetailedPage = () => {
 		},0)
 		return completed;
 	}	
+
 	function doReset(): void{ //clears all the choices 
 		const defaultResponse: (boolean |string)[] = [false, false, false, false, ""];
 		const resetOther: boolean[] = [false, false, false, false, false, false, false];
@@ -135,13 +139,11 @@ const DetailedPage = () => {
 		setResponse5(defaultResponse);
 		setResponse6(defaultResponse);
 		setResponse7(defaultResponse);
-	  }
+	}
 
 	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
     const [allow, setAllow] = useState<boolean>(false);
 	const [alert, setAlert] = useState<boolean>(false);
-	
-	//setGPTresponse(["it","works","here","","","","",""]);
 	
 	useEffect(() => {
        setAllow(answered === 7); //checks the amount of questions answered
@@ -152,6 +154,8 @@ const DetailedPage = () => {
 	const [progressShow, setProgressShow] = useState<boolean>(false);
 	const handleShow = () => setProgressShow(!progressShow);
 	const handleClose = () => setProgressShow(false);
+
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	
 	const handleKeyDown = (event: KeyboardEvent) => { //used chatGPT on clarification on how to enable a keyboard shortcut for the offCanvas dropdown; enables when "ctr" + "o" are pressed
         if (event.ctrlKey && event.key === '0') {
@@ -655,7 +659,16 @@ const DetailedPage = () => {
 			</div>
     
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" onClick={sendResponse} disabled={!allow} style={{marginRight:"10px"}}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<Button size="lg" onClick={sendResponse} hidden={!allow} style={{marginRight:"10px"}}>Get Answer!</Button>
+		<Offcanvas show={isLoading} placement={"top"} scroll={false} backdrop={true}>
+			<Offcanvas.Body style={{margin:"50px", display:"flex", flexDirection: "row",  fontSize:"18px", justifyContent:"center"}}>
+				<div style={{display:"flex", flexDirection: "column", alignItems:"center"}}>
+					<p >Calculating your results...</p>
+					<p><LoaderComp/></p>
+				</div>
+			</Offcanvas.Body>
+		</Offcanvas>
+		<Button size="lg" onClick={(doReset)}>Clear All</Button>
 		</div>
 		<div style={{display:"flex", marginTop:"10px", textAlign:"center",justifyContent:"center"}}>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"10px"}} >
@@ -730,6 +743,7 @@ const DetailedPage = () => {
 		async function runGPT() { //Creates conversation with the GPT-4 model
 			//console.log("API Key: " + key); //for testing purposes
 			try{
+				setIsLoading(true);
 				const response = await openai.chat.completions.create({
 				model: "gpt-4-turbo",
 				messages: [
@@ -749,11 +763,11 @@ const DetailedPage = () => {
 				
 				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
 				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
-
+				setIsLoading(false);
 				window.location.href = "/#/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
-				//console.log(e);
+				setIsLoading(false);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
 				window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
 			}  
