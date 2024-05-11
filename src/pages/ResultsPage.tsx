@@ -74,9 +74,11 @@ const ResultsPage = () => {
                         <p>{GPTresponse[7]}</p>
             </div>
         </div>
+        <div style={{textAlign:"center", marginBottom: "10px", fontSize:"20px"}}> Consider Giving Us A Rating Below!</div>
         <div className="review-system">
-            <h3>Are you satisified with the job recommendations that you received?</h3>
-			<Form.Check
+            <h4>Are you satisified with the job recommendations that you received?</h4>
+			<div className="review-radio">
+            <Form.Check
 				inline
 				type="radio"
 				id="review-option1"
@@ -106,6 +108,7 @@ const ResultsPage = () => {
                 style={{width:"auto"}}
                 onChange={() => changeReview(2)}
                 />
+            </div>
                 <div>The magic array is {reviews}</div>
                 <Button className="Submit-Button" onClick={storeReviews}>Submit</Button>
 		</div>
