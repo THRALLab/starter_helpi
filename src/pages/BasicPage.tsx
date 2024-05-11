@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Form, Alert, Stack, ProgressBar} from "react-bootstrap";
+import { Form, Alert, Stack, ProgressBar, Offcanvas} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import { parseAnswers } from "./DetailedPage";
 import "./basicPage.css"
+import LoaderComp from "../components/loader";
 
 
 const BasicPage = () => {
@@ -24,101 +25,75 @@ const BasicPage = () => {
 	}
 
 	function getResponses(): string { //returns a description of the user's responses to the questions
-		//let answers = ["", "", "", "", "", "", "", ""];
-
-		/*Originally stored each answer to a question as an array in a string.
-		However, there is no reason to access only one specific answer so instead
-		switch to one long string that has all the answers on a new line.*/
-
 		let description = "";
 
 		if(response[0]){
-			//answers[0] = "I prefer working in a group.";
 			description += "I prefer working in a group.\n";
 		}
 		else{
-			//answers[0] = "I prefer working on my own.";
 			description += "I prefer working on my own.\n";
 		}
 
 		if(response[1]){
-			//answers[1] = "I prefer having my schedule made for me.";
 			description += "I prefer having my schedule made for me.\n";
 		}
 		else{
-			//answers[1] = "I want to be able to work when I want.";
 			description += "I want to be able to work when I want.\n";
 		}
 
 		if(response[2]){
-			//answers[2] = "I like having detailed instructions when doing a task.";
 			description += "I like having detailed instructions when doing a task.\n";
 		}
 		else{
-			//answers[2] = "I prefer having creative freedom when doing a task.";
 			description += "I prefer having creative freedom when doing a task.\n";
 		}
 
 		if(response[3]){
-			//answers[3] = "I enjoy a job that challenges me.";
 			description += "I enjoy a job that challenges me.\n";
 		}
 		else{
-			//answers[3] = "I want a job that is easy.";
 			description	+= "I want a job that is easy.\n";
 		}
 
 		if(response[4]){
-			//answers[4] = "I enjoy working with my hands.";
 			description += "I enjoy working with my hands.\n";
 		}
 		else{
-			//answers[4] = "I don't like working with my hands.";
 			description += "I don't like working with my hands.\n";
 		}
 
 		if(response[5]){
-			//answers[5] = "I would work a job I dislike for the money.";
 			description += "I would work a job I dislike for the money.\n";
 		}
 		else{
-			//answers[5] = "I would only ever work a job I like.";
 			description += "I would only ever work a job I like.\n";
 		}
 
 		if(response[6]){
-			//answers[6] = "I want to make a difference in the world.";
 			description	+= "I want to make a difference in the world.\n";
 		}
 		else{
-			//answers[6] = "I just want a job.";
 			description += "I just want a job.\n";
 		}
-
 		if(response[7]){
-			//answers[7] = "I love to travel.";
 			description += "I love to travel.\n";
 		}
 		else{
-			//answers[7]= "I don't like to travel.";
 			description += "I don't like to travel.\n";
 		}
-
-		//console.log(answers + '/n')
-		//console.log(description);
-
 		return description;
 	}
 
 	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+
 		const openai = new OpenAI({
 			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
 			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
 		});
 		  
 		async function runGPT() { //Creates conversation with the GPT-4 model
-			console.log("API Key: " + key); //for testing purposes
 			try{
+				setIsLoading(true);
 				const response = await openai.chat.completions.create({
 				model: "gpt-4-turbo",
 				messages: [
@@ -138,14 +113,13 @@ const BasicPage = () => {
 				});
 				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
 				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
-				
+				setIsLoading(false);
 				window.location.href = "/#/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
-				//console.log(e);
+				setIsLoading(false);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
 				window.location.href = "./starter_helpi/"; 
-				window.scrollTo(0, 0);
 			}  
 		}
 
@@ -153,6 +127,8 @@ const BasicPage = () => {
 	
 	}
 	
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+
 	const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
 
 	function doReset(): void{ //clears all the choices by setting all elements in array to -1
@@ -180,16 +156,24 @@ const BasicPage = () => {
 					Basic Quiz
 				</h1>
 				<p style={{ textAlign: "center" }}>
-				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
-		The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-		With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
+					Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
+					The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+					With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
 				</p>
 				
 			</div>
 			<div style={{textAlign: "center"}}>
 	
-				<button className="button" disabled={!allow} onClick={sendResponse}>Get Answer!</button>
-				<button className="button" onClick={doReset} > Clear All</button>
+				<button className="button" hidden={!allow} onClick={sendResponse}>Get Answer!</button>
+				<button className="button" disabled={isLoading} onClick={doReset} > Clear All</button>
+				<Offcanvas show={isLoading} placement={"top"} scroll={false} backdrop={true}>
+					<Offcanvas.Body style={{margin:"50px", display:"flex", flexDirection: "row",  fontSize:"18px", justifyContent:"center"}}>
+						<div style={{display:"flex", flexDirection: "column", alignItems:"center"}}>
+							<p >Calculating your results...</p>
+							<p><LoaderComp/></p>
+						</div>
+					</Offcanvas.Body>
+				</Offcanvas>
 				<div style={{display: "flex", justifyContent:"center"}}>
 		  			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
 		   				 <p>You've completed all the questions, you can now click the "Get Answer!" button to get your results!</p>

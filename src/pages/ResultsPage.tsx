@@ -36,8 +36,6 @@ const ResultsPage = () => {
     }
 
     function changeReview(newNumber: number) {
-        // const updatedReviewData = [...reviews];
-        // updatedReviewData[newNumber] += 1;
         setReview(newNumber);
     }
 
