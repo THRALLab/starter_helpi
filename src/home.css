@@ -64,9 +64,11 @@
 }
 
 .landingContainer .welcomeMessage .quizzesContainer {
-	width: 50%;
+	text-align: center;
 	box-sizing: border-box;
-	border: 2px solid black;
-	padding: 10px;
-	margin: 20px;
+	width: 90%;
+}
+
+.landingContainer .welcomeMessage .quizzesContainer p {
+	margin-top: 15px;
 }

@@ -22,7 +22,7 @@ export default function Home() {
 					<h1>Welcome to Careeribou Careers</h1>
 					<p>
 						Find the career that works just for you through two kinds of quizzes
-						that utilizes unique—but important questions—
+						that utilizes unique—but important—questions
 						<br />
 						and actively seeks your input to get tailored and personalized
 						career reports. To get started, let's get to know you.
