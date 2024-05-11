@@ -156,16 +156,16 @@ const BasicPage = () => {
 					Basic Quiz
 				</h1>
 				<p style={{ textAlign: "center" }}>
-				Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
-		The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-		With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
+					Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
+					The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+					With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
 				</p>
 				
 			</div>
 			<div style={{textAlign: "center"}}>
 	
-				<button className="button" disabled={!allow} onClick={sendResponse}>{!isLoading? 'Get Answer!' : LoaderComp() }</button>
-				<button className="button" onClick={doReset} > Clear All</button>
+				<button className="button" hidden={!allow} onClick={sendResponse}>{!isLoading? 'Get Answer!' : LoaderComp() }</button>
+				<button className="button" disabled={isLoading} onClick={doReset} > Clear All</button>
 				<div style={{display: "flex", justifyContent:"center"}}>
 		  			<Alert show={alert} variant="success" onClose={() => setAlert(false)}dismissible style={{ marginTop:"10px"}}>
 		   				 <p>You've completed all the questions, you can now click the "Get Answer!" button to get your results!</p>

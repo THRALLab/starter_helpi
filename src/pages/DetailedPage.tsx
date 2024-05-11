@@ -4,6 +4,7 @@ Offcanvas, OffcanvasHeader,OffcanvasTitle, Row, Col, Container} from "react-boot
 import OpenAI from "openai";
 import { key } from "./homePage"
 import "./detailedPage.css";
+import LoaderComp from "../components/loader";
 
 
 export function parseAnswers(answers: string|null): string[] {
@@ -124,6 +125,9 @@ const DetailedPage = () => {
 		},0)
 		return completed;
 	}	
+
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+
 	function doReset(): void{ //clears all the choices 
 		const defaultResponse: (boolean |string)[] = [false, false, false, false, ""];
 		const resetOther: boolean[] = [false, false, false, false, false, false, false];
@@ -655,7 +659,17 @@ const DetailedPage = () => {
 			</div>
     
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" onClick={sendResponse} disabled={!allow} style={{marginRight:"10px"}}>Get Answer!</Button> <Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<Button size="lg" onClick={sendResponse} disabled={!allow} style={{marginRight:"10px"}}>Get Answer!</Button>
+		<Offcanvas show={isLoading} onHide={handleClose} placement="top" scroll backdrop={false}>
+			<OffcanvasHeader closeButton>
+				<OffcanvasTitle className="offCanvas-title">Loading...</OffcanvasTitle>
+			</OffcanvasHeader>
+			<Offcanvas.Body style={{textAlign:"center", fontSize:"18px"}}>
+				<p>Calculating your results...</p>
+				<LoaderComp/>
+			</Offcanvas.Body>
+		</Offcanvas>
+		<Button size="lg" onClick={(doReset)}>Clear All</Button>
 		</div>
 		<div style={{display:"flex", marginTop:"10px", textAlign:"center",justifyContent:"center"}}>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"10px"}} >
@@ -721,6 +735,7 @@ const DetailedPage = () => {
 		return answers;
 	}
 
+
 	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
 		const openai = new OpenAI({
 			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
@@ -730,6 +745,7 @@ const DetailedPage = () => {
 		async function runGPT() { //Creates conversation with the GPT-4 model
 			//console.log("API Key: " + key); //for testing purposes
 			try{
+				setIsLoading(true);
 				const response = await openai.chat.completions.create({
 				model: "gpt-4-turbo",
 				messages: [
@@ -749,11 +765,11 @@ const DetailedPage = () => {
 				
 				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
 				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
-
+				setIsLoading(false);
 				window.location.href = "/#/ResultsPage"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
-				//console.log(e);
+				setIsLoading(false);
 				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
 				window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
 			}  
