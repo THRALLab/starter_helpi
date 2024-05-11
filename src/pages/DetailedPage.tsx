@@ -266,6 +266,7 @@ const DetailedPage = () => {
 					checked={otherSelected[0] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response1[4])}
 					onChange={(event) => handleOtherSelect(event,1, 4)}
@@ -330,6 +331,7 @@ const DetailedPage = () => {
 					checked={otherSelected[1] === true}/>	
 				<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response2[4])}
 					onChange={(event) => handleOtherSelect(event,2, 4)}
@@ -394,6 +396,7 @@ const DetailedPage = () => {
 					checked={otherSelected[2] === true}/>
 				<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response3[4])}
 					onChange={(event) => handleOtherSelect(event,3, 4)}
@@ -458,6 +461,7 @@ const DetailedPage = () => {
 					checked={otherSelected[3] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response4[4])}
 					onChange={(event) => handleOtherSelect(event,4, 4)}
@@ -523,6 +527,7 @@ const DetailedPage = () => {
 			<div className="answer-box">
 				<Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response5[4])}
 					onChange={(event) => handleOtherSelect(event,5, 4)}
@@ -587,6 +592,7 @@ const DetailedPage = () => {
 					checked={otherSelected[5] === true}	/>
 			<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response6[4])}
 					onChange={(event) => handleOtherSelect(event,6, 4)}
@@ -651,6 +657,7 @@ const DetailedPage = () => {
 					checked={otherSelected[6] ===true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response7[4])}
 					onChange={(event) => handleOtherSelect(event,7, 4)}
