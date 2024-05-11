@@ -6,7 +6,6 @@ import { key } from "./homePage"
 import "./detailedPage.css";
 import LoaderComp from "../components/loader";
 
-
 export function parseAnswers(answers: string|null): string[] {
 	if (answers === null) return [];
     let array = answers.substring(2,answers.length-2).split("\", \"");
@@ -22,6 +21,7 @@ const QUESTIONSTARTS = [" If I slept through my alarm, I would ",
 						" To relax on the weekend, I would "];
 
 const DetailedPage = () => {
+	
 	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
 	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response3, setResponse3] = useState<(boolean | string)[]> ([false, false, false, false, ""])
@@ -75,6 +75,7 @@ const DetailedPage = () => {
 				break;
 		}
 	}
+
 	function handleOtherSelect(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, questionNum: number, index:number){ //handles the "Other:" radio button and updates the text input box
 		const responseState = questionNum === 1 ? Response1 : //chooses which array to use based on questionNum
             questionNum === 2 ? Response2 :
@@ -111,6 +112,7 @@ const DetailedPage = () => {
 				break;
 		}
 	}
+
 //checks which questions are answered
 	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
 		Response6: (boolean| string)[], Response7: (boolean| string)[]): number { 
@@ -126,8 +128,6 @@ const DetailedPage = () => {
 		return completed;
 	}	
 
-	const [isLoading, setIsLoading] = useState<boolean>(false);
-
 	function doReset(): void{ //clears all the choices 
 		const defaultResponse: (boolean |string)[] = [false, false, false, false, ""];
 		const resetOther: boolean[] = [false, false, false, false, false, false, false];
@@ -139,13 +139,11 @@ const DetailedPage = () => {
 		setResponse5(defaultResponse);
 		setResponse6(defaultResponse);
 		setResponse7(defaultResponse);
-	  }
+	}
 
 	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
     const [allow, setAllow] = useState<boolean>(false);
 	const [alert, setAlert] = useState<boolean>(false);
-	
-	//setGPTresponse(["it","works","here","","","","",""]);
 	
 	useEffect(() => {
        setAllow(answered === 7); //checks the amount of questions answered
@@ -156,6 +154,8 @@ const DetailedPage = () => {
 	const [progressShow, setProgressShow] = useState<boolean>(false);
 	const handleShow = () => setProgressShow(!progressShow);
 	const handleClose = () => setProgressShow(false);
+
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	
 	const handleKeyDown = (event: KeyboardEvent) => { //used chatGPT on clarification on how to enable a keyboard shortcut for the offCanvas dropdown; enables when "ctr" + "o" are pressed
         if (event.ctrlKey && event.key === '0') {
@@ -660,13 +660,12 @@ const DetailedPage = () => {
     
 		<div style={{textAlign:"center"}}>
 		<Button size="lg" onClick={sendResponse} disabled={!allow} style={{marginRight:"10px"}}>Get Answer!</Button>
-		<Offcanvas show={isLoading} onHide={handleClose} placement="top" scroll backdrop={false}>
-			<OffcanvasHeader closeButton>
-				<OffcanvasTitle className="offCanvas-title">Loading...</OffcanvasTitle>
-			</OffcanvasHeader>
-			<Offcanvas.Body style={{textAlign:"center", fontSize:"18px"}}>
-				<p>Calculating your results...</p>
-				<LoaderComp/>
+		<Offcanvas show={isLoading} placement={"top"} scroll={false} backdrop={true}>
+			<Offcanvas.Body style={{margin:"50px", display:"flex", flexDirection: "row",  fontSize:"18px", justifyContent:"center"}}>
+				<div style={{display:"flex", flexDirection: "column", alignItems:"center"}}>
+					<p >Calculating your results...</p>
+					<p><LoaderComp/></p>
+				</div>
 			</Offcanvas.Body>
 		</Offcanvas>
 		<Button size="lg" onClick={(doReset)}>Clear All</Button>
@@ -734,7 +733,6 @@ const DetailedPage = () => {
 		console.log(answers);
 		return answers;
 	}
-
 
 	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
 		const openai = new OpenAI({
