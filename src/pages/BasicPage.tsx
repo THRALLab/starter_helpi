@@ -110,7 +110,11 @@ const BasicPage = () => {
 		return description;
 	}
 
+	const [loading, setLoading] = useState<boolean>(false);
+
 	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+		setLoading(true);
+
 		const openai = new OpenAI({
 			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
 			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
