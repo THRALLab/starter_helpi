@@ -11,7 +11,7 @@
 
 .landingContainer .welcomeMessage {
 	margin: 40px;
-	width: 100%;
+	width: 95%;
 	box-sizing: border-box;
 }
 
@@ -66,9 +66,10 @@
 .landingContainer .welcomeMessage .quizzesContainer {
 	text-align: center;
 	box-sizing: border-box;
-	width: 90%;
+	margin-left: -190px;
 }
 
 .landingContainer .welcomeMessage .quizzesContainer p {
 	margin-top: 15px;
+	font-size: 17px;
 }
