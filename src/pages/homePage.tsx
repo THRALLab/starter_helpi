@@ -70,7 +70,7 @@ import { reviews } from "./ResultsPage"
         </div>
         <div className="quiz-data-container">
             <div className="quiz-data-text">
-                <p>See what other people are saying about their CareerNav.com results!</p>
+                <p>See what other people are saying about their JobNav.com results!</p>
             </div>
             <div className="quiz-data-graph">
                 <div className="piechart">

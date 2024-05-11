@@ -74,6 +74,7 @@ const ResultsPage = () => {
         </div>
         <div className="review-system">
             <h3>Are you satisified with the job recommendations that you received?</h3>
+            <div className="forms">
 			<Form.Check
 				inline
 				type="radio"
@@ -104,9 +105,10 @@ const ResultsPage = () => {
                 style={{width:"auto"}}
                 onChange={() => changeReview(2)}
                 />
-                <div>The magic array is {reviews}</div>
+            </div>
                 <Button className="Submit-Button" onClick={storeReviews}>Submit</Button>
 		</div>
+        
         </>
     )
 
