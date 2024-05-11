@@ -7,7 +7,6 @@ import Footer from "./Footer";
 import BasicDetailedButtons from "./basicDetailedButton";
 import Results from "./Results";
 import Home from "./Home";
-import NotFound from "./NotFound";
 
 function App() {
 	return (
@@ -20,7 +19,6 @@ function App() {
 					<Route path="/detailed" Component={Detailed} />
 					<Route path="/basicDetailedButton" Component={BasicDetailedButtons} />
 					<Route path="/results" Component={Results} />
-					<Route path="*" Component={NotFound} />
 				</Routes>
 				<Footer />
 			</>
