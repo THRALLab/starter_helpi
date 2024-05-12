@@ -8,7 +8,7 @@ export const DarkModeToggle = () => {
 
   const handleToggle = () => {
     setIsDark(!isDark);
-    setLabel(isDark ? "Dark Mode" : "Light Mode");
+    setLabel(isDark ? "🌙" : "☀️");
     darkMode = isDark;
     console.log("Mode: " + (darkMode? "Dark" : "Light"));
 
@@ -24,7 +24,7 @@ export const DarkModeToggle = () => {
         height: "30px",
         width: "100px",
         borderRadius: "15px",
-        backgroundColor: isDark ? "black" : "white",
+        backgroundColor: isDark ? "white" : "black",
         color: isDark ? "white" : "black",
       }}
     >{Label}</button>

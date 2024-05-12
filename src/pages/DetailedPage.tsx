@@ -699,7 +699,6 @@ const DetailedPage = () => {
 			let container = document.getElementById("q" + (i + 1));
 			if (container) {
 				const mini = container.querySelector('input[type="radio"]:checked');
-				//console.log("Container: " + mini?.getAttribute("value"));
 				if(mini?.getAttribute("value")) {
 					if(mini?.getAttribute("value") === "Other") {
 						switch(i){ //checks which question it is
