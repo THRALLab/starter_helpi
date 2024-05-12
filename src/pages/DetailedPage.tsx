@@ -188,10 +188,10 @@ const DetailedPage = () => {
 		<div style={{textAlign:"center", marginTop:"25px"}}>
 		<Button size="lg" onClick={handleShow}>Track Progress</Button>
 		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={true}>
-			<OffcanvasHeader closeButton>
+			<OffcanvasHeader style={{backgroundColor: "#464646", color: "white"}} closeButton>
 				<OffcanvasTitle className="offCanvas-title">User Progress:</OffcanvasTitle>
 			</OffcanvasHeader>
-			<Offcanvas.Body style={{textAlign:"center", fontSize:"18px"}}>
+			<Offcanvas.Body style={{textAlign:"center", fontSize:"18px", backgroundColor: "#464646", color: "white"}}>
 				Questions Answered: {answered} / 7
 				<ProgressBar className="detailed-progress" variant="success" now={answered} animated max={7} />
 			<Container>

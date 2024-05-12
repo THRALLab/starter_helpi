@@ -46,12 +46,12 @@ import { reviews } from "./ResultsPage"
 
     return (
         <>
-        <div className="splash-container">
+        <div className="splash-container" style={{display: "flex", justifyContent: "end", alignItems: "center", flexDirection: "column"}}>
             <img src={splash} alt="businessMountains" className="splashPage"></img>
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
-            <div> <Button size="lg" style={{marginBottom: "350px", width: "200px", height:"80px", fontSize: "1.5vw" /*backgroudnColor: "whitesmoke*/}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
+            <div> <Button size="lg" style={{width: "100%", height:"80%", fontSize: "80%"}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
         </div>
         <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
