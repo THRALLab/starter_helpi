@@ -72,9 +72,10 @@ const ResultsPage = () => {
                         <p>{GPTresponse[7]}</p>
             </div>
         </div>
+        <div className="reviewPrompt"style={{}}> Consider Giving Us A Rating Below!</div>
         <div className="review-system">
-            <h3>Are you satisified with the job recommendations that you received?</h3>
-            <div className="forms">
+            <h4>Are you satisified with the job recommendations that you received?</h4>
+            <div className="review-radio">
 			<Form.Check
 				inline
 				type="radio"
