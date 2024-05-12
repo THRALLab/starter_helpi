@@ -8,8 +8,9 @@ let HomeLink = styled(Link)``
 let Bars = styled(FaBars)``
 let NavMenu = styled.div``
 
+
 Nav = styled.nav`
-background: white;
+background: {darkMode ? "black" : "white"};
 height: 85px;
 width: 100%;
 display: flex;
@@ -21,8 +22,10 @@ top: 0px;
 border-bottom: solid 1px grey;
 `;
 
+
+
 NavLink = styled(Link)`
-    color: black;
+    color: {darkMode ? "white" : "black"};
     display: flex;
     align-items: center;
     height: 85px;

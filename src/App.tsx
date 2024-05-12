@@ -29,9 +29,9 @@ function App() {
     </Router>
     <div className="App"></div>
       <div className='app-footer'>
-        <p>Jobnav.com©</p>
+        <p style={{paddingTop: "8px"}}>Jobnav.com©</p>
         <p>Developed by Saini, Le, Torres, and Walsh</p>
-        <p>For more information, email jassaini@udel.edu</p>
+        <p style={{paddingBottom: "8px"}}>For more information, email jassaini@udel.edu</p>
       </div>
     </>
   );

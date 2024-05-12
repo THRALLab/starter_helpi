@@ -187,11 +187,11 @@ const DetailedPage = () => {
 		
 		<div style={{textAlign:"center", marginTop:"25px"}}>
 		<Button size="lg" onClick={handleShow}>Track Progress</Button>
-		<Offcanvas className="custom-offcanvas"show={progressShow} onHide={handleClose} placement="top" scroll backdrop={true}>
-			<OffcanvasHeader className="custom-offcanvas" closeButton>
+		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={true}>
+			<OffcanvasHeader style={{backgroundColor: "#464646", color: "white"}} closeButton>
 				<OffcanvasTitle className="offCanvas-title">User Progress:</OffcanvasTitle>
 			</OffcanvasHeader>
-			<Offcanvas.Body className="custom-offcanvas" style={{textAlign:"center", fontSize:"18px"}}>
+			<Offcanvas.Body style={{textAlign:"center", fontSize:"18px", backgroundColor: "#464646", color: "white"}}>
 				Questions Answered: {answered} / 7
 				<ProgressBar className="detailed-progress" variant="success" now={answered} animated max={7} />
 			<Container>
@@ -266,6 +266,7 @@ const DetailedPage = () => {
 					checked={otherSelected[0] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response1[4])}
 					onChange={(event) => handleOtherSelect(event,1, 4)}
@@ -330,6 +331,7 @@ const DetailedPage = () => {
 					checked={otherSelected[1] === true}/>	
 				<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response2[4])}
 					onChange={(event) => handleOtherSelect(event,2, 4)}
@@ -394,6 +396,7 @@ const DetailedPage = () => {
 					checked={otherSelected[2] === true}/>
 				<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response3[4])}
 					onChange={(event) => handleOtherSelect(event,3, 4)}
@@ -458,6 +461,7 @@ const DetailedPage = () => {
 					checked={otherSelected[3] === true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response4[4])}
 					onChange={(event) => handleOtherSelect(event,4, 4)}
@@ -523,6 +527,7 @@ const DetailedPage = () => {
 			<div className="answer-box">
 				<Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response5[4])}
 					onChange={(event) => handleOtherSelect(event,5, 4)}
@@ -587,6 +592,7 @@ const DetailedPage = () => {
 					checked={otherSelected[5] === true}	/>
 			<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response6[4])}
 					onChange={(event) => handleOtherSelect(event,6, 4)}
@@ -651,6 +657,7 @@ const DetailedPage = () => {
 					checked={otherSelected[6] ===true}/>
 			<div className="answer-box"><Form.Control
 					type="text"
+					maxLength={50}
 					placeholder="Type your answer"
 					value={String(Response7[4])}
 					onChange={(event) => handleOtherSelect(event,7, 4)}
@@ -692,7 +699,6 @@ const DetailedPage = () => {
 			let container = document.getElementById("q" + (i + 1));
 			if (container) {
 				const mini = container.querySelector('input[type="radio"]:checked');
-				//console.log("Container: " + mini?.getAttribute("value"));
 				if(mini?.getAttribute("value")) {
 					if(mini?.getAttribute("value") === "Other") {
 						switch(i){ //checks which question it is
