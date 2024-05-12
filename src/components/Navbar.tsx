@@ -5,7 +5,8 @@ import { DarkModeToggle } from "./darkMode";
  
 const Navbar = () => {
     return (
-        <>
+        <div style={{}}>
+        
             <Nav>
                 <div className="site-title">
                     <p>JobNav.com</p>
@@ -20,7 +21,7 @@ const Navbar = () => {
                 </div>
                 
             </Nav>
-        </>
+        </div>
     );
 };
  
