@@ -32,7 +32,9 @@
     top: 65%;
 }
 
-.splash-container a {
+
+
+/* .splash-container a {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -48,7 +50,7 @@
         background-color: rgb(33, 72, 197);
         color: white;
     }
-}
+} */
 
 #quiz-descs {
     scroll-margin-block-start: 110px;
