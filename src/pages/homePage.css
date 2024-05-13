@@ -6,6 +6,7 @@
 .splash-container {
     position: relative;
     text-align: center;
+    border-bottom: solid 1px grey;
     
 }
 
@@ -18,26 +19,42 @@
     font-family: "Ivar Headline";
     text-shadow: 5px 5px #558ABB;
     color: white;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .splash-container div.one {
     top: 20%;
+    animation-delay: 1s;
 }
 
 .splash-container div.two {
     top: 40%;
+    animation-delay: 3s;
 }
 
 .splash-container div.three {
     top: 65%;
+    animation-delay: 5s;
 }
 
-.splash-container a {
+
+
+/* .splash-container a {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     top: 85%;
-    font-size: 2vw;
+    font-size: 20px;
     background-color: white;
     border: solid 1px rgb(33, 72, 197);
     color: rgb(33, 72, 197);
@@ -48,7 +65,7 @@
         background-color: rgb(33, 72, 197);
         color: white;
     }
-}
+} */
 
 #quiz-descs {
     scroll-margin-block-start: 110px;
@@ -60,7 +77,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-top: solid 1px grey;
+    padding-top: 20px;
+    /* background-color: #1b5184; */
 }
 
 .quiz-desc {
@@ -70,7 +88,9 @@
     transition: background-color 0.75s ease, margin-top 0.75s ease, color 0.75s ease;
     border-radius: 5px;
     overflow: overlay;
-    box-shadow: 10px 5px 5px rgb(86, 86, 86);
+    box-shadow: 10px 5px 5px rgb(21, 21, 21);
+    color: rgb(33, 72, 197);
+    /* background-color: white; */
    
     &:hover {
         margin-top: -9px;
@@ -99,37 +119,39 @@
 .quiz-desc Link {
     text-decoration: none;
     transition: color 0.75s ease;
+    color: rgb(33, 72, 197);
     &:hover {
         color: white;
     }
 }
 
-.quiz-data-container {
+.quiz-data-row {
     height: 480px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: #CED4DA solid 1px;
-}
+    /* background-color: #1b5184; */
+} 
 
-.quiz-data-text {
-    width: 20%;
-    text-align: center;
-    overflow: overlay;
-    font-size: 26px;
-    height: 90%;
-    margin-top: 190px;
-}
-
-.quiz-data-graph {
-    width: 70%;
+.quiz-data-container {
+    width: 85%;
     border: solid 1px grey;
     border-radius: 2%;
     padding: 30px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 10px 5px 5px rgb(21, 21, 21);
     align-items: center;
-    box-shadow: 10px 5px 5px rgb(86, 86, 86);
+    /* background-color: white; */
+    /* color: black; */
+}
+
+.quiz-data-text {
+    width: 35%;
+    height: 90%;
+    text-align: center;
+    overflow: overlay;
+    font-size: 36px;
 }
 
 .quiz-data-graph .piechart {
@@ -154,7 +176,33 @@
     text-align: center;
 }
 
+.apikey-container-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* background-color: #1b5184; */
+} 
+
+.apikey-container { 
+    height: 160px;
+    width: 85%;
+    border: solid 1px grey;
+    border-radius: 5%;
+    box-shadow: 10px 5px 5px rgb(21, 21, 21);
+    margin-bottom: 100px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
+
 
 :root {
-    --primary-color: blue
+    --primary-color: rgb(33, 72, 197);
 }
+
+/* style={{background: (darkMode ? "black" : "white"), color: (darkMode ? "white" : "black")}} */

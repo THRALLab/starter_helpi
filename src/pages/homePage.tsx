@@ -4,6 +4,7 @@ import splash from "../images/businessman.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
 import { reviews } from "./ResultsPage"
+import { darkMode } from "../components/darkMode"
 
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -51,7 +52,7 @@ import { reviews } from "./ResultsPage"
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
-            <div> <Button size="lg" style={{width: "100%", height:"80%", fontSize: "80%"}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
+            <div className="splash-button"> <Button size="lg" style={{width: "100%", height:"80%", fontSize: "2vw", backgroundColor: "white", color: "rgb(33, 72, 197)", border: "4px solid rgb(33, 72, 197)"}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
         </div>
         <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
@@ -68,33 +69,40 @@ import { reviews } from "./ResultsPage"
                 </div>
             </HomeLink>
         </div>
-        <div className="quiz-data-container">
-            <div className="quiz-data-text">
-                <p>See what other people are saying about their JobNav.com results!</p>
-            </div>
-            <div className="quiz-data-graph">
-                <div className="piechart">
-                    <div style={{
-                        width: "300px",
-                        height: "300px",
-                        borderRadius: "50%",
-                        background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)'
-                    }}></div>
-                    <div className="legend">
-                        <p style={{color: "#386e2d"}}>"I Loved It!"</p>
-                        <p style={{color: "#dbd52c"}}>"It was alright."</p>
-                        <p style={{color: "#b32b2b"}}>"I'm not so impressed."</p>
-                    </div>
+        <div className="quiz-data-row">
+            <div className="quiz-data-container">
+                <div className="quiz-data-text">
+                    <p>See what other people are saying about their JobNav.com results!</p>
                 </div>
-                <p>~All real data collected on our site~</p>
+                <div className="quiz-data-graph">
+                    <div className="piechart">
+                        <div style={{
+                            width: "300px",
+                            height: "300px",
+                            borderRadius: "50%",
+                            background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)'
+                        }}></div>
+                        <div className="legend">
+                            <p style={{color: "#386e2d"}}>"I Loved It!"</p>
+                            <p style={{color: "#dbd52c"}}>"It was alright."</p>
+                            <p style={{color: "#b32b2b"}}>"I'm not so impressed."</p>
+                        </div>
+                    </div>
+                    <p>~All real data collected on our site~</p>
+                </div>
             </div>
         </div>
-        <Form>
-                <Form.Label>API Key:</Form.Label>
-                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                <br></br>
-                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-            </Form></>
+        <div className="apikey-container-container">
+            <div className="apikey-container">
+            <Form style={{marginTop: "10px"}}>
+                    <Form.Label>API Key:</Form.Label>
+                    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                    <br></br>
+                    <Button className="Submit-Button" onClick={handleSubmit} style={{marginBottom: "30px"}}>Submit</Button>
+                </Form>
+            </div>
+        </div>
+        </>
     );
 };
 
