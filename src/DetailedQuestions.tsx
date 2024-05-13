@@ -76,7 +76,7 @@ const DetailedQuestions: React.FC = () => {
         "Continuous learning and personal development in various fields"
       ]
     },
-    // Add more questions her
+    // Add more questions here
   ]);
 
   const [selectedOptions, setSelectedOptions] = useState<Record<number, string>>({});
