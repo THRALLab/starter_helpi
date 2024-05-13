@@ -68,25 +68,27 @@ import { reviews } from "./ResultsPage"
                 </div>
             </HomeLink>
         </div>
-        <div className="quiz-data-container">
-            <div className="quiz-data-text">
-                <p>See what other people are saying about their JobNav.com results!</p>
-            </div>
-            <div className="quiz-data-graph">
-                <div className="piechart">
-                    <div style={{
-                        width: "300px",
-                        height: "300px",
-                        borderRadius: "50%",
-                        background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)'
-                    }}></div>
-                    <div className="legend">
-                        <p style={{color: "#386e2d"}}>"I Loved It!"</p>
-                        <p style={{color: "#dbd52c"}}>"It was alright."</p>
-                        <p style={{color: "#b32b2b"}}>"I'm not so impressed."</p>
-                    </div>
+        <div className="quiz-data-row">
+            <div className="quiz-data-container">
+                <div className="quiz-data-text">
+                    <p>See what other people are saying about their JobNav.com results!</p>
                 </div>
-                <p>~All real data collected on our site~</p>
+                <div className="quiz-data-graph">
+                    <div className="piechart">
+                        <div style={{
+                            width: "300px",
+                            height: "300px",
+                            borderRadius: "50%",
+                            background: 'conic-gradient(#386e2d ' + goodDegs + 'deg, #dbd52c ' + goodDegs + 'deg ' + medDegs + 'deg, #b32b2b ' + medDegs + 'deg ' + badDegs + 'deg)'
+                        }}></div>
+                        <div className="legend">
+                            <p style={{color: "#386e2d"}}>"I Loved It!"</p>
+                            <p style={{color: "#dbd52c"}}>"It was alright."</p>
+                            <p style={{color: "#b32b2b"}}>"I'm not so impressed."</p>
+                        </div>
+                    </div>
+                    <p>~All real data collected on our site~</p>
+                </div>
             </div>
         </div>
         <div className="apikey-container-container">

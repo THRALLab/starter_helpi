@@ -106,12 +106,22 @@
     }
 }
 
-.quiz-data-container {
+.quiz-data-row {
     height: 480px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     border: #CED4DA solid 1px;
+}
+
+.quiz-data-container {
+    width: 85%;
+    border: solid 1px grey;
+    border-radius: 2%;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 10px 5px 5px rgb(86, 86, 86);
 }
 
 .quiz-data-text {
@@ -124,14 +134,7 @@
 }
 
 .quiz-data-graph {
-    width: 70%;
-    border: solid 1px grey;
-    border-radius: 2%;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 10px 5px 5px rgb(86, 86, 86);
+    
 }
 
 .quiz-data-graph .piechart {
@@ -163,7 +166,7 @@
 
 .apikey-container { 
     height: 150px;
-    width: 90%;
+    width: 85%;
     border: solid 1px grey;
     border-radius: 5%;
     box-shadow: 10px 5px 5px rgb(86, 86, 86);
