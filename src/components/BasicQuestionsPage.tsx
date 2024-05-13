@@ -22,6 +22,9 @@ export function BasicQuestionsPage(): JSX.Element {
       background-color: #ab47bc;
       transform: scale(1.3);
     }
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
     `}
   `;
 
@@ -152,7 +155,13 @@ export function BasicQuestionsPage(): JSX.Element {
 
   const handleGetAnswers = async () => {
     const prompt = selectedAnswers.join(' ');
-    const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+    let apiKey = localStorage.getItem('MYKEY');
+
+    console.log('API Key:', apiKey);
+
+    if (apiKey){
+        apiKey = apiKey.replace(/^"(.*)"$/, '$1')
+    }
   
     if (!apiKey) {
       console.error("API key is missing. Make sure REACT_APP_OPENAI_API_KEY is set in your .env file.");
@@ -204,7 +213,7 @@ export function BasicQuestionsPage(): JSX.Element {
       </Navbar.Collapse>
     </Container>
   </Navbar>
-  <h1 className='padding4'>Basic Questions Page</h1>
+  <h1 className='padding7'>Basic Questions Page</h1>
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
     <main></main>
     <div className='padding5'>
@@ -212,13 +221,13 @@ export function BasicQuestionsPage(): JSX.Element {
       <CardContent>
         {!displayFinalResults ? (
           <>
-            <Typography level="title-md">Question {currentQuestion + 1} of {questions.length}</Typography>
+            <Typography style={{paddingTop: '20px'}} level="title-md"><div className='poppins-regular'>Question {currentQuestion + 1} of {questions.length}</div></Typography>
             <ProgressBar
               now={(currentQuestion + 1) * (100 / questions.length)}
               striped variant="info"
               style={{ margin: '20px 0', width: '100%' }}
             />
-            <Typography>{questions[currentQuestion].questionText}</Typography>
+            <Typography style={{paddingTop: '10px', paddingBottom: '20px'}}><div className='poppins-regular'>{questions[currentQuestion].questionText}</div></Typography>
             {questions[currentQuestion].answerOptions.map((option, index) => (
               <StyledButton 
                 key={index} 
