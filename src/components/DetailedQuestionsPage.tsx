@@ -75,15 +75,27 @@ export function DetailedQuestionsPage(): JSX.Element {
             })));
 
             const prompt = "Based on the answers provided, suggest five suitable career options and explain why each would be a good fit.";
+            let apiKey = localStorage.getItem('MYKEY');
+            
+            console.log('API Key:', apiKey);
+
+            if (apiKey){
+                apiKey = apiKey.replace(/^"(.*)"$/, '$1')
+            }
 
             const response = await axios.post('https://api.openai.com/v1/chat/completions', {
                 model: "gpt-3.5-turbo",
                 messages: [...messages, { role: "system", content: prompt }]
             }, {
                 headers: {
-                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+                    'Authorization': `Bearer ${apiKey}`,
                     'Content-Type': 'application/json'
                 }
+            });
+
+            console.log('Request Headers:', {
+                'Authorization': `Bearer ${apiKey}`,
+                'Content-Type': 'application/json'
             });
 
             const formattedResponse = response.data.choices[0].message.content.split('\n').map((item: string, index: number) => (<p key={index}>{item}</p>));
@@ -146,7 +158,7 @@ export function DetailedQuestionsPage(): JSX.Element {
             }}>
             <Card variant="plain" sx={{ width: 1000, height: 400}}>
                 <CardContent>
-                    <Typography style={{paddingTop: '20px'}} level="h4">Question {currentQuestion + 1} of {questions.length}</Typography>
+                    <Typography style={{paddingTop: '20px'}} level="h4"><div className='poppins-regular'>Question {currentQuestion + 1} of {questions.length}</div></Typography>
                     <div style={{paddingTop: '15px'}}>
                     {<ProgressBar
                             min={0} // Minimum value progress can begin from
