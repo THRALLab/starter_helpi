@@ -15,8 +15,8 @@
     border-radius: 5px;
     overflow: overlay;
     box-shadow: 10px 5px 5px rgb(21, 21, 21);
-    background-color: white;
-    color: black;
+    /* background-color: white; */
+    /* color: black; */
 }
 
 .question-row{
@@ -27,7 +27,7 @@
 }
 
 .question {
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +36,7 @@
     padding: 15px 5px;
     border-radius: 5px;
     box-shadow: 10px 5px 5px rgb(21, 21, 21);
-    color: black;
+    /* color: black; */
 }
 
 .question span {
