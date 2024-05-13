@@ -763,7 +763,7 @@ const DetailedPage = () => {
 					}
 				],
 				temperature: 0.8,
-				max_tokens: 1,//should be 512
+				max_tokens: 512,//should be 512
 				top_p: 1,
 				});
 				
