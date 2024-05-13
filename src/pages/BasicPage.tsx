@@ -114,7 +114,7 @@ const BasicPage = () => {
 				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
 				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
 				setIsLoading(false);
-				window.location.href = "/ResultsPage/"; 
+				window.location.href = "/starter_helpi/#/ResultsPage/"; 
 			}
 			catch(e){ //catches any errors that may occur with an invalid API key
 				setIsLoading(false);
