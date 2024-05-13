@@ -70,7 +70,7 @@ import { darkMode } from "../components/darkMode"
             </HomeLink>
         </div>
         <div className="quiz-data-row">
-            <div className="quiz-data-container" style={{background: (darkMode ? "black" : "white"), color: (darkMode ? "white" : "black")}}>
+            <div className="quiz-data-container">
                 <div className="quiz-data-text">
                     <p>See what other people are saying about their JobNav.com results!</p>
                 </div>

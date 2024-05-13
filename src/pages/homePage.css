@@ -78,7 +78,7 @@
     align-items: center;
     justify-content: space-around;
     padding-top: 20px;
-    background-color: #1b5184;
+    /* background-color: #1b5184; */
 }
 
 .quiz-desc {
@@ -90,7 +90,7 @@
     overflow: overlay;
     box-shadow: 10px 5px 5px rgb(21, 21, 21);
     color: rgb(33, 72, 197);
-    background-color: white;
+    /* background-color: white; */
    
     &:hover {
         margin-top: -9px;
@@ -130,8 +130,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #1b5184;
-}
+    /* background-color: #1b5184; */
+} 
 
 .quiz-data-container {
     width: 85%;
@@ -181,8 +181,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #1b5184;
-}
+    /* background-color: #1b5184; */
+} 
 
 .apikey-container { 
     height: 160px;
@@ -204,3 +204,5 @@
 :root {
     --primary-color: rgb(33, 72, 197);
 }
+
+/* style={{background: (darkMode ? "black" : "white"), color: (darkMode ? "white" : "black")}} */
