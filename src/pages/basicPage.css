@@ -1,5 +1,4 @@
 
-
 .quiz-desc-header-container {
     display: flex;
     justify-content: center;
@@ -17,6 +16,7 @@
     overflow: overlay;
     box-shadow: 10px 5px 5px rgb(21, 21, 21);
     background-color: white;
+    color: black;
 }
 
 .question-row{
@@ -36,6 +36,7 @@
     padding: 15px 5px;
     border-radius: 5px;
     box-shadow: 10px 5px 5px rgb(21, 21, 21);
+    color: black;
 }
 
 .question span {

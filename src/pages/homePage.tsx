@@ -4,6 +4,7 @@ import splash from "../images/businessman.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
 import { reviews } from "./ResultsPage"
+import { darkMode } from "../components/darkMode"
 
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -69,7 +70,7 @@ import { reviews } from "./ResultsPage"
             </HomeLink>
         </div>
         <div className="quiz-data-row">
-            <div className="quiz-data-container">
+            <div className="quiz-data-container" style={{background: (darkMode ? "black" : "white"), color: (darkMode ? "white" : "black")}}>
                 <div className="quiz-data-text">
                     <p>See what other people are saying about their JobNav.com results!</p>
                 </div>
@@ -92,7 +93,7 @@ import { reviews } from "./ResultsPage"
             </div>
         </div>
         <div className="apikey-container-container">
-            <div className="apikey-container">
+            <div className="apikey-container" style={{background: (darkMode ? "black" : "white"), color: (darkMode ? "white" : "black")}}>
             <Form style={{marginTop: "10px"}}>
                     <Form.Label>API Key:</Form.Label>
                     <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>

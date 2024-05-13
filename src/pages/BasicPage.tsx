@@ -5,6 +5,7 @@ import { key } from "./homePage"
 import { parseAnswers } from "./DetailedPage";
 import "./basicPage.css"
 import LoaderComp from "../components/loader";
+// import { darkMode } from "../components/darkMode"
 
 
 const BasicPage = () => {
