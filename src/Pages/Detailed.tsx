@@ -3,7 +3,6 @@ import { Button, ProgressBar } from 'react-bootstrap';
 import './Pages.css';
 import './questions.css';
 
-
 const config = { /* Configuration for confetti */
   angle: 90,
   spread: 150,
@@ -96,8 +95,10 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
         </div>
       )}
       <header />
-      <div className="progressBarContainer">
-        <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+     <div className="progressBarContainer">
+    <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+    <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${progressPercentage + 0.5}%` }} />
+</div>
       </div>
       <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button>
       <div className="column">
