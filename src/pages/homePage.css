@@ -34,17 +34,17 @@
 
 .splash-container div.one {
     top: 20%;
-    animation-delay: 0s;
+    animation-delay: 1s;
 }
 
 .splash-container div.two {
     top: 40%;
-    animation-delay: 1s;
+    animation-delay: 3s;
 }
 
 .splash-container div.three {
     top: 65%;
-    animation-delay: 2s;
+    animation-delay: 5s;
 }
 
 
