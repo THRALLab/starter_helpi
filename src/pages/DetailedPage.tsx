@@ -186,7 +186,7 @@ const DetailedPage = () => {
 		<hr style={{marginTop:"10px", opacity:".9"}}></hr>
 		
 		<div style={{textAlign:"center", marginTop:"25px"}}>
-		<Button size="lg" onClick={handleShow}>Track Progress</Button>
+		<button className="button" onClick={handleShow}>Track Progress </button>
 		<Offcanvas show={progressShow} onHide={handleClose} placement="top" scroll backdrop={true}>
 			<OffcanvasHeader style={{backgroundColor: "#464646", color: "white"}} closeButton>
 				<OffcanvasTitle className="offCanvas-title">User Progress:</OffcanvasTitle>
@@ -666,7 +666,7 @@ const DetailedPage = () => {
 			</div>
     
 		<div style={{textAlign:"center"}}>
-		<Button size="lg" onClick={sendResponse} hidden={!allow} style={{marginRight:"10px"}}>Get Answer!</Button>
+		<button className="button" onClick={sendResponse} hidden={!allow}>Get Answer!</button>
 		<Offcanvas show={isLoading} placement={"top"} scroll={false} backdrop={true}>
 			<Offcanvas.Body style={{margin:"50px", display:"flex", flexDirection: "row",  fontSize:"18px", justifyContent:"center"}}>
 				<div style={{display:"flex", flexDirection: "column", alignItems:"center"}}>
@@ -675,7 +675,7 @@ const DetailedPage = () => {
 				</div>
 			</Offcanvas.Body>
 		</Offcanvas>
-		<Button size="lg" onClick={(doReset)}>Clear All</Button>
+		<button className="button" onClick={(doReset)}>Clear All</button>
 		</div>
 		<div style={{display:"flex", marginTop:"10px", textAlign:"center",justifyContent:"center"}}>
 		<Alert show={alert} variant="success" onClose={() => setAlert(false)} dismissible style={{marginBottom:"10px"}} >
