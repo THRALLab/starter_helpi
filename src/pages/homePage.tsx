@@ -93,11 +93,11 @@ import { reviews } from "./ResultsPage"
         </div>
         <div className="apikey-container-container">
             <div className="apikey-container">
-            <Form>
+            <Form style={{marginTop: "10px"}}>
                     <Form.Label>API Key:</Form.Label>
                     <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
                     <br></br>
-                    <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                    <Button className="Submit-Button" onClick={handleSubmit} style={{marginBottom: "30px"}}>Submit</Button>
                 </Form>
             </div>
         </div>
