@@ -51,7 +51,7 @@ import { reviews } from "./ResultsPage"
             <div className="one">Struggling to find your way?</div>
             <div className="two">Looking for answers and coming up short?</div>
             <div className="three">Take the quiz that best suits your needs and worry no longer!</div>
-            <div> <Button size="lg" style={{width: "100%", height:"80%", fontSize: "80%"}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
+            <div> <Button size="lg" style={{width: "100%", height:"80%", fontSize: "2vw", backgroundColor: "pearl", color: "rgb(33, 72, 197)", border: "4px solid rgb(33, 72, 197)"}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
         </div>
         <div id="quiz-descs"></div>
         <div className="quiz-desc-container">
