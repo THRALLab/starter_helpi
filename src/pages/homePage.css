@@ -71,6 +71,7 @@
     border-radius: 5px;
     overflow: overlay;
     box-shadow: 10px 5px 5px rgb(86, 86, 86);
+    color: rgb(33, 72, 197);
    
     &:hover {
         margin-top: -9px;
@@ -99,6 +100,7 @@
 .quiz-desc Link {
     text-decoration: none;
     transition: color 0.75s ease;
+    color: rgb(33, 72, 197);
     &:hover {
         color: white;
     }
@@ -154,7 +156,24 @@
     text-align: center;
 }
 
+.apikey-container-container {
+    display: flex;
+    justify-content: center;
+}
+
+.apikey-container { 
+    height: 150px;
+    width: 90%;
+    border: solid 1px grey;
+    border-radius: 5%;
+    box-shadow: 10px 5px 5px rgb(86, 86, 86);
+    margin-bottom: 100px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
 
 :root {
-    --primary-color: blue
+    --primary-color: rgb(33, 72, 197);
 }

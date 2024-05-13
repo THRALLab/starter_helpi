@@ -89,12 +89,17 @@ import { reviews } from "./ResultsPage"
                 <p>~All real data collected on our site~</p>
             </div>
         </div>
-        <Form>
-                <Form.Label>API Key:</Form.Label>
-                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                <br></br>
-                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-            </Form></>
+        <div className="apikey-container-container">
+            <div className="apikey-container">
+            <Form>
+                    <Form.Label>API Key:</Form.Label>
+                    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                    <br></br>
+                    <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                </Form>
+            </div>
+        </div>
+        </>
     );
 };
 
