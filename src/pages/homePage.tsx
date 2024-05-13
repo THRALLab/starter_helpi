@@ -4,7 +4,7 @@ import splash from "../images/businessman.png"
 import './homePage.css';
 import { HomeLink } from "../components/NavbarElements"
 import { reviews } from "./ResultsPage"
-import { darkMode } from "../components/darkMode"
+// import { darkMode } from "../components/darkMode"
 
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
