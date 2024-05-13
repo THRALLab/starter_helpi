@@ -271,64 +271,71 @@ const BasicPage = () => {
 		</div>
 		<hr style={{marginTop:"78px", marginBottom:"80px", opacity:1}}></hr>
 		<div className="question-row">
-			<span className="QuestionNum">#5</span> <span>
-			<Stack className="last4" gap={3} style={{marginTop: "30px"}}>
-			<Form.Check 
-						type="radio"
-						id="q5-Option1"
-						label="I enjoy working with my hands."
-						name="question5"
-						onChange={() => updateChoice(8)}
-						checked={response[4] === 1}/>
-					<Form.Check  
-						type="radio"
-						id="q5-Option2"
-						label="I don't like working with my hands."
-						name="question5"
-						onChange={() => updateChoice(9)}
-						checked={response[4] === 0}/>
-			</Stack>
-			</span>				
-			<span className="QuestionNum">#6</span> <span>
-			<Stack  className="last4" gap={3} style={{marginTop: "30px"}}> 
-					<Form.Check 
-						type="radio"
-						id="q6-Option1"
-						label="I would work a job I dislike for the money."
-						name="question6"
-						onChange={() => updateChoice(10)}
-						checked={response[5] === 1}
-				
-						/>
-					<Form.Check 
-						type="radio"
-						id="q6-Option2"
-						label="I would only ever work a job I like."
-						name="question6"
-						onChange={() => updateChoice(11)}
-						checked={response[5] === 0}
-				
-					/>
+			<div className="question">
+				<span className="QuestionNum">#5</span> <span>
+				<Stack className="last4" gap={3} style={{marginTop: "30px"}}>
+				<Form.Check 
+							type="radio"
+							id="q5-Option1"
+							label="I enjoy working with my hands."
+							name="question5"
+							onChange={() => updateChoice(8)}
+							checked={response[4] === 1}/>
+						<Form.Check  
+							type="radio"
+							id="q5-Option2"
+							label="I don't like working with my hands."
+							name="question5"
+							onChange={() => updateChoice(9)}
+							checked={response[4] === 0}/>
 				</Stack>
-			</span>
-			<span className="QuestionNum">#7</span> <span>
-			<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
-			<Form.Check 
-						type="radio"
-						id="q7-Option1"
-						label="I want to make a difference in the world."
-						name="question7"
-						onChange={() => updateChoice(12)}
-						checked={response[6] === 1}/>
-					<Form.Check 
-						type="radio"
-						id="q7-Option2"
-						label="I just want a job."
-						name="question7"
-						onChange={() => updateChoice(13)}
-						checked={response[6] === 0}/>
-			</Stack>
-			</span>	
+				</span>	
+			</div>	
+			<div className="question">		
+				<span className="QuestionNum">#6</span> <span className="basic-radials">
+				<Stack  className="last4" gap={3} style={{marginTop: "30px"}}> 
+						<Form.Check 
+							type="radio"
+							id="q6-Option1"
+							label="I would work a job I dislike for the money."
+							name="question6"
+							onChange={() => updateChoice(10)}
+							checked={response[5] === 1}
+					
+							/>
+						<Form.Check 
+							type="radio"
+							id="q6-Option2"
+							label="I would only ever work a job I like."
+							name="question6"
+							onChange={() => updateChoice(11)}
+							checked={response[5] === 0}
+					
+						/>
+					</Stack>
+				</span>
+			</div>
+			<div className="question">
+				<span className="QuestionNum">#7</span> <span>
+				<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
+				<Form.Check 
+							type="radio"
+							id="q7-Option1"
+							label="I want to make a difference in the world."
+							name="question7"
+							onChange={() => updateChoice(12)}
+							checked={response[6] === 1}/>
+						<Form.Check 
+							type="radio"
+							id="q7-Option2"
+							label="I just want a job."
+							name="question7"
+							onChange={() => updateChoice(13)}
+							checked={response[6] === 0}/>
+				</Stack>
+				</span>	
+			</div>
+			<div className="question">
 			<span className="QuestionNum">#8</span> <span>
 			<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
 			<Form.Check 
@@ -348,6 +355,7 @@ const BasicPage = () => {
 						checked={response[7] === 0}/>
 					</Stack>
 				</span>	
+			</div>
 			</div>
 			
 		</div>
