@@ -19,7 +19,7 @@ const QUESTIONS = [
   "I am comfortable leading a team of people or giving orders to others",
   "I would prefer not to be behind a desk for the majority of my job",
   "I would prefer it if my work tasks varied on a day to day basis",
-  "I want a hard seperation between work and home life",
+  "I want a hard separation between work and home life",
   "I hope to climb the corporate ladder in one company as opposed to jumping between jobs",
   "I like needing to learn new skills to be efficient at my job",
   "I prefer working in a group setting compared to independently",
@@ -38,6 +38,7 @@ const BasicQuestions: React.FC = () => {
   const progress = (chosenOption.filter(option => option !== null).length / QUESTIONS.length) * 100;
   //See if all questions are answered
   const allQuestionsAnswered = chosenOption.every(option => option !== null);
+  const currKey = localStorage.getItem("MYKEY");
   const navigate = useNavigate();
   
   //Saves answers and questions into json file using local storage
@@ -49,7 +50,7 @@ const BasicQuestions: React.FC = () => {
         localStorage.setItem('BasicQuestionAnswers', JSON.stringify(answers));
       }
   }
-  //saves changes to localstorage and navigates to results page
+  //saves changes to localstorage and navigates to results page, for use when results button is pressed
   function handleResults() {
     saveToLocalStorage();
     navigate("/basicResults")
@@ -95,7 +96,7 @@ const BasicQuestions: React.FC = () => {
           ))}
         </div>
       {allQuestionsAnswered ? <p>Thank you for taking the time to answer the above questions! Press the below button to see results</p>: <p></p>}
-          <button onClick={ handleResults } disabled={!allQuestionsAnswered}>See Results</button>
+          <button onClick={ handleResults } disabled={ !allQuestionsAnswered || currKey === null }>See Results</button>
       </div>
   );
 }
