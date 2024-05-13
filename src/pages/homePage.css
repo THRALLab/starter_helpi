@@ -142,8 +142,8 @@
     justify-content: space-around;
     box-shadow: 10px 5px 5px rgb(21, 21, 21);
     align-items: center;
-    background-color: white;
-    color: black;
+    /* background-color: white; */
+    /* color: black; */
 }
 
 .quiz-data-text {
@@ -194,8 +194,8 @@
     margin-top: 30px;
     display: flex;
     justify-content: space-around;
-    background-color: white;
-    color: black;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 

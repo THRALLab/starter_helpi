@@ -93,7 +93,7 @@ import { darkMode } from "../components/darkMode"
             </div>
         </div>
         <div className="apikey-container-container">
-            <div className="apikey-container" style={{background: (darkMode ? "black" : "white"), color: (darkMode ? "white" : "black")}}>
+            <div className="apikey-container">
             <Form style={{marginTop: "10px"}}>
                     <Form.Label>API Key:</Form.Label>
                     <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
