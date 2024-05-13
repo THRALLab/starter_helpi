@@ -122,15 +122,15 @@
     display: flex;
     justify-content: space-around;
     box-shadow: 10px 5px 5px rgb(86, 86, 86);
+    align-items: center;
 }
 
 .quiz-data-text {
     width: 20%;
+    height: 90%;
     text-align: center;
     overflow: overlay;
     font-size: 26px;
-    height: 90%;
-    margin-top: 190px;
 }
 
 .quiz-data-graph {
