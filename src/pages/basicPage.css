@@ -2,7 +2,12 @@
     font-size: 50px;
     margin-left: 35px;
     display:flex;	
-    }
+}
+
+.quiz-desc-header-container {
+    display: flex;
+    justify-content: center;
+}
 
 .question-container{
     display:flex;

@@ -151,16 +151,18 @@ const BasicPage = () => {
 	return (<>
 		<body className="page-color">
 		<div className="Page-Container">
-			<div className="quiz-desc-header">
-				<h1>
-					Basic Quiz
-				</h1>
-				<p style={{ textAlign: "center" }}>
-					Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
-					The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
-					With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
-				</p>
-				
+			<div className="quiz-desc-header-container">
+				<div className="quiz-desc-header">
+					<h1>
+						Basic Quiz
+					</h1>
+					<p style={{ textAlign: "center" }}>
+						Want to take a peek into your career’s future, but don’t have time to take the full career assessment? 
+						The basic career quiz is a smaller, faster alternative that gives similar results to the detailed assessment.
+						With only 8 parts, choose the statement that best suites you, this quiz should only take 5 minutes of your time to show you the future of your career.
+					</p>
+					
+				</div>
 			</div>
 			<div style={{textAlign: "center"}}>
 	
