@@ -182,29 +182,32 @@ const BasicPage = () => {
 		  			 </Alert>
 				</div>
 		</div>
-		<div className="question-container">
-		<span className="QuestionNum">#1</span> 
-		<span className="radio-container">
-			<Stack gap={3} style={{marginTop: "30px"}}>
-			<Form.Check 
-					type="radio"
-					id="q1-Option1"
-					label="I prefer working in a group."
-					name="question1"
-					onChange={() => updateChoice(0)}
-					checked={response[0] === 1 }/>
-				<Form.Check
-					type="radio"
-					id="q-1Option2"
-					label="I prefer working on my own."
-					name="question1"
-					onChange={() => updateChoice(1)}
-					checked={response[0] === 0}/>
-			</Stack>
-		</span>
+		<div className="question-row">
+		<div className="question">
+			<span className="QuestionNum">#1</span> 
+			<span className="radio-container">
+				<Stack gap={3}>
+				<Form.Check 
+						type="radio"
+						id="q1-Option1"
+						label="I prefer working in a group."
+						name="question1"
+						onChange={() => updateChoice(0)}
+						checked={response[0] === 1 }/>
+					<Form.Check
+						type="radio"
+						id="q-1Option2"
+						label="I prefer working on my own."
+						name="question1"
+						onChange={() => updateChoice(1)}
+						checked={response[0] === 0}/>
+				</Stack>
+			</span>
+		</div>
+		<div className="question">
 			<span className="QuestionNum">#2</span> 
 			<span className="radio-container">
-			<Stack gap={3} style={{marginTop: "30px"}}> 
+			<Stack gap={3}> 
 			<Form.Check 
 					type="radio"
 					id="q2-Option1"
@@ -221,9 +224,11 @@ const BasicPage = () => {
 					checked={response[1] === 0}/>
 			</Stack>
 			</span>
+		</div>
+		<div className="question">
 			<span className="QuestionNum">#3</span> 
 			<span className="radio-container">
-				<Stack gap={3} style={{marginTop: "30px"}}> 
+				<Stack gap={3}> 
 				<Form.Check 
 					type="radio"
 					id="q3-Option1"
@@ -240,9 +245,11 @@ const BasicPage = () => {
 					checked={response[2] === 0}/>
 				</Stack>
 			</span>
+		</div>
+		<div className="question">
 			<span className="QuestionNum">#4</span> 
 			<span className="radio-container">
-				<Stack gap={3} style={{marginTop: "20px"}}> 
+				<Stack gap={3}> 
 				<Form.Check 
 					type="radio"
 					id="q4-Option1"
@@ -259,9 +266,10 @@ const BasicPage = () => {
 					checked={response[3] === 0}/>
 				</Stack>
 			</span>	
-			</div>
+		</div>
+		</div>
 		<hr style={{marginTop:"78px", marginBottom:"80px", opacity:1}}></hr>
-		<div className="question-container">
+		<div className="question-row">
 			<span className="QuestionNum">#5</span> <span>
 			<Stack className="last4" gap={3} style={{marginTop: "30px"}}>
 			<Form.Check 
