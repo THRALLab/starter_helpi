@@ -34,7 +34,7 @@ interface QuestionOption {
 }
 
 const Basic: React.FC<BasicProp> = ({ handlePage }) => {
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    const [selectedOptions, setSelectedOptions] = useState<string[]>(Array(7).fill(''));
     const [confetti, setConfetti] = useState(false);
     const [confettiShown, setConfettiShown] = useState(false); 
 
@@ -102,7 +102,7 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
             ]
         }
     ];
-    const allQuestionsAnswered = questions.every((q, index) => selectedOptions[index] !== undefined && selectedOptions[index] !== "");
+    const allQuestionsAnswered = selectedOptions.every(option => option !== '');
    
     useEffect(() => {
         if (allQuestionsAnswered && !confettiShown) { /* Confetti effect when all questions are answered */
@@ -116,7 +116,7 @@ const Basic: React.FC<BasicProp> = ({ handlePage }) => {
     }, [selectedOptions, confettiShown]);
 
     const totalQuestions = questions.length;
-    const answeredQuestions = Object.keys(selectedOptions).length;
+    const answeredQuestions = selectedOptions.filter(option => option !== '').length;
     const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
 
     return (
