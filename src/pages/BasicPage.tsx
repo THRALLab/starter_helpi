@@ -269,11 +269,10 @@ const BasicPage = () => {
 			</span>	
 		</div>
 		</div>
-		<hr style={{marginTop:"78px", marginBottom:"80px", opacity:1}}></hr>
 		<div className="question-row">
 			<div className="question">
 				<span className="QuestionNum">#5</span> <span>
-				<Stack className="last4" gap={3} style={{marginTop: "30px"}}>
+				<Stack className="last4" gap={3}>
 				<Form.Check 
 							type="radio"
 							id="q5-Option1"
@@ -293,7 +292,7 @@ const BasicPage = () => {
 			</div>	
 			<div className="question">		
 				<span className="QuestionNum">#6</span> <span className="basic-radials">
-				<Stack  className="last4" gap={3} style={{marginTop: "30px"}}> 
+				<Stack  className="last4" gap={3}> 
 						<Form.Check 
 							type="radio"
 							id="q6-Option1"
@@ -317,7 +316,7 @@ const BasicPage = () => {
 			</div>
 			<div className="question">
 				<span className="QuestionNum">#7</span> <span>
-				<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
+				<Stack className="last4" gap={3} > 
 				<Form.Check 
 							type="radio"
 							id="q7-Option1"
@@ -337,7 +336,7 @@ const BasicPage = () => {
 			</div>
 			<div className="question">
 			<span className="QuestionNum">#8</span> <span>
-			<Stack className="last4" gap={3} style={{marginTop: "30px"}}> 
+			<Stack className="last4" gap={3}> 
 			<Form.Check 
 						type="radio"
 						id="q8-Option1"

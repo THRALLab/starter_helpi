@@ -54,7 +54,7 @@
 
 .review-radio{
     display:flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-left:50px;
     padding-bottom: 20px
 }
