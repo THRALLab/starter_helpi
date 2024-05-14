@@ -14,9 +14,10 @@ const Navbar = () => {
                 <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <DarkModeToggle />
                     <NavMenu>
-                        <NavLink to="/">Home Page</NavLink>
-                        <NavLink to="/BasicPage">Basic Page</NavLink>
-                        <NavLink to="/DetailedPage">Detailed Page</NavLink>
+                        <NavLink to="/">Home</NavLink>
+                        <NavLink to="/BasicPage">Basic Quiz</NavLink>
+                        <NavLink to="/DetailedPage">Detailed Quiz</NavLink>
+                        <NavLink to="/ResultsPage">Results</NavLink>
                     </NavMenu>
                 </div>
                 

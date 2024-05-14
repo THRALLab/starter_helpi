@@ -44,7 +44,7 @@ const ResultsPage = () => {
 
     let GPTresponse:string[];
     if (response === null) {
-        GPTresponse = ["Career not found", "Please try again", "", "", "", "", "", ""]
+        GPTresponse = ["No Career Found!", "Please go to one of JobNav's career quizzes to generate your ideal career paths.", "", "", "", "", "", ""]
     }
     else {
         GPTresponse = JSON.parse(response || "[]");
