@@ -1,0 +1,46 @@
+.detailedQ-img {
+  height: 55vh;
+  width: 700px;
+}
+
+.question-p {
+  width: 750px;
+  font-size: 23px;
+  padding: 10px 0;
+  color: #fff;
+}
+.quiz-box {
+  width: 800px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  background-color: #1c768f;
+  border-radius: 30px;
+  padding: 10px 30px 30px 30px;
+}
+
+.textbox {
+  margin-top: 10px;
+  width: 80%;
+  max-width: 1000px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.answer-input-box {
+  margin-top: 15px;
+  width: 400px;
+  height: 40px;
+  border-radius: 30px;
+  padding: 4px 10px;
+  font-size: 18px;
+}
+
+.answer-input-box::placeholder {
+  color: #1c768f;
+}

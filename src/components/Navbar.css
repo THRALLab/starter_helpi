@@ -1,0 +1,37 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1c768f;
+}
+.navBar .logo {
+  width: 7rem;
+  border-radius: 0.1rem;
+  cursor: pointer;
+  margin: 1rem;
+  transition: width 0.1s ease-in-out;
+}
+
+.navLinks {
+  padding: 1rem;
+}
+
+.home-btn,
+.basic-btn,
+.detailed-btn {
+  background-color: #fa991c;
+  margin: 0 1rem;
+  border: none;
+  padding: 0.6rem 2rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+}
+
+.home-btn:hover,
+.basic-btn:hover,
+.detailed-btn:hover {
+  color: #000;
+  background-color: #fff;
+}

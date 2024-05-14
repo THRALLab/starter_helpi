@@ -1,0 +1,13 @@
+.progressBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px 5px 0;
+}
+
+.progressBar {
+  width: 800px;
+  height: 30px;
+  margin: 4px;
+  color: black;
+}

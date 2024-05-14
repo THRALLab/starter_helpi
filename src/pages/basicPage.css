@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loading-image {
+  height: 20vh;
+  width: 350px;
+}
+
+.basic-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.next-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  text-align: center;
+  left: 50%;
+  margin: auto;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.next-container BUTTON {
+  background-color: #fa991c;
+  margin: 0 1rem;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.2s ease-in;
+}
+
+.next-container BUTTON:hover {
+  color: #000;
+  background-color: #1c768f;
+}
+
+.footer P {
+  font-size: 20px;
+  background-color: #1c768f;
+  color: #f4f9fa;
+  font-weight: 900;
+  text-align: center;
+}
+.api-key-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-label {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.api-input {
+  border-radius: 15px;
+  padding: 5px 20px;
+  border: none;
+  width: 300px;
+}
+
+.Submit-Button {
+  background-color: #fa991c;
+  margin: 0.5rem 0;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: #000;
+  transition: padding 0.1s ease-in;
+  font-size: 15px;
+}
+
+.Submit-Button:hover {
+  color: #fff;
+}
+
+.footer P {
+  font-size: 15px;
+}
+
+.resultBox {
+  margin: 10px;
+  align-items: center;
+  width: 80%;
+  justify-content: center;
+  text-align: center;
+  background-color: #fa991c;
+  padding: 20px;
+  border-radius: 20px;
+  color: #fff;
+}
