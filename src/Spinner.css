@@ -1,0 +1,38 @@
+.loading {
+  position: relative; /* Make sure the container is relative */
+  display: inline-block; /* Ensure the loader takes only the space it needs */
+}
+
+.spinner {
+  position: relative; /* Make sure the spinner container is relative */
+  width: 100px; /* Adjust the width of the spinner */
+  height: 100px; /* Adjust the height of the spinner */
+  border: 4px solid #f3f3f3; /* Spinner border color */
+  border-top: 4px solid #3498db; /* Spinner top border color */
+  border-radius: 50%; /* Make it a circle */
+  animation: spin 1s linear infinite; /* Spinner animation */
+}
+
+.rocket-icon {
+  position: absolute;
+  top: 50%; /* Position the rocket vertically at the center of the spinner */
+  left: 50%; /* Position the rocket horizontally at the center of the spinner */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Center the rocket exactly on top of the spinner */
+  font-size: 60px; /* Adjust the size of the rocket */
+  animation: moveRocket 1s linear infinite; /* Rocket animation */
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg); /* Rotate 360 degrees */
+  }
+}
+
+@keyframes moveRocket {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg); /* Move the rocket and rotate in the opposite direction of the spinner */
+  }
+}

@@ -1,0 +1,26 @@
+.Results-Title {
+  font-size: 30px;
+  color: white;
+}
+.Results {
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.Seperate-Careers {
+  border-top: 1px solid gray;
+  cursor: pointer;
+}
+.body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease; /* Adjust the duration and easing as needed */
+}
+
+.body.expanded {
+  max-height: 1000px; /* Or any other large enough value to accommodate the content */
+}
