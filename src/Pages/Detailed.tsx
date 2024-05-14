@@ -86,7 +86,7 @@ const questions: QuestionOption[] = [
         ]
     },
     {
-        question: "How significant is a structured and consistent routine within your workplace to your overall job satisfaction and productivity?",
+        question: "How significant is a structured routine within your workplace to your overall job satisfaction and productivity?",
         options: [
             { label: "Not at All", iconSrc: sadIcon },
             { label: "Neutral", iconSrc: mehIcon },
