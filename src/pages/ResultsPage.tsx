@@ -3,6 +3,11 @@ import './resultsPage.css';
 import { Button, Form } from 'react-bootstrap';
 
 
+export function parseAnswers(answers: string|null): string[] {
+	if (answers === null) return [];
+    let array = answers.substring(2,answers.length-2).split("\", \"");
+    return array;
+}
 
 const reviewData: number[] = [0,0,0];
 const saveReviewData = "MYPIE";

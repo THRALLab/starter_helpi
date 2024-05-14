@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Alert, Stack, ProgressBar, Offcanvas} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
-import { parseAnswers } from "./DetailedPage";
+import { parseAnswers } from "./ResultsPage";
 import "./basicPage.css"
 import LoaderComp from "../components/loader";
-// import { darkMode } from "../components/darkMode"
 
 
 const BasicPage = () => {

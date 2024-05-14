@@ -5,33 +5,32 @@ import OpenAI from "openai";
 import { key } from "./homePage"
 import "./detailedPage.css";
 import LoaderComp from "../components/loader";
+import { parseAnswers } from "./ResultsPage";
 
-export function parseAnswers(answers: string|null): string[] {
-	if (answers === null) return [];
-    let array = answers.substring(2,answers.length-2).split("\", \"");
-    return array;
-}
+const QUESTIONSTARTS = //first half of the questions to make response formatting for GPT easier, will add the user's response to the end of the strings
+	[" If I slept through my alarm, I would ", 
+		" If I was assigned to create a presentation for a conference, I would ",
+		" If a coworker tells me to redo my part of the presentation, I would ", 
+		" If I was in charge of scheduling the meetings for my presentation group, we would meet ", 
+		" If I felt that I deserved a higher salary, I would ", 
+		" If I saw a stressed coworker with a pile of paperwork on their desk, I would ", 
+		" To relax on the weekend, I would "];  
 
-const QUESTIONSTARTS = [" If I slept through my alarm, I would ", 
-						" If I was assigned to create a presentation for a conference, I would ",
-						" If a coworker tells me to redo my part of the presentation, I would ", 
-						" If I was in charge of scheduling the meetings for my presentation group, we would meet ", 
-						" If I felt that I deserved a higher salary, I would ", 
-						" If I saw a stressed coworker with a pile of paperwork on their desk, I would ", 
-						" To relax on the weekend, I would "];
 
 const DetailedPage = () => {
 	
-	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) //create state for all of the questions
-	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""])
+	const [Response1, setResponse1] = useState<(boolean | string)[]> ([false, false, false, false, ""]) // States for each question
+	const [Response2, setResponse2] = useState<(boolean | string)[]> ([false, false, false, false, ""]) // First four are for radio buttons, last is for the "Other" text input
 	const [Response3, setResponse3] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response4, setResponse4] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response5, setResponse5] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response6, setResponse6] = useState<(boolean | string)[]> ([false, false, false, false, ""])
 	const [Response7, setResponse7] = useState<(boolean | string)[]> ([false, false, false, false, ""])
+	
 	const [otherSelected, setOtherSelected] = useState<boolean[]>([false, false, false, false, false, false, false]); //correlates to the the "other" text inputs will be true if the "other" option is selected
+	const allResponses = [Response1, Response2, Response3, Response4, Response5, Response6, Response7]; //array of all the responses
 
-	function handleRadio(option:string, questionNum:number, index:number, otherIndex:number) {  //handles regular radio buttons
+	function handleRadio(option:string, questionNum:number, index:number, otherIndex:number) {  //Handles radio button selections
 		const newOtherStatus = [...otherSelected];
 		const responseState = questionNum === 1 ? Response1 : //chooses which array to use based on the hardcoded question num
         questionNum === 2 ? Response2 :
@@ -40,6 +39,7 @@ const DetailedPage = () => {
         questionNum === 5 ? Response5 :
         questionNum === 6 ? Response6 :
         questionNum === 7 ? Response7 : [];
+
     	const newResponse = [...responseState];
 		if (option === "Other:") {
 			newOtherStatus[otherIndex] = true; //changes the otherSelected index to true
@@ -113,9 +113,11 @@ const DetailedPage = () => {
 		}
 	}
 
-//checks which questions are answered
-	function updateProgress(Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
-		Response6: (boolean| string)[], Response7: (boolean| string)[]): number { 
+
+	function updateProgress( //checks how many questions have been answered
+		Response1: (boolean| string)[], Response2: (boolean| string)[], Response3: (boolean| string)[], Response4: (boolean| string)[], Response5: (boolean| string)[],
+		Response6: (boolean| string)[], Response7: (boolean| string)[]): number {
+
 		const responses = [Response1, Response2, Response3, Response4, Response5, Response6, Response7]
 		const completed: number = responses.reduce((count, response) => {
 			const check: boolean = response.some(option => {
@@ -128,7 +130,9 @@ const DetailedPage = () => {
 		return completed;
 	}	
 
-	function doReset(): void{ //clears all the choices 
+	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7); //updates the progress bar based on the amount of questions answered
+
+	function doReset(): void{ //clears all the choices by setting them to their default values
 		const defaultResponse: (boolean |string)[] = [false, false, false, false, ""];
 		const resetOther: boolean[] = [false, false, false, false, false, false, false];
 		setOtherSelected(resetOther);
@@ -141,23 +145,20 @@ const DetailedPage = () => {
 		setResponse7(defaultResponse);
 	}
 
-	let answered = updateProgress(Response1, Response2, Response3, Response4, Response5, Response6, Response7);
-    const [allow, setAllow] = useState<boolean>(false);
-	const [alert, setAlert] = useState<boolean>(false);
-	
+    const [allow, setAllow] = useState<boolean>(false); //variable that effects submit button's visibility
+	const [alert, setAlert] = useState<boolean>(false); //variable that effects alert's visibility
+
 	useEffect(() => {
-       setAllow(answered === 7); //checks the amount of questions answered
-	   setAlert(answered === 7)
+       setAllow(answered === 7); //checks if all the questions have been answered
+	   setAlert(answered === 7) //if so, the alert and button will be visible
 
     }, [answered]);	
 
-	const [progressShow, setProgressShow] = useState<boolean>(false);
+	const [progressShow, setProgressShow] = useState<boolean>(false); //varibales associated with the offCanvas dropdown, which shows the progress bar
 	const handleShow = () => setProgressShow(!progressShow);
 	const handleClose = () => setProgressShow(false);
-
-	const [isLoading, setIsLoading] = useState<boolean>(false);
 	
-	const handleKeyDown = (event: KeyboardEvent) => { //used chatGPT on clarification on how to enable a keyboard shortcut for the offCanvas dropdown; enables when "ctr" + "o" are pressed
+	const handleKeyDown = (event: KeyboardEvent) => { //used chatGPT on clarification on how to enable a keyboard shortcut for the offCanvas dropdown; enables when "ctr" + "0" are pressed
         if (event.ctrlKey && event.key === '0') {
             handleShow();
         }
@@ -168,6 +169,75 @@ const DetailedPage = () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
     });
+
+	function getResponses(): string { //Returns the user's responses in the correct format for the GPT-4 model
+		let answers: string = "";
+		let index = Response1.findIndex((option) => option === true); //returns index of answer in that question
+
+		if (index === -1) {
+			index = Response1.findIndex((option) => typeof option === "string" && option.trim().length > 0);
+		}
+
+		for(let i = 0; i < 7; i++) { //loops through all the questions
+			let container = document.getElementById("q" + (i + 1)); //gets the container of the question
+			if (container) {
+				const mini = container.querySelector('input[type="radio"]:checked');
+				if(mini?.getAttribute("value")) {
+					if(mini?.getAttribute("value") === "Other") { //if the user selects "Other" then the response will be the text input
+						answers = answers + QUESTIONSTARTS[i] + allResponses[i][4];
+					}
+					else{ //if the user selects a radio button, then the response will be the radio button's value
+						answers = answers + QUESTIONSTARTS[i] + mini?.getAttribute("value");
+					}
+				}			
+			}
+		}
+
+		return answers;
+	}
+
+	function sendResponse(): void { //Sends the user's responses to the GPT-4 model in the correct format
+		const openai = new OpenAI({
+			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
+			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
+		});
+		
+		async function runGPT() { //Creates conversation with the GPT-4 model
+			try{
+				setIsLoading(true); //starts the loading animation
+				const response = await openai.chat.completions.create({
+				model: "gpt-4-turbo",
+				messages: [
+					{
+					"role": "system",
+					"content": "You are a helpful assistant that will generate a potential career path for the user based on a few hypothetical situations. You will also generate three other career paths the user may like.Please complete this in this format, with each field contained in quotes and separated by commas:[Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]" //What we want GPT to do
+					},
+					{
+					"role": "user",
+					"content": getResponses(), //calls the function that puts the user's responses into the correct format
+					}
+				],
+				temperature: 0.8,
+				max_tokens: 512,//should be 512
+				top_p: 1,
+				});
+				
+				localStorage.setItem("GPTresponse", JSON.stringify(parseAnswers(response.choices[0].message.content))); //stores the response in local storage
+				setIsLoading(false); //stops the loading animation
+				window.location.href = "/starter_helpi/#/ResultsPage/"; //redirects the user to the results page
+			}
+			catch(e){ //catches any errors that may occur with an invalid API key
+				setIsLoading(false); // stops the loading animation
+				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
+				window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
+			}  
+		}
+		runGPT(); //run the function at the end
+	
+	}
+
+	const [isLoading, setIsLoading] = useState<boolean>(false); //variable that controls the loading animation
+
 	return (<>
 	<body className="page-color">
 		<div className="quiz-desc-header">
@@ -685,102 +755,5 @@ const DetailedPage = () => {
 	</body>
 	</>
 	);
-
-	function getResponses(): string { //returns the responses of the user
-		let answers: string = "";
-
-		let index = Response1.findIndex((option) => option === true); //returns index of answer in that question
-
-		if (index === -1) {
-			index = Response1.findIndex((option) => typeof option === "string" && option.trim().length > 0);
-		}
-
-		for(let i = 0; i < 7; i++) {
-			let container = document.getElementById("q" + (i + 1));
-			if (container) {
-				const mini = container.querySelector('input[type="radio"]:checked');
-				if(mini?.getAttribute("value")) {
-					if(mini?.getAttribute("value") === "Other") {
-						switch(i){ //checks which question it is
-							case 0:
-								answers = answers + QUESTIONSTARTS[i] + Response1[4];
-								break;
-							case 1:
-								answers = answers + QUESTIONSTARTS[i] + Response2[4];
-								break;
-							case 2:
-								answers = answers + QUESTIONSTARTS[i] + Response3[4];
-								break;
-							case 3:
-								answers = answers + QUESTIONSTARTS[i] + Response4[4];
-								break;
-							case 4:
-								answers = answers + QUESTIONSTARTS[i] + Response5[4];
-								break;
-							case 5:
-								answers = answers + QUESTIONSTARTS[i] + Response6[4];
-								break;
-							case 6:
-								answers = answers + QUESTIONSTARTS[i] + Response7[4];
-								break
-						}
-					}
-					else{
-						answers = answers + QUESTIONSTARTS[i] + mini?.getAttribute("value");
-					}
-				}			
-			}
-			else {
-				console.log("Container is null");
-			}
-		}
-
-
-		console.log(answers);
-		return answers;
-	}
-
-	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
-		const openai = new OpenAI({
-			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
-			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
-		});
-		
-		async function runGPT() { //Creates conversation with the GPT-4 model
-			//console.log("API Key: " + key); //for testing purposes
-			try{
-				setIsLoading(true);
-				const response = await openai.chat.completions.create({
-				model: "gpt-4-turbo",
-				messages: [
-					{
-					"role": "system",
-					"content": "You are a helpful assistant that will generate a potential career path for the user based on a few hypothetical situations. You will also generate three other career paths the user may like.Please complete this in this format, with each field contained in quotes and separated by commas:[Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]" //What we want GPT to do
-					},
-					{
-					"role": "user",
-					"content": getResponses(), //calls the function that gets the description
-					}
-				],
-				temperature: 0.8,
-				max_tokens: 512,//should be 512
-				top_p: 1,
-				});
-				
-				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
-				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
-				setIsLoading(false);
-				window.location.href = "/starter_helpi/#/ResultsPage/"; 
-			}
-			catch(e){ //catches any errors that may occur with an invalid API key
-				setIsLoading(false);
-				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
-				window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
-			}  
-		}
-
-		runGPT(); //run the function at the end
-	
-	}
 };
 export default DetailedPage;
