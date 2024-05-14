@@ -214,21 +214,28 @@ export function BasicQuestionsPage(): JSX.Element {
     </Container>
   </Navbar>
   <h1 className='padding7'>Basic Questions Page</h1>
-  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
-    <main></main>
-    <div className='padding5'>
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh',zIndex:'-1px' }}>
+    <div className='padding5' >
     <Card variant="plain" sx={{ width: 600, height: 'auto' }}>
       <CardContent>
         {!displayFinalResults ? (
           <>
             <Typography style={{paddingTop: '20px'}} level="title-md"><div className='poppins-regular'>Question {currentQuestion + 1} of {questions.length}</div></Typography>
             <ProgressBar
-              now={(currentQuestion + 1) * (100 / questions.length)}
-              striped variant="info"
+              min={0} // Minimum value progress can begin from
+              now={(currentQuestion + 1) * (100 / questions.length)} // Current value of progress
+              max={100} // Maximum value progress can reach
+              label={`${Math.round(((currentQuestion + 1) * (100 / questions.length)))}%`} // Show label that represents visual percentage
+              visuallyHidden={true} // Show the label visually
+              striped={currentQuestion >= 0} // Uses a gradient to create a striped effect when the progress is at least 0%
+              animated={currentQuestion >= 0} // Animate the stripes from right to left when the progress is at least 0%
+              variant="info" // Sets the background class of the progress bar to red
+              
               style={{ margin: '20px 0', width: '100%' }}
             />
             <Typography style={{paddingTop: '10px', paddingBottom: '20px'}}><div className='poppins-regular'>{questions[currentQuestion].questionText}</div></Typography>
             {questions[currentQuestion].answerOptions.map((option, index) => (
+              
               <StyledButton 
                 key={index} 
                 onClick={() => handleAnswerOptionClick(option.answerText)} 
@@ -239,6 +246,7 @@ export function BasicQuestionsPage(): JSX.Element {
               >
                 {option.answerText}
               </StyledButton>
+              
             ))}
             {currentQuestion > 0 && (
               <StyledButton onClick={handlePreviousQuestion}>Previous Question</StyledButton>
