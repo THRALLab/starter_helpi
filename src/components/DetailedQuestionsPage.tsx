@@ -9,8 +9,9 @@ import Input from '@mui/joy/Input';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
 import CareerFinder from '../images/CareerFinder.png';
+import { CircularProgress, CircularProgressProps } from '@mui/material';
 
-export function DetailedQuestionsPage(): JSX.Element {
+export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element {
     const StyledButton = styled(Button)`
     ${({ theme }) => `
         cursor: pointer;
@@ -41,6 +42,7 @@ export function DetailedQuestionsPage(): JSX.Element {
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState<Array<string>>(Array(questions.length).fill(''));
+    const [submitted, setSubmitted] = React.useState<boolean>(false);
     const [response, setResponse] = useState<React.ReactNode | string>('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -58,6 +60,8 @@ export function DetailedQuestionsPage(): JSX.Element {
     };
 
     const handleSubmitAnswers = async () => {
+        setSubmitted(true);
+
         if (answers.some(answer => answer.trim() === "")) {
             setError("Please answer all questions before submitting.");
             return;
@@ -158,7 +162,7 @@ export function DetailedQuestionsPage(): JSX.Element {
             }}>
             <Card variant="plain" sx={{ width: 1000, height: 400}}>
                 <CardContent>
-                    <Typography style={{paddingTop: '20px'}} level="h4"><div className='poppins-regular'>Question {currentQuestion + 1} of {questions.length}</div></Typography>
+                    {!submitted && <div><Typography style={{paddingTop: '20px'}} level="h4"><div className='poppins-regular'>Question {currentQuestion + 1} of {questions.length}</div></Typography>
                     <div style={{paddingTop: '15px'}}>
                     {<ProgressBar
                             min={0} // Minimum value progress can begin from
@@ -206,16 +210,36 @@ export function DetailedQuestionsPage(): JSX.Element {
                         value={answers[currentQuestion]}
                         onChange={handleInputChange}
                     />
-                    </div>
-                    <div style={{ padding: '4vh', display: 'flex', justifyContent: 'center' }}>
+                    </div></div>}
+                    
+                    {!submitted && <div style={{ padding: '4vh', display: 'flex', justifyContent: 'center' }}>
                         {currentQuestion > 0 && <StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>PREVIOUS QUESTION</StyledButton>}
                         <StyledButton onClick={handleNextQuestion} style={{ margin: '0 auto' }}>
                             {currentQuestion === questions.length - 1 ? 'SUBMIT ANSWERS' : 'NEXT QUESTION'}
                         </StyledButton>
+                    </div>}
+                    
+                    {loading && <div className='padding8'>Loading...
+                    
+                    <div style={{paddingTop:'10px'}}>
+                    <React.Fragment>
+                        <svg width={0} height={0}>
+                            <defs>
+                            <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stopColor="#e01cd5" />
+                                <stop offset="100%" stopColor="#1CB5E0" />
+                            </linearGradient>
+                            </defs>
+                        </svg>
+                        <CircularProgress sx={{ 'svg circle': { stroke: 'url(#my_gradient)' } }} />
+                    </React.Fragment>
                     </div>
-                    {loading && <Typography>Loading...</Typography>}
+                    
+                    </div>}
+                    
                     {error && <Typography style={{ color: 'red' }}>{error}</Typography>}
                     {!loading && response && Array.isArray(response) && response.map(line => line)}
+                    
                 </CardContent>
             </Card>
             </div>
