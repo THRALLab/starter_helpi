@@ -269,7 +269,6 @@ const BasicPage = () => {
 			</span>	
 		</div>
 		</div>
-		<hr style={{marginTop:"78px", marginBottom:"80px", opacity:1}}></hr>
 		<div className="question-row">
 			<div className="question">
 				<span className="QuestionNum">#5</span> <span>
