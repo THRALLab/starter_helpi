@@ -1,0 +1,93 @@
+.job-and-salary-area{
+    padding-top: 20px;
+    background-color: #F2EDDA !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    margin-top:30px;
+ }
+ .card-body{
+    margin-bottom: 20px;
+ }
+ .card{
+    margin-bottom: 20px;
+ }
+ /*
+ .salary{
+    margin-bottom: 150px;
+    margin-left: 200px;
+    margin-right: 200px;
+    min-width: 40%;
+    border-radius: 25px;
+    border: 0.5px;
+    background: #f7caf2;
+    box-shadow: 20px 20px 60px #cec9b9,
+                -20px -20px 60px #fffffb;
+ }
+ .salary:hover{
+    border-radius: 25px;
+    background: #F2EDDA;
+    box-shadow:  28px 28px 56px #cec9b9,
+             -28px -28px 56px #fffffb;
+ }*/
+ .job{
+    margin-bottom:150px;
+    min-width: 40%;
+    border-radius: 25px;
+    border: 0.5px;
+    background: #f7caf2;
+    box-shadow:  20px 20px 60px #cec9b9,
+                 -20px -20px 60px #fffffb;
+ 
+ 
+ }
+ .job:hover{
+    border-radius: 25px;
+    background: #F2EDDA;
+    box-shadow:  28px 28px 56px #cec9b9,
+             -28px -28px 56px #fffffb;
+ }
+ .job{
+    min-width: 400px;
+ }
+  .cat-logo3 {
+    content: url('images/Sitting_orange.webp');
+    max-width: 150px;
+    position: absolute;
+    align-items: left;
+    margin-left: 300px !important;
+    display: block;
+    margin-top: 50px;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }/*
+ .cat-title{
+    content: url('images/Add a heading.png');
+    max-width: 600px;
+    position: absolute;
+    align-items: left;
+    display: block;
+    margin-top: 25px;
+    margin-left: 25%;
+    margin-bottom: -20%;
+ }*/
+ .result-h1{
+    margin-left: 41%;
+    margin-top: 20%;
+ }
+  @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+  .result-text{
+    font-size: 25px;
+    white-space: pre-line;
+  }
+#title{
+    font-size: 45px;
+} 
