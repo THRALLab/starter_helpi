@@ -6,6 +6,7 @@ import './HomePage.css';
 import BasicQuestions from './BasicQuestions';
 import DetailedQuestions from './DetailedQuestions';
 import Report from './Report';
+import BasicResults from './basicResults';
 
 const saveKeyData = "MYKEY";
 let keyData = "";
@@ -126,6 +127,7 @@ function App() {
           <Route path="/basic-questions" element={<BasicQuestions />} />
           <Route path="/detailed-questions" element={<DetailedQuestions />} />
           <Route path="/report" element={<Report />} />
+          <Route path="/basicResults" element={<BasicResults />} />
         </Routes>
       </div>
       <div className="api-key-section">
