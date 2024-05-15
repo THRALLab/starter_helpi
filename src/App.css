@@ -196,27 +196,20 @@ body {
 }
 
 .cab {
-  width: 100px;
-  left: 50%;
-  bottom: 100px;
-  transform: translateX(-50%);
-  position: absolute;
-  z-index: 2;
+  overflow: hidden;
+  white-space: nowrap;
+  position: fixed;
+  animation: cab 10s linear infinite;
+  bottom: -10px;
+  left: 0;
 }
-.cab img {
-  width: 100px;
-  animation: cab 8s linear infinite;
-}
-@keyframes cab
-{
-  100%{
-    transform: translateY(-1px);
+
+@keyframes cab {
+  0% {
+    transform: translateX(-300%);
   }
-  50%{
-    transform: translateY(1px);
-  }
-  0%{
-    transform: translateY(-1px);
+  100% {
+    transform: translateX(300%);
   }
 }
 

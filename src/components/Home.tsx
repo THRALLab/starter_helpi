@@ -1,5 +1,6 @@
 import React from 'react';
 import { Buttons } from './Buttons';
+import gif from "../images/cab.gif"
 //import Grid from '@mui/material/Grid'; // Grid version 1
 //import Item from '@mui/material/ListItem';
 //import 'App.css';
@@ -46,7 +47,7 @@ export function Home(): JSX.Element {
         
         <div>
             <div className="cab">
-                <img src="images/cab.gif" alt='moving cab'/>
+                <img src={gif} alt='moving cab'/>
             </div>
             <Buttons></Buttons>
         <p></p>
