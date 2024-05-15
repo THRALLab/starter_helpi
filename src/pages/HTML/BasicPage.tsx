@@ -40,7 +40,7 @@ const BasicPage = () => {
 		else{
 			description += "I want to be able to work when I want.\n";
 		}
-
+        
 		if(response[2]){
 			description += "I like having detailed instructions when doing a task.\n";
 		}
@@ -183,7 +183,7 @@ const BasicPage = () => {
 		<div className="question">
 			<span className="QuestionNum">#1</span> 
 			<span className="radio-container">
-				<Stack gap={3}>
+				<Stack  className="stack" gap={3}>
 				<Form.Check 
 						type="radio"
 						id="q1-Option1"
@@ -204,7 +204,7 @@ const BasicPage = () => {
 		<div className="question">
 			<span className="QuestionNum">#2</span> 
 			<span className="radio-container">
-			<Stack gap={3}> 
+			<Stack className="stack" gap={3}> 
 			<Form.Check 
 					type="radio"
 					id="q2-Option1"
@@ -225,18 +225,18 @@ const BasicPage = () => {
 		<div className="question">
 			<span className="QuestionNum">#3</span> 
 			<span className="radio-container">
-				<Stack gap={3}> 
+				<Stack className="stack" gap={3}> 
 				<Form.Check 
 					type="radio"
 					id="q3-Option1"
-					label="I like having detailed instructions when doing a task."
+					label="I like having detailed instructions for tasks."
 					name="question3"
 					onChange={() => updateChoice(4)}
 					checked={response[2] === 1}/>
 				<Form.Check 
 					type="radio"
 					id="q3-Option2"
-					label="I prefer having creative freedom when doing a task."
+					label="I prefer having creative freedom for tasks."
 					name="question3"
 					onChange={() => updateChoice(5)}
 					checked={response[2] === 0}/>
@@ -246,7 +246,7 @@ const BasicPage = () => {
 		<div className="question">
 			<span className="QuestionNum">#4</span> 
 			<span className="radio-container">
-				<Stack gap={3}> 
+				<Stack className="stack" gap={3}> 
 				<Form.Check 
 					type="radio"
 					id="q4-Option1"
@@ -268,7 +268,7 @@ const BasicPage = () => {
 		<div className="question-row">
 			<div className="question">
 				<span className="QuestionNum">#5</span> <span>
-				<Stack className="last4" gap={3}>
+				<Stack className="stack" gap={3}>
 				<Form.Check 
 							type="radio"
 							id="q5-Option1"
@@ -288,7 +288,7 @@ const BasicPage = () => {
 			</div>	
 			<div className="question">		
 				<span className="QuestionNum">#6</span> <span className="basic-radials">
-				<Stack  className="last4" gap={3}> 
+				<Stack  className="stack" gap={3}> 
 						<Form.Check 
 							type="radio"
 							id="q6-Option1"
@@ -312,7 +312,7 @@ const BasicPage = () => {
 			</div>
 			<div className="question">
 				<span className="QuestionNum">#7</span> <span>
-				<Stack className="last4" gap={3} > 
+				<Stack className="stack" gap={3} > 
 				<Form.Check 
 							type="radio"
 							id="q7-Option1"
@@ -332,7 +332,7 @@ const BasicPage = () => {
 			</div>
 			<div className="question">
 			<span className="QuestionNum">#8</span> <span>
-			<Stack className="last4" gap={3}> 
+			<Stack className="stack" gap={3}> 
 			<Form.Check 
 						type="radio"
 						id="q8-Option1"
