@@ -196,44 +196,40 @@ const DetailedPage = () => {
 		return answers;
 	}
 
-	function sendResponse(): void { //Sends the user's responses to the GPT-4 model in the correct format
-		const openai = new OpenAI({
-			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
-			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
-		});
-		
-		async function runGPT() { //Creates conversation with the GPT-4 model
-			try{
-				setIsLoading(true); //starts the loading animation
-				const response = await openai.chat.completions.create({
-				model: "gpt-4-turbo",
-				messages: [
-					{
-					"role": "system",
-					"content": "You are a helpful assistant that will generate a potential career path for the user based on a few hypothetical situations. You will also generate three other career paths the user may like.Please complete this in this format, with each field contained in quotes and separated by commas:[Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]" //What we want GPT to do
-					},
-					{
-					"role": "user",
-					"content": getResponses(), //calls the function that puts the user's responses into the correct format
-					}
-				],
-				temperature: 0.8,
-				max_tokens: 512,//should be 512
-				top_p: 1,
-				});
-				
-				localStorage.setItem("GPTresponse", JSON.stringify(parseAnswers(response.choices[0].message.content))); //stores the response in local storage
-				setIsLoading(false); //stops the loading animation
-				window.location.href = "/starter_helpi/#/ResultsPage/"; //redirects the user to the results page
-			}
-			catch(e){ //catches any errors that may occur with an invalid API key
-				setIsLoading(false); // stops the loading animation
-				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
-				window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
-			}  
+	const openai = new OpenAI({
+		apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
+		dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
+	});
+
+	async function sendResponse() { //Sends the user's responses to the GPT-4 model in the correct format
+		try{
+			setIsLoading(true); //starts the loading animation
+			const response = await openai.chat.completions.create({
+			model: "gpt-4-turbo",
+			messages: [
+				{
+				"role": "system",
+				"content": "You are a helpful assistant that will generate a potential career path for the user based on a few hypothetical situations. You will also generate three other career paths the user may like.Please complete this in this format, with each field contained in quotes and separated by commas:[Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]" //What we want GPT to do
+				},
+				{
+				"role": "user",
+				"content": getResponses(), //calls the function that puts the user's responses into the correct format
+				}
+			],
+			temperature: 0.8,
+			max_tokens: 512,//should be 512
+			top_p: 1,
+			});
+			
+			localStorage.setItem("GPTresponse", JSON.stringify(parseAnswers(response.choices[0].message.content))); //stores the response in local storage
+			setIsLoading(false); //stops the loading animation
+			window.location.href = "/starter_helpi/#/ResultsPage/"; //redirects the user to the results page
 		}
-		runGPT(); //run the function at the end
-	
+		catch(e){ //catches any errors that may occur with an invalid API key
+			setIsLoading(false); // stops the loading animation
+			window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
+			window.location.href = "/starter_helpi/"; //If the API key is invalid, it'll redirect the user to the home page
+		}  	
 	}
 
 	const [isLoading, setIsLoading] = useState<boolean>(false); //variable that controls the loading animation
