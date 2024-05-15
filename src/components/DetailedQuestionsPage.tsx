@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
-import { Container, Nav, Navbar, ProgressBar } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
-import Button from '@mui/joy/Button';
+import { ProgressBar } from 'react-bootstrap';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
-import CareerFinder from '../images/CareerFinder.png';
-import { CircularProgress, CircularProgressProps } from '@mui/material';
+
+import { Box, CircularProgress, CircularProgressProps } from '@mui/material';
+
+
+import { Navigate } from 'react-router-dom';
+
+import AppBar from '@mui/material/AppBar';
+
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+
+import AdbIcon from '@mui/icons-material/Adb';
 
 export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element {
     const StyledButton = styled(Button)`
@@ -49,9 +63,27 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
     const [goToHomePage, setGoToHomePage] = useState(false);
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
 
-    if (goToBasicQuestionsPage) {
-        return <Navigate to="/BasicQuestionsPage"/>
-    }
+   
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newAnswers = [...answers];
@@ -60,12 +92,15 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
     };
 
     const handleSubmitAnswers = async () => {
-        setSubmitted(true);
+        
 
         if (answers.some(answer => answer.trim() === "")) {
             setError("Please answer all questions before submitting.");
             return;
         }
+
+        setSubmitted(true);
+
         setLoading(true);
         setError("");
 
@@ -125,31 +160,123 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
         }
     };
 
-    const handleGoToHomePage = () => {
-        setGoToHomePage(true);
-    };
 
     if (goToHomePage) {
         return <Navigate to="/" />;
     }
 
+
+    if (goToBasicQuestionsPage) {
+        return <Navigate to="/BasicQuestionsPage"/>
+    }
     return (
         <div>
-            <Navbar expand="lg" className="bg-body-tertiary">
-                <Container>
-                    <Navbar.Brand>CareerFinder4U</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link onClick={handleGoToHomePage}>Home</Nav.Link>
-                            <Nav.Link onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Nav.Link>
-                        </Nav>
-                        <Nav className="ms-auto"> {/* Use ms-auto to push items to the right */}
-                        <img src={CareerFinder} alt="CareerFinder4U Logo" style={{ height: 50, width: 50 }} />
-                    </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+            <AppBar position="static" style={{backgroundColor: '#f3e5f5'}}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Typography
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'Poppins',
+              fontWeight: 300,
+              letterSpacing: '.3rem',
+              color: 'black',
+              textDecoration: 'none',
+            }}
+          >
+            CareerFinder4U
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              
+            </Menu>
+          </Box>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'Poppins',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            LOGO
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            
+
+            <Button sx={{ my: 2, color: 'black', display: 'block', fontFamily: 'Poppins' }}onClick={() => {setGoToHomePage(true)}}>Home</Button>
+            <Button sx={{ my: 2, color: 'black', display: 'block', fontFamily: 'Poppins' }}onClick={() => {setGoToBasicQuestionsPage(true)}}>Detailed Questions Page</Button>
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
             <h1 className='padding3'>Detailed Questions Page</h1>
             <main className="padding2">
             <div
