@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { generateDetailed, generateBasic } from './ChatGPT';
+import { generateDetailed } from './ChatGPT';
+import { Link } from 'react-router-dom';
 import './Report.css'; // Import CSS for styling
 
 interface ReportItem {
@@ -13,39 +14,52 @@ const Report: React.FC = () => {
   useEffect(() => {
     // Fetch report data when the component mounts
     const fetchReportData = async () => {
-      const detailedAnswers = ["Answer 1", "Answer 2", "Answer 3"]; // Example detailed answers
-      const basicAnswers = ["Answer A", "Answer B", "Answer C"]; // Example basic answers
+      const detailedAnswers = ["Answer 1", "Answer 2", "Answer 3"]; 
 
-      // Generate detailed report data
       const detailedReport = await generateDetailed(detailedAnswers);
-      // Generate basic report data
-      const basicReport = await generateBasic(basicAnswers);
-
-      // Combine detailed and basic reports
-      const combinedReport = [...detailedReport, ...basicReport];
-
-      // Set the combined report data in state
-      setReportData(combinedReport);
+      console.log("Detailed Report:", detailedReport); // Log the detailed report to see its structure
+      setReportData(detailedReport);
     };
 
     fetchReportData();
-  }, []); // Empty dependency array to ensure useEffect runs only once
+  }, []); 
 
   return (
-    <div className="report-container">
-      <h1 className="report-title">ChatGPT API Report</h1>
-      {reportData.length > 0 ? (
-        <ul className="report-list">
-          {reportData.map((item, index) => (
-            <li key={index} className="report-item">
-              <div>{item.title}</div>
-              <div><a href={item.url} target="_blank" rel="noopener noreferrer">View Job</a></div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="loading-text">Loading report...</p>
-      )}
+    <div className="container-wrapper">
+      <div className="report-container">
+        <h1 className="report-title">ChatGPT API Report</h1>
+        {reportData.length > 0 ? (
+          <ul className="report-list">
+            {reportData.map((item, index) => (
+              <li key={index} className="report-item">
+                <div className="job-container">
+                  <div>{item.title}</div>
+                  <div className="job-link"><a href={item.url} target="_blank" rel="noopener noreferrer">View Job</a></div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="loading-text">Loading report...</p>
+        )}
+      </div>
+      <div className="buttons-container">
+        <div className="button-wrapper">
+          <Link to='/'>
+            <button>Return to Home Page</button>
+          </Link>
+        </div>
+        <div className="button-wrapper">
+          <Link to='/detailed-questions'>
+            <button>Take Quiz Again</button>
+          </Link>
+        </div>
+        <div className="button-wrapper">
+          <Link to='/basic-questions'>
+            <button>Take Basic Quiz</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

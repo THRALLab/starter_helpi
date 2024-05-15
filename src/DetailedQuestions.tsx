@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ProgressBar, Button, Form } from 'react-bootstrap';
+import { ProgressBar, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
 // import './DetailedQuestions.css'
@@ -129,6 +129,9 @@ const DetailedQuestions: React.FC = () => {
 
 
 
+      <div className="progress-bar-container">
+        <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
+      </div>
       <div className = "questions.container">
         <h2 className = "detailed-questions-title">Detailed Questions</h2>
         <div>
@@ -159,10 +162,20 @@ const DetailedQuestions: React.FC = () => {
             </Form>
           </div>
         ))}
-        <Button variant="primary" onClick={handleGetResults} disabled={Object.keys(selectedOptions).length !== questions.length}>
-          Get Results
-        </Button>
+        <button
+  onClick={handleGetResults}
+  disabled={!allQuestionsAnswered}
+  style={{ opacity: allQuestionsAnswered ? 1 : 0.5, cursor: allQuestionsAnswered ? 'pointer' : 'not-allowed' }}
+>
+  Get Results
+</button>
+
       </div>
+      <div>
+             <Link to = '/'>
+               <button>Return to Home Page</button>
+             </Link>
+          </div>
     </div>
   );
 };

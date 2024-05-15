@@ -13,6 +13,7 @@
 .report-container {
   margin: 0 auto; /* Center the report container */
   text-align: center;
+  display: inline-block;
 }
 
 .report-title {
@@ -38,3 +39,29 @@
   font-size: 18px;
   color: #ffffff;
 }
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-wrapper {
+  margin-bottom: 10px;
+}
+.job-container {
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.job-link {
+  margin-top: 5px; /* Adjust spacing between job title and link */
+}
+
+.job-link a {
+  color: rgb(19, 141, 255); /* Set hyperlink color to blue */
+  text-decoration: underline; /* Add underline to hyperlinks */
+}
+
+
