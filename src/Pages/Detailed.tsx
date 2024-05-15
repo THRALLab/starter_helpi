@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, ProgressBar } from 'react-bootstrap';
+import brainIcon from './modifiedBrainIcon.svg';
 import './Pages.css';
 import './questions.css';
 
@@ -89,38 +90,35 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
   const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
 
   return (
-    <div>
-      {confetti && (
-        <div className="confetti-container">
-        </div>
-      )}
-      <header />
-     <div className="progressBarContainer">
-    <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
-    <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${progressPercentage + 0.5}%` }} />
-</div>
-      </div>
-      <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button>
-      <div className="column">
-        <h3 className="question">{questions[currentQuestionIndex].question}</h3>
-        <div className="questionContainer">
-          <textarea
-            style={{ width: "100%", minHeight: "200px", marginBottom: "50px" , minWidth: "500px", marginTop: "50px"}} // Adjust width and height as needed
-            value={questions[currentQuestionIndex].answer}
-            onChange={handleAnswerChange}
-            placeholder="Type your answer here..."
-          />
-        </div>
-        <div className="navigationButtons" style={{ marginBottom: "10px" }}>
-          <Button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>Previous</Button>
-          <Button onClick={handleNextQuestion} style={{ marginLeft: "10px", marginRight: "10px" }}>Next</Button>
-          {answeredQuestions === totalQuestions && (
-            <Button onClick={handleFormSubmit} style={{ marginLeft: "10px" }}>Submit</Button>
+    <><div>
+          {confetti && (
+              <div className="confetti-container">
+              </div>
           )}
-        </div>
+          <header />
+          <div className="progressBarContainer">
+              <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+              <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${progressPercentage + 0.5}%` }} />
+          </div>
       </div>
-      <footer className="footer-space"></footer>
-    </div>
+      <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button><div className="column">
+              <h3 className="question">{questions[currentQuestionIndex].question}</h3>
+              <div className="questionContainer">
+                  <textarea
+                      style={{ width: "100%", minHeight: "200px", marginBottom: "50px", minWidth: "500px", marginTop: "50px" }} // Adjust width and height as needed
+                      value={questions[currentQuestionIndex].answer}
+                      onChange={handleAnswerChange}
+                      placeholder="Type your answer here..." />
+              </div>
+              <div className="navigationButtons" style={{ marginBottom: "10px" }}>
+                  <Button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>Previous</Button>
+                  <Button onClick={handleNextQuestion} style={{ marginLeft: "10px", marginRight: "10px" }}>Next</Button>
+                  {answeredQuestions === totalQuestions && (
+                      <Button onClick={handleFormSubmit} style={{ marginLeft: "10px" }}>Submit</Button>
+                  )}
+              </div>
+          </div><footer className="footer-space"></footer>
+          </>
   );
 };
 
