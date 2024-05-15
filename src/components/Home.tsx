@@ -45,6 +45,9 @@ export function Home(): JSX.Element {
     return (
         
         <div>
+            <div className="cab">
+                <img src="images/cab.gif" alt='moving cab'/>
+            </div>
             <Buttons></Buttons>
         <p></p>
         <h1 className='padding6'>Home Page</h1>

@@ -113,6 +113,11 @@
 .App {
   text-align: center;
   background-color: #b4dcfa; /* Color in HEX */ 
+  background-image: url('images/city.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -190,7 +195,30 @@ body {
   font-style: normal;
 }
 
-
+.cab {
+  width: 100px;
+  left: 50%;
+  bottom: 100px;
+  transform: translateX(-50%);
+  position: absolute;
+  z-index: 2;
+}
+.cab img {
+  width: 100px;
+  animation: cab 8s linear infinite;
+}
+@keyframes cab
+{
+  100%{
+    transform: translateY(-1px);
+  }
+  50%{
+    transform: translateY(1px);
+  }
+  0%{
+    transform: translateY(-1px);
+  }
+}
 
 .padding {
   padding-bottom: 10px;
