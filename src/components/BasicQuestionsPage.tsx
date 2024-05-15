@@ -258,6 +258,7 @@ export function BasicQuestionsPage(): JSX.Element {
         ) : (
           <>
             <Typography level="h4">AI Generated Summary:</Typography>
+            <div style={{ height: '300px', overflowY: 'auto', marginTop: '20px' }}></div>
             <Typography>{gptResponse}</Typography>
             <StyledButton onClick={handleGoToHomePage}>Home</StyledButton>
             <StyledButton onClick={handleRetakeTest}
