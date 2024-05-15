@@ -6,10 +6,10 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import DetailedPage from './pages/DetailedPage';
-import HomePage from './pages/homePage';
-import BasicPage from './pages/BasicPage';
-import ResultsPage from './pages/ResultsPage';
+import DetailedPage from './pages/HTML/DetailedPage';
+import HomePage from './pages/HTML/homePage';
+import BasicPage from './pages/HTML/BasicPage';
+import ResultsPage from './pages/HTML/ResultsPage';
 
 
 function App() {

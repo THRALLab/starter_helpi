@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import splash from "../images/businessman.png"
-import './homePage.css';
-import { HomeLink } from "../components/NavbarElements"
+import splash from "../../images/businessman.png"
+import '../CSS/homePage.css';
+import { HomeLink } from "../../components/NavbarElements"
 import { reviews } from "./ResultsPage"
-
 
 
     //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)

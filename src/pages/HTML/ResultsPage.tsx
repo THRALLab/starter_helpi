@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './resultsPage.css';
+import '../CSS/resultsPage.css';
 import { Button, Form } from 'react-bootstrap';
 
 

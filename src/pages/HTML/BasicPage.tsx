@@ -3,8 +3,8 @@ import { Form, Alert, Stack, ProgressBar, Offcanvas} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
 import { parseAnswers } from "./ResultsPage";
-import "./basicPage.css"
-import LoaderComp from "../components/loader";
+import "../CSS/basicPage.css"
+import LoaderComp from "../../components/loader";
 
 
 const BasicPage = () => {
