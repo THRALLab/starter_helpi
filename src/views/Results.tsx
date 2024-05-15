@@ -7,7 +7,7 @@ interface Card {
     image: string
 }
 function Results_Page(): JSX.Element {
-    let Cards: Card[] =[{title: 'Career', info: 'a', image: 'https://picsum.photos/id/237/536/354'}, {title: 'Career2', info: 'a', image: 'https://picsum.photos/id/237/536/354'}, {title: 'Career3', info: 'a', image: 'https://picsum.photos/id/237/536/354'}];
+    let Cards: Card[] =[];
     //above is an example
     return(
         <div className="containerx" style={{position: 'fixed', top: '200px'}}>

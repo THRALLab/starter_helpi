@@ -14,6 +14,7 @@ import { useState } from "react";
 import rightArrow from "../rightArrow.png";
 import leftArrow from "../leftArrow.png";
 import { Button } from "react-bootstrap";
+import {Loader} from "../components/Loader"
 
 function Basic_Questions(): JSX.Element {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -124,6 +125,7 @@ function Basic_Questions(): JSX.Element {
           Submit
         </Button>
         {showFireworks && <Complete />}
+    <Loader/>
       </div>
     </AnswerContext.Provider>
   );
