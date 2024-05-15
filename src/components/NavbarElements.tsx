@@ -10,17 +10,17 @@ let NavMenu = styled.div``
 
 
 Nav = styled.nav`
-background: {darkMode ? "black" : "white"};
-height: 85px;
-width: 100%;
-display: flex;
-justify-content: space-between;
-z-index: 12;
-align-items: center;
-position: sticky;
-top: 0px;
-border-bottom: solid 1px grey;
-`;
+    background: {darkMode ? "black" : "white"};
+    height: 85px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 12;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    border-bottom: solid 1px grey;
+    `;
 
 
 
