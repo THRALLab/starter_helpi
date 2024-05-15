@@ -1,5 +1,6 @@
 import React from 'react';
 import { Buttons } from './Buttons';
+import gif from "../images/cab.gif"
 //import Grid from '@mui/material/Grid'; // Grid version 1
 //import Item from '@mui/material/ListItem';
 //import 'App.css';
@@ -45,6 +46,9 @@ export function Home(): JSX.Element {
     return (
         
         <div>
+            <div className="cab">
+                <img src={gif} alt='moving cab'/>
+            </div>
             <Buttons></Buttons>
         <p></p>
         <h1 className='padding6'>Home Page</h1>
