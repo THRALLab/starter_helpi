@@ -113,7 +113,7 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
                 content: answer
             })));
 
-            const prompt = "Based on the answers provided, suggest five suitable career options and explain why each would be a good fit.";
+            const prompt = "Based on the answers provided, suggest five suitable career options. For each option, provide a brief explanation of why it would be a good fit, a bulleted list of 3 potential companies that match the user's profile, and the general salary range for the role. Explain why each career and company would be well-suited to the user's skills and preferences.";
             let apiKey = localStorage.getItem('MYKEY');
             
             console.log('API Key:', apiKey);
@@ -289,86 +289,104 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
                 padding: '30vh'
             }}>
             <Card variant="plain" sx={{ width: 1000, height: 400}}>
-                <CardContent>
-                    {!submitted && <div><Typography style={{paddingTop: '20px'}} level="h4"><div className='poppins-regular'>Question {currentQuestion + 1} of {questions.length}</div></Typography>
-                    <div style={{paddingTop: '15px'}}>
-                    {<ProgressBar
-                            min={0} // Minimum value progress can begin from
-                            now={(currentQuestion + 1) * (100 / questions.length)} // Current value of progress
-                            max={100} // Maximum value progress can reach
-                            label={`${Math.round(((currentQuestion + 1) * (100 / questions.length)))}%`} // Show label that represents visual percentage
-                            visuallyHidden={true} // Show the label visually
-                            striped={currentQuestion >= 0} // Uses a gradient to create a striped effect when the progress is at least 0%
-                            animated={currentQuestion >= 0} // Animate the stripes from right to left when the progress is at least 0%
-                            variant="info" // Sets the background class of the progress bar to red
-                            style={{ width: '100%'}}
-                            
-                            >
-                        </ProgressBar>}</div>
-                    <Typography style={{alignItems: 'center', padding: '5vh'}}><div className='poppins-regular'>{questions[currentQuestion]}</div></Typography>
-                    <div style={{paddingBottom: '3vh', display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'}}>
-                            {/*<input
-                            type="text"
-                            value={inputText}
-                            onChange={(e) => setInputText(e.target.value)}
-                        />*/}
-                    <Input sx={{width: '500px', height: '75px', display: 'flex',
-                                    justifyContent: 'center',
-                                    
+            <CardContent>
+  {!submitted && (
+    <div>
+      <Typography style={{ paddingTop: '20px' }} level="h4">
+        <div className='poppins-regular'>Question {currentQuestion + 1} of {questions.length}</div>
+      </Typography>
+      <div style={{ paddingTop: '15px' }}>
+        <ProgressBar
+          min={0}
+          now={(currentQuestion + 1) * (100 / questions.length)}
+          max={100}
+          label={`${Math.round(((currentQuestion + 1) * (100 / questions.length)))}%`}
+          visuallyHidden={true}
+          striped={currentQuestion >= 0}
+          animated={currentQuestion >= 0}
+          variant="info"
+          style={{ width: '100%' }}
+        />
+      </div>
+      <Typography style={{ alignItems: 'center', padding: '5vh' }}>
+        <div className='poppins-regular'>{questions[currentQuestion]}</div>
+      </Typography>
+      <div style={{
+        paddingBottom: '3vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <Input
+          sx={{
+            width: '500px',
+            height: '75px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            '--Input-focusedInset': 'var(--any, )',
+            '--Input-focusedThickness': '0.25rem',
+            '--Input-focusedHighlight': 'rgba(13,110,253,.25)',
+            '&::before': {
+              transition: 'box-shadow .15s ease-in-out',
+            },
+            '&::placeholder': {
+              fontFamily: "Poppins",
+              fontSize: 400,
+            },
+            '&:focus-within': {
+              borderColor: '#86b7fe',
+            }
+          }}
+          variant="outlined"
+          placeholder="Type in here…"
+          value={answers[currentQuestion]}
+          onChange={handleInputChange}
+        />
+      </div>
+    </div>
+  )}
+  
+  {!submitted && (
+    <div style={{ padding: '4vh', display: 'flex', justifyContent: 'center' }}>
+      {currentQuestion > 0 && (
+        <StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>PREVIOUS QUESTION</StyledButton>
+      )}
+      <StyledButton onClick={handleNextQuestion} style={{ margin: '0 auto' }}>
+        {currentQuestion === questions.length - 1 ? 'SUBMIT ANSWERS' : 'NEXT QUESTION'}
+      </StyledButton>
+    </div>
+  )}
 
-                                    alignItems: 'center',
-                                    '--Input-focusedInset': 'var(--any, )',
-                                    '--Input-focusedThickness': '0.25rem',
-                                    '--Input-focusedHighlight': 'rgba(13,110,253,.25)',
-                                    '&::before': {
-                                      transition: 'box-shadow .15s ease-in-out',
-                                    }, '&::placeholder': {
-                                        fontFamily: "Poppins",
-                                        fontSize: 400,
-                                        
-                                    },
-                                    '&:focus-within': {
-                                      borderColor: '#86b7fe',
-                                    }}}
-                                    variant="outlined" placeholder="Type in here…"
-                                    
-                                    
-                        value={answers[currentQuestion]}
-                        onChange={handleInputChange}
-                    />
-                    </div></div>}
-                    
-                    {!submitted && <div style={{ padding: '4vh', display: 'flex', justifyContent: 'center' }}>
-                        {currentQuestion > 0 && <StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>PREVIOUS QUESTION</StyledButton>}
-                        <StyledButton onClick={handleNextQuestion} style={{ margin: '0 auto' }}>
-                            {currentQuestion === questions.length - 1 ? 'SUBMIT ANSWERS' : 'NEXT QUESTION'}
-                        </StyledButton>
-                    </div>}
-                    
-                    {loading && <div className='padding8'>Loading...
-                    
-                    <div style={{paddingTop:'10px'}}>
-                    <React.Fragment>
-                        <svg width={0} height={0}>
-                            <defs>
-                            <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stopColor="#e01cd5" />
-                                <stop offset="100%" stopColor="#1CB5E0" />
-                            </linearGradient>
-                            </defs>
-                        </svg>
-                        <CircularProgress sx={{ 'svg circle': { stroke: 'url(#my_gradient)' } }} />
-                    </React.Fragment>
-                    </div>
-                    
-                    </div>}
-                    
-                    {error && <Typography style={{ color: 'red' }}>{error}</Typography>}
-                    {!loading && response && Array.isArray(response) && response.map(line => line)}
-                    
-                </CardContent>
+  {loading && (
+    <div className='padding8'>
+      Loading...
+      <div style={{ paddingTop: '10px' }}>
+        <React.Fragment>
+          <svg width={0} height={0}>
+            <defs>
+              <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#e01cd5" />
+                <stop offset="100%" stopColor="#1CB5E0" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <CircularProgress sx={{ 'svg circle': { stroke: 'url(#my_gradient)' } }} />
+        </React.Fragment>
+      </div>
+    </div>
+  )}
+
+  {error && <Typography style={{ color: 'red' }}>{error}</Typography>}
+  
+  {!loading && response && Array.isArray(response) && (
+    <div style={{ maxHeight: '370px', overflowY: 'auto' }}>
+      {response.map((line, index) => (
+        <p key={index}>{line}</p>
+      ))}
+    </div>
+  )}
+</CardContent>
             </Card>
             </div>
             </main>
