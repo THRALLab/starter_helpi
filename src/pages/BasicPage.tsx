@@ -24,7 +24,7 @@ const BasicPage = () => {
 		  });
 	}
 
-	function getResponses(): string { //returns a description of the user's responses to the questions
+	function getResponses(): string { //returns a string of all the user's responses to the questions
 		let description = "";
 
 		if(response[0]){
@@ -84,62 +84,56 @@ const BasicPage = () => {
 		return description;
 	}
 
-	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+	const openai = new OpenAI({
+		apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
+		dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
+	});
 
-		const openai = new OpenAI({
-			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
-			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
-		});
-		  
-		async function runGPT() { //Creates conversation with the GPT-4 model
-			try{
-				setIsLoading(true);
-				const response = await openai.chat.completions.create({
-				model: "gpt-4-turbo",
-				messages: [
-					{
-					"role": "system",
-					"content": "You are a helpful assistant that will generate a potential career path for the user based on their preferences. You will also generate three other career paths the user may like. Please complete this in this format, with each field contained in quotes and separated by commas: [Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]"
-					//What we want GPT to do
-					},
-					{
-					"role": "user",
-					"content": getResponses(), //calls the function that gets the description
-					}
-				],
-				temperature: 0.8,
-				max_tokens: 512, //should be 512
-				top_p: 1,
-				});
-				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
-				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
-				setIsLoading(false);
-				window.location.href = "/starter_helpi/#/ResultsPage/"; 
-			}
-			catch(e){ //catches any errors that may occur with an invalid API key
-				setIsLoading(false);
-				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
-				window.location.href = "/starter_helpi/"; 
-			}  
+	async function sendResponse() { //Give the user's answers to the GPT-4 model and get the response
+		try{
+			setIsLoading(true); //starts the loading animation
+			const response = await openai.chat.completions.create({
+			model: "gpt-4-turbo",
+			messages: [
+				{
+				"role": "system",
+				"content": "You are a helpful assistant that will generate a potential career path for the user based on their preferences. You will also generate three other career paths the user may like. Please complete this in this format, with each field contained in quotes and separated by commas: [Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]"
+				//What we want GPT to do
+				},
+				{
+				"role": "user",
+				"content": getResponses(), //calls the function that gets the user's responses to the quiz
+				}
+			],
+			temperature: 0.8,
+			max_tokens: 2, //should be 512
+			top_p: 1,
+			});
+
+			localStorage.setItem("GPTresponse", JSON.stringify(parseAnswers(response.choices[0].message.content)));
+			setIsLoading(false); //stops the loading animation
+			window.location.href = "/starter_helpi/#/ResultsPage/"; 
 		}
-
-		runGPT(); //run the function at the end
-	
+		catch(e){ //catches any errors that may occur with an invalid API key
+			setIsLoading(false); //stops the loading animation
+			window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
+			window.location.href = "/starter_helpi/";  //redirects to the home page
+		}  
 	}
 	
-	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false); //varaible that controls the loading animation
 
-	const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
+	const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0); //counts the number of questions answered
 
 	function doReset(): void{ //clears all the choices by setting all elements in array to -1
 		const resetResponse: number[] = Array(response.length).fill(-1);
 		setResponse(resetResponse)
 	}
 
-	const [allow, setAllow] = useState<boolean>(false);
-	const [alert, setAlert] = useState<boolean>(false);
+	const [allow, setAllow] = useState<boolean>(false); //variable that allows the user to get the answer
+	const [alert, setAlert] = useState<boolean>(false); //variable that shows the alert when the user has answered all the questions
 	
-    useEffect(() => {
+    useEffect(() => { //checks if the user has answered all the questions
         if (answered === 8) {
             setAllow(true);
 			setAlert(true);
@@ -148,6 +142,9 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
+
+
+	//HTML for the basic quiz page
 	return (<>
 		<body className="page-color">
 		<div className="Page-Container">
