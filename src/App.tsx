@@ -18,7 +18,7 @@ if (prevKey !== null) {
 const HomePage: React.FC = () => {
   return (
     <div className="HomePage">
-      <h1>Career Quiz</h1>
+      <h1>Career Quest</h1>
       <div className="content">
         <div className="question">
           <h2>Basic Questions</h2>
@@ -44,7 +44,6 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <div className="login-section">
-        {/* Login form */}
         <LoginForm />
       </div>
     </div>
