@@ -13,6 +13,7 @@
 .report-container {
   margin: 0 auto; /* Center the report container */
   text-align: center;
+  display: inline-block;
 }
 
 .report-title {
@@ -37,4 +38,13 @@
 .loading-text {
   font-size: 18px;
   color: #ffffff;
+}
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-wrapper {
+  margin-bottom: 10px;
 }
