@@ -216,7 +216,7 @@ const DetailedPage = () => {
 				"content": getResponses(), //calls the function that puts the user's responses into the correct format
 				}
 			],
-			temperature: 0.8,
+			temperature: 0,
 			max_tokens: 512,//should be 512
 			top_p: 1,
 			});
