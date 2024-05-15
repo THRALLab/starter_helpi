@@ -4,7 +4,6 @@ import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
 import './Pages.css';
 import './questions.css';
 import OpenAI from 'openai';
-
 interface ResultsProps {
     handlePage: (page: string) => void;
     questionsAndAnswers: string;
@@ -22,7 +21,7 @@ const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiK
 
                 const chatResponse = await openai.chat.completions.create({
                     messages: [
-                      { role: "system", content: "You are giving a career quiz, give a reccommendation for 3 solid career options based on the user responses, explaining each and why. Only return responses, no questions."}, 
+                      { role: "system", content: "You are giving a career quiz, give a reccommendation for 3 career options based on the user responses, explaining each and why. Moreover, below the why section add some sections like this for example: relevant information like salary, job growth, and a brief description of the job."}, 
                       { role: "user", content: questionsAndAnswers }
                     ],
                     model: "gpt-4-turbo"
@@ -50,28 +49,29 @@ const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiK
                     <div> {results}</div>
                 )}
             </div>
-            <Button onClick={() => handlePage('Home')}>Back to Home</Button>
         </div>
         <Container className="mt-5"> 
         <Row className="mt-5">
             <Tabs
-                defaultActiveKey="profile"
+                defaultActiveKey="Overview"
                 id="uncontrolled-tab-example"
                 className="mb-3"
             >
                 <Tab eventKey="Overview" title="Overview" id="box">
                     <h1 style={{backgroundColor: "86c0ff"}}>Software Engineer</h1>
                     <br/>
-                    Median Income: $100,000
-                    <br />
-                    Average Income: $120,000
-                    <br />
-                    Interests:
-                    <span style={{ color: 'blue' }}> 1. Investigative</span>
-                    <span style={{ color: 'red' }}> 2. Realistic</span>
-                    <span style={{ color: 'green' }}> 3. Artistic</span>
-                    <br/>
-                    Project Job Growth: 22%
+                    <div className='color-box'>
+                        Median Income: $100,000
+                        <br />
+                        Average Income: $120,000
+                        <br />
+                        Interests:
+                        <span style={{ color: 'blue' }}> 1. Investigative</span>
+                        <span style={{ color: 'red' }}> 2. Realistic</span>
+                        <span style={{ color: 'green' }}> 3. Artistic</span>
+                        <br/>
+                        Project Job Growth: 22%
+                    </div>
                     <div>
                         <br />
                         <h3>Job Description</h3>
@@ -92,6 +92,6 @@ const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiK
         </div>
             )
     }
-    
+
 
 export default Results;

@@ -14,3 +14,8 @@
   .borderDiv:hover {
     background-color: blue;
   }
+
+.color-box {
+  background-color: aqua;
+  opacity: 0.5;
+}
