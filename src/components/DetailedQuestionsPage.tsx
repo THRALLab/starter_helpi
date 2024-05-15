@@ -113,7 +113,7 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
                 content: answer
             })));
 
-            const prompt = "Based on the answers provided, suggest five suitable career options. For each option, provide a brief explanation of why it would be a good fit, a bulleted list of 3 potential companies that match the user's profile, and the general salary range for the role.";
+            const prompt = "Based on the answers provided, suggest five suitable career options. For each option, provide a brief explanation of why it would be a good fit, a bulleted list of 3 potential companies that match the user's profile, and the general salary range for the role. Explain why each career and company would be well-suited to the user's skills and preferences.";
             let apiKey = localStorage.getItem('MYKEY');
             
             console.log('API Key:', apiKey);
