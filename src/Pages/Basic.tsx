@@ -6,7 +6,6 @@ import Confetti from 'react-dom-confetti';
 import smileIcon from './smile.svg';
 import mehIcon from './meh.svg';
 import sadIcon from './sad.svg';
-import brainIcon from './modifiedBrainIcon.svg';
 
 
 const config = {

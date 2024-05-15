@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
-import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
+import { Container, Row, Tab, Tabs } from 'react-bootstrap';
 import './Pages.css';
 import './questions.css';
 import OpenAI from 'openai';
@@ -21,7 +20,7 @@ const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiK
 
                 const chatResponse = await openai.chat.completions.create({
                     messages: [
-                      { role: "system", content: "You are giving a career quiz, give a reccommendation for 3 career options based on the user responses, explaining each and why. Moreover, below the why section add some sections like this for example: relevant information like salary, job growth, and a brief description of the job."}, 
+                      { role: "system", content: "You are giving a career quiz, give a recommendation for 3 career options based on the user responses, explaining each and why. Format the careers as a list, separating each career with an '**' symbol. Preface/index relevant information like salary and job growth with a '*'. For example: **Career 1*Salary: $xx,xxx*Job Growth: xx%**Career 2*Salary: $xx,xxx*Job Growth: xx%**Career 3*Salary: $xx,xxx*Job Growth: xx%"}, 
                       { role: "user", content: questionsAndAnswers }
                     ],
                     model: "gpt-4-turbo"
