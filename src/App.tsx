@@ -7,6 +7,7 @@ import BasicQuestions from './BasicQuestions';
 import DetailedQuestions from './DetailedQuestions';
 import Report from './Report';
 import BasicResults from './basicResults';
+import AboutUs from './AboutUs';
 
 const saveKeyData = "MYKEY";
 let keyData = "";
@@ -43,8 +44,11 @@ const HomePage: React.FC = () => {
           </Link>
         </div>
       </div>
-      <div className="login-section">
+      {/* <div className="login-section">
         <LoginForm />
+      </div> */}
+      <div className="footer">
+        <Link to="/about-us">About Us</Link> {/* Add the About Us link */}
       </div>
     </div>
   );
@@ -127,6 +131,7 @@ function App() {
           <Route path="/detailed-questions" element={<DetailedQuestions />} />
           <Route path="/report" element={<Report />} />
           <Route path="/basicResults" element={<BasicResults />} />
+          <Route path="/about-us" element={<AboutUs />} /> {/* Add route for About Us */}
         </Routes>
       </div>
       <div className="api-key-section">
