@@ -171,6 +171,7 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
     }
     return (
         <div>
+            
             <AppBar position="static" style={{backgroundColor: '#f3e5f5'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -246,7 +247,7 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
             
 
             <Button sx={{ my: 2, color: 'black', display: 'block', fontFamily: 'Poppins' }}onClick={() => {setGoToHomePage(true)}}>Home</Button>
-            <Button sx={{ my: 2, color: 'black', display: 'block', fontFamily: 'Poppins' }}onClick={() => {setGoToBasicQuestionsPage(true)}}>Detailed Questions Page</Button>
+            <Button sx={{ my: 2, color: 'black', display: 'block', fontFamily: 'Poppins' }}onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
