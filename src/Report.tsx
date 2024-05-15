@@ -32,8 +32,10 @@ const Report: React.FC = () => {
           <ul className="report-list">
             {reportData.map((item, index) => (
               <li key={index} className="report-item">
-                <div>{item.title}</div>
-                <div><a href={item.url} target="_blank" rel="noopener noreferrer">View Job</a></div>
+                <div className="job-container">
+                  <div>{item.title}</div>
+                  <div className="job-link"><a href={item.url} target="_blank" rel="noopener noreferrer">View Job</a></div>
+                </div>
               </li>
             ))}
           </ul>

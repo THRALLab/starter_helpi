@@ -48,3 +48,20 @@
 .button-wrapper {
   margin-bottom: 10px;
 }
+.job-container {
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.job-link {
+  margin-top: 5px; /* Adjust spacing between job title and link */
+}
+
+.job-link a {
+  color: rgb(19, 141, 255); /* Set hyperlink color to blue */
+  text-decoration: underline; /* Add underline to hyperlinks */
+}
+
+
