@@ -6,15 +6,14 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import DetailedPage from './pages/DetailedPage';
-import HomePage from './pages/homePage';
-import BasicPage from './pages/BasicPage';
-import ResultsPage from './pages/ResultsPage';
+import DetailedPage from './pages/HTML/DetailedPage';
+import HomePage from './pages/HTML/homePage';
+import BasicPage from './pages/HTML/BasicPage';
+import ResultsPage from './pages/HTML/ResultsPage';
 
 
 function App() {
 
-  
   return (
     <><Router>
       <Navbar />
@@ -26,8 +25,8 @@ function App() {
         <Route path="/ResultsPage" element={<ResultsPage/>}/>
         <Route path="/starter_helpi/#/ResultsPage" element={<ResultsPage />} />
       </Routes>
-
     </Router>
+
     <div className="App"></div>
       <div className='app-footer'>
         <p style={{paddingTop: "8px"}}>Jobnav.com©</p>

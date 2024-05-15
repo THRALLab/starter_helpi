@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Alert, Stack, ProgressBar, Offcanvas} from "react-bootstrap";
 import OpenAI from "openai";
 import { key } from "./homePage"
-import { parseAnswers } from "./DetailedPage";
-import "./basicPage.css"
-import LoaderComp from "../components/loader";
-// import { darkMode } from "../components/darkMode"
+import { parseAnswers } from "./ResultsPage";
+import "../CSS/basicPage.css"
+import LoaderComp from "../../components/loader";
 
 
 const BasicPage = () => {
@@ -25,7 +24,7 @@ const BasicPage = () => {
 		  });
 	}
 
-	function getResponses(): string { //returns a description of the user's responses to the questions
+	function getResponses(): string { //returns a string of all the user's responses to the questions
 		let description = "";
 
 		if(response[0]){
@@ -41,7 +40,7 @@ const BasicPage = () => {
 		else{
 			description += "I want to be able to work when I want.\n";
 		}
-
+        
 		if(response[2]){
 			description += "I like having detailed instructions when doing a task.\n";
 		}
@@ -85,62 +84,56 @@ const BasicPage = () => {
 		return description;
 	}
 
-	function sendResponse(): void { //Uses the answers from the quiz and sends it all to the GPT-4 model
+	const openai = new OpenAI({
+		apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
+		dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
+	});
 
-		const openai = new OpenAI({
-			apiKey: key.replaceAll('"',"") || "", //The key has quotes for some reason so this removes them
-			dangerouslyAllowBrowser: true, //this is to allow the api key to be stored in the local storage
-		});
-		  
-		async function runGPT() { //Creates conversation with the GPT-4 model
-			try{
-				setIsLoading(true);
-				const response = await openai.chat.completions.create({
-				model: "gpt-4-turbo",
-				messages: [
-					{
-					"role": "system",
-					"content": "You are a helpful assistant that will generate a potential career path for the user based on their preferences. You will also generate three other career paths the user may like. Please complete this in this format, with each field contained in quotes and separated by commas: [Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]"
-					//What we want GPT to do
-					},
-					{
-					"role": "user",
-					"content": getResponses(), //calls the function that gets the description
-					}
-				],
-				temperature: 0.8,
-				max_tokens: 512, //should be 512
-				top_p: 1,
-				});
-				let gptresponse:string[] = parseAnswers(response.choices[0].message.content);
-				localStorage.setItem("GPTresponse", JSON.stringify(gptresponse));
-				setIsLoading(false);
-				window.location.href = "/starter_helpi/#/ResultsPage/"; 
-			}
-			catch(e){ //catches any errors that may occur with an invalid API key
-				setIsLoading(false);
-				window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
-				window.location.href = "/starter_helpi/"; 
-			}  
+	async function sendResponse() { //Give the user's answers to the GPT-4 model and get the response
+		try{
+			setIsLoading(true); //starts the loading animation
+			const response = await openai.chat.completions.create({
+			model: "gpt-4-turbo",
+			messages: [
+				{
+				"role": "system",
+				"content": "You are a helpful assistant that will generate a potential career path for the user based on their preferences. You will also generate three other career paths the user may like. Please complete this in this format, with each field contained in quotes and separated by commas: [Main Career Path, very Detailed reasoning for Main Career Path with at least 4 sentences, Other Career Path 1, Reasoning for Other Career Path 1, Other Career Path 2, Reasoning for Other Career Path 2, Other Career Path 3, Reasoning for Other Career Path 3]"
+				//What we want GPT to do
+				},
+				{
+				"role": "user",
+				"content": getResponses(), //calls the function that gets the user's responses to the quiz
+				}
+			],
+			temperature: 0.8,
+			max_tokens: 512, //should be 512
+			top_p: 1,
+			});
+
+			localStorage.setItem("GPTresponse", JSON.stringify(parseAnswers(response.choices[0].message.content)));
+			setIsLoading(false); //stops the loading animation
+			window.location.href = "/starter_helpi/#/ResultsPage/"; 
 		}
-
-		runGPT(); //run the function at the end
-	
+		catch(e){ //catches any errors that may occur with an invalid API key
+			setIsLoading(false); //stops the loading animation
+			window.alert("Invalid API Key, please enter a valid key at the bottom of the home page.");
+			window.location.href = "/starter_helpi/";  //redirects to the home page
+		}  
 	}
 	
-	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false); //varaible that controls the loading animation
 
-	const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0);
+	const answered = response.reduce((currentTotal: number, num: number) => num !== -1 ?  currentTotal+=1 : currentTotal+=0, 0); //counts the number of questions answered
 
 	function doReset(): void{ //clears all the choices by setting all elements in array to -1
 		const resetResponse: number[] = Array(response.length).fill(-1);
 		setResponse(resetResponse)
 	}
 
-	const [allow, setAllow] = useState<boolean>(false);
-	const [alert, setAlert] = useState<boolean>(false);
+	const [allow, setAllow] = useState<boolean>(false); //variable that allows the user to get the answer
+	const [alert, setAlert] = useState<boolean>(false); //variable that shows the alert when the user has answered all the questions
 	
-    useEffect(() => {
+    useEffect(() => { //checks if the user has answered all the questions
         if (answered === 8) {
             setAllow(true);
 			setAlert(true);
@@ -149,6 +142,9 @@ const BasicPage = () => {
 			setAlert(false);
         }
     }, [answered]);
+
+
+	//HTML for the basic quiz page
 	return (<>
 		<body className="page-color">
 		<div className="Page-Container">
@@ -187,7 +183,7 @@ const BasicPage = () => {
 		<div className="question">
 			<span className="QuestionNum">#1</span> 
 			<span className="radio-container">
-				<Stack gap={3}>
+				<Stack  className="stack" gap={3}>
 				<Form.Check 
 						type="radio"
 						id="q1-Option1"
@@ -208,7 +204,7 @@ const BasicPage = () => {
 		<div className="question">
 			<span className="QuestionNum">#2</span> 
 			<span className="radio-container">
-			<Stack gap={3}> 
+			<Stack className="stack" gap={3}> 
 			<Form.Check 
 					type="radio"
 					id="q2-Option1"
@@ -229,18 +225,18 @@ const BasicPage = () => {
 		<div className="question">
 			<span className="QuestionNum">#3</span> 
 			<span className="radio-container">
-				<Stack gap={3}> 
+				<Stack className="stack" gap={3}> 
 				<Form.Check 
 					type="radio"
 					id="q3-Option1"
-					label="I like having detailed instructions when doing a task."
+					label="I like having detailed instructions for tasks."
 					name="question3"
 					onChange={() => updateChoice(4)}
 					checked={response[2] === 1}/>
 				<Form.Check 
 					type="radio"
 					id="q3-Option2"
-					label="I prefer having creative freedom when doing a task."
+					label="I prefer having creative freedom for tasks."
 					name="question3"
 					onChange={() => updateChoice(5)}
 					checked={response[2] === 0}/>
@@ -250,7 +246,7 @@ const BasicPage = () => {
 		<div className="question">
 			<span className="QuestionNum">#4</span> 
 			<span className="radio-container">
-				<Stack gap={3}> 
+				<Stack className="stack" gap={3}> 
 				<Form.Check 
 					type="radio"
 					id="q4-Option1"
@@ -272,7 +268,7 @@ const BasicPage = () => {
 		<div className="question-row">
 			<div className="question">
 				<span className="QuestionNum">#5</span> <span>
-				<Stack className="last4" gap={3}>
+				<Stack className="stack" gap={3}>
 				<Form.Check 
 							type="radio"
 							id="q5-Option1"
@@ -292,7 +288,7 @@ const BasicPage = () => {
 			</div>	
 			<div className="question">		
 				<span className="QuestionNum">#6</span> <span className="basic-radials">
-				<Stack  className="last4" gap={3}> 
+				<Stack  className="stack" gap={3}> 
 						<Form.Check 
 							type="radio"
 							id="q6-Option1"
@@ -316,7 +312,7 @@ const BasicPage = () => {
 			</div>
 			<div className="question">
 				<span className="QuestionNum">#7</span> <span>
-				<Stack className="last4" gap={3} > 
+				<Stack className="stack" gap={3} > 
 				<Form.Check 
 							type="radio"
 							id="q7-Option1"
@@ -336,7 +332,7 @@ const BasicPage = () => {
 			</div>
 			<div className="question">
 			<span className="QuestionNum">#8</span> <span>
-			<Stack className="last4" gap={3}> 
+			<Stack className="stack" gap={3}> 
 			<Form.Check 
 						type="radio"
 						id="q8-Option1"

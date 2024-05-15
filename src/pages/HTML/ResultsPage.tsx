@@ -1,17 +1,24 @@
 import { useState } from 'react';
-import './resultsPage.css';
+import '../CSS/resultsPage.css';
 import { Button, Form } from 'react-bootstrap';
 
 
+export function parseAnswers(answers: string|null): string[] { //this function is to parse the GPT response from the local storage
+	if (answers === null) return [];
+    let array = answers.substring(2,answers.length-2).split("\", \"");
+    return array;
+}
 
-const reviewData: number[] = [0,0,0];
-const saveReviewData = "MYPIE";
+const reviewData: number[] = [0,0,0]; //Review data to be stored in local storage
+const saveReviewData = "MYPIE"; //local storage key for review data
 
 const ResultsPage = () => {
+   
+   
     const [review, setReview] = useState<number>(0); //individiual review to be submitted by store function
     const [reviews, setReviews] = useState<number[]>(reviewData); //create state for all of the questions
 
-    function pullReviews(): number[] {
+    function pullReviews(): number[] { //Pulls the review data from local storage
         if(localStorage.getItem("MYPIE")){
             const newLocal = localStorage.getItem("MYPIE") || "";
             return JSON.parse(newLocal);
@@ -19,12 +26,12 @@ const ResultsPage = () => {
         return [0, 0, 0] 
     }
 
-    function updateReviews(inputArray: number[]){
+    function updateReviews(inputArray: number[]){ //updates the review data in the state
         setReviews(inputArray);
     }
 
 
-    function storeReviews() {
+    function storeReviews() { //stores the review data in local storage
         const currReviews = [...reviews]
         currReviews[review] += 1;
         updateReviews(currReviews)
@@ -39,18 +46,19 @@ const ResultsPage = () => {
         setReview(newNumber);
     }
 
-    //get gptresponse from local storage
-    const response:string | null = localStorage.getItem("GPTresponse");
+    
+    const response:string | null = localStorage.getItem("GPTresponse"); //get gptresponse from local storage
 
-    let GPTresponse:string[];
-    if (response === null) {
-        GPTresponse = ["No Career Found!", "Please go to one of JobNav's career quizzes to generate your ideal career paths.", "", "", "", "", "", ""]
+    let GPTresponse:string[]; //initialize GPTresponse array, each element will be put in a different part of the page
+
+    if (response === null) { //if there is no response, then it will display this message
+        GPTresponse = ["No Career Found!", "Please go to one of JobNav's career quizzes to generate your ideal career paths.", "", "", "", "", "", ""] 
     }
     else {
-        GPTresponse = JSON.parse(response || "[]");
-
+        GPTresponse = JSON.parse(response || "[]"); //GPT puts it in a string format with brackets so we have to parse it correctly
     }
 
+    //HTML for the results page
     return(
         <>
         <div className="mainCareer">
@@ -114,5 +122,6 @@ const ResultsPage = () => {
     )
 
 };
+
 export default ResultsPage;
-export const reviews = localStorage.getItem("MYPIE") || ""; //this is to get the api key from the local storage
+export const reviews = localStorage.getItem("MYPIE") || "";
