@@ -1,3 +1,18 @@
+@font-face { /* Center box title font */
+  font-family: 'Playfair Display Black';
+  src: url('./Pages/PlayfairDisplay-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./Pages/Poppins-Bold.ttf') format('truetype');
+}
+
+@font-face { /* Descriptions font */
+  font-family: 'Poppins Light';
+  src: url('./Pages/Poppins-Light.ttf') format('truetype');
+}
+
 .footer {
   position: fixed;
   bottom: 0;

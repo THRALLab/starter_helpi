@@ -1,4 +1,4 @@
-font-face { /* Center box title font */
+@font-face { /* Center box title font */
     font-family: 'Playfair Display Black';
     src: url('./PlayfairDisplay-Black.ttf') format('truetype');
 }
