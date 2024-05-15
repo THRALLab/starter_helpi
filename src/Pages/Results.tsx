@@ -4,8 +4,6 @@ import './Pages.css';
 import './questions.css';
 import OpenAI from 'openai';
 
-const keyUser = JSON.stringify(key);
-
 interface ResultsProps {
     handlePage: (page: string) => void;
     questionsAndAnswers: string;
@@ -13,10 +11,9 @@ interface ResultsProps {
 }
 
 const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiKey }) => {
-    const [jobSuggestion, setJobSuggestion] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(true);
-
-    useEffect(() => {
+    const [results, setResults] = useState<string|null>("");
+     useEffect(() => {
         const generateJobSuggestion = async () => {
             setLoading(true);
             try {
@@ -27,17 +24,19 @@ const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiK
                       { role: "system", content: "You are giving a career quiz, give a reccommendation for 3 solid career options based on the user responses, explaining each and why. Only return responses, no questions."}, 
                       { role: "user", content: questionsAndAnswers }
                     ],
-                    model: "gpt-4"
+                    model: "gpt-4-turbo"
                   });
-                setJobSuggestion(chatResponse.choices[0]);
+                  setResults(chatResponse.choices[0].message.content);
             } catch (error) {
                 console.error('Error generating job suggestion:', error);
             } finally {
                 setLoading(false);
             }
+
         };
 
         generateJobSuggestion();
+        console.log(apiKey)
     }, [questionsAndAnswers, apiKey]);
 
     return (
@@ -47,7 +46,7 @@ const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiK
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
-                    <pre>{jobSuggestion}</pre>
+                    <div> {results}</div>
                 )}
             </div>
             <Button onClick={() => handlePage('Home')}>Back to Home</Button>

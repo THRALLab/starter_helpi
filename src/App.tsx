@@ -50,7 +50,7 @@ function App() {
       case 'interests':
         return <CareerSearchByInterest handlePage={handlePageChange} />;
       case 'Results':
-        return <Results handlePage={handlePageChange} questionsAndAnswers={questionsAndAnswers} />;
+        return <Results handlePage={handlePageChange} questionsAndAnswers={questionsAndAnswers} apiKey = {key}/>;
       default:
         return <Home handlePage={handlePageChange} />;
     }
