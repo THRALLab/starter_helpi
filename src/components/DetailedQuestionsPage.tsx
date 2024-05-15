@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Nav, Navbar, ProgressBar } from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Input from '@mui/joy/Input';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
-import CareerFinder from '../images/CareerFinder.png';
+
 import { Box, CircularProgress, CircularProgressProps } from '@mui/material';
 
 
@@ -160,9 +160,6 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
         }
     };
 
-    const handleGoToHomePage = () => {
-        setGoToHomePage(true);
-    };
 
     if (goToHomePage) {
         return <Navigate to="/" />;
