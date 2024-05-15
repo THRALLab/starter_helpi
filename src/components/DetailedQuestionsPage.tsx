@@ -379,7 +379,7 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
   {error && <Typography style={{ color: 'red' }}>{error}</Typography>}
   
   {!loading && response && Array.isArray(response) && (
-    <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+    <div style={{ maxHeight: '370px', overflowY: 'auto' }}>
       {response.map((line, index) => (
         <p key={index}>{line}</p>
       ))}

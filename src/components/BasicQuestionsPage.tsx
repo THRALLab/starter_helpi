@@ -382,7 +382,7 @@ export function BasicQuestionsPage(): JSX.Element {
           </>
         ) : (
           <>
-            <Typography level="h4">AI Generated Summary:</Typography>
+            <Typography>AI Generated Summary:</Typography>
             <Typography>{gptResponse}</Typography>
             <StyledButton onClick={handleGoToHomePage}>Home</StyledButton>
             <StyledButton onClick={handleRetakeTest}

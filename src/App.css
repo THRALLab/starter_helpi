@@ -198,9 +198,9 @@ body {
 .cab {
   overflow: hidden;
   white-space: nowrap;
-  position: fixed;
+  position: absolute;
   animation: cab 10s linear infinite;
-  bottom: -10px;
+  bottom: -50px;
   left: 0;
 }
 
