@@ -9,9 +9,23 @@ interface ResultsProps {
     apiKey: string; // Add prop for API key
 }
 
+type CareerSuggestions = {
+    title: string;
+    salary: string;
+    jobGrowth: string;
+    description: string;
+}
+
 const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiKey }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [results, setResults] = useState<string|null>("");
+    const [suggestions, setSuggestions] = useState<CareerSuggestions[]>([]);
+
+    // convertToSuggestions() {
+    //     // convert results to list of career suggestions
+    //     setSuggestions([]);
+    // }
+
      useEffect(() => {
         const generateJobSuggestion = async () => {
             setLoading(true);
@@ -45,7 +59,7 @@ const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiK
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
-                    <div> {results}</div>
+                    <div> {results?.split("**").map((car)=><h3>{car}</h3>)}</div>
                 )}
             </div>
         </div>
