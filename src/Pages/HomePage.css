@@ -1,0 +1,157 @@
+.parallax-scrolling {
+  position: relative;
+  overflow: hidden;
+  overflow-x: hidden;
+  height: 550vh;
+  z-index: 1;
+}
+
+.parallax-coffee-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3000px;
+  z-index: 0;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  pointer-events: none;
+}
+
+#coffee1 {
+  background-image: url("BASE.png");
+  animation: movecoffee 100s linear infinite;
+  z-index: 2;
+  transform: translateY(var(--coffee1-translateY));
+  filter: blur(2px);
+}
+
+#coffee2 {
+  background-image: url("MID.png");
+  animation: movecoffee 150s linear infinite;
+  z-index: 3;
+  transform: translateY(var(--coffee2-translateY));
+  filter: blur(1px);
+}
+
+#coffee3 {
+  perspective: 20px;
+  top: -200px;
+  background-image: url("TOP.png");
+  animation: movecoffee 2s linear infinite;
+  z-index: 3;
+  transform: translateY(var(--coffee3-translateY));
+}
+
+.parallax-coffee-layer {
+  background-size: 100% 100%;
+  /* Other properties remain the same */
+}
+
+.Hbody {
+  height: 100vh;
+  width: 100vw;
+  z-index: 8;
+  overflow-x: hidden;
+}
+
+.Hbody .text {
+  display: block;
+  position: absolute;
+  font-family: "Lilita One";
+  text-align: center;
+  top: 403vh;
+  overflow-x: hidden;
+  font-size: 30px;
+  background-color: #3d2a19;
+  width: 100vw;
+  border: 15px;
+  padding: 5px 15px;
+  position: absolute;
+  color: #fee4c3;
+  transform: none;
+
+  z-index: 8;
+  height: 120vh;
+}
+
+.BQDiscriptions {
+  display: block;
+  position: absolute;
+  width: 70vh;
+  height: 64vh;
+  top: 420vh;
+
+  left: 14vw;
+  text-align: center;
+  background-color: #fee4c3;
+  border: 5px solid transparent;
+  border-radius: 8px;
+  padding: 5px 15px;
+  color: #3d2a19;
+
+  z-index: 8;
+}
+.BQDiscriptionBox {
+  text-align: left;
+  z-index: 8;
+}
+
+.DQDiscriptions {
+  display: block;
+  position: absolute;
+  width: 64vh;
+  height: 64vh;
+  top: 420vh;
+  right: 14vw;
+
+  text-align: center;
+  background-color: #fee4c3;
+  border: 5px solid transparent;
+  border-radius: 8px;
+  padding: 5px 15px;
+  color: #3d2a19;
+
+  z-index: 8;
+}
+
+.BQButton{
+  display: block;
+  position: absolute;
+  top: 549vh;
+  /* top: 0vh; */
+  left: auto;
+  left: 25.5vw;
+  background-color: #fee4c3;
+  color: #3d2a19;
+  border: 1px transparent;
+  z-index: 9;
+  transition: all 0.3s ease; 
+}
+.BQButton:hover {
+  background-color: #3d2a19;
+  color: #fee4c3;
+  z-index: 9;
+  transform: scale(1.1); 
+}
+
+.DQButton{
+  display: block;
+  position: absolute;
+  top: 549vh;
+  z-index: 8;
+
+  right: 23.5vw;
+  background-color: #fee4c3;
+  color: #3d2a19;
+  border: 1px transparent;
+  transition: all 0.3s ease; 
+}
+.DQButton:hover {
+  background-color: #3d2a19;
+  /* color: #3d2a19; */
+  color: #fee4c3;
+  transform: scale(1.1); 
+}

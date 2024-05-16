@@ -1,0 +1,469 @@
+.Bbody {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fee4c3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide the scroll bars but allow scrolling */
+}
+
+.Bbody .text {
+  display: block;
+  position: absolute;
+  font-family: "Lilita One";
+  text-align: center;
+  top: 10vh;
+  font-size: 30px;
+  left: 11vw;
+}
+
+.Background {
+  height: 125vh;
+  background-image: url(MatchaBQ.jpg);
+  filter: blur(5px);
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden; /* Hide the scroll bars but allow scrolling */
+}
+
+.BasicQuestions-List {
+  top: 15vw;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  list-style-type: none;
+  background-color: #3c2918;
+  left: -1vw;
+}
+
+.Ul-BQ {
+  text-align: left;
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+  list-style: none;
+}
+
+.BQH {
+  position: absolute;
+  top: 10vh;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+  color: #3c2918;
+  text-shadow: 1px 1px 10px #fee4c3, 1px 1px 10px #fee4c3;
+  overflow: hidden; /* Hide the scroll bars but allow scrolling */
+}
+
+.BQB {
+  position: absolute;
+  top: 18vh;
+  left: 28vw;
+  text-align: center;
+}
+
+.BQQuestionNum {
+  position: relative;
+  padding: 0px;
+  margin-bottom: 0px;
+  font-family: "Lilita One";
+  font-size: 25px;
+  color: #3c2918;
+  top: 30vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.BQQuestion {
+  position: absolute;
+  margin-top: 0vh;
+  font-size: 25px;
+  color: #3c2918;
+  top: 37vh;
+  left: auto;
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+}
+
+.ButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  bottom: -25px; /* Adjust this value as needed */
+}
+
+.NextButton, .PrevButton, .BasicSubmitButton {
+  height: 53px;
+  width: fit-content;
+  padding: 10px, 40px;
+  background-color: #3c2918;
+  color: #fee4c3;
+  border: 1px transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px; /* Add some space between the buttons */
+  z-index: 3;
+}
+
+.NextButton:hover, .PrevButton:hover, .BasicSubmitButton:hover,
+.NextButton:focus, .PrevButton:focus, .BasicSubmitButton:focus {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+
+.PrevButton:disabled {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+
+.textboxclassBQ {
+  position: absolute;
+  margin-top: 10px;
+  top: 41vh;
+  height: 40px;
+  width: 60vh;
+  font-size: 20px;
+  font-family: "Josefin Sans";
+  left: 35vw;
+  background-color: #3c2918;
+  color: #fee4c3;
+  text-align: center;
+}
+
+.ProgressBarBQ {
+  position: absolute;
+  border-radius: 1.5em;
+  left: 5vw;
+  top: 46vh;
+  height: 6vh;
+  width: 90vw;
+  background-color: #3c2918;
+}
+
+.ActiveProgressBQ {
+  position: absolute;
+  align-self: center;
+  border-radius: 1.5em;
+  transition: width 0.3s ease-in-out;
+  left: 0.6vw;
+  top: 1vh;
+  height: 4vh;
+  max-width: 98.5%;
+  min-width: 0.5%;
+  background-color: #fee4c3;
+}
+
+.QuestionHeader {
+  position: absolute;
+  border-radius: 1.5em;
+  top: 50vh;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+  font-family: "Josefin Sans";
+  color: #3c2918;
+  text-shadow: 1px 1px 10px #fee4c3, 1px 1px 10px #fee4c3;
+}
+
+.QuestionContainer {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Lilita One";
+  position: absolute;
+  top: 55vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  background-color: #fff3e4;
+  height: 50vh;
+  border-radius: 1.5em;
+  padding-top: 10px;
+  color: #3c2918;
+  overflow: auto;
+}
+
+.QuestionContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.QuestionContainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.QuestionText {
+  font-size: 20px;
+}
+
+.AnswerInput {
+  width: 300px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.QCount {
+  position: absolute;
+  top: -5vh;
+  left: 42vw;
+}
+
+.BQH {
+  position: absolute;
+  border-radius: 1.5em;
+  top: 15vh;
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+  font-family: "Lilita One";
+  color: #3c2918;
+}
+
+.Description {
+  position: absolute;
+  border-radius: 1.5em;
+  top: 23vh;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+  font-family: "Lilita One";
+  color: #000000;
+  text-shadow: 1px 1px 10px #fee4c3, 1px 1px 10px #fee4c3;
+}
+
+.resultsContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultBackground {
+  height: 280vh;
+  width: 100vw;
+  background-image: url(MatchaBQ.jpg);
+  filter: blur(5px);
+  background-size: cover;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.resultsHeader {
+  font-size: 50px;
+  font-family: "Lilita One";
+  font-weight: bold;
+  position: absolute;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-shadow: 1px 1px 10px #fee4c3, 1px 1px 10px #fee4c3;
+  text-align: center;
+}
+
+.resultsPage {
+  position: absolute;
+  top: 30vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* z-index: ; */
+}
+
+.resultformat {
+  z-index: 1;
+  background-color: #c3c795;
+  border-radius: 1.5em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #50542a;
+  text-shadow: 1px 1px 10px #ffffff, 1px 1px 10px #d3d4c9;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 600px; /* Optional: to limit the width of the result boxes */
+}
+
+.resultButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; */
+}
+
+.resultSubmitButton, .returnButton {
+  height: 55px;
+  /* width: 200px; Optional: to increase the width of the buttons */
+  /* padding: 10px; */
+  background-color: #3c2918;
+  color: #fee4c3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.resultSubmitButton:hover, .resultSubmitButton:focus,
+.returnButton:hover, .returnButton:focus {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+
+
+
+.resultSubmitButton {
+  position: absolute;
+  height: 55px;
+  top: 250vh;
+  right: 65vh;
+  margin-top: 12vh; 
+  bottom: 20px; /* Adjust the vertical position from the bottom */
+  width: 30vh; /* Adjust the width as needed */
+  padding: 10px;
+  background-color: #3c2918;
+  color: #fee4c3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.resultSubmitButton:hover {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.resultSubmitButton:visted {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.resultSubmitButton:focus {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+
+.returnButton {
+  position: absolute;
+  height: 55px;
+  left: 30vw;
+  top: 250vh;
+  margin-top: 12vh; 
+  bottom: 20px; /* Adjust the vertical position from the bottom */
+  width: 30vh; /* Adjust the width as needed */
+  padding: 10px;
+  background-color: #3c2918;
+  color: #fee4c3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.returnButton:hover {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.returnButton:visted {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+.returnButton:focus {
+  background-color: #fee4c3;
+  color: #3c2918;
+}
+
+
+/*stylizing radio buttons*/
+
+.radio-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.radio-item [type="radio"] {
+  display: none;
+}
+
+.radio-item + .radio-item {
+  margin-top: 17px;
+}
+
+.radio-item label {
+  display: block;
+  padding: 10px 45px;
+  background: #8c6958;
+  color: #fee4c3;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  min-width: 250px;
+  white-space: nowrap;
+  position: relative;
+  transition: 0.4s ease-in-out 0s;
+}
+
+.radio-item label:after,
+.radio-item label:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+/*color of radio buttons*/
+
+.radio-item label:after {
+  height: 19px;
+  width: 19px;
+  border: 2px solid #ffffff;
+  left: 18px;
+  top: calc(50% - 9.5px);
+}
+
+.radio-item label:before {
+  background: #fee4c3;
+  height: 15px;
+  width: 15px;
+  left: 20px;
+  top: calc(50% - 7.5px);
+  transform: scale(1);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s ease-in-out 0s;
+}
+
+.radio-item [type="radio"]:checked ~ label {
+  border-color: #fee4c3;
+}
+
+.radio-item [type="radio"]:checked ~ label::before {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.19);
+}
