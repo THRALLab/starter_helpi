@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import React, { useState } from "react";
+import "./App.css";
+import { Button, CardFooter, Form } from "react-bootstrap";
+
+import BasicQuiz from "./components/BasicQuiz";
+import DetailedQuiz from "./components/DetailedQuiz";
+import HomePage from "./components/HomePage";
+import NavBar from "./components/NavBar";
+import logo from "./assets/images/logo.png";
+
+import { isValidKey } from "./components/GPT";
+//import logo from "./assets/images/logo.png";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -13,39 +21,61 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  
+  const [currentPage, setCurrentPage] = useState<"detailed" | "basic" | "home">(
+    "home"
+  );
+
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+    isValidKey(key).then((valid) => {
+      if (valid) {
+        localStorage.setItem(saveKeyData, JSON.stringify(key));
+        window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+      } else {
+        alert("Invalid API Key");
+      }
+    });
   }
 
   //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
+    <div style={{backgroundImage: "../assets/images/background.jpg",
+    backgroundSize: "cover"}}>
+      <NavBar
+        brandName="The Career Helpi"
+        imageSrcPath={logo}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+      <div className="App">
+        {currentPage === "home" ? <HomePage /> : null}
+        {currentPage === "basic" ? <BasicQuiz keyData={keyData} /> : null}
+        {currentPage === "detailed" ? <DetailedQuiz keyData={keyData} /> : null}
+
+        <CardFooter>
+          <Form>
+            <Form.Label className="d-block text-center mt-2">
+              API Key:
+              <Form.Control
+                id={`api`} // unique id for each input from chrome suggestions
+                name={`api`} // unique name for each input from chrome suggestions
+                type="password"
+                placeholder="Insert API Key Here"
+                onChange={changeKey}
+                style={{ width: "800px", margin: "0 auto" }}
+              ></Form.Control>
+            </Form.Label>
+            <br></br>
+            <Button className="Submit-Button" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Form>
+        </CardFooter>
+      </div>
     </div>
   );
 }
