@@ -47,28 +47,20 @@ export function ContactUs(): JSX.Element {
         <div className="box" style={{ width: '50%', margin: 'auto', padding: '20px', minHeight: '450px' }}>
           <p></p>
           <h3>Contact Information:</h3>
-          <div style={{ marginBottom: '20px' }}>
-            <strong>Email:</strong> worker1@example.com <br />
-            <strong>Phone:</strong> +1 (123) 456-7890 <br />
-            <strong>Address:</strong> 123 Main Street, City, State, ZIP Code
+          <div style={{ marginBottom: '70px' }}>
+            <strong>Email:</strong> gillad@udel.edu <br />
           </div>
 
-          <div style={{ marginBottom: '20px' }}>
-            <strong>Email:</strong> worker2@example.com <br />
-            <strong>Phone:</strong> +1 (123) 456-7890 <br />
-            <strong>Address:</strong> 123 Main Street, City, State, ZIP Code
+          <div style={{ marginBottom: '70px' }}>
+            <strong>Email:</strong> rshaik@udel.edu <br />
           </div>
 
-          <div style={{ marginBottom: '20px' }}>
-            <strong>Email:</strong> worker3@example.com <br />
-            <strong>Phone:</strong> +1 (123) 456-7890 <br />
-            <strong>Address:</strong> 123 Main Street, City, State, ZIP Code
+          <div style={{ marginBottom: '70px' }}>
+            <strong>Email:</strong> hbagga@udel.com <br />
           </div>
 
-          <div style={{ marginBottom: '20px' }}>
-            <strong>Email:</strong> worker4@example.com <br />
-            <strong>Phone:</strong> +1 (123) 456-7890 <br />
-            <strong>Address:</strong> 123 Main Street, City, State, ZIP Code
+          <div style={{ marginBottom: '70px' }}>
+            <strong>Email:</strong> thernd@udel.edu <br />
           </div>
 
           <p></p>
