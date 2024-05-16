@@ -1,0 +1,46 @@
+.form-check {
+    display: flex;
+    align-items: center;
+  }
+
+  .textbox {
+    width: 100%;
+  }
+
+
+
+/* Small screens, laptops (769px — 1024px) */
+@media only screen and (max-width: 1024px) {
+  /* CSS rules for small screens and laptops */
+  .form-control {
+    font-size: 15px;
+  }
+}
+
+
+
+/* iPads, Tablets (481px — 768px) */
+@media only screen and (max-width: 768px) {
+  /* CSS rules for iPads and tablets */
+  .form-control {
+    font-size: 13px;
+  }
+}
+
+
+
+/* Mobile devices (350px — 480px) */
+@media only screen and (max-width: 480px) {
+  /* CSS rules for mobile devices */
+  .form-control {
+    font-size: 12px;
+  }
+}
+
+/* Small Mobile devices (<= 350px) */
+@media only screen and (max-width: 350px) {
+  /* CSS rules for mobile devices */
+  .form-control {
+    font-size: 11px;
+  }
+}

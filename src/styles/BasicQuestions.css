@@ -1,0 +1,112 @@
+
+.basic-questions-page {
+    margin-top: 81px;
+    color: var(--white-color);
+    background-color: var(--black-color);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px; 
+}
+
+.basic-questions-page .basic-q-title {
+    font-size: 60px;
+
+}
+
+
+.basic-questions-page .path-section {
+    height: calc(100vh - 81px);
+    color: var(--white-color);
+    text-align: center;
+    margin: 0px auto 200px auto;
+    width: 100%;
+}
+
+.basic-questions-page .path-options {
+    width: 1024px; /* Adjust width as needed */
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0px;
+}
+
+.basic-questions-page .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    height: 81px;
+}
+
+/* Small screens, laptops (769px — 1024px) */
+@media only screen and (max-width: 1024px) {
+    /* CSS rules for small screens and laptops */
+    .basic-question-page .path-section {
+        height: 200vh;
+    }
+
+    .basic-questions-page .basic-q-title {
+        font-size: 50px;
+    
+    }
+
+    .basic-questions-page .path-options {
+        width: 500px;
+        gap: 20px;
+    }
+    
+}
+
+/* iPads, Tablets (481px — 768px) */
+@media only screen and (max-width: 768px) {
+    /* CSS rules for iPads and tablets */
+    .basic-questions-page .basic-q-title {
+        font-size: 45px;
+    
+    }
+
+    .path-options {
+        flex-direction: column; /* Switch to column layout */
+        align-items: center; /* Center items vertically */
+    }
+    
+}
+
+/* Mobile devices (350px — 480px) */
+@media only screen and (max-width: 480px) {
+    /* CSS rules for mobile devices */
+    .basic-questions-page .basic-q-title {
+        font-size: 35px;
+    
+    }
+    .basic-questions-page .path-options {
+        width: 90%;
+    }
+
+    .desc {
+        font-size: 15px;
+        margin: 33px auto;
+    }
+    .card {
+        width: 100%;
+        height: 320px;
+    }
+    .link-btn {
+        font-size: 15px;
+        padding: 10px 15px;
+    }
+}
+
+
+/* Small Mobile devices (<= 350px) */
+@media only screen and (max-width: 350px) {
+    /* CSS rules for mobile devices */
+    .basic-questions-page .basic-q-title {
+        font-size: 30px;
+    
+    }
+}
