@@ -74,7 +74,7 @@ import { reviews } from "./ResultsPage"
                     <p>See what other people are saying about their JobNav.com results!</p>
                 </div>
                 <div className="quiz-data-graph">
-                    <div className="piechart">
+                    <div className="piechart" data-testid="pieChart">
                         <div style={{
                             width: "300px",
                             height: "300px",
@@ -95,7 +95,7 @@ import { reviews } from "./ResultsPage"
             <div className="apikey-container">
             <Form style={{marginTop: "10px"}}>
                     <Form.Label>API Key:</Form.Label>
-                    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                    <Form.Control role="textbox"type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
                     <br></br>
                     <Button className="Submit-Button" onClick={handleSubmit} style={{marginBottom: "30px"}}>Submit</Button>
                 </Form>

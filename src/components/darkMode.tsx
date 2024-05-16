@@ -19,6 +19,7 @@ export const DarkModeToggle = () => {
   return (
     <button className="darkModeToggle"
       onClick={handleToggle}
+      data-testid ="dark-mode"
       style={{
         height: "30px",
         width: "100px",
