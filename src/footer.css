@@ -1,0 +1,51 @@
+/* Import alien fonts */
+@font-face { font-family: Minecraft; src: url('/src/fonts/Minecraft.ttf'); } 
+@font-face { font-family: Minecraft2; src: url('/src/fonts/easvhs.ttf'); } 
+
+footer{
+    width: 100%;
+    background-color:#68BFD6;
+    padding: 4px;
+    text-align: center;
+    font-family: 'Minecraft2';
+    color: whitesmoke;
+    /*
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 7px;
+    border-radius: 50px;
+    */
+  }
+  
+  .footer-logo{
+    width: 100px;
+  }
+  
+  .footer-decorative{
+    display: flex;
+  }
+  
+  #logo-text-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 15px;
+  }
+  
+
+.submit-Button {
+    margin-top: 20px;
+    margin-left: 5px;
+    padding: 10px 15px;
+    font-size: 12px;
+    background-color: #F09738;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-Button:hover{
+    background-color: #EE6B2C;
+}
