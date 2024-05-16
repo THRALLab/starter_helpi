@@ -18,7 +18,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 
-import AdbIcon from '@mui/icons-material/Adb';
+
+import CareerFinder from '../images/CareerFinder.png';
 
 export function BasicQuestionsPage(): JSX.Element {
     const StyledButton = styled(Button)`
@@ -233,7 +234,7 @@ export function BasicQuestionsPage(): JSX.Element {
   <AppBar position="static" style={{backgroundColor: '#f3e5f5'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        <img src={CareerFinder} alt="CareerFinder4U Logo" style={{ height: 50, width: 50, paddingRight: '5px' }} />
           <Typography
             variant="h6"
             noWrap
@@ -284,7 +285,7 @@ export function BasicQuestionsPage(): JSX.Element {
               
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          
           <Typography
             variant="h5"
             noWrap
@@ -340,7 +341,7 @@ export function BasicQuestionsPage(): JSX.Element {
     </AppBar>
   <h1 className='padding7'>Basic Questions Page</h1>
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh',zIndex:'-1px' }}>
-    <div className='padding5' >
+    <div className='padding5'style={{flexDirection: 'column'}}>
     <Card variant="plain" sx={{ width: 600, height: 'auto' }}>
       <CardContent>
         {!displayFinalResults ? (

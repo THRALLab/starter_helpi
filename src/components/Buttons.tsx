@@ -19,6 +19,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import CareerFinder from '../images/CareerFinder.png';
 
 
 
@@ -92,7 +93,7 @@ if (goToDetailedQuestionsPage) {
     <AppBar position="static" style={{backgroundColor: '#f3e5f5'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        <img src={CareerFinder} alt="CareerFinder4U Logo" style={{ height: 50, width: 50, paddingRight: '5px' }} />
           <Typography
             variant="h6"
             noWrap
