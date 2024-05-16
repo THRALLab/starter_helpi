@@ -74,7 +74,7 @@ import { reviews } from "./ResultsPage"
                     <p>See what other people are saying about their JobNav.com results!</p>
                 </div>
                 <div className="quiz-data-graph">
-                    <div className="piechart">
+                    <div className="piechart" data-testid="pieChart">
                         <div style={{
                             width: "300px",
                             height: "300px",

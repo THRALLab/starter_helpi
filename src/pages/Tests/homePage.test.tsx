@@ -38,18 +38,26 @@ test('renders introduction text part 3', () => {
   expect(intro).toBeInTheDocument();
 });
 
-test('Render Piechart', () => {
-  const pieChart = screen.getAllByTestId("pieChart")
-  const pieChartLegend = screen.getByTestId("pieLegend");
+test('Renders the pie chart', () => {
+  render(<App />);
+  const pieChart = screen.getByTestId('pieChart');
   expect(pieChart).toBeInTheDocument();
-  expect(pieChartLegend).toBeInTheDocument();
-})
-
+  });
 
 test('Render textbox for API input', () => {
   render(<App/>);
   const textBox = screen.getByRole("textbox");
   expect(textBox).toBeInTheDocument();
+})
+
+test('Render pie chart legends', () => {
+  render(<App/>);
+  const pieLegend1 = screen.getByText(/"I Loved It!"/)
+  const pieLegend2 = screen.getByText(/"It was alright."/)
+  const pieLegend3 = screen.getByText(/"I'm not so impressed."/)
+  expect(pieLegend1).toBeInTheDocument();
+  expect(pieLegend2).toBeInTheDocument();
+  expect(pieLegend3).toBeInTheDocument();
 })
 
 test('Render API Submit Button', () => {
