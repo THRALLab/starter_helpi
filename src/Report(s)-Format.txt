@@ -1,0 +1,51 @@
+Best suited for:
+
+Will still do well in:
+
+Can adapt to:
+
+Likely unsuited for:
+
+Why you may be best suited for:
+X
+Y
+Z
+
+Why you should still do well in:
+X
+Y
+Z
+
+Why you might need to adapt to:
+X
+Y
+Z
+
+Why you likely are not suited for:
+X
+Y
+Z
+
+The best types of work environments for you is:
+A
+B
+C
+
+You will likely find these environments stressful:
+A
+B
+C
+
+{
+  "best_suited_for": ["X", "Y", "Z"],
+  "will_still_do_well_in": ["X", "Y", "Z"],
+  "can_adapt_to": ["X", "Y", "Z"],
+  "likely_unsuited_for": ["X", "Y", "Z"],
+  "reasons_best_suited_for": ["X", "Y", "Z"],
+  "reasons_will_do_well_in": ["X", "Y", "Z"],
+  "reasons_can_adapt_to": ["X", "Y", "Z"],
+  "reasons_unsuited_for": ["X", "Y", "Z"],
+  "best_work_environments": ["A", "B", "C"],
+  "stressful_environments": ["A", "B", "C"]
+}
+
