@@ -91,8 +91,8 @@ import { reviews } from "./ResultsPage"
                 </div>
             </div>
         </div>
-        <div className="apikey-container-container">
-            <div className="apikey-container">
+        <div className="apikey-container-container" >
+            <div className="apikey-container" data-testid="api-container">
             <Form style={{marginTop: "10px"}}>
                     <Form.Label>API Key:</Form.Label>
                     <Form.Control role="textbox"type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>

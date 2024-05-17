@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../../App';
+import userEvent from '@testing-library/user-event';
 
 describe("homePage.tsx test", () => {
 
@@ -20,14 +21,17 @@ describe("homePage.tsx test", () => {
     render(<App/>);
     const darkButton = screen.getByTestId("dark-mode")
     expect(darkButton).toBeInTheDocument();
-  })
+  });
 
   test('Darkmode function', () => {
     render(<App/>)
     const darkToggle = screen.getByTestId("dark-mode");
     fireEvent.click(darkToggle);
-    expect(darkToggle).toHaveStyle({ color: 'black' });
-  })  
+    expect(darkToggle).toHaveStyle({ color: "black" });
+    const webBody = document.body;
+    expect(webBody).toHaveStyle({background: "black"});
+    expect(webBody).toHaveStyle({color: "white"})
+  })  ;
 
 test('renders introduction text part 1', () => {
     render(<App />);
@@ -61,19 +65,34 @@ test('Renders the pie chart', () => {
     expect(pieLegend1).toBeInTheDocument();
     expect(pieLegend2).toBeInTheDocument();
     expect(pieLegend3).toBeInTheDocument();
-  })
+  });
 
 test('Render textbox for API input', () => {
   render(<App/>);
   const textBox = screen.getByRole("textbox");
   expect(textBox).toBeInTheDocument();
+});
+
+test('Render API input', () => {
+  render(<App/>); 
+  const textBox = screen.getByRole("textbox") as HTMLInputElement;
+  userEvent.type(textBox, "42");
+  expect(textBox.value).toBe("42");
+
 })
 
 test('Render API Submit Button', () => {
   render(<App/>);
   const submitButton = screen.getByRole("button", {name:"Submit"})
   expect(submitButton).toBeInTheDocument();
+});
+
+test('Render Footer', () => {
+  render(<App/>)
+  const developedBy = screen.getByText(/Developed by Saini, Le, Torres, and Walsh/i);
+  expect(developedBy).toBeInTheDocument();
 })
+
 })
 
 
