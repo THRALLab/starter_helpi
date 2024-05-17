@@ -2,15 +2,25 @@ import {render, screen} from '@testing-library/react';
 import App from '../../App';
 import ResultsPage from '../HTML/ResultsPage';
 
-test('Renders Help on no Career', () => {
+test('Renders on No Career', () => {
     render(<ResultsPage />);
     const careerError = screen.getByText(/No Career Found!/);
     const careerHelp = screen.getByText(/Please go to one of JobNav's career quizzes to generate your ideal career paths./);
-    
+    const subcareedDivs = screen.getAllByRole("heading", {name: ""}); //all 3 subcareer boxes should be empty
+    const mainHeading = screen.getByRole("heading", {name: /Your ideal career is.../});
 
     expect(careerError).toBeInTheDocument();
     expect(careerHelp).toBeInTheDocument();
+    expect(subcareedDivs).toHaveLength(3);
+    expect(mainHeading).toBeInTheDocument();
 });
+
+test('Renders on Career Found', () => {
+    
+    render(<ResultsPage />);
+    
+});
+
 
 test('Renders Review Elements', () => { 
     render(<ResultsPage />);

@@ -15,7 +15,7 @@ const saveReviewData = "MYPIE"; //local storage key for review data
 const ResultsPage = () => {
    
    
-    const [review, setReview] = useState<number>(0); //individiual review to be submitted by store function
+    const [review, setReview] = useState<number>(-1); //individiual review to be submitted by store function
     const [reviews, setReviews] = useState<number[]>(reviewData); //create state for all of the questions
 
     function pullReviews(): number[] { //Pulls the review data from local storage
@@ -32,12 +32,16 @@ const ResultsPage = () => {
 
 
     function storeReviews() { //stores the review data in local storage
+        if(review === -1) return;
+
         const currReviews = [...reviews]
         currReviews[review] += 1;
         updateReviews(currReviews)
         const storedReviews = [...pullReviews()]
         const combinedReviews = [currReviews[0] + storedReviews[0], currReviews[1] + storedReviews[1], currReviews[2] + storedReviews[2]];
+        changeReview(-1);
         localStorage.setItem(saveReviewData, JSON.stringify(combinedReviews));
+
         window.location.reload(); 
         
     }
@@ -115,7 +119,7 @@ const ResultsPage = () => {
                 onChange={() => changeReview(2)}
                 />
             </div>
-                <Button className="Submit-Button" onClick={storeReviews}>Submit</Button>
+                <Button className="Submit-Button" onClick={storeReviews} disabled={review===-1}>Submit</Button>
 		</div>
         
         </>
