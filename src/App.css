@@ -1,38 +1,370 @@
 .App {
-  text-align: center;
+  text-align: left;
+  margin-left: 30px;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+#image {
+    width: 170px;
+    height: 70px;
+}
+/*this is the header */
+.App-header2{
+  width : 100%;
+  margin-left: 5%;
+  margin: auto;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+}
+.App-header3{
+  width : 80%;
+  margin: auto;
+  margin-right: -100px;
+  margin-left: 200px;
+}
+ /* the header buttons display */
+.navbar{
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+}
+ul{
+  flex: 1;
+  text-align: right;
+}
+ul li{
+  display: inline-block;
+  list-style: none;
+  margin: 0 15px;
+}
+ul li .basicButton{
+  text-decoration: none;
+  color: rgb(43, 27, 66);
+  padding: 0 10x;
+  position: relative;
+}
+ul li .basicButton::after{
+  content: '';
+  width: 0;
+  height: 20px;
+  background: #7b60cc;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top:-55px;
+  transition: 0.5s;
+}
+ /* the Home page division into right and left  */
+.banner{
+  display: flex;
+  margin: 40px;
+}
+.banner .right-column h3{
+  margin-left: 20%;
+}
+.left-column{
+  flex-basis: 45%;
+}
+.right-column{
+  flex-basis:55% ;
 }
 
+.left-column img{
+  width: 100%;
+  margin-top: 100px;
+}
+
+/*this is the Home page ------------------------------------------------------------------*/
+ /* devide page tp left and right  */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 75vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction:column;
+  align-items: left;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(116, 78, 198);
 }
-
+.App-header h1{
+  font-size: 70px;
+  margin-top: 30px;
+  margin-right: 10px;
+  margin-left: 50px;
+  
+}
+.App-header h3{
+  font-size: 25px;
+  margin-right: 100px;
+  margin-left: 0px;
+}
+ /* this is the progress bar baground color */
+.bg-custom{
+  background-color:#645cc1!important;
+}
 .App-link {
-  color: #61dafb;
+  color: #5d0aa1;
+}
+.btn button{
+  padding: 7 30px;
+  font-size: 15px;
+  margin-right: 15px;
+  outline: none;
+  border: 0px solid #441980;
+  border-radius: 20px;
+  cursor: pointer;
+  color: rgb(55, 30, 120);
+  background: transparent;
+  background:linear-gradient(#8067a3,#311e4d) ;
+  box-shadow: 0 2px 15px rgba(66, 60, 99, 0.26);
+  color:#efefef;
+  margin-top: 100px;
+}
+.bottom3 {
+  
+  margin-right: 70%;
+}
+.bottom h1{
+  margin-left: -10px;
+}
+.img{
+  margin-left: -150px;
+}
+.btn p{
+  font-size: 13px;
+  color:#0e0d0f;
+  margin: 20px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/*  All Design on the Detailed Question Page---------------------------------------------------*/
+ /* the frosted glass behind detailed page questions */
+  .detailed{
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.645);  /* Semi-transparent white */
+  backdrop-filter: blur(0px);  /* Blur effect for the frosted glass */
+  border-radius: 15px;
+  margin-left: 25%;
+  margin-right: 25%;
+
   }
-  to {
-    transform: rotate(360deg);
+   /* the title on the detailes page  */
+  .detailed-header h1{
+    min-height: 10vh;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(20px + 2vmin);
+  color: rgb(94, 56, 178);
+  background-color: transparent;
+  font-family:'Times New Roman', Times, serif;
   }
-}
+  /* the Progress bar in the detaile page */
+  .detailed-header h2{
+    min-height: 5vh;
+    width: 50%;
+    background-color: transparent;
+    display:block;
+    align-items: center;
+    justify-content: center;
+    color: #7b60cc;
+    text-align: right;
+    margin-left: 25%;
+    margin-right: 15%;
+  }
+   /* Adjust the questions on detailed page */
+  .bottom-2{
+    font-size: 20px;
+    min-height: 5vh;
+    margin-top: 1%;
+    margin-left: 6%;
+    margin-right: 6%;
+    color:#441980;
+    font-family:'Times New Roman', Times, serif;
+  }
+   /* Headers bottons design Home, Survey, and About bage buttons */
+  .BasicButton{
+    padding: 7x 30px;
+    margin-right: 15px;
+    outline: none;
+    border: 1.5px solid #9285aa;
+    border-radius: 20px;
+    color: #645cc1;
+    background:transparent;
+    box-shadow: 0 2px 15px rgba(115, 96, 201, 0.26);
+    color:#8743ba;
+    }
+
+    .BasicButton:hover{
+    padding: 7x 30px;
+    margin-right: 15px;
+    outline: none;
+    border: 1.5px solid #7f7396;
+    border-radius: 20px;
+    color: #ffffff;
+    background-color: #645cc1;
+    box-shadow: 0 2px 15px rgba(138, 123, 212, 0.26);
+    color:#ffffff;
+    }
+     /* Format for the career result from gpt */
+  .detailed-results{
+    margin-left: 8%;
+    margin-right: 8%;
+  }
+ /* the format for Buttons that get the career result */
+  .CareerButton{
+  padding: 7 30px;
+  font-size: 15px;
+  margin-left: 40%;
+  margin-top: 50px;
+  outline: none;
+  border: 0px solid #441980;
+  border-radius: 20px;
+  cursor: pointer;
+  color: rgb(55, 30, 120);
+  background: transparent;
+  background:linear-gradient(#8067a3,#311e4d) ;
+  box-shadow: 0 2px 15px rgba(66, 60, 99, 0.26);
+  color:#e9eae9;
+  }
+ /* .detailed-header h3{
+    justify-content: center;
+    align-items: center;
+    margin-left: 43%;
+   
+  }*/
+   /* the API Submit button design */
+  .Submit-Button{
+    padding: 7x 30px;
+    margin-right: 15px;
+    outline: none;
+    border: 1.5px solid #7f7396;
+    border-radius: 20px;
+    color: #645cc1;
+    background:#645cc1;
+    box-shadow: 0 2px 15px rgba(115, 96, 201, 0.26);
+    color:rgb(240, 240, 243);
+
+  }
+   /* the API submit buttons when hover over */
+  .Submit-Button:hover{
+    padding: 7x 30px;
+    margin-right: 15px;
+    outline: none;
+    border: 1.5px solid #7f7396;
+    border-radius: 20px;
+    color: #ffffff;
+    background-color: #645cc1;
+    box-shadow: 0 2px 15px rgba(138, 123, 212, 0.26);
+    color:#ffffff;
+
+  }
+  /* the API key design */
+  .api{
+    width:50%;
+    justify-content: center;
+    margin-left: 33%;
+  }
+  /* All design on Basic Question page---------------------------------------------------------------*/
+
+  /* The format of frosted glass for basic question*/
+  .Basic{
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.645);  /* Semi-transparent white */
+    backdrop-filter: blur(0px);  /* Blur effect for the frosted glass */
+    border-radius: 15px;
+    margin-left: 27%;
+    margin-right: 27%;
+  }
+  /* The format of Basic title*/
+  .Basic-header h1{
+  min-height: 6vh;
+  font-size: calc(20px + 2vmin);
+  color: rgb(94, 56, 178);
+  background-color: transparent;
+  justify-content: center;
+  margin-left: 42%;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  }
+  /* The format of Progress bar in basic qurstion*/
+  .Basic-header h2{
+    width: 46%;
+    background-color: transparent;
+    display:block;
+    align-items: center;
+    justify-content: center;
+    color: #7b60cc;
+    text-align: right;
+    margin-left: 27%;
+  
+  }
+  /* The format of Questions on basice page*/
+  .questionAsk{
+  font-size: 18px;
+  min-height: 5vh;
+  align-items: center;
+  color:#441980;
+  margin-left: 10%;
+  margin-top: 1%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  /* The format of dropdown for all questions on basic*/
+  .dropdown{
+    font-size: 150px;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  /* The format of Career buttom that gives the result for user on basic page*/
+  .CareerBasicButton{
+    margin-left: 39%;
+    padding: 7 30px;
+    font-size: 15px;
+    margin-right: 15px;
+    outline: none;
+    border: 0px solid #441980;
+    border-radius: 20px;
+    cursor: pointer;
+    color: rgb(55, 30, 120);
+    background: transparent;
+    background:linear-gradient(#8067a3,#311e4d) ;
+    box-shadow: 0 2px 15px rgba(66, 60, 99, 0.26);
+    color:#e9eae9;
+  
+    }
+    /* The format GPT respons to the user*/
+    .basicGPTrespond{
+      margin-left: 8%;
+      margin-right: 8%;
+
+    }
+/*survey page design ---------------------------------------------*/
+    /* The format of questions*/
+  .questiontobeAsked{
+  font-size: 23px;
+  min-height: 5vh;
+  align-items: center;
+  color:#441980;
+  margin-left: 10%;
+  margin-top: 1%;
+  }
+  /* The format of options to each question*/
+  .options{
+      font-size: 20px;
+      min-height: 5vh;
+      align-items: center;
+      color:#441980;
+      margin-left: 13%;
+      margin-top: 1%;
+    }
+    /* The format of Survey title*/
+  .surveyHeader h1{
+  min-height: 0;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(30px + 3vmin);
+  color: rgb(94, 56, 178);
+  background-color:transparent;
+  font-family:'Times New Roman', Times, serif;
+    }
