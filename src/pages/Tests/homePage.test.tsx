@@ -1,7 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../../App';
 
-test('Render Home, Basic Quiz, Detailed Quiz and Results links', () => {
+describe("homePage.tsx test", () => {
+
+
+  test('Render Home, Basic Quiz, Detailed Quiz and Results links', () => {
     render(<App />);
     const homeLink = screen.getByRole("link", {name:/Home/})
     const basicLink = screen.getAllByRole("link", {name:/Basic Quiz/});
@@ -18,6 +21,13 @@ test('Render Home, Basic Quiz, Detailed Quiz and Results links', () => {
     const darkButton = screen.getByTestId("dark-mode")
     expect(darkButton).toBeInTheDocument();
   })
+
+  test('Darkmode function', () => {
+    render(<App/>)
+    const darkToggle = screen.getByTestId("dark-mode");
+    fireEvent.click(darkToggle);
+    expect(darkToggle).toHaveStyle({ color: 'black' });
+  })  
 
 test('renders introduction text part 1', () => {
     render(<App />);
@@ -59,12 +69,12 @@ test('Render textbox for API input', () => {
   expect(textBox).toBeInTheDocument();
 })
 
-
-
 test('Render API Submit Button', () => {
   render(<App/>);
   const submitButton = screen.getByRole("button", {name:"Submit"})
   expect(submitButton).toBeInTheDocument();
 })
+})
+
 
   export {}
