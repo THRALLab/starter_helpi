@@ -82,7 +82,7 @@ const ResultsPage = () => {
         </div>
         <div className="reviewPrompt"style={{}}> Consider Giving Us A Rating Below!</div>
         <div className="review-system">
-            <h4>Are you satisified with the job recommendations that you received?</h4>
+            <h4>Are you satisfied with the job recommendations that you received?</h4>
             <div className="review-radio">
 			<Form.Check
 				inline
