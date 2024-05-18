@@ -55,10 +55,10 @@ const HomePage: React.FC = () => {
 }
 
 // Login form component
-const LoginForm: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+// const LoginForm: React.FC = () => {
+//   const [email, setEmail] = useState<string>("");
+//   const [password, setPassword] = useState<string>("");
+//   const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
   // Handle form submission
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
