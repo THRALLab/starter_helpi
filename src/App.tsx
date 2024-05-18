@@ -55,58 +55,58 @@ const HomePage: React.FC = () => {
 }
 
 // Login form component
-const LoginForm: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+// const LoginForm: React.FC = () => {
+//   const [email, setEmail] = useState<string>("");
+//   const [password, setPassword] = useState<string>("");
+//   const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
   // Handle form submission
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Prevent default form submission
-    // Perform login validation (dummy validation for demonstration)
-    if (email && password) {
-      setLoggedIn(true);
-    }
-  };
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault(); // Prevent default form submission
+  //   // Perform login validation (dummy validation for demonstration)
+  //   if (email && password) {
+  //     setLoggedIn(true);
+  //   }
+  // };
 
   // Handle logout
-  const handleLogout = () => {
-    setLoggedIn(false);
-    // Clear user data from local storage or perform any other necessary logout tasks
-  };
+  // const handleLogout = () => {
+  //   setLoggedIn(false);
+  //   // Clear user data from local storage or perform any other necessary logout tasks
+  // };
 
-  return (
-    <>
-      {loggedIn ? (
-        // Display user email and logout link if logged in
-        <div>
-          <p>Logged in as: {email}</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        // Display login form if not logged in
-        <form className="login-form" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div className="button-container">
-            <button className="create-account-button">New Account</button>
-            <button className="login-button" type="submit">Login</button>
-          </div>
-        </form>
-      )}
-    </>
-  );
-};
+//   return (
+//     <>
+//       {loggedIn ? (
+//         // Display user email and logout link if logged in
+//         <div>
+//           <p>Logged in as: {email}</p>
+//           <button onClick={handleLogout}>Logout</button>
+//         </div>
+//       ) : (
+//         // Display login form if not logged in
+//         <form className="login-form" onSubmit={handleSubmit}>
+//           <input
+//             type="email"
+//             placeholder="Email"
+//             value={email}
+//             onChange={(e) => setEmail(e.target.value)}
+//           />
+//           <input
+//             type="password"
+//             placeholder="Password"
+//             value={password}
+//             onChange={(e) => setPassword(e.target.value)}
+//           />
+//           <div className="button-container">
+//             <button className="create-account-button">New Account</button>
+//             <button className="login-button" type="submit">Login</button>
+//           </div>
+//         </form>
+//       )}
+//     </>
+//   );
+// };
 
 function App() {
   const [key, setKey] = useState<string>(keyData);
