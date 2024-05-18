@@ -143,6 +143,47 @@ h2 {
   font-weight: bold; /* Make the selected option bold */
 }
 
+/* App.css */
+.AboutUs {
+  text-align: center;
+}
+
+.home-button {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.team {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  margin: 20px;
+  text-align: center;
+}
+
+.team-member-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.team-member a {
+  color: white; /* Set the link color to white */
+  text-decoration: none; /* Remove the underline */
+}
+
+.team-member a:hover {
+  text-decoration: underline; /* Optional: underline on hover */
+}
+
+
+
 /* .App-header {
   background-color: #282c34;
   min-height: 100vh;
