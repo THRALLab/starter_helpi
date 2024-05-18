@@ -235,7 +235,6 @@ const DetailedPage = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false); //variable that controls the loading animation
 
 	return (<>
-	<body className="page-color">
 		<div className="quiz-desc-header">
 			<h1 className="detailed-title">
 				Detailed Quiz
@@ -748,7 +747,6 @@ const DetailedPage = () => {
 				<p>You've completed all the questions, you can now click the answer button to get your results!</p>
 		</Alert>
 		</div>
-	</body>
 	</>
 	);
 };

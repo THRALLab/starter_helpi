@@ -146,7 +146,6 @@ const BasicPage = () => {
 
 	//HTML for the basic quiz page
 	return (<>
-		<body className="page-color">
 		<div className="Page-Container">
 			<div className="quiz-desc-header-container">
 				<div className="quiz-desc-header">
@@ -357,7 +356,7 @@ const BasicPage = () => {
 		<div style={{marginLeft:"200px", marginRight:"200px", marginBottom:"10px"}}>
 		<ProgressBar variant="success" now={answered} animated max={8} />
 		</div>
-		</body>
+
 	</>
 	);
 };
