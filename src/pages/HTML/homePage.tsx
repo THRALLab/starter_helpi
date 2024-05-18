@@ -54,7 +54,7 @@ import { reviews } from "./ResultsPage"
             <div className="splash-button"> <Button size="lg" style={{width: "100%", height:"80%", fontSize: "2vw", backgroundColor: "white", color: "rgb(33, 72, 197)", border: "4px solid rgb(33, 72, 197)"}} onClick={() => window.scrollTo({top: 990, behavior: "auto"})}>Find your quiz!</Button></div>
         </div>
         <div id="quiz-descs"></div>
-        <div className="quiz-desc-container">
+        <div className="quiz-desc-container" data-testid="quiz-desc-holder">
             <HomeLink to="/BasicPage">
                 <div className="quiz-desc">
                     <h3>Basic Quiz</h3>
@@ -91,8 +91,8 @@ import { reviews } from "./ResultsPage"
                 </div>
             </div>
         </div>
-        <div className="apikey-container-container">
-            <div className="apikey-container">
+        <div className="apikey-container-container" >
+            <div className="apikey-container" data-testid="api-container">
             <Form style={{marginTop: "10px"}}>
                     <Form.Label>API Key:</Form.Label>
                     <Form.Control role="textbox"type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
