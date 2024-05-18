@@ -47,9 +47,9 @@ const HomePage: React.FC = () => {
       {/* <div className="login-section">
         <LoginForm />
       </div> */}
-      <div className="footer">
-        <Link to="/about-us">About Us</Link> {/* Add the About Us link */}
-      </div>
+      {/* <div className="footer">
+        <Link to="/about-us">About Us</Link> {/* Add the About Us link }
+      </div> */}
     </div>
   );
 }
