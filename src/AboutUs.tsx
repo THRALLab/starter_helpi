@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import { Link } from 'react-router-dom';
+
 
 const AboutUs: React.FC = () => {
   const teamMembers = [
@@ -34,9 +36,12 @@ const AboutUs: React.FC = () => {
           </div>
         ))}
       </div>
-      <button className="home-button" onClick={() => window.location.href = '/'}>
+      {/* <button className="home-button" onClick={() => window.location.href = '/'}>
         Return to Home Page
-      </button>
+      </button> */}
+      <Link to = '/'>
+               <button>Return to Home Page</button>
+             </Link>
     </div>
   );
 };
