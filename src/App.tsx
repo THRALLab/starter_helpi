@@ -49,6 +49,9 @@ const HomePage: React.FC = () => {
       </div> */}
       <div className="footer">
         <Link to="/about-us">About Us</Link> {/* Add the About Us link */}
+        {/* <Link to="/about-us">
+          <button className="about-us-button">About Us</button>
+        </Link> */}
       </div>
     </div>
   );

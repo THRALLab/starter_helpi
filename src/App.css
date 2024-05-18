@@ -144,6 +144,23 @@ h2 {
 }
 
 /* App.css */
+.footer a {
+  color: white; /* Set the link color to white */
+  text-decoration: none; /* Remove the underline */
+}
+
+.footer a:hover {
+  text-decoration: underline; /* Optional: underline on hover */
+}
+
+/* Ensure the footer itself has a background color so the link is visible */
+/* .footer {
+  background-color: #333; /* Or any other dark color
+  padding: 10px;
+  text-align: center;
+} */
+
+
 .AboutUs {
   text-align: center;
 }
