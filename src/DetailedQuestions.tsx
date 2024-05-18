@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ProgressBar, Form } from 'react-bootstrap';
+import { ProgressBar, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
 // import './DetailedQuestions.css'
@@ -117,11 +117,30 @@ const DetailedQuestions: React.FC = () => {
 
   return (
     <div className="detailed-questions">
+      {/* <div>
+        <Link to="/">
+          <Button style={{color: '#DAAD86' , backgroundColor: '#FBEEC1', borderColor: '#DAAD86', padding: '10px 20px', 
+          border: '2px solid', borderRadius: '5px'}}>
+            Return to Home</Button>
+        </Link>
+      </div> */}
+      <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} className="progress-bar" />
+
+
+
+
       <div className="progress-bar-container">
         <ProgressBar now={progress} label={`${progress.toFixed(0)}%`} />
       </div>
       <div className = "questions.container">
         <h2 className = "detailed-questions-title">Detailed Questions</h2>
+        <div>
+        <Link to="/">
+          <Button style={{color: '#DAAD86' , backgroundColor: '#FBEEC1', borderColor: '#DAAD86', padding: '10px 20px', 
+          border: '2px solid', borderRadius: '5px'}}>
+            Return to Home Page</Button>
+        </Link>
+      </div>
         {questions.map(question => (
           //style={{ backgroundColor: 'rgba(139, 0, 0, 0.8)', padding: '10px', borderRadius: '10px', border: '2px solid #8b0000', margin: '0 200px 20px 200px' }}
           <div key={question.id} className = "question-container">
