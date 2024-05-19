@@ -1,0 +1,90 @@
+.detailed-q-page {
+  padding-top: 81px;
+  color: var(--white-color);
+  background-color: var(--black-color);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.detailed-q-page .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  height: 81px;
+}
+
+.detailed-q-page .basic-q-title {
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 60px;
+}
+
+.detailed-q-page .container {
+  width: 100%;
+  margin: auto;
+}
+
+.detailed-q-page .row {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.detailed-q-page .col {
+  width: 100%;
+  margin: auto;
+  max-width: none;
+}
+
+.detailed-q-page .question-option {
+  width: 100%;
+  margin: auto;
+}
+
+.detailed-q-page .question-card h2 { 
+  font-size: 20px;
+}
+
+
+/* Small screens, laptops (769px — 1024px) */
+@media only screen and (max-width: 1024px) {
+  /* CSS rules for small screens and laptops */
+  .detailed-q-page .question-card h2 { 
+    font-size: 20px;
+  }
+}
+
+
+/* iPads, Tablets (481px — 768px) */
+@media only screen and (max-width: 768px) {
+  /* CSS rules for iPads and tablets */
+  .detailed-q-page .question-card h2 { 
+    font-size: 17px;
+    margin-bottom: 35px;
+  }
+}
+
+
+/* Mobile devices (350px — 480px) */
+@media only screen and (max-width: 480px) {
+  /* CSS rules for mobile devices */
+  .detailed-q-page .question-card h2 { 
+    font-size: 16px;
+    margin-bottom: 55px;
+  }
+}
+
+/* Small Mobile devices (<= 350px) */
+@media only screen and (max-width: 350px) {
+  /* CSS rules for mobile devices */
+  .detailed-q-page .question-card h2 { 
+    font-size: 15px;
+    margin-bottom: 55px;
+  }
+}

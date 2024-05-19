@@ -1,0 +1,175 @@
+.report-page {
+  padding-top: 130px;
+  color: var(--white-color);
+  background-color: var(--black-color);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.report-page .report-title {
+  margin-bottom: 49px;
+}
+
+.report-page .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.all-api-content {
+  margin: 0px;
+  margin-bottom: 81px;
+  padding: 0px;
+  height: auto;
+}
+
+/* Career recommendation section */
+.career-recommendations {
+  background-color: var(--black-color);
+  margin: 0px;
+  padding: 0px;
+}
+
+.recommendations-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0px auto;
+  justify-content: center;
+}
+
+/* Recommendation cards */
+.recommendation-card {
+  width: 500px;
+  padding: 20px;
+  border: 1px solid var(--white-color);
+  border-radius: 5px;
+  background-color: var(--black-color);
+  box-shadow: 0 0 10px var(--accent-color);
+  display: flex;
+  flex-flow: column wrap;
+  gap: 10px;
+}
+
+/* Recommendation title */
+.recommendation-title {
+  font-size: 24px;
+  color: var(--white-color);
+}
+
+/* Recommendation description */
+.recommendation-description {
+  color: var(--white-color);
+}
+
+.reasons {
+  width: 100%;
+  max-height: 9999px; /* Set a large max-height value */
+  overflow: hidden;
+}
+
+/* Reasons list */
+.reasons-list {
+  text-align: left;
+  width: 100%;
+  height: auto;
+}
+
+/* Reasons list items */
+.reasons-list-item {
+  list-style-type: disc;
+  width: 100%;
+  color: var(--white-color);
+}
+
+/* Experience required */
+.experience-required {
+  padding: 0px;
+  font-weight: normal;
+  color: var(--white-color);
+}
+
+/* Next steps section */
+.next-steps {
+  
+}
+
+/* Next steps list */
+.next-steps-list {
+  
+  text-align: left;
+}
+
+/* Next steps list items */
+.next-steps-list-item {
+  list-style-type: disc;
+  color: var(--white-color);
+}
+
+
+.chat-further {
+  margin-top: 50px;
+}
+
+.small-normal-btn {
+  display: block;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  text-align: center;
+  text-decoration: none;
+  margin: 0px auto;
+  box-shadow: 0 0 5px 2.5px var(--white-color);
+  border-radius: 5px;
+}
+  
+  
+/* Responsive design */
+@media screen and (max-width: 1024px) {
+  .career-recommendations {
+    padding: 15px;
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .career-recommendations {
+    padding: 10px;
+    font-size: .9em;
+  }
+
+  .reasons {
+    
+  }
+
+  .recommendation-card {
+    width: 430px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .career-recommendations {
+    font-size: .8em;
+  }
+
+  .recommendation-card {
+    width: 92%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .career-recommendations {
+    font-size: .7em;
+  }
+
+  .recommendation-card {
+    padding: 10px;
+  }
+}

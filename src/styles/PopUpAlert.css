@@ -1,0 +1,24 @@
+/* Custom styles for the modal */
+.custom-modal {
+    /* Add your custom styles for the modal dialog here */
+  }
+
+  .modal-content {
+    background-color: var(--black-color);
+    color: var(--white-color);
+    box-shadow: 0 0 5px 2.5px var(--white-color);
+  }
+  
+  .custom-modal-header {
+    /* Add your custom styles for the modal header here */
+  }
+  
+  .custom-modal-body {
+    /* Add your custom styles for the modal body here */
+    background-color: var(--black-color);
+  }
+  
+  .custom-modal-footer {
+    /* Add your custom styles for the modal footer here */
+  }
+  

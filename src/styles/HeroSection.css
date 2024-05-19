@@ -1,0 +1,151 @@
+
+.hero-container {
+    height: calc(100vh - 81px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: contain;
+    font-size: 20px;
+    margin: 0px;
+    margin-top: 81px;
+}
+
+.background-video {
+    position: relative;
+    width: 100%;
+}
+
+.background-video video {
+    width: 100%;
+    height: calc(100vh - 81px);
+    object-fit: cover;
+    z-index: -1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 81px);
+    background-color: rgba(0, 0, 0);
+    opacity: 0.7;
+}
+
+.over-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 81px);
+    text-align: center;
+    color: var(--white-color);
+    margin-top: 81px;
+}
+
+.over-text h1 {
+    margin: 80px auto 40px auto;
+    font-size: 60px;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--accent-color);
+    }
+    to {
+        text-shadow: 0 0 20px var(--accent-color);
+    }
+}
+
+
+.over-text p {
+    margin: 0px auto;
+    font-size: 22px;
+    width: 75%;
+}
+
+.over-text .hero-btn {
+    margin: 80px auto 0px auto;
+}
+
+
+/* Small screens, laptops (769px — 1024px) */
+@media only screen and (max-width: 1024px) {
+    /* CSS rules for small screens and laptops */
+    .background-video {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .background-video video {
+        width: auto;
+        height: calc(100vh - 81px);
+        object-fit: cover;
+    }
+    
+    .over-text h1 {
+        font-size: 50px;
+        margin: 140px 10px 70px 10px;
+    }
+    
+    .over-text p {
+        margin: 0px auto;
+        font-size: 18px;
+        width: 75%;
+    }
+    
+    .over-text .hero-btn {
+        font-size: 18px;
+    }
+}
+
+/* iPads, Tablets (481px — 768px) */
+@media only screen and (max-width: 768px) {
+    /* CSS rules for iPads and tablets */
+    
+    .over-text h1 {
+        font-size: 45px;
+        margin: 140px 10px 70px 10px;
+    }
+    
+}
+
+/* Mobile devices (350px — 480px) */
+@media only screen and (max-width: 480px) {
+    /* CSS rules for mobile devices */
+    
+    .over-text h1 {
+        font-size: 35px;
+        margin-top: 120px;
+    }
+    
+    .over-text p {
+        font-size: 15px;
+    }
+    
+    .over-text .hero-btn {
+        font-size: 15px;
+    }
+}
+
+
+/* Small Mobile devices (<= 350px) */
+@media only screen and (max-width: 350px) {
+    /* CSS rules for mobile devices */
+
+    .over-text h1 {
+        font-size: 30px;
+        margin: 140px 10px 70px 10px;
+    }
+    
+    .over-text .hero-btn {
+        margin: 70px auto 0px auto;
+    }
+}
+  
+
+  
+
+  

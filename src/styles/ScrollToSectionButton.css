@@ -1,0 +1,17 @@
+
+.hero-btn {
+    display: block;
+    background-color: var(--black-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 20px 36px;
+    text-decoration: none;
+    margin: 0px 3px 0px 3px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2.5px var(--white-color);
+}
+
+.hero-btn:hover {
+    background-color: var(--white-color);
+    color: var(--black-color);
+}
