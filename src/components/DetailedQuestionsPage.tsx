@@ -289,7 +289,7 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
                 height: '40vh', // Adjust this value according to your layout
                 padding: '30vh'
             }}>
-            <Card variant="plain" sx={{ width: 1000, height: 400}}>
+            <Card variant="plain" sx={{ width: 1000, height: 445}}>
             <CardContent>
   {!submitted && (
     <div>
