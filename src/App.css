@@ -1,38 +1,107 @@
-.App {
+/* Import alien fonts */
+@font-face { font-family: Minecraft; src: url('/src/fonts/Minecraft.ttf'); } 
+@font-face { font-family: Minecraft2; src: url('/src/fonts/easvhs.ttf'); } 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+#home-page{
+  background-color: #F2EDDA;
+}
+
+.heading{
+  font-family: 'Minecraft';
+  color: #F4A2A2;
+  font-size: 30px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.homepage-body{
+  background-color: #F2EDDA;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 5%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.homepage-body .homepage-quiz-section{
+  flex: 1;
+  padding: 20px;
+}
+
+.homepage-quiz-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0px 5vw 0px 5vw;
+}
+
+.homepage-box{
+  background-color: #FF914D;
+  box-shadow: 3px 5px 10px rgba(191, 80, 0, 0.801);
+  padding: 10%;
+  border-radius: 20px;
+  position: relative;
+}
+
+@media screen and (max-width: 900px){
+  .homepage-body{
+    background-color: #F2EDDA;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 5%;
   }
+  .homepage-buttons{
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 2vh;
+    margin-left: calc(25% - 2vw);
+    margin-right: calc(0.5% - 2vw);
+  }
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.image-easy{
+  content: '';
+  display: block;
+  width: 25%;
+  height: auto;
+  position: absolute;
+  bottom: -25px;
+  right: -60px;
+  z-index: 1;
+}
+
+.image-hard{
+  content: '';
+  display: block;
+  width: 25%;
+  height: auto;
+  position: absolute;
+  bottom: -40px;
+  right: -70px;
+  z-index: 1;
+}
+
+.homepage-buttons{
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  max-width: 100%;
+  padding: 10px;
+  box-shadow: 3px 5px 10px grey;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: whitesmoke;
+  color: black;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.homepage-buttons:hover{
+  background-color: #F4A2A2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

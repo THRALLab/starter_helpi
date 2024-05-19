@@ -1,0 +1,37 @@
+@font-face { font-family: Minecraft; src: url('fonts/Minecraft.ttf') format('truetype'); } 
+.music-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+#dropdown-basic-button{
+    background-color: #F3CACA;
+    border-radius: 15px;
+    border: 0px solid;
+    font-family: Minecraft;
+    min-width: 60px;
+}
+#dropdown-basic-button:hover{
+    color: white;
+    background-color: #f5afaf;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+
+  .music-player button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-left: 15px;
+  }
+  
+#icon{
+    max-height: 20px;
+    max-width: 20px;
+}
+#item:hover{
+    background-color: #f5afaf;
+}
