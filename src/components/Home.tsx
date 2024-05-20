@@ -10,7 +10,8 @@ import Button from '@mui/joy/Button';
 import { styled } from '@mui/material/styles';
 
 export function Home(): JSX.Element {
-      
+
+    //button styles  
     const StyledButton = styled(Button)`
     ${({ theme }) => `
     cursor: pointer;
@@ -31,7 +32,6 @@ export function Home(): JSX.Element {
 
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
-    //const [goToHomePage, setGoToHomePage] = React.useState(false);
 
     if (goToBasicQuestionsPage) {
         return <Navigate to="/BasicQuestionsPage"/>
@@ -42,7 +42,8 @@ export function Home(): JSX.Element {
     }
 
 
-    
+
+    //Basic layout that consists of two boxes one for basic questions button and description and another for detailed questions button and description.
     return (
         
         <div>
@@ -67,9 +68,6 @@ export function Home(): JSX.Element {
 
                 <StyledButton onClick={() => {setGoToBasicQuestionsPage(true)}}>BASIC QUESTIONS PAGE</StyledButton>
 
-            {/*<Button className={`animated-button ${isHovered ? 'hovered' : ''}`}
-      onMouseEnter={() => setIsHovered(true)}
-    onMouseLeave={() => setIsHovered(false)} color="primary" variant='solid' onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>*/}
         </div>
         <div className="box">
             <p></p>
@@ -80,9 +78,7 @@ export function Home(): JSX.Element {
                 thorough explanations. 
             </p>
             <p></p>
-            {/*<Button color="primary" variant="solid" onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>*/}
-            
-                <StyledButton onClick={() => {setGoToDetailedQuestionsPage(true)}}>DETAILED QUESTIONS PAGE</StyledButton>
+            <StyledButton onClick={() => {setGoToDetailedQuestionsPage(true)}}>DETAILED QUESTIONS PAGE</StyledButton>
         </div>
 
         </main>

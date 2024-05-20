@@ -8,6 +8,9 @@ import AdbIcon from '@mui/icons-material/Adb';
 import CareerFinder from '../images/CareerFinder.png';
 
 export function ContactUs(): JSX.Element {
+  //Contact us page
+
+  //states to allow you to go to home page, basic questions page, detailed questions page
     const [goToHomePage, setGoToHomePage] = React.useState(false);
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
@@ -30,7 +33,9 @@ export function ContactUs(): JSX.Element {
 
     return (
         <div>
+          {/*Card layout for contact info */}
             <AppBar position="static" style={{backgroundColor: '#f3e5f5'}}>
+              {/*Appbar with links to basic question page detailed questions page and home page */}
                 <Toolbar disableGutters>
                 <img src={CareerFinder} alt="CareerFinder4U Logo" style={{ height: 50, width: 50, paddingRight: '5px', marginLeft: '24px' }} />
                     <Typography
@@ -76,6 +81,8 @@ export function ContactUs(): JSX.Element {
                 </Toolbar>
             </AppBar>
 
+
+            {/*Contact info */}
             <p></p>
             <h1 className='padding3'>Contact Us</h1>
             <p></p>

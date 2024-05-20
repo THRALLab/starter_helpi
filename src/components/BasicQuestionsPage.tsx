@@ -108,17 +108,13 @@ export function BasicQuestionsPage(): JSX.Element {
     }
 ];
 
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [goToHomePage, setGoToHomePage] = useState(false);
-  const [selectedAnswers, setSelectedAnswers] = useState<string[]>(new Array(questions.length).fill(''));
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [displayFinishButton, setDisplayFinishButton] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>(new Array(questions.length).fill('')); 
   const [displayFinalResults, setDisplayFinalResults] = useState(false);
   const [gptResponse, setGptResponse] = useState<string>('');
   const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
-    //const [goToHomePage, setGoToHomePage] = React.useState(false);
-
-    
 
 
 const handleRetakeTest = () => {
@@ -181,16 +177,17 @@ const FinishButton = styled(Button)`
   `;
 
   const handleAnswerOptionClick = (answerText: string) => {
-    const updatedAnswers = [...selectedAnswers];
+    //updating answers
+    const updatedAnswers = [...selectedAnswers]; 
     updatedAnswers[currentQuestion] = answerText;
     setSelectedAnswers(updatedAnswers);
 
+
+    //moving to next question
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
-    } else {
-      setDisplayFinishButton(true);
-    }
+    } 
   };
 
   const handlePreviousQuestion = () => {
@@ -204,18 +201,13 @@ const FinishButton = styled(Button)`
     setGoToHomePage(true);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleDisplayFinalResults = () => {
-    setDisplayFinalResults(true);
-    setDisplayFinishButton(false);
-  };
-
   const handleGetAnswers = async () => {
     const prompt = selectedAnswers.join(' ');
     let apiKey = localStorage.getItem('MYKEY');
 
     console.log('API Key:', apiKey);
 
+    //Removing extra characters when key is retrieved from local storage so that API key is not invalid, logging error if API key is not inputted 
     if (apiKey){
         apiKey = apiKey.replace(/^"(.*)"$/, '$1')
     } else {
@@ -223,11 +215,17 @@ const FinishButton = styled(Button)`
       return;
     }
   
+    //Sending request to OpenAI with prompt, defining roles for system and user*/
     try {
       console.log('Sending request to OpenAI with prompt:', prompt);
+      // Make an asynchronous POST request to OpenAI's API endpoint
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+         // Provide the model and messages for the chat completion request
         model: "gpt-3.5-turbo",
-        messages: [{ role: "system", content: "Do research on career that best suits me based on these questions. Only give the 5 positions and only the position name" }, { role: "user", content: prompt }],
+        // System message to set the context for the API
+        messages: [{ role: "system", content: "Do research on career that best suits me based on these questions. Only give the 5 positions and only the position name" }, 
+        // User message containing the prompt
+        { role: "user", content: prompt }],
       }, {
         headers: {
           'Authorization': `Bearer ${apiKey}`,
@@ -236,6 +234,7 @@ const FinishButton = styled(Button)`
       });
   
       console.log('Response from OpenAI:', response.data); 
+       // Check if the response contains valid choices
       if (response.data.choices && response.data.choices.length > 0) {
         setGptResponse(response.data.choices[0].message.content);
         setDisplayFinalResults(true); 
@@ -247,18 +246,20 @@ const FinishButton = styled(Button)`
     }
   };
   
+  //Navigate to home page or detailed queston page when button clicked
   if (goToHomePage) {
     return <Navigate to="/" />;
   }
 
   if (goToDetailedQuestionsPage) {
     return <Navigate to="/DetailedQuestionsPage"/>
-}
+  }
 
   return (
     <div>
   
-  <AppBar position="static" style={{backgroundColor: '#f3e5f5'}}>
+    {/*Navbar for the page*/}
+    <AppBar position="static" style={{backgroundColor: '#f3e5f5'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
         <img src={CareerFinder} alt="CareerFinder4U Logo" style={{ height: 50, width: 50, paddingRight: '5px' }} />
@@ -309,6 +310,9 @@ const FinishButton = styled(Button)`
         </Toolbar>
       </Container>
     </AppBar>
+
+
+  {/*User interface for basic quesrions*/}
   <h1 className='padding7'>Basic Questions Page</h1>
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh',zIndex:'-1px' }}>
     <div className='padding5'style={{flexDirection: 'column'}}>
@@ -353,7 +357,7 @@ const FinishButton = styled(Button)`
           </>
         ) : (
           <>
-            <Typography>AI Generated Summary:</Typography>
+            <Typography>Your Results:</Typography>
             <Typography>{gptResponse}</Typography>
             <StyledButton onClick={handleGoToHomePage}>Home</StyledButton>
             <RetakeTestButton onClick={handleRetakeTest}>Retake Test</RetakeTestButton>

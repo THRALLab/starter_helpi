@@ -18,49 +18,18 @@ import CareerFinder from '../images/CareerFinder.png';
 
 
 
-/*export function Buttons(): JSX.Element {
-
-  
-
-    const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
-    const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
-
-    if (goToBasicQuestionsPage) {
-        return <Navigate to="/BasicQuestionsPage"/>
-    }
-
-    if (goToDetailedQuestionsPage) {
-        return <Navigate to="/DetailedQuestionsPage"/>
-    }
-
-    return (
-        <div>
-            <Button onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
-            <Button onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
-        </div>
-    )
-}*/
-
 export function Buttons() {
-  //const pages = ['Products', 'Pricing', 'Blog'];
 
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
-    //const [goToHomePage, setGoToHomePage] = React.useState(false);
-
-    
-    /*if (goToHomePage) {
-        return <Navigate to="/"/>
-    }*/
-
 
   if (goToBasicQuestionsPage) {
     return <Navigate to="/BasicQuestionsPage"/>
 }
 
-if (goToDetailedQuestionsPage) {
-    return <Navigate to="/DetailedQuestionsPage"/>
-}
+  if (goToDetailedQuestionsPage) {
+      return <Navigate to="/DetailedQuestionsPage"/>
+  }
 
 
     return (
@@ -86,6 +55,10 @@ if (goToDetailedQuestionsPage) {
             CareerFinder4U
           </Typography>
 
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          
+            
+          </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -110,6 +83,10 @@ if (goToDetailedQuestionsPage) {
 
             <Button sx={{ my: 2, color: 'black', display: 'block', fontFamily: 'Poppins' }}onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
             <Button sx={{ my: 2, color: 'black', display: 'block', fontFamily: 'Poppins' }}onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            
           </Box>
         </Toolbar>
       </Container>
