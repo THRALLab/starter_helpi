@@ -9,14 +9,9 @@ import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 
 
 import CareerFinder from '../images/CareerFinder.png';
@@ -113,33 +108,14 @@ export function BasicQuestionsPage(): JSX.Element {
     }
 ];
 
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [goToHomePage, setGoToHomePage] = useState(false);
-  const [selectedAnswers, setSelectedAnswers] = useState<string[]>(new Array(questions.length).fill(''));
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>(new Array(questions.length).fill('')); 
   const [displayFinalResults, setDisplayFinalResults] = useState(false);
   const [gptResponse, setGptResponse] = useState<string>('');
   const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
 
-
-
-
- const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
- const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-
- const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-   setAnchorElNav(event.currentTarget);
- };
- const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-   setAnchorElUser(event.currentTarget);
- };
-
- const handleCloseNavMenu = () => {
-   setAnchorElNav(null);
- };
-
- const handleCloseUserMenu = () => {
-   setAnchorElUser(null);
- };
 
 const handleRetakeTest = () => {
   setCurrentQuestion(0); // Reset current question to start from the beginning
@@ -242,9 +218,14 @@ const FinishButton = styled(Button)`
     //Sending request to OpenAI with prompt, defining roles for system and user*/
     try {
       console.log('Sending request to OpenAI with prompt:', prompt);
+      // Make an asynchronous POST request to OpenAI's API endpoint
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+         // Provide the model and messages for the chat completion request
         model: "gpt-3.5-turbo",
-        messages: [{ role: "system", content: "Do research on career that best suits me based on these questions. Only give the 5 positions and only the position name" }, { role: "user", content: prompt }],
+        // System message to set the context for the API
+        messages: [{ role: "system", content: "Do research on career that best suits me based on these questions. Only give the 5 positions and only the position name" }, 
+        // User message containing the prompt
+        { role: "user", content: prompt }],
       }, {
         headers: {
           'Authorization': `Bearer ${apiKey}`,
@@ -253,6 +234,7 @@ const FinishButton = styled(Button)`
       });
   
       console.log('Response from OpenAI:', response.data); 
+       // Check if the response contains valid choices
       if (response.data.choices && response.data.choices.length > 0) {
         setGptResponse(response.data.choices[0].message.content);
         setDisplayFinalResults(true); 
@@ -299,38 +281,6 @@ const FinishButton = styled(Button)`
             CareerFinder4U
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              
-            </Menu>
-          </Box>
           
           <Typography
             variant="h5"
@@ -357,31 +307,6 @@ const FinishButton = styled(Button)`
             <Button sx={{ my: 2, color: 'black', display: 'block', fontFamily: 'Poppins' }}onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              
-            </Menu>
-          </Box>
         </Toolbar>
       </Container>
     </AppBar>
