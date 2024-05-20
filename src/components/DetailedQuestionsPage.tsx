@@ -359,6 +359,8 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
     </div>
   )}
 
+
+  {/* Loading screen with loading text and loading icon*/}
   {loading && (
     <div className='padding8'>
       Loading...

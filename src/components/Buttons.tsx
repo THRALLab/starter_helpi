@@ -23,47 +23,18 @@ import CareerFinder from '../images/CareerFinder.png';
 
 
 
-
-/*export function Buttons(): JSX.Element {
-
-  
-
-    const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
-    const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
-
-    if (goToBasicQuestionsPage) {
-        return <Navigate to="/BasicQuestionsPage"/>
-    }
-
-    if (goToDetailedQuestionsPage) {
-        return <Navigate to="/DetailedQuestionsPage"/>
-    }
-
-    return (
-        <div>
-            <Button onClick={() => {setGoToBasicQuestionsPage(true)}}>Basic Questions Page</Button>
-            <Button onClick={() => {setGoToDetailedQuestionsPage(true)}}>Detailed Questions Page</Button>
-        </div>
-    )
-}*/
-
 export function Buttons() {
-  //const pages = ['Products', 'Pricing', 'Blog'];
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
     const [goToDetailedQuestionsPage, setGoToDetailedQuestionsPage] = React.useState(false);
-    //const [goToHomePage, setGoToHomePage] = React.useState(false);
 
-    
-    /*if (goToHomePage) {
-        return <Navigate to="/"/>
-    }*/
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
