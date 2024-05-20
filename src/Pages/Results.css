@@ -1,0 +1,21 @@
+.uncontrolled-tab-example {
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.borderDiv {
+    height: 50px;
+    width: 50px;
+    background-color: black;
+    border: 10px solid black;
+    border-radius: 20px;
+  }
+
+  .borderDiv:hover {
+    background-color: blue;
+  }
+
+.color-box {
+  background-color: aqua;
+  opacity: 0.5;
+}

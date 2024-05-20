@@ -1,0 +1,275 @@
+@font-face { /* Center box title font */
+    font-family: 'Playfair Display Black';
+    src: url('./PlayfairDisplay-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./Poppins-Bold.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Playfair Display Black', serif;
+    src: url('./Poppins-Black.ttf') format('truetype');
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+}
+
+@font-face { /* Descriptions font */
+    font-family: 'Poppins Light';
+    src: url('./Poppins-Light.ttf') format('truetype');
+}
+
+.home-center { /* Center gray box */
+    width: 66%;
+    height: auto; 
+    background-color: rgb(235, 240, 245);
+    margin-top: 5.5vw;
+    margin-left: 16.5vw;
+    border-radius: 1vw;
+    padding-bottom: 1.6vw;
+}
+
+.center-title { /* Title in center gray box */
+    font-family: "Playfair Display Black", sans-serif;
+    font-size: 2.7vw;
+    position: absolute;
+    top: 11vw;
+    left: 18.5vw; 
+}
+
+.center-left { /* Subtitle in center gray box */
+    font-family: "Poppins", sans-serif;
+    font-size: 1.7vw; 
+    font-weight: bold;
+    color: #17aaff;
+    position: absolute;
+    top: 16vw; 
+    left: 19vw; 
+}
+
+.home-button { /* Home icon button in top right */
+    margin-left: 0.4vw; 
+    background-color: #6fb4fe;
+    border-radius: 1vw;
+    border-color: #6fb4fe;
+    cursor: pointer;
+    font-size: 1.5vw; 
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    padding: 0.5vw 0.5vw; 
+}
+
+.basic-button { /* Basic page button */
+    margin-top: 21.9vw; 
+    margin-left: 5.9vw; 
+    padding: 1vw 3.8vw; 
+    background-color: #86c0ff;
+    color: white;
+    border-radius: 1.25vw;
+    border-color: white;
+    cursor: pointer;
+    font-size: 1.2vw; 
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.detailed-button { /* Detailed page button */
+    margin-top: 21.9vw; 
+    margin-left: 16.2vw;
+    padding: 1vw 3.8vw; 
+    background-color: #86c0ff;
+    color: white;
+    border-radius: 1.25vw;
+    border-color: white;
+    cursor: pointer;
+    font-size: 1.2vw; 
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.home-button:hover {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+}
+
+.basic-button:hover,
+.detailed-button:hover { /*Hover effects for detailed and basic page buttons */
+    background-color: #4a90e2;
+    transform: scale(1.1);
+}
+
+.brainIcon { /* Brain icon in top left */
+    width: 3.3vw;
+    height: 3.3vw;
+    cursor: pointer;
+    margin-left: 1vw; 
+}
+
+.brainIcon:hover { /* Hover effect for brain icon */
+    opacity: 0.7;
+}
+
+.title-container { /* Contains title and brain icon */
+    display: flex;
+    align-items: center;
+}
+
+.title { /* Website title */
+    font-family: 'Poppins Black', sans-serif;
+    font-size: 2.6vw; 
+    color: #ffffff;
+    cursor: pointer;
+    margin-left: 0.8vw; 
+}
+
+.homeIcon { /* Home icon */
+    width: 2.9vw;
+    height: 2.9vw;
+}
+
+.arrow-icon { /* Arrow icon in buttons */
+    width: 1.5vw;
+    height: 1.5vw; 
+    position: absolute;
+    margin-left: 1.9vw; 
+    margin-top: 0.18vw; 
+}
+
+.basic-page-description,
+.detailed-page-description { /* Descriptions for basic and detailed pages */
+    font-family: 'Poppins Light', sans-serif;
+    font-size: 1vw;
+    width: 28vw; 
+    text-align: center;
+    position: absolute;
+    background-color: rgb(235, 240, 245, 1);
+    border-radius: 2vw; 
+}
+
+.basic-page-description { /* Positioning for basic page description */
+    margin-top: 15vw;
+    margin-left: 1vw; 
+    padding: 0.3vw; 
+}
+
+.detailed-page-description { /* Positioning for detailed page description */
+    margin-top: 13.5vw; 
+    margin-left: 35.5vw; 
+    padding: 0.3vw; 
+}
+
+.background-image { /* Image in center gray box */
+    position: absolute;
+    top: 6.9vw; 
+    left: 55.5vw; 
+    width: 24vw; 
+    height: 24vw; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+    opacity: 0.9;
+}
+
+.button-questions:hover, .button-pressed {
+    background-color: #004499; /* Dark blue */
+}
+
+.progressBarContainer {
+    width: 45vw; 
+    margin-left: 28vw; 
+    margin-top: 2vw;
+}
+
+.progressBar {
+    position: relative;
+    height: 1.4vw; 
+    border-radius: 1vw; 
+    background-color: #f0f0f0; 
+}
+
+.progressBar .progress-bar {
+    background-color: #1e8bff; 
+    border-radius: 1vw; 
+}
+
+@keyframes rotate {
+    0% { transform: translate(-50%, -50%) rotate(-9deg); }
+    50% { transform: translate(-50%, -50%) rotate(9deg); }
+    100% { transform: translate(-50%, -50%) rotate(-9deg); }
+}
+
+.brain-progress-icon {
+    position: relative;
+    transform: translate(-50%, -50%);
+    width: 3vw; 
+    height: 3vw; 
+    z-index: 1; 
+    transition: left 0.45s ease-out;
+    animation: rotate 1s ease-in-out infinite;
+    top: -0.6vw;
+}
+
+.why-box {
+    position: relative;
+    width: 100%;
+    height: 25vw; 
+    background-color: #6fb4fe;
+    margin-top: 11vw;
+    text-align: center;
+}
+
+.why-box-title {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5vw; 
+    color: #ffffff;
+    margin-left: 36.5vw;
+    margin-top: 3vw;
+}
+
+.why-box-text {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7vw; 
+    color: #ffffff;
+    margin-left: 18.5vw;
+    margin-top: 9vw;
+    width: 60vw;
+    text-align: center;
+}
+
+.fq-space {
+    height: 45vw; 
+    text-align: center;
+}
+
+.fq-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3vw;
+    margin-top: 7vw;
+    text-align: center;
+}
+
+.fq-subtitle {
+    font-family: 'Poppins light', sans-serif;
+    font-weight: bold;
+    font-size: 1.4vw;
+    text-align: center;
+    margin-top: 2vw;
+}
+
+.fq-text {
+    width: 45vw;
+    font-family: 'Poppins light', sans-serif;
+    font-size: 1vw;
+    margin-top: 2vw;
+    margin-left: 27vw;
+    text-align: center;
+}
+
+.home-foot-space {
+    height: 10vw; 
+}
