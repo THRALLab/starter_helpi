@@ -4,20 +4,7 @@ import brainIcon from './modifiedBrainIcon.svg';
 import './Pages.css';
 import './questions.css';
 
-const config = { /* Configuration for confetti */
-  angle: 90,
-  spread: 150,
-  startVelocity: 35,
-  elementCount: 200,
-  dragFriction: 0.12,
-  duration: 9000,
-  stagger: 3,
-  width: "0.9vw",
-  height: "0.9vw",
-  perspective: "500px",
-  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-  recycle: false,
-};
+
 
 interface DetailedProp {
   handlePage: (page: string) => void;
@@ -57,21 +44,7 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
     setQuestions(updatedQuestions);
   };
 
-  const handleQuestionSubmit = () => {
-    if (currentQuestionIndex === questions.length - 1) {
-      const allQuestionsAnswered = questions.every((q) => q.answer.trim() !== "");
-      if (allQuestionsAnswered && !confettiShown) {
-        setConfetti(true);
-        setConfettiShown(true);
-        setTimeout(() => {
-          setConfetti(false);
-        }, 2000);
-        setCompiledAnswers(questions.map((q) => q.answer));
-      }
-    } else {
-      handleNextQuestion();
-    }
-  };
+
 
   const handleFormSubmit = () => {
     // Logic for submitting compiledAnswers to the website

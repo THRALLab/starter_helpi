@@ -8,17 +8,17 @@ interface ResultsProps {
     apiKey: string; // Add prop for API key
 }
 
-type CareerSuggestions = {
-    title: string;
-    salary: string;
-    jobGrowth: string;
-    description: string;
-}
+//type CareerSuggestions = {
+//    title: string;
+//    salary: string;
+//    jobGrowth: string;
+//    description: string;
+//}
 
-const Results: React.FC<ResultsProps> = ({ handlePage, questionsAndAnswers, apiKey }) => {
+const Results: React.FC<ResultsProps> = ({  questionsAndAnswers, apiKey }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [results, setResults] = useState<string|null>("");
-    const [suggestions, setSuggestions] = useState<CareerSuggestions[]>([]);
+    //const [suggestions, setSuggestions] = useState<CareerSuggestions[]>([]);
 
     // convertToSuggestions() {
     //     // convert results to list of career suggestions
