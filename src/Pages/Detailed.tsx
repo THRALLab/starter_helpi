@@ -26,8 +26,8 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
     { question: "Do you prefer an office environment or an environment that is frequently changing?", answer: "" }
   ]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [confetti, setConfetti] = useState(false);
-  const [confettiShown, setConfettiShown] = useState(false);
+  const [confetti] = useState(false);
+ // const [confettiShown, setConfettiShown] = useState(false);
   const [compiledAnswers, setCompiledAnswers] = useState<string[]>([]);
 
   const handlePreviousQuestion = () => {
