@@ -27,23 +27,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import CareerFinder from '../images/CareerFinder.png';
 
 export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element {
-    const StyledButton = styled(Button)`
-    ${({ theme }) => `
-        cursor: pointer;
-        background-color: #ce93d8;
-        color: #FFF;
-        transition: ${theme.transitions.create(['background-color', 'transform'], {
-          duration: theme.transitions.duration.standard,
-        })};
-        &:hover {
-          background-color: #ab47bc;
-          transform: scale(1.3);
-        }
-        font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    `}
-    `;
+    
 
     const questions = [
         "What are you particularly good at?",
@@ -64,7 +48,68 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
     const [goToHomePage, setGoToHomePage] = useState(false);
     const [goToBasicQuestionsPage, setGoToBasicQuestionsPage] = React.useState(false);
 
-   
+    const PreviousButton = styled(Button)`
+    ${({ theme }) => `
+      cursor: pointer;
+      background-color: #e57373; /* Red color */
+      color: #FFF;
+      transition: ${theme.transitions.create(['background-color', 'transform'], {
+        duration: theme.transitions.duration.standard,
+      })};
+      &:hover {
+        background-color: #d32f2f; /* Dark red color on hover */
+        transform: scale(1.1);
+      }
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    `}
+  `;
+  
+  const NextButton = styled(Button)`
+    ${({ theme }) => `
+      cursor: pointer;
+      background-color: #42a5f5; /* Blue color */
+      color: #FFF;
+      transition: ${theme.transitions.create(['background-color', 'transform'], {
+        duration: theme.transitions.duration.standard,
+      })};
+      &:hover {
+        background-color: #1e88e5; /* Darker blue color on hover */
+        transform: scale(1.1);
+      }
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    `}
+  `;
+
+  const handleRetakeTest = () => {
+    setAnswers(Array(questions.length).fill('')); // Reset answers
+    setSubmitted(false); // Reset submission status
+    setResponse(''); // Reset response
+    setLoading(false); // Reset loading status
+    setError(''); // Reset error
+    setCurrentQuestion(0); // Reset current question
+  };
+
+  const RetakeTestButton = styled(Button)`
+  ${({ theme }) => `
+    cursor: pointer;
+    background-color: #81c784; // Green color
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #66bb6a; // Darker green color on hover
+      transform: scale(1.3);
+    }
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  `}
+`;
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -289,7 +334,7 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
                 height: '40vh', // Adjust this value according to your layout
                 padding: '30vh'
             }}>
-            <Card variant="plain" sx={{ width: 1000, height: 400}}>
+            <Card variant="plain" sx={{ width: 1000, height: 445}}>
             <CardContent>
   {!submitted && (
     <div>
@@ -351,11 +396,11 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
   {!submitted && (
     <div style={{ padding: '4vh', display: 'flex', justifyContent: 'center' }}>
       {currentQuestion > 0 && (
-        <StyledButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>PREVIOUS QUESTION</StyledButton>
-      )}
-      <StyledButton onClick={handleNextQuestion} style={{ margin: '0 auto' }}>
+        <PreviousButton onClick={handlePreviousQuestion} style={{ margin: '0 auto' }}>PREVIOUS QUESTION</PreviousButton>
+        )}
+    <NextButton onClick={handleNextQuestion} style={{ margin: '0 auto' }}>
         {currentQuestion === questions.length - 1 ? 'SUBMIT ANSWERS' : 'NEXT QUESTION'}
-      </StyledButton>
+    </NextButton>
     </div>
   )}
 
@@ -387,6 +432,9 @@ export function DetailedQuestionsPage(props: CircularProgressProps): JSX.Element
       {response.map((line, index) => (
         <p key={index}>{line}</p>
       ))}
+    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+            <RetakeTestButton variant="outlined" onClick={handleRetakeTest}>Retake Test</RetakeTestButton>
+    </Box>
     </div>
   )}
 </CardContent>

@@ -141,13 +141,64 @@ export function BasicQuestionsPage(): JSX.Element {
    setAnchorElUser(null);
  };
 
-    const handleRetakeTest = () => {
-      setCurrentQuestion(0); // Reset current question to start from the beginning
-      setDisplayFinalResults(false); // Hide final results
-      setSelectedAnswers(new Array(questions.length).fill('')); // Reset selected answers array
-      setGptResponse(''); // Clear GPT response
-      // Reset any other state variables as needed
-  };
+const handleRetakeTest = () => {
+  setCurrentQuestion(0); // Reset current question to start from the beginning
+  setDisplayFinalResults(false); // Hide final results
+  setSelectedAnswers(new Array(questions.length).fill('')); // Reset selected answers array
+  setGptResponse(''); // Clear GPT response
+  // Reset any other state variables as needed
+};
+
+const RetakeTestButton = styled(Button)`
+  ${({ theme }) => `
+    cursor: pointer;
+    background-color: #81c784; // Green color
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #66bb6a; // Darker green color on hover
+      transform: scale(1.3);
+    }
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  `}
+`;
+
+const PreviousButton = styled(Button)`
+  ${({ theme }) => `
+  cursor: pointer;
+  background-color: #e57373; /* Red color */
+  color: #FFF;
+  transition: ${theme.transitions.create(['background-color', 'transform'], {
+    duration: theme.transitions.duration.standard,
+  })};
+  &:hover {
+    background-color: #d32f2f; /* Dark red color on hover */
+    transform: scale(1.1);
+  }
+  `}
+`;
+
+const FinishButton = styled(Button)`
+    ${({ theme }) => `
+    cursor: pointer;
+    background-color: #42a5f5; /* Blue color */
+    color: #FFF;
+    transition: ${theme.transitions.create(['background-color', 'transform'], {
+      duration: theme.transitions.duration.standard,
+    })};
+    &:hover {
+      background-color: #1e88e5; /* Darker blue color on hover */
+      transform: scale(1.3);
+    }
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    `}
+  `;
 
   const handleAnswerOptionClick = (answerText: string) => {
     //updating answers
@@ -373,10 +424,10 @@ export function BasicQuestionsPage(): JSX.Element {
               
             ))}
             {currentQuestion > 0 && (
-              <StyledButton onClick={handlePreviousQuestion}>Previous Question</StyledButton>
+              <PreviousButton onClick={handlePreviousQuestion}>Previous Question</PreviousButton>
             )}
             {currentQuestion === questions.length - 1 && (
-              <StyledButton onClick={handleGetAnswers}>Finish & Get Results</StyledButton>
+              <FinishButton onClick={handleGetAnswers}>Finish & Get Results</FinishButton>
             )}
           </>
         ) : (
@@ -384,10 +435,7 @@ export function BasicQuestionsPage(): JSX.Element {
             <Typography>Your Results:</Typography>
             <Typography>{gptResponse}</Typography>
             <StyledButton onClick={handleGoToHomePage}>Home</StyledButton>
-            <StyledButton onClick={handleRetakeTest}
-                           // Adjust marginBottom to lower the button
-                            >Retake Test
-                            </StyledButton>
+            <RetakeTestButton onClick={handleRetakeTest}>Retake Test</RetakeTestButton>
           </>
         )}
       </CardContent>
