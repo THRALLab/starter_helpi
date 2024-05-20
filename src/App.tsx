@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import { Home } from './components/Home';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BasicQuestionsPage } from './components/BasicQuestionsPage';
+import { DetailedQuestionsPage } from './components/DetailedQuestionsPage';
+import { ContactUs } from './components/ContactUs';
 
+// test comment
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -13,6 +19,11 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  
+  function goToContactPage(event: React.MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    window.location.href = '#/ContactUs';
+  }
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -26,26 +37,27 @@ function App() {
   }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/BasicQuestionsPage" element={<BasicQuestionsPage />}/>
+          <Route path="/DetailedQuestionsPage" element={<DetailedQuestionsPage />}/>
+          <Route path="/ContactUs" element={<ContactUs />}/>
+        </Routes>
+      </HashRouter>
+      {/* Footer with API key input field */}
+      <footer style={{ marginTop: 'auto', backgroundColor: '#f3e5f5', padding: '10px', position: 'fixed', bottom: '0', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ flex: '1', textAlign: 'left', marginLeft: '10px', fontSize: '12px'}}>
+                <p>© 2024 CareerFinder4U. All rights reserved. | <a href="/contact" onClick={goToContactPage}>Contact Us</a></p>
+              </div>
+              <div style={{ flex: '1', textAlign: 'right', fontSize: '12px' }}>
+                <Form>
+                  <Form.Label style={{ display: 'inline-block', marginRight: '5px', fontSize: '12px' }}>API Key:</Form.Label>
+                  <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey} style={{ display: 'inline-block', marginRight: '5px', width: '150px', height: '30px', fontSize: '12px' }} />
+                  <Button className="Submit-Button" onClick={handleSubmit} style={{ fontSize: '12px' }}>Submit</Button>
+                </Form>
+              </div>
+      </footer>
     </div>
   );
 }
