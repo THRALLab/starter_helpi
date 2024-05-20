@@ -4,10 +4,8 @@ import brainIcon from './modifiedBrainIcon.svg';
 import './Pages.css';
 import './questions.css';
 
-
-
 interface DetailedProp {
-  handlePage: (page: string) => void;
+  handlePage: (page: string, data?: string) => void;
 }
 
 interface ShortAnswerQuestion {
@@ -25,10 +23,8 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
     { question: "How significant is a structured and consistent routine within your workplace to your overall job satisfaction and productivity?", answer: "" },
     { question: "Do you prefer an office environment or an environment that is frequently changing?", answer: "" }
   ]);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [confetti] = useState(false);
- // const [confettiShown, setConfettiShown] = useState(false);
-  const [compiledAnswers, setCompiledAnswers] = useState<string[]>([]);
 
   const handlePreviousQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => Math.max(0, prevIndex - 1));
@@ -44,14 +40,16 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
     setQuestions(updatedQuestions);
   };
 
-
+  const generateQuestionsAndAnswers = (questions: ShortAnswerQuestion[]) => {
+    return questions.map((q, index) => {
+      return `Question ${index + 1}: ${q.question}\nAnswer ${index + 1}: ${q.answer}`;
+    }).join('\n');
+  }
 
   const handleFormSubmit = () => {
-    // Logic for submitting compiledAnswers to the website
+    const compiledAnswers = generateQuestionsAndAnswers(questions);
     console.log("Submitted answers:", compiledAnswers);
-    // Reset the form or redirect to another page after submission
-    // For now, let's just reset the compiled answers
-    setCompiledAnswers([]);
+    handlePage('Results', compiledAnswers);
   };
 
   useEffect(() => {
@@ -63,35 +61,32 @@ const Detailed: React.FC<DetailedProp> = ({ handlePage }) => {
   const progressPercentage: number = (answeredQuestions / totalQuestions) * 100;
 
   return (
-    <><div>
-          {confetti && (
-              <div className="confetti-container">
-              </div>
-          )}
-          <header />
-          <div className="progressBarContainer">
-              <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
-              <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${progressPercentage + 0.5}%` }} />
-          </div>
+    <div>
+      <header />
+      <div className="progressBarContainer">
+        <ProgressBar className="progressBar" now={progressPercentage} label={`${Math.round(progressPercentage)}%`} />
+        <img src={brainIcon} alt="Brain Icon" className="brain-progress-icon" style={{ left: `${progressPercentage + 0.5}%` }} />
       </div>
-      <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button><div className="column">
-              <h3 className="question">{questions[currentQuestionIndex].question}</h3>
-              <div className="questionContainer">
-                  <textarea
-                      style={{ width: "100%", minHeight: "200px", marginBottom: "50px", minWidth: "500px", marginTop: "50px" }} // Adjust width and height as needed
-                      value={questions[currentQuestionIndex].answer}
-                      onChange={handleAnswerChange}
-                      placeholder="Type your answer here..." />
-              </div>
-              <div className="navigationButtons" style={{ marginBottom: "10px" }}>
-                  <Button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>Previous</Button>
-                  <Button onClick={handleNextQuestion} style={{ marginLeft: "10px", marginRight: "10px" }}>Next</Button>
-                  {answeredQuestions === totalQuestions && (
-                      <Button onClick={handleFormSubmit} style={{ marginLeft: "10px" }}>Submit</Button>
-                  )}
-              </div>
-          </div><footer className="footer-space"></footer>
-          </>
+      <Button className="basic-switch" onClick={() => handlePage('Basic')}>Basic</Button>
+      <div className="column">
+        <h3 className="question">{questions[currentQuestionIndex].question}</h3>
+        <div className="questionContainer">
+          <textarea
+            style={{ width: "100%", minHeight: "200px", marginBottom: "50px", minWidth: "500px", marginTop: "50px" }} // Adjust width and height as needed
+            value={questions[currentQuestionIndex].answer}
+            onChange={handleAnswerChange}
+            placeholder="Type your answer here..." />
+        </div>
+        <div className="navigationButtons" style={{ marginBottom: "10px" }}>
+          <Button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>Previous</Button>
+          <Button onClick={handleNextQuestion} style={{ marginLeft: "10px", marginRight: "10px" }}>Next</Button>
+          {answeredQuestions === totalQuestions && (
+            <Button onClick={handleFormSubmit} style={{ marginLeft: "10px" }}>Submit</Button>
+          )}
+        </div>
+      </div>
+      <footer className="footer-space"></footer>
+    </div>
   );
 };
 
