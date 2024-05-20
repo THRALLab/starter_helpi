@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@font-face { font-family: Minecraft; src: url('../fonts/Minecraft.ttf') format('truetype'); } 
+
+
+body {
+  background-color:#F2EDDA;
+  font-family: 'Roboto';
+}
+
+.cat-header {
+  content: url('../images/CatDetailHeader.png');
+  max-width: 40%;
+  display: block; 
+  margin: 0 auto; 
+  margin-top: 30px;
+}
+
+.question-row {
+  margin-top: 20px; 
+}
+
+.horizontal-questions {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.question-1,
+.question-2,
+.question-3,
+.question-4,
+.question-5,
+.question-6,
+.question-7 {
+  flex: 1;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.progress-bar-section {
+  width: 100%;
+  height: 75px;
+  display: flex; 
+  align-items: center;
+  margin: 0 auto;
+}
+
+.progress-bar-shape {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background-color: #dca75c;
+  border-radius: 10px;
+
+}
+ 
+.update-progress-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, #68BFD6, #bcdfe8);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.detailed-prev-button {
+  position: absolute;
+  left: 10%;
+  bottom: -20%;
+}
+  
+  .question-textbox {
+    width: 60%;
+    margin: auto; 
+    margin-top: 2%;
+    margin-bottom: 1%;
+    background-color: #FAC264;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    outline: 5px solid #FF914D;
+    position: relative;
+    text-align: center;
+  }
+
+.question-number {
+  display: flex;
+  top: 0;
+  position: absolute; 
+  justify-content: center; 
+  align-items: center; 
+  width: 100%; 
+  margin-top: 20px; 
+  font-size: 25px; 
+  font-family: Minecraft;
+  color: rgb(62, 61, 61)
+}
+
+.question-text-detailed {
+  padding: 30px;
+  font-size: xx-large;
+  text-align: center;
+  font-weight: 500;
+  width: 100%;
+  opacity: 0; 
+  animation: fadeInAnimation 1s ease-in-out forwards; 
+}
+
+@keyframes fadeInAnimation {
+  to {
+    opacity: 1;
+  }
+}
+
+.gifs {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.cat-gifs {
+  transform: scale(0.5);
+  position: absolute;
+  bottom: -70px;
+}
+.cat-walk-1 {
+  transform: scale(0.6);
+  position: absolute;
+  bottom: -30px;
+  left: 0; 
+  animation: slideAnimation1 1s forwards; 
+}
+
+.cat-walk-2 {
+  transform: scale(0.6);
+  position: absolute;
+  bottom: -30px;
+  left: 20%; 
+  animation: slideAnimation2 1s forwards; 
+}
+
+.cat-walk-3 {
+  transform: scale(0.6);
+  position: absolute;
+  bottom: -30px;
+  left: 40%; 
+  animation: slideAnimation3 1s forwards; 
+}
+
+@keyframes slideAnimation1 {
+  from {
+    left: 0;
+  }
+  to {
+    left: 20%; 
+  }
+}
+
+@keyframes slideAnimation2 {
+  from {
+    left: 20%;
+  }
+  to {
+    left: 40%; 
+  }
+}
+
+@keyframes slideAnimation3 {
+  from {
+    left: 40%;
+  }
+  to {
+    left: 60%; 
+  }
+}
+
+.mouse-gifs {
+  transform: scale(0.5);
+  position: absolute;
+  bottom: -60px;
+  right: 0; 
+}
+
+.detailed-next-button {
+  position: absolute;
+  right: 10%;
+  bottom: -20%;
+}
+  
+.answer-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+  margin-top: 0;
+}
+  
+.custom-radio {
+  display: inline-block;
+  width: 96%;
+  height: 125px;
+  border: 5px solid #FFA3B1;
+  padding-top: 15px;
+  margin-right: 20px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: #F3CACA;
+}
+
+.custom-radio:hover {
+  opacity: 0.9; 
+  background-color: #f5afaf; 
+  transition: background-color 0.5s ease;
+  outline: 3px solid #f1c4c4; 
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.get-answers-button {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+#activate-answers-button {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  min-width: 200px;
+  max-height: 60px;
+  padding: -30px 18px;
+}
+#activate-answers-button:hover {
+  background-color:#FAC264;
+}
+.music-detail{
+  margin-left: 45%;
+}
+
