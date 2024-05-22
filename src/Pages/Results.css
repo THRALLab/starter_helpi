@@ -1,21 +1,59 @@
-.uncontrolled-tab-example {
-    flex-direction: column;
-    margin-top: 20px;
-  }
-  
-  .borderDiv {
-      height: 50px;
-      width: 50px;
-      background-color: black;
-      border: 10px solid black;
-      border-radius: 20px;
-    }
-  
-    .borderDiv:hover {
-      background-color: blue;
-    }
-  
-  .color-box {
-    background-color: aqua;
-    opacity: 0.5;
-  }
+.results-container {
+    position: relative; /* Ensure that the loading container is positioned relative to this container */
+    padding: 20px;
+}
+
+.career-suggestion {
+    margin-bottom: 20px;
+}
+
+.career-title {
+    font-family: 'Poppins Light', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.loading-text {
+    font-family: 'Poppins Light', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 9999;
+    margin-left: 47%;
+}
+
+.career-detail {
+    font-family: 'Poppins Light', sans-serif;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.career-description {
+    font-family: 'Poppins Light', sans-serif;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.foot-space {
+    height: 5vw; 
+}
+
+.loading-container {
+    position: absolute; 
+    margin-top: 14%; 
+    margin-left: 49%; 
+}
+
+.loading-icon {
+    width: 20vw; 
+    height: 20vw;
+    animation: loading 4s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% { transform: translate(-50%, -50%) rotate(-360deg); }
+    50% { transform: translate(-50%, -50%) rotate(360deg); }
+    100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
