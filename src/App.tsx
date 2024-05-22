@@ -7,6 +7,7 @@ import Detailed from './Pages/Detailed';
 import NavHome from './navbar';
 import CareerSearchByInterest from './Pages/interests';
 import Results from './Pages/Results';
+import clouds from './Clouds.png'; // Import the clouds video
 
 // Local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -20,6 +21,7 @@ function App() {
   const [key, setKey] = useState<string>(keyData); // for api key input
   const [currPg, setCurrPg] = useState<string>('Home');
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState<string>(''); // State to store questions and answers
+  const [showVideoScreen, setShowVideoScreen] = useState<boolean>(true);
 
   // Sets the local storage item to the api key the user inputted
   function handleSubmit() {
@@ -62,6 +64,14 @@ function App() {
 
   return (
     <>
+    {showVideoScreen && (
+        <div className="fade-screen" onClick={() => setShowVideoScreen(false)}>
+          <h1 className="cloud-title" onClick={() => setShowVideoScreen(false)}>Brain Spark</h1>
+          <div className="blue-background" onClick={() => setShowVideoScreen(false)}></div>
+          <img src={clouds} alt="Clouds" className="clouds-background" onClick={() => setShowVideoScreen(false)} />
+          <img src={clouds} alt="Clouds" className="clouds-background-flip" onClick={() => setShowVideoScreen(false)} />
+        </div>
+      )}
       <NavHome handlePage={setCurrPg} />
 
       {renderPage() /* Renders the page */}
