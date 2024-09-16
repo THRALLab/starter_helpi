@@ -1,0 +1,35 @@
+.brand-logo {
+    display: flex;
+    align-items: center;
+}
+
+.gradient-custom {
+    background: #0e1014;
+}
+
+.navbar-selected {
+    text-decoration: underline;
+}
+
+.navbar-back {
+    color: #ffffff;
+    margin-left: 1px;
+    padding-left: 2%;
+    padding-right: 7%;
+    height: 23px;
+    border: 10px;
+    background: #6923ff;
+    border-radius: 10px;
+}
+
+.logo-img {
+    width: 140px;
+    height: auto;
+    margin-right: -10px; 
+    border-color: #6923ff;
+    border: 20px;
+}
+
+.mx-auto .nav-link:hover {
+    color: white;
+  }
