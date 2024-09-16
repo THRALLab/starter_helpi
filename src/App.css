@@ -1,7 +1,43 @@
 .App {
   text-align: center;
+  background-color: white;
+  margin-bottom: 0rem;
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: space-around; /* Adjust as needed */
+  align-items: center; /* Center align buttons vertically */
+  margin-bottom: 0px; /* Add some space between buttons and content */
+}
+
+.button {
+  font-size: 18px; /* Increase font size */
+  padding: 7px 138.2px; /* Increase padding to make the buttons bigger */
+  border-radius: 0px; /* Add rounded corners */
+  text-decoration: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.button.differentCareers {
+  background-color: #7f2556; /* Change background color for Different Careers button */
+  color: #fff; /* Change text color */
+}
+
+.button.careerQuizzes {
+  background-color: #a53923; /* Change background color for Different Careers button */
+  color: #fff; /* Change text color */
+}
+
+.button.careerTips {
+  background-color: #32cd32; /* Change background color for Career Tips button */
+  color: #fff; /* Change text color */
+}
+
+.button.aboutUs {
+  background-color: #2867ab; /* Change background color for Career Tips button */
+  color: #fff; /* Change text color */
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,18 +50,116 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(14px + 3vmin);
+  color: rgb(240, 240, 240);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    #0c2455 20%,
+    #0c2455 50%,
+    #0c2455 79%,
+    transparent
+  );
+}
+
+.footer {
+  min-height: 2vh;
+  margin-top: auto; /* Push the footer to the bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(2px + 2vmin);
+  font-size: 28px;
+  color: rgb(240, 240, 240);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    #0c2455 20%,
+    #0c2455 50%,
+    #0c2455 79%,
+    transparent
+  );
+}
+
+.signup-box {
+  background-color: #233f73;
+  border: 10px solid #716f6f;
+  border-radius: 0px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.signup-box h2 {
+  margin-top: 0;
+}
+
+.signup-box form {
+  display: flex;
+  flex-direction: row;
+}
+
+.signup-box label {
+  margin-bottom: 7px;
+}
+
+.signup-box input[type="email"] {
+  font-size: smaller;
+  padding: 5px;
+  border: 1px solid #6f6868;
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.signup-box button {
+  background-color: #bdc3c9;
+  color: #f6f3f3;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.signup-box button:hover {
+  background-color: #a6a8ab;
 }
 
 .App-link {
   color: #61dafb;
+}
+/* background-color: rgb(47, 70, 11); */
+/* background-color: darkorchid; */
+
+.App-buttons2 {
+  color: rgb(243, 73, 73);
+  text-align: center;
+  /* text-indent: 5%; */
+  position: relative;
+  border-top: 3px solid rgb(0, 170, 255);
+  padding-top: 16px;
+}
+
+.App-differentcareersbutton {
+  color: rgb(243, 73, 73);
+  text-align: center;
+  /* text-indent: 5%; */
+  position: relative;
+  border-top: 0px solid rgb(0, 170, 255);
+  padding-top: 0px;
+}
+
+.App-buttons4 {
+  color: rgb(0, 170, 255);
+  text-align: center;
+  /* text-indent: 5%; */
+  position: relative;
+  border-top: 3px solid rgb(243, 73, 73);
+  padding-top: 16px;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +169,158 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.ImageContainer {
+  position: relative;
+  align-items: center;
+  right: 300px;
+  width: 60%;
+  height: auto;
+  max-width: 300px;
+  margin: auto;
+}
+
+/*added*/
+.ImageContainer img {
+  height: 500px; /* Fixed height */
+  width: 500px; /* Width adjusts to maintain the aspect ratio */
+}
+
+.NavigationButtonRight {
+  position: relative;
+  bottom: 225px;
+  left: -34px;
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.NavigationButtonLeft {
+  position: relative;
+  bottom: 225px;
+  right: 550px;
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.NavigationButtonLeft:hover {
+  opacity: 0.4;
+}
+.NavigationButtonRight:hover {
+  opacity: 0.4;
+}
+
+.App-buttons {
+  color: black;
+  text-align: left;
+  text-indent: 5%;
+  position: relative;
+  text-align: center;
+}
+.Text1Wrapper {
+  position: relative;
+  overflow: hidden;
+  top: 190px;
+  right: 70px;
+}
+.Career-Quiz {
+  --background-color: #e3e3e3; /* Light grey background as the starting color */
+  --accent-color: #0af; /* Blue color for hover/focus effect */
+  --border-radius: 20px; /* Rounded corners */
+  background-color: var(--background-color); /* Initial background color */
+  margin: 1rem auto;
+  padding: 16px;
+  font-size: 25px;
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  font-family: "Courier New", Courier, monospace;
+  align-items: center;
+}
+
+.Career-Quiz:hover,
+/* .Career-Quiz:focus, */
+.Basic-Quiz:hover,
+.Basic-Quiz:focus {
+  background-color: var(--accent-color);
+  color: white;
+  z-index: 1;
+}
+
+.Career-Quiz::before .Basic-Quiz::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: var(
+    --border-radius
+  ); /* Ensure rounded corners match the button */
+}
+
+.Career-Quiz2 {
+  --background-color: #e3e3e3; /* Light grey background as the starting color */
+  --accent-color: rgb(243, 73, 73); /* Blue color for hover/focus effect */
+  --border-radius: 20px; /* Rounded corners */
+  background-color: var(--background-color); /* Initial background color */
+  margin: 1rem auto;
+  padding: 16px;
+  font-size: 25px;
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  font-family: "Courier New", Courier, monospace;
+  align-items: center;
+}
+
+.Career-Quiz2:hover,
+.Basic-Quiz:hover,
+.Basic-Quiz:focus {
+  background-color: var(
+    --accent-color
+  ); /* Change background to blue on hover/focus */
+  color: white; /* Change text color to white on hover/focus */
+  z-index: 1;
+}
+
+.Career-Quiz2::before .Basic-Quiz::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: var(
+    --border-radius
+  ); /* Ensure rounded corners match the button */
+}
+
+.App-header3 {
+  color: black;
+  text-align: left;
+  top: 700px;
+}
+
+.HomePage-text {
+  border: 2px solid rgb(0, 170, 255);
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.Career-Quiz-text {
+  border: 2px solid rgb(243, 73, 73);
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
