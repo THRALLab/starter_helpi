@@ -1,6 +1,20 @@
 .App {
   text-align: center;
 }
+.Home {
+  visibility: visible;
+  text-align: center;
+}
+.Basic {
+  visibility: hidden;
+}
+.Advanced {
+  visibility: hidden;
+}
+.Results{
+  visibility: hidden;
+}
+
 
 .App-logo {
   height: 40vmin;

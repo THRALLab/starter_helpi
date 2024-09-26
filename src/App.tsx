@@ -25,11 +25,11 @@ function App() {
     setKey(event.target.value);
   }
   return (
-    <div className="App">
+    <div className="Home">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+        Brendon Uzoigwe, Girish Sista, Saaketh Pula.
         </p>
         <a
           className="App-link"
@@ -37,7 +37,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn
         </a>
       </header>
       <Form>
