@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import { BasicQuestion, DetailedQuestions, HomePage } from './components/pages';
+import logo from '..logoandimages/thestarterhelpilogo.png'; 
+
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -13,6 +16,9 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [homePageVisible, setHomePageVisible] = useState<boolean>(true); //to show the home page
+  const [basicVisible, setBasicVisible] = useState<boolean>(false); //to show the basic questions
+  const [detailedVisible, setDetailedVisible] = useState<boolean>(false); //to show the detailed questions
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -24,21 +30,47 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  function showHomePage() {
+    setHomePageVisible(true);
+    setBasicVisible(false);
+    setDetailedVisible(false);
+  }
+
+  function showBasic() {
+    setHomePageVisible(false);
+    setBasicVisible(true);
+    setDetailedVisible(false);
+  }
+
+  function showDetailed() {
+    setHomePageVisible(false);
+    setBasicVisible(false);
+    setDetailedVisible(true);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={logo} className="App-logo" alt="thestarterHelpilogo" /> {/* Updated alt text */}
+        <div className="Page-buttons">
+        <Button className="Detailed-Button" onClick={showDetailed}>Detailed Questions</Button>
+        </div>
+  
+        {homePageVisible && 
+        <div className="Pages">
+          home page
+        </div>}
+  
+        {basicVisible && 
+        <div className="Pages">
+          basic questions
+        </div>}
+  
+        {detailedVisible &&
+        <div className="Pages">
+          detailed questions
+        </div>}
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
@@ -46,6 +78,10 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
+      <hr></hr>
+      <p>
+        Created by: Melanie Heider, Patrick Sweet, Jessica Cunningham, Sydney Holland
+      </p>
     </div>
   );
 }
