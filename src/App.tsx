@@ -24,12 +24,16 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <p>
+          Shamus Ellis : Dylan Blevins : Luke Bonniwell
         </p>
         <a
           className="App-link"
@@ -41,12 +45,16 @@ function App() {
         </a>
       </header>
       <Form>
+
+      </Form>
+      <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
         <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+        <Button variant="primary" className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
     </div>
+    
   );
 }
 
