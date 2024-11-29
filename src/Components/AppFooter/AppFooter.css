@@ -1,0 +1,11 @@
+.container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 3rem;
+}
+.names-container{
+	border: 1px solid black;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+}
