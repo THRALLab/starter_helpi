@@ -1,14 +1,14 @@
 import React from 'react';
-
+import growlithe from "../Images/growlithe.png"
 const Header = () => {
   return (
-    <header style={{ backgroundColor: '#bd7415', color: 'white', padding: '1rem', textAlign: 'center' }}>
-      <a href="/">
-      <h1 style={{ fontSize: '48px', color: '#61dafb' }}>The Very Cool Career Quiz</h1>
-        <button>Go to Home</button>
-      </a>
-    </header>
-  );
+<nav className="navbar navbar-light bg-light">
+  <a className="navbar-brand" href="Home">
+    <img src={growlithe} width="50" height="50" className="d-inline-block align-top" alt="Growlithe"/>
+    Career Quizine
+  </a>
+</nav>
+)
 };
 
 export default Header;
