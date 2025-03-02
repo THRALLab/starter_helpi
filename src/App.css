@@ -1,5 +1,19 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.body {
+  background-color: #dcd2be;
+  height: 100%;
 }
 
 .App-logo {
@@ -13,15 +27,107 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.map-box {
+  background-color: tan;
+  width: 100%;
+  flex: 1; /* This will make it take 1/3 of the height */
+  display: flex;
+  color: offwhite;
+  font-size: 2rem;
+
+}
+
+
+
+.directions-box {
+  background-color: lightgoldenrodyellow;
+  padding-top: 10px;
+}
+
+  .Mitigation-box {
+    background-color: lightgoldenrodyellow;
+    padding-top: 10px;
+  }
+
+.Contacts-box {
+  width: 100%;
+  background-color: lightpink;
+  padding: 20px;
+  
+}
+
+.Reset-button{
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  z-index: 1;
+  border: 10px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.content-wrapper {
+  flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.accordion-wrapper {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.api-key {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100vh;
+  padding-bottom: 20px; 
+}
+
+.accordion-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 98%;
+  right: 50%;
+  transform: translateX(1%);
+  background-color: lightgoldenrodyellow;
+}
+
+.accordion-header{
+  background-color:darkgray;
+  border-radius: 10px;
+  padding: 1px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.accordion-button{
+  background-color:darkgray;
+  border-radius: 10px;
+  padding: 1px;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid gray;
+  
+}
+.accordion-button:not(.collapsed) {
+  background-color: lightgray;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
+  color: black;
+}
+
+.accordion-button:focus {
+  border-color: black; /* Ensure no border on focus */
+  box-shadow: none; /* Ensure no box-shadow on focus */
+  outline: none; /* Ensure no outline on focus */
 }
 
 .App-link {

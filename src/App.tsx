@@ -1,53 +1,149 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import { Accordion } from 'react-bootstrap';
+import ShelterList from './components/ShelterList';
+import SafetyInfo from './components/SafetyInfo';
+import GoogleMap from './components/GoogleMap';
+import DisasterPrompt from './components/DisasterPrompt';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
-if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
-}
 
 function App() {
-  const [key, setKey] = useState<string>(keyData); //for api key input
-  
-  //sets the local storage item to the api key the user inputed
-  function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
-  }
+  console.log("Starting App");
 
-  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
-  function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-    setKey(event.target.value);
-  }
+  const [disasterType, setDisasterType] = useState<string>("Blizzard"); // for disaster type. Default = Blizzard
+  console.log("boot set to true")
+  const [showPrompt, setShowPrompt] = useState<boolean>(true); // for showing the disaster prompt
+  
+  const [suppliesResults, setSuppliesResults] = useState<string>("");
+  const [directionsResults, setDirectionsResults] = useState<string>(""); 
+  const [preventionResults, setPreventionResults] = useState<string>("");
+  console.log("Preparing apiKey");
+  const apiKey = 'AIzaSyAYfmTy4J6wwJT8DMj6XkU3cbi-ML56mmg'; // Provide a default value
+  console.log("apiKey set to: " + apiKey);
+
+  //Gemini API get and response function
+  const fetchData = async (disasterType: string, apiKey: string) => {
+    console.log("Running fetchData");
+
+    //Incase the API key is gone.
+    if (!apiKey) {
+      console.error("API key is missing");
+      return;
+    }
+
+    //
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    let suppliesPrompt = `say squash`;
+    let directionsPrompt = `say apple`;
+    let preventionPrompt = 'say orange';
+    console.log(" skethy Disaster type: " + disasterType);
+    
+    if (disasterType === "Blizzard") {
+      console.log("Blizzard detected");
+      suppliesPrompt = `There is a Blizzard happening around me right now, please tell me supplies needed to survive,
+       including water, non-perishable food, and medications and other items needed for survival in a bulleted list of raw text.`;
+      directionsPrompt = `There is a Blizzard happening around me right now, please tell me directions of what to do 
+      in case of a Blizzard in raw text. please include the following list of directions:
+      Stay indoors
+      Wear multiple layers of loose, dry clothing.
+      Drink plenty of water and eat warming foods.
+      If you must go outside, dress in layers, cover exposed skin, and exercise to keep warm.
+      Conserve home energy by lowering heat and closing doors and vents in unused rooms.
+      Stay entertained with low-energy activities like games and reading.
+      Have supplies ready, including water, non-perishable food, and medications`;
+
+      preventionPrompt = ('There is a Blizzard happening around me right now, please tell me ways to mitigate the adverse effects of a Blizzard on my house and family in raw text. Please include to drip your sinks so you pipes dont freeze.');
+    }
+    
+
+
+    //Stores the output of the AI in {item}Response
+    //Gemini.generateContent("Input String")
+    const suppliesResponse = await model.generateContent(suppliesPrompt);
+    const directionsResponse = await model.generateContent(directionsPrompt);
+    const preventionResponse = await model.generateContent(preventionPrompt);
+
+    //Set the response to the state
+    setSuppliesResults(suppliesResponse.response.text());
+    setDirectionsResults(directionsResponse.response.text());
+    setPreventionResults(preventionResponse.response.text());
+    console.log("Printing out gemini output");
+    console.log(suppliesResponse.response.text());
+    console.log(directionsResponse.response.text());
+    console.log(preventionResponse.response.text());
+
+    setSuppliesResults(suppliesResponse.response.text());
+    setDirectionsResults(directionsResponse.response.text());
+    setPreventionResults(preventionResponse.response.text());
+
+  };
+
+  //Gemini
+  const handleDisasterSelect = (selectedDisaster: string) => {
+    console.log("Running DisasterSelect");
+    setDisasterType(selectedDisaster);
+    console.log("setShowPrompt to false");
+    setShowPrompt(false);
+    fetchData(selectedDisaster, apiKey); // Call the API when a disaster is selected
+  };
+
+  console.log({disasterType});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
-    </div>
+      <div className="Everything">
+        <DisasterPrompt show={showPrompt} onClose={handleDisasterSelect} />
+
+        <div className="map-box">
+          {disasterType && /*disasterType !== 'Hurricane/Tornado' && disasterType !== 'Blizzard' &&*/ disasterType !== 'Power Plant Meltdown' && (
+            <GoogleMap disasterType={disasterType} />
+          )}
+
+          
+        </div>
+
+        <Accordion defaultActiveKey="0" className="accordion-sections">
+          <Accordion.Item eventKey="0">
+            <Accordion.Header className="accordion-header"><h2>Directions</h2></Accordion.Header>
+            <Accordion.Body className="accordion-body">
+              <div className="directions-box">{directionsResults}</div>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header><h2>Resources/Supplies</h2></Accordion.Header>
+            
+            <Accordion.Body className="accordion-body">
+            <div className="Resources-box">{suppliesResults}</div>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header><h2>Mitigation</h2></Accordion.Header>
+            
+            <Accordion.Body className="accordion-body">
+            <div className="Mitigation-box">{preventionResults}</div>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+
+        <div className="Reset-button">
+          <button style={{backgroundColor: "skyblue",color:"black"}}onClick={() => {
+            console.log("Reset Button Called");
+            setShowPrompt(true);
+            }}>Reset</button>
+        </div>
+
+        <div className="Contacts-box">
+          <h1>Contact Numbers:</h1>
+          <p>Delaware Emergency Services: (610) 565-8700</p>
+          <p>Emergency: 911</p>
+          <p> Non-Emergency: 311</p>
+          <p>Red Cross: (800) 733-2767</p>
+          <p>Salvation Army: (800) 725-2769</p>
+        </div>
+      </div>
   );
 }
-
 export default App;
