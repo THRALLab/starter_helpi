@@ -37,7 +37,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+         Andrew Altmann, Oryem Kilama, Benjamin Huffman, Kyle Henry
         </a>
       </header>
       <Form>
